@@ -17,7 +17,7 @@
 ## Ресурсы
 
  - Коммуникация: [Gitter Chat][gitter]
- <!-- - [Таблица успеваемости][hall-of-fame] -->
+ - [Таблица успеваемости][hall-of-fame]
  - Инструкции по выполнению [лабораторных работ][labs]
  - Теория
    - [Слайды в HTML][html]
@@ -26,8 +26,8 @@
 
 <!-- LINKS -->
 
-[gitter]:            https://gitter.im/devtools-course-practice-2021/community
-<!-- [hall-of-fame]:      https://docs.google.com/spreadsheets/d/1fTz3jySZbl45zDCsx2EiVCVorbqgMS_jxAyPfIqarzs/edit#gid=607355116 -->
+[gitter]:            https://gitter.im/devtools-course-practice-2021/community 
+[hall-of-fame]:      https://docs.google.com/spreadsheets/d/11dxBeegDOpkStVuHZJgpatZV4HqxIkdf6H4gnRpclSM/edit?usp=sharing
 [labs]:              https://github.com/UNN-ITMM-Software/devtools-course-practice/tree/main/lab-guide
 [control-questions]: https://github.com/UNN-ITMM-Software/devtools-course-theory/blob/master/slides/control-questions.md
 [theory]:            https://github.com/UNN-ITMM-Software/devtools-course-theory
