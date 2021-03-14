@@ -9,7 +9,7 @@ TEST(Kolesnikov_Gleb_ComplexNumberTEST, Multiply_by_one) {
     ComplexNumber number_one(1, 0);
     ComplexNumber result = number * number_one;
 
-    ASSERT_EQ(result, number);
+    ASSERT_EQ(number, result);
 }
 
 TEST(Kolesnikov_Gleb_ComplexNumberTEST, Add_zero) {
@@ -17,24 +17,24 @@ TEST(Kolesnikov_Gleb_ComplexNumberTEST, Add_zero) {
     ComplexNumber number_zero(0, 0);
     ComplexNumber result = number + number_zero;
 
-    ASSERT_EQ(result, number);
+    ASSERT_EQ(number, result);
 }
 
-TEST(Kolesnikov_Gleb_ComplexNumberTEST, Divide_et_impera) {
+TEST(Kolesnikov_Gleb_ComplexNumberTEST, Divide_by_one) {
     ComplexNumber number(13, 13);
     ComplexNumber second_number(1, 1);
     ComplexNumber check(13, 0);
     ComplexNumber result = number / second_number;
 
-    ASSERT_EQ(result, check);
+    ASSERT_EQ(check, result);
 }
 
-TEST(Kolesnikov_Gleb_ComplexNumberTEST, Substract_te_ipsum) {
+TEST(Kolesnikov_Gleb_ComplexNumberTEST, Substract_number) {
     ComplexNumber number(13, 13);
     ComplexNumber second_number(number);
     ComplexNumber number_zero(0, 0);
 
     ComplexNumber result = number - second_number;
 
-    ASSERT_EQ(result, number_zero);
+    ASSERT_EQ(number_zero, result);
 }
