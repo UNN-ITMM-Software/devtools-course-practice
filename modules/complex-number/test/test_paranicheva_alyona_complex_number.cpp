@@ -22,8 +22,7 @@ TEST(Paranicheva_Alyona_ComplexNumberTest, Module_Addition) {
     EXPECT_EQ(15.0, sum);
 }
 
-TEST(Paranicheva_Alyona_ComplexNumberTest, Module_Subtraction) 
-{
+TEST(Paranicheva_Alyona_ComplexNumberTest, Module_Subtraction) {
     ComplexNumber z1(6.0, -8.0);
     ComplexNumber z2(3.0, -4.0);
 
