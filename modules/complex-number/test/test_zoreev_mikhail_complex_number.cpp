@@ -18,19 +18,6 @@ TEST(Zoreev_Mikhail_ComplexNumberTest, Changes_In_Copy_Not_Affect_Original) {
     ASSERT_EQ(number_original.getIm(), im_1);
 }
 
-TEST(Zoreev_Mikhail_ComplexNumberTest, Equality_Transitivity) {
-    double re = 5.5;
-    double im = 7.1;
-
-    ComplexNumber number_1(re, im);
-    ComplexNumber number_2(re, im);
-    ComplexNumber number_3(re, im);
-
-    ASSERT_TRUE(number_1 == number_2);
-    ASSERT_TRUE(number_2 == number_3);
-    ASSERT_TRUE(number_3 == number_1);
-}
-
 typedef testing::TestWithParam<std::tuple<double, double, double, double>>
         Zoreev_Mikhail_ComplexNumberTest_Parametrized;
 TEST_P(Zoreev_Mikhail_ComplexNumberTest_Parametrized,
