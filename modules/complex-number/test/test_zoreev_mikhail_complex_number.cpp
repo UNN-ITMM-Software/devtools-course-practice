@@ -9,12 +9,10 @@ TEST(Zoreev_Mikhail_ComplexNumberTest, Changes_In_Copy_Not_Affect_Original) {
     double re_1 = 4.5;
     double im_1 = 6.0;
     double re_2 = 1.0;
-    double im_2 = 1.0;
     ComplexNumber number_original(re_1, im_1);
-    ComplexNumber number_2(re_2, im_2);
 
     ComplexNumber number_copy(number_original);
-    number_copy = number_2;
+    number_copy.setRe(re_2);
 
     ASSERT_EQ(number_original.getRe(), re_1);
     ASSERT_EQ(number_original.getIm(), im_1);
