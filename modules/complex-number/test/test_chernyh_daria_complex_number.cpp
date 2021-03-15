@@ -26,7 +26,7 @@ TEST(Chernyh_Daria_ComplexNumberTEST, Multiply_of_conjugate) {
 TEST(Chernyh_Daria_ComplexNumberTEST, Division_by_zero) {
   ComplexNumber number(21, 6);
   ComplexNumber number_zero(0, 0);
-   
+
   ASSERT_ANY_THROW(number / number_zero);
 }
 
