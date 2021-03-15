@@ -17,8 +17,10 @@ TEST(Chernyh_Daria_ComplexNumberTEST, Multiply_of_conjugate) {
   ComplexNumber number(21, 6);
   ComplexNumber number_conj(21, -6);
   ComplexNumber result = number * number_conj;
-  ComplexNumber check_res(number.getRe() * number.getRe()
-    + number.getIm() * number.getIm(), 0);
+  double resRe = number.getRe() * number.getRe()
+               + number.getIm() * number.getIm();
+
+  ComplexNumber check_res(resRe, 0);
 
   ASSERT_EQ(check_res, result);
 }
