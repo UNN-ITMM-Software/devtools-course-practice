@@ -28,13 +28,3 @@ TEST(Kolesnikov_Gleb_ComplexNumberTEST, Divide_by_one) {
 
     ASSERT_EQ(check, result);
 }
-
-TEST(Kolesnikov_Gleb_ComplexNumberTEST, Substract_number) {
-    ComplexNumber number(13, 13);
-    ComplexNumber second_number(number);
-    ComplexNumber number_zero(0, 0);
-
-    ComplexNumber result = number - second_number;
-
-    ASSERT_EQ(number_zero, result);
-}
