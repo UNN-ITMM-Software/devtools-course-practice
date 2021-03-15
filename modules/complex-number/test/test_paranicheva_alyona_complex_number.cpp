@@ -1,6 +1,7 @@
 // Copyright 2021 Paranicheva Alyona
 
 #include <gtest/gtest.h>
+
 #include <cmath>
 
 #include "include/complex_number.h"
