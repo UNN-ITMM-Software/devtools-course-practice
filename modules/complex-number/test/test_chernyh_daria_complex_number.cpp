@@ -3,6 +3,7 @@
 #include <gtest/gtest.h>
 
 #include <tuple>
+
 #include "include/complex_number.h"
 
 typedef testing::TestWithParam<std::tuple<double, double>>
