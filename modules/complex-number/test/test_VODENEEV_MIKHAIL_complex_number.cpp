@@ -41,3 +41,14 @@ TEST(Vodeneev_Mikhail_ComplexNumberTest, Subtraction) {
     EXPECT_EQ(res.getRe(), -1);
     EXPECT_EQ(res.getIm(), -3);
 }
+
+TEST(Vodeneev_Mikhail_ComplexNumberTest, Setter) {
+
+    ComplexNumber z;
+    
+    z.setRe(4);
+    z.setIm(3);
+
+    EXPECT_EQ(z.getRe(), 4);
+    EXPECT_EQ(z.getIm(), 3);
+}
