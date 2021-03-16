@@ -6,7 +6,6 @@
 
 
 TEST(Vodeneev_Mikhail_ComplexNumberTest, Comparison) {
-
     double re1 = 10, re2 = 10;
     double im1 = 15, im2 = 15;
 
@@ -17,7 +16,6 @@ TEST(Vodeneev_Mikhail_ComplexNumberTest, Comparison) {
 }
 
 TEST(Vodeneev_Mikhail_ComplexNumberTest, Add) {
-
     double re1 = 1, re2 = 2;
     double im1 = 6, im2 = 9;
 
@@ -30,7 +28,6 @@ TEST(Vodeneev_Mikhail_ComplexNumberTest, Add) {
 }
 
 TEST(Vodeneev_Mikhail_ComplexNumberTest, Subtraction) {
-
     double re1 = 1, re2 = 2;
     double im1 = 6, im2 = 9;
 
@@ -43,7 +40,6 @@ TEST(Vodeneev_Mikhail_ComplexNumberTest, Subtraction) {
 }
 
 TEST(Vodeneev_Mikhail_ComplexNumberTest, Setter) {
-
     ComplexNumber z;
 
     z.setRe(4);
