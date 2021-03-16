@@ -45,7 +45,7 @@ TEST(Vodeneev_Mikhail_ComplexNumberTest, Subtraction) {
 TEST(Vodeneev_Mikhail_ComplexNumberTest, Setter) {
 
     ComplexNumber z;
-    
+
     z.setRe(4);
     z.setIm(3);
 
