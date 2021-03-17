@@ -11,8 +11,9 @@ TEST(Kurnikova_Anastasia_ComplexNumberTest, can_create_with_min_max) {
 }
 
 TEST(Kurnikova_Anastasia_ComplexNumberTest, can_create_with_infinity) {
-    EXPECT_NO_THROW(ComplexNumber a(std::numeric_limits<double>::infinity(),
-                             std::numeric_limits<double>::infinity()));
+    double re = std::numeric_limits<double>::infinity();
+    double im = std::numeric_limits<double>::infinity();
+    EXPECT_NO_THROW(ComplexNumber a(re, im));
 }
 
 TEST(Kurnikova_Anastasia_ComplexNumberTest, can_compare_zeroes) {
@@ -20,5 +21,5 @@ TEST(Kurnikova_Anastasia_ComplexNumberTest, can_compare_zeroes) {
     double im = 0.0;
     ComplexNumber a(re, im);
     ComplexNumber b(0.0, 0.0);
-    EXPECT_EQ(0, a != b);
+    EXPECT_FALSE(a != b);
 }
