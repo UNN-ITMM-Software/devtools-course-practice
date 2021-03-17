@@ -5,46 +5,44 @@
 #include "include/complex_number.h"
 
 
-TEST(Vodeneev_Mikhail_ComplexNumberTest, Comparison) {
-    double re1 = 10, re2 = 10;
-    double im1 = 15, im2 = 15;
+TEST(Vodeneev_Mikhail_ComplexNumberTest, Add_with_Subtraction) {
+    double re1 = 1, re2 = 2, re3 = 3;
+    double im1 = 6, im2 = 9, im3 = 12;
 
     ComplexNumber z1(re1, im1);
     ComplexNumber z2(re2, im2);
+    ComplexNumber z3(re3, im3);
 
-    EXPECT_EQ(z1, z2);
+    ComplexNumber res = z1 + z2 - z3;
+
+    ASSERT_EQ(0, res.getRe());
+    ASSERT_EQ(3, res.getIm());
 }
 
-TEST(Vodeneev_Mikhail_ComplexNumberTest, Add) {
-    double re1 = 1, re2 = 2;
-    double im1 = 6, im2 = 9;
+TEST(Vodeneev_Mikhail_ComplexNumberTest, Add_with_3_arguments) {
+    double re1 = 1, re2 = 2, re3 = 3;
+    double im1 = 6, im2 = 9, im3 = 12;
 
     ComplexNumber z1(re1, im1);
     ComplexNumber z2(re2, im2);
-    ComplexNumber res = z1 + z2;
+    ComplexNumber z3(re3, im3);
 
-    EXPECT_EQ(3, res.getRe());
-    EXPECT_EQ(15, res.getIm());
+    ComplexNumber res = z1 + z2 + z3;
+
+    ASSERT_EQ(6, res.getRe());
+    ASSERT_EQ(27, res.getIm());
 }
 
-TEST(Vodeneev_Mikhail_ComplexNumberTest, Subtraction) {
-    double re1 = 1, re2 = 2;
-    double im1 = 6, im2 = 9;
+TEST(Vodeneev_Mikhail_ComplexNumberTest, Subtraction_with_3_arguments) {
+    double re1 = 1, re2 = 2, re3 = 3;
+    double im1 = 6, im2 = 9, im3 = 12;
 
     ComplexNumber z1(re1, im1);
     ComplexNumber z2(re2, im2);
-    ComplexNumber res = z1 - z2;
+    ComplexNumber z3(re3, im3);
 
-    EXPECT_EQ(-1, res.getRe());
-    EXPECT_EQ(-3, res.getIm());
-}
+    ComplexNumber res = z1 - z2 - z3;
 
-TEST(Vodeneev_Mikhail_ComplexNumberTest, Setter) {
-    ComplexNumber z;
-
-    z.setRe(4);
-    z.setIm(3);
-
-    EXPECT_EQ(4, z.getRe());
-    EXPECT_EQ(3, z.getIm());
+    ASSERT_EQ(-4, res.getRe());
+    ASSERT_EQ(-15, res.getIm());
 }
