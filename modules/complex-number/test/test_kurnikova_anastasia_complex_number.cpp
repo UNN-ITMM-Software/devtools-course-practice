@@ -8,8 +8,9 @@ TEST(Kurnikova_Anastasia_ComplexNumberTest, can_be_created) {
     double im = 1.0;
 
     ComplexNumber a(re, im);
+    ComplexNumber b(4.0, 1.0);
 
-    ASSERT_NO_THROW(a);
+    EXPECT_EQ(a, b);
 }
 
 TEST(Kurnikova_Anastasia_ComplexNumberTest, correct_multiply_with_const) {
