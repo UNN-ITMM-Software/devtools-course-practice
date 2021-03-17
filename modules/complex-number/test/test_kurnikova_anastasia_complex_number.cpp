@@ -1,6 +1,7 @@
 // Copyright 2021 Kurnikova Anastasia
 
 #include <gtest/gtest.h>
+#include <limits>
 #include "include/complex_number.h"
 
 TEST(Kurnikova_Anastasia_ComplexNumberTest, can_create_with_min_max) {
@@ -10,9 +11,8 @@ TEST(Kurnikova_Anastasia_ComplexNumberTest, can_create_with_min_max) {
 }
 
 TEST(Kurnikova_Anastasia_ComplexNumberTest, can_create_with_infinity) {
-    double re = std::numeric_limits<double>::infinity();
-    double im = std::numeric_limits<double>::infinity();
-    EXPECT_NO_THROW(ComplexNumber a(re, im));
+    EXPECT_NO_THROW(ComplexNumber a(std::numeric_limits<double>::infinity(),
+                             std::numeric_limits<double>::infinity()));
 }
 
 TEST(Kurnikova_Anastasia_ComplexNumberTest, can_compare_zeroes) {
