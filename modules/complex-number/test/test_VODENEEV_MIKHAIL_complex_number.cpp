@@ -23,8 +23,8 @@ TEST(Vodeneev_Mikhail_ComplexNumberTest, Add) {
     ComplexNumber z2(re2, im2);
     ComplexNumber res = z1 + z2;
 
-    EXPECT_EQ(res.getRe(), 3);
-    EXPECT_EQ(res.getIm(), 15);
+    EXPECT_EQ(3, res.getRe());
+    EXPECT_EQ(15, res.getIm());
 }
 
 TEST(Vodeneev_Mikhail_ComplexNumberTest, Subtraction) {
@@ -35,8 +35,8 @@ TEST(Vodeneev_Mikhail_ComplexNumberTest, Subtraction) {
     ComplexNumber z2(re2, im2);
     ComplexNumber res = z1 - z2;
 
-    EXPECT_EQ(res.getRe(), -1);
-    EXPECT_EQ(res.getIm(), -3);
+    EXPECT_EQ(-1, res.getRe());
+    EXPECT_EQ(-3, res.getIm());
 }
 
 TEST(Vodeneev_Mikhail_ComplexNumberTest, Setter) {
@@ -45,6 +45,6 @@ TEST(Vodeneev_Mikhail_ComplexNumberTest, Setter) {
     z.setRe(4);
     z.setIm(3);
 
-    EXPECT_EQ(z.getRe(), 4);
-    EXPECT_EQ(z.getIm(), 3);
+    EXPECT_EQ(4, z.getRe());
+    EXPECT_EQ(3, z.getIm());
 }
