@@ -1,7 +1,9 @@
 // Copyright 2021 Kurnikova Anastasia
 
 #include <gtest/gtest.h>
+
 #include <limits>
+
 #include "include/complex_number.h"
 
 TEST(Kurnikova_Anastasia_ComplexNumberTest, can_create_with_min_max) {
