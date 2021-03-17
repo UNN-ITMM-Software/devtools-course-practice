@@ -3,36 +3,22 @@
 #include <gtest/gtest.h>
 #include "include/complex_number.h"
 
-TEST(Kurnikova_Anastasia_ComplexNumberTest, can_be_created) {
-    double re = 4.0;
-    double im = 1.0;
-
-    ComplexNumber a(re, im);
-    ComplexNumber b(4.0, 1.0);
-
-    EXPECT_EQ(a, b);
+TEST(Kurnikova_Anastasia_ComplexNumberTest, can_create_with_min_max) {
+    double re = std::numeric_limits<double>::min();
+    double im = std::numeric_limits<double>::max();
+    EXPECT_NO_THROW(ComplexNumber a(re, im));
 }
 
-TEST(Kurnikova_Anastasia_ComplexNumberTest, correct_multiply_with_const) {
-    double re = 4.0;
-    double im = 1.0;
-
-    ComplexNumber a(re, im);
-    ComplexNumber b(2.0, 0.0);
-    ComplexNumber c = a * b;
-
-    ASSERT_DOUBLE_EQ(8.0, c.getRe());
-    ASSERT_DOUBLE_EQ(2.0, c.getIm());
+TEST(Kurnikova_Anastasia_ComplexNumberTest, can_create_with_infinity) {
+    double re = std::numeric_limits<double>::infinity();
+    double im = std::numeric_limits<double>::infinity();
+    EXPECT_NO_THROW(ComplexNumber a(re, im));
 }
 
-TEST(Kurnikova_Anastasia_ComplexNumberTest, can_compare) {
-    double re1 = 4.0;
-    double im1 = 1.0;
-    double re2 = 0.0;
-    double im2 = 5.0;
-
-    ComplexNumber a(re1, im1);
-    ComplexNumber b(re2, im2);
-
-    EXPECT_EQ(0, a == b);
+TEST(Kurnikova_Anastasia_ComplexNumberTest, can_compare_zeroes) {
+    double re = 0.0;
+    double im = 0.0;
+    ComplexNumber a(re, im);
+    ComplexNumber b(0.0, 0.0);
+    EXPECT_EQ(0, a != b);
 }
