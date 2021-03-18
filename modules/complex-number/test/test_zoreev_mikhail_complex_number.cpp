@@ -51,9 +51,9 @@ TEST_P(Zoreev_Mikhail_ComplexNumberTest_Parametrized,
 }
 
 INSTANTIATE_TEST_CASE_P(/**/, Zoreev_Mikhail_ComplexNumberTest_Parametrized,
-    testing::Combine(
-  testing::Values(5.0, 3.0, 5.0, 3.0),
-  testing::Values(0.0, 7.0, 4.0, 8.0),
-  testing::Values(2.0, 6.0, 7.0, 1.0),
-  testing::Values(3.5, 3.5, 3.5, 3.5)
+    testing::Values(
+  std::make_tuple(5.0, 3.0, 5.0, 3.0),
+  std::make_tuple(0.0, 7.0, 4.0, 8.0),
+  std::make_tuple(2.0, 6.0, 7.0, 1.0),
+  std::make_tuple(3.5, 3.5, 3.5, 3.5)
 ));
