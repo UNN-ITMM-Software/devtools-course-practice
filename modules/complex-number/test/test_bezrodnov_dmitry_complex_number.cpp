@@ -23,6 +23,6 @@ TEST(Bezrodnov_Dmitry_ComplexNumberTest, Sum_Conjugate_Numbers) {
 TEST(Bezrodnov_Dmitry_ComplexNumberTest, Module_Conjugate_Numbers) {
     ComplexNumber z1(3, 4);
     ComplexNumber z2(3, -4);
-    ASSERT_EQ(sqrt(pow(z1.getRe(), 2) + pow(z1.getIm(), 2)), 
+    ASSERT_EQ(sqrt(pow(z1.getRe(), 2) + pow(z1.getIm(), 2)),
         sqrt(pow(z2.getRe(), 2) + pow(z2.getIm(), 2)));
 }
