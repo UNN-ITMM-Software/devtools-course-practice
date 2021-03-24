@@ -1,0 +1,27 @@
+// Copyright 2021 Bezrodnov Dmitry
+
+#include <gtest/gtest.h>
+
+#include "include/complex_number.h"
+
+TEST(Bezrodnov_Dmitry_ComplexNumberTest, Multiplication_Conjugate_Numbers) {
+    double re = 1.0;
+    double im = 3.0;
+    ComplexNumber z1(re, im);
+    ComplexNumber z2(re, -im);
+    EXPECT_EQ(10, (z1*z2).getRe());
+}
+
+TEST(Bezrodnov_Dmitry_ComplexNumberTest, Sum_Conjugate_Numbers) {
+    double re = 1.0;
+    double im = 3.0;
+    ComplexNumber z1(re, im);
+    ComplexNumber z2(re, -im);
+    EXPECT_EQ(2, (z1+z2).getRe());
+}
+
+TEST(Bezrodnov_Dmitry_ComplexNumberTest, Module_Conjugate_Numbers) {
+    ComplexNumber z1(3, 4);
+    ComplexNumber z2(3, -4);
+    ASSERT_EQ(sqrt(pow(z1.getRe(), 2) + pow(z1.getIm(), 2)), sqrt(pow(z2.getRe(), 2) + pow(z2.getIm(), 2)));
+}
