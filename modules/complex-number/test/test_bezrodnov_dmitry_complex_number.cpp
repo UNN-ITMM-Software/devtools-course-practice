@@ -1,7 +1,7 @@
 // Copyright 2021 Bezrodnov Dmitry
 
 #include <gtest/gtest.h>
-
+#include <cmath>
 #include "include/complex_number.h"
 
 TEST(Bezrodnov_Dmitry_ComplexNumberTest, Multiplication_Conjugate_Numbers) {
