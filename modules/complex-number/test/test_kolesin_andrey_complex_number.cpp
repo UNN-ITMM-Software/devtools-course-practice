@@ -4,31 +4,33 @@
 
 #include "include/complex_number.h"
 
-TEST(Kolesin_Andrey_ComplexNumberTest, Rotation) {
+TEST(Kolesin_Andrey_ComplexNumberTest, Rotation90Degrees) {
     ComplexNumber i(0, 1);
-    ComplexNumber a(3.6, 5.7);
-    ComplexNumber b(-5.7, 3.6);
-    ComplexNumber c(-3.6, -5.7);
-    ComplexNumber d(5.7, -3.6);
-    ASSERT_EQ(b, a * i);
-    ASSERT_EQ(c, a * i * i);
-    ASSERT_EQ(d, a * i * i * i);
+    double re = 3.6;
+    double im = 5.7;
+    ComplexNumber a(re, im);
+    ComplexNumber ai(-im, re);
+    ComplexNumber aii(-re, -im);
+    ComplexNumber aiii(im, -re);
+    ASSERT_EQ(ai, a * i);
+    ASSERT_EQ(aii, a * i * i);
+    ASSERT_EQ(aiii, a * i * i * i);
     ASSERT_EQ(a, a * i * i * i * i);
 }
 
-TEST(Kolesin_Andrey_ComplexNumberTest, NegSqr) {
+TEST(Kolesin_Andrey_ComplexNumberTest, NegativeSquaredIsPositive) {
     ComplexNumber a(-5.2, 0);
-    ComplexNumber b = a * a;
-    ASSERT_EQ(b.getIm(), 0);
-    ASSERT_GT(b.getRe(), 0);
+    ComplexNumber aSquered = a * a;
+    ASSERT_EQ(aSquered.getIm(), 0);
+    ASSERT_GT(aSquered.getRe(), 0);
 }
 
-TEST(Kolesin_Andrey_ComplexNumberTest, Conjugate) {
+TEST(Kolesin_Andrey_ComplexNumberTest, SumOfConjugatesIsСonjugationOfSum) {
     ComplexNumber a(-5.3, 7.2);
-    ComplexNumber ac(a.getRe(), -a.getIm());
+    ComplexNumber aConjugated(a.getRe(), -a.getIm());
     ComplexNumber b(8.9, -10.5);
-    ComplexNumber bc(b.getRe(), -b.getIm());
-    ComplexNumber apb = a + b;
-    ComplexNumber apbc(apb.getRe(), -apb.getIm());
-    ASSERT_EQ(apbc, ac + bc);
+    ComplexNumber bConjugated(b.getRe(), -b.getIm());
+    ComplexNumber aPlusB = a + b;
+    ComplexNumber aPlusBConjugated(aPlusB.getRe(), -aPlusB.getIm());
+    ASSERT_EQ(aPlusBConjugated, aConjugated + bConjugated);
 }
