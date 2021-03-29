@@ -21,7 +21,7 @@ TEST(Kolesin_Andrey_ComplexNumberTest, NegSqr) {
     ASSERT_EQ(b.getIm(), 0);
     ASSERT_GT(b.getRe(), 0);
 }
-TEST(Kolesin_Andrey_ComplexNumberTest, Сonjugate) {
+TEST(Kolesin_Andrey_ComplexNumberTest, Conjugate) {
     ComplexNumber a(-5, 7);
     ComplexNumber ac(a.getRe(), -a.getIm());
     ComplexNumber b(8, -10);
