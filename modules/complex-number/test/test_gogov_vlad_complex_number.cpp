@@ -18,8 +18,8 @@ TEST(Gogov_Vlad_ComplexNumberTest, Can_Add) {
     ComplexNumber c2(re2, im2);
     ComplexNumber result = c1 + c2;
 
-    EXPECT_EQ(reResult, result.getRe());
-    EXPECT_EQ(imResult, result.getIm());
+    ASSERT_EQ(reResult, result.getRe());
+    ASSERT_EQ(imResult, result.getIm());
 }
 
 TEST(Gogov_Vlad_ComplexNumberTest, Can_Substract) {
@@ -36,8 +36,8 @@ TEST(Gogov_Vlad_ComplexNumberTest, Can_Substract) {
     ComplexNumber c2(re2, im2);
     ComplexNumber result = c1 - c2;
 
-    EXPECT_EQ(reResult, result.getRe());
-    EXPECT_EQ(imResult, result.getIm());
+    ASSERT_EQ(reResult, result.getRe());
+    ASSERT_EQ(imResult, result.getIm());
 }
 
 TEST(Gogov_Vlad_ComplexNumberTest, Can_Multiply) {
@@ -54,8 +54,8 @@ TEST(Gogov_Vlad_ComplexNumberTest, Can_Multiply) {
     ComplexNumber c2(re2, im2);
     ComplexNumber result = c1 * c2;
 
-    EXPECT_EQ(reResult, result.getRe());
-    EXPECT_EQ(imResult, result.getIm());
+    ASSERT_EQ(reResult, result.getRe());
+    ASSERT_EQ(imResult, result.getIm());
 }
 
 TEST(Gogov_Vlad_ComplexNumberTest, Can_Divide) {
@@ -72,6 +72,6 @@ TEST(Gogov_Vlad_ComplexNumberTest, Can_Divide) {
     ComplexNumber c2(re2, im2);
     ComplexNumber result = c1 / c2;
 
-    EXPECT_EQ(reResult, result.getRe());
-    EXPECT_EQ(imResult, result.getIm());
+    ASSERT_EQ(reResult, result.getRe());
+    ASSERT_EQ(imResult, result.getIm());
 }
