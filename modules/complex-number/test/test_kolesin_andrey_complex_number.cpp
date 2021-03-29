@@ -25,7 +25,7 @@ TEST(Kolesin_Andrey_ComplexNumberTest, NegativeSquaredIsPositive) {
     ASSERT_GT(aSquered.getRe(), 0);
 }
 
-TEST(Kolesin_Andrey_ComplexNumberTest, SumOfConjugatesIsСonjugationOfSum) {
+TEST(Kolesin_Andrey_ComplexNumberTest, SumOfConjugatesIsConjugationOfSum) {
     ComplexNumber a(-5.3, 7.2);
     ComplexNumber aConjugated(a.getRe(), -a.getIm());
     ComplexNumber b(8.9, -10.5);
