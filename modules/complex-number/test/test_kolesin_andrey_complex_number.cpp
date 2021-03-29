@@ -15,12 +15,14 @@ TEST(Kolesin_Andrey_ComplexNumberTest, Rotation) {
     ASSERT_EQ(d, a * i * i * i);
     ASSERT_EQ(a, a * i * i * i * i);
 }
+
 TEST(Kolesin_Andrey_ComplexNumberTest, NegSqr) {
     ComplexNumber a(-5.2, 0);
     ComplexNumber b = a * a;
     ASSERT_EQ(b.getIm(), 0);
     ASSERT_GT(b.getRe(), 0);
 }
+
 TEST(Kolesin_Andrey_ComplexNumberTest, Conjugate) {
     ComplexNumber a(-5.3, 7.2);
     ComplexNumber ac(a.getRe(), -a.getIm());
