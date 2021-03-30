@@ -45,8 +45,8 @@ TEST_P(Kirichenko_Nikita_ComplexNumberTestTest_Param, Operations_Test) {
 }
 
 INSTANTIATE_TEST_CASE_P(/**/, Kirichenko_Nikita_ComplexNumberTestTest_Param,
-    testing::Combine(
-        testing::Values(4.0, 2.0),
-        testing::Values(2.0, 4.0),
-        testing::Values(1.0, 1.0),
-        testing::Values(8.5, 6.5)));
+    testing::Values(
+        std::make_tuple(4.0, 2.0, 5.0, 12.0),
+        std::make_tuple(1.0, 4.0, 0.0, 2.0),
+        std::make_tuple(2.0, 0.0, 13.5, 0.0),
+        std::make_tuple(7.0, 5.0, 3.0, 5.0)));
