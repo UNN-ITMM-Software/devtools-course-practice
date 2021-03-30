@@ -14,9 +14,9 @@ TEST(Aleksandrychev_Andrey_ComplexNumberTest, Arithmetic_Copy_Constr) {
     ComplexNumber num2(Re2, Im2);
     ComplexNumber num3(Re3, Im3);
 
-    ComplexNumber res(Re1 + Re2 / Re3, Im1 + Im2 / Im3);
+    ComplexNumber res(Re1 + Re2 - Re3, Im1 + Im2 - Im3);
 
-    ASSERT_EQ(res, num1 + num2 / num3);
+    ASSERT_EQ(res, num1 + num2 - num3);
 }
 
 // Test getters and setters functions
