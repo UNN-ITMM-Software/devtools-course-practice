@@ -37,11 +37,9 @@ TEST_P(Kirichenko_Nikita_ComplexNumberTestTest_Param, Operations_Test) {
     ComplexNumber num2(re2, im2);
 
     ComplexNumber r1 = num1 + num2;
-    ComplexNumber r2 = num1 + num1;
-    ComplexNumber r3 = r1 - r2;
-    ComplexNumber total = num2 -num1;
+    ComplexNumber r2 = r1 - num1;
 
-    ASSERT_EQ(r3, total);
+    ASSERT_EQ(r2, num2);
 }
 
 INSTANTIATE_TEST_CASE_P(/**/, Kirichenko_Nikita_ComplexNumberTestTest_Param,
