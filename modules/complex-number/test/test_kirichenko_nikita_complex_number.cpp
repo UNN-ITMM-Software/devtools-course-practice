@@ -1,13 +1,12 @@
 // Copyright 2021 Kirichenko Nikita
 
+#include <gtest/gtest.h>
+
 #include <tuple>
 
 #include <cmath>
 
-#include <gtest/gtest.h>
-
 #include "include/complex_number.h"
-
 TEST(Kirichenko_Nikita_ComplexNumberTest, Calculation) {
     ComplexNumber z(3.0, 4.0);
     ComplexNumber k(7.0, 10.0);
