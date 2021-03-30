@@ -43,11 +43,13 @@ TEST(Aleksandrychev_Andrey_ComplexNumberTest, Equally_and_Not_equally) {
 
     bool res1, res2;
     if (num1 == num2) res1 = true;
-    if (num1.getRe() == num2.getRe() && num1.getIm() == num2.getIm()) res2 = true;
+    if (num1.getRe() == num2.getRe() && num1.getIm() == num2.getIm())
+        res2 = true;
 
     bool res3, res4;
     if (num1 != num3) res3 = true;
-    if (num1.getRe() != num3.getRe() || num1.getIm() == num3.getIm()) res4 = true;
+    if (num1.getRe() != num3.getRe() || num1.getIm() == num3.getIm())
+        res4 = true;
 
     ASSERT_EQ(res1, res2);
     ASSERT_EQ(res3, res4);
