@@ -19,38 +19,16 @@ TEST(Aleksandrychev_Andrey_ComplexNumberTest, Arithmetic_Copy_Constr) {
     ASSERT_EQ(res, num1 + num2 - num3);
 }
 
-// Test getters and setters functions
-TEST(Aleksandrychev_Andrey_ComplexNumberTest, Getters_and_Setters) {
-    ComplexNumber num1(Re1, Im1);
-    ComplexNumber num2(0.0, 0.0);
-
-    num2.setRe(num1.getRe());
-    num2.setIm(num1.getIm());
-
-    ASSERT_EQ(num2.getRe(), Re1);
-    ASSERT_EQ(num2.getIm(), Im1);
+// Test of multiplying
+TEST(Aleksandrychev_Andrey_ComplexNumberTest, Multiplication) {
+    ComplexNumber z1(Re1, Im1);
+    ComplexNumber z2(Re2, -Im2);
+    ASSERT_EQ(82.32, (z1*z2).getRe());
 }
 
-// Test function for check of equal or not equal value
-TEST(Aleksandrychev_Andrey_ComplexNumberTest, Equally_and_Not_equally) {
-    double Re1 = 5.5, Im1 = 2.2;
-    double Re2 = 5.5, Im2 = 2.2;
-    double Re3 = 5.0, Im3 = 1.1;
-
-    ComplexNumber num1(Re1, Im1);
-    ComplexNumber num2(Re2, Im2);
-    ComplexNumber num3(Re3, Im3);
-
-    bool res1, res2;
-    if (num1 == num2) res1 = true;
-    if (num1.getRe() == num2.getRe() && num1.getIm() == num2.getIm())
-        res2 = true;
-
-    bool res3, res4;
-    if (num1 != num3) res3 = true;
-    if (num1.getRe() != num3.getRe() || num1.getIm() == num3.getIm())
-        res4 = true;
-
-    ASSERT_EQ(res1, res2);
-    ASSERT_EQ(res3, res4);
+// Test != operator
+TEST(Aleksandrychev_Andrey_ComplexNumberTest, Not_equally_operator) {
+    ComplexNumber a(Re1, Im1);
+    ComplexNumber b(0.0, 0.0);
+    ASSERT_TRUE(a != b);
 }
