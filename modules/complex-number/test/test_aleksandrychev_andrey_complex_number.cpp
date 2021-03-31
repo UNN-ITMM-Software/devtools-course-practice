@@ -30,14 +30,11 @@ TEST(Aleksandrychev_Andrey_ComplexNumberTest, Multiplication_Division) {
 }
 
 // Test == operator
-TEST(Aleksandrychev_Andrey_ComplexNumberTest, Not_equally_operator) {
-    double Re1 = 4.0, Im1 = 2.2;
-    double Re2 = 3.0, Im2 = 1.2;
+TEST(Aleksandrychev_Andrey_ComplexNumberTest, copiedObjectHasItsOwnMemory) {
+    ComplexNumber x(3, 5);
+    ComplexNumber y(x);
+    x.setRe(9);
+    x.setRe(12);
 
-    ComplexNumber a(Re1, Im1);
-    ComplexNumber b(Re2, Im2);
-
-    bool res = a == b;
-
-    ASSERT_FALSE(res);
+    ASSERT_NE(x, y);
 }
