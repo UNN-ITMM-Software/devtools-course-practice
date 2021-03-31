@@ -9,13 +9,13 @@ const double epsilon = std::numeric_limits<double>::epsilon();
 TEST(Ostapovich_Denis_ComplexNumberTest, Equality_Operator_Not_Zero) {
     ComplexNumber a(2, 1);
     ComplexNumber b(2, 1);
-    ASSERT_TRUE(a == b);
+    ASSERT_EQ(a, b);
 }
 
 TEST(Ostapovich_Denis_ComplexNumberTest, Equality_Operator_Approximately_Zero) {
     ComplexNumber a(0.0, 0.0);
     ComplexNumber b(-epsilon, epsilon);
-    ASSERT_TRUE(a != b);
+    ASSERT_NE(a, b);
 }
 
 TEST(Ostapovich_Denis_ComplexNumberTest, No_Throw_On_Addition) {
