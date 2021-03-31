@@ -29,10 +29,15 @@ TEST(Aleksandrychev_Andrey_ComplexNumberTest, Multiplication_Division) {
     ASSERT_EQ(z2.getRe(), (z1*z2/z1).getRe());
 }
 
-// Test != operator
+// Test == operator
 TEST(Aleksandrychev_Andrey_ComplexNumberTest, Not_equally_operator) {
     double Re1 = 4.0, Im1 = 2.2;
+    double Re2 = 3.0, Im2 = 1.2;
+
     ComplexNumber a(Re1, Im1);
-    ComplexNumber b(0.0, 0.0);
-    ASSERT_FALSE(a == b);
+    ComplexNumber b(Re2, Im2);
+
+    bool res = if a == b;
+
+    ASSERT_FALSE(res);
 }
