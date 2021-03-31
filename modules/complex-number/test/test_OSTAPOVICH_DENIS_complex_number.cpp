@@ -1,7 +1,9 @@
 // Copyright 2021 Ostapovich Denis
 
 #include <gtest/gtest.h>
+
 #include <limits>
+
 #include "include/complex_number.h"
 
 const double epsilon = std::numeric_limits<double>::epsilon();
