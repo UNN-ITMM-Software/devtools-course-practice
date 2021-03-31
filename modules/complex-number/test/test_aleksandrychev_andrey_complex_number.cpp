@@ -1,6 +1,7 @@
 // Copyright 2021 Aleksandrychev Andrey
 
 #include <gtest/gtest.h>
+#include <vector>
 
 #include "include/complex_number.h"
 
@@ -31,10 +32,22 @@ TEST(Aleksandrychev_Andrey_ComplexNumberTest, Multiplication_Division) {
 
 // Test == operator and copy constructor
 TEST(Aleksandrychev_Andrey_ComplexNumberTest, constructor_copy_equal_operator) {
-    ComplexNumber a(0.5, 1);
-    ComplexNumber b(a);
+    std::vector<ComplexNumber> origin_list;
+    std::vector<ComplexNumber> copy_list;
+    for (int i = 0; i < 10; i++) {
+        origin_list.push_back(ComplexNumber(i, i + 10));
+    }
 
-    bool res = a == b;
+    for (int i = 0; i < 10; i++) {
+        copy_list.push_back(ComplexNumber(origin_list[i]));
+    }
+
+    int count_true = 0;
+    for (int i = 0; i < 10; i++) {
+        if (origin_list[i] == copy_list[i]) count_true++;
+    }
+
+    bool res = count_true == 10;
 
     ASSERT_TRUE(res);
 }
