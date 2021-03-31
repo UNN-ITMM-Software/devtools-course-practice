@@ -37,7 +37,7 @@ TEST(Aleksandrychev_Andrey_ComplexNumberTest, Not_equally_operator) {
     ComplexNumber a(Re1, Im1);
     ComplexNumber b(Re2, Im2);
 
-    bool res = if a == b;
+    bool res = a == b;
 
     ASSERT_FALSE(res);
 }
