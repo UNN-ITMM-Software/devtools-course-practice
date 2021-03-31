@@ -34,26 +34,46 @@ TEST_P(Ostapovich_Denis_ComplexNumberTest_Parameterized_4, No_Throw_On_Addition)
     double im1 = std::get<1>(GetParam());
     double re2 = std::get<2>(GetParam());
     double im2 = std::get<3>(GetParam());
+
     ComplexNumber a(re1, im1);
     ComplexNumber b(re1, im2);
+
     ASSERT_NO_THROW(a + b);
 }
 
 TEST_P(Ostapovich_Denis_ComplexNumberTest_Parameterized_4, No_Throw_On_Subtraction) {
-    ComplexNumber a(0, 1.3);
-    ComplexNumber b(1, 2);
+    double re1 = std::get<0>(GetParam());
+    double im1 = std::get<1>(GetParam());
+    double re2 = std::get<2>(GetParam());
+    double im2 = std::get<3>(GetParam());
+
+    ComplexNumber a(re1, im1);
+    ComplexNumber b(re1, im2);
+
     ASSERT_NO_THROW(a - b);
 }
 
 TEST_P(Ostapovich_Denis_ComplexNumberTest_Parameterized_4, No_Throw_On_Multiplication) {
-    ComplexNumber a(8, 9);
-    ComplexNumber b(10, 11.0);
+    double re1 = std::get<0>(GetParam());
+    double im1 = std::get<1>(GetParam());
+    double re2 = std::get<2>(GetParam());
+    double im2 = std::get<3>(GetParam());
+
+    ComplexNumber a(re1, im1);
+    ComplexNumber b(re1, im2);
+
     ASSERT_NO_THROW(a * b);
 }
 
 TEST_P(Ostapovich_Denis_ComplexNumberTest_Parameterized_4, No_Throw_On_Division_By_Not_Zero) {
-    ComplexNumber a(7.0, 6.1);
-    ComplexNumber b(5.6, 4.3);
+    double re1 = std::get<0>(GetParam());
+    double im1 = std::get<1>(GetParam());
+    double re2 = std::get<2>(GetParam());
+    double im2 = std::get<3>(GetParam());
+
+    ComplexNumber a(re1, im1);
+    ComplexNumber b(re1, im2);
+
     ASSERT_NO_THROW(a / b);
 }
 
@@ -71,6 +91,5 @@ INSTANTIATE_TEST_CASE_P(/**/, Ostapovich_Denis_ComplexNumberTest_Parameterized_4
   std::make_tuple(11.0, 12.0, 13.0, 14.0),
   std::make_tuple(-11.0, 12.0, -13.0, 14.0),
   std::make_tuple(11.0, -12.0, 13.0, -14.0),
-  std::make_tuple(-11.0, -12.0, -13.0, -14.0),
-  std::make_tuple(0, 0, 0, 0)
+  std::make_tuple(-11.0, -12.0, -13.0, -14.0)
 ));
