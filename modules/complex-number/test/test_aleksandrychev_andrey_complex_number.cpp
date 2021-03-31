@@ -21,7 +21,7 @@ TEST(Aleksandrychev_Andrey_ComplexNumberTest, Arithmetic_Copy_Constr) {
 }
 
 // Test of multiplying
-TEST(Aleksandrychev_Andrey_ComplexNumberTest, Multiplication) {
+TEST(Aleksandrychev_Andrey_ComplexNumberTest, Multiplication_Division) {
     double Re1 = 10.5, Im1 = 14.2;
     double Re2 = 5.0, Im2 = 2.1;
     ComplexNumber z1(Re1, Im1);
@@ -34,5 +34,5 @@ TEST(Aleksandrychev_Andrey_ComplexNumberTest, Not_equally_operator) {
     double Re1 = 4.0, Im1 = 2.2;
     ComplexNumber a(Re1, Im1);
     ComplexNumber b(0.0, 0.0);
-    ASSERT_TRUE(a != b);
+    ASSERT_FALSE(a == b);
 }
