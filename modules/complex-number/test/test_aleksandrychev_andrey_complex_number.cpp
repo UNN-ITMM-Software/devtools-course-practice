@@ -29,12 +29,12 @@ TEST(Aleksandrychev_Andrey_ComplexNumberTest, Multiplication_Division) {
     ASSERT_EQ(z2.getRe(), (z1*z2/z1).getRe());
 }
 
-// Test == operator
-TEST(Aleksandrychev_Andrey_ComplexNumberTest, copiedObjectHasItsOwnMemory) {
-    ComplexNumber x(3, 5);
-    ComplexNumber y(x);
-    x.setRe(9);
-    x.setRe(12);
+// Test == operator and copy constructor
+TEST(Aleksandrychev_Andrey_ComplexNumberTest, constructor_copy_equal_operator) {
+    ComplexNumber a(0.5, 1);
+    ComplexNumber b(a);
 
-    ASSERT_NE(x, y);
+    bool res = a == b;
+
+    ASSERT_TRUE(res);
 }
