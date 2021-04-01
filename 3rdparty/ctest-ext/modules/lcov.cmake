@@ -129,7 +129,7 @@ function(run_lcov)
         execute_process(COMMAND ${LCOV_COMMAND_LINE} WORKING_DIRECTORY "${CTEST_BINARY_DIRECTORY}")
 
         file(REMOVE "${LCOV_OUTPUT_LCOV_DIR}/${LCOV_OUTPUT_REPORT_NAME}.tmp")
-    endforeach()
+    endif()
 
     if(LCOV_REMOVE)
         execute_process(
@@ -147,7 +147,7 @@ function(run_lcov)
         execute_process(COMMAND ${LCOV_COMMAND_LINE} WORKING_DIRECTORY "${CTEST_BINARY_DIRECTORY}")
 
         file(REMOVE "${LCOV_OUTPUT_LCOV_DIR}/${LCOV_OUTPUT_REPORT_NAME}.tmp")
-    endforeach()
+    endif()
 
     if(NOT LCOV_SKIP_HTML)
         set(GENHTML_COMMAND_LINE
