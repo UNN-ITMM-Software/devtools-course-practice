@@ -10,17 +10,9 @@ TEST(Kolesin_Andrey_ComplexNumberTest, can_create_zero) {
 
 TEST(Kolesin_Andrey_ComplexNumberTest, can_get_real) {
     Complex comp(3.1);
-    
+
     ASSERT_DOUBLE_EQ(3.1, comp.getReal());
-
 }
-TEST(Kolesin_Andrey_ComplexNumberTest, can_get_image) {
-    Complex comp(1.2,-5.3);
-
-    ASSERT_DOUBLE_EQ(-5.3, comp.getImag());
-}
-
-
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

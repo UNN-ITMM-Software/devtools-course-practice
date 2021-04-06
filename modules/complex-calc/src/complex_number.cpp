@@ -8,9 +8,5 @@ Complex::Complex(double r, double i) {
     real = r;
     imag = i;
 }
-double Complex::getReal(){
-    return real;
-}
-double Complex::getImag(){
-    return imag;
-}
+double Complex::getReal() { return real; }
+double Complex::getImag() { return imag; }
