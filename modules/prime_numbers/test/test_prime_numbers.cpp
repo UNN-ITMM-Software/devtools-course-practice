@@ -86,3 +86,13 @@ TEST(Chernyh_Daria_PrimeNumberTEST, Can_not_find_primes) {
 
   ASSERT_TRUE(res);
 }
+
+TEST(Chernyh_Daria_PrimeNumberTEST, Can_print_primes) {
+  int start = 3;
+  int count = 4;
+  // 3 4 5 6
+  PrimeNumber pn(start, count);
+  pn.FindPrimes();
+
+  ASSERT_NO_THROW(pn.PrintPrimes());
+}
