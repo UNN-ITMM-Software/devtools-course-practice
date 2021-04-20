@@ -2,6 +2,8 @@
 
 #include <gtest/gtest.h>
 
+#include <vector>
+
 #include "include/prime_numbers.h"
 
 TEST(Chernyh_Daria_PrimeNumberTEST, Constructor_default) {
@@ -45,7 +47,7 @@ TEST(Chernyh_Daria_PrimeNumberTEST, Not_empty_constructor_interval) {
 TEST(Chernyh_Daria_PrimeNumberTEST, Constructor_copy) {
   PrimeNumber pn_tmp(3);
   PrimeNumber pn(pn_tmp);
-	
+
   ASSERT_EQ(pn_tmp.Get_n(), pn.Get_n());
   ASSERT_EQ(pn_tmp.Get_primes(), pn.Get_primes());
 }
@@ -53,11 +55,11 @@ TEST(Chernyh_Daria_PrimeNumberTEST, Constructor_copy) {
 TEST(Chernyh_Daria_PrimeNumberTEST, Can_find_primes1) {
   int start = 2;
   int count = 4;
-  // 2 3 4 5 
+  // 2 3 4 5
   std::vector<int> res = { 2, 3, 5 };
-  PrimeNumber pn(start, count); 
+  PrimeNumber pn(start, count);
   pn.FindPrimes();
-  
+ 
   ASSERT_EQ(res, pn.Get_primes());
 }
 
@@ -69,7 +71,7 @@ TEST(Chernyh_Daria_PrimeNumberTEST, Can_find_primes2) {
   std::vector<int> res = { 13, 19 };
   PrimeNumber pn(start, count, h);
   pn.FindPrimes();
-	
+
   ASSERT_EQ(res, pn.Get_primes());
 }
 
@@ -77,7 +79,7 @@ TEST(Chernyh_Daria_PrimeNumberTEST, Can_not_find_primes) {
   int start = 4;
   int count = 4;
   int h = 2;
-  // 4 6 8 10 
+  // 4 6 8 10
   PrimeNumber pn(start, count, h);
   pn.FindPrimes();
   bool res = pn.Get_primes().empty();
