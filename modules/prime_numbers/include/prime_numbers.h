@@ -7,15 +7,14 @@
 #include<random>
 
 class PrimeNumber {
-private:
+ private:
     int n;
     std::vector<int> primes;
-public:
+ public:
     explicit PrimeNumber(const int size = 0);
     PrimeNumber(int a, int b, int h = 1);
     PrimeNumber(const PrimeNumber& pn);
     ~PrimeNumber() = default;
-    PrimeNumber& PrimeNumber::operator=(const PrimeNumber& pn);
     void FindPrimes();
     void PrintPrimes();
     std::vector<int> Get_primes() const;

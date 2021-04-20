@@ -21,25 +21,17 @@ primes(pn.primes) {}
 PrimeNumber::PrimeNumber(int a, int count, int h) {
   n = count;
   primes.resize(n, 0);
-  for(int i = 0; i < n; i++)
-  {
+  for (int i = 0; i < n; i++) {
     primes[i] = a;
     a += h;
   }
-}
-
-PrimeNumber& PrimeNumber::operator=(const PrimeNumber& pn) {
-  if (this == &pn) return *this;
-  n = pn.Get_n();
-  primes= pn.Get_primes();
-  return *this;
 }
 
 void PrimeNumber::FindPrimes() {
   std::vector<int> primes_tmp;
   for (int i = 0; i < n; i++) {
     int j = 2;
-    while(primes[i] % j != 0) {
+    while (primes[i] % j != 0) {
       j++;
     }
     if (primes[i] == j) {
@@ -61,7 +53,6 @@ std::vector<int> PrimeNumber::Get_primes() const {
   return primes;
 }
 
-int PrimeNumber::Get_n() const
-{
+int PrimeNumber::Get_n() const {
   return n;
 }
