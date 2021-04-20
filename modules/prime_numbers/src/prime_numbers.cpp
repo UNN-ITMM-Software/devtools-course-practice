@@ -1,0 +1,77 @@
+// Copyright 2021 Chernyh Daria
+
+#include<iostream>
+#include<vector>
+#include<random>
+#include<ctime>
+
+#include "include/prime_numbers.h"
+
+PrimeNumber::PrimeNumber(int size)
+{
+  n = size;
+  primes.resize(n, 0);
+  std::mt19937 gen;
+  gen.seed(static_cast<unsigned int>(time(0)));
+  for (int i = 0; i < n; i++) { primes[i] = gen() % 100; }
+}
+
+PrimeNumber::PrimeNumber(const PrimeNumber& pn) : n(pn.n),
+primes(pn.primes) {}
+
+
+PrimeNumber::PrimeNumber(int a, int count, int h) 
+{
+  n = count;
+  primes.resize(n, 0);
+  for(int i = 0; i < n; i++)
+  {
+    primes[i] = a;
+    a += h;
+  }
+}
+
+PrimeNumber& PrimeNumber::operator=(const PrimeNumber& pn) {
+  if (this == &pn) return *this;
+  n = pn.Get_n();
+  primes= pn.Get_primes();
+  return *this;
+}
+
+void PrimeNumber::FindPrimes()
+{
+  std::vector<int> primes_tmp;
+  for (int i = 0; i < n; i++)
+  {
+    int j = 2;
+    while(primes[i] % j != 0)
+    {
+      j++;
+    }
+    if (primes[i] == j)
+    {
+      primes_tmp.push_back(j);
+    }
+  }
+  primes = primes_tmp;
+  n = static_cast<int>(primes_tmp.size());
+}
+
+void PrimeNumber::PrintPrimes()
+{
+  for (int i = 0; i < n; i++)
+  {
+    std::cout << primes[i] << " ";
+  }
+  std::cout << std::endl;
+}
+
+std::vector<int> PrimeNumber::Get_primes() const
+{
+  return primes;
+}
+
+int PrimeNumber::Get_n() const
+{
+  return n;
+}
