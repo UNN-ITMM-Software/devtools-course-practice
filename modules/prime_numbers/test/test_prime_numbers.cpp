@@ -59,7 +59,7 @@ TEST(Chernyh_Daria_PrimeNumberTEST, Can_find_primes1) {
   std::vector<int> res = { 2, 3, 5 };
   PrimeNumber pn(start, count);
   pn.FindPrimes();
- 
+
   ASSERT_EQ(res, pn.Get_primes());
 }
 
