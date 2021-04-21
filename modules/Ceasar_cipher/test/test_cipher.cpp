@@ -142,7 +142,7 @@ TEST(CEASAR_CIPHER, decode_twice_with_random_key_equals_decode_with_double_k) {
     const std::string test = "Pulling slightly on the collar of my trench coat";
     const std::string dec = CC.Decode(test, key);
     const std::string decdec = CC.Decode(dec, key);
-    const std::string dec2 = CC.Encode(test, 2 * key);
+    const std::string dec2 = CC.Decode(test, 2 * key);
     ASSERT_EQ(decdec, dec2);
 }
 
