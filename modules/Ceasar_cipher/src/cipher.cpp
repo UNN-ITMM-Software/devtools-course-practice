@@ -1,8 +1,10 @@
 // Copyright 2021 Kudriavtsev Alexandr
 
+#include <string>
+
 #include "include/cipher.h"
 
-std::string Crypthography::CeasarCipher::Code(const std::string& message,
+std::string CeasarCipher::Code(const std::string& message,
     int key) {
     auto res = message;
     auto size = message.size();
@@ -22,12 +24,12 @@ std::string Crypthography::CeasarCipher::Code(const std::string& message,
     return res;
 }
 
-std::string Crypthography::CeasarCipher::Encode(const std::string& message,
+std::string CeasarCipher::Encode(const std::string& message,
     const int key) {
     return Code(message, key);
 }
 
-std::string Crypthography::CeasarCipher::Decode(const std::string& message,
+std::string CeasarCipher::Decode(const std::string& message,
     const int key) {
     return Code(message, -key);
 }
