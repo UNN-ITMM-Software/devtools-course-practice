@@ -59,21 +59,21 @@ TEST(CEASAR_CIPHER, encode_is_working_as_expected_with_big_key_mod1) {
     ASSERT_EQ(expEnc, enc);
 }
 
-TEST(CEASAR_CIPHER, decode_is_working_with_all_small_alphabet_with_big_key_mod2) {
+TEST(CEASAR_CIPHER, decode_is_working_with_all_s_alphabet_with_big_key_m2) {
     CeasarCipher CC;
     int key = (rand() % 100) * 26 + 2;
-    const std::string test = "c d e f g h i j k l m n o p q r s t u v w x y z a b"; 
-    const std::string expDec = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
+    std::string test = "c d e f g h i j k l m n o p q r s t u v w x y z a b"; 
+    std::string expDec = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
     std::string dec;
     ASSERT_NO_THROW(dec = CC.Decode(test, key));
     ASSERT_EQ(expDec, dec);
 }
 
-TEST(CEASAR_CIPHER, encode_is_working_with_all_small_alphabet_with_big_key_mod2) {
+TEST(CEASAR_CIPHER, encode_is_working_with_all_s_alphabet_with_big_key_m2) {
     CeasarCipher CC;
     int key = (rand() % 100) * 26 + 2;
-    const std::string test = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
-    const std::string expEnc = "c d e f g h i j k l m n o p q r s t u v w x y z a b";
+    std::string test = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
+    std::string expEnc = "c d e f g h i j k l m n o p q r s t u v w x y z a b";
     std::string enc;
     ASSERT_NO_THROW(enc = CC.Encode(test, key));
     ASSERT_EQ(expEnc, enc);
@@ -98,30 +98,30 @@ TEST(CEASAR_CIPHER, decode_plus_encode_is_the_same_string_random_key) {
     ASSERT_EQ(test, encdec);
 }
 
-// Smart tests for EDFH. (Carnelia ch1)
+// Smart tests for EDFH. (Thanks for linter it's just random text w/o meaning)
 TEST(CEASAR_CIPHER, decode_plus_encode_is_the_same_now_big_string_random_key) {
     CeasarCipher CC;
-    const std::string test = "I stood there, upright in front of the revolving door, scuffing the heels of my boots against the ground.";
+    const std::string test = "I stood there, upright in front of the revolving";
     int key = rand() % 100;
     const std::string dec = CC.Decode(test, key);
     const std::string encdec = CC.Encode(dec, key);
     ASSERT_EQ(test, encdec);
 }
 
-TEST(CEASAR_CIPHER, decode_twice_with_random_key_equals_decode_with_double_key) {
+TEST(CEASAR_CIPHER, decode_twice_with_random_key_equals_decode_with_double_k) {
     CeasarCipher CC;
     int key = rand() % 100;
-    const std::string test = "Pulling slightly on the collar of my trench coat, I dropped my chinand gazed at my partial reflection in the curved glass.";
+    const std::string test = "Pulling slightly on the collar of my trench coat";
     const std::string dec = CC.Decode(test, key);
     const std::string decdec = CC.Decode(dec, key);
     const std::string dec2 = CC.Encode(test, 2 * key);
     ASSERT_EQ(decdec, dec2);
 }
 
-TEST(CEASAR_CIPHER, encode_twice_with_random_key_equals_decode_with_double_key) {
+TEST(CEASAR_CIPHER, encode_twice_with_random_key_equal_decode_with_double_k) {
     CeasarCipher CC;
     int key = rand() % 100;
-    const std::string test = "Aside from my short-cropped hair, I wore a modest-looking, double-breasted leather raincoat and a pair of special order, steel-reinforced boots,";
+    std::string test = "Aside from my short-cropped hair, I wore a modes";
     const std::string enc = CC.Encode(test, key);
     const std::string encenc = CC.Encode(enc, key);
     const std::string enc2 = CC.Encode(test, 2 * key);
@@ -130,7 +130,7 @@ TEST(CEASAR_CIPHER, encode_twice_with_random_key_equals_decode_with_double_key) 
 
 TEST(CEASAR_CIPHER, decode_and_encode_with_0_key_is_the_same_string) {
     CeasarCipher CC;
-    const std::string test = "both of which at first glance appear to be the most common of common apparel. Yet, they were in fact, much more than the naked eye could detect.";
+    const std::string test = "both of which at first glance appear to be the";
     const std::string dec = CC.Decode(test, 0);
     const std::string encdec = CC.Encode(test, 0);
     ASSERT_EQ(test, dec);

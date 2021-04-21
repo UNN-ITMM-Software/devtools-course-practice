@@ -7,12 +7,12 @@
 
 
 class CeasarCipher {
-    private:
-        std::string Code(const std::string& message, const int key);
+ private:
+    std::string Code(const std::string& message, const int key);
 
-    public:
-        std::string Encode(const std::string& message, const int key = 1);
-        std::string Decode(const std::string& message, const int key = 1);
+ public:
+    std::string Encode(const std::string& message, const int key = 1);
+    std::string Decode(const std::string& message, const int key = 1);
 };
 
 
