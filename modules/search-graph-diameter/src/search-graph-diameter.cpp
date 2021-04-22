@@ -1,9 +1,8 @@
 // Copyright 2021 Kurnikova Anastasia
 
-#include <queue>
 #include <limits>
-#include <algorithm>
 #include <vector>
+#include <algorithm>
 #include "include/search-graph-diameter.h"
 
 Graph::Graph() : number(10) {
@@ -44,9 +43,9 @@ void Graph::path() {
 
 int Graph::diameter() {
     path();
-    int ans = -2;
+    int res = -2;
     for (int i = 0; i < number; ++i)
         for (int j = 0; j < number; ++j)
-            ans = std::max(ans, vertex[i][j]);
-    return ans;
+            res = std::max(res, vertex[i][j]);
+    return res;
 }

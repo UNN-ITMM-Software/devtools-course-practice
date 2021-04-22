@@ -30,8 +30,8 @@ TEST_F(DiameterTest, Diameter_Equal) {
           { 0, 0, 0, 0, 1, 0, 1, 0 } };
     init();
     Graph g(move(v), n);
-    int ans = g.diameter();
-    ASSERT_EQ(3, ans);
+    int res = g.diameter();
+    ASSERT_EQ(3, res);
 }
 
 TEST_F(DiameterTest, Diameter_Different) {
@@ -45,8 +45,8 @@ TEST_F(DiameterTest, Diameter_Different) {
           { 0, 0, 0, 0, 2, 0, 7, 0 } };
     init();
     Graph g(move(v), n);
-    int ans = g.diameter();
-    ASSERT_EQ(16, ans);
+    int res = g.diameter();
+    ASSERT_EQ(16, res);
 }
 
 TEST_F(DiameterTest, Copy) {
@@ -63,7 +63,7 @@ TEST_F(DiameterTest, Copy) {
     Graph b(a);
     int res1 = a.diameter();
     int res2 = b.diameter();
-    ASSERT_EQ(1, res1 == res2);
+    ASSERT_EQ(res1, res2);
 }
 
 TEST_F(DiameterTest, Equality) {
@@ -81,5 +81,5 @@ TEST_F(DiameterTest, Equality) {
     int res1 = a.diameter();
     b = a;
     int res2 = b.diameter();
-    ASSERT_EQ(1, res1 == res2);
+    ASSERT_EQ(res1, res2);
 }
