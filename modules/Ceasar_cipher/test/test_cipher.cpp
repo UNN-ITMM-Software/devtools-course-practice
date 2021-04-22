@@ -130,37 +130,40 @@ TEST(CEASAR_CIPHER, decode_plus_encode_is_the_same_now_big_string_random_key) {
     CeasarCipher CC;
     const std::string test = "I stood there, upright in front of the revolving";
     std::mt19937 gen;
-    gen.seed(time(0) + 1);
-    int key = gen() % 100;
+    gen.seed(time(0) + 2);
+    int key = gen() % 25 + 1;
 
     const std::string dec = CC.Decode(test, key);
     const std::string encdec = CC.Encode(dec, key);
+    ASSERT_NE(test, dec);
     ASSERT_EQ(test, encdec);
 }
 
 TEST(CEASAR_CIPHER, decode_twice_with_random_key_equals_decode_with_double_k) {
     CeasarCipher CC;
     std::mt19937 gen;
-    gen.seed(time(0) + 1);
-    int key = gen() % 100;
+    gen.seed(time(0) + 3);
+    int key = gen() % 25 + 1;
     const std::string test = "Pulling slightly on the collar of my trench coat";
 
     const std::string dec = CC.Decode(test, key);
     const std::string decdec = CC.Decode(dec, key);
     const std::string dec2 = CC.Decode(test, 2 * key);
+    ASSERT_NE(test, dec);
     ASSERT_EQ(decdec, dec2);
 }
 
 TEST(CEASAR_CIPHER, encode_twice_with_random_key_equal_decode_with_double_k) {
     CeasarCipher CC;
     std::mt19937 gen;
-    gen.seed(time(0) + 1);
-    int key = gen() % 100;
+    gen.seed(time(0) + 4);
+    int key = gen() % 25 + 1;
     const std::string test = "Aside from my short-cropped hair, I wore a";
 
     const std::string enc = CC.Encode(test, key);
     const std::string encenc = CC.Encode(enc, key);
     const std::string enc2 = CC.Encode(test, 2 * key);
+    ASSERT_NE(test, enc);
     ASSERT_EQ(encenc, enc2);
 }
 
