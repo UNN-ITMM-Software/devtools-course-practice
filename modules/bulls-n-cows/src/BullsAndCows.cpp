@@ -6,7 +6,7 @@
 
 #include "include/BullsAndCows.h"
 
-void bullsAndCowsGame::setAnswer(std::vector<int>& ans) {
+void bullsAndCowsGame::setAnswer(const std::vector<int>& ans) {
     answer = ans;
 }
 
@@ -14,7 +14,7 @@ void bullsAndCowsGame::setAnimals(std::pair<int, int> bnc) {
     curStats = bnc;
 }
 
-void bullsAndCowsGame::setGuess(std::vector<int>& guess) {
+void bullsAndCowsGame::setGuess(const std::vector<int>& guess) {
     if (guess.size() != getAnswer().size()) {
         throw "bad size";
     }
@@ -38,7 +38,7 @@ bool bullsAndCowsGame::winCheck() {
     return res;
 }
 
-bullsAndCowsGame::bullsAndCowsGame(std::vector<int>& ans) {
+bullsAndCowsGame::bullsAndCowsGame(const std::vector<int>& ans) {
     setAnswer(ans);
     setAnimals(std::pair<int, int> (0, 0));
     setGuess(std::vector<int>(ans.size(), 0));
