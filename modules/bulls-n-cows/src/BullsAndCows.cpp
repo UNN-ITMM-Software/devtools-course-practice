@@ -3,40 +3,47 @@
 #include <utility>
 #include <vector>
 #include <random>
+
 #include "include/BullsAndCows.h"
 
-void bullsAndCowsGame::setAnswer(std::vector<int> ans) {
+void bullsAndCowsGame::setAnswer(std::vector<int>& ans) {
     answer = ans;
 }
+
 void bullsAndCowsGame::setAnimals(std::pair<int, int> bnc) {
     curStats = bnc;
 }
-void bullsAndCowsGame::setGuess(std::vector<int> guess) {
+
+void bullsAndCowsGame::setGuess(std::vector<int>& guess) {
     if (guess.size() != getAnswer().size()) {
         throw "bad size";
     }
     curGuess = guess;
 }
+
 std::vector<int> bullsAndCowsGame::getAnswer() {
     return answer;
 }
+
 std::pair<int, int> bullsAndCowsGame::getAnimals() {
     return curStats;
 }
+
 std::vector<int> bullsAndCowsGame::getGuess() {
     return curGuess;
 }
+
 bool bullsAndCowsGame::winCheck() {
-    if (getAnimals().first == static_cast<int>(getAnswer().size())) {
-        return 1;
-    }
-    return 0;
+    bool res = getAnimals().first == static_cast<int>(getAnswer().size());
+    return res;
 }
-bullsAndCowsGame::bullsAndCowsGame(std::vector<int> ans) {
+
+bullsAndCowsGame::bullsAndCowsGame(std::vector<int>& ans) {
     setAnswer(ans);
     setAnimals(std::pair<int, int> (0, 0));
     setGuess(std::vector<int>(ans.size(), 0));
 }
+
 void bullsAndCowsGame::guessing() {
     std::pair<int, int> bnc(0, 0);
     std::vector<int> ans = getAnswer();
@@ -54,4 +61,3 @@ void bullsAndCowsGame::guessing() {
     }
     setAnimals(bnc);
 }
-

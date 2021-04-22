@@ -16,6 +16,7 @@ TEST(BullsAndCows, Guessing_1) {
 
     ASSERT_EQ(check, game.getAnimals());
 }
+
 TEST(BullsAndCows, Guessing_2) {
     std::vector<int> answer = { 1, 2, 3, 5 };
     std::vector<int> guess = { 1, 2, 3, 5 };
@@ -27,6 +28,7 @@ TEST(BullsAndCows, Guessing_2) {
 
     ASSERT_EQ(check, game.getAnimals());
 }
+
 TEST(BullsAndCows, Guessing_3) {
     std::vector<int> answer = { 1, 2, 3, 5 };
     std::vector<int> guess = { 6, 7, 8, 9 };
@@ -38,6 +40,7 @@ TEST(BullsAndCows, Guessing_3) {
 
     ASSERT_EQ(check, game.getAnimals());
 }
+
 TEST(BullsAndCows, Guessing_4) {
     std::vector<int> answer = { 1, 2, 3, 5 };
     std::vector<int> guess = { 6, 1, 8, 9 };
@@ -49,11 +52,13 @@ TEST(BullsAndCows, Guessing_4) {
 
     ASSERT_EQ(check, game.getAnimals());
 }
+
 TEST(BullsAndCows, Can_Create_Game) {
     std::vector<int> answer = { 1, 2, 3, 5 };
 
     ASSERT_NO_THROW(bullsAndCowsGame game(answer));
 }
+
 TEST(BullsAndCows, Different_sizes_throw) {
     std::vector<int> answer = { 1, 2, 3, 5, 0 };
     std::vector<int> guess = { 6, 7, 8, 9 };
@@ -62,7 +67,8 @@ TEST(BullsAndCows, Different_sizes_throw) {
 
     ASSERT_ANY_THROW(game.setGuess(guess));
 }
-TEST(BullsAndCows, Victoria_Cruenta) {
+
+TEST(BullsAndCows, Can_Win) {
     std::vector<int> answer = { 1, 2, 3, 5, 0 };
     std::vector<int> guess = { 1, 2, 3, 5, 0 };
     bullsAndCowsGame game(answer);
@@ -72,7 +78,8 @@ TEST(BullsAndCows, Victoria_Cruenta) {
 
     ASSERT_EQ(game.winCheck(), 1);
 }
-TEST(BullsAndCows, Sic_Transit_Gloria_Mundi) {
+
+TEST(BullsAndCows, Can_Not_Win) {
     std::vector<int> answer = { 1, 2, 3, 5, 0 };
     std::vector<int> guess = { 1, 2, 3, 5, 0 };
     bullsAndCowsGame game(answer);
@@ -82,4 +89,3 @@ TEST(BullsAndCows, Sic_Transit_Gloria_Mundi) {
 
     ASSERT_EQ(game.winCheck(), 1);
 }
-

@@ -12,11 +12,11 @@ class  bullsAndCowsGame {
     std::vector<int> answer;
     std::vector<int> curGuess;
  public:
-     explicit bullsAndCowsGame(std::vector<int> ans);
+    explicit bullsAndCowsGame(std::vector<int>& ans);
     void guessing();
-    void setAnswer(std::vector<int> ans);
+    void setAnswer(std::vector<int>& ans);
     void setAnimals(std::pair<int, int> bnc);
-    void setGuess(std::vector<int> guess);
+    void setGuess(std::vector<int>& guess);
     std::vector<int> getAnswer();
     std::pair<int, int> getAnimals();
     std::vector<int> getGuess();
