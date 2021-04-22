@@ -156,7 +156,7 @@ TEST(CEASAR_CIPHER, encode_twice_with_random_key_equal_decode_with_double_k) {
     std::mt19937 gen;
     gen.seed(time(0) + 1);
     int key = gen() % 100;
-    std::string test = "Aside from my short-cropped hair, I wore a modes";
+    const std::string test = "Aside from my short-cropped hair, I wore a";
 
     const std::string enc = CC.Encode(test, key);
     const std::string encenc = CC.Encode(enc, key);
