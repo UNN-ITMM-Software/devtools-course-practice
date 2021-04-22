@@ -258,6 +258,7 @@ macro(ctest_ext_init)
                     check_vars_exist(CTEST_GIT_COMMAND)
                     check_vars_def(CTEST_PROJECT_GIT_URL)
 
+                    message("~~~~~~~~~~~~~~~~~~~~~~~~~")
                     if(CTEST_PROJECT_GIT_BRANCH)
                         set(CTEST_CHECKOUT_COMMAND "${CTEST_GIT_COMMAND} clone -b ${CTEST_PROJECT_GIT_BRANCH} -- ${CTEST_PROJECT_GIT_URL} ${CTEST_SOURCE_DIRECTORY}")
                     else()

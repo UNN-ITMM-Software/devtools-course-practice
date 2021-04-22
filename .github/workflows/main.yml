@@ -20,6 +20,17 @@ jobs:
     steps:
     - name: Clone repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Rebase
+      run: |
+        git remote add base https://github.com/${{ github.repository }}
+        git fetch base ${{ github.base_ref }}
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+        git rebase base/${{ github.base_ref }} HEAD
+        git log
 
     - name: Install requirements (Coverage)
       if: matrix.ctest_model == 'Coverage'
@@ -54,6 +65,16 @@ jobs:
     steps:
     - name: Clone repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Rebase
+      run: |
+        git remote add base https://github.com/${{ github.repository }}
+        git fetch base ${{ github.base_ref }}
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+        git rebase base/${{ github.base_ref }} HEAD
 
     - name: Run tests
       env:
