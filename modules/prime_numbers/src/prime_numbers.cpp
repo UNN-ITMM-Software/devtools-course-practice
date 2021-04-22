@@ -13,7 +13,7 @@ PrimeNumber::PrimeNumber(int a, int b) {
   primes.resize(n, 0);
   for (int i = 0; i < n; i++) {
     primes[i] = a;
-	a++;
+    a++;
   }
 }
 
