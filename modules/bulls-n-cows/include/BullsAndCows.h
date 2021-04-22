@@ -7,7 +7,6 @@
 #include <vector>
 #include <utility>
 
-std::vector<int> generateNonRepeatingDigits(int len);
 class  bullsAndCowsGame {
     std::pair<int, int> curStats;
     std::vector<int> answer;

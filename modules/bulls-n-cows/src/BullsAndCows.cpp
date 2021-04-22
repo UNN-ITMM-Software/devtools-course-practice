@@ -5,24 +5,6 @@
 #include <random>
 #include "include/BullsAndCows.h"
 
-std::vector<int> generateNonRepeatingDigits(int len) {
-    if (len >= 10 || len < 0) {
-        throw "bad size";
-    }
-    std::mt19937 gen(time(0));
-    std::uniform_int_distribution<> uid(0, 10);
-    std::vector<int> seq;
-    for (int i = 0; i < 10; i++)
-        seq.push_back(i);
-
-    std::vector<int> ret;
-    for (int i = 0; i < len; i++) {
-        int pos = uid(gen) % seq.size();
-        ret.push_back(seq[pos]);
-        seq.erase(seq.begin() + pos);
-    }
-    return ret;
-}
 void bullsAndCowsGame::setAnswer(std::vector<int> ans) {
     answer = ans;
 }

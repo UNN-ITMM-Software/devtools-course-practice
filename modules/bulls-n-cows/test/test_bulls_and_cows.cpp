@@ -5,12 +5,6 @@
 
 #include "include/BullsAndCows.h"
 
-TEST(generateNonRepeatingDigits, Can_Generate__Digits) {
-    ASSERT_NO_THROW(generateNonRepeatingDigits(9));
-}
-TEST(generateNonRepeatingDigits, Cant_Generate_More_Than_10_Digits) {
-    ASSERT_ANY_THROW(generateNonRepeatingDigits(11));
-}
 TEST(BullsAndCows, Guessing_1) {
     std::vector<int> answer = { 1, 2, 3, 5 };
     std::vector<int> guess = { 1, 2, 3, 4 };
