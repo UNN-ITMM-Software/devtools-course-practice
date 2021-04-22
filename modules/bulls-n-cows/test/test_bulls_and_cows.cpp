@@ -38,6 +38,17 @@ TEST(BullsAndCows, Guessing_3) {
 
     ASSERT_EQ(check, game.getAnimals());
 }
+TEST(BullsAndCows, Guessing_4) {
+    std::vector<int> answer = { 1, 2, 3, 5 };
+    std::vector<int> guess = { 6, 1, 8, 9 };
+    std::pair<int, int> check(0, 1);
+    bullsAndCowsGame game(answer);
+    game.setGuess(guess);
+
+    game.guessing();
+
+    ASSERT_EQ(check, game.getAnimals());
+}
 TEST(BullsAndCows, Can_Create_Game) {
     std::vector<int> answer = { 1, 2, 3, 5 };
 
@@ -52,6 +63,16 @@ TEST(BullsAndCows, Different_sizes_throw) {
     ASSERT_ANY_THROW(game.setGuess(guess));
 }
 TEST(BullsAndCows, Victoria_Cruenta) {
+    std::vector<int> answer = { 1, 2, 3, 5, 0 };
+    std::vector<int> guess = { 1, 2, 3, 5, 0 };
+    bullsAndCowsGame game(answer);
+    game.setGuess(guess);
+
+    game.guessing();
+
+    ASSERT_EQ(game.winCheck(), 1);
+}
+TEST(BullsAndCows, Sic_Transit_Gloria_Mundi) {
     std::vector<int> answer = { 1, 2, 3, 5, 0 };
     std::vector<int> guess = { 1, 2, 3, 5, 0 };
     bullsAndCowsGame game(answer);
