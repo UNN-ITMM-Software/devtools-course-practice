@@ -2,28 +2,18 @@
 
 #include<iostream>
 #include<vector>
-#include<random>
-#include<ctime>
 
 #include "include/prime_numbers.h"
-
-PrimeNumber::PrimeNumber(int size) {
-  n = size;
-  primes.resize(n, 0);
-  std::mt19937 gen;
-  gen.seed(static_cast<unsigned int>(time(0)));
-  for (int i = 0; i < n; i++) { primes[i] = gen() % 100; }
-}
 
 PrimeNumber::PrimeNumber(const PrimeNumber& pn) : n(pn.n),
 primes(pn.primes) {}
 
-PrimeNumber::PrimeNumber(int a, int count, int h) {
-  n = count;
+PrimeNumber::PrimeNumber(int a, int b) {
+  n = b - a + 1;
   primes.resize(n, 0);
   for (int i = 0; i < n; i++) {
     primes[i] = a;
-    a += h;
+	a++;
   }
 }
 

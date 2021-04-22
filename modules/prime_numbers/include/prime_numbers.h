@@ -4,15 +4,13 @@
 #define MODULES_PRIME_NUMBERS_INCLUDE_PRIME_NUMBERS_H_
 
 #include <vector>
-#include<random>
 
 class PrimeNumber {
  private:
     int n;
     std::vector<int> primes;
  public:
-    explicit PrimeNumber(const int size = 0);
-    PrimeNumber(int a, int b, int h = 1);
+    PrimeNumber(int a, int b);
     PrimeNumber(const PrimeNumber& pn);
     ~PrimeNumber() = default;
     void FindPrimes();

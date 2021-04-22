@@ -6,46 +6,33 @@
 
 #include "include/prime_numbers.h"
 
-TEST(Chernyh_Daria_PrimeNumberTEST, Constructor_default) {
-  PrimeNumber pn;
+TEST(Chernyh_Daria_PrimeNumberTEST, Constructor_one_number) {
+  int a = 5;
+  PrimeNumber pn(a, a);
 
-  ASSERT_EQ(0, pn.Get_n());
+  ASSERT_EQ(1, pn.Get_n());
 }
 
-TEST(Chernyh_Daria_PrimeNumberTEST, Constructor_rand) {
-  int size = 4;
-  PrimeNumber pn(size);
+TEST(Chernyh_Daria_PrimeNumberTEST, Constructor_intrval) {
+  int a = 2;
+  int b = 4;
+  PrimeNumber pn(a, b);
+  int size = b - a + 1;
 
   ASSERT_EQ(size, pn.Get_n());
 }
 
-TEST(Chernyh_Daria_PrimeNumberTEST, Not_empty_constructor_rand) {
-  int size = 4;
-  PrimeNumber pn(4);
-  bool res = pn.Get_primes().empty();
-
-  ASSERT_TRUE(!res);
-}
-
-TEST(Chernyh_Daria_PrimeNumberTEST, Constructor_intrval) {
-  int start = 2;
-  int count = 4;
-  PrimeNumber pn(start, count);
-
-  ASSERT_EQ(count, pn.Get_n());
-}
-
 TEST(Chernyh_Daria_PrimeNumberTEST, Not_empty_constructor_interval) {
-  int start = 2;
-  int count = 4;
-  PrimeNumber pn(start, count);
+  int a = 2;
+  int b = 4;
+  PrimeNumber pn(a, b);
   bool res = pn.Get_primes().empty();
 
   ASSERT_EQ(0, res);
 }
 
 TEST(Chernyh_Daria_PrimeNumberTEST, Constructor_copy) {
-  PrimeNumber pn_tmp(3);
+  PrimeNumber pn_tmp(3, 4);
   PrimeNumber pn(pn_tmp);
 
   ASSERT_EQ(pn_tmp.Get_n(), pn.Get_n());
@@ -53,34 +40,31 @@ TEST(Chernyh_Daria_PrimeNumberTEST, Constructor_copy) {
 }
 
 TEST(Chernyh_Daria_PrimeNumberTEST, Can_find_primes1) {
-  int start = 2;
-  int count = 4;
+  int a = 2;
+  int b = 5;
   // 2 3 4 5
   std::vector<int> res = { 2, 3, 5 };
-  PrimeNumber pn(start, count);
+  PrimeNumber pn(a, b);
   pn.FindPrimes();
 
   ASSERT_EQ(res, pn.Get_primes());
 }
 
 TEST(Chernyh_Daria_PrimeNumberTEST, Can_find_primes2) {
-  int start = 10;
-  int count = 5;
-  int h = 3;
-  // 10 13 16 19 22 25
-  std::vector<int> res = { 13, 19 };
-  PrimeNumber pn(start, count, h);
+  int a = 10;
+  int b = 15;
+  // 10 11 12 13 14 15
+  std::vector<int> res = { 11, 13 };
+  PrimeNumber pn(a, b);
   pn.FindPrimes();
 
   ASSERT_EQ(res, pn.Get_primes());
 }
 
 TEST(Chernyh_Daria_PrimeNumberTEST, Can_not_find_primes) {
-  int start = 4;
-  int count = 4;
-  int h = 2;
-  // 4 6 8 10
-  PrimeNumber pn(start, count, h);
+  int a = 4;
+  // 4
+  PrimeNumber pn(a, a);
   pn.FindPrimes();
   bool res = pn.Get_primes().empty();
 
@@ -88,10 +72,10 @@ TEST(Chernyh_Daria_PrimeNumberTEST, Can_not_find_primes) {
 }
 
 TEST(Chernyh_Daria_PrimeNumberTEST, Can_print_primes) {
-  int start = 3;
-  int count = 4;
+  int a = 3;
+  int b = 6;
   // 3 4 5 6
-  PrimeNumber pn(start, count);
+  PrimeNumber pn(a, b);
   pn.FindPrimes();
 
   ASSERT_NO_THROW(pn.PrintPrimes());
