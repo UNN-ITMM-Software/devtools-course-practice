@@ -11,7 +11,7 @@ std::vector<int> generateNonRepeatingDigits(int len) {
     }
     std::mt19937 gen(time(0));
     std::uniform_int_distribution<> uid(0, 10);
-    std::vector<int> seq; 
+    std::vector<int> seq;
     for (int i = 0; i < 10; i++)
         seq.push_back(i);
 
