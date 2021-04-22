@@ -1,7 +1,9 @@
 // Copyright 2021 Kurnikova Anastasia
 
 #include <gtest/gtest.h>
+
 #include <vector>
+
 #include "include/search-graph-diameter.h"
 
 class DiameterTest : public ::testing::Test {

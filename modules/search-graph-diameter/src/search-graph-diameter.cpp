@@ -3,6 +3,7 @@
 #include <limits>
 #include <vector>
 #include <algorithm>
+
 #include "include/search-graph-diameter.h"
 
 Graph::Graph() : number(10) {
