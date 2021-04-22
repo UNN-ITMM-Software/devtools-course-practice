@@ -5,13 +5,12 @@
 
 #include <utility>
 
-class Triangle
-{
-private:
+class Triangle {
+ private:
     std::pair<double, double>  a;
     std::pair<double, double>  b;
     std::pair<double, double>  c;
-public:
+ public:
     Triangle(std::pair<double, double>  _a, std::pair<double, double> _b,
         std::pair<double, double> _c);
 
@@ -21,7 +20,6 @@ public:
 
     double Perimeter();
     double Area();
-
 };
 
 #endif  // MODULES_PARAMS_TRIANGLE_INCLUDE_TRIANGLE_H_
