@@ -21,15 +21,15 @@ void bullsAndCowsGame::setGuess(const std::vector<int>& guess) {
     curGuess = guess;
 }
 
-std::vector<int> bullsAndCowsGame::getAnswer() {
+std::vector<int> bullsAndCowsGame::getAnswer() const {
     return answer;
 }
 
-std::pair<int, int> bullsAndCowsGame::getAnimals() {
+std::pair<int, int> bullsAndCowsGame::getAnimals() const {
     return curStats;
 }
 
-std::vector<int> bullsAndCowsGame::getGuess() {
+std::vector<int> bullsAndCowsGame::getGuess() const {
     return curGuess;
 }
 
