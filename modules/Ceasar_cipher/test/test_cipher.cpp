@@ -222,3 +222,14 @@ TEST(CEASAR_CIPHER, GetKey_throws_exception_when_string_is_empty) {
 
     ASSERT_ANY_THROW(CC.GetKey(st1, st2));
 }
+
+TEST(CEASAR_CIPHER, GetKey_is_working_with_key_25) {
+    CeasarCipher CC;
+    int key = 25;
+    const std::string ts = " of common apparel. Yet, they were in fact, much";
+
+    const std::string enc = CC.Encode(ts, key);
+    const std::string dec = ts;
+
+    ASSERT_EQ(key, CC.GetKey(enc, dec));
+}
