@@ -233,3 +233,17 @@ TEST(CEASAR_CIPHER, GetKey_is_working_with_key_25) {
 
     ASSERT_EQ(key, CC.GetKey(enc, dec));
 }
+
+TEST(CEASAR_CIPHER, GetKey_last_test) {
+    CeasarCipher CC;
+    std::mt19937 gen;
+    gen.seed(time(0) + 7);
+    int key = 1;
+    const std::string ts = "much more than the naked eye could detect.";
+
+    const std::string enc = CC.Encode(ts, key);
+    std::string dec = ts;
+    dec[5] += 1;
+
+    ASSERT_ANY_THROW(CC.GetKey(enc, dec));
+}

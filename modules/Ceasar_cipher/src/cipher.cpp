@@ -1,7 +1,6 @@
 // Copyright 2021 Kudriavtsev Alexandr
 
 #include <string>
-#include <iostream>
 
 #include "include/cipher.h"
 
