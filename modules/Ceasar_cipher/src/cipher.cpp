@@ -7,7 +7,6 @@
 std::string CeasarCipher::code(const std::string& message, int key) {
     auto res = message;
     auto size = message.size();
-    const int alph_size = 26;  // ENG
     key = key % alph_size;
     if (key < 0) {
         key += alph_size;
@@ -50,7 +49,6 @@ int CeasarCipher::getKey(const std::string& enc, const std::string& dec) {
     }
 
     int key;
-    const int alph_size = 26;  // ENG
 
     size_t i;
     for (i = 0; i < size; ++i) {
