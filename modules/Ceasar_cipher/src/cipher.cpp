@@ -25,11 +25,11 @@ std::string CeasarCipher::Code(const std::string& message,
 }
 
 bool CeasarCipher::isLowerLetter(char ch) {  // Lowercase
-    return ch >= 'a' && ch <= 'z';
+    return (ch >= 'a' && ch <= 'z');
 }
 
 bool CeasarCipher::isUpperLetter(char ch) {  // Uppercase
-    return ch >= 'A' && ch <= 'Z';
+    return (ch >= 'A' && ch <= 'Z');
 }
 
 std::string CeasarCipher::Encode(const std::string& message,
