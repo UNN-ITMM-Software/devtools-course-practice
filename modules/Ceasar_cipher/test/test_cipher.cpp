@@ -125,7 +125,7 @@ TEST(CEASAR_CIPHER, decode_plus_encode_is_the_same_string_random_key) {
     ASSERT_EQ(test, encdec);
 }
 
-// Tests for EDFH. Carnelia CH.1
+// Tests for EDFH.
 TEST(CEASAR_CIPHER, decode_plus_encode_is_the_same_now_big_string_random_key) {
     CeasarCipher CC;
     const std::string test = "I stood there, upright in front of the revolving";
@@ -144,7 +144,7 @@ TEST(CEASAR_CIPHER, decode_twice_with_random_key_equals_decode_with_double_k) {
     std::mt19937 gen;
     gen.seed(time(0) + 3);
     int key = gen() % 25 + 1;
-    const std::string test = "Pulling slightly on the collar of my trench coat";
+    const std::string test = "door, scuffing the heels of my boots against ";
 
     const std::string dec = CC.Decode(test, key);
     const std::string decdec = CC.Decode(dec, key);
@@ -158,21 +158,67 @@ TEST(CEASAR_CIPHER, encode_twice_with_random_key_equal_decode_with_double_k) {
     std::mt19937 gen;
     gen.seed(time(0) + 4);
     int key = gen() % 25 + 1;
-    const std::string test = "Aside from my short-cropped hair, I wore a";
+    const std::string tst = "the ground. Pulling slightly on the collar of my";
 
-    const std::string enc = CC.Encode(test, key);
+    const std::string enc = CC.Encode(tst, key);
     const std::string encenc = CC.Encode(enc, key);
-    const std::string enc2 = CC.Encode(test, 2 * key);
-    ASSERT_NE(test, enc);
+    const std::string enc2 = CC.Encode(tst, 2 * key);
+    ASSERT_NE(tst, enc);
     ASSERT_EQ(encenc, enc2);
 }
 
 TEST(CEASAR_CIPHER, decode_and_encode_with_0_key_is_the_same_string) {
     CeasarCipher CC;
-    const std::string test = "both of which at first glance appear to be the";
+    const std::string test = "trench coat, I dropped my chin and gazed at my ";
 
     const std::string dec = CC.Decode(test, 0);
     const std::string enc = CC.Encode(test, 0);
     ASSERT_EQ(test, dec);
     ASSERT_EQ(test, enc);
+}
+
+// Key from encoded and decoded string
+
+TEST(CEASAR_CIPHER, key_from_the_same_string_is_zero) {
+    CeasarCipher CC;
+    const std::string test = "partial reflection in the curved glass. Aside ";
+
+    ASSERT_EQ(0, CC.GetKey(test, test));
+}
+
+TEST(CEASAR_CIPHER, GetKey_is_working_with_random_key) {
+    CeasarCipher CC;
+    std::mt19937 gen;
+    gen.seed(time(0) + 7);
+    int key = gen() % 26;
+    const std::string ts = "from short-cropped hair, I wore a modest-looking,";
+
+    const std::string enc = CC.Encode(ts, key);
+    const std::string dec = ts;
+
+    ASSERT_EQ(key, CC.GetKey(enc, dec));
+}
+
+TEST(CEASAR_CIPHER, GetKey_throws_exception_with_different_sizes) {
+    CeasarCipher CC;
+    std::string st1 = "double-breasted leather raincoat and a pair of";
+    std::string st2 = "double-breasted leather raincoat and a pair of ";
+
+    ASSERT_ANY_THROW(CC.GetKey(st1, st2));
+}
+
+TEST(CEASAR_CIPHER, GetKey_throws_exception_when_not_CC) {
+    CeasarCipher CC;
+    std::string st1 = "special order, steel-reinforced boots, both of which  ";
+    std::string st2 = "at first glance appear to be the most common of common";
+
+    ASSERT_ANY_THROW(CC.GetKey(st1, st2));
+}
+
+TEST(CEASAR_CIPHER, GetKey_throws_exception_when_string_is_empty) {
+    CeasarCipher CC;
+    std::string st1;
+    std::string st2;
+
+    ASSERT_ANY_THROW(CC.GetKey(st1, st2));
 }
