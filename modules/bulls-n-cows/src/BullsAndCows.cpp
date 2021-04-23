@@ -48,7 +48,7 @@ void bullsAndCowsGame::guessing() {
     std::pair<int, int> bnc(0, 0);
     std::vector<int> ans = getAnswer();
     std::vector<int> guess = getGuess();
-    for (unsigned  int i = 0; i < guess.size(); i++) {
+    for (unsigned int i = 0; i < guess.size(); i++) {
         for (unsigned int j = 0; j < guess.size(); j++) {
             if (guess[i] == ans[j]) {
                 if (i == j) {
