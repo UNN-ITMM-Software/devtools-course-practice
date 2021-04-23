@@ -4,8 +4,7 @@
 
 #include "include/cipher.h"
 
-std::string CeasarCipher::Code(const std::string& message,
-    int key) {
+std::string CeasarCipher::code(const std::string& message, int key) {
     auto res = message;
     auto size = message.size();
     const int alph_size = 26;  // ENG
@@ -31,17 +30,15 @@ bool CeasarCipher::isUpperLetter(char ch) {  // Uppercase
     return (ch >= 'A' && ch <= 'Z');
 }
 
-std::string CeasarCipher::Encode(const std::string& message,
-    const int key) {
-    return Code(message, key);
+std::string CeasarCipher::encode(const std::string& message, int key) {
+    return code(message, key);
 }
 
-std::string CeasarCipher::Decode(const std::string& message,
-    const int key) {
-    return Code(message, -key);
+std::string CeasarCipher::decode(const std::string& message, int key) {
+    return code(message, -key);
 }
 
-int CeasarCipher::GetKey(const std::string& enc, const std::string& dec) {
+int CeasarCipher::getKey(const std::string& enc, const std::string& dec) {
     if (enc.size() != dec.size() || enc.size() == 0) {
         throw "Incorrect size";  // No message = any key
     }

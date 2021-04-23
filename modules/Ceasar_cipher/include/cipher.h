@@ -1,22 +1,23 @@
 // Copyright 2021 Kudriavtsev Alexandr
 
-#include <string>
-
 #ifndef MODULES_CEASAR_CIPHER_INCLUDE_CIPHER_H_
 #define MODULES_CEASAR_CIPHER_INCLUDE_CIPHER_H_
 
+#include <string>
+
 class CeasarCipher {
  private:
-    std::string Code(const std::string& message, const int key);
+    std::string code(const std::string& message, int key);
     inline bool isLowerLetter(char ch);
     inline bool isUpperLetter(char ch);
 
- public:
-    std::string Encode(const std::string& message, const int key = 1);
-    std::string Decode(const std::string& message, const int key = 1);
+    static const int alph_size = 26;
 
-    int GetKey(const std::string& encoded_message,
-        const std::string& decoded_message);
+ public:
+    std::string encode(const std::string& message, int key = 1);
+    std::string decode(const std::string& message, int key = 1);
+
+    int getKey(const std::string& enc, const std::string& dec);
 };
 
 #endif  // MODULES_CEASAR_CIPHER_INCLUDE_CIPHER_H_
