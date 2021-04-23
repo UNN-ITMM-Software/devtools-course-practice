@@ -56,7 +56,7 @@ int CeasarCipher::GetKey(const std::string& enc, const std::string& dec) {
     for (size_t i = 1; i < size; ++i) {
         if ((isLowerLetter(enc[i]) || isUpperLetter(enc[i]))) {
             int tmp_key = (enc[i] - dec[i]);
-            if ((tmp_key) < 0 && (key != (tmp_key + alph_size))
+            if (((tmp_key) < 0 && (key != (tmp_key + alph_size)))
                 || ((tmp_key) >= 0 && (key != (tmp_key)))) {
                 throw "This is not CC";  // CC
             }
