@@ -17,9 +17,9 @@ class  bullsAndCowsGame {
     void setAnswer(const std::vector<int>& ans);
     void setAnimals(std::pair<int, int> bnc);
     void setGuess(const std::vector<int>& guess);
-    std::vector<int> getAnswer();
-    std::pair<int, int> getAnimals();
-    std::vector<int> getGuess();
+    std::vector<int> getAnswer() const;
+    std::pair<int, int> getAnimals() const;
+    std::vector<int> getGuess() const;
     bool winCheck();
 };
 #endif  // MODULES_BULLS_N_COWS_INCLUDE_BULLSANDCOWS_H_
