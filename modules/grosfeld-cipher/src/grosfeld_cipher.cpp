@@ -82,8 +82,9 @@ GronsfeldCipher::GronsfeldCipher(const std::string sourceString_, const int key_
 	this->sourceString = sourceString_;
 	this->key = key_;
 	this->keyString = std::to_string(key_);
+	int lengthOfKey = this->keyString.length();
 	for (int i = this->keyString.length(); i < this->sourceString.length(); i++) {
-		this->keyString += this->keyString[i % this->sourceString.length()];
+		this->keyString += this->keyString[i % lengthOfKey];
 	}
 	
 	// this->cipherString = "";
