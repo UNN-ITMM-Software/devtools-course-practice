@@ -136,10 +136,10 @@ std::string GronsfeldCipher::decode(const std::string sourceString_, int sourceK
 	for (int i = 0; i < this->cipherString.length(); i++) {
 		int curOffset = std::stoi(std::to_string(this->keyString[i]));
 		int letterPlace = alphabet.find(this->cipherString[i], 0);
+		std::cout << i + 1 << ": " << trueString << std::endl;
 		int trueLetterIndex = this->fixOverflow(letterPlace - curOffset, 0, alphabet.length() - 1);
 
 		trueString += alphabet[trueLetterIndex];
-		std::cout << i + 1 << ": " << trueString << std::endl;
 	}
 
 	this->sourceString = trueString;
