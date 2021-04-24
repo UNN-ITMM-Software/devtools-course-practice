@@ -86,8 +86,6 @@ GronsfeldCipher::GronsfeldCipher(const std::string sourceString_, const int key_
 	for (int i = this->keyString.length(); i < this->sourceString.length(); i++) {
 		this->keyString += this->keyString[i % lengthOfKey];
 	}
-	
-	// this->cipherString = "";
 }
 
 std::string GronsfeldCipher::getSource() {
@@ -119,17 +117,12 @@ std::string GronsfeldCipher::getCipher() {
 }
 
 std::string GronsfeldCipher::decode(const std::string sourceString_, int key) {
-	int keyStringCopy = key;
-	for (int i = 0; i < sourceString_.length(); i++) {
-		if (keyStringCopy == 0) return "ERROR: Size of sourceString and keyString is different !!!";
-		keyStringCopy /= 10;
-	}
-
 	this->cipherString = sourceString;
 	this->key = key;
-	this->keyString = std::to_string(this->key);
+	this->keyString = std::to_string(key);
+	int lengthOfKey = this->keyString.length();
 	for (int i = this->keyString.length(); i < this->sourceString.length(); i++) {
-		this->keyString += this->keyString[i % this->keyString.length()];
+		this->keyString += this->keyString[i % lengthOfKey];
 	}
 
 	std::string trueString = "";
