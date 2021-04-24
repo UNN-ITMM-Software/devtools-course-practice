@@ -5,7 +5,7 @@
 #include "include/grosfeld_cipher.h"
 
 TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, constructor) {
-	ASSERT_ANY_THROW(GronsfeldCipher("gronsfeld", 2015));
+	ASSERT_NO_THROW(GronsfeldCipher("gronsfeld", 2015));
 }
 
 TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, getSourceFunction) {
