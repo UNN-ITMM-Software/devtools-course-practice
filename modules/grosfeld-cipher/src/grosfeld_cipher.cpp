@@ -118,7 +118,7 @@ std::string GronsfeldCipher::getCipher() {
 }
 
 std::string GronsfeldCipher::decode(const std::string sourceString_, int key) {
-	this->cipherString = sourceString;
+	this->cipherString = sourceString_;
 	this->key = key;
 	this->keyString = std::to_string(key);
 	int lengthOfKey = this->keyString.length();
