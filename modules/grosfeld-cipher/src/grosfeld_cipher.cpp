@@ -117,10 +117,10 @@ std::string GronsfeldCipher::getCipher() {
 	return this->cipherString;
 }
 
-std::string GronsfeldCipher::decode(const std::string sourceString_, int key) {
+std::string GronsfeldCipher::decode(const std::string sourceString_, int sourceKey) {
 	this->cipherString = sourceString_;
-	this->key = key;
-	this->keyString = std::to_string(key);
+	this->key = sourceKey;
+	this->keyString = std::to_string(sourceKey);
 	int lengthOfKey = this->keyString.length();
 	for (int i = this->keyString.length(); i < this->sourceString.length(); i++) {
 		this->keyString += this->keyString[i % lengthOfKey];
@@ -131,14 +131,11 @@ std::string GronsfeldCipher::decode(const std::string sourceString_, int key) {
 
 	std::string trueString = "";
 
-	std::string sourceString = sourceString_;
-	std::string keyStringString = std::to_string(key);
-
 	std::string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-	for (int i = 0; i < sourceString.length(); i++) {
-		int curOffset = std::stoi(std::to_string(keyStringString[i]));
-		int letterPlace = alphabet.find(this->keyString[i], 0);
+	for (int i = 0; i < this->cipherString.length(); i++) {
+		int curOffset = std::stoi(std::to_string(this->keyString[i]));
+		int letterPlace = alphabet.find(this->cipherString[i], 0);
 		int trueLetterIndex = this->fixOverflow(letterPlace - curOffset, 0, alphabet.length() - 1);
 
 		trueString += alphabet[trueLetterIndex];
