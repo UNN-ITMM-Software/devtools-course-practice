@@ -102,7 +102,7 @@ int GronsfeldCipher::getKey() {
 
 std::string GronsfeldCipher::getCipher() {
 	if (this->cipherString == "") {
-		std::string alphabet = "abcdefghijklmnopqrstuvwxyz .,:!?";
+		std::string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
 		for (int i = 0; i < this->keyString.length(); i++) {
 			int curOffset = std::stoi(std::to_string(this->keyString[i]));
@@ -130,7 +130,7 @@ std::string GronsfeldCipher::decode(const std::string sourceString_, int key) {
 	std::string sourceString = sourceString_;
 	std::string keyStringString = std::to_string(key);
 
-	std::string alphabet = "abcdefghijklmnopqrstuvwxyz .,:!?";
+	std::string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
 	for (int i = 0; i < sourceString.length(); i++) {
 		int curOffset = std::stoi(std::to_string(keyStringString[i]));

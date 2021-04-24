@@ -32,7 +32,7 @@ TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, getKeyStringFunction) {
 TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, decode) {
 	std::string codeString = "irpsuffqf";
 	int key = 2015;
-	GronsfeldCipher gc = GronsfeldCipher("gronsfeld", 2015);
+	GronsfeldCipher gc = GronsfeldCipher("gronsfeld", key);
 
-	ASSERT_EQ("gronsfeld", gc.decode("gronsfeld", key));
+	ASSERT_EQ("gronsfeld", gc.decode("irpsuffqf", key));
 }
