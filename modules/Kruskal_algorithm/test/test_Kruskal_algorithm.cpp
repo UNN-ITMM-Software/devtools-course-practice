@@ -67,6 +67,59 @@ TEST(Volkova_Kruskal_Algorithm, AssignmentOperator) {
     ASSERT_EQ(g.get_parent(), g_copy.get_parent());
 }
 
+TEST(Volkova_Kruskal_Algorithm, AssignmentOperator2) {
+    Graph g(5);
+    g.addEdge(0, 1, 3);
+    g.addEdge(0, 2, 1);
+    g.addEdge(0, 3, 5);
+    g.addEdge(1, 2, 2);
+    g.addEdge(1, 4, 3);
+    g.addEdge(2, 3, 2);
+    g.addEdge(3, 4, 4);
+    g.Kruskal();
+
+    Graph g_copy(5);
+    g_copy.addEdge(0, 1, 3);
+    g_copy = g;
+
+    ASSERT_EQ(g.get_n(), g_copy.get_n());
+    ASSERT_EQ(g.get_G(), g_copy.get_G());
+    ASSERT_EQ(g.get_MST(), g_copy.get_MST());
+    ASSERT_EQ(g.get_parent(), g_copy.get_parent());
+}
+
+TEST(Volkova_Kruskal_Algorithm, SelfAppropriation) {
+    Graph g(5);
+    g.addEdge(0, 1, 3);
+    g.addEdge(0, 2, 1);
+    g.addEdge(0, 3, 5);
+    g.addEdge(1, 2, 2);
+    g.addEdge(1, 4, 3);
+    g.addEdge(2, 3, 2);
+    g.addEdge(3, 4, 4);
+
+    g = g;
+
+    ASSERT_EQ(5, g.get_n());
+}
+
+TEST(Volkova_Kruskal_Algorithm, MultipleAssignment) {
+    Graph g1(4);
+    g1.addEdge(0, 1, 2);
+    g1.addEdge(0, 3, 1);
+    g1.addEdge(1, 3, 2);
+    g1.addEdge(2, 3, 3);
+
+    Graph g2 = g1;
+    Graph g3 = g2;
+    Graph g4 = g3;
+
+    ASSERT_EQ(g1.get_n(), g4.get_n());
+    ASSERT_EQ(g1.get_G(), g4.get_G());
+    ASSERT_EQ(g1.get_MST(), g4.get_MST());
+    ASSERT_EQ(g1.get_parent(), g4.get_parent());
+}
+
 TEST(Volkova_Kruskal_Algorithm, AddEdgeToGraph) {
     Graph g(2);
     g.addEdge(0, 1, 10);

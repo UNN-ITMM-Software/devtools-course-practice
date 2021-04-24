@@ -27,7 +27,6 @@ class Graph{
     ~Graph() = default;
     void addEdge(const int x, const int y, const int w);
     void Kruskal();
-    void printMST();
     void set_n(const int vertex_n);
     int get_n() const;
     const std::vector<std::pair<int, edge>>& get_G() const;
