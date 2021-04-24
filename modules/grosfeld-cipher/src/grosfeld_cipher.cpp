@@ -34,6 +34,7 @@ int GronsfeldCipher::GCD(std::vector<int> list)
 }
 
 int GronsfeldCipher::fixOverflow(int curVal, int min, int max) {
+	std::cout << curVal << ":" << min << ":" << max << std::endl;
 	if (curVal < min) return max - (min - curVal);
 	if (curVal > max) return min + (curVal - max);
 	return curVal;
