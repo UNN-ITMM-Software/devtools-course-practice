@@ -35,9 +35,10 @@ int GronsfeldCipher::GCD(std::vector<int> list)
 
 int GronsfeldCipher::fixOverflow(int curVal, int min, int max) {
 	std::cout << curVal << ":" << min << ":" << max << std::endl;
-	if (curVal < min) return max - (min - curVal);
-	if (curVal > max) return min + (curVal - max);
-	return curVal;
+	int res = curVal;
+	while (res < min) res = max - (min - res);
+	while (res> max) res = min + (res - max);
+	return res;
 }
 
 int GronsfeldCipher::KasiskeMethod(std::string sourceString) {
@@ -137,8 +138,9 @@ std::string GronsfeldCipher::decode(const std::string sourceString_, int sourceK
 	for (int i = 0; i < this->cipherString.length(); i++) {
 		int curOffset = std::stoi(std::to_string(this->keyString[i]));
 		int letterPlace = alphabet.find(this->cipherString[i], 0);
-		std::cout << letterPlace << " - " << curOffset << std::endl;
+		std::cout << this->keyString[i] << " -> " << std::to_string(this->keyString[i]) << std::endl;
 		int trueLetterIndex = this->fixOverflow(letterPlace - curOffset, 0, alphabet.length() - 1);
+		std::cout << trueLetterIndex << "!!!" << std::endl;
 
 		trueString += alphabet[trueLetterIndex];
 	}
