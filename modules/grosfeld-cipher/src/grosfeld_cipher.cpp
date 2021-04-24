@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 #include "include/grosfeld_cipher.h"
 
 int GronsfeldCipher::NOD(int n1, int n2)
@@ -125,6 +126,9 @@ std::string GronsfeldCipher::decode(const std::string sourceString_, int key) {
 		this->keyString += this->keyString[i % lengthOfKey];
 	}
 
+	std::cout << this->cipherString << std::endl;
+	std::cout << this->keyString << std::endl;
+
 	std::string trueString = "";
 
 	std::string sourceString = sourceString_;
@@ -138,6 +142,7 @@ std::string GronsfeldCipher::decode(const std::string sourceString_, int key) {
 		int trueLetterIndex = this->fixOverflow(letterPlace - curOffset, 0, alphabet.length() - 1);
 
 		trueString += alphabet[trueLetterIndex];
+		std::cout << i + 1 << ": " << trueString << std::endl;
 	}
 
 	this->sourceString = trueString;
