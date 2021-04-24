@@ -1,0 +1,38 @@
+// Copyright 2021 Aleksandrychev Andrey
+
+#include <gtest/gtest.h>
+#include <string>
+#include "include/grosfeld_cipher.h"
+
+TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, constructor) {
+	ASSERT_ANY_THROW(GronsfeldCipher("gronsfeld", 2015));
+}
+
+TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, getSourceFunction) {
+	GronsfeldCipher gc = GronsfeldCipher("gronsfeld", 2015);
+	std::string sourceString = "gronsfeld";
+
+	ASSERT_EQ(sourceString, gc.getSource());
+}
+
+TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, getKeyFunction) {
+	GronsfeldCipher gc = GronsfeldCipher("gronsfeld", 2015);
+	int sourceKey = 2015;
+
+	ASSERT_EQ(sourceKey, gc.getKey());
+}
+
+TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, getKeyStringFunction) {
+	GronsfeldCipher gc = GronsfeldCipher("gronsfeld", 2015);
+	std::string sourceKeyString = "201520152";
+
+	ASSERT_EQ(sourceKeyString, gc.getKeyString());
+}
+
+TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, decode) {
+	std::string codeString = "irpsuffqf";
+	int key = 2015;
+	GronsfeldCipher gc = GronsfeldCipher("gronsfeld", 2015);
+
+	ASSERT_EQ("gronsfeld", gc.decode("gronsfeld", key));
+}
