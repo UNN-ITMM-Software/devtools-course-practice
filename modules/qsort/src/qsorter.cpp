@@ -33,8 +33,8 @@ std::string Sorter::operator()(int argc, const char* argv[],
     }
     try {
         Sort(&numbers, 0, numbers.size() - 1);
-    } catch (const char* e) {
-        return "[ERROR] Unable to sort. " + std::string(e);
+    } catch (std::runtime_error& e) {
+        return "[ERROR] Unable to sort. " + std::string(e.what());
     }
     std::string result = std::to_string(numbers[0]);
     for (size_t i = 1; i < numbers.size(); i++)
