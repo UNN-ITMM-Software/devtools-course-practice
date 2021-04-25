@@ -186,7 +186,6 @@ double Matrix::Determinant() {
     if (rows == cols) {
         int k;
         double res = 0.0;
-        j = 0;
         k = 1;
         if (rows < 1) {
             throw "Wrong matrix";
