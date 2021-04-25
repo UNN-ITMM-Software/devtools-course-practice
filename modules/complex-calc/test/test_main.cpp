@@ -19,30 +19,6 @@ TEST(Kolesin_Andrey_ComplexNumberTest, can_get_image) {
 
     ASSERT_DOUBLE_EQ(-5.3, comp.getImag());
 }
-TEST(Kolesin_Andrey_ComplexNumberTest, can_print) {
-    Complex comp(1.2, 5.3);
-    std::stringstream buffer;
-    std::string expected = "1.2+5.3i";
-
-    buffer << comp;
-
-    ASSERT_EQ(expected, buffer.str());
-}
-TEST(Kolesin_Andrey_ComplexNumberTest, can_print_neg) {
-    Complex comp(1.2, -5.3);
-    std::stringstream buffer;
-    std::string expected = "1.2-5.3i";
-
-    buffer << comp;
-
-    ASSERT_EQ(expected, buffer.str());
-}
-TEST(Kolesin_Andrey_ComplexNumberTest, can_get_as_string) {
-    Complex comp(1.9, -5.9);
-    std::string expected = "1.9-5.9i";
-
-    ASSERT_EQ(expected, comp.getAsStr());
-}
 
 TEST(Kolesin_Andrey_ComplexNumberTest, equality_operator) {
     Complex comp1(1.2, -5.3);
@@ -73,6 +49,7 @@ TEST(Kolesin_Andrey_ComplexNumberTest, subtraction_operator) {
 
     ASSERT_EQ(expected, comp1 - comp2);
 }
+
 TEST(Kolesin_Andrey_ComplexNumberTest, multiplication_operator) {
     Complex comp1(1.9, -5.3);
     Complex comp2(-2, 1);
@@ -80,6 +57,7 @@ TEST(Kolesin_Andrey_ComplexNumberTest, multiplication_operator) {
 
     ASSERT_EQ(expected, comp1 * comp2);
 }
+
 TEST(Kolesin_Andrey_ComplexNumberTest, devision_operator) {
     Complex comp1(1.9, -5.3);
     Complex comp2(-2, 1);

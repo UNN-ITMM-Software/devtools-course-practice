@@ -3,6 +3,8 @@
 #ifndef MODULES_COMPLEX_CALC_INCLUDE_COMPLEX_NUMBER_H_
 #define MODULES_COMPLEX_CALC_INCLUDE_COMPLEX_NUMBER_H_
 
+#include <string>
+
 class Complex {
     double real;
     double imag;
@@ -17,8 +19,6 @@ class Complex {
     const Complex operator-(const Complex& comp);
     const Complex operator*(const Complex& comp);
     const Complex operator/(const Complex& comp);
-    friend std::ostream& operator<<(std::ostream& out, const Complex& comp);
-    std::string getAsStr() const;
 };
 
 #endif  // MODULES_COMPLEX_CALC_INCLUDE_COMPLEX_NUMBER_H_

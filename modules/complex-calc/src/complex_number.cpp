@@ -5,6 +5,7 @@
 #include <sstream>
 
 #include "include/complex_number.h"
+
 double eps = std::numeric_limits<double>::epsilon();
 
 Complex::Complex(double r, double i) {
@@ -39,18 +40,4 @@ const Complex Complex::operator/(const Complex& comp) {
     double re = real * comp.real + imag * comp.imag;
     double im = -real * comp.imag + imag * comp.real;
     return Complex(re / d, im / d);
-}
-
-std::ostream& operator<<(std::ostream& out, const Complex& comp) {
-    if (comp.imag > 0) {
-        out << comp.real << "+" << comp.imag << "i";
-    } else {
-        out << comp.real << comp.imag << "i";
-    }
-    return out;
-}
-std::string Complex::getAsStr() const {
-    std::stringstream buffer;
-    buffer<<(*this);
-    return buffer.str();        
 }
