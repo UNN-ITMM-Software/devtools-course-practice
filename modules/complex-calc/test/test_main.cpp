@@ -22,7 +22,7 @@ TEST(Kolesin_Andrey_ComplexNumberTest, can_get_image) {
     double expected = -5.3;
     double actual;
     Complex comp(1.2, expected);
-    
+
     actual = comp.getImag();
 
     ASSERT_DOUBLE_EQ(expected, actual);
