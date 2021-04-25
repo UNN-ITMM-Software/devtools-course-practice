@@ -65,9 +65,8 @@ Matrix Matrix::operator/ (double tmp) {
 std::vector<double> Matrix::operator*(std::vector<double> tmp) {
     std::vector<double> res(rows);
     if (tmp.size() == cols) {
-        double c;
         for (int i = 0; i < rows; i++) {
-            c = 0.0;
+           double c = 0.0;
             for (int j = 0; j < cols; j++) {
                 c += data[i][j] * tmp[j];
             }
@@ -166,13 +165,13 @@ int Matrix::Get_Cols() {
 
 Matrix Matrix::GetMatrWithout_i_row_j_cols(int i, int j) {
     Matrix res(rows - 1, rows - 1);
-    int ki, kj, di, dj;
+    int ki, kj, di;
     di = 0;
     for (ki = 0; ki < rows - 1; ki++) {
         if (ki == i) {
             di = 1;
         }
-        dj = 0;
+       int dj = 0;
         for (kj = 0; kj < rows - 1; kj++) {
             if (kj == j) {
                 dj = 1;
@@ -185,7 +184,7 @@ Matrix Matrix::GetMatrWithout_i_row_j_cols(int i, int j) {
 
 double Matrix::Determinant() {
     if (rows == cols) {
-        int i, n, k;
+        int k;
         double res = 0.0;
         j = 0;
         k = 1;
@@ -201,7 +200,7 @@ double Matrix::Determinant() {
             return res;
         }
         if (rows > 2) {
-            for (i = 0; i < rows; i++) {
+            for (int i = 0; i < rows; i++) {
                 Matrix c(rows - 1, rows - 1);
                 c = this->GetMatrWithout_i_row_j_cols(i, 0);
                 res = res + k * data[i][0] * c.Determinant();

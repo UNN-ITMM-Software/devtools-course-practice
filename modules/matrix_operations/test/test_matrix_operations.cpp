@@ -1,5 +1,6 @@
 // Copyright 2021 Kiseleva Anastasia
 
+#include<vector>
 #include <gtest/gtest.h>
 #include<limits>
 #include "include/matrix_operations.h"
