@@ -1,5 +1,6 @@
 // Copyright 2021 Kiseleva Anastasia
 
+#include<vector>
 #include "include/matrix_operations.h"
 
 Matrix::Matrix(int row, int col) {
@@ -64,7 +65,7 @@ Matrix Matrix::operator/ (double tmp) {
 std::vector<double> Matrix::operator*(std::vector<double> tmp) {
     std::vector<double> res(rows);
     if (tmp.size() == cols) {
-        double c = 0.0;
+        double c;
         for (int i = 0; i < rows; i++) {
             c = 0.0;
             for (int j = 0; j < cols; j++) {
@@ -184,11 +185,10 @@ Matrix Matrix::GetMatrWithout_i_row_j_cols(int i, int j) {
 
 double Matrix::Determinant() {
     if (rows == cols) {
-        int i, j, n, k;
+        int i, n, k;
         double res = 0.0;
         j = 0;
         k = 1;
-        n = rows - 1;
         if (rows < 1) {
             throw "Wrong matrix";
         }
