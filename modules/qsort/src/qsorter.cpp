@@ -3,6 +3,7 @@
 #include "include/qsorter.h"
 
 #include <stdexcept>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -36,12 +37,13 @@ std::string Sorter::operator()(int argc, const char* argv[],
     } catch (std::runtime_error& e) {
         return "[ERROR] Unable to sort. " + std::string(e.what());
     }
-    std::string result = std::to_string(numbers[0]);
+    std::ostringstream str;
+    str << numbers[0];
     for (size_t i = 1; i < numbers.size(); i++)
-        result += " " + std::to_string(numbers[i]);
+        str << ' ' << numbers[i];
     if (retcode)
         *retcode = 0;
-    return result;
+    return str.str();
 }
 
 std::string Sorter::help(const std::string& filename) const {
