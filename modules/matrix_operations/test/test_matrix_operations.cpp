@@ -1,8 +1,8 @@
 // Copyright 2021 Kiseleva Anastasia
 
-#include<vector>
 #include <gtest/gtest.h>
 #include<limits>
+#include<vector>
 #include "include/matrix_operations.h"
 
 const double EPSILON = std::numeric_limits<double>::epsilon() * 100;
