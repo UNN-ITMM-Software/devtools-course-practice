@@ -3,7 +3,7 @@
 #include<vector>
 #include "include/matrix_operations.h"
 
-Matrix::Matrix(int row, int col) {
+Matrix::Matrix(unsigned int row,unsigned int col) {
     rows = row;
     cols = col;
     if ((row != 0) && (col != 0)) {
