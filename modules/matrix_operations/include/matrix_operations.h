@@ -48,7 +48,7 @@ class Matrix {
 
     Matrix Transpose();
 
-    Matrix GetMatrWithout_i_row_j_cols(int i, int j);
+    Matrix GetMatrWithout_i_row_j_cols(unsigned int i, unsigned int j);
 
     double Determinant();
 

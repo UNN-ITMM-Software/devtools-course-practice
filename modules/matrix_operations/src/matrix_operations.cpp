@@ -163,7 +163,7 @@ int Matrix::Get_Cols() {
     return cols;
 }
 
-Matrix Matrix::GetMatrWithout_i_row_j_cols(int i, int j) {
+Matrix Matrix::GetMatrWithout_i_row_j_cols(unsigned int i, unsigned int j) {
     Matrix res(rows - 1, rows - 1);
     unsigned int ki, kj, di;
     di = 0;
