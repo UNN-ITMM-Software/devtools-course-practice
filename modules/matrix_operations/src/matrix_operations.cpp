@@ -8,9 +8,9 @@ Matrix::Matrix(unsigned int row, unsigned int col) {
     cols = col;
     if ((row != 0) && (col != 0)) {
         data.resize(row);
-        for (int i = 0; i < row; i++) {
+        for (unsigned int i = 0; i < row; i++) {
             data[i].resize(col);
-            for (int j = 0; j < col; j++)
+            for (unsigned int j = 0; j < col; j++)
                 data[i][j] = 0;
         }
     } else {
@@ -27,10 +27,10 @@ Matrix::Matrix(const Matrix& tmp) {
 Matrix Matrix::operator*(Matrix A) {
     Matrix res(rows, A.cols);
     if (cols == A.rows) {
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < A.cols; j++) {
+        for (unsigned int i = 0; i < rows; i++) {
+            for (unsigned int j = 0; j < A.cols; j++) {
                 double c = 0.0;
-                for (int k = 0; k < cols; k++) {
+                for (unsigned int k = 0; k < cols; k++) {
                     c += data[i][k] * A.data[k][j];
                 }
                 res[i][j] = c;
@@ -44,8 +44,8 @@ Matrix Matrix::operator*(Matrix A) {
 
 Matrix Matrix::operator* (double tmp) {
     Matrix res(rows, cols);
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
+    for (unsigned int i = 0; i < rows; i++) {
+        for (unsigned int j = 0; j < cols; j++) {
             res[i][j] = data[i][j] * tmp;
         }
     }
@@ -54,8 +54,8 @@ Matrix Matrix::operator* (double tmp) {
 
 Matrix Matrix::operator/ (double tmp) {
     Matrix res(rows, cols);
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
+    for (unsigned int i = 0; i < rows; i++) {
+        for (unsigned int j = 0; j < cols; j++) {
             res[i][j] = data[i][j] / tmp;
         }
     }
@@ -65,9 +65,9 @@ Matrix Matrix::operator/ (double tmp) {
 std::vector<double> Matrix::operator*(std::vector<double> tmp) {
     std::vector<double> res(rows);
     if (tmp.size() == cols) {
-        for (int i = 0; i < rows; i++) {
+        for (unsigned int i = 0; i < rows; i++) {
            double c = 0.0;
-            for (int j = 0; j < cols; j++) {
+            for (unsigned int j = 0; j < cols; j++) {
                 c += data[i][j] * tmp[j];
             }
             res[i] = c;
@@ -81,8 +81,8 @@ std::vector<double> Matrix::operator*(std::vector<double> tmp) {
 Matrix Matrix::operator+(Matrix A) {
     Matrix res(rows, cols);
     if ((rows == A.rows) && (cols == A.cols)) {
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
+        for (unsigned int i = 0; i < rows; i++) {
+            for (unsigned int j = 0; j < cols; j++) {
                 res[i][j] = data[i][j] + A.data[i][j];
             }
         }
@@ -95,8 +95,8 @@ Matrix Matrix::operator+(Matrix A) {
 Matrix Matrix::operator-(Matrix A) {
     Matrix res(rows, cols);
     if ((rows == A.rows) && (cols == A.cols)) {
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
+        for (unsigned int i = 0; i < rows; i++) {
+            for (unsigned int j = 0; j < cols; j++) {
                 res[i][j] = data[i][j] - A.data[i][j];
             }
         }
@@ -117,8 +117,8 @@ bool Matrix::operator==(const Matrix& tmp) const {
     if (cols != tmp.cols || rows != tmp.rows) {
         return false;
     }
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
+    for (unsigned int i = 0; i < rows; i++) {
+        for (unsigned int j = 0; j < cols; j++) {
             if (data[i][j] != tmp.data[i][j]) {
                 return false;
             }
@@ -127,7 +127,7 @@ bool Matrix::operator==(const Matrix& tmp) const {
     return true;
 }
 
-std::vector<double>& Matrix::operator[](int k) {
+std::vector<double>& Matrix::operator[](unsigned int k) {
     if ((k >= 0) && (k <= rows)) {
         return data[k];
     } else {
@@ -143,8 +143,8 @@ void Matrix::set_data(std::vector < std::vector < double>> new_data) {
 
 Matrix Matrix::Transpose() {
     Matrix res(cols, rows);
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
+    for (unsigned int i = 0; i < rows; i++) {
+        for (unsigned int j = 0; j < cols; j++) {
             if (i != j) {
                 res[j][i] = data[i][j];
             } else {
@@ -165,7 +165,7 @@ int Matrix::Get_Cols() {
 
 Matrix Matrix::GetMatrWithout_i_row_j_cols(int i, int j) {
     Matrix res(rows - 1, rows - 1);
-    int ki, kj, di;
+    unsigned int ki, kj, di;
     di = 0;
     for (ki = 0; ki < rows - 1; ki++) {
         if (ki == i) {
@@ -199,7 +199,7 @@ double Matrix::Determinant() {
             return res;
         }
         if (rows > 2) {
-            for (int i = 0; i < rows; i++) {
+            for (unsigned int i = 0; i < rows; i++) {
                 Matrix c(rows - 1, rows - 1);
                 c = this->GetMatrWithout_i_row_j_cols(i, 0);
                 res = res + k * data[i][0] * c.Determinant();
@@ -220,8 +220,8 @@ void Matrix::Inverse() {
             transp = this->Transpose();
             Matrix allied(rows, rows);
             Matrix c(rows - 1, rows - 1);
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < rows; j++) {
+            for (unsigned int i = 0; i < rows; i++) {
+                for (unsigned int j = 0; j < rows; j++) {
                     c = transp.GetMatrWithout_i_row_j_cols(i, j);
                     if ((j + i + 1) % 2 == 0) {
                         allied[i][j] = c.Determinant() * (-1);
@@ -230,8 +230,8 @@ void Matrix::Inverse() {
                     }
                 }
             }
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < rows; j++) {
+            for (unsigned int i = 0; i < rows; i++) {
+                for (unsigned int j = 0; j < rows; j++) {
                     data[i][j] = allied[i][j] / deter;
                 }
             }
