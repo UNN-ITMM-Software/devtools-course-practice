@@ -14,9 +14,7 @@ std::string Sorter::operator()(int argc, const char* argv[],
                                int* retcode) const {
     if (retcode)
         *retcode = 1;
-    if (argc < 1)
-        return "[ERROR] Unexpected arguments.";
-    if (argc == 1)
+    if (argc <= 1)
         return help(argv[0]);
     std::vector<double> numbers;
     numbers.reserve(argc - 1);
@@ -35,8 +33,6 @@ std::string Sorter::operator()(int argc, const char* argv[],
     }
     try {
         Sort(&numbers, 0, numbers.size() - 1);
-    } catch (std::exception& e) {
-        return "[ERROR] Unable to sort. " + std::string(e.what());
     } catch (const char* e) {
         return "[ERROR] Unable to sort. " + std::string(e);
     }
