@@ -8,9 +8,9 @@
 const double EPSILON = std::numeric_limits<double>::epsilon() * 100;
 
 TEST(KISELEVA_MATRIX_OPERATIONS, Get_rows_and_cols) {
-    Matrix one(4, 4);
+    Matrix res(4, 4);
 
-    ASSERT_TRUE(one.Get_Cols() == one.Get_Rows());
+    ASSERT_TRUE(res.Get_Cols() == res.Get_Rows());
 }
 
 TEST(KISELEVA_MATRIX_OPERATIONS, Size_zero) {
