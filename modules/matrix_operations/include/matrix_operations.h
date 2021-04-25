@@ -16,7 +16,7 @@ class Matrix {
 
 
  public:
-    Matrix(unsigned int row,unsigned int col);
+    Matrix(unsigned int row, unsigned int col);
 
     ~Matrix() {}
 
