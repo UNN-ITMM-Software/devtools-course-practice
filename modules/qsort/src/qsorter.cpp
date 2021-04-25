@@ -10,7 +10,8 @@
 
 namespace QSort {
 
-std::string Sorter::operator()(int argc, const char* argv[], int* retcode) const {
+std::string Sorter::operator()(int argc, const char* argv[],
+                               int* retcode) const {
     if (retcode)
         *retcode = 1;
     if (argc < 1)
