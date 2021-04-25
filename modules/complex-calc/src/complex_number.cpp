@@ -1,11 +1,10 @@
 // Copyright 2021 Kolesin Andrey
 
-#include "include/complex_number.h"
-
 #include <math.h>
-
-#include <iostream>
 #include <limits>
+#include <sstream>
+
+#include "include/complex_number.h"
 double eps = std::numeric_limits<double>::epsilon();
 
 Complex::Complex(double r, double i) {
@@ -49,4 +48,9 @@ std::ostream& operator<<(std::ostream& out, const Complex& comp) {
         out << comp.real << comp.imag << "i";
     }
     return out;
+}
+std::string Complex::getAsStr() const {
+    std::stringstream buffer;
+    buffer<<(*this);
+    return buffer.str();        
 }

@@ -2,9 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <iostream>
-#include <string>
-
 #include "include/complex_number.h"
 
 TEST(Kolesin_Andrey_ComplexNumberTest, can_create_zero) {
@@ -39,6 +36,12 @@ TEST(Kolesin_Andrey_ComplexNumberTest, can_print_neg) {
     buffer << comp;
 
     ASSERT_EQ(expected, buffer.str());
+}
+TEST(Kolesin_Andrey_ComplexNumberTest, can_get_as_string) {
+    Complex comp(1.9, -5.9);
+    std::string expected = "1.9-5.9i";
+
+    ASSERT_EQ(expected, comp.getAsStr());
 }
 
 TEST(Kolesin_Andrey_ComplexNumberTest, equality_operator) {
