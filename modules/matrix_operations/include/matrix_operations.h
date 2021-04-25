@@ -8,11 +8,11 @@
 
 class Matrix {
  private:
-    int rows;
+    unsigned int rows;
 
-    int cols;
+    unsigned int cols;
 
-     std::vector<std::vector<double>> data;
+    std::vector<std::vector<double>> data;
 
 
  public:
