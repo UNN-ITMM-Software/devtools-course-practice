@@ -10,7 +10,8 @@ namespace QSort {
 class Sorter {
  public:
     Sorter() = default;
-    std::string operator()(int argc, const char* argv[], int* retcode = nullptr) const;
+    std::string operator()(int argc, const char* argv[],
+                           int* retcode = nullptr) const;
 
  private:
     std::string help(const std::string& filename) const;
