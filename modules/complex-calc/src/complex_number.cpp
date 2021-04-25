@@ -2,11 +2,51 @@
 
 #include "include/complex_number.h"
 
+#include <math.h>
+
+#include <iostream>
 #include <limits>
+double eps = std::numeric_limits<double>::epsilon();
 
 Complex::Complex(double r, double i) {
     real = r;
     imag = i;
 }
-double Complex::getReal() { return real; }
-double Complex::getImag() { return imag; }
+double Complex::getReal() const { return real; }
+double Complex::getImag() const { return imag; }
+bool Complex::operator==(const Complex& comp) const {
+    return fabs(comp.real - real) <= eps && fabs(comp.imag - imag) <= eps;
+}
+bool Complex::operator!=(const Complex& comp) const {
+    return !((*this) == comp);
+}
+const Complex Complex::operator+(const Complex& comp) {
+    double re = comp.real + real;
+    double im = comp.imag + imag;
+    return Complex(re, im);
+}
+const Complex Complex::operator-(const Complex& comp) {
+    double re = real - comp.real;
+    double im = imag - comp.imag;
+    return Complex(re, im);
+}
+const Complex Complex::operator*(const Complex& comp) {
+    double re = real * comp.real - imag * comp.imag;
+    double im = real * comp.imag + imag * comp.real;
+    return Complex(re, im);
+}
+const Complex Complex::operator/(const Complex& comp) {
+    double d = comp.real * comp.real + comp.imag * comp.imag;
+    double re = real * comp.real + imag * comp.imag;
+    double im = -real * comp.imag + imag * comp.real;
+    return Complex(re / d, im / d);
+}
+
+std::ostream& operator<<(std::ostream& out, const Complex& comp) {
+    if (comp.imag > 0) {
+        out << comp.real << "+" << comp.imag << "i";
+    } else {
+        out << comp.real << comp.imag << "i";
+    }
+    return out;
+}
