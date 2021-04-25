@@ -9,60 +9,89 @@ TEST(Kolesin_Andrey_ComplexNumberTest, can_create_zero) {
 }
 
 TEST(Kolesin_Andrey_ComplexNumberTest, can_get_real) {
-    Complex comp(3.1);
+    double expected = 3.1;
+    double actual;
+    Complex comp(expected);
 
-    ASSERT_DOUBLE_EQ(3.1, comp.getReal());
+    actual = comp.getReal();
+
+    ASSERT_DOUBLE_EQ(expected, actual);
 }
 
 TEST(Kolesin_Andrey_ComplexNumberTest, can_get_image) {
-    Complex comp(1.2, -5.3);
+    double expected = -5.3;
+    double actual;
+    Complex comp(1.2, expected);
+    
+    actual = comp.getImag();
 
-    ASSERT_DOUBLE_EQ(-5.3, comp.getImag());
+    ASSERT_DOUBLE_EQ(expected, actual);
 }
 
 TEST(Kolesin_Andrey_ComplexNumberTest, equality_operator) {
-    Complex comp1(1.2, -5.3);
-    Complex comp2(1.2, -5.3);
+    double re = 1.2;
+    double im = -5.3;
+    Complex comp1(re, im);
+    Complex comp2(re, im);
 
-    ASSERT_EQ(comp1, comp2);
+    bool actual = comp1 == comp2;
+
+    ASSERT_EQ(true, actual);
 }
 
 TEST(Kolesin_Andrey_ComplexNumberTest, not_equality_operator) {
-    Complex comp1(1.2, -5.3);
-    Complex comp2(1.2, 5.3);
+    double re = 1.2;
+    double im = -5.3;
+    Complex comp1(re, im);
+    Complex comp2(re, im);
 
-    ASSERT_NE(comp1, comp2);
+    bool actual = comp1 != comp2;
+
+    ASSERT_EQ(false, actual);
 }
 
 TEST(Kolesin_Andrey_ComplexNumberTest, addition_operator) {
     Complex comp1(1.2, -5.3);
     Complex comp2(1.8, 6);
     Complex expected(3, 0.7);
+    Complex actual;
 
-    ASSERT_EQ(expected, comp1 + comp2);
+    actual = comp1 + comp2;
+
+    ASSERT_EQ(expected, actual);
 }
 
 TEST(Kolesin_Andrey_ComplexNumberTest, subtraction_operator) {
     Complex comp1(1.1, -5.4);
     Complex comp2(1.8, 1);
     Complex expected(-0.7, -6.4);
+    Complex actual;
 
-    ASSERT_EQ(expected, comp1 - comp2);
+    actual = comp1 - comp2;
+
+    ASSERT_EQ(expected, actual);
 }
 
 TEST(Kolesin_Andrey_ComplexNumberTest, multiplication_operator) {
     Complex comp1(1.9, -5.3);
     Complex comp2(-2, 1);
     Complex expected(1.5, 12.5);
+    Complex actual;
 
-    ASSERT_EQ(expected, comp1 * comp2);
+    actual = comp1 * comp2;
+
+    ASSERT_EQ(expected, actual);
 }
 
 TEST(Kolesin_Andrey_ComplexNumberTest, devision_operator) {
     Complex comp1(1.9, -5.3);
     Complex comp2(-2, 1);
     Complex expected(-1.82, 1.74);
-    ASSERT_EQ(expected, comp1 / comp2);
+    Complex actual;
+
+    actual = comp1 / comp2;
+
+    ASSERT_EQ(expected, actual);
 }
 
 int main(int argc, char **argv) {
