@@ -12,6 +12,9 @@ class GronsfeldCipher {
     GronsfeldCipher(const std::string sourceString_, const int key_);
     ~GronsfeldCipher() = default;
 
+    void setKey(int key_);
+    void setSourceString(std::string sourceString_);
+
     std::string getKeyString();
     int getKey();
     std::string getSource();
