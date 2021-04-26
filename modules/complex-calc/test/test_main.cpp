@@ -94,6 +94,13 @@ TEST(Kolesin_Andrey_ComplexNumberTest, devision_operator) {
     ASSERT_EQ(expected, actual);
 }
 
+TEST(Kolesin_Andrey_ComplexNumberTest, throw_when_divide_by_zero) {
+    Complex comp1(1.9, -5.3);
+    Complex comp2(0, 0);
+
+    ASSERT_ANY_THROW(comp1 / comp2);
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
