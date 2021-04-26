@@ -42,7 +42,7 @@ TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, setSourceString) {
     std::string newSourceString = "gronsfeld2";
     gc.setSourceString(newSourceString);
 
-    ASSERT_EQ(newKey, gc.getSource());
+    ASSERT_EQ(newSourceString, gc.getSource());
 }
 
 TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, decode) {
