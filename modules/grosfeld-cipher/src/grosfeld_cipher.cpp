@@ -41,8 +41,9 @@ std::string GronsfeldCipher::getCipher() {
         std::string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
         for (int i = 0; i < static_cast<int>(this->keyString.length()); i++) {
-            int curOffset = std::stoi(std::to_string(this->keyString[i])) - 48;
-            int letterPlace = alphabet.find(this->keyString[i], 0);
+            int curOffset =
+                std::stoi(std::to_string(this->sourceString[i])) - 48;
+            int letterPlace = alphabet.find(this->sourceString[i], 0);
             int newLetterIndex = this->fixOverflow(letterPlace + curOffset,
                 0, alphabet.length() - 1);
 
