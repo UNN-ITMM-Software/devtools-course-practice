@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include <include/json-deserializer.h>
+#include <string>
 
 TEST(Token, Can_Create_Token_With_Args) {
     ASSERT_NO_THROW(Token t(TokenType::Number, ""));
@@ -79,7 +80,8 @@ TEST(Lexer, Can_Get_Next_Token_Throws_If_No_Known_Token_Found) {
     ASSERT_ANY_THROW(lexer.getNextToken());
 }
 
-TEST(Lexer, Can_Get_Next_Token_Returns_Token_With_Valid_Type_On_Number_String) {
+TEST(Lexer,
+    Can_Get_Next_Token_Returns_Token_With_Valid_Type_On_Number_String) {
     const std::string numberString = "4321";
     Lexer lexer(numberString);
 
@@ -88,7 +90,8 @@ TEST(Lexer, Can_Get_Next_Token_Returns_Token_With_Valid_Type_On_Number_String) {
     ASSERT_EQ(TokenType::Number, next.type);
 }
 
-TEST(Lexer, Can_Get_Next_Token_Returns_Token_With_Valid_Value_On_Number_String) {
+TEST(Lexer,
+    Can_Get_Next_Token_Returns_Token_With_Valid_Value_On_Number_String) {
     const std::string numberString = "5213";
     Lexer lexer(numberString);
 
