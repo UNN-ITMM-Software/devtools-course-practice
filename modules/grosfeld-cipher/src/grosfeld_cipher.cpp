@@ -106,7 +106,7 @@ std::string GronsfeldCipher::getCipher() {
     if (this->cipherString == "") {
         std::string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-        for (int i = 0; i < static_cast<int>(this->keyString.length()_; i++) {
+        for (int i = 0; i < static_cast<int>(this->keyString.length(); i++) {
             int curOffset = std::stoi(std::to_string(this->keyString[i]));
             int letterPlace = alphabet.find(this->keyString[i], 0);
             int newLetterIndex = this->fixOverflow(letterPlace + curOffset,
