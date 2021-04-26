@@ -1,6 +1,7 @@
 // Copyright 2021 Ostapovich Denis
 
 #include <stdexcept>
+#include <string>
 
 #include "include/json-deserializer.h"
 
@@ -20,7 +21,7 @@ Lexer::Lexer(const std::string& string) {
 
     cursor = 0;
     this->string = string;
-};
+}
 
 size_t Lexer::getCursor() {
     return cursor;
@@ -64,9 +65,8 @@ Token Lexer::getNextToken() {
     }
 
 
-
     throw "Unknown token type";
-};
+}
 
 bool Lexer::hasTokens() {
     return cursor < string.size();
@@ -75,7 +75,7 @@ bool Lexer::hasTokens() {
 JsonDeserializer::JsonDeserializer() {
     lexer = Lexer();
     string = "";
-};
+}
 
 std::string JsonDeserializer::getString() {
     return string;

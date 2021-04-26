@@ -37,7 +37,7 @@ struct Token {
 class Lexer {
 public:
     Lexer();
-    Lexer(const std::string& string);
+    explicit Lexer(const std::string& string);
 
     std::string getString();
     size_t getCursor();
