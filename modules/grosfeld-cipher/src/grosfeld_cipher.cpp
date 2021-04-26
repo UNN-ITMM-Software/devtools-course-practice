@@ -20,7 +20,7 @@ int GronsfeldCipher::NOD(int a, int b) {
 int GronsfeldCipher::GCD(std::vector<int> list) {
     int GCD = list[0];
 
-    for (int i = 1; i < list.size(); i++) {
+    for (int i = 1; i < static_cast<int>(list.size()); i++) {
         GCD = NOD(GCD, list[i]);
     }
 
@@ -85,7 +85,7 @@ GronsfeldCipher::GronsfeldCipher(const std::string sourceString_,
     this->keyString = std::to_string(key_);
     int lengthOfKey = this->keyString.length();
     for (int i = static_cast<int>(this->keyString.length());
-            i < this->sourceString.length(); i++) {
+            i < static_cast<int>(this->sourceString.length()); i++) {
         this->keyString += this->keyString[i % lengthOfKey];
     }
 }
@@ -126,7 +126,7 @@ std::string GronsfeldCipher::decode(const std::string sourceString_,
     this->keyString = std::to_string(sourceKey);
     int lengthOfKey = static_cast<int>(this->keyString.length());
     for (int i = static_cast<int>(this->keyString.length());
-            i < this->sourceString.length(); i++) {
+            i < static_cast<int>(this->sourceString.length()); i++) {
         this->keyString += this->keyString[i % lengthOfKey];
     }
 
