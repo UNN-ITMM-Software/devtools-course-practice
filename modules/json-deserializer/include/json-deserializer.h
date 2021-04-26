@@ -35,7 +35,7 @@ struct Token {
 };
 
 class Lexer {
-public:
+ public:
     Lexer();
     explicit Lexer(const std::string& string);
 
@@ -45,19 +45,19 @@ public:
     Token getNextToken();
     bool hasTokens();
     bool isEOF();
-private:
+ private:
     std::string string;
     size_t cursor;
 };
 
 class JsonDeserializer {
-public:
+ public:
     JsonDeserializer();
 
     Json fromString(const std::string& jsonString);
     std::string getString();
     Lexer getLexer();
-private:
+ private:
     Lexer lexer;
     std::string string;
 };
