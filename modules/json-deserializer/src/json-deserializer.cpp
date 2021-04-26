@@ -2,8 +2,26 @@
 
 #include <stdexcept>
 #include <string>
+#include <regex> 
 
 #include "include/json-deserializer.h"
+
+std::string lslice(const std::string& src, int count) {
+    std::string dst(src);
+    dst.erase(dst.begin(), dst.begin() + count);
+    return dst;
+}
+
+std::string rslice(const std::string& src, int count) {
+    std::string dst(src);
+    dst.erase(dst.end(), dst.end() + count);
+    return dst;
+}
+
+std::string slice(const std::string& src, int fromStart, int fromEnd) {
+    auto res = lslice(src, fromStart);
+    return rslice(res, fromEnd);
+}
 
 bool isJsonQuotes(char ch) {
     return ch == '\"';
@@ -44,24 +62,20 @@ Token Lexer::getNextToken() {
         throw "No more tokens in string";
     }
 
-    if (std::isdigit(string[cursor])) {
-        std::string number;
-        while (std::isdigit(string[cursor])) {
-            number += string[cursor++];
-        }
+    auto sliced = lslice(string, cursor);
 
-        return Token(TokenType::Number, number);
+    std::regex expression("^[0-9]+");
+    std::smatch matched;
+    std::regex_search(sliced, matched, expression);
+    if (!matched.empty()) {
+        cursor += matched[0].length();
+        return Token(TokenType::Number, matched[0]);
     }
 
-    if (isJsonQuotes(string[cursor])) {
-        std::string str;
-
-        do {
-            str += string[cursor++];
-        } while (!isJsonQuotes(string[cursor]) && !isEOF());
-        str += string[cursor++];
-
-        return Token(TokenType::String, str);
+    std::regex_search(sliced, matched, std::regex("^\"[^\"]*\""));
+    if (!matched.empty()) {
+        cursor += matched[0].length();
+        return Token(TokenType::String, matched[0]);
     }
 
 
