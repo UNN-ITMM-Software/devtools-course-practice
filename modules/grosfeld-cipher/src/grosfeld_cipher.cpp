@@ -5,6 +5,9 @@
 #include <iostream>
 #include "include/grosfeld_cipher.h"
 
+#define INTMAX 2147483647
+#define INTMIN -2147483648
+
 int GronsfeldCipher::NOD(int n1, int n2) {
     int res;
     if (n1 == n2) return n1;
@@ -23,7 +26,7 @@ int GronsfeldCipher::NOD(int n1, int n2) {
 int GronsfeldCipher::GCD(std::vector<int> list) {
     int GCD = list[0];
 
-    for (int i = 1; i < list.size(); i++) {
+    for (unsigned int i = 1; i < list.size(); i++) {
         GCD = NOD(GCD, list[i]);
     }
 
@@ -38,16 +41,16 @@ int GronsfeldCipher::fixOverflow(int curVal, int min, int max) {
 }
 
 int GronsfeldCipher::KasiskeMethod(std::string sourceString) {
-    if (sourceString.length() < 90) return -INT_MAX;
+    if (sourceString.length() < 90) return INTMIN;
 
     int probValueStartIndex = 0;
     int probValueSize = 3;
     std::string probValue = sourceString.substr(probValueStartIndex,
             probValueStartIndex + probValueSize);
 
-    int countProbValue = 1;
+    unsigned int countProbValue = 1;
 
-    int probValueNextIndex = 3;
+    unsigned int probValueNextIndex = 3;
 
     while (countProbValue < 3 &&
             probValueStartIndex + probValueSize < sourceString.length() - 1) {
@@ -64,7 +67,7 @@ int GronsfeldCipher::KasiskeMethod(std::string sourceString) {
     }
 
     if (probValueStartIndex + probValueSize >= sourceString.length() - 1) {
-        return INT_MAX;
+        return INTMAX;
     }
 
     std::vector<int> deltas;
@@ -85,7 +88,7 @@ GronsfeldCipher::GronsfeldCipher(const std::string sourceString_,
     this->key = key_;
     this->keyString = std::to_string(key_);
     int lengthOfKey = this->keyString.length();
-    for (int i = this->keyString.length();
+    for (unsigned int i = this->keyString.length();
             i < this->sourceString.length(); i++) {
         this->keyString += this->keyString[i % lengthOfKey];
     }
@@ -107,7 +110,7 @@ std::string GronsfeldCipher::getCipher() {
     if (this->cipherString == "") {
         std::string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-        for (int i = 0; i < this->keyString.length(); i++) {
+        for (unsigned int i = 0; i < this->keyString.length(); i++) {
             int curOffset = std::stoi(std::to_string(this->keyString[i]));
             int letterPlace = alphabet.find(this->keyString[i], 0);
             int newLetterIndex = this->fixOverflow(letterPlace + curOffset,
@@ -126,7 +129,7 @@ std::string GronsfeldCipher::decode(const std::string sourceString_,
     this->key = sourceKey;
     this->keyString = std::to_string(sourceKey);
     int lengthOfKey = this->keyString.length();
-    for (int i = this->keyString.length();
+    for (unsigned int i = this->keyString.length();
             i < this->sourceString.length(); i++) {
         this->keyString += this->keyString[i % lengthOfKey];
     }
@@ -135,7 +138,7 @@ std::string GronsfeldCipher::decode(const std::string sourceString_,
 
     std::string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-    for (int i = 0; i < this->cipherString.length(); i++) {
+    for (unsigned int i = 0; i < this->cipherString.length(); i++) {
         int curOffset = std::stoi(std::to_string(this->keyString[i])) - 48;
         int letterPlace = alphabet.find(this->cipherString[i], 0);
         int trueLetterIndex = this->fixOverflow(letterPlace - curOffset,
@@ -153,8 +156,8 @@ std::string GronsfeldCipher::hack(std::string cipherString) {
     std::string trueString = "";
 
     int probkeyStringSize = this->KasiskeMethod(cipherString);
-    if (probkeyStringSize == -INT_MAX) return "ERROR: So small string !!!";
-    if (probkeyStringSize == INT_MAX) return "WARNING: Failed to decode.";
+    if (probkeyStringSize == INTMIN) return "ERROR: So small string !!!";
+    if (probkeyStringSize == INTMAX) return "WARNING: Failed to decode.";
 
     return trueString;
 }
