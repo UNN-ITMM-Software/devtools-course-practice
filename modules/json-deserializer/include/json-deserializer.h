@@ -17,7 +17,11 @@ enum class TokenType {
     Null,
     Whitespace,
     Delimiter,
-    Colon
+    Colon,
+    LeftBrace,
+    RightBrace,
+    LeftBracket,
+    RightBracket
 };
 
 using specification = std::pair<TokenType, std::string>;
@@ -55,12 +59,16 @@ class Lexer {
  private:
      std::list<specification> specifications {
         specification(TokenType::String, "^\"[^\"]*\""),
-        specification(TokenType::Number, "^\\d+"),
+        specification(TokenType::Number, "^-?\\d+"),
         specification(TokenType::Whitespace, "^\\s+"),
         specification(TokenType::Null, "^null"),
         specification(TokenType::Boolean, "^(true|false)"),
         specification(TokenType::Delimiter, "^,"),
-        specification(TokenType::Colon, "^:")
+        specification(TokenType::Colon, "^:"),
+        specification(TokenType::LeftBrace, "^\\{"),
+        specification(TokenType::RightBrace, "^\\}"),
+        specification(TokenType::LeftBracket, "^\\["),
+        specification(TokenType::RightBracket, "^\\]"),
      };
     std::string string;
     size_t cursor;

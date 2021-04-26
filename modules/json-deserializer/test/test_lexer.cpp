@@ -203,3 +203,75 @@ TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_Ñomma) {
 
     ASSERT_EQ(string, next.value);
 }
+
+TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_LeftBrace) {
+    const std::string string = "{";
+    Lexer lexer(string);
+
+    Token next = lexer.getNextToken();
+
+    ASSERT_EQ(TokenType::LeftBrace, next.type);
+}
+
+TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_LeftBrace) {
+    const std::string string = "{";
+    Lexer lexer(string);
+
+    Token next = lexer.getNextToken();
+
+    ASSERT_EQ(string, next.value);
+}
+
+TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_RightBrace) {
+    const std::string string = "}";
+    Lexer lexer(string);
+
+    Token next = lexer.getNextToken();
+
+    ASSERT_EQ(TokenType::RightBrace, next.type);
+}
+
+TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_RightBrace) {
+    const std::string string = "}";
+    Lexer lexer(string);
+
+    Token next = lexer.getNextToken();
+
+    ASSERT_EQ(string, next.value);
+}
+
+TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_LeftBracket) {
+    const std::string string = "[";
+    Lexer lexer(string);
+
+    Token next = lexer.getNextToken();
+
+    ASSERT_EQ(TokenType::LeftBracket, next.type);
+}
+
+TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_LeftBracket) {
+    const std::string string = "[";
+    Lexer lexer(string);
+
+    Token next = lexer.getNextToken();
+
+    ASSERT_EQ(string, next.value);
+}
+
+TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_RightBracket) {
+    const std::string string = "]";
+    Lexer lexer(string);
+
+    Token next = lexer.getNextToken();
+
+    ASSERT_EQ(TokenType::RightBracket, next.type);
+}
+
+TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_RightBracket) {
+    const std::string string = "]";
+    Lexer lexer(string);
+
+    Token next = lexer.getNextToken();
+
+    ASSERT_EQ(string, next.value);
+}
