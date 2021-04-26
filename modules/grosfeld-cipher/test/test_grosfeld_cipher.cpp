@@ -29,6 +29,22 @@ TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, getKeyStringFunction) {
     ASSERT_EQ(sourceKeyString, gc.getKeyString());
 }
 
+TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, setKey) {
+    GronsfeldCipher gc = GronsfeldCipher("gronsfeld", 2015);
+    int newKey = 2014;
+    gc.setKey(newKey);
+
+    ASSERT_EQ(newKey, gc.getKey());
+}
+
+TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, setSourceString) {
+    GronsfeldCipher gc = GronsfeldCipher("gronsfeld", 2015);
+    std::string newSourceString = "gronsfeld2";
+    gc.setSourceString(newSourceString);
+
+    ASSERT_EQ(newKey, gc.getSource());
+}
+
 TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, decode) {
     std::string codeString = "irpsuffqf";
     int key = 2015;

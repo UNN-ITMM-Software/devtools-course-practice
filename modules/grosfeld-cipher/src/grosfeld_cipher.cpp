@@ -24,6 +24,27 @@ GronsfeldCipher::GronsfeldCipher(const std::string sourceString_,
     }
 }
 
+void GronsfeldCipher::setKey(int key_) {
+    this->key = key_;
+    this->keyString = std::to_string(key_);
+    int lengthOfKey = this->keyString.length();
+    for (int i = static_cast<int>(this->keyString.length());
+            i < static_cast<int>(this->sourceString.length()); i++) {
+        this->keyString += this->keyString[i % lengthOfKey];
+    }
+}
+
+void GronsfeldCipher::setSourceString(std::string sourceString_) {
+    this->sourceString = sourceString_;
+    this->key = key_;
+    this->keyString = std::to_string(key_);
+    int lengthOfKey = this->keyString.length();
+    for (int i = static_cast<int>(this->keyString.length());
+            i < static_cast<int>(this->sourceString.length()); i++) {
+        this->keyString += this->keyString[i % lengthOfKey];
+    }
+}
+
 std::string GronsfeldCipher::getSource() {
     return this->sourceString;
 }
