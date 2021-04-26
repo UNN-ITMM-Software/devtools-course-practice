@@ -36,3 +36,11 @@ TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, decode) {
 
     ASSERT_EQ("gronsfeld", gc.decode("irpsuffqf", key));
 }
+
+TEST(Aleksandrychev_Andrey_Gronsfeld_Cipher, getCipher) {
+    GronsfeldCipher gc = GronsfeldCipher("gronsfeld", 2015);
+    std::string sourceString = "gronsfeld";
+    std::string codeString = "irpsuffqf";
+
+    ASSERT_EQ(codeString, gc.getCipher());
+}
