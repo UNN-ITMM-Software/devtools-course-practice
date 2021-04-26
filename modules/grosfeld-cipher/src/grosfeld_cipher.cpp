@@ -34,7 +34,6 @@ int GronsfeldCipher::GCD(std::vector<int> list)
 }
 
 int GronsfeldCipher::fixOverflow(int curVal, int min, int max) {
-	std::cout << curVal << ":" << min << ":" << max << std::endl;
 	int res = curVal;
 	while (res < min) res = max - (min - res);
 	while (res> max) res = min + (res - max);
@@ -128,9 +127,6 @@ std::string GronsfeldCipher::decode(const std::string sourceString_, int sourceK
 		this->keyString += this->keyString[i % lengthOfKey];
 	}
 
-	std::cout << this->cipherString << std::endl;
-	std::cout << this->keyString << std::endl;
-
 	std::string trueString = "";
 
 	std::string alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -138,9 +134,7 @@ std::string GronsfeldCipher::decode(const std::string sourceString_, int sourceK
 	for (int i = 0; i < this->cipherString.length(); i++) {
 		int curOffset = std::stoi(std::to_string(this->keyString[i])) - 48;
 		int letterPlace = alphabet.find(this->cipherString[i], 0);
-		std::cout << this->keyString[i] << " -> " << std::to_string(this->keyString[i]) << std::endl;
 		int trueLetterIndex = this->fixOverflow(letterPlace - curOffset, 0, alphabet.length() - 1);
-		std::cout << trueLetterIndex << "!!!" << std::endl;
 
 		trueString += alphabet[trueLetterIndex];
 	}
