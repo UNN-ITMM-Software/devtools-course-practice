@@ -2,35 +2,31 @@
 
 #include <stdexcept>
 #include <string>
-#include <regex> 
+#include <regex>
+#include <list>
+#include <utility>
+#include <sstream>
 
 #include "include/json-deserializer.h"
 
-std::string lslice(const std::string& src, int count) {
+std::string sliceLeft(const std::string& src, int count) {
     std::string dst(src);
     dst.erase(dst.begin(), dst.begin() + count);
     return dst;
 }
 
-std::string rslice(const std::string& src, int count) {
+std::string sliceRight(const std::string& src, int count) {
     std::string dst(src);
     dst.erase(dst.end(), dst.end() + count);
     return dst;
 }
 
 std::string slice(const std::string& src, int fromStart, int fromEnd) {
-    auto res = lslice(src, fromStart);
-    return rslice(res, fromEnd);
+    auto res = sliceLeft(src, fromStart);
+    return sliceRight(res, fromEnd);
 }
 
-bool isJsonQuotes(char ch) {
-    return ch == '\"';
-}
-
-Lexer::Lexer() {
-    cursor = 0;
-    string = "";
-}
+Lexer::Lexer() : cursor(0), string("") { }
 
 Lexer::Lexer(const std::string& string) {
     if (string.empty()) {
@@ -53,33 +49,39 @@ void Lexer::setString(const std::string& string) {
     this->string = string;
 }
 
-bool Lexer::isEOF() {
-    return cursor == string.size();
-}
-
 Token Lexer::getNextToken() {
     if (!hasTokens()) {
         throw "No more tokens in string";
     }
 
-    auto sliced = lslice(string, cursor);
+    auto sliced = sliceLeft(string, cursor);
 
-    std::regex expression("^[0-9]+");
+    for (auto spec : specifications) {
+        auto matchedValue = match(spec.second, sliced);
+
+        if (matchedValue.empty()) {
+            continue;
+        }
+
+        if (spec.first == TokenType::Whitespace) {
+            return this->getNextToken();
+        }
+
+        return Token(spec.first, matchedValue);
+    }
+
+    std::stringstream ss;
+    ss << "Syntax error, unexpected token: " << sliced[0] << std::endl;
+
+    throw ss.str();
+}
+
+std::string Lexer::match(const std::string& expression,
+    const std::string& src) {
     std::smatch matched;
-    std::regex_search(sliced, matched, expression);
-    if (!matched.empty()) {
-        cursor += matched[0].length();
-        return Token(TokenType::Number, matched[0]);
-    }
-
-    std::regex_search(sliced, matched, std::regex("^\"[^\"]*\""));
-    if (!matched.empty()) {
-        cursor += matched[0].length();
-        return Token(TokenType::String, matched[0]);
-    }
-
-
-    throw "Unknown token type";
+    std::regex_search(src, matched, std::regex(expression));
+    cursor += matched[0].length();
+    return matched[0];
 }
 
 bool Lexer::hasTokens() {

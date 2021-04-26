@@ -81,7 +81,7 @@ TEST(Lexer, Can_Get_Next_Token_Throws_If_No_Known_Token_Found) {
 }
 
 TEST(Lexer,
-    Can_Get_Next_Token_Returns_Token_With_Valid_Type_On_Number_String) {
+    Can_Get_Next_Token_Returns_Token_With_Valid_Type_On_Number) {
     const std::string numberString = "4321";
     Lexer lexer(numberString);
 
@@ -91,16 +91,18 @@ TEST(Lexer,
 }
 
 TEST(Lexer,
-    Can_Get_Next_Token_Returns_Token_With_Valid_Value_On_Number_String) {
-    const std::string numberString = "5213";
+    Get_Next_Token_Returns_Token_With_Valid_Value_On_Number_With_Whitespaces) {
+    const std::string numberString = "\r\n\t  5213   ";
+    const std::string cleanNumberString = "5213";
+
     Lexer lexer(numberString);
 
     Token next = lexer.getNextToken();
 
-    ASSERT_EQ(numberString, next.value);
+    ASSERT_EQ(cleanNumberString, next.value);
 }
 
-TEST(Lexer, Can_Get_Next_Token_Returns_Token_With_Valid_Type_On_String) {
+TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Type_On_String) {
     const std::string string = "\"hello\"";
     Lexer lexer(string);
 
@@ -109,13 +111,25 @@ TEST(Lexer, Can_Get_Next_Token_Returns_Token_With_Valid_Type_On_String) {
     ASSERT_EQ(TokenType::String, next.type);
 }
 
-TEST(Lexer, Can_Get_Next_Token_Returns_Token_With_Valid_Value_On_String) {
+TEST(Lexer,
+    Get_Next_Token_Returns_Token_With_Valid_Value_On_String) {
     const std::string string = "\"world\"";
     Lexer lexer(string);
 
     Token next = lexer.getNextToken();
 
     ASSERT_EQ(string, next.value);
+}
+
+TEST(Lexer,
+    Get_Next_Token_Returns_Token_With_Valid_Value_On_String_With_Whitespaces) {
+    const std::string string = "\t\n\r   \" world \"  ";
+    const std::string cleanString = "\" world \"";
+    Lexer lexer(string);
+
+    Token next = lexer.getNextToken();
+
+    ASSERT_EQ(cleanString, next.value);
 }
 
 TEST(Json, Can_Create_Json_Struct) {

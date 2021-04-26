@@ -4,6 +4,9 @@
 #define MODULES_JSON_DESERIALIZER_INCLUDE_JSON_DESERIALIZER_H_
 
 #include <string>
+#include <regex>
+#include <list>
+#include <utility>
 
 enum class TokenType {
     Number,
@@ -11,8 +14,13 @@ enum class TokenType {
     Object,
     Array,
     Boolean,
-    Null
+    Null,
+    Whitespace,
+    Delimiter,
+    Colon
 };
+
+using specification = std::pair<TokenType, std::string>;
 
 struct Json {
     Json() {}
@@ -44,10 +52,19 @@ class Lexer {
     void setString(const std::string& string);
     Token getNextToken();
     bool hasTokens();
-    bool isEOF();
  private:
+     std::list<specification> specifications {
+        specification(TokenType::String, "^\"[^\"]*\""),
+        specification(TokenType::Number, "^\\d+"),
+        specification(TokenType::Whitespace, "^\\s+"),
+        specification(TokenType::Null, "^null"),
+        specification(TokenType::Boolean, "^(true|false)"),
+        specification(TokenType::Delimiter, "^,"),
+        specification(TokenType::Colon, "^:")
+     };
     std::string string;
     size_t cursor;
+    std::string match(const std::string& expression, const std::string& src);
 };
 
 class JsonDeserializer {
