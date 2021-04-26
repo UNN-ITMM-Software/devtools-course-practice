@@ -5,77 +5,11 @@
 #include <iostream>
 #include "include/grosfeld_cipher.h"
 
-#define INTMAX 2147483647
-#define INTMIN -2147483648
-
-int GronsfeldCipher::NOD(int a, int b) {
-    while (a && b)
-        if (a >= b)
-            a %= b;
-        else
-            b %= a;
-    return a | b;
-}
-
-int GronsfeldCipher::GCD(std::vector<int> list) {
-    int GCD = list[0];
-
-    for (int i = 1; i < static_cast<int>(list.size()); i++) {
-        GCD = NOD(GCD, list[i]);
-    }
-
-    return GCD;
-}
-
 int GronsfeldCipher::fixOverflow(int curVal, int min, int max) {
     int res = curVal;
     while (res < min) res = max - (min - res);
     while (res> max) res = min + (res - max);
     return res;
-}
-
-int GronsfeldCipher::KasiskeMethod(std::string sourceString) {
-    if (sourceString.length() < 90) return INTMIN;
-
-    int probValueStartIndex = 0;
-    int probValueSize = 3;
-    std::string probValue = sourceString.substr(probValueStartIndex,
-            probValueStartIndex + probValueSize);
-
-    int countProbValue = 1;
-
-    int probValueNextIndex = 3;
-
-    while (countProbValue < 3 &&
-            probValueStartIndex + probValueSize <
-                static_cast<int>(sourceString.length() - 1)) {
-        int placeProbValue = sourceString.find(probValue, probValueNextIndex);
-        if (placeProbValue == -1) {
-            probValueStartIndex += 1;
-            probValue = sourceString.substr(probValueStartIndex,
-                    probValueStartIndex + probValueSize);
-            countProbValue = 1;
-        } else {
-            probValueNextIndex = placeProbValue;
-            countProbValue += 1;
-        }
-    }
-
-    if (probValueStartIndex + probValueSize >=
-            static_cast<int>(sourceString.length() - 1)) {
-        return INTMAX;
-    }
-
-    std::vector<int> deltas;
-    probValueStartIndex = sourceString.find(probValue, 0);
-    probValueNextIndex = sourceString.find(probValue, probValueStartIndex);
-    while (probValueNextIndex >= 0) {
-        deltas.push_back(probValueNextIndex - probValueStartIndex);
-        probValueStartIndex = probValueNextIndex;
-        probValueNextIndex = sourceString.find(probValue, probValueStartIndex);
-    }
-
-    return this->GCD(deltas);
 }
 
 GronsfeldCipher::GronsfeldCipher(const std::string sourceString_,
@@ -144,16 +78,6 @@ std::string GronsfeldCipher::decode(const std::string sourceString_,
     }
 
     this->sourceString = trueString;
-
-    return trueString;
-}
-
-std::string GronsfeldCipher::hack(std::string cipherString) {
-    std::string trueString = "";
-
-    int probkeyStringSize = this->KasiskeMethod(cipherString);
-    if (probkeyStringSize == INTMIN) return "ERROR: So small string !!!";
-    if (probkeyStringSize == INTMAX) return "WARNING: Failed to decode.";
 
     return trueString;
 }
