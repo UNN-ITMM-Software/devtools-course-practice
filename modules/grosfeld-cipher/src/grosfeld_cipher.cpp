@@ -11,7 +11,8 @@ int GronsfeldCipher::fixOverflow(int curVal, int min, int max) {
     while (res> max) res = min + (res - max);
     return res;
 }
-std::string GronsfeldCipher::intKeyToString(int key_) {
+
+void GronsfeldCipher::intKeyToString(int key_) {
     this->keyString = std::to_string(key_);
     int lengthOfKey = this->keyString.length();
     for (int i = static_cast<int>(this->keyString.length());
