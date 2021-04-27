@@ -1,3 +1,5 @@
+// Copyright 2021 Ostapovich Denis
+
 #include <gtest/gtest.h>
 
 #include <include/json-deserializer.h>

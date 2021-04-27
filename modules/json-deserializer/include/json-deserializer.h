@@ -56,6 +56,7 @@ class Lexer {
     void setString(const std::string& string);
     Token getNextToken();
     bool hasTokens();
+
  private:
      std::list<specification> specifications {
         specification(TokenType::String, "^\"[^\"]*\""),
