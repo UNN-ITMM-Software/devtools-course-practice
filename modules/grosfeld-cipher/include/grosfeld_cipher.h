@@ -30,6 +30,7 @@ class GronsfeldCipher {
     std::string cipherString = "";
 
     int fixOverflow(int curVal, int min, int max);
+    std::string intKeyToString(int key_);
 };
 
 #endif  // MODULES_GROSFELD_CIPHER_INCLUDE_GROSFELD_CIPHER_H_
