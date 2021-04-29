@@ -25,7 +25,8 @@ enum class TokenType {
     RightBrace,
     LeftBracket,
     RightBracket,
-    Eof
+    Eof,
+    Unknown
 };
 
 inline
@@ -104,24 +105,54 @@ enum class NodeType {
 
 using specification = std::pair<TokenType, std::string>;
 
-struct JsonNode {
+class JsonNode {
+ public:
+     JsonNode();
+     JsonNode(const NodeType type);
+     JsonNode(const JsonNode& other);
+     JsonNode& operator=(const JsonNode& other);
+     NodeType getNodeType();
+protected:
     NodeType nodeType;
+};
 
-    JsonNode() : nodeType(NodeType::UnknownLiteral) { }
+class JsonValue : public JsonNode {
+public:
+    JsonValue(NodeType nodeType, const std::string& value);
+    JsonValue(const JsonValue& other);
+    JsonValue& operator=(const JsonValue& other);
+    std::string getValue();
+private:
+    std::string value;
+};
 
-    JsonNode(const NodeType type) : nodeType(type) { }
+class JsonObject : public JsonNode {
+public:
+    JsonObject(NodeType nodeType);
+private:
+    std::map<std::string, JsonNode> fields;
+};
 
-    JsonNode(const JsonNode& other) : nodeType(other.nodeType) { }
+class JsonArray : public JsonNode {
+public:
+    JsonArray();
+private:
+    size_t size;
+    TokenType dataType;
+    std::vector<JsonNode> jsonArray;
 };
 
 class JsonDocument {
  public:
      JsonDocument();
+     JsonDocument(const JsonDocument& other);
      JsonNode getRoot();
      void setRoot(const JsonNode rootNode);
+     bool empty();
+     JsonDocument& operator=(const JsonDocument& other);
  private:
-     JsonNode* rootNode{ nullptr };
-     std::map<std::string, JsonNode> fields;
+     JsonNode* rootNode;
+     bool isEmpty;
 };
 
 struct Token {
@@ -188,16 +219,22 @@ class Lexer {
 class JsonDeserializer {
  public:
     JsonDeserializer();
+    JsonDeserializer(const std::string& jsonString);
 
+    JsonDocument parse();
     JsonDocument parse(const std::string& jsonString);
-    std::string getString();
     Lexer getLexer();
  private:
     Lexer lexer;
     Token* lookahead;
-    std::string string;
     Token eat(const TokenType tokenType);
+    JsonNode literal();
     JsonNode stringLiteral();
+    JsonNode numericLiteral();
+    JsonNode objectLiteral();
+    JsonNode arrayLiteral();
+    JsonNode boolLiteral();
+    JsonNode nullLiteral();
 };
 
 #endif  // MODULES_JSON_DESERIALIZER_INCLUDE_JSON_DESERIALIZER_H_
