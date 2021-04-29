@@ -15,7 +15,7 @@ TEST(Token, Ctor_Creates_Token_Of_Valid_Type) {
 
     Token token(tokenType, "");
 
-    ASSERT_EQ(tokenType, token.type);
+    ASSERT_EQ(tokenType, token.tokenType);
 }
 
 TEST(Token, Ctor_Creates_Token_With_Valid_Value) {
@@ -24,6 +24,28 @@ TEST(Token, Ctor_Creates_Token_With_Valid_Value) {
     Token token(TokenType::Number, tokenValue);
 
     ASSERT_EQ(tokenValue, token.value);
+}
+
+TEST(Token, Equality_Operator_Overloaded_Properly) {
+    Token src(TokenType::Number, "test");
+    Token copy(TokenType::Number, "test");
+
+    ASSERT_TRUE(src == copy);
+}
+
+TEST(Token, Inequality_Operator_Overloaded_Properly) {
+    Token src(TokenType::Number, "test");
+    Token copy(TokenType::Number, "test2");
+
+    ASSERT_TRUE(src != copy);
+}
+
+TEST(Token, Copy_Ctor_Clones_Token_Properly) {
+    std::string tokenValue = "4213";
+    Token src(TokenType::Number, tokenValue);
+    Token dst(src);
+
+    ASSERT_EQ(src, dst);
 }
 
 TEST(Lexer, Can_Create_Lexer_With_Default_String_Value) {
@@ -89,7 +111,7 @@ TEST(Lexer,
 
     Token next = lexer.getNextToken();
 
-    ASSERT_EQ(TokenType::Number, next.type);
+    ASSERT_EQ(TokenType::Number, next.tokenType);
 }
 
 TEST(Lexer,
@@ -110,7 +132,7 @@ TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_String) {
 
     Token next = lexer.getNextToken();
 
-    ASSERT_EQ(TokenType::String, next.type);
+    ASSERT_EQ(TokenType::String, next.tokenType);
 }
 
 TEST(Lexer,
@@ -140,7 +162,7 @@ TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_Null) {
 
     Token next = lexer.getNextToken();
 
-    ASSERT_EQ(TokenType::Null, next.type);
+    ASSERT_EQ(TokenType::Null, next.tokenType);
 }
 
 TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_Null) {
@@ -158,7 +180,7 @@ TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_Boolean) {
 
     Token next = lexer.getNextToken();
 
-    ASSERT_EQ(TokenType::Boolean, next.type);
+    ASSERT_EQ(TokenType::Boolean, next.tokenType);
 }
 
 TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_Boolean) {
@@ -176,7 +198,7 @@ TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_Colon) {
 
     Token next = lexer.getNextToken();
 
-    ASSERT_EQ(TokenType::Colon, next.type);
+    ASSERT_EQ(TokenType::Colon, next.tokenType);
 }
 
 TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_Colon) {
@@ -194,7 +216,7 @@ TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_Ñomma) {
 
     Token next = lexer.getNextToken();
 
-    ASSERT_EQ(TokenType::Delimiter, next.type);
+    ASSERT_EQ(TokenType::Delimiter, next.tokenType);
 }
 
 TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_Ñomma) {
@@ -212,7 +234,7 @@ TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_LeftBrace) {
 
     Token next = lexer.getNextToken();
 
-    ASSERT_EQ(TokenType::LeftBrace, next.type);
+    ASSERT_EQ(TokenType::LeftBrace, next.tokenType);
 }
 
 TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_LeftBrace) {
@@ -230,7 +252,7 @@ TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_RightBrace) {
 
     Token next = lexer.getNextToken();
 
-    ASSERT_EQ(TokenType::RightBrace, next.type);
+    ASSERT_EQ(TokenType::RightBrace, next.tokenType);
 }
 
 TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_RightBrace) {
@@ -248,7 +270,7 @@ TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_LeftBracket) {
 
     Token next = lexer.getNextToken();
 
-    ASSERT_EQ(TokenType::LeftBracket, next.type);
+    ASSERT_EQ(TokenType::LeftBracket, next.tokenType);
 }
 
 TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_LeftBracket) {
@@ -266,7 +288,7 @@ TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_RightBracket) {
 
     Token next = lexer.getNextToken();
 
-    ASSERT_EQ(TokenType::RightBracket, next.type);
+    ASSERT_EQ(TokenType::RightBracket, next.tokenType);
 }
 
 TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_RightBracket) {
@@ -276,4 +298,38 @@ TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_RightBracket) {
     Token next = lexer.getNextToken();
 
     ASSERT_EQ(string, next.value);
+}
+
+TEST(Lexer, GetTokens_Returns_Valid_Tokens) {
+    const std::string json = "{ \"name\" : \"John\" , \"age\" : 22, "
+        "\"Cars\" : [\"BMW\", \"Lexus\"],\"address\" : {} }";
+    const std::vector<Token> expectedTokens {
+        Token(TokenType::LeftBrace, "{"),
+        Token(TokenType::String, "\"name\""),
+        Token(TokenType::Colon , ":"),
+        Token(TokenType::String , "\"John\""),
+        Token(TokenType::Delimiter , ","),
+        Token(TokenType::String , "\"age\""),
+        Token(TokenType::Colon , ":"),
+        Token(TokenType::Number , "22"),
+        Token(TokenType::Delimiter , ","),
+        Token(TokenType::String , "\"Cars\""),
+        Token(TokenType::Colon , ":"),
+        Token(TokenType::LeftBracket , "["),
+        Token(TokenType::String , "\"BMW\""),
+        Token(TokenType::Delimiter , ","),
+        Token(TokenType::String , "\"Lexus\""),
+        Token(TokenType::RightBracket , "]"),
+        Token(TokenType::Delimiter , ","),
+        Token(TokenType::String , "\"address\""),
+        Token(TokenType::Colon , ":"),
+        Token(TokenType::LeftBrace, "{"),
+        Token(TokenType::RightBrace, "}"),
+        Token(TokenType::RightBrace, "}")
+    };
+
+    Lexer lexer(json);
+    auto tokens = lexer.getTokens();
+
+    ASSERT_EQ(expectedTokens, tokens);
 }

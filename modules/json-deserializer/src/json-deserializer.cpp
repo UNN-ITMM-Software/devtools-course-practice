@@ -17,7 +17,7 @@ std::string sliceLeft(const std::string& src, int count) {
 
 std::string sliceRight(const std::string& src, int count) {
     std::string dst(src);
-    dst.erase(dst.end(), dst.end() + count);
+    dst.erase(dst.end() - count, dst.end());
     return dst;
 }
 
@@ -51,7 +51,7 @@ void Lexer::setString(const std::string& string) {
 
 Token Lexer::getNextToken() {
     if (!hasTokens()) {
-        throw "No more tokens in string";
+        return Token(TokenType::Eof);
     }
 
     auto sliced = sliceLeft(string, cursor);
@@ -88,9 +88,18 @@ bool Lexer::hasTokens() {
     return cursor < string.size();
 }
 
+std::vector<Token> Lexer::getTokens() {
+    std::vector<Token> tokens;
+    while (hasTokens()) {
+        tokens.push_back(getNextToken());
+    }
+    return tokens;
+}
+
 JsonDeserializer::JsonDeserializer() {
     lexer = Lexer();
     string = "";
+    lookahead = nullptr;
 }
 
 std::string JsonDeserializer::getString() {
@@ -101,12 +110,48 @@ Lexer JsonDeserializer::getLexer() {
     return lexer;
 }
 
-Json JsonDeserializer::fromString(const std::string& jsonString) {
+JsonDocument JsonDeserializer::parse(const std::string& jsonString) {
     if (jsonString.size() == 0) {
         throw std::invalid_argument("String can not be empty");
     }
 
-    Json json;
+    JsonDocument ast;
 
-    return json;
+    lexer.setString(jsonString);
+    lookahead = &lexer.getNextToken();
+
+    ast.setRoot(stringLiteral());
+
+    return ast;
+}
+
+Token JsonDeserializer::eat(const TokenType expectedTokenType) {
+    Token token = *lookahead;
+
+    if (token.tokenType != expectedTokenType) {
+        std::stringstream ss;
+        ss << "Unexpected token: " << token.value << std::endl;
+
+        throw ss.str();
+    }
+
+    lookahead = &lexer.getNextToken();
+
+    return token;
+}
+
+JsonNode JsonDeserializer::stringLiteral() {
+    return JsonNode(NodeType::StringLiteral);
+}
+
+JsonDocument::JsonDocument() {
+
+}
+
+JsonNode JsonDocument::getRoot() {
+    return *rootNode;
+}
+
+void JsonDocument::setRoot(JsonNode rootNode) {
+    this->rootNode = &rootNode;
 }

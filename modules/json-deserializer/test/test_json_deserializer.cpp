@@ -6,16 +6,6 @@
 
 #include <string>
 
-TEST(Json, Can_Create_Json_Struct) {
-    ASSERT_NO_THROW(Json j);
-}
-
-TEST(Json, Can_Copy_Json_Struct) {
-    Json src;
-
-    ASSERT_NO_THROW(Json dst(src));
-}
-
 TEST(JsonDeserializer, Can_Create_Deserializer_Without_Parameters) {
     ASSERT_NO_THROW(JsonDeserializer j);
 }
@@ -26,14 +16,14 @@ TEST(JsonDeserializer, Can_Create_Deserializer_With_Default_String) {
     ASSERT_TRUE(j.getString().empty());
 }
 
-TEST(JsonDeserializer, From_Json_Throws_On_Empty_String) {
+TEST(JsonDeserializer, Parse_Throws_On_Empty_String) {
     JsonDeserializer des;
 
-    ASSERT_ANY_THROW(des.fromString(""));
+    ASSERT_ANY_THROW(des.parse(""));
 }
 
-TEST(JsonDeserializer, From_Json_Returns_Struct) {
+TEST(JsonDeserializer, Parse_Returns_Struct) {
     JsonDeserializer des;
 
-    ASSERT_NO_THROW(des.fromString("abcdef"));
+    ASSERT_NO_THROW(des.parse("    \"abcdef\""));
 }
