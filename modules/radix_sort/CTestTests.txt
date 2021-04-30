@@ -53,7 +53,7 @@ add_test(
 )
 
 set_tests_properties (${prefix}_can_Detect_Double PROPERTIES
-    PASS_REGULAR_EXPRESSION "Some argumnets are not integers"
+    PASS_REGULAR_EXPRESSION "Some arguments are not integers"
     LABELS "${MODULE}")
 
 add_test(
@@ -62,7 +62,7 @@ add_test(
 )
 
 set_tests_properties (${prefix}_can_Detect_String PROPERTIES
-    PASS_REGULAR_EXPRESSION "Some argumnets are not integers"
+    PASS_REGULAR_EXPRESSION "Some arguments are not integers"
     LABELS "${MODULE}")
 
 add_test(
@@ -71,5 +71,5 @@ add_test(
 )
 
 set_tests_properties (${prefix}_can_Detect_Too_Big_Int PROPERTIES
-    PASS_REGULAR_EXPRESSION "Some argumnets are out of range"
+    PASS_REGULAR_EXPRESSION "Some arguments are out of range"
     LABELS "${MODULE}")
