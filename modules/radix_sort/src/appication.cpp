@@ -36,8 +36,6 @@ std::string Application::operator()(int argc, const char** argv) {
     } catch (int e) {
         if (e == -1) {
             return NOT_INTEGER;
-        } else {
-            throw;
         }
     } catch (std::invalid_argument const &e) {
         return NOT_INTEGER;
