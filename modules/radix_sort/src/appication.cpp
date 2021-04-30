@@ -1,13 +1,14 @@
 // Copyright 2021 Kolesin Andrey
 #include <stdio.h>
 #include <stdlib.h>
-#include <vector>
+
 #include <string>
+#include <vector>
 
 #include "include/application.h"
 
-const char Application::NOT_INTEGER[] = "Some argumnets are not integers";
-const char Application::OUT_OF_RANGE[] = "Some argumnets are out of range";
+const char Application::NOT_INTEGER[] = "Some arguments are not integers";
+const char Application::OUT_OF_RANGE[] = "Some arguments are out of range";
 Application::Application() {}
 
 bool isInt(std::string s) {
@@ -34,12 +35,10 @@ std::string Application::operator()(int argc, const char** argv) {
             arr.push_back(integer);
         }
     } catch (int e) {
-        if (e == -1) {
-            return NOT_INTEGER;
-        }
-    } catch (std::invalid_argument const &e) {
         return NOT_INTEGER;
-    } catch (std::out_of_range const &e) {
+    } catch (std::invalid_argument const& e) {
+        return NOT_INTEGER;
+    } catch (std::out_of_range const& e) {
         return OUT_OF_RANGE;
     }
     RadixSort::radixSort<int>(arr.begin(), arr.end());
