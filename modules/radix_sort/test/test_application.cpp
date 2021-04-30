@@ -47,3 +47,13 @@ TEST(RadixSort_Application, message_if_out_of_range) {
 
     ASSERT_EQ(Application::OUT_OF_RANGE, actual);
 }
+
+TEST(RadixSort_Application, message_if_minus_only) {
+    int argc = 5;
+    std::vector<const char *> argv = {"app", "-", "123"};
+    Application app;
+
+    std::string actual = app(argc, &argv[0]);
+
+    ASSERT_EQ(Application::NOT_INTEGER, actual);
+}
