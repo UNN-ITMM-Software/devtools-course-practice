@@ -11,7 +11,7 @@ set_target_properties(${target} PROPERTIES
 if (UNIX)
   target_link_libraries(${target} gtest ${CMAKE_THREAD_LIBS_INIT} pthread)
 endif (UNIX)
-target_link_libraries(${target} gtest)
+target_link_libraries(${target} gtest ${LIBRARY})
 
 # VS2012 doesn't support correctly the tuples yet,
 # see http://code.google.com/p/googletest/issues/detail?id=412
