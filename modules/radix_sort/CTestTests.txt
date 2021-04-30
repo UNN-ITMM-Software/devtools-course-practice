@@ -73,3 +73,13 @@ add_test(
 set_tests_properties (${prefix}_can_Detect_Too_Big_Int PROPERTIES
     PASS_REGULAR_EXPRESSION "Some arguments are out of range"
     LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Sort_Bigger_Int
+    COMMAND ${APPLICATION}  256 257 1 0 -257 -3 112354 3333 -123233 -323334
+)
+
+set_tests_properties (${prefix}_can_Sort_Bigger_Int PROPERTIES
+    PASS_REGULAR_EXPRESSION "-323334 -123233 -257 -3 0 1 256 257 3333 112354"
+    LABELS "${MODULE}")
