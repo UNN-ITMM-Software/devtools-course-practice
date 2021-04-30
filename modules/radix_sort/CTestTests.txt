@@ -70,6 +70,6 @@ add_test(
     COMMAND ${APPLICATION}  1000000000000000 45 -23 3
 )
 
-set_tests_properties (${prefix}_can_Detect_String PROPERTIES
+set_tests_properties (${prefix}_can_Detect_Too_Big_Int PROPERTIES
     PASS_REGULAR_EXPRESSION "Some argumnets are out of range"
     LABELS "${MODULE}")
