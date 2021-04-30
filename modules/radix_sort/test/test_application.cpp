@@ -1,6 +1,9 @@
 // Copyright 2021 Kolesin Andrey
 #include <gtest/gtest.h>
 
+#include <vector>
+#include <string>
+
 #include "include/application.h"
 
 TEST(RadixSort_Application, can_create_application) {

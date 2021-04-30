@@ -1,7 +1,8 @@
 // Copyright 2021 Kolesin Andrey
 #include <stdio.h>
 #include <stdlib.h>
-#include <iostream>
+#include <vector>
+#include <string>
 
 #include "include/application.h"
 
