@@ -39,9 +39,9 @@ std::string Application::operator()(int argc, const char** argv) {
         } else {
             throw;
         }
-    } catch (std::invalid_argument e) {
+    } catch (std::invalid_argument const &e) {
         return NOT_INTEGER;
-    } catch (std::out_of_range e) {
+    } catch (std::out_of_range const &e) {
         return OUT_OF_RANGE;
     }
     RadixSort::radixSort<int>(arr.begin(), arr.end());
