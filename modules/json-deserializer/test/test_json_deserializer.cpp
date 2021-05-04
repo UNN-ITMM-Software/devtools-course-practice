@@ -26,7 +26,7 @@ TEST(JsonDeserializer, Parse_Returns_Not_Empty_Document_On_String_Literal) {
     const std::string testString = "    \"hello world\"     ";
     JsonDeserializer des;
 
-    auto document = des.parse(testString);
+    JsonDocument document = des.parse(testString);
 
     ASSERT_FALSE(document.empty());
 }
@@ -35,8 +35,9 @@ TEST(JsonDeserializer, Parse_Returns_String_Literal) {
     JsonDeserializer des("    \"hello world\"     ");
 
     JsonDocument document = des.parse();
+    NodeType nodeType = document.getRoot().getNodeType();
 
-    ASSERT_EQ(NodeType::StringLiteral, document.getRoot().getNodeType());
+    ASSERT_EQ(NodeType::StringLiteral, nodeType);
 }
 
 TEST(JsonDeserializer, Parse_Returns_Numeric_Literal) {
@@ -59,6 +60,9 @@ TEST(JsonDeserializer, Parse_Returns_Boolean_Literal) {
     JsonDeserializer des("    false   ");
 
     JsonDocument document = des.parse();
+    JsonNode* node = &document.getRoot();
+    JsonValue* value = dynamic_cast<JsonValue*>(node);
 
     ASSERT_EQ(NodeType::BooleanLiteral, document.getRoot().getNodeType());
+    ASSERT_TRUE(value);
 }

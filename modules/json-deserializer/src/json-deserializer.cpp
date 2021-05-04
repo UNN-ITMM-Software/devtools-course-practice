@@ -99,28 +99,29 @@ std::vector<Token> Lexer::getTokens() {
 JsonDeserializer::JsonDeserializer() {
     lexer = Lexer();
     lookahead = nullptr;
+    document = nullptr;
 }
 
 JsonDeserializer::JsonDeserializer(const std::string& str) {
     lexer = Lexer(str);
     lookahead = nullptr;
+    document = nullptr;
 }
 
 Lexer JsonDeserializer::getLexer() {
     return lexer;
 }
 
-JsonDocument JsonDeserializer::parse() {
-    JsonDocument document;
+JsonDocument& JsonDeserializer::parse() {
+    lookahead = new Token(lexer.getNextToken());
+    document = new JsonDocument();
 
-    lookahead = &lexer.getNextToken();
+    document->setRoot(literal());
 
-    document.setRoot(literal());
-
-    return document;
+    return *document;
 }
 
-JsonDocument JsonDeserializer::parse(const std::string& jsonString) {
+JsonDocument& JsonDeserializer::parse(const std::string& jsonString) {
     if (jsonString.size() == 0) {
         throw std::invalid_argument("String can not be empty");
     }
@@ -171,17 +172,17 @@ JsonNode JsonDeserializer::literal() {
     }
 }
 
-JsonNode JsonDeserializer::stringLiteral() {
+JsonValue JsonDeserializer::stringLiteral() {
     Token token = eat(TokenType::String);
     return JsonValue(NodeType::StringLiteral, token.value);
 }
 
-JsonNode JsonDeserializer::numericLiteral() {
+JsonValue JsonDeserializer::numericLiteral() {
     Token token = eat(TokenType::Number);
     return JsonValue(NodeType::NumericLiteral, token.value);
 }
 
-JsonNode JsonDeserializer::objectLiteral() {
+JsonObject JsonDeserializer::objectLiteral() {
     JsonObject obj = JsonObject(NodeType::ObjectLiteral);
 
     return obj;
@@ -191,12 +192,12 @@ JsonNode JsonDeserializer::arrayLiteral() {
     return JsonNode(NodeType::ArrayLiteral);
 }
 
-JsonNode JsonDeserializer::boolLiteral() {
+JsonValue JsonDeserializer::boolLiteral() {
     Token token = eat(TokenType::Boolean);
     return JsonValue(NodeType::BooleanLiteral, token.value);
 }
 
-JsonNode JsonDeserializer::nullLiteral() {
+JsonValue JsonDeserializer::nullLiteral() {
     Token token = eat(TokenType::Null);
     return JsonValue(NodeType::Null, token.value);
 }
@@ -208,16 +209,21 @@ JsonDocument::JsonDocument() {
 
 JsonDocument::JsonDocument(const JsonDocument& other) {
     isEmpty = other.isEmpty;
-    rootNode = new JsonNode;
-    *rootNode = *other.rootNode;
+    rootNode = new JsonNode(*other.rootNode);
 }
 
-JsonNode JsonDocument::getRoot() {
+JsonNode& JsonDocument::getRoot() {
     return *rootNode;
 }
 
-void JsonDocument::setRoot(JsonNode rootNode) {
-    this->rootNode = &rootNode;
+void JsonDocument::setRoot(const JsonNode& rootNode) {
+    if (this->rootNode == nullptr) {
+        this->rootNode = new JsonNode(rootNode);
+    }
+    else {
+        *this->rootNode = rootNode;
+    }
+
     if (rootNode.getNodeType() != NodeType::UnknownLiteral) {
         isEmpty = false;
     }
@@ -228,16 +234,16 @@ bool JsonDocument::empty()
     return isEmpty;
 }
 
-JsonDocument& JsonDocument::operator=(const JsonDocument& other) {
-    if (this == &other) {
-        return *this;
-    }
-
-    rootNode = new JsonNode;
-    *rootNode = *other.rootNode;
-
-    return *this;
-}
+//JsonDocument& JsonDocument::operator=(const JsonDocument& other) {
+//    if (this == &other) {
+//        return *this;
+//    }
+//
+//    rootNode = new JsonNode;
+//    *rootNode = *other.rootNode;
+//
+//    return *this;
+//}
 
 JsonArray::JsonArray() :
     JsonNode(), dataType(TokenType::Unknown),size(0), jsonArray(std::vector<JsonNode>()) { }
@@ -250,6 +256,8 @@ JsonNode::JsonNode(const JsonNode& other) {
     this->nodeType = other.nodeType;
 }
 
+JsonNode::~JsonNode(){}
+
 JsonNode& JsonNode::operator=(const JsonNode& other) {
     if (this == &other) {
         return *this;
@@ -260,7 +268,7 @@ JsonNode& JsonNode::operator=(const JsonNode& other) {
     return *this;
 }
 
-NodeType JsonNode::getNodeType() {
+NodeType JsonNode::getNodeType() const {
     return nodeType;
 }
 

@@ -111,7 +111,8 @@ class JsonNode {
      JsonNode(const NodeType type);
      JsonNode(const JsonNode& other);
      JsonNode& operator=(const JsonNode& other);
-     NodeType getNodeType();
+     NodeType getNodeType() const;
+     virtual ~JsonNode();
 protected:
     NodeType nodeType;
 };
@@ -146,10 +147,9 @@ class JsonDocument {
  public:
      JsonDocument();
      JsonDocument(const JsonDocument& other);
-     JsonNode getRoot();
-     void setRoot(const JsonNode rootNode);
+     JsonNode& getRoot();
+     void setRoot(const JsonNode& rootNode);
      bool empty();
-     JsonDocument& operator=(const JsonDocument& other);
  private:
      JsonNode* rootNode;
      bool isEmpty;
@@ -159,7 +159,7 @@ struct Token {
     TokenType tokenType;
     std::string value;
 
-    Token(const TokenType type, const std::string value = "") {
+    Token(const TokenType type, const std::string& value = "") {
         this->tokenType = type;
         this->value = value;
     }
@@ -183,6 +183,15 @@ struct Token {
         out << "\tValue: \"" << token.value << "\"\n}" << std::endl;
 
         return out;
+    }
+
+    Token& operator=(const Token& other) {
+        if (this == &other) {
+            return *this;
+        }
+
+        tokenType = other.tokenType;
+        value = other.value;
     }
 };
 
@@ -221,20 +230,21 @@ class JsonDeserializer {
     JsonDeserializer();
     JsonDeserializer(const std::string& jsonString);
 
-    JsonDocument parse();
-    JsonDocument parse(const std::string& jsonString);
+    JsonDocument& parse();
+    JsonDocument& parse(const std::string& jsonString);
     Lexer getLexer();
  private:
+    JsonDocument* document;
     Lexer lexer;
     Token* lookahead;
     Token eat(const TokenType tokenType);
     JsonNode literal();
-    JsonNode stringLiteral();
-    JsonNode numericLiteral();
-    JsonNode objectLiteral();
+    JsonValue stringLiteral();
+    JsonValue numericLiteral();
+    JsonObject objectLiteral();
     JsonNode arrayLiteral();
-    JsonNode boolLiteral();
-    JsonNode nullLiteral();
+    JsonValue boolLiteral();
+    JsonValue nullLiteral();
 };
 
 #endif  // MODULES_JSON_DESERIALIZER_INCLUDE_JSON_DESERIALIZER_H_
