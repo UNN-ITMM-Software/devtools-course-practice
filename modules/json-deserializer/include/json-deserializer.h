@@ -10,6 +10,15 @@
 #include <ostream>
 #include <ostream>
 #include <map>
+#include <algorithm>
+
+class JsonNode;
+class JsonData;
+enum class TokenType;
+
+typedef std::map<std::string, JsonNode> JSONObject;
+typedef std::vector<JsonNode> JSONArray;
+typedef std::pair<TokenType, std::string> specification;
 
 enum class TokenType {
     Number,
@@ -94,62 +103,71 @@ std::ostream& operator<<(std::ostream& out, const TokenType& type) {
 };
 
 enum class NodeType {
-    UnknownLiteral,
-    NumericLiteral,
-    StringLiteral,
-    ObjectLiteral,
-    ArrayLiteral,
-    BooleanLiteral,
+    Unknown,
+    Numeric,
+    String,
+    Object,
+    Array,
+    Boolean,
     Null
 };
 
-using specification = std::pair<TokenType, std::string>;
+class JsonData {
+ public:
+     JsonData();
+     JsonData(const std::string value);
+     JsonData(const JSONObject& object);
+     JsonData(const JSONArray& array);
+     JsonData(const JsonData& other);
+
+     std::string& getValue();
+
+     JsonNode& operator[] (std::string key);
+     JsonNode& operator[] (int index);
+ private:
+    JSONObject object;
+    JSONArray array;
+    std::string value;
+};
 
 class JsonNode {
  public:
      JsonNode();
      JsonNode(const NodeType type);
      JsonNode(const JsonNode& other);
+     JsonNode(const NodeType type, const JsonData& data);
      JsonNode& operator=(const JsonNode& other);
-     NodeType getNodeType() const;
      virtual ~JsonNode();
+
+     NodeType getNodeType() const;
+     void setData(const JsonData& data);
+     JsonData& getData();
+
+     template <class type>
+     type to(const type& default = type()) {
+         if (nodeType == NodeType::Unknown) {
+             return default;
+         }
+
+         std::string data = this->data->getValue();
+         return type(data);
+     }
 protected:
     NodeType nodeType;
-};
-
-class JsonValue : public JsonNode {
-public:
-    JsonValue(NodeType nodeType, const std::string& value);
-    JsonValue(const JsonValue& other);
-    JsonValue& operator=(const JsonValue& other);
-    std::string getValue();
-private:
-    std::string value;
-};
-
-class JsonObject : public JsonNode {
-public:
-    JsonObject(NodeType nodeType);
-private:
-    std::map<std::string, JsonNode> fields;
-};
-
-class JsonArray : public JsonNode {
-public:
-    JsonArray();
-private:
-    size_t size;
-    TokenType dataType;
-    std::vector<JsonNode> jsonArray;
+    JsonData* data;
 };
 
 class JsonDocument {
  public:
      JsonDocument();
      JsonDocument(const JsonDocument& other);
+
      JsonNode& getRoot();
      void setRoot(const JsonNode& rootNode);
      bool empty();
+
+     JsonNode& operator[] (std::string key);
+     JsonNode& operator[] (int index);
  private:
      JsonNode* rootNode;
      bool isEmpty;
@@ -230,21 +248,55 @@ class JsonDeserializer {
     JsonDeserializer();
     JsonDeserializer(const std::string& jsonString);
 
-    JsonDocument& parse();
-    JsonDocument& parse(const std::string& jsonString);
+    JsonDocument parse();
+    JsonDocument parse(const std::string& jsonString);
+
     Lexer getLexer();
  private:
-    JsonDocument* document;
     Lexer lexer;
     Token* lookahead;
     Token eat(const TokenType tokenType);
     JsonNode literal();
-    JsonValue stringLiteral();
-    JsonValue numericLiteral();
-    JsonObject objectLiteral();
-    JsonNode arrayLiteral();
-    JsonValue boolLiteral();
-    JsonValue nullLiteral();
+    JsonNode numericLiteral();
+    JsonNode stringLiteral();
+    JsonNode nullLiteral();
+    JsonNode booleanLiteral();
+    JsonNode array();
+    JsonNode object();
 };
+
+bool equalsIgnoreCase(std::string lhs, std::string rhs);
+
+template <> inline
+bool JsonNode::to(const bool& default) {
+    if (nodeType == NodeType::Unknown) {
+        return default;
+    }
+
+    std::string data = this->data->getValue();
+    
+    if (equalsIgnoreCase(data, "true")) {
+        return true;
+    }
+
+    return false;
+}
+
+template <> inline
+int JsonNode::to<int>(const int& default) {
+    if (nodeType == NodeType::Unknown) {
+        return default;
+    }
+
+    return atoi(this->data->getValue().c_str());
+}
+
+inline
+bool equalsIgnoreCase(std::string lhs, std::string rhs) {
+    std::transform(lhs.begin(), lhs.end(), lhs.begin(), ::tolower);
+    std::transform(rhs.begin(), rhs.end(), rhs.begin(), ::tolower);
+
+    return lhs.compare(rhs) == 0;
+}
 
 #endif  // MODULES_JSON_DESERIALIZER_INCLUDE_JSON_DESERIALIZER_H_

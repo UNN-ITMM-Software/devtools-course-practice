@@ -37,7 +37,8 @@ TEST(JsonDeserializer, Parse_Returns_String_Literal) {
     JsonDocument document = des.parse();
     NodeType nodeType = document.getRoot().getNodeType();
 
-    ASSERT_EQ(NodeType::StringLiteral, nodeType);
+    ASSERT_EQ(NodeType::String, nodeType);
+    ASSERT_EQ("\"hello world\"", document.getRoot().to<std::string>());
 }
 
 TEST(JsonDeserializer, Parse_Returns_Numeric_Literal) {
@@ -45,7 +46,8 @@ TEST(JsonDeserializer, Parse_Returns_Numeric_Literal) {
 
     JsonDocument document = des.parse();
 
-    ASSERT_EQ(NodeType::NumericLiteral, document.getRoot().getNodeType());
+    ASSERT_EQ(NodeType::Numeric, document.getRoot().getNodeType());
+    ASSERT_EQ(78964, document.getRoot().to<int>());
 }
 
 TEST(JsonDeserializer, Parse_Returns_Null_Literal) {
@@ -57,12 +59,27 @@ TEST(JsonDeserializer, Parse_Returns_Null_Literal) {
 }
 
 TEST(JsonDeserializer, Parse_Returns_Boolean_Literal) {
-    JsonDeserializer des("    false   ");
+    JsonDeserializer des("    true   ");
 
     JsonDocument document = des.parse();
-    JsonNode* node = &document.getRoot();
-    JsonValue* value = dynamic_cast<JsonValue*>(node);
 
-    ASSERT_EQ(NodeType::BooleanLiteral, document.getRoot().getNodeType());
-    ASSERT_TRUE(value);
+    ASSERT_EQ(NodeType::Boolean, document.getRoot().getNodeType());
+    ASSERT_EQ(true, document.getRoot().to<bool>());
+}
+
+TEST(JsonDeserializer, Parse_Returns_Array) {
+    JsonDeserializer des("[\"element\"]");
+
+    JsonDocument document = des.parse();
+
+    ASSERT_EQ(NodeType::Array, document.getRoot().getNodeType());
+    ASSERT_EQ("\"element\"", document[0].to<std::string>());
+}
+
+TEST(JsonDeserializer, Parse_Returns_Object) {
+    JsonDeserializer des("{   \"field\" :   \"value\"   }");
+
+    JsonDocument document = des.parse();
+
+    ASSERT_EQ(NodeType::Object, document.getRoot().getNodeType());
 }
