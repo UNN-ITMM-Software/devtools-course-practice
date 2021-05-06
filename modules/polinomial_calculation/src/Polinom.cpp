@@ -86,7 +86,7 @@ Polinom::Polinom(std::string str, std::vector<std::string> _var, int _base) {
                 if (q.empty()) {
                     std::vector<int> pows;
                     for (std::map<std::string, int>::iterator i = vars.begin();
-                        i != vars.end(); i++) {
+                        i != vars.end(); ++i) {
                         pows.push_back(i->second);
                         i->second = 0;
                     }
@@ -111,7 +111,7 @@ Polinom::Polinom(std::string str, std::vector<std::string> _var, int _base) {
                 || q.front().first == "-")) {
                 std::vector<int> pows;
                 for (std::map<std::string, int>::iterator i = vars.begin();
-                    i != vars.end(); i++) {
+                    i != vars.end(); ++i) {
                     pows.push_back(i->second);
                     i->second = 0;
                 }
@@ -155,7 +155,7 @@ Polinom::Polinom(std::string str, std::vector<std::string> _var, int _base) {
                 if (q.empty()) {
                     std::vector<int> pows;
                     for (std::map<std::string, int>::iterator i = vars.begin();
-                        i != vars.end(); i++) {
+                        i != vars.end(); ++i) {
                         pows.push_back(i->second);
                         i->second = 0;
                     }
@@ -367,8 +367,7 @@ Polinom Polinom::operator*(const Polinom& r) {
 
     Polinom res(var, base);
 
-    Monom* t1, * t2, * t3;
-    t1 = res.head;
+    Monom* t2, * t3;
     t2 = head->next;
     t3 = r.head->next;
 
@@ -390,8 +389,7 @@ Polinom Polinom::operator*(const Polinom& r) {
 Polinom Polinom::operator*(double factor) {
     Polinom res(var, base);
 
-    Monom* t1, * t2;
-    t1 = res.head;
+    Monom* t2;
     t2 = head->next;
 
     while (t2 != head) {
@@ -409,7 +407,7 @@ std::queue<std::pair<std::string, ElemType>> Polinom::Parse(std::string expr) {
 
     std::queue<std::pair<std::string, ElemType>> parsed;
 
-    for (std::string::const_iterator i = expr.cbegin(); i != expr.cend(); i++) {
+    for (std::string::const_iterator i = expr.cbegin(); i != expr.cend(); ++i) {
         switch (state) {
         case 0:
             if (*i == '-' && (parsed.empty()
