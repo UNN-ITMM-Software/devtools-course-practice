@@ -48,8 +48,6 @@ class Polinom {
     bool operator!=(const Polinom& r) const;
 
     Polinom operator*(double factor);
-
-    friend std::ostream& operator<<(std::ostream& ostr, const Polinom& pol);
 };
 
 #endif  // MODULES_POLINOMIAL_CALCULATION_INCLUDE_POLINOM_H_

@@ -498,25 +498,3 @@ int Polinom::isNumber(std::string str) {
     }
     return true;
 }
-
-std::ostream& operator<<(std::ostream& ostr, const Polinom& pol) {
-    Monom* p = pol.head->next;
-
-    while (p != pol.head) {
-        if (p->coef > 0) ostr << "+";
-        ostr << p->coef;
-        std::vector<int> pows;
-        pows = pol.toBaseSystem(p->pow);
-        for (int i = 0; i < pol.numOfPows; i++) {
-            if (pows[i]) {
-                ostr << "*" << pol.var[i];
-                if (pows[i] != 1)
-                    ostr << "^" << pows[i];
-            }
-        }
-        ostr << " ";
-        p = p->next;
-    }
-
-    return ostr;
-}
