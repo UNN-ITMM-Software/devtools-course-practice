@@ -1,0 +1,84 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_print_help_without_arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_print_help_without_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a celluar state application"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_check_number_of_arguments
+    COMMAND ${APPLICATION} 1 2
+)
+set_tests_properties (${prefix}_can_check_number_of_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 4 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_detect_wrong_count_iteration
+    COMMAND ${APPLICATION} -1 1 DAD
+)
+set_tests_properties (${prefix}_can_detect_wrong_count_iteration PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR -1 invalid arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_detect_wrong_rows
+    COMMAND ${APPLICATION} 1 -3 DAD
+)
+set_tests_properties (${prefix}_can_detect_wrong_rows PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR -3 invalid arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_detect_wrong_state
+    COMMAND ${APPLICATION} 2 2 DABD
+)
+set_tests_properties (${prefix}_can_detect_wrong_state PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Incorrect state."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_with_valid_arguments_1
+    COMMAND ${APPLICATION} 2 2 DAD
+)
+set_tests_properties (${prefix}_can_with_valid_arguments_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "DAD\nDAD"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_with_valid_arguments_2
+    COMMAND ${APPLICATION} 3 5 DDADD
+)
+set_tests_properties (${prefix}_can_with_valid_arguments_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "DDADD\nDAAAD\nDADDD\nDAADD\nDADAD"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_with_valid_arguments_3
+    COMMAND ${APPLICATION} 4 7 ADADAD
+)
+set_tests_properties (${prefix}_can_with_valid_arguments_3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ADADAD\nDDADAD\nDAADAD\nDADDAD\nDAAAAD\nDADDDD\nDAADDD"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_with_valid_arguments_4
+    COMMAND ${APPLICATION} 2 2 DDADDA
+)
+set_tests_properties (${prefix}_can_with_valid_arguments_4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "DDADDA\nDAAAAD"
+    LABELS "${MODULE}")

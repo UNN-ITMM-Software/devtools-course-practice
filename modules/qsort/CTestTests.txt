@@ -1,0 +1,53 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_run PROPERTIES
+    PASS_REGULAR_EXPRESSION ".*"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_print_help_without_arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_print_help_without_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_sort_less_than_two_nums
+    COMMAND ${APPLICATION} 1
+)
+set_tests_properties (${prefix}_cannot_sort_less_than_two_nums PROPERTIES
+    PASS_REGULAR_EXPRESSION "Unable to sort"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_parse_argument_with_bad_symbols
+    COMMAND ${APPLICATION} 1.5 zzz
+)
+set_tests_properties (${prefix}_cannot_parse_argument_with_bad_symbols PROPERTIES
+    PASS_REGULAR_EXPRESSION "invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_parse_argument_with_out_of_range
+    COMMAND ${APPLICATION} 1.5 2e400
+)
+set_tests_properties (${prefix}_cannot_parse_argument_with_out_of_range PROPERTIES
+    PASS_REGULAR_EXPRESSION "out of range"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_sort
+    COMMAND ${APPLICATION} 6 -4.3 47 1.1 2 -5 -3.87
+)
+set_tests_properties (${prefix}_can_sort PROPERTIES
+    PASS_REGULAR_EXPRESSION "-5\\.?0* -4\\.30* -3\\.870* 1\\.10* 2\\.?0* 6\\.?0* 47\\.?0*"
+    LABELS "${MODULE}")
