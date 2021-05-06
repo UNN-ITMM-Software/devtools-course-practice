@@ -2,6 +2,11 @@
 #include "include/Polinom.h"
 #include <cmath>
 #include <iostream>
+#include <utility>
+#include <map>
+#include <queue>
+#include <string>
+#include <vector>
 #include "include/Monom.h"
 
 
