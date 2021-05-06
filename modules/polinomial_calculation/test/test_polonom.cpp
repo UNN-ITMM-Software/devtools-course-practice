@@ -1,5 +1,7 @@
 // Copyright 2021 Gapon Andrey
 #include <gtest/gtest.h>
+#include <string>
+#include <vector>
 #include "include/Polinom.h"
 
 TEST(Poly, can_create_polinom_with_vars_and_base) {
