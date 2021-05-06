@@ -373,7 +373,7 @@ Polinom Polinom::operator*(const Polinom& r) {
 
     while (t2 != head) {
         for (t3 = r.head->next; t3 != r.head; t3 = t3->next) {
-            if (t2->coef * t3->coef) {
+            if (abs(t2->coef * t3->coef) > 1e-6) {
                 if ((t2->pow + t3->pow) >= pow(base, numOfPows))
                     throw "Overflow error: power is bigger than base";
                 res.sortedAdd(t2->coef * t3->coef, t2->pow + t3->pow);
