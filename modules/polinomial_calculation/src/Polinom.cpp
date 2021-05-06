@@ -491,7 +491,6 @@ int Polinom::isOperator(std::string str) {
 }
 
 int Polinom::isNumber(std::string str) {
-    // if(str[0] == '-') str.erase(str.begin(), str.begin() + 1);
     for (auto i = str.begin(); i < str.end(); i++) {
         if (*i == '-') continue;
         if (*i < '0' || *i > '9') return false;
