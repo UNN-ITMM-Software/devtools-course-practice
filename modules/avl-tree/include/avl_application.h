@@ -8,20 +8,7 @@
 
 #include "include/avl.h"
 
-enum class etOperation {
-    eSEARCH_ELEMENT = 0,
-    eSEARCH_MAX_ELEMENT = 1,
-    eSEARCH_MIN_ELEMENT = 2
-};
-
-static struct responseHeaderMap : public std::map<std::string, etOperation> {
-    responseHeaderMap() {
-        this->operator[]("-s") = etOperation::eSEARCH_ELEMENT;
-        this->operator[]("-smin") = etOperation::eSEARCH_MIN_ELEMENT;
-        this->operator[]("-smax") = etOperation::eSEARCH_MAX_ELEMENT;
-    }
-    ~responseHeaderMap() {}
-} xmap;
+std::map<std::string, int> xmap = {{"-s", 0 }, {"-smin", 1}, {"-smax", 2}};
 
 class CAvlApplication {
  public:
@@ -29,7 +16,6 @@ class CAvlApplication {
     key searchElem;
     CAvlApplication() = default;
     std::string operator()(int argc, const char** argv);
-
  private:
     void Help(const char* appname, const std::string& message = "");
     bool ValidateNumberOfArguments(int argc, const char** argv);

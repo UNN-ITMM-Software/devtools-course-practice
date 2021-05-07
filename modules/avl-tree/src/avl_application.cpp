@@ -11,15 +11,15 @@ std::string CAvlApplication::operator()(int argc, const char ** argv) {
     if (ValidateArguments(argc, argv)) {
         int64_t key;
         switch (xmap[op]) {
-        case etOperation::eSEARCH_ELEMENT:
+        case 0:
             key = avl.Find(searchElem);
             return std::string(std::to_string(key));
             break;
-        case etOperation::eSEARCH_MAX_ELEMENT:
+        case 1:
             key = avl.FindMax();
             return std::string(std::to_string(key));
             break;
-        case etOperation::eSEARCH_MIN_ELEMENT:
+        case 2:
             key = avl.FindMin();
             return std::string(std::to_string(key));
             break;
@@ -78,7 +78,7 @@ bool CAvlApplication::ValidateArguments(int argc, const char ** argv) {
         }
         if (i == indexOperation) {
             op = itOp;
-            if (xmap[op] == etOperation::eSEARCH_ELEMENT) {
+            if (xmap[op] == 0) {
                 if (i + 1 != argc) {
                     searchElem = std::stoi(argv[i + 1]);
                     return true;
