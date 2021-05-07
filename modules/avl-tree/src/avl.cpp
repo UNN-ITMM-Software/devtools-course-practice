@@ -1,5 +1,6 @@
 // Copyright 2021 Kirichenko Nikita
 
+#include <random>
 #include <algorithm>
 
 #include "include/avl.h"
@@ -70,6 +71,13 @@ CNode* CAvl::FindMin(CNode* t) {
     } else {
         return FindMin(t->pLeft);
     }
+}
+
+CNode* CAvl::FindMax(CNode* t) {
+    if (t->pRight == nullptr)
+        return t;
+    else
+        return FindMax(t->pRight);
 }
 
 CNode* CAvl::Remove(const key& x, CNode* t) {
@@ -151,4 +159,21 @@ key CAvl::GetRoot() const {
     } else {
         return key();
     }
+}
+
+key CAvl::FindMin() {
+    CNode* t = FindMin(pRoot);
+    return t->data;
+}
+
+key CAvl::FindMax() {
+    CNode* t = FindMax(pRoot);
+    return t->data;
+}
+
+key GetRandomKey(key nBegin, key nEnd) {
+    static std::random_device random_device;
+    static std::mt19937 generator(random_device());
+    static std::uniform_int_distribution<key> distribution(nBegin, nEnd);
+    return distribution(generator);
 }
