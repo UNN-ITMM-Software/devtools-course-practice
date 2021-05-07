@@ -18,14 +18,15 @@ class Polinom {
     std::vector<std::string> var;
 
     const std::string operations = { '+', '-', '*', '^', '(', ')', '=' };
+ 
+ private:
+     std::vector<int> toBaseSystem(int pow) const;
+     int toDecimalSystem(const std::vector<int> v) const;
+     int isOperator(std::string str);
+     int isNumber(std::string str);
+     std::queue<std::pair<std::string, ElemType>> Parse(std::string expr);
 
  public:
-    std::vector<int> toBaseSystem(int pow) const;
-    int toDecimalSystem(const std::vector<int> v) const;
-    int isOperator(std::string str);
-    int isNumber(std::string str);
-    std::queue<std::pair<std::string, ElemType>> Parse(std::string expr);
-
     explicit Polinom(std::vector<std::string> _var, int _base = 20):
         base(_base) {
         if (_base < 2) throw "Base should be higher than 2";
