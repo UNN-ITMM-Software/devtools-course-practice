@@ -10,7 +10,8 @@
 
 class CAvlApplication {
  public:
-    std::map<std::string, int> xmap = { {"-s", 0 }, {"-smin", 1}, {"-smax", 2} };
+    std::map<std::string, int> xmap =
+    { {"-s", 0 }, {"-smin", 1}, {"-smax", 2} };
     const char* _op;
     key _searchElem;
     CAvlApplication() = default;
