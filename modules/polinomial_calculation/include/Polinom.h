@@ -18,7 +18,7 @@ class Polinom {
     std::vector<std::string> var;
 
     const std::string operations = { '+', '-', '*', '^', '(', ')', '=' };
- 
+
  private:
      std::vector<int> toBaseSystem(int pow) const;
      int toDecimalSystem(const std::vector<int> v) const;
