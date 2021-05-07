@@ -16,6 +16,7 @@ class CAvlApplication {
     key _searchElem;
     CAvlApplication() = default;
     std::string operator()(int argc, const char** argv);
+
  private:
     void Help(const char* appname, const std::string& message = "");
     bool ValidateNumberOfArguments(int argc, const char** argv);

@@ -28,6 +28,7 @@ class CAvlApplicationTest : public ::testing::Test {
     void Assert(std::string expected) {
         EXPECT_TRUE(RE::PartialMatch(_output, RE(expected)));
     }
+
  private:
     CAvlApplication _app;
     string _output;
