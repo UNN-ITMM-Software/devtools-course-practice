@@ -8,12 +8,11 @@
 
 #include "include/avl.h"
 
-std::map<std::string, int> xmap = {{"-s", 0 }, {"-smin", 1}, {"-smax", 2}};
-
 class CAvlApplication {
  public:
-    const char* op;
-    key searchElem;
+    std::map<std::string, int> xmap = { {"-s", 0 }, {"-smin", 1}, {"-smax", 2} };
+    const char* _op;
+    key _searchElem;
     CAvlApplication() = default;
     std::string operator()(int argc, const char** argv);
  private:
@@ -21,7 +20,7 @@ class CAvlApplication {
     bool ValidateNumberOfArguments(int argc, const char** argv);
     bool ValidateArguments(int argc, const char** argv);
     std::string _message;
-    CAvl avl;
+    CAvl _avl;
 };
 
 #endif  // MODULES_AVL_TREE_INCLUDE_AVL_APPLICATION_H_

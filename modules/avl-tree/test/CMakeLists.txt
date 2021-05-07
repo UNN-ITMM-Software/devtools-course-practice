@@ -13,10 +13,6 @@ if (UNIX)
 endif (UNIX)
 target_link_libraries(${target} gtest ${LIBRARY})
 
-if(MSVC)
-    target_compile_definitions(${target} PUBLIC _VARIADIC_MAX=10)
-endif()
-
 add_test(
     NAME ${MODULE}_gtest
     COMMAND ${target}

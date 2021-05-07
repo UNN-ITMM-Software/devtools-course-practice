@@ -10,17 +10,17 @@
 std::string CAvlApplication::operator()(int argc, const char ** argv) {
     if (ValidateArguments(argc, argv)) {
         int64_t key;
-        switch (xmap[op]) {
+        switch (xmap[_op]) {
         case 0:
-            key = avl.Find(searchElem);
-            return std::string(std::to_string(key));
-            break;
-        case 1:
-            key = avl.FindMax();
+            key = _avl.Find(_searchElem);
             return std::string(std::to_string(key));
             break;
         case 2:
-            key = avl.FindMin();
+            key = _avl.FindMax();
+            return std::string(std::to_string(key));
+            break;
+        case 1:
+            key = _avl.FindMin();
             return std::string(std::to_string(key));
             break;
         }
@@ -68,7 +68,7 @@ bool CAvlApplication::ValidateArguments(int argc, const char ** argv) {
         int i = 1;
         while (i < indexOperation) {
             try {
-                avl.Insert(key(std::stoi(argv[i])));
+                _avl.Insert(key(std::stoi(argv[i])));
             }
             catch(const std::exception &e) {
                 Help(argv[0], "Invalid key!" + std::string(e.what()));
@@ -77,10 +77,10 @@ bool CAvlApplication::ValidateArguments(int argc, const char ** argv) {
             i++;
         }
         if (i == indexOperation) {
-            op = itOp;
-            if (xmap[op] == 0) {
+            _op = itOp;
+            if (xmap[_op] == 0) {
                 if (i + 1 != argc) {
-                    searchElem = std::stoi(argv[i + 1]);
+                    _searchElem = std::stoi(argv[i + 1]);
                     return true;
                 } else {
                     Help(argv[0], "Invalid search element!");

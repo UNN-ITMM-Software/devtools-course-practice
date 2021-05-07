@@ -64,62 +64,22 @@ TEST_F(CAvlApplicationTest,
     Assert("Invalid search element!.*");
 }
 
-TEST_F(CAvlApplicationTest, Can_Find_Min_Item1) {
+TEST_F(CAvlApplicationTest, Can_Find_Min_Item) {
     vector<string> args =
     {"4", "7", "10", "-14", "21", "124", "-smin"};
     Act(args);
     Assert("-14");
 }
 
-TEST_F(CAvlApplicationTest, Can_Find_Min_Item2) {
-    vector<string> args =
-    { "9", "7", "44", "-1", "13", "200", "-smin" };
-    Act(args);
-    Assert("-1");
-}
-
-TEST_F(CAvlApplicationTest, Can_Find_Min_Item3) {
-    vector<string> args =
-    { "33", "22", "13", "-12", "144", "20", "-smin" };
-    Act(args);
-    Assert("-12");
-}
-
-TEST_F(CAvlApplicationTest, Can_Find_Max_Item1) {
+TEST_F(CAvlApplicationTest, Can_Find_Max_Item) {
     vector<string> args =
     {"4", "7", "10", "-14", "21", "124", "-smax"};
     Act(args);
     Assert("124");
 }
 
-TEST_F(CAvlApplicationTest, Can_Find_Max_Item2) {
-    vector<string> args =
-    { "1", "2", "56", "12", "-5", "11", "-smax" };
-    Act(args);
-    Assert("56");
-}
-
-TEST_F(CAvlApplicationTest, Can_Find_Max_Item3) {
-    vector<string> args =
-    { "1", "2", "3", "4", "5", "6", "-smax" };
-    Act(args);
-    Assert("6");
-}
-
-TEST_F(CAvlApplicationTest, Can_Find_Item1) {
+TEST_F(CAvlApplicationTest, Can_Find_Item) {
     vector<string> args = {"4", "7", "10", "-14", "21", "124", "-s", "-14"};
     Act(args);
     Assert("-14");
-}
-
-TEST_F(CAvlApplicationTest, Can_Find_Item2) {
-    vector<string> args = { "1", "15", "-42", "24", "20", "100", "-s", "1" };
-    Act(args);
-    Assert("1");
-}
-
-TEST_F(CAvlApplicationTest, Can_Find_Item3) {
-    vector<string> args = { "4", "7", "10", "-14", "21", "124", "-s", "21" };
-    Act(args);
-    Assert("21");
 }
