@@ -170,10 +170,3 @@ key CAvl::FindMax() {
     CNode* t = FindMax(pRoot);
     return t->data;
 }
-
-key GetRandomKey(key nBegin, key nEnd) {
-    static std::random_device random_device;
-    static std::mt19937 generator(random_device());
-    static std::uniform_int_distribution<key> distribution(nBegin, nEnd);
-    return distribution(generator);
-}

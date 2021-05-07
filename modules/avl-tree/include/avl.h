@@ -7,8 +7,6 @@
 
 using key = std::int64_t;
 
-key GetRandomKey(key nBegin, key nEnd);
-
 struct CNode {
     key data;
     CNode *pLeft;

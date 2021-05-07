@@ -78,14 +78,15 @@ bool CAvlApplication::ValidateArguments(int argc, const char ** argv) {
         }
         if (i == indexOperation) {
             op = itOp;
-            if (xmap[op] == etOperation::eSEARCH_ELEMENT)
+            if (xmap[op] == etOperation::eSEARCH_ELEMENT) {
                 if (i + 1 != argc) {
-                        searchElem = std::stoi(argv[i + 1]);
-                        return true;
+                    searchElem = std::stoi(argv[i + 1]);
+                    return true;
                 } else {
                     Help(argv[0], "Invalid search element!");
                     return false;
                 }
+            }
             return true;
         }
     }
