@@ -109,7 +109,11 @@ enum class NodeType {
     Object,
     Array,
     Boolean,
-    Null
+    Null,
+    ArrayEnd,
+    ObjectEnd,
+    Delimiter,
+    Colon
 };
 
 class JsonData {
@@ -124,6 +128,8 @@ class JsonData {
 
      JsonNode& operator[] (std::string key);
      JsonNode& operator[] (int index);
+
+     JsonData& operator=(const JsonData& other);
  private:
     JSONObject object;
     JSONArray array;

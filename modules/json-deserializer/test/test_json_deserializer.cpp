@@ -38,7 +38,7 @@ TEST(JsonDeserializer, Parse_Returns_String_Literal) {
     NodeType nodeType = document.getRoot().getNodeType();
 
     ASSERT_EQ(NodeType::String, nodeType);
-    ASSERT_EQ("\"hello world\"", document.getRoot().to<std::string>());
+    ASSERT_EQ("hello world", document.getRoot().to<std::string>());
 }
 
 TEST(JsonDeserializer, Parse_Returns_Numeric_Literal) {
@@ -68,18 +68,27 @@ TEST(JsonDeserializer, Parse_Returns_Boolean_Literal) {
 }
 
 TEST(JsonDeserializer, Parse_Returns_Array) {
-    JsonDeserializer des("[\"element\"]");
+    JsonDeserializer des("[\"element\", \"element2\"]");
+    std::string expectedValue = "element2";
 
     JsonDocument document = des.parse();
+    JsonNode resultNode = document.getRoot();
+    std::string resultValue = resultNode.getData()[1].to<std::string>();
 
-    ASSERT_EQ(NodeType::Array, document.getRoot().getNodeType());
-    ASSERT_EQ("\"element\"", document[0].to<std::string>());
+    ASSERT_EQ(NodeType::Array, resultNode.getNodeType());
+    ASSERT_EQ(expectedValue, resultValue);
 }
 
 TEST(JsonDeserializer, Parse_Returns_Object) {
-    JsonDeserializer des("{   \"field\" :   \"value\"   }");
+    JsonDeserializer des("{   \"field\" :   "
+        "\"value\", \"intField\" : \"1234\"   }");
+    std::string expectedValue = "value";
 
     JsonDocument document = des.parse();
+    JsonNode resultNode = document.getRoot();
+    std::string resultValue = resultNode.getData()["field"]
+        .to<std::string>();
 
-    ASSERT_EQ(NodeType::Object, document.getRoot().getNodeType());
+    ASSERT_EQ(NodeType::Object, resultNode.getNodeType());
+    ASSERT_EQ(expectedValue, resultValue);
 }

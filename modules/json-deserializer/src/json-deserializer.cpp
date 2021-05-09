@@ -176,6 +176,22 @@ JsonNode JsonDeserializer::literal() {
     case TokenType::LeftBrace: {
         return object();
     }
+    case TokenType::RightBracket: {
+        Token token = eat(lookahead->tokenType);
+        return JsonNode(NodeType::ArrayEnd, JsonData(token.value));
+    }
+    case TokenType::RightBrace: {
+        Token token = eat(lookahead->tokenType);
+        return JsonNode(NodeType::ObjectEnd, JsonData(token.value));
+    }
+    case TokenType::Colon: {
+        Token token = eat(lookahead->tokenType);
+        return JsonNode(NodeType::Colon , JsonData(token.value));
+    }
+    case TokenType::Delimiter: {
+        Token token = eat(lookahead->tokenType);
+        return JsonNode(NodeType::Delimiter, JsonData(token.value));
+    }
     default: {
         std::stringstream ss;
         ss << "Parse Error! Toke: " << *lookahead;
@@ -193,7 +209,7 @@ JsonNode JsonDeserializer::numericLiteral() {
 JsonNode JsonDeserializer::stringLiteral() {
     Token token = eat(TokenType::String);
 
-    return JsonNode(NodeType::String, JsonData(token.value));
+    return JsonNode(NodeType::String, JsonData(slice(token.value, 1, 1)));
 }
 
 JsonNode JsonDeserializer::nullLiteral() {
@@ -209,23 +225,54 @@ JsonNode JsonDeserializer::booleanLiteral() {
 }
 
 JsonNode JsonDeserializer::array() {
-    Token token = eat(TokenType::LeftBracket);
+    eat(TokenType::LeftBracket);
 
     JSONArray array;
-    JsonNode nextToken = literal();
-    NodeType expectedNodeType = nextToken.getNodeType();
-    while(nextToken.getNodeType() == expectedNodeType) {
-        array.push_back(nextToken);
-        nextToken = literal();
+    JsonNode nextNode = literal();
+    NodeType expectedNodeType = nextNode.getNodeType();
+    NodeType actualType = expectedNodeType;
+    while(actualType != NodeType::ArrayEnd) {
+        if (actualType == expectedNodeType) {
+            array.push_back(nextNode);
+        }
+        nextNode = literal();
+        actualType = nextNode.getNodeType();
     }
 
     return JsonNode(NodeType::Array, JsonData(array));
 }
 
 JsonNode JsonDeserializer::object() {
-    Token token = eat(TokenType::LeftBrace);
+    eat(TokenType::LeftBrace);
 
     JSONObject object;
+    JsonNode nextNode = literal();
+
+    while (nextNode.getNodeType() != NodeType::ObjectEnd) {
+        switch (nextNode.getNodeType()) {
+        case NodeType::String: {
+            auto key = nextNode.getData().getValue();
+            nextNode = literal();
+            if (nextNode.getNodeType() != NodeType::Colon) {
+                throw "Invalid assignment expression!";
+            }
+            nextNode = literal();
+            object.insert(std::make_pair(key, nextNode));
+            break;
+        }
+        case NodeType::Colon: {
+            break;
+        }
+        case NodeType::Delimiter: {
+            break;
+        }
+        default: {
+            throw "Invalid object expression!";
+        }
+        }
+
+        nextNode = literal();
+    }
 
     return JsonNode(NodeType::Object, JsonData(object));
 }
@@ -301,6 +348,13 @@ JsonNode& JsonNode::operator=(const JsonNode& other) {
 
     nodeType = other.nodeType;
 
+    if (!data) {
+        data = new JsonData;
+    }
+    else {
+        *data = *other.data;
+    }
+
     return *this;
 }
 
@@ -346,4 +400,16 @@ JsonNode& JsonData::operator[](std::string key) {
 
 JsonNode& JsonData::operator[](int index) {
     return array[index];
+}
+
+JsonData& JsonData::operator=(const JsonData& other) {
+    if (this == &other) {
+        return *this;
+    }
+
+    object = other.object;
+    array = other.array;
+    value = other.value;
+
+    return *this;
 }
