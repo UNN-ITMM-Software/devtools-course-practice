@@ -363,8 +363,19 @@ JsonNode& JsonNode::operator=(const JsonNode& other) {
 }
 
 bool operator==(const JsonNode& lhs, const JsonNode& rhs) {
-    return lhs.nodeType == rhs.nodeType
-        && lhs.data == rhs.data;
+    if (lhs.nodeType != rhs.nodeType) {
+        return false;
+    }
+
+    if (!lhs.data && !rhs.data) {
+        return true;
+    }
+
+    if (!lhs.data || !rhs.data) {
+        return false;
+    }
+
+    return *lhs.data == *rhs.data;
 }
 
 bool operator!=(const JsonNode& lhs, const JsonNode& rhs) {
