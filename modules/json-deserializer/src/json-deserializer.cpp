@@ -349,14 +349,36 @@ JsonNode& JsonNode::operator=(const JsonNode& other) {
     if (this != &other) {
         nodeType = other.nodeType;
 
-        if (!data) {
-            data = new JsonData;
+        if (!other.data) {
+            data = nullptr;
         } else {
+            if (!data) {
+                data = new JsonData;
+            }
             *data = *other.data;
         }
     }
 
     return *this;
+}
+
+bool operator==(const JsonNode& lhs, const JsonNode& rhs) {
+    return lhs.nodeType == rhs.nodeType
+        && lhs.data == rhs.data;
+}
+
+bool operator!=(const JsonNode& lhs, const JsonNode& rhs) {
+    return !(lhs == rhs);
+}
+
+bool operator==(const JsonData& lhs, const JsonData& rhs) {
+    return lhs.object == rhs.object
+        && lhs.array == rhs.array
+        && lhs.value == rhs.value;
+}
+
+bool operator!=(const JsonData& lhs, const JsonData& rhs) {
+    return !(lhs == rhs);
 }
 
 NodeType JsonNode::getNodeType() const {
@@ -368,6 +390,10 @@ void JsonNode::setData(const JsonData& data) {
 }
 
 JsonData& JsonNode::getData() {
+    if (!data) {
+        data = new JsonData;
+    }
+
     return *data;
 }
 

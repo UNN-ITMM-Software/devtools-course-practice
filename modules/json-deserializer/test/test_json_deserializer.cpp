@@ -6,6 +6,56 @@
 
 #include "include/json-deserializer.h"
 
+TEST(JsonData, Can_Create_JsonData) {
+    ASSERT_NO_THROW(JsonData data);
+}
+
+TEST(JsonNode, Can_Create_JsonNode) {
+    ASSERT_NO_THROW(JsonNode n);
+}
+
+TEST(JsonNode, Can_Create_JsonNode_With_Type) {
+    ASSERT_NO_THROW(JsonNode n(NodeType::Array));
+}
+
+TEST(JsonNode, Can_Create_JsonNode_With_Type_And_Data) {
+    NodeType type = NodeType::ArrayEnd;
+    JsonData data;
+
+    ASSERT_NO_THROW(JsonNode n(type, data));
+}
+
+TEST(JsonNode, Can_Create_JsonNode_With_Copy_Ctor) {
+    JsonNode node(NodeType::Object);
+
+    ASSERT_NO_THROW(JsonNode n(node));
+}
+
+TEST(JsonNode, Assignment_Operator_Overloaded_Properly) {
+    JsonNode node(NodeType::Boolean);
+    JsonNode assigned(NodeType::Colon);
+
+    assigned = node;
+
+    ASSERT_EQ(node, assigned);
+}
+
+TEST(JsonNode, Get_Node_Type_Returns_Valid_Default_Value) {
+    JsonNode node;
+    NodeType expectedNodeType = NodeType::Unknown;
+
+    ASSERT_EQ(expectedNodeType, node.getNodeType());
+}
+
+TEST(JsonNode, Get_Data_Returns_Valid_Default_Value) {
+    JsonNode node;
+    JsonData defaultData;
+
+    JsonData data = node.getData();
+
+    ASSERT_EQ(defaultData, data);
+}
+
 TEST(JsonDeserializer, Can_Create_Deserializer_Without_Parameters) {
     ASSERT_NO_THROW(JsonDeserializer j);
 }

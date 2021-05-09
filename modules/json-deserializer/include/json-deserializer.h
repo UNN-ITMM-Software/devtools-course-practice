@@ -132,6 +132,8 @@ class JsonData {
 
      JsonNode& operator[] (std::string key);
      JsonNode& operator[] (int index);
+     friend bool operator==(const JsonData& lhs, const JsonData& rhs);
+     friend bool operator!=(const JsonData& lhs, const JsonData& rhs);
 
      JsonData& operator=(const JsonData& other);
 
@@ -148,11 +150,14 @@ class JsonNode {
      JsonNode(const JsonNode& other);
      JsonNode(const NodeType type, const JsonData& data);
      JsonNode& operator=(const JsonNode& other);
-     virtual ~JsonNode();
+     ~JsonNode();
 
      NodeType getNodeType() const;
      void setData(const JsonData& data);
      JsonData& getData();
+
+     friend bool operator==(const JsonNode& lhs, const JsonNode& rhs);
+     friend bool operator!=(const JsonNode& lhs, const JsonNode& rhs);
 
      template <class type>
      type to(const type& defaultValue = type()) {
