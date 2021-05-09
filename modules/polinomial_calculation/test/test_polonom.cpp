@@ -3,6 +3,14 @@
 #include <string>
 #include <vector>
 #include "include/Polinom.h"
+#include "include/Monom.h"
+
+TEST(Poly, can_construct_from_string_NO85) {
+    std::vector<std::string> var;
+    var.push_back("x");
+
+    ASSERT_NO_THROW(Monom m);
+}
 
 TEST(Poly, can_create_polinom_with_vars_and_base) {
     std::vector<std::string> var;
@@ -39,11 +47,10 @@ TEST(Poly, can_construct_from_string_NO3) {
     std::vector<std::string> var;
     var.push_back("x");
 
-    ASSERT_NO_THROW(
-        Polinom p(var, 20));
+    ASSERT_NO_THROW(Polinom p(var, 20));
 }
 
-TEST(Poly, can_construct_from_string_NO3) {
+TEST(Poly, can_construct_from_string_NO4) {
     std::vector<std::string> var;
     var.push_back("x");
 
