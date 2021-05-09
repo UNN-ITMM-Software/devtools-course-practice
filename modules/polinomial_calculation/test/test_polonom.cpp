@@ -12,6 +12,13 @@ TEST(Poly, can_construct_from_string_NO85) {
     ASSERT_NO_THROW(Monom m);
 }
 
+TEST(Poly, can_construct_from_string_NO86) {
+    std::vector<std::string> var;
+    var.push_back("x");
+
+    ASSERT_NO_THROW(Polinom p());
+}
+
 TEST(Poly, can_create_polinom_with_vars_and_base) {
     std::vector<std::string> var;
     var.push_back("x");
