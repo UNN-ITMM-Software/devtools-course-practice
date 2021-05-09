@@ -343,7 +343,7 @@ JsonNode::JsonNode(const NodeType type, const JsonData& data) {
     this->data = new JsonData(data);
 }
 
-JsonNode::~JsonNode() { 
+JsonNode::~JsonNode() {
     delete data;
 }
 
