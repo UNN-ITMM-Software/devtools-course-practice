@@ -8,11 +8,7 @@ struct Monom {
 
     Monom* next;
 
-    Monom() {
-        next = this;
-        coef = 0;
-        pow = -1;
-    }
+    Monom();
 };
 
 #endif  // MODULES_POLINOMIAL_CALCULATION_INCLUDE_MONOM_H_

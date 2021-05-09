@@ -9,6 +9,14 @@
 #include <vector>
 #include "include/Monom.h"
 
+explicit Polinom::Polinom(std::vector<std::string> _var, int _base = 20) :
+    base(_base) {
+    if (_base < 2) throw "Base should be higher than 2";
+    head = new Monom;
+    head->next = head;
+    var = _var;
+    numOfPows = var.size();
+}
 
 Polinom::Polinom(const Polinom& r) {
     numOfPows = r.numOfPows;

@@ -25,15 +25,7 @@ class Polinom {
      std::queue<std::pair<std::string, ElemType>> Parse(std::string expr);
 
  public:
-    explicit Polinom(std::vector<std::string> _var, int _base = 20):
-        base(_base) {
-        if (_base < 2) throw "Base should be higher than 2";
-        head = new Monom;
-        head->next = head;
-        var = _var;
-        numOfPows = var.size();
-    }
-
+    explicit Polinom(std::vector<std::string> _var, int _base = 20);
     Polinom(std::string str, std::vector<std::string> var, int _base = 20);
 
     Polinom(const Polinom& r);
