@@ -114,10 +114,10 @@ TEST(Poly, sum_gives_correct_answer_NO2) {
     var.push_back("y");
     var.push_back("z");
 
-    Polinom p1("5*x^2+7*x*y^2+4", var, 20);
-    Polinom p2("-3*x*y^2-4", var, 20);
+    Polinom p1("6*x^2+3*x^3+20*x^5*y^3*z^10-7", var, 20);
+    Polinom p2("-12*x^2+3*y*z+4", var, 20);
 
-    Polinom res("5*x^2+4*x*y^2", var, 20);
+    Polinom res("-6*x^2+3*x^3+3*y*z+20*x^5*y^3*z^10-3", var, 20);
 
     EXPECT_EQ(res, p1 + p2);
 }
@@ -128,10 +128,10 @@ TEST(Poly, sum_gives_correct_answer_NO3) {
     var.push_back("y");
     var.push_back("z");
 
-    Polinom p1("-3*x*y^2-4", var, 20);
-    Polinom p2("5*x^2+7*x*y^2+4", var, 20);
+    Polinom p1("-12*x^2+3*y*z+4", var, 20);
+    Polinom p2("6*x^2+3*x^3+20*x^5*y^3*z^10-7", var, 20);
 
-    Polinom res("5*x^2+4*x*y^2", var, 20);
+    Polinom res("-6*x^2+3*x^3+3*y*z+20*x^5*y^3*z^10-3", var, 20);
 
     EXPECT_EQ(res, p1 + p2);
 }
