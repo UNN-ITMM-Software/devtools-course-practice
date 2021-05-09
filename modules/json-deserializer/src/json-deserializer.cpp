@@ -8,7 +8,7 @@
 #include <sstream>
 #include <vector>
 
-#include "..\include\json-deserializer.h"
+#include "include/json-deserializer.h"
 
 std::string sliceLeft(const std::string& src, int count) {
     std::string dst(src);
