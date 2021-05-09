@@ -241,6 +241,10 @@ JsonNode JsonDeserializer::array() {
     return JsonNode(NodeType::Array, JsonData(array));
 }
 
+JsonDeserializer::~JsonDeserializer() {
+    delete lookahead;
+}
+
 JsonNode JsonDeserializer::object() {
     eat(TokenType::LeftBrace);
 
@@ -284,6 +288,10 @@ JsonDocument::JsonDocument() {
 JsonDocument::JsonDocument(const JsonDocument& other) {
     isEmpty = other.isEmpty;
     rootNode = new JsonNode(*other.rootNode);
+}
+
+JsonDocument::~JsonDocument() {
+    delete rootNode;
 }
 
 JsonNode& JsonDocument::getRoot() const {
@@ -335,7 +343,9 @@ JsonNode::JsonNode(const NodeType type, const JsonData& data) {
     this->data = new JsonData(data);
 }
 
-JsonNode::~JsonNode() { }
+JsonNode::~JsonNode() { 
+    delete data;
+}
 
 JsonNode& JsonNode::operator=(const JsonNode& other) {
     if (this == &other) {

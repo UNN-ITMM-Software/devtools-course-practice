@@ -170,6 +170,7 @@ class JsonDocument {
      JsonDocument();
      JsonDocument(const JsonDocument& other);
      JsonDocument& JsonDocument::operator=(const JsonDocument& other);
+     ~JsonDocument();
 
      JsonNode& getRoot() const;
      void setRoot(const JsonNode& rootNode);
@@ -258,6 +259,7 @@ class JsonDeserializer {
  public:
     JsonDeserializer();
     explicit JsonDeserializer(const std::string& jsonString);
+    ~JsonDeserializer();
 
     JsonDocument parse();
     JsonDocument parse(const std::string& jsonString);
