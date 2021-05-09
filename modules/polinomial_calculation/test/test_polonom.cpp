@@ -40,6 +40,14 @@ TEST(Poly, can_construct_from_string_NO3) {
     var.push_back("x");
 
     ASSERT_NO_THROW(
+        Polinom p(var, 20));
+}
+
+TEST(Poly, can_construct_from_string_NO3) {
+    std::vector<std::string> var;
+    var.push_back("x");
+
+    ASSERT_NO_THROW(
         Polinom p("x+x", var, 20));
 }
 
