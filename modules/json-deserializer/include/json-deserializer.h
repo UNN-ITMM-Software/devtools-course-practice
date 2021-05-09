@@ -97,6 +97,10 @@ std::ostream& operator<<(std::ostream& out, const TokenType& type) {
         out << "Eof";
         break;
     }
+    case TokenType::Unknown: {
+        out << "Unknown";
+        break;
+    }
     }
 
     return out;
@@ -151,9 +155,9 @@ class JsonNode {
      JsonData& getData();
 
      template <class type>
-     type to(const type& default = type()) {
+     type to(const type& defaultValue = type()) {
          if (nodeType == NodeType::Unknown) {
-             return default;
+             return defaultValue;
          }
 
          std::string data = this->data->getValue();
@@ -169,7 +173,7 @@ class JsonDocument {
  public:
      JsonDocument();
      JsonDocument(const JsonDocument& other);
-     JsonDocument& JsonDocument::operator=(const JsonDocument& other);
+     JsonDocument& operator=(const JsonDocument& other);
      ~JsonDocument();
 
      JsonNode& getRoot() const;
@@ -250,8 +254,8 @@ class Lexer {
         specification(TokenType::LeftBracket, "^\\["),
         specification(TokenType::RightBracket, "^\\]"),
      };
-    std::string string;
     size_t cursor;
+    std::string string;
     std::string match(const std::string& expression, const std::string& src);
 };
 
@@ -281,9 +285,9 @@ class JsonDeserializer {
 bool equalsIgnoreCase(std::string lhs, std::string rhs);
 
 template <> inline
-bool JsonNode::to(const bool& default) {
+bool JsonNode::to(const bool& defaultValue) {
     if (nodeType == NodeType::Unknown) {
-        return default;
+        return defaultValue;
     }
 
     std::string data = this->data->getValue();
@@ -296,9 +300,9 @@ bool JsonNode::to(const bool& default) {
 }
 
 template <> inline
-int JsonNode::to<int>(const int& default) {
+int JsonNode::to<int>(const int& defaultValue) {
     if (nodeType == NodeType::Unknown) {
-        return default;
+        return defaultValue;
     }
 
     return atoi(this->data->getValue().c_str());
