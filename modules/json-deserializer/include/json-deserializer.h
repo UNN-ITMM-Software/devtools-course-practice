@@ -119,9 +119,9 @@ enum class NodeType {
 class JsonData {
  public:
      JsonData();
-     JsonData(const std::string value);
-     JsonData(const JSONObject& object);
-     JsonData(const JSONArray& array);
+     explicit JsonData(const std::string value);
+     explicit JsonData(const JSONObject& object);
+     explicit JsonData(const JSONArray& array);
      JsonData(const JsonData& other);
 
      std::string& getValue();
@@ -139,7 +139,7 @@ class JsonData {
 class JsonNode {
  public:
      JsonNode();
-     JsonNode(const NodeType type);
+     explicit JsonNode(const NodeType type);
      JsonNode(const JsonNode& other);
      JsonNode(const NodeType type, const JsonData& data);
      JsonNode& operator=(const JsonNode& other);
@@ -158,7 +158,7 @@ class JsonNode {
          std::string data = this->data->getValue();
          return type(data);
      }
-protected:
+ protected:
     NodeType nodeType;
     JsonData* data;
 };
@@ -167,8 +167,9 @@ class JsonDocument {
  public:
      JsonDocument();
      JsonDocument(const JsonDocument& other);
+     JsonDocument& JsonDocument::operator=(const JsonDocument& other);
 
-     JsonNode& getRoot();
+     JsonNode& getRoot() const;
      void setRoot(const JsonNode& rootNode);
      bool empty();
 
@@ -252,7 +253,7 @@ class Lexer {
 class JsonDeserializer {
  public:
     JsonDeserializer();
-    JsonDeserializer(const std::string& jsonString);
+    explicit JsonDeserializer(const std::string& jsonString);
 
     JsonDocument parse();
     JsonDocument parse(const std::string& jsonString);
@@ -280,7 +281,7 @@ bool JsonNode::to(const bool& default) {
     }
 
     std::string data = this->data->getValue();
-    
+
     if (equalsIgnoreCase(data, "true")) {
         return true;
     }

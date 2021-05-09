@@ -2,9 +2,9 @@
 
 #include <gtest/gtest.h>
 
-#include <include/json-deserializer.h>
-
 #include <string>
+
+#include "include/json-deserializer.h"
 
 TEST(JsonDeserializer, Can_Create_Deserializer_Without_Parameters) {
     ASSERT_NO_THROW(JsonDeserializer j);

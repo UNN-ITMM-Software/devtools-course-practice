@@ -6,6 +6,7 @@
 #include <list>
 #include <utility>
 #include <sstream>
+#include <vector>
 
 #include "..\include\json-deserializer.h"
 
@@ -105,8 +106,7 @@ Lexer JsonDeserializer::getLexer() {
     return lexer;
 }
 
-JsonNode& JsonDocument::operator[](std::string key)
-{
+JsonNode& JsonDocument::operator[](std::string key) {
     if (!rootNode) {
         rootNode = new JsonNode();
     }
@@ -114,8 +114,7 @@ JsonNode& JsonDocument::operator[](std::string key)
     return rootNode->getData()[key];
 }
 
-JsonNode& JsonDocument::operator[](int index)
-{
+JsonNode& JsonDocument::operator[](int index) {
     if (!rootNode) {
         rootNode = new JsonNode();
     }
@@ -231,7 +230,7 @@ JsonNode JsonDeserializer::array() {
     JsonNode nextNode = literal();
     NodeType expectedNodeType = nextNode.getNodeType();
     NodeType actualType = expectedNodeType;
-    while(actualType != NodeType::ArrayEnd) {
+    while (actualType != NodeType::ArrayEnd) {
         if (actualType == expectedNodeType) {
             array.push_back(nextNode);
         }
@@ -287,15 +286,14 @@ JsonDocument::JsonDocument(const JsonDocument& other) {
     rootNode = new JsonNode(*other.rootNode);
 }
 
-JsonNode& JsonDocument::getRoot() {
+JsonNode& JsonDocument::getRoot() const{
     return *rootNode;
 }
 
 void JsonDocument::setRoot(const JsonNode& rootNode) {
     if (this->rootNode == nullptr) {
         this->rootNode = new JsonNode(rootNode);
-    }
-    else {
+    } else {
         *this->rootNode = rootNode;
     }
 
@@ -304,21 +302,20 @@ void JsonDocument::setRoot(const JsonNode& rootNode) {
     }
 }
 
-bool JsonDocument::empty()
-{
+bool JsonDocument::empty() {
     return isEmpty;
 }
 
-//JsonDocument& JsonDocument::operator=(const JsonDocument& other) {
-//    if (this == &other) {
-//        return *this;
-//    }
-//
-//    rootNode = new JsonNode;
-//    *rootNode = *other.rootNode;
-//
-//    return *this;
-//}
+JsonDocument& JsonDocument::operator=(const JsonDocument& other) {
+    if (this == &other) {
+        return *this;
+    }
+
+    rootNode = new JsonNode(other.getRoot());
+    isEmpty = other.isEmpty;
+
+    return *this;
+}
 
 JsonNode::JsonNode() : nodeType(NodeType::Unknown), data(nullptr) { }
 
@@ -328,8 +325,7 @@ JsonNode::JsonNode(const JsonNode& other) {
     this->nodeType = other.nodeType;
     if (other.data) {
         this->data = new JsonData(*other.data);
-    }
-    else {
+    } else {
         this->data = nullptr;
     }
 }
@@ -350,8 +346,7 @@ JsonNode& JsonNode::operator=(const JsonNode& other) {
 
     if (!data) {
         data = new JsonData;
-    }
-    else {
+    } else {
         *data = *other.data;
     }
 
