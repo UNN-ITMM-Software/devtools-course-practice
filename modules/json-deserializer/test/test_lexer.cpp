@@ -2,9 +2,10 @@
 
 #include <gtest/gtest.h>
 
-#include <include/json-deserializer.h>
-
 #include <string>
+#include <vector>
+
+#include <include/json-deserializer.h>
 
 TEST(Token, Can_Create_Token_With_Args) {
     ASSERT_NO_THROW(Token t(TokenType::Number, ""));
@@ -28,16 +29,16 @@ TEST(Token, Ctor_Creates_Token_With_Valid_Value) {
 
 TEST(Token, Equality_Operator_Overloaded_Properly) {
     Token src(TokenType::Number, "test");
-    Token copy(TokenType::Number, "test");
+    Token srcCopy(TokenType::Number, "test");
 
-    ASSERT_TRUE(src == copy);
+    ASSERT_TRUE(src == srcCopy);
 }
 
 TEST(Token, Inequality_Operator_Overloaded_Properly) {
     Token src(TokenType::Number, "test");
-    Token copy(TokenType::Number, "test2");
+    Token srcCopy(TokenType::Number, "test2");
 
-    ASSERT_TRUE(src != copy);
+    ASSERT_TRUE(src != srcCopy);
 }
 
 TEST(Token, Copy_Ctor_Clones_Token_Properly) {
