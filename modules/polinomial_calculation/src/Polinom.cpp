@@ -169,21 +169,6 @@ Polinom::Polinom(std::string str, std::vector<std::string> _var, int _base) {
     }
 }
 
-std::vector<int> Polinom::toBaseSystem(int pow) const {
-    std::vector<int> resPows;
-    int temp = pow;
-
-    for (int i = 0; i < numOfPows; i++) {
-        resPows.push_back(temp % base);
-        temp /= base;
-    }
-
-    if (temp)
-        throw "Converting to base system error";
-
-    return resPows;
-}
-
 int Polinom::toDecimalSystem(const std::vector<int> v) const {
     int dec = 0;
 

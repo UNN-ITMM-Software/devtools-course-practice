@@ -20,7 +20,6 @@ class Polinom {
     const std::string operations = { '+', '-', '*', '^', '(', ')', '=' };
 
  private:
-     std::vector<int> toBaseSystem(int pow) const;
      int toDecimalSystem(const std::vector<int> v) const;
      int isOperator(std::string str);
      int isNumber(std::string str);
