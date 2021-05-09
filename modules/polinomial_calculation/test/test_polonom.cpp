@@ -130,7 +130,6 @@ TEST(Poly, diff_gives_correct_answer_NO2) {
 
     Polinom p1("6*a^2+3*a^3+20*a^5*b^3*c^10-7", var, 20);
     Polinom p2("-12*a^2+3*b*c+4", var, 20);
-   
 
     Polinom res("18*a^2+3*a^3-3*b*c+20*a^5*b^3*c^10-11", var, 20);
 
