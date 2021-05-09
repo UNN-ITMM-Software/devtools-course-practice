@@ -9,7 +9,7 @@
 #include <vector>
 #include "include/Monom.h"
 
-explicit Polinom::Polinom(std::vector<std::string> _var, int _base = 20) :
+Polinom::Polinom(std::vector<std::string> _var, int _base) :
     base(_base) {
     if (_base < 2) throw "Base should be higher than 2";
     head = new Monom;
