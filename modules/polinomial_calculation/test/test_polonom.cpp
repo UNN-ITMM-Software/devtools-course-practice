@@ -57,6 +57,18 @@ TEST(Poly, is_equal_working_correctly) {
     EXPECT_TRUE(p1 == p2);
 }
 
+TEST(Poly, is_equal_working_correctly_NO2) {
+    std::vector<std::string> var;
+    var.push_back("x");
+    var.push_back("y");
+    var.push_back("z");
+
+    Polinom p1("12 + 6 * x^5 * z^3 + 4* y ^3 -3-13*x^5*z^3 - 7", var, 20);
+    Polinom p2("12+6*x^5*z^3+4*y^3-3-13*x^5*z^3-7", var, 20);
+
+    EXPECT_EQ(p1, p2);
+}
+
 TEST(Poly, is_not_equal_working_correctly) {
     std::vector<std::string> var;
     var.push_back("x");
@@ -135,6 +147,7 @@ TEST(Poly, sum_gives_correct_answer_NO3) {
 
     EXPECT_EQ(res, p1 + p2);
 }
+
 
 TEST(Poly, diff_gives_correct_answer) {
     std::vector<std::string> var;
