@@ -315,12 +315,10 @@ bool JsonDocument::empty() {
 }
 
 JsonDocument& JsonDocument::operator=(const JsonDocument& other) {
-    if (this == &other) {
-        return *this;
+    if (this != &other) {
+        rootNode = new JsonNode(other.getRoot());
+        isEmpty = other.isEmpty;
     }
-
-    rootNode = new JsonNode(other.getRoot());
-    isEmpty = other.isEmpty;
 
     return *this;
 }
@@ -348,16 +346,14 @@ JsonNode::~JsonNode() {
 }
 
 JsonNode& JsonNode::operator=(const JsonNode& other) {
-    if (this == &other) {
-        return *this;
-    }
+    if (this != &other) {
+        nodeType = other.nodeType;
 
-    nodeType = other.nodeType;
-
-    if (!data) {
-        data = new JsonData;
-    } else {
-        *data = *other.data;
+        if (!data) {
+            data = new JsonData;
+        } else {
+            *data = *other.data;
+        }
     }
 
     return *this;
@@ -408,13 +404,11 @@ JsonNode& JsonData::operator[](int index) {
 }
 
 JsonData& JsonData::operator=(const JsonData& other) {
-    if (this == &other) {
-        return *this;
+    if (this != &other) {
+        object = other.object;
+        array = other.array;
+        value = other.value;
     }
-
-    object = other.object;
-    array = other.array;
-    value = other.value;
 
     return *this;
 }

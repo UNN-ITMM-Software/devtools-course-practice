@@ -219,12 +219,12 @@ struct Token {
     }
 
     Token& operator=(const Token& other) {
-        if (this == &other) {
-            return *this;
+        if (this != &other) {
+            tokenType = other.tokenType;
+            value = other.value;
         }
 
-        tokenType = other.tokenType;
-        value = other.value;
+        return *this;
     }
 };
 

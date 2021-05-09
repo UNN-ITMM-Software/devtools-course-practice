@@ -7,6 +7,10 @@
 #include <string>
 #include <vector>
 
+TEST(TokenType, No_Throw_On_Ostream) {
+    ASSERT_NO_THROW(std::cout << TokenType::Array);
+}
+
 TEST(Token, Can_Create_Token_With_Args) {
     ASSERT_NO_THROW(Token t(TokenType::Number, ""));
 }
@@ -19,6 +23,23 @@ TEST(Token, Ctor_Creates_Token_Of_Valid_Type) {
     ASSERT_EQ(tokenType, token.tokenType);
 }
 
+TEST(Token, Ctor_One_Arg_Creates_Token_Of_Valid_Type) {
+    TokenType tokenType = TokenType::Object;
+
+    Token token(tokenType);
+
+    ASSERT_EQ(tokenType, token.tokenType);
+}
+
+TEST(Token, Copy_Ctor_Creates_Valid_Copy) {
+    std::string tokenValue = "1234";
+    Token token(TokenType::Number, tokenValue);
+
+    Token tokenCopy(token);
+
+    ASSERT_EQ(token, tokenCopy);
+}
+
 TEST(Token, Ctor_Creates_Token_With_Valid_Value) {
     std::string tokenValue = "1234";
 
@@ -27,18 +48,33 @@ TEST(Token, Ctor_Creates_Token_With_Valid_Value) {
     ASSERT_EQ(tokenValue, token.value);
 }
 
+TEST(Token, Assignment_Operator_Overloaded_Properly) {
+    Token src(TokenType::LeftBrace, "ff");
+    Token assigned(TokenType::Eof, "");
+
+    assigned = src;
+
+    ASSERT_EQ(src, assigned);
+}
+
 TEST(Token, Equality_Operator_Overloaded_Properly) {
     Token src(TokenType::Number, "test");
     Token srcCopy(TokenType::Number, "test");
 
-    ASSERT_TRUE(src == srcCopy);
+    ASSERT_EQ(src, srcCopy);
 }
 
 TEST(Token, Inequality_Operator_Overloaded_Properly) {
     Token src(TokenType::Number, "test");
     Token srcCopy(TokenType::Number, "test2");
 
-    ASSERT_TRUE(src != srcCopy);
+    ASSERT_NE(src, srcCopy);
+}
+
+TEST(Token, No_Throw_On_Ostream) {
+    Token token(TokenType::Delimiter, ",");
+
+    ASSERT_NO_THROW(std::cout << token);
 }
 
 TEST(Token, Copy_Ctor_Clones_Token_Properly) {
