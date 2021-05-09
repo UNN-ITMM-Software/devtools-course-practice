@@ -57,8 +57,9 @@ TEST(Lexer, Can_Create_Lexer_With_Default_String_Value) {
 
 TEST(Lexer, Can_Create_Lexer_With_Default_Cursor_Value) {
     Lexer lexer;
+    size_t defaultCursorPosition = 0;
 
-    ASSERT_EQ(0, lexer.getCursor());
+    ASSERT_EQ(defaultCursorPosition, lexer.getCursor());
 }
 
 TEST(Lexer, Can_Create_Lexer_With_Valid_String) {
@@ -83,10 +84,11 @@ TEST(Lexer, Lexer_Ctor_Returns_Valid_String) {
 TEST(Lexer, Lexer_Ctor_Returns_Valid_Cursor) {
     const std::string src = "aabbcc";
     Lexer lexer(src);
+    size_t defaultCursorPosition = 0;
 
     size_t cursor = lexer.getCursor();
 
-    ASSERT_EQ(0, cursor);
+    ASSERT_EQ(defaultCursorPosition, cursor);
 }
 
 TEST(Lexer, Has_Tokens_Returns_True_If_Not_EOF) {
