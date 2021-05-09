@@ -15,11 +15,11 @@ TEST(JsonData, Can_Create_JsonData_With_String_Arg) {
 }
 
 TEST(JsonData, Can_Create_JsonData_With_JSONObject_Arg) {
-    ASSERT_NO_THROW(JsonData data(JSONObject()));
+    ASSERT_NO_THROW(JsonData data(JSONObject));
 }
 
 TEST(JsonData, Can_Create_JsonData_With_JSONArray_Arg) {
-    ASSERT_NO_THROW(JsonData data(JSONArray()));
+    ASSERT_NO_THROW(JsonData data(JSONArray));
 }
 
 TEST(JsonData, Can_Create_With_Copy_Ctor) {
@@ -32,7 +32,7 @@ TEST(JsonData, Get_Value_Returns_Default_Value) {
     JsonData data;
     std::string defaultValue = "";
 
-    ASSERT_NO_THROW(defaultValue, data.getValue());
+    ASSERT_EQ(defaultValue, data.getValue());
 }
 
 TEST(JsonData, Subscript_Int_Operator_Returns_Valid_Value) {
