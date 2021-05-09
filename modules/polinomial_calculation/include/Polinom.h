@@ -21,7 +21,6 @@ class Polinom {
 
  private:
      int toDecimalSystem(const std::vector<int> v) const;
-     int isOperator(std::string str);
      int isNumber(std::string str);
      std::queue<std::pair<std::string, ElemType>> Parse(std::string expr);
 

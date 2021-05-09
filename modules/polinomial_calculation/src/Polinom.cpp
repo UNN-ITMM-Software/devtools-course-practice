@@ -469,12 +469,6 @@ bool Polinom::operator!=(const Polinom& r) const {
     return !(operator==(r));
 }
 
-int Polinom::isOperator(std::string str) {
-    if (operations.find(str) != std::string::npos)
-        return true;
-    return false;
-}
-
 int Polinom::isNumber(std::string str) {
     for (auto i = str.begin(); i < str.end(); i++) {
         if (*i == '-') continue;

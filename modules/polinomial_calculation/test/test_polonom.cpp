@@ -27,6 +27,14 @@ TEST(Poly, can_construct_from_string) {
         var, 20));
 }
 
+TEST(Poly, can_construct_from_string_NO2) {
+    std::vector<std::string> var;
+    var.push_back("x");
+
+    ASSERT_NO_THROW(
+        Polinom p("7+x", var, 20));
+}
+
 TEST(Poly, throws_when_incorrect_string_given) {
     std::vector<std::string> var;
     var.push_back("x");
@@ -44,6 +52,16 @@ TEST(Poly, throws_when_incorrect_vars_given) {
 
     ASSERT_ANY_THROW(Polinom p("4*x*y+7*y", var, 20));
 }
+
+TEST(Poly, throws_when_incorrect_vars_given_NO2) {
+    std::vector<std::string> var;
+    var.push_back("a");
+    var.push_back("b");
+    var.push_back("c");
+
+    ASSERT_ANY_THROW(Polinom p("12+6*x^5*z^3+4*y^3-3-13*x^5*z^3-7", var, 20));
+}
+
 
 TEST(Poly, is_equal_working_correctly) {
     std::vector<std::string> var;
