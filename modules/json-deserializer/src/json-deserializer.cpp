@@ -387,6 +387,11 @@ NodeType JsonNode::getNodeType() const {
 
 void JsonNode::setData(const JsonData& data) {
     JsonData copy = JsonData(data);
+    if (!this->data) {
+        this->data = new JsonData;
+    }
+
+    *this->data = data;
 }
 
 JsonData& JsonNode::getData() {
