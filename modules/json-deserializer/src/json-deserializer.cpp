@@ -286,7 +286,7 @@ JsonDocument::JsonDocument(const JsonDocument& other) {
     rootNode = new JsonNode(*other.rootNode);
 }
 
-JsonNode& JsonDocument::getRoot() const{
+JsonNode& JsonDocument::getRoot() const {
     return *rootNode;
 }
 
@@ -335,7 +335,7 @@ JsonNode::JsonNode(const NodeType type, const JsonData& data) {
     this->data = new JsonData(data);
 }
 
-JsonNode::~JsonNode(){}
+JsonNode::~JsonNode() { }
 
 JsonNode& JsonNode::operator=(const JsonNode& other) {
     if (this == &other) {

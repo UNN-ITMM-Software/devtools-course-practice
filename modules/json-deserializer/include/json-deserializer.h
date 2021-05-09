@@ -8,9 +8,9 @@
 #include <list>
 #include <utility>
 #include <ostream>
-#include <ostream>
 #include <map>
 #include <algorithm>
+#include <vector>
 
 class JsonNode;
 class JsonData;
@@ -100,7 +100,7 @@ std::ostream& operator<<(std::ostream& out, const TokenType& type) {
     }
 
     return out;
-};
+}
 
 enum class NodeType {
     Unknown,
@@ -130,6 +130,7 @@ class JsonData {
      JsonNode& operator[] (int index);
 
      JsonData& operator=(const JsonData& other);
+
  private:
     JSONObject object;
     JSONArray array;
@@ -158,6 +159,7 @@ class JsonNode {
          std::string data = this->data->getValue();
          return type(data);
      }
+
  protected:
     NodeType nodeType;
     JsonData* data;
@@ -175,6 +177,7 @@ class JsonDocument {
 
      JsonNode& operator[] (std::string key);
      JsonNode& operator[] (int index);
+
  private:
      JsonNode* rootNode;
      bool isEmpty;
@@ -184,7 +187,7 @@ struct Token {
     TokenType tokenType;
     std::string value;
 
-    Token(const TokenType type, const std::string& value = "") {
+    explicit Token(const TokenType type, const std::string& value = "") {
         this->tokenType = type;
         this->value = value;
     }
@@ -231,6 +234,7 @@ class Lexer {
     Token getNextToken();
     bool hasTokens();
     std::vector<Token> getTokens();
+
  private:
      std::list<specification> specifications {
         specification(TokenType::String, "^\"[^\"]*\""),
