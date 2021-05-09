@@ -108,6 +108,34 @@ TEST(Poly, sum_gives_correct_answer) {
     EXPECT_EQ(res, p1 + p2);
 }
 
+TEST(Poly, sum_gives_correct_answer_NO2) {
+    std::vector<std::string> var;
+    var.push_back("x");
+    var.push_back("y");
+    var.push_back("z");
+
+    Polinom p1("5*x^2+7*x*y^2+4", var, 20);
+    Polinom p2("-3*x*y^2-4", var, 20);
+
+    Polinom res("5*x^2+4*x*y^2", var, 20);
+
+    EXPECT_EQ(res, p1 + p2);
+}
+
+TEST(Poly, sum_gives_correct_answer_NO3) {
+    std::vector<std::string> var;
+    var.push_back("x");
+    var.push_back("y");
+    var.push_back("z");
+
+    Polinom p1("-3*x*y^2-4", var, 20);
+    Polinom p2("5*x^2+7*x*y^2+4", var, 20);
+
+    Polinom res("5*x^2+4*x*y^2", var, 20);
+
+    EXPECT_EQ(res, p1 + p2);
+}
+
 TEST(Poly, diff_gives_correct_answer) {
     std::vector<std::string> var;
     var.push_back("a");
