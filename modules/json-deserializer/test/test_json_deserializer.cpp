@@ -149,6 +149,13 @@ TEST(JsonNode, Inequality_Operator_Overloaded_Properly) {
     ASSERT_NE(src, dst);
 }
 
+TEST(JsonNode, Hack_Inequality_Operator_Unused) {
+    JsonNode src(NodeType::Array);
+    JsonNode dst(NodeType::Colon);
+
+    ASSERT_TRUE(src != dst);
+}
+
 TEST(JsonDeserializer, Can_Create_Deserializer_Without_Parameters) {
     ASSERT_NO_THROW(JsonDeserializer j);
 }
