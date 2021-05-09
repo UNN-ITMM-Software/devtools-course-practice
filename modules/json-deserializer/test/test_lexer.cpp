@@ -2,10 +2,10 @@
 
 #include <gtest/gtest.h>
 
+#include <include/json-deserializer.h>
+
 #include <string>
 #include <vector>
-
-#include <include/json-deserializer.h>
 
 TEST(Token, Can_Create_Token_With_Args) {
     ASSERT_NO_THROW(Token t(TokenType::Number, ""));
@@ -211,7 +211,7 @@ TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_Colon) {
     ASSERT_EQ(string, next.value);
 }
 
-TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_Ñomma) {
+TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_Comma) {
     const std::string string = ",";
     Lexer lexer(string);
 
@@ -220,7 +220,7 @@ TEST(Lexer, Get_Next_Token_Returns_Token_Of_Valid_Type_On_Ñomma) {
     ASSERT_EQ(TokenType::Delimiter, next.tokenType);
 }
 
-TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_Ñomma) {
+TEST(Lexer, Get_Next_Token_Returns_Token_With_Valid_Value_On_Comma) {
     const std::string string = ",";
     Lexer lexer(string);
 
