@@ -52,6 +52,38 @@ TEST(Poly, throws_when_incorrect_string_given) {
     ASSERT_ANY_THROW(Polinom p("12*x+", var, 20));
 }
 
+TEST(Poly, throws_when_incorrect_string_given_NO2) {
+    std::vector<std::string> var;
+    var.push_back("x");
+    var.push_back("y");
+    var.push_back("z");
+
+    ASSERT_ANY_THROW(Polinom p("x++3", var, 20));
+}
+
+TEST(Poly, throws_when_incorrect_string_given_NO3) {
+    std::vector<std::string> var;
+    var.push_back("x");
+    var.push_back("y");
+    var.push_back("z");
+
+    ASSERT_ANY_THROW(Polinom p("*x+15", var, 20));
+}
+
+TEST(Poly, throws_when_incorrect_string_given_NO4) {
+    std::vector<std::string> var;
+    var.push_back("x");
+
+    ASSERT_ANY_THROW(Polinom p("x^x", var, 20));
+}
+
+TEST(Poly, throws_when_incorrect_string_given_NO5) {
+    std::vector<std::string> var;
+    var.push_back("x");
+
+    ASSERT_ANY_THROW(Polinom p("7^7", var, 20));
+}
+
 TEST(Poly, throws_when_incorrect_vars_given) {
     std::vector<std::string> var;
     var.push_back("a");
@@ -268,6 +300,18 @@ TEST(Poly, mul_throws_when_base_is_different) {
 
     Polinom p1("-12*a^2+3*b*c+4", var, 10);
     Polinom p2("6*a^2+3*a^3+20*a^5*b^3*c^10-7", var, 20);
+
+    ASSERT_ANY_THROW(p1 * p2);
+}
+
+TEST(Poly, mul_throws_when_base_is_different_NO2) {
+    std::vector<std::string> var;
+    var.push_back("a");
+    var.push_back("b");
+    var.push_back("c");
+
+    Polinom p1("-12*a^7+3*b*c+4", var, 10);
+    Polinom p2("6*a^7+3*a^9+20*a^5*b^3*c^10-7", var, 10);
 
     ASSERT_ANY_THROW(p1 * p2);
 }
