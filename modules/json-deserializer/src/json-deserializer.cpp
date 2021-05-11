@@ -441,10 +441,6 @@ JsonNode& JsonData::operator[](int index) {
 }
 
 bool JsonData::equals(const JsonData& other) const {
-    if (this == &other) {
-        return true;
-    }
-
     return this->object == other.object
         && this->array == other.array
         && this->value == other.value;

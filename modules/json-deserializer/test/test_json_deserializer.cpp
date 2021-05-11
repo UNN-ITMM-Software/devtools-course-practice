@@ -6,240 +6,251 @@
 
 #include "include/json-deserializer.h"
 
-using simpleds::JsonData;
 using simpleds::JSONArray;
-using simpleds::JSONObject;
-using simpleds::JsonNode;
-using simpleds::NodeType;
+using simpleds::JsonData;
 using simpleds::JsonDeserializer;
 using simpleds::JsonDocument;
+using simpleds::JsonNode;
+using simpleds::JSONObject;
+using simpleds::NodeType;
 
-TEST(JsonData, Can_Create_JsonData) {
-    ASSERT_NO_THROW(JsonData data);
-}
+TEST(JsonData, Can_Create_JsonData) { ASSERT_NO_THROW(JsonData data); }
 
 TEST(JsonData, Can_Create_JsonData_With_String_Arg) {
-    ASSERT_NO_THROW(JsonData data(""));
+  ASSERT_NO_THROW(JsonData data(""));
 }
 
 TEST(JsonData, Can_Create_JsonData_With_JSONObject_Arg) {
-    ASSERT_NO_THROW(JsonData data(JSONObject));
+  ASSERT_NO_THROW(JsonData data(JSONObject));
 }
 
 TEST(JsonData, Can_Create_JsonData_With_JSONArray_Arg) {
-    ASSERT_NO_THROW(JsonData data(JSONArray));
+  ASSERT_NO_THROW(JsonData data(JSONArray));
 }
 
 TEST(JsonData, Can_Create_With_Copy_Ctor) {
-    JsonData data;
+  JsonData data;
 
-    ASSERT_NO_THROW(JsonData(data));
+  ASSERT_NO_THROW(JsonData(data));
 }
 
 TEST(JsonData, Get_Value_Returns_Default_Value) {
-    JsonData data;
-    std::string defaultValue = "";
+  JsonData data;
+  std::string defaultValue = "";
 
-    ASSERT_EQ(defaultValue, data.getValue());
+  ASSERT_EQ(defaultValue, data.getValue());
+}
+
+TEST(JsonData, Equals_Compares_Instances_Properly) {
+  JsonData data("value");
+  JsonData dataCopy("value");
+
+  ASSERT_TRUE(data.equals(dataCopy));
 }
 
 TEST(JsonData, Subscript_Int_Operator_Returns_Valid_Value) {
-    JsonNode node;
-    JSONArray arr{ node };
-    JsonData data(arr);
+  JsonNode node;
+  JSONArray arr{node};
+  JsonData data(arr);
 
-    auto value = data[0];
+  auto value = data[0];
 
-    ASSERT_EQ(node, value);
+  ASSERT_EQ(node, value);
 }
 
 TEST(JsonData, Subscript_String_Operator_Returns_Valid_Value) {
-    std::string key = "key";
-    JsonNode node;
-    JSONObject obj{ std::make_pair(key, node) };
-    JsonData data(obj);
+  std::string key = "key";
+  JsonNode node;
+  JSONObject obj{std::make_pair(key, node)};
+  JsonData data(obj);
 
-    auto value = data[key];
+  auto value = data[key];
 
-    ASSERT_EQ(node, value);
+  ASSERT_EQ(node, value);
 }
 
 TEST(JsonData, Equality_Operator_Overloaded_Properly) {
-    std::string value = "test";
-    JsonData data(value);
-    JsonData dataCopy(value);
+  std::string value = "test";
+  JsonData data(value);
+  JsonData dataCopy(value);
 
-    ASSERT_EQ(data, dataCopy);
+  ASSERT_EQ(data, dataCopy);
 }
 
 TEST(JsonData, Inequality_Operator_Overloaded_Properly) {
-    JsonData data("val1");
-    JsonData otherData("val2");
+  JsonData data("val1");
+  JsonData otherData("val2");
 
-    ASSERT_NE(data, otherData);
+  ASSERT_NE(data, otherData);
 }
 
 TEST(JsonData, Assignment_Operator_Overloaded_Properly) {
-    JsonData data("testValue");
-    JsonData assigned("other value");
+  JsonData data("testValue");
+  JsonData assigned("other value");
 
-    assigned = data;
+  assigned = data;
 
-    ASSERT_EQ(data, assigned);
+  ASSERT_EQ(data, assigned);
 }
 
-TEST(JsonNode, Can_Create_JsonNode) {
-    ASSERT_NO_THROW(JsonNode n);
-}
+TEST(JsonNode, Can_Create_JsonNode) { ASSERT_NO_THROW(JsonNode n); }
 
 TEST(JsonNode, Can_Create_JsonNode_With_Type) {
-    ASSERT_NO_THROW(JsonNode n(NodeType::Array));
+  ASSERT_NO_THROW(JsonNode n(NodeType::Array));
 }
 
 TEST(JsonNode, Can_Create_JsonNode_With_Type_And_Data) {
-    NodeType type = NodeType::ArrayEnd;
-    JsonData data;
+  NodeType type = NodeType::ArrayEnd;
+  JsonData data;
 
-    ASSERT_NO_THROW(JsonNode n(type, data));
+  ASSERT_NO_THROW(JsonNode n(type, data));
 }
 
 TEST(JsonNode, Can_Create_JsonNode_With_Copy_Ctor) {
-    JsonNode node(NodeType::Object);
+  JsonNode node(NodeType::Object);
 
-    ASSERT_NO_THROW(JsonNode n(node));
+  ASSERT_NO_THROW(JsonNode n(node));
+}
+
+TEST(JsonNode, Equals_Compares_Instances_Properly) {
+  JsonData data("value");
+  JsonNode node(NodeType::String, data);
+  JsonNode nodeCopy(NodeType::String, data);
+
+  ASSERT_TRUE(node.equals(nodeCopy));
 }
 
 TEST(JsonNode, Assignment_Operator_Overloaded_Properly) {
-    JsonNode node(NodeType::Boolean);
-    JsonNode assigned(NodeType::Colon);
+  JsonNode node(NodeType::Boolean);
+  JsonNode assigned(NodeType::Colon);
 
-    assigned = node;
+  assigned = node;
 
-    ASSERT_EQ(node, assigned);
+  ASSERT_EQ(node, assigned);
 }
 
 TEST(JsonNode, Get_Node_Type_Returns_Valid_Default_Value) {
-    JsonNode node;
-    NodeType expectedNodeType = NodeType::Unknown;
+  JsonNode node;
+  NodeType expectedNodeType = NodeType::Unknown;
 
-    ASSERT_EQ(expectedNodeType, node.getNodeType());
+  ASSERT_EQ(expectedNodeType, node.getNodeType());
 }
 
 TEST(JsonNode, Set_Data_Sets_Data_Properly) {
-    JsonData data("data");
-    JsonNode node;
+  JsonData data("data");
+  JsonNode node;
 
-    node.setData(data);
+  node.setData(data);
 
-    ASSERT_EQ(data, node.getData());
+  ASSERT_EQ(data, node.getData());
 }
 
 TEST(JsonNode, Get_Data_Returns_Valid_Default_Value) {
-    JsonNode node;
-    JsonData defaultData;
+  JsonNode node;
+  JsonData defaultData;
 
-    JsonData data = node.getData();
+  JsonData data = node.getData();
 
-    ASSERT_EQ(defaultData, data);
+  ASSERT_EQ(defaultData, data);
 }
 
 TEST(JsonNode, Equality_Operator_Overloaded_Properly) {
-    JsonNode src(NodeType::Array);
-    JsonNode dst(NodeType::Array);
+  JsonNode src(NodeType::Array);
+  JsonNode dst(NodeType::Array);
 
-    ASSERT_EQ(src, dst);
+  ASSERT_EQ(src, dst);
 }
 
 TEST(JsonNode, Inequality_Operator_Overloaded_Properly) {
-    JsonNode src(NodeType::Array);
-    JsonNode dst(NodeType::Array, JsonData("data"));
+  JsonNode src(NodeType::Array);
+  JsonNode dst(NodeType::Array, JsonData("data"));
 
-    ASSERT_NE(src, dst);
+  ASSERT_NE(src, dst);
 }
 
 TEST(JsonDeserializer, Can_Create_Deserializer_Without_Parameters) {
-    ASSERT_NO_THROW(JsonDeserializer j);
+  ASSERT_NO_THROW(JsonDeserializer j);
 }
 
 TEST(JsonDeserializer, Parse_Throws_On_Empty_String) {
-    JsonDeserializer des;
+  JsonDeserializer des;
 
-    ASSERT_ANY_THROW(des.parse(""));
+  ASSERT_ANY_THROW(des.parse(""));
 }
 
 TEST(JsonDeserializer, No_Throw_On_Parse_With_Not_Empty_String) {
-    JsonDeserializer des;
+  JsonDeserializer des;
 
-    ASSERT_NO_THROW(des.parse("    \"abcdef\""));
+  ASSERT_NO_THROW(des.parse("    \"abcdef\""));
 }
 
 TEST(JsonDeserializer, Parse_Returns_Not_Empty_Document_On_String_Literal) {
-    const std::string testString = "    \"hello world\"     ";
-    JsonDeserializer des;
+  const std::string testString = "    \"hello world\"     ";
+  JsonDeserializer des;
 
-    JsonDocument document = des.parse(testString);
+  JsonDocument document = des.parse(testString);
 
-    ASSERT_FALSE(document.empty());
+  ASSERT_FALSE(document.empty());
 }
 
 TEST(JsonDeserializer, Parse_Returns_String_Literal) {
-    JsonDeserializer des("    \"hello world\"     ");
+  JsonDeserializer des("    \"hello world\"     ");
 
-    JsonDocument document = des.parse();
-    NodeType nodeType = document.getRoot().getNodeType();
+  JsonDocument document = des.parse();
+  NodeType nodeType = document.getRoot().getNodeType();
 
-    ASSERT_EQ(NodeType::String, nodeType);
-    ASSERT_EQ("hello world", document.getRoot().to<std::string>());
+  ASSERT_EQ(NodeType::String, nodeType);
+  ASSERT_EQ("hello world", document.getRoot().to<std::string>());
 }
 
 TEST(JsonDeserializer, Parse_Returns_Numeric_Literal) {
-    JsonDeserializer des("    78964   ");
+  JsonDeserializer des("    78964   ");
 
-    JsonDocument document = des.parse();
+  JsonDocument document = des.parse();
 
-    ASSERT_EQ(NodeType::Numeric, document.getRoot().getNodeType());
-    ASSERT_EQ(78964, document.getRoot().to<int>());
+  ASSERT_EQ(NodeType::Numeric, document.getRoot().getNodeType());
+  ASSERT_EQ(78964, document.getRoot().to<int>());
 }
 
 TEST(JsonDeserializer, Parse_Returns_Null_Literal) {
-    JsonDeserializer des("    null   ");
+  JsonDeserializer des("    null   ");
 
-    JsonDocument document = des.parse();
+  JsonDocument document = des.parse();
 
-    ASSERT_EQ(NodeType::Null, document.getRoot().getNodeType());
+  ASSERT_EQ(NodeType::Null, document.getRoot().getNodeType());
 }
 
 TEST(JsonDeserializer, Parse_Returns_Boolean_Literal) {
-    JsonDeserializer des("    true   ");
+  JsonDeserializer des("    true   ");
 
-    JsonDocument document = des.parse();
+  JsonDocument document = des.parse();
 
-    ASSERT_EQ(NodeType::Boolean, document.getRoot().getNodeType());
-    ASSERT_EQ(true, document.getRoot().to<bool>());
+  ASSERT_EQ(NodeType::Boolean, document.getRoot().getNodeType());
+  ASSERT_EQ(true, document.getRoot().to<bool>());
 }
 
 TEST(JsonDeserializer, Parse_Returns_Array) {
-    JsonDeserializer des("[\"element\", \"element2\"]");
-    std::string expectedValue = "element2";
+  JsonDeserializer des("[\"element\", \"element2\"]");
+  std::string expectedValue = "element2";
 
-    JsonDocument document = des.parse();
-    JsonNode resultNode = document.getRoot();
-    std::string resultValue = resultNode.getData()[1].to<std::string>();
+  JsonDocument document = des.parse();
+  JsonNode resultNode = document.getRoot();
+  std::string resultValue = resultNode.getData()[1].to<std::string>();
 
-    ASSERT_EQ(NodeType::Array, resultNode.getNodeType());
-    ASSERT_EQ(expectedValue, resultValue);
+  ASSERT_EQ(NodeType::Array, resultNode.getNodeType());
+  ASSERT_EQ(expectedValue, resultValue);
 }
 
 TEST(JsonDeserializer, Parse_Returns_Object) {
-    JsonDeserializer des("{   \"field\" :   "
-        "\"value\", \"intField\" : \"1234\"   }");
-    std::string expectedValue = "value";
+  JsonDeserializer des(
+      "{   \"field\" :   "
+      "\"value\", \"intField\" : \"1234\"   }");
+  std::string expectedValue = "value";
 
-    JsonDocument document = des.parse();
-    JsonNode resultNode = document.getRoot();
-    std::string resultValue = resultNode.getData()["field"]
-        .to<std::string>();
+  JsonDocument document = des.parse();
+  JsonNode resultNode = document.getRoot();
+  std::string resultValue = resultNode.getData()["field"].to<std::string>();
 
-    ASSERT_EQ(NodeType::Object, resultNode.getNodeType());
-    ASSERT_EQ(expectedValue, resultValue);
+  ASSERT_EQ(NodeType::Object, resultNode.getNodeType());
+  ASSERT_EQ(expectedValue, resultValue);
 }
