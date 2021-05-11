@@ -112,7 +112,7 @@ TEST(JsonNode, Can_Create_JsonNode_With_Copy_Ctor) {
   ASSERT_NO_THROW(JsonNode n(node));
 }
 
-TEST(JsonNode, Equals_Compares_Instances_Properly) {
+TEST(JsonNode, Equals_Returns_True_On_Equal_Objects) {
   JsonData data("value");
   JsonNode node(NodeType::String, data);
   JsonNode nodeCopy(NodeType::String, data);
@@ -120,8 +120,25 @@ TEST(JsonNode, Equals_Compares_Instances_Properly) {
   ASSERT_TRUE(node.equals(nodeCopy));
 }
 
+TEST(JsonNode, Equals_Returns_False_On_Unequal_Objects) {
+  JsonData data("value");
+  JsonNode node(NodeType::Array, data);
+  JsonNode nodeCopy(NodeType::String, data);
+
+  ASSERT_FALSE(node.equals(nodeCopy));
+}
+
 TEST(JsonNode, Assignment_Operator_Overloaded_Properly) {
   JsonNode node(NodeType::Boolean);
+  JsonNode assigned(NodeType::Colon);
+
+  assigned = node;
+
+  ASSERT_EQ(node, assigned);
+}
+
+TEST(JsonNode, Assignment_Operator_Works_Properly_On_Node_With_Data) {
+  JsonNode node(NodeType::Boolean, JsonData("data"));
   JsonNode assigned(NodeType::Colon);
 
   assigned = node;
@@ -176,6 +193,18 @@ TEST(JsonDeserializer, Parse_Throws_On_Empty_String) {
   JsonDeserializer des;
 
   ASSERT_ANY_THROW(des.parse(""));
+}
+
+TEST(JsonDeserializer, Can_Get_Lexer) {
+  JsonDeserializer des;
+
+  ASSERT_NO_THROW(des.getLexer());
+}
+
+TEST(JsonDeserializer, Parse_Throws_On_Invalid_String) {
+  JsonDeserializer des;
+
+  ASSERT_ANY_THROW(des.parse("{."));
 }
 
 TEST(JsonDeserializer, No_Throw_On_Parse_With_Not_Empty_String) {
@@ -253,4 +282,40 @@ TEST(JsonDeserializer, Parse_Returns_Object) {
 
   ASSERT_EQ(NodeType::Object, resultNode.getNodeType());
   ASSERT_EQ(expectedValue, resultValue);
+}
+
+TEST(JsonDocument, Can_Create_JsonDocument) {
+  ASSERT_NO_THROW(JsonDocument doc);
+}
+
+TEST(JsonDocument, Can_Create_JsonDocument_With_Copy_Ctor) {
+  JsonDocument doc;
+  ASSERT_NO_THROW(JsonDocument copy(doc));
+}
+
+TEST(JsonDocument, Can_Access_Data_By_Key) {
+  JsonDocument doc;
+  std::string key = "key";
+  std::string value = "value";
+  JsonData dta(value);
+  JsonNode dataNode(NodeType::String, dta);
+  JSONObject object{std::make_pair(key, dataNode)};
+  JsonData data(object);
+  JsonNode node(NodeType::Object, data);
+  doc.setRoot(node);
+
+  ASSERT_NO_THROW(doc["key"]);
+}
+
+TEST(JsonDocument, Can_Access_Data_By_Index) {
+  JsonDocument doc;
+  std::string value = "value";
+  JsonData dta(value);
+  JsonNode dataNode(NodeType::String, dta);
+  JSONArray arr{dataNode};
+  JsonData data(arr);
+  JsonNode node(NodeType::Array, data);
+  doc.setRoot(node);
+
+  ASSERT_NO_THROW(doc[0]);
 }
