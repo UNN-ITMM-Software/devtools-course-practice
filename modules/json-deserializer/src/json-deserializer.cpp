@@ -10,6 +10,8 @@
 
 #include "include/json-deserializer.h"
 
+using namespace simple;
+
 std::string sliceLeft(const std::string& src, int count) {
     std::string dst(src);
     dst.erase(dst.begin(), dst.begin() + count);
@@ -362,36 +364,6 @@ JsonNode& JsonNode::operator=(const JsonNode& other) {
     return *this;
 }
 
-bool operator==(const JsonNode& lhs, const JsonNode& rhs) {
-    if (lhs.nodeType != rhs.nodeType) {
-        return false;
-    }
-
-    if (!lhs.data && !rhs.data) {
-        return true;
-    }
-
-    if (!lhs.data || !rhs.data) {
-        return false;
-    }
-
-    return *lhs.data == *rhs.data;
-}
-
-bool operator!=(const JsonNode& lhs, const JsonNode& rhs) {
-    return !(lhs == rhs);
-}
-
-bool operator==(const JsonData& lhs, const JsonData& rhs) {
-    return lhs.object == rhs.object
-        && lhs.array == rhs.array
-        && lhs.value == rhs.value;
-}
-
-bool operator!=(const JsonData& lhs, const JsonData& rhs) {
-    return !(lhs == rhs);
-}
-
 NodeType JsonNode::getNodeType() const {
     return nodeType;
 }
@@ -412,6 +384,46 @@ JsonData& JsonNode::getData() {
 
     return *data;
 }
+
+bool JsonNode::equals(const JsonNode& other) const {
+    if (this->nodeType != other.nodeType) {
+        return false;
+    }
+
+    if (!this->data && !other.data) {
+        return true;
+    }
+
+    if (!this->data || !other.data) {
+        return false;
+    }
+
+    return *this->data == *other.data;
+}
+
+// bool JsonNode::operator==(const JsonNode& other) {
+//    if (this == &other) {
+//        return true;
+//    }
+//
+//    if (this->nodeType != other.nodeType) {
+//        return false;
+//    }
+//
+//    if (!this->data && !other.data) {
+//        return true;
+//    }
+//
+//    if (!this->data || !other.data) {
+//        return false;
+//    }
+//
+//    return *this->data == *other.data;
+// }
+//
+// bool JsonNode::operator!=(const JsonNode& other) {
+//    return !(*this == other);
+// }
 
 JsonData::JsonData() { }
 
@@ -445,6 +457,30 @@ JsonNode& JsonData::operator[](int index) {
     return array[index];
 }
 
+bool JsonData::equals(const JsonData& other) const {
+    if (this == &other) {
+        return true;
+    }
+
+    return this->object == other.object
+        && this->array == other.array
+        && this->value == other.value;
+}
+
+// bool JsonData::operator==(const JsonData& other) {
+//    if (this == &other) {
+//        return true;
+//    }
+//
+//    return this->object == other.object
+//        && this->array == other.array
+//        && this->value == other.value;
+//}
+//
+// bool JsonData::operator!=(const JsonData& other) {
+//    return !(*this == other);
+// }
+
 JsonData& JsonData::operator=(const JsonData& other) {
     if (this != &other) {
         object = other.object;
@@ -453,4 +489,28 @@ JsonData& JsonData::operator=(const JsonData& other) {
     }
 
     return *this;
+}
+
+bool simple::operator==(const JsonNode& lhs, const JsonNode& rhs) {
+    return lhs.equals(rhs);
+}
+
+bool simple::operator!=(const JsonNode& lhs, const JsonNode& rhs) {
+    return !(lhs.equals(rhs));
+}
+
+bool simple::operator==(const JsonData& lhs, const JsonData& rhs) {
+    return lhs.equals(rhs);
+}
+
+bool simple::operator!=(const JsonData& lhs, const JsonData& rhs) {
+    return !(lhs.equals(rhs));
+}
+
+bool simple::operator==(const Token& lhs, const Token& rhs) {
+    return lhs.equals(rhs);
+}
+
+bool simple::operator!=(const Token& lhs, const Token& rhs) {
+    return !(lhs.equals(rhs));
 }

@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 
+using namespace simple;
+
 TEST(TokenType, No_Throw_On_Ostream) {
     ASSERT_NO_THROW(std::cout << TokenType::Array);
 }

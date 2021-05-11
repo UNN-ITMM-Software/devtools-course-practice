@@ -6,6 +6,8 @@
 
 #include "include/json-deserializer.h"
 
+using namespace simple;
+
 TEST(JsonData, Can_Create_JsonData) {
     ASSERT_NO_THROW(JsonData data);
 }
