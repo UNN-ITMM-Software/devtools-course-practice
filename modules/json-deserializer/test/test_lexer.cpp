@@ -7,9 +7,9 @@
 #include <string>
 #include <vector>
 
-using simplejs::TokenType;
-using simplejs::Token;
-using simplejs::Lexer;
+using simpleds::TokenType;
+using simpleds::Token;
+using simpleds::Lexer;
 
 TEST(TokenType, No_Throw_On_Ostream) {
     ASSERT_NO_THROW(std::cout << TokenType::Array);

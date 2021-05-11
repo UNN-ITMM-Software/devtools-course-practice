@@ -12,7 +12,7 @@
 #include <utility>
 #include <vector>
 
-namespace simplejs {
+namespace simpleds {
 class JsonNode;
 class JsonData;
 enum class TokenType;
@@ -143,9 +143,6 @@ class JsonData {
 
   bool equals(const JsonData& other) const;
 
-  /* bool operator==(const JsonData& other);
-  bool operator!=(const JsonData& other);*/
-
   JsonData& operator=(const JsonData& other);
 
  private:
@@ -168,9 +165,6 @@ class JsonNode {
   JsonData& getData();
 
   bool equals(const JsonNode& other) const;
-
-  /* bool operator==(const JsonNode& other);
-  bool operator!=(const JsonNode& other); */
 
   template <class type>
   type to(const type& defaultValue = type()) {
@@ -223,15 +217,6 @@ struct Token {
   bool equals(const Token& other) const {
     return this->tokenType == other.tokenType && this->value == other.value;
   }
-
-  /* bool operator==(const Token& other) {
-      return this->tokenType == other.tokenType
-          && this->value == other.value;
-  }
-
-  bool operator!=(const Token& other) {
-      return !(*this == other);
-  } */
 
   friend std::ostream& operator<<(std::ostream& out, const Token& token) {
     out << "{\n\tType: " << token.tokenType << std::endl;
@@ -337,6 +322,6 @@ inline bool equalsIgnoreCase(std::string lhs, std::string rhs) {
 
   return lhs.compare(rhs) == 0;
 }
-} // namespace simple
+} // namespace simpleds
 
 #endif  // MODULES_JSON_DESERIALIZER_INCLUDE_JSON_DESERIALIZER_H_

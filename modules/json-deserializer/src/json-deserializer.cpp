@@ -10,11 +10,13 @@
 
 #include "include/json-deserializer.h"
 
-using simplejs::JsonDeserializer;
-using simplejs::Token;
-using simplejs::Lexer;
-using simplejs::NodeType;
-using simplejs::JsonData;
+using simpleds::JsonDeserializer;
+using simpleds::Token;
+using simpleds::Lexer;
+using simpleds::NodeType;
+using simpleds::JsonData;
+using simpleds::JsonNode;
+using simpleds::JsonDocument;
 
 std::string sliceLeft(const std::string& src, int count) {
     std::string dst(src);
@@ -103,18 +105,16 @@ std::vector<Token> Lexer::getTokens() {
     return tokens;
 }
 
-simplejs::JsonDeserializer::JsonDeserializer()
+JsonDeserializer::JsonDeserializer()
     : lexer(Lexer()), lookahead(nullptr) {}
 
-simplejs::JsonDeserializer::JsonDeserializer(const std::string& str)
+JsonDeserializer::JsonDeserializer(const std::string& str)
     : lexer(Lexer(str)), lookahead(nullptr) { }
 
-Lexer simplejs::JsonDeserializer::getLexer() {
+Lexer JsonDeserializer::getLexer() {
     return lexer;
 }
 
-using simplejs::JsonNode;
-using simplejs::JsonDocument;
 JsonNode& JsonDocument::operator[](std::string key) {
     if (!rootNode) {
         rootNode = new JsonNode();
@@ -408,30 +408,6 @@ bool JsonNode::equals(const JsonNode& other) const {
     return *this->data == *other.data;
 }
 
-// bool JsonNode::operator==(const JsonNode& other) {
-//    if (this == &other) {
-//        return true;
-//    }
-//
-//    if (this->nodeType != other.nodeType) {
-//        return false;
-//    }
-//
-//    if (!this->data && !other.data) {
-//        return true;
-//    }
-//
-//    if (!this->data || !other.data) {
-//        return false;
-//    }
-//
-//    return *this->data == *other.data;
-// }
-//
-// bool JsonNode::operator!=(const JsonNode& other) {
-//    return !(*this == other);
-// }
-
 JsonData::JsonData() { }
 
 JsonData::JsonData(const std::string value) {
@@ -474,20 +450,6 @@ bool JsonData::equals(const JsonData& other) const {
         && this->value == other.value;
 }
 
-// bool JsonData::operator==(const JsonData& other) {
-//    if (this == &other) {
-//        return true;
-//    }
-//
-//    return this->object == other.object
-//        && this->array == other.array
-//        && this->value == other.value;
-//}
-//
-// bool JsonData::operator!=(const JsonData& other) {
-//    return !(*this == other);
-// }
-
 JsonData& JsonData::operator=(const JsonData& other) {
     if (this != &other) {
         object = other.object;
@@ -498,26 +460,26 @@ JsonData& JsonData::operator=(const JsonData& other) {
     return *this;
 }
 
-bool simplejs::operator==(const JsonNode& lhs, const JsonNode& rhs) {
+bool simpleds::operator==(const JsonNode& lhs, const JsonNode& rhs) {
     return lhs.equals(rhs);
 }
 
-bool simplejs::operator!=(const JsonNode& lhs, const JsonNode& rhs) {
+bool simpleds::operator!=(const JsonNode& lhs, const JsonNode& rhs) {
     return !(lhs.equals(rhs));
 }
 
-bool simplejs::operator==(const JsonData& lhs, const JsonData& rhs) {
+bool simpleds::operator==(const JsonData& lhs, const JsonData& rhs) {
     return lhs.equals(rhs);
 }
 
-bool simplejs::operator!=(const JsonData& lhs, const JsonData& rhs) {
+bool simpleds::operator!=(const JsonData& lhs, const JsonData& rhs) {
     return !(lhs.equals(rhs));
 }
 
-bool simplejs::operator==(const Token& lhs, const Token& rhs) {
+bool simpleds::operator==(const Token& lhs, const Token& rhs) {
     return lhs.equals(rhs);
 }
 
-bool simplejs::operator!=(const Token& lhs, const Token& rhs) {
+bool simpleds::operator!=(const Token& lhs, const Token& rhs) {
     return !(lhs.equals(rhs));
 }

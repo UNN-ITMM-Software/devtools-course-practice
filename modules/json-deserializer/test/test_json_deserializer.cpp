@@ -6,13 +6,13 @@
 
 #include "include/json-deserializer.h"
 
-using simplejs::JsonData;
-using simplejs::JSONArray;
-using simplejs::JSONObject;
-using simplejs::JsonNode;
-using simplejs::NodeType;
-using simplejs::JsonDeserializer;
-using simplejs::JsonDocument;
+using simpleds::JsonData;
+using simpleds::JSONArray;
+using simpleds::JSONObject;
+using simpleds::JsonNode;
+using simpleds::NodeType;
+using simpleds::JsonDeserializer;
+using simpleds::JsonDocument;
 
 TEST(JsonData, Can_Create_JsonData) {
     ASSERT_NO_THROW(JsonData data);
