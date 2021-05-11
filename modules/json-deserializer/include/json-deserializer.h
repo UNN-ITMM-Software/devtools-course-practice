@@ -293,6 +293,7 @@ namespace simple {
         JsonDocument parse(const std::string& jsonString);
 
         Lexer getLexer();
+
     private:
         Lexer lexer;
         Token* lookahead;
@@ -339,6 +340,6 @@ namespace simple {
 
         return lhs.compare(rhs) == 0;
     }
-}
+} // namespace simple
 
 #endif  // MODULES_JSON_DESERIALIZER_INCLUDE_JSON_DESERIALIZER_H_
