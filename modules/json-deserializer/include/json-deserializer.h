@@ -12,7 +12,7 @@
 #include <utility>
 #include <vector>
 
-namespace simple {
+namespace simplejs {
 class JsonNode;
 class JsonData;
 enum class TokenType;

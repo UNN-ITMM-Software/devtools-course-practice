@@ -10,7 +10,11 @@
 
 #include "include/json-deserializer.h"
 
-using namespace simple;
+using simplejs::JsonDeserializer;
+using simplejs::Token;
+using simplejs::Lexer;
+using simplejs::NodeType;
+using simplejs::JsonData;
 
 std::string sliceLeft(const std::string& src, int count) {
     std::string dst(src);
@@ -99,15 +103,18 @@ std::vector<Token> Lexer::getTokens() {
     return tokens;
 }
 
-JsonDeserializer::JsonDeserializer(): lexer(Lexer()), lookahead(nullptr) { }
+simplejs::JsonDeserializer::JsonDeserializer()
+    : lexer(Lexer()), lookahead(nullptr) {}
 
-JsonDeserializer::JsonDeserializer(const std::string& str) : lexer(Lexer(str)),
-lookahead(nullptr) { }
+simplejs::JsonDeserializer::JsonDeserializer(const std::string& str)
+    : lexer(Lexer(str)), lookahead(nullptr) { }
 
-Lexer JsonDeserializer::getLexer() {
+Lexer simplejs::JsonDeserializer::getLexer() {
     return lexer;
 }
 
+using simplejs::JsonNode;
+using simplejs::JsonDocument;
 JsonNode& JsonDocument::operator[](std::string key) {
     if (!rootNode) {
         rootNode = new JsonNode();
@@ -491,26 +498,26 @@ JsonData& JsonData::operator=(const JsonData& other) {
     return *this;
 }
 
-bool simple::operator==(const JsonNode& lhs, const JsonNode& rhs) {
+bool simplejs::operator==(const JsonNode& lhs, const JsonNode& rhs) {
     return lhs.equals(rhs);
 }
 
-bool simple::operator!=(const JsonNode& lhs, const JsonNode& rhs) {
+bool simplejs::operator!=(const JsonNode& lhs, const JsonNode& rhs) {
     return !(lhs.equals(rhs));
 }
 
-bool simple::operator==(const JsonData& lhs, const JsonData& rhs) {
+bool simplejs::operator==(const JsonData& lhs, const JsonData& rhs) {
     return lhs.equals(rhs);
 }
 
-bool simple::operator!=(const JsonData& lhs, const JsonData& rhs) {
+bool simplejs::operator!=(const JsonData& lhs, const JsonData& rhs) {
     return !(lhs.equals(rhs));
 }
 
-bool simple::operator==(const Token& lhs, const Token& rhs) {
+bool simplejs::operator==(const Token& lhs, const Token& rhs) {
     return lhs.equals(rhs);
 }
 
-bool simple::operator!=(const Token& lhs, const Token& rhs) {
+bool simplejs::operator!=(const Token& lhs, const Token& rhs) {
     return !(lhs.equals(rhs));
 }
