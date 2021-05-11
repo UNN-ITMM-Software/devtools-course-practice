@@ -322,6 +322,6 @@ inline bool equalsIgnoreCase(std::string lhs, std::string rhs) {
 
   return lhs.compare(rhs) == 0;
 }
-} // namespace simpleds
+}  // namespace simpleds
 
 #endif  // MODULES_JSON_DESERIALIZER_INCLUDE_JSON_DESERIALIZER_H_
