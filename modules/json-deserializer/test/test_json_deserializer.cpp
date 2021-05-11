@@ -290,7 +290,7 @@ TEST(JsonDocument, Can_Create_JsonDocument) {
 
 TEST(JsonDocument, Can_Create_JsonDocument_With_Copy_Ctor) {
   JsonDocument doc;
-  ASSERT_NO_THROW(JsonDocument copy(doc));
+  ASSERT_NO_THROW(JsonDocument docCopy(doc));
 }
 
 TEST(JsonDocument, Can_Access_Data_By_Key) {
