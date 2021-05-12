@@ -186,6 +186,18 @@ TEST(Poly, can_copy) {
     EXPECT_EQ(p2, p);
 }
 
+TEST(Poly, can_copy_NO156) {
+    std::vector<std::string> var;
+    var.push_back("x");
+    var.push_back("y");
+    var.push_back("z");
+
+    Polinom p("15*x+7*y", var, 20);
+    Polinom p1(p);
+
+    EXPECT_EQ(p1, p);
+}
+
 TEST(Poly, sum_gives_correct_answer) {
     std::vector<std::string> var;
     var.push_back("x");
