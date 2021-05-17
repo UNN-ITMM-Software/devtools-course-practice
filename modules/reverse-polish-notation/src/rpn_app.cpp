@@ -37,7 +37,7 @@ std::string RPN_App::operator()(int argc, const char** argv) {
     std::string arg_string;
     int count = std::stoi(argv[2]);
 
-    for (size_t i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++) {
         arg_string += argv[1][i];
     }
 
