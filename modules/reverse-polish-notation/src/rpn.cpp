@@ -60,7 +60,7 @@ RPN::RPN(std::string s) {
   }
 
   while (!op_stack.empty()) {
-    if (op_stack.top() == '(') throw "extra parenthesis";
+    if (op_stack.top() == '(') throw "extra left parenthesis";
     putSpaceIfNeeded();
     line += op_stack.top();
     op_stack.pop();

@@ -30,7 +30,7 @@ bool RPN_App::validateNumberOfArguments(int argc, const char** argv) {
 }
 
 std::string RPN_App::operator()(int argc, const char** argv) {
-    if (!validateNumberOfArguments(argc, argv)) { return message_; };
+    if (!validateNumberOfArguments(argc, argv)) { return message_; }
 
     std::ostringstream stream;
 
