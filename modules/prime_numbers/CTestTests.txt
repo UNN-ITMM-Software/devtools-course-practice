@@ -1,0 +1,94 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application that finds prime numbers in range"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments_1
+    COMMAND ${APPLICATION} 1
+)
+
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments_2
+    COMMAND ${APPLICATION} 1 2 3
+)
+
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Format_1
+    COMMAND ${APPLICATION} 1 5
+)
+
+set_tests_properties (${prefix}_can_Check_Format_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong format."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Format_2
+    COMMAND ${APPLICATION} 5 2
+)
+
+set_tests_properties (${prefix}_can_Check_Format_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong format."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Format_3
+    COMMAND ${APPLICATION} 2.1 5
+)
+
+set_tests_properties (${prefix}_can_Check_Format_3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong format."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Format_4
+    COMMAND ${APPLICATION} pi 5
+)
+
+set_tests_properties (${prefix}_can_Check_Format_4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong format."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Prime_Numbers_1
+    COMMAND ${APPLICATION} 2 4
+)
+
+set_tests_properties (${prefix}_can_Print_Prime_Numbers_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "2 3"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Print_Prime_Numbers_2
+    COMMAND ${APPLICATION} 210 220
+)
+
+set_tests_properties (${prefix}_can_Print_Prime_Numbers_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "211"
+    LABELS "${MODULE}")

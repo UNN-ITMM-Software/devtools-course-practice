@@ -1,7 +1,6 @@
 // Copyright 2021 Novozhilova Ekaterina
 
 #include <gtest/gtest.h>
-#include <iostream>
 #include "include/modified_stack_minimums.h"
 
 TEST(Novozhilova_Ekaterina_modified_stack_Test, testgetSize) {

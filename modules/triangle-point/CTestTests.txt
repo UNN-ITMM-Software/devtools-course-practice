@@ -1,0 +1,85 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a triangle-point application."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} -2 3
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: must be 8 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Invalid_Symbols
+    COMMAND ${APPLICATION} star wars episode V is the best ! 
+)
+set_tests_properties (${prefix}_can_Detect_Invalid_Symbols PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong format."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Invalid_Shape
+    COMMAND ${APPLICATION} 1 0 2 0 5 0 3 3
+)
+set_tests_properties (${prefix}_can_Detect_Invalid_Shape PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Not a triangle."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Parse_Int_1
+    COMMAND ${APPLICATION} 0 0 25 0 0 33 2 2
+)
+set_tests_properties (${prefix}_can_Parse_Int_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Point is inside."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Parse_Int_2
+    COMMAND ${APPLICATION} 0 0 2 0 0 3 5 2
+)
+set_tests_properties (${prefix}_can_Parse_Int_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Point is outside."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Parse_Double_1
+    COMMAND ${APPLICATION} 0 0 5.5 0 0 3.7 0.1 1.1
+)
+set_tests_properties (${prefix}_can_Parse_Double_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Point is inside."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Parse_Double_2
+    COMMAND ${APPLICATION} 0 0 1.2 0 0 2.3 10.1 2.7
+)
+set_tests_properties (${prefix}_can_Parse_Double_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Point is outside."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Parse_Negative
+    COMMAND ${APPLICATION} 2 5 0 5 -19 77 -5 2.7
+)
+set_tests_properties (${prefix}_can_Parse_Negative PROPERTIES
+    PASS_REGULAR_EXPRESSION "Point is outside."
+    LABELS "${MODULE}")

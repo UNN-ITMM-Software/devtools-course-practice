@@ -1,0 +1,76 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application for solving task Hanoi tower"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_less_range
+    COMMAND ${APPLICATION} -2
+)
+
+set_tests_properties (${prefix}_Check_less_range PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong format"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_more_range
+    COMMAND ${APPLICATION} 50
+)
+
+set_tests_properties (${prefix}_Check_more_range PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong format"
+    LABELS "${MODULE}")
+
+add_test(
+NAME ${prefix}_Check_many_arguments
+COMMAND ${APPLICATION} 2 2
+)
+
+set_tests_properties (${prefix}_Check_many_arguments PROPERTIES
+PASS_REGULAR_EXPRESSION "ERROR: Should be 1 arguments"
+LABELS "${MODULE}")
+
+add_test(
+NAME ${prefix}_Check_double_argument
+COMMAND ${APPLICATION} 2.2
+)
+
+set_tests_properties (${prefix}_Check_double_argument PROPERTIES
+PASS_REGULAR_EXPRESSION "ERROR: Wrong format"
+LABELS "${MODULE}")
+
+add_test(
+NAME ${prefix}_Check_number_permutations_3
+COMMAND ${APPLICATION} 3
+)
+
+set_tests_properties (${prefix}_Check_number_permutations_3 PROPERTIES
+PASS_REGULAR_EXPRESSION "Number of permutations of rings = 7"
+LABELS "${MODULE}")
+
+add_test(
+NAME ${prefix}_Check_number_permutations_10
+COMMAND ${APPLICATION} 10
+)
+
+set_tests_properties (${prefix}_Check_number_permutations_10 PROPERTIES
+PASS_REGULAR_EXPRESSION "Number of permutations of rings = 1023"
+LABELS "${MODULE}")
+

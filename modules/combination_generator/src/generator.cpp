@@ -1,9 +1,5 @@
 // Copyright 2021 Nikolaev Denis
 #include "include/generator.h"
-#include <random>
-#include <ctime>
-
-
 
 bool generator::NextSet(int* a, int n, int m) {
     int j = m - 1;

@@ -4,12 +4,15 @@
 
 #include "include/polygon.h"
 
-TEST(Alibekov_Murad_Polygon_Tests, Throw_If_Polygon_Without_Points) {
+TEST(Alibekov_Murad_Polygon_Tests, Area_Without_Points_Is_0) {
     // Arrange
     Points2D polygon = {};
 
+    // Act
+    double area = Polygon::PolygonArea(polygon);
+
     // Assert
-    ASSERT_ANY_THROW(Polygon::PolygonArea(polygon));
+    ASSERT_DOUBLE_EQ(0., area);
 }
 
 TEST(Alibekov_Murad_Polygon_Tests, Area_Of_Point_Is_0) {

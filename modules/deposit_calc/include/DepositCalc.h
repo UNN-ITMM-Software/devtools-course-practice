@@ -37,5 +37,6 @@ class  depositCalc {
     int getCapitalization() const;
     int getResult() const;
     void calculate();
+    std::vector<int> getDaysInMonths();
 };
 #endif  // MODULES_DEPOSIT_CALC_INCLUDE_DEPOSITCALC_H_

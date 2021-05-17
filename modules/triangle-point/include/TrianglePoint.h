@@ -13,6 +13,7 @@ class Triangle {
     bool isInside(std::pair<double, double>  x);
 
  private:
+    bool isTriangle();
     std::pair<double, double>  a;
     std::pair<double, double>  b;
     std::pair<double, double>  c;

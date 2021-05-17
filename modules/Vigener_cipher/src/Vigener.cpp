@@ -13,6 +13,7 @@ std::string Vigener_cipher::get_key() const {
 
 std::string Vigener_cipher::encrypt(const std::string& str_input) {
     if (key != "") {
+        key = correct(key);
         std::string str_input_corr = correct(str_input);
         std::string str_key = get_key_string(str_input_corr, key);
         //  Зашифровать

@@ -21,7 +21,7 @@ class ModifiedStack {
     bool operator==(const ModifiedStack& tmp) const;
     bool operator!=(const ModifiedStack& tmp) const;
 
-    void pop();
+    double pop();
     void push(double el);
 
     bool isFull() const;

@@ -6,10 +6,7 @@ double Polygon::PolygonArea(const Points2D& polygon) {
     double area = 0.;
     int N = polygon.size();
 
-    if (N == 0)
-        throw std::runtime_error("[ERROR]: Polygon without points");
-
-    if ((N == 1) || (N == 2))
+    if (N <= 2)
         return area;
 
     for (int i = 0; i < N - 1; i++)

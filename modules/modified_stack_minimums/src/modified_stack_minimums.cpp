@@ -1,8 +1,8 @@
 // Copyright 2021 Novozhilova Ekaterina
 
-#include "include/modified_stack_minimums.h"
 #include <vector>
 #include <utility>
+#include "include/modified_stack_minimums.h"
 
 ModifiedStack::ModifiedStack(int _size) {
     if (_size < 0) {
@@ -53,10 +53,11 @@ bool ModifiedStack::operator!=(const ModifiedStack& tmp) const {
     return !this->operator==(tmp);
 }
 
-void ModifiedStack::pop() {
-    mem[last] = std::pair<double, double>(0.0, 0.0);
+double ModifiedStack::pop() {
     last--;
+    return mem[last + 1].first;
 }
+
 
 void ModifiedStack::push(double el) {
     if (last == -1) {

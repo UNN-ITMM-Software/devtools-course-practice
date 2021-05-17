@@ -1,4 +1,4 @@
-// // Copyright 2021 Tkachev Alexey
+// Copyright 2021 Tkachev Alexey
 
 #ifndef MODULES_QUEUE_INCLUDE_QUEUE_H_
 #define MODULES_QUEUE_INCLUDE_QUEUE_H_

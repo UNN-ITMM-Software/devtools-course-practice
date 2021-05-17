@@ -84,7 +84,7 @@ Queue& Queue::operator=(const Queue& other) {
 }
 
 unsigned int Queue::getSize() const {
-    unsigned int size = 1;
+    unsigned int size = 0;
     Node* current = this->first;
 
     while (current) {

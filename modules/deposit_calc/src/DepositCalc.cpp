@@ -173,3 +173,7 @@ void depositCalc::calculate() {
         daysCount++;
     }
 }
+
+std::vector<int> depositCalc::getDaysInMonths() {
+    return daysInMonths;
+}

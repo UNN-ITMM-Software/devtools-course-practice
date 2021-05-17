@@ -11,8 +11,8 @@ Dheap::Dheap(int base_) : base(base_) {
         throw std::runtime_error("Base must be greater than 1");
 }
 
-Dheap::Dheap(int base_, const std::vector<int>& weights_) : base(base_),
-                                                            weights(weights_) {
+Dheap::Dheap(int base_, const std::vector<int>& weights_) : Dheap(base_) {
+    weights = weights_;
     hilling();
 }
 

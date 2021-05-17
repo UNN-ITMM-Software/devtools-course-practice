@@ -281,3 +281,35 @@ TEST(queue_test, not_empty_equals_not_empty_CRASH_TEST) {
 
     ASSERT_NO_THROW(*testing_queue_1 = *testing_queue_2;);
 }
+
+TEST(queue_test, get_size) {
+    Queue* testing_queue = new Queue();
+    double v1 = 1.1;
+    double v2 = 2.2;
+
+    testing_queue->append(v1);
+    testing_queue->append(v2);
+
+    int sz = testing_queue->getSize();
+    int correct = 2;
+
+    ASSERT_EQ(correct, sz);
+}
+
+TEST(queue_test, get_size_with_rm) {
+    Queue* testing_queue = new Queue();
+    double v1 = 1.1;
+    double v2 = 2.2;
+    double v3 = 3.3;
+
+    testing_queue->append(v1);
+    testing_queue->append(v2);
+    testing_queue->append(v3);
+
+    testing_queue->removeFirst();
+
+    int sz = testing_queue->getSize();
+    int correct = 2;
+
+    ASSERT_EQ(correct, sz);
+}
