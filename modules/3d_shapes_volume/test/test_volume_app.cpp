@@ -163,8 +163,8 @@ TEST(test_app, parallelepiped) {
     Application app;
 
     std::string res = app(argc, argv.data());
-    double vol = 10 * 10 * 5;
-    std::string correct = std::to_string(vol);
+    double voll = 10 * 10 * 5;
+    std::string correct = std::to_string(voll);
 
     ASSERT_EQ(correct, res);
 }
