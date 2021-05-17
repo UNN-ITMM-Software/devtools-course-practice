@@ -156,39 +156,3 @@ add_test(
 set_tests_properties (${prefix}_frustum PROPERTIES
     PASS_REGULAR_EXPRESSION "175.929189"
     LABELS "${MODULE}")
-
-
-
-
-
-
-
-
-
-
-Вот один тест с параметрами
- 
-Без - соответственно чиселки не указываешь
- 
-add_test(
-NAME ${prefix}_can_Check_Number_Of_Arguments
-COMMAND ${APPLICATION} 3 6 9
-)
-set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
-PASS_REGULAR_EXPRESSION "ERROR: Should be 1 or 5 arguments."
-LABELS "${MODULE}")
- 
-PASS_REGULAR_EXPRESSION проверяет, есть ли в выводе такая строчка
- 
-Соответственно в этой строчке может быть и число
- 
-и что угодно
- 
-что у тебя программа выводит в консоль
- 
-Больше менять ничего не требуется
-Названия тестов сама видишь
- 
-в двух местах
- 
-Одинаковое главно
