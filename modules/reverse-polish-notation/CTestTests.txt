@@ -18,3 +18,11 @@ add_test(
 set_tests_properties (${prefix}_first_test PROPERTIES
     PASS_REGULAR_EXPRESSION "1 2 3 \\- 4 \\* 5 6 \\^ \\/ \\+"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_wrong_count_args_test
+    COMMAND ${APPLICATION} "1+(2-3)*4/5^6"
+)
+set_tests_properties (${prefix}_wrong_count_args_test PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application, that create reverse polish notation.\n\nPlease provide arguments in the following format:\n1\\+\\(2\\-3\\)\\*4\\/5\\^6\\.\\.\\.\\.\\. 7 \n\nWhere second digit is length of source string\n\n"
+    LABELS "${MODULE}")

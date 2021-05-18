@@ -12,8 +12,8 @@ void RPN_App::help(const char* appname, const char* message) {
     message_ =
         std::string(message) +
         "This is an application, that create reverse polish notation.\n\n" +
-        "Please provide arguments in the following format:\n$"
-        + appname + " 1+(2-3)*4/5^6..... 7 \n\n"
+        "Please provide arguments in the following format:\n"
+        + "1+(2-3)*4/5^6..... 7 \n\n"
         + "Where second digit is length of source string\n\n";
 }
 
