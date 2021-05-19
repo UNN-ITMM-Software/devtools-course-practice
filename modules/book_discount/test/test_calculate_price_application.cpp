@@ -59,14 +59,6 @@ TEST_F(CalculatePriceApplicationTest, Can_Detect_Wrong_Number_Format) {
     Assert("ERROR: Wrong number format\\..*");
 }
 
-TEST_F(CalculatePriceApplicationTest, Can_Detect_Negative_Arguments) {
-    std::vector<std::string> args = {"1", "2", "-4", "4", "5"};
-
-    Act(args);
-
-    Assert("ERROR: Mustn't be contain negative numbers\\..*");
-}
-
 TEST_F(CalculatePriceApplicationTest, Can_Detect_Wrong_Overflow) {
     std::vector<std::string> args = {"1", "2",
         "7234345435636634", "1", "1"};
