@@ -41,8 +41,3 @@ INSTANTIATE_TEST_CASE_P(/**/, Param, testing::Values(
   std::make_tuple(1, 1, 1, 1, 0, 25.6),
   std::make_tuple(1, 1, 1, 1, 1, 30.0)
 ));
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}

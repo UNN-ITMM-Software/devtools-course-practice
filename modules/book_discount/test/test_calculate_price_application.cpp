@@ -126,8 +126,3 @@ TEST_F(CalculatePriceApplicationTest, Correct_Discount_On_All_Books) {
 
     Assert("30");
 }
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
