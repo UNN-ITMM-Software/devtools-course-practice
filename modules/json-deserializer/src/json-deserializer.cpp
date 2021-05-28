@@ -291,6 +291,11 @@ JsonNode JsonDeserializer::literal() {
       Token token = eat(lookahead->tokenType);
       return JsonNode(NodeType::Delimiter, JsonData(token.value));
     }
+    default: {
+      std::stringstream ss;
+      ss << "Parse Error! Token: " << lookahead->print();
+      throw ss.str();
+    }
   }
 }
 
