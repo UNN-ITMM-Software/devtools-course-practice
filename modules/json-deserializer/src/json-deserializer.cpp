@@ -2,6 +2,7 @@
 
 #include "include/json-deserializer.h"
 
+#include <algorithm>
 #include <list>
 #include <regex>
 #include <sstream>
