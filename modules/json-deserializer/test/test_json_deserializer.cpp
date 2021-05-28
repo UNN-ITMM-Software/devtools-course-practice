@@ -272,16 +272,43 @@ TEST(JsonDeserializer, Parse_Returns_Array) {
 
 TEST(JsonDeserializer, Parse_Returns_Object) {
   JsonDeserializer des(
-      "{   \"field\" :   "
-      "\"value\", \"intField\" : \"1234\"   }");
-  std::string expectedValue = "value";
+      "{   "
+      "\"stringField\" : \"string\","
+      "\"intField\" : 3421,"
+      "\"booleanField\" : true,"
+      "\"arrayField\" : [1,2]"
+      "\"objectField\" : {"
+            "\"anotherIntField\" : 1111,"
+            "\"anotherStringField\" : \"stringTwo\""
+        "}"
+      "}"
+  );
+  std::string expectedString = "string";
+  int expectedInt = 3421;
+  bool expectedBoolean = true;
+  auto expectedFirstArrayValue = 1;
+  auto expectedSecondArrayValue = 2;
+  auto expectedNestedIntValue = 1111;
+  auto expectedNestedStrValue = "stringTwo";
 
   JsonDocument document = des.parse();
   JsonNode resultNode = document.getRoot();
-  std::string resultValue = resultNode.getData()["field"].to<std::string>();
+  auto data = resultNode.getData();
+  auto stringResult = data["stringField"].to<std::string>();
+  auto resultInt = data["intField"].to<int>();
+  auto resultBoolean = data["booleanField"].to<bool>();
+  auto jsonArray = data["arrayField"].getData();
+  auto jsonObject = data["objectField"].getData();
 
   ASSERT_EQ(NodeType::Object, resultNode.getNodeType());
-  ASSERT_EQ(expectedValue, resultValue);
+  ASSERT_EQ(expectedString, stringResult);
+  ASSERT_EQ(expectedInt, resultInt);
+  ASSERT_EQ(expectedBoolean, resultBoolean);
+  ASSERT_EQ(expectedFirstArrayValue, jsonArray[0].to<int>());
+  ASSERT_EQ(expectedSecondArrayValue, jsonArray[1].to<int>());
+  ASSERT_EQ(expectedNestedIntValue, jsonObject["anotherIntField"].to<int>());
+  ASSERT_EQ(expectedNestedStrValue,
+            jsonObject["anotherStringField"].to<std::string>());
 }
 
 TEST(JsonDocument, Can_Create_JsonDocument) {
@@ -291,6 +318,18 @@ TEST(JsonDocument, Can_Create_JsonDocument) {
 TEST(JsonDocument, Can_Create_JsonDocument_With_Copy_Ctor) {
   JsonDocument doc;
   ASSERT_NO_THROW(JsonDocument docCopy(doc));
+}
+
+TEST(JsonDocument, Can_Create_JsonDocument_With_Copy_Ctor_From_Doc_With_Data) {
+  JsonDocument doc;
+  doc.setRoot(JsonNode());
+  ASSERT_NO_THROW(JsonDocument docCopy(doc));
+}
+
+TEST(JsonDocument, Can_Assign) {
+  JsonDocument doc, other;
+
+  ASSERT_NO_THROW(other = doc);
 }
 
 TEST(JsonDocument, Can_Access_Data_By_Key) {

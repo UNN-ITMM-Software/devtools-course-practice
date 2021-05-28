@@ -310,7 +310,13 @@ bool JsonDocument::empty() { return isEmpty; }
 
 JsonDocument& JsonDocument::operator=(const JsonDocument& other) {
   if (this != &other) {
-    rootNode = new JsonNode(other.getRoot());
+    if (other.isEmpty) {
+      rootNode = nullptr;
+      isEmpty = true;
+      return *this;
+    }
+
+    rootNode = new JsonNode(*other.rootNode);
     isEmpty = other.isEmpty;
   }
 
