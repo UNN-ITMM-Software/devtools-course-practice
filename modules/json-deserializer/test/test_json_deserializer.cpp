@@ -155,11 +155,17 @@ TEST(JsonNode, Get_Node_Type_Returns_Valid_Default_Value) {
 
 TEST(JsonNode, Set_Data_Sets_Data_Properly) {
   JsonData data("data");
-  JsonNode node;
+  JsonNode node(NodeType::Object);
 
   node.setData(data);
 
   ASSERT_EQ(data, node.getData());
+}
+
+TEST(JsonNode, Can_Get_Data) {
+  JsonNode node(NodeType::Colon);
+
+  ASSERT_NO_THROW(node.getData());
 }
 
 TEST(JsonNode, Get_Data_Returns_Valid_Default_Value) {
@@ -217,6 +223,12 @@ TEST(JsonDeserializer, Parse_Throws_On_Invalid_Object_Expression) {
   JsonDeserializer des;
 
   ASSERT_ANY_THROW(des.parse("{]}"));
+}
+
+TEST(JsonDeserializer, Parse_No_Throw_On_Empty_Json_Object) {
+  JsonDeserializer des;
+
+  ASSERT_NO_THROW(des.parse("{,}"));
 }
 
 TEST(JsonDeserializer, No_Throw_On_Parse_With_Not_Empty_String) {
