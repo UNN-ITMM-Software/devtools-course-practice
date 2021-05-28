@@ -278,11 +278,11 @@ TEST(JsonDeserializer, Parse_Returns_Object) {
       "\"booleanField\" : true,"
       "\"arrayField\" : [1,2]"
       "\"objectField\" : {"
-            "\"anotherIntField\" : 1111,"
-            "\"anotherStringField\" : \"stringTwo\""
-        "}"
+      "\"anotherIntField\" : 1111,"
+      "\"anotherStringField\" : \"stringTwo\""
       "}"
-  );
+      "}");
+
   std::string expectedString = "string";
   int expectedInt = 3421;
   bool expectedBoolean = true;
