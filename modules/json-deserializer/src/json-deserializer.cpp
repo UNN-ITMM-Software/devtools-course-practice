@@ -214,7 +214,7 @@ Lexer JsonDeserializer::getLexer() { return lexer; }
 
 JsonNode& JsonDocument::operator[](std::string key) {
   if (!rootNode) {
-    rootNode = new JsonNode();
+    throw "No data!";
   }
 
   return rootNode->getData()[key];
@@ -222,7 +222,7 @@ JsonNode& JsonDocument::operator[](std::string key) {
 
 JsonNode& JsonDocument::operator[](int index) {
   if (!rootNode) {
-    rootNode = new JsonNode();
+    throw "No data!";
   }
 
   return rootNode->getData()[index];
@@ -249,12 +249,6 @@ JsonDocument JsonDeserializer::parse(const std::string& jsonString) {
 
 Token JsonDeserializer::eat(const TokenType expectedTokenType) {
   Token token = *lookahead;
-
-  if (token.tokenType != expectedTokenType) {
-    std::stringstream ss;
-    ss << "Unexpected token: " << token.value << std::endl;
-    throw ss.str();
-  }
 
   lookahead = new Token(lexer.getNextToken());
 
@@ -431,7 +425,7 @@ JsonDocument& JsonDocument::operator=(const JsonDocument& other) {
   return *this;
 }
 
-JsonNode::JsonNode() : nodeType(NodeType::Unknown), data(nullptr) {}
+JsonNode::JsonNode() : nodeType(NodeType::Unknown), data(new JsonData) {}
 
 JsonNode::JsonNode(const NodeType type) : nodeType(type), data(nullptr) {}
 

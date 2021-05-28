@@ -204,7 +204,19 @@ TEST(JsonDeserializer, Can_Get_Lexer) {
 TEST(JsonDeserializer, Parse_Throws_On_Invalid_String) {
   JsonDeserializer des;
 
-  ASSERT_ANY_THROW(des.parse("{."));
+  ASSERT_ANY_THROW(des.parse("\\"));
+}
+
+TEST(JsonDeserializer, Parse_Throws_On_Invalid_Json_Object) {
+  JsonDeserializer des;
+
+  ASSERT_ANY_THROW(des.parse("{ \"field\" \"\"}"));
+}
+
+TEST(JsonDeserializer, Parse_Throws_On_Invalid_Object_Expression) {
+  JsonDeserializer des;
+
+  ASSERT_ANY_THROW(des.parse("{]}"));
 }
 
 TEST(JsonDeserializer, No_Throw_On_Parse_With_Not_Empty_String) {
@@ -320,10 +332,31 @@ TEST(JsonDocument, Can_Create_JsonDocument_With_Copy_Ctor) {
   ASSERT_NO_THROW(JsonDocument docCopy(doc));
 }
 
+TEST(JsonDocument, Can_Set_Json_Node_On_Non_Empty_Document) {
+  JsonDocument doc;
+  doc.setRoot(JsonNode());
+
+  ASSERT_NO_THROW(doc.setRoot(JsonNode()););
+}
+
+TEST(JsonDocument, Can_Assign_Non_Empty) {
+  JsonDocument doc, other;
+  other.setRoot(JsonNode(NodeType::Colon));
+
+  ASSERT_NO_THROW(doc = other);
+}
+
 TEST(JsonDocument, Can_Create_JsonDocument_With_Copy_Ctor_From_Doc_With_Data) {
   JsonDocument doc;
   doc.setRoot(JsonNode());
   ASSERT_NO_THROW(JsonDocument docCopy(doc));
+}
+
+TEST(JsonDocument, Throws_If_No_Data) {
+  JsonDocument doc;
+
+  ASSERT_ANY_THROW(doc[0]);
+  ASSERT_ANY_THROW(doc["data"]);
 }
 
 TEST(JsonDocument, Can_Assign) {

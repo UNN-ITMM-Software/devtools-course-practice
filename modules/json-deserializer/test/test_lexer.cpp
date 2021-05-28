@@ -12,6 +12,19 @@ using simpleds::TokenType;
 
 TEST(TokenType, No_Throw_On_Ostream) {
   ASSERT_NO_THROW(std::cout << TokenType::Array);
+  ASSERT_NO_THROW(std::cout << TokenType::Number);
+  ASSERT_NO_THROW(std::cout << TokenType::String);
+  ASSERT_NO_THROW(std::cout << TokenType::Object);
+  ASSERT_NO_THROW(std::cout << TokenType::Boolean);
+  ASSERT_NO_THROW(std::cout << TokenType::Null);
+  ASSERT_NO_THROW(std::cout << TokenType::Whitespace);
+  ASSERT_NO_THROW(std::cout << TokenType::Colon);
+  ASSERT_NO_THROW(std::cout << TokenType::LeftBrace);
+  ASSERT_NO_THROW(std::cout << TokenType::RightBrace);
+  ASSERT_NO_THROW(std::cout << TokenType::LeftBracket);
+  ASSERT_NO_THROW(std::cout << TokenType::RightBracket);
+  ASSERT_NO_THROW(std::cout << TokenType::Eof);
+  ASSERT_NO_THROW(std::cout << TokenType::Unknown);
 }
 
 TEST(Token, Can_Create_Token_With_Args) {
