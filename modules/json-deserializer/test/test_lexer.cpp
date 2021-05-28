@@ -91,7 +91,7 @@ TEST(Token, Inequality_Operator_Overloaded_Properly) {
 TEST(Token, No_Throw_On_Ostream) {
   Token token(TokenType::Delimiter, ",");
 
-  ASSERT_NO_THROW(std::cout << token);
+  ASSERT_NO_THROW(std::cout << token.print());
 }
 
 TEST(Token, Copy_Ctor_Clones_Token_Properly) {

@@ -17,6 +17,81 @@ using simpleds::JsonNode;
 using simpleds::Lexer;
 using simpleds::NodeType;
 using simpleds::Token;
+using simpleds::TokenType;
+
+bool simpleds::equalsIgnoreCase(std::string lhs, std::string rhs) {
+  std::transform(lhs.begin(), lhs.end(), lhs.begin(), ::tolower);
+  std::transform(rhs.begin(), rhs.end(), rhs.begin(), ::tolower);
+
+  return lhs.compare(rhs) == 0;
+}
+
+std::ostream& simpleds::operator<<(std::ostream& out, const TokenType& type) {
+  switch (type) {
+    case TokenType::Number: {
+      out << "Number";
+      break;
+    }
+    case TokenType::String: {
+      out << "String";
+      break;
+    }
+    case TokenType::Object: {
+      out << "Object";
+      break;
+    }
+    case TokenType::Array: {
+      out << "Array";
+      break;
+    }
+    case TokenType::Boolean: {
+      out << "Boolean";
+      break;
+    }
+    case TokenType::Null: {
+      out << "Null";
+      break;
+    }
+    case TokenType::Whitespace: {
+      out << "Whitespace";
+      break;
+    }
+    case TokenType::Delimiter: {
+      out << "Delimiter";
+      break;
+    }
+    case TokenType::Colon: {
+      out << "Colon";
+      break;
+    }
+    case TokenType::LeftBrace: {
+      out << "LeftBrace";
+      break;
+    }
+    case TokenType::RightBrace: {
+      out << "RightBrace";
+      break;
+    }
+    case TokenType::LeftBracket: {
+      out << "LeftBracket";
+      break;
+    }
+    case TokenType::RightBracket: {
+      out << "RightBracket";
+      break;
+    }
+    case TokenType::Eof: {
+      out << "Eof";
+      break;
+    }
+    case TokenType::Unknown: {
+      out << "Unknown";
+      break;
+    }
+  }
+
+  return out;
+}
 
 std::string sliceLeft(const std::string& src, int count) {
   std::string dst(src);
@@ -33,6 +108,38 @@ std::string sliceRight(const std::string& src, int count) {
 std::string slice(const std::string& src, int fromStart, int fromEnd) {
   auto res = sliceLeft(src, fromStart);
   return sliceRight(res, fromEnd);
+}
+
+Token::Token(const TokenType type, const std::string& value) {
+  this->tokenType = type;
+  this->value = value;
+}
+
+Token::Token(const Token& other) {
+  this->tokenType = other.tokenType;
+  this->value = other.value;
+}
+
+bool Token::equals(const Token& other) const {
+  return this->tokenType == other.tokenType && this->value == other.value;
+}
+
+std::string simpleds::Token::print() {
+  std::stringstream ss;
+
+  ss << "{\n\tType: " << this->tokenType << std::endl;
+  ss << "\tValue: \"" << this->value << "\"\n}" << std::endl;
+
+  return ss.str();
+}
+
+Token& Token::operator=(const Token& other) {
+  if (this != &other) {
+    tokenType = other.tokenType;
+    value = other.value;
+  }
+
+  return *this;
 }
 
 Lexer::Lexer() : cursor(0), string("") {}
@@ -191,7 +298,7 @@ JsonNode JsonDeserializer::literal() {
     }
     default: {
       std::stringstream ss;
-      ss << "Parse Error! Toke: " << *lookahead;
+      ss << "Parse Error! Token: " << lookahead->print();
       throw ss.str();
     }
   }

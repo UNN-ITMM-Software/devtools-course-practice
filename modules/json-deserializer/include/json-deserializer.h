@@ -29,6 +29,8 @@ bool operator!=(const JsonNode& lhs, const JsonNode& rhs);
 bool operator==(const Token& lhs, const Token& rhs);
 bool operator!=(const Token& lhs, const Token& rhs);
 
+bool equalsIgnoreCase(std::string lhs, std::string rhs);
+
 enum class TokenType {
   Number,
   String,
@@ -47,72 +49,7 @@ enum class TokenType {
   Unknown
 };
 
-inline std::ostream& operator<<(std::ostream& out, const TokenType& type) {
-  switch (type) {
-    case TokenType::Number: {
-      out << "Number";
-      break;
-    }
-    case TokenType::String: {
-      out << "String";
-      break;
-    }
-    case TokenType::Object: {
-      out << "Object";
-      break;
-    }
-    case TokenType::Array: {
-      out << "Array";
-      break;
-    }
-    case TokenType::Boolean: {
-      out << "Boolean";
-      break;
-    }
-    case TokenType::Null: {
-      out << "Null";
-      break;
-    }
-    case TokenType::Whitespace: {
-      out << "Whitespace";
-      break;
-    }
-    case TokenType::Delimiter: {
-      out << "Delimiter";
-      break;
-    }
-    case TokenType::Colon: {
-      out << "Colon";
-      break;
-    }
-    case TokenType::LeftBrace: {
-      out << "LeftBrace";
-      break;
-    }
-    case TokenType::RightBrace: {
-      out << "RightBrace";
-      break;
-    }
-    case TokenType::LeftBracket: {
-      out << "LeftBracket";
-      break;
-    }
-    case TokenType::RightBracket: {
-      out << "RightBracket";
-      break;
-    }
-    case TokenType::Eof: {
-      out << "Eof";
-      break;
-    }
-    case TokenType::Unknown: {
-      out << "Unknown";
-      break;
-    }
-  }
-
-  return out;
-}
+std::ostream& operator<<(std::ostream& out, const TokenType& type);
 
 enum class NodeType {
   Unknown,
@@ -204,35 +141,14 @@ struct Token {
   TokenType tokenType;
   std::string value;
 
-  explicit Token(const TokenType type, const std::string& value = "") {
-    this->tokenType = type;
-    this->value = value;
-  }
+  explicit Token(const TokenType type, const std::string& value = "");
+  Token(const Token& other);
 
-  Token(const Token& other) {
-    this->tokenType = other.tokenType;
-    this->value = other.value;
-  }
+  bool equals(const Token& other) const;
 
-  bool equals(const Token& other) const {
-    return this->tokenType == other.tokenType && this->value == other.value;
-  }
+  std::string print();
 
-  friend std::ostream& operator<<(std::ostream& out, const Token& token) {
-    out << "{\n\tType: " << token.tokenType << std::endl;
-    out << "\tValue: \"" << token.value << "\"\n}" << std::endl;
-
-    return out;
-  }
-
-  Token& operator=(const Token& other) {
-    if (this != &other) {
-      tokenType = other.tokenType;
-      value = other.value;
-    }
-
-    return *this;
-  }
+  Token& operator=(const Token& other);
 };
 
 class Lexer {
@@ -290,8 +206,6 @@ class JsonDeserializer {
   JsonNode object();
 };
 
-bool equalsIgnoreCase(std::string lhs, std::string rhs);
-
 template <>
 inline bool JsonNode::to(const bool& defaultValue) {
   if (nodeType == NodeType::Unknown) {
@@ -314,13 +228,6 @@ inline int JsonNode::to<int>(const int& defaultValue) {
   }
 
   return atoi(this->data->getValue().c_str());
-}
-
-inline bool equalsIgnoreCase(std::string lhs, std::string rhs) {
-  std::transform(lhs.begin(), lhs.end(), lhs.begin(), ::tolower);
-  std::transform(rhs.begin(), rhs.end(), rhs.begin(), ::tolower);
-
-  return lhs.compare(rhs) == 0;
 }
 }  // namespace simpleds
 
