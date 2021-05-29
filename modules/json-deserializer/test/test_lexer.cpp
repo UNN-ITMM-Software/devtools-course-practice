@@ -6,9 +6,9 @@
 #include <string>
 #include <vector>
 
-using simpleds::Lexer;
-using simpleds::Token;
-using simpleds::TokenType;
+using simpleDeserializer::Lexer;
+using simpleDeserializer::Token;
+using simpleDeserializer::TokenType;
 
 TEST(TokenType, No_Throw_On_Ostream) {
   ASSERT_NO_THROW(std::cout << TokenType::Array);

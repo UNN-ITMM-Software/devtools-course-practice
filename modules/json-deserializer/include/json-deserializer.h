@@ -12,7 +12,7 @@
 #include <utility>
 #include <vector>
 
-namespace simpleds {
+namespace simpleDeserializer {
 class JSONNode;
 class JSONData;
 enum class TokenType;

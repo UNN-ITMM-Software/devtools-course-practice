@@ -11,23 +11,23 @@
 #include <utility>
 #include <vector>
 
-using simpleds::JSONData;
-using simpleds::JSONDeserializer;
-using simpleds::JSONDocument;
-using simpleds::JSONNode;
-using simpleds::Lexer;
-using simpleds::NodeType;
-using simpleds::Token;
-using simpleds::TokenType;
+using simpleDeserializer::JSONData;
+using simpleDeserializer::JSONDeserializer;
+using simpleDeserializer::JSONDocument;
+using simpleDeserializer::JSONNode;
+using simpleDeserializer::Lexer;
+using simpleDeserializer::NodeType;
+using simpleDeserializer::Token;
+using simpleDeserializer::TokenType;
 
-bool simpleds::equalsIgnoreCase(std::string lhs, std::string rhs) {
+bool simpleDeserializer::equalsIgnoreCase(std::string lhs, std::string rhs) {
   std::transform(lhs.begin(), lhs.end(), lhs.begin(), ::tolower);
   std::transform(rhs.begin(), rhs.end(), rhs.begin(), ::tolower);
 
   return lhs.compare(rhs) == 0;
 }
 
-std::ostream& simpleds::operator<<(std::ostream& out, const TokenType& type) {
+std::ostream& simpleDeserializer::operator<<(std::ostream& out, const TokenType& type) {
   switch (type) {
     case TokenType::Number: {
       out << "Number";
@@ -125,7 +125,7 @@ bool Token::equals(const Token& other) const {
   return this->tokenType == other.tokenType && this->value == other.value;
 }
 
-std::string simpleds::Token::print() {
+std::string simpleDeserializer::Token::print() {
   std::stringstream ss;
 
   ss << "{\n\tType: " << this->tokenType << std::endl;
@@ -532,26 +532,26 @@ JSONData& JSONData::operator=(const JSONData& other) {
   return *this;
 }
 
-bool simpleds::operator==(const JSONNode& lhs, const JSONNode& rhs) {
+bool simpleDeserializer::operator==(const JSONNode& lhs, const JSONNode& rhs) {
   return lhs.equals(rhs);
 }
 
-bool simpleds::operator!=(const JSONNode& lhs, const JSONNode& rhs) {
+bool simpleDeserializer::operator!=(const JSONNode& lhs, const JSONNode& rhs) {
   return !(lhs.equals(rhs));
 }
 
-bool simpleds::operator==(const JSONData& lhs, const JSONData& rhs) {
+bool simpleDeserializer::operator==(const JSONData& lhs, const JSONData& rhs) {
   return lhs.equals(rhs);
 }
 
-bool simpleds::operator!=(const JSONData& lhs, const JSONData& rhs) {
+bool simpleDeserializer::operator!=(const JSONData& lhs, const JSONData& rhs) {
   return !(lhs.equals(rhs));
 }
 
-bool simpleds::operator==(const Token& lhs, const Token& rhs) {
+bool simpleDeserializer::operator==(const Token& lhs, const Token& rhs) {
   return lhs.equals(rhs);
 }
 
-bool simpleds::operator!=(const Token& lhs, const Token& rhs) {
+bool simpleDeserializer::operator!=(const Token& lhs, const Token& rhs) {
   return !(lhs.equals(rhs));
 }
