@@ -27,7 +27,8 @@ bool simpleDeserializer::equalsIgnoreCase(std::string lhs, std::string rhs) {
   return lhs.compare(rhs) == 0;
 }
 
-std::ostream& simpleDeserializer::operator<<(std::ostream& out, const TokenType& type) {
+std::ostream& simpleDeserializer::operator<<(std::ostream& out,
+                                             const TokenType& type) {
   switch (type) {
     case TokenType::Number: {
       out << "Number";

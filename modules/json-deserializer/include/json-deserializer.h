@@ -229,6 +229,6 @@ inline int JSONNode::to<int>(const int& defaultValue) {
 
   return atoi(this->data->getValue().c_str());
 }
-}  // namespace simpleds
+}  // namespace simpleDeserializer
 
 #endif  // MODULES_JSON_DESERIALIZER_INCLUDE_JSON_DESERIALIZER_H_
