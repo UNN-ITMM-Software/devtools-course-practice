@@ -11,10 +11,10 @@
 #include <utility>
 #include <vector>
 
-using simpleds::JsonData;
-using simpleds::JsonDeserializer;
-using simpleds::JsonDocument;
-using simpleds::JsonNode;
+using simpleds::JSONData;
+using simpleds::JSONDeserializer;
+using simpleds::JSONDocument;
+using simpleds::JSONNode;
 using simpleds::Lexer;
 using simpleds::NodeType;
 using simpleds::Token;
@@ -205,14 +205,14 @@ std::vector<Token> Lexer::getTokens() {
   return tokens;
 }
 
-JsonDeserializer::JsonDeserializer() : lexer(Lexer()), lookahead(nullptr) {}
+JSONDeserializer::JSONDeserializer() : lexer(Lexer()), lookahead(nullptr) {}
 
-JsonDeserializer::JsonDeserializer(const std::string& str)
+JSONDeserializer::JSONDeserializer(const std::string& str)
     : lexer(Lexer(str)), lookahead(nullptr) {}
 
-Lexer JsonDeserializer::getLexer() { return lexer; }
+Lexer JSONDeserializer::getLexer() { return lexer; }
 
-JsonNode& JsonDocument::operator[](std::string key) {
+JSONNode& JSONDocument::operator[](std::string key) {
   if (!rootNode) {
     throw "No data!";
   }
@@ -220,7 +220,7 @@ JsonNode& JsonDocument::operator[](std::string key) {
   return rootNode->getData()[key];
 }
 
-JsonNode& JsonDocument::operator[](int index) {
+JSONNode& JSONDocument::operator[](int index) {
   if (!rootNode) {
     throw "No data!";
   }
@@ -228,16 +228,16 @@ JsonNode& JsonDocument::operator[](int index) {
   return rootNode->getData()[index];
 }
 
-JsonDocument JsonDeserializer::parse() {
+JSONDocument JSONDeserializer::parse() {
   lookahead = new Token(lexer.getNextToken());
 
-  JsonDocument document;
+  JSONDocument document;
   document.setRoot(literal());
 
   return document;
 }
 
-JsonDocument JsonDeserializer::parse(const std::string& jsonString) {
+JSONDocument JSONDeserializer::parse(const std::string& jsonString) {
   if (jsonString.size() == 0) {
     throw std::invalid_argument("String cannot be empty");
   }
@@ -247,7 +247,7 @@ JsonDocument JsonDeserializer::parse(const std::string& jsonString) {
   return parse();
 }
 
-Token JsonDeserializer::eat(const TokenType expectedTokenType) {
+Token JSONDeserializer::eat(const TokenType expectedTokenType) {
   Token token = *lookahead;
 
   lookahead = new Token(lexer.getNextToken());
@@ -255,7 +255,7 @@ Token JsonDeserializer::eat(const TokenType expectedTokenType) {
   return token;
 }
 
-JsonNode JsonDeserializer::literal() {
+JSONNode JSONDeserializer::literal() {
   switch (lookahead->tokenType) {
     case TokenType::Number: {
       return numericLiteral();
@@ -277,19 +277,19 @@ JsonNode JsonDeserializer::literal() {
     }
     case TokenType::RightBracket: {
       Token token = eat(lookahead->tokenType);
-      return JsonNode(NodeType::ArrayEnd, JsonData(token.value));
+      return JSONNode(NodeType::ArrayEnd, JSONData(token.value));
     }
     case TokenType::RightBrace: {
       Token token = eat(lookahead->tokenType);
-      return JsonNode(NodeType::ObjectEnd, JsonData(token.value));
+      return JSONNode(NodeType::ObjectEnd, JSONData(token.value));
     }
     case TokenType::Colon: {
       Token token = eat(lookahead->tokenType);
-      return JsonNode(NodeType::Colon, JsonData(token.value));
+      return JSONNode(NodeType::Colon, JSONData(token.value));
     }
     case TokenType::Delimiter: {
       Token token = eat(lookahead->tokenType);
-      return JsonNode(NodeType::Delimiter, JsonData(token.value));
+      return JSONNode(NodeType::Delimiter, JSONData(token.value));
     }
     default: {
       std::stringstream ss;
@@ -299,35 +299,35 @@ JsonNode JsonDeserializer::literal() {
   }
 }
 
-JsonNode JsonDeserializer::numericLiteral() {
+JSONNode JSONDeserializer::numericLiteral() {
   Token token = eat(TokenType::Number);
 
-  return JsonNode(NodeType::Numeric, JsonData(token.value));
+  return JSONNode(NodeType::Numeric, JSONData(token.value));
 }
 
-JsonNode JsonDeserializer::stringLiteral() {
+JSONNode JSONDeserializer::stringLiteral() {
   Token token = eat(TokenType::String);
 
-  return JsonNode(NodeType::String, JsonData(slice(token.value, 1, 1)));
+  return JSONNode(NodeType::String, JSONData(slice(token.value, 1, 1)));
 }
 
-JsonNode JsonDeserializer::nullLiteral() {
+JSONNode JSONDeserializer::nullLiteral() {
   Token token = eat(TokenType::Null);
 
-  return JsonNode(NodeType::Null, JsonData(token.value));
+  return JSONNode(NodeType::Null, JSONData(token.value));
 }
 
-JsonNode JsonDeserializer::booleanLiteral() {
+JSONNode JSONDeserializer::booleanLiteral() {
   Token token = eat(TokenType::Boolean);
 
-  return JsonNode(NodeType::Boolean, JsonData(token.value));
+  return JSONNode(NodeType::Boolean, JSONData(token.value));
 }
 
-JsonNode JsonDeserializer::array() {
+JSONNode JSONDeserializer::array() {
   eat(TokenType::LeftBracket);
 
   JSONArray array;
-  JsonNode nextNode = literal();
+  JSONNode nextNode = literal();
   NodeType expectedNodeType = nextNode.getNodeType();
   NodeType actualType = expectedNodeType;
   while (actualType != NodeType::ArrayEnd) {
@@ -338,16 +338,16 @@ JsonNode JsonDeserializer::array() {
     actualType = nextNode.getNodeType();
   }
 
-  return JsonNode(NodeType::Array, JsonData(array));
+  return JSONNode(NodeType::Array, JSONData(array));
 }
 
-JsonDeserializer::~JsonDeserializer() { delete lookahead; }
+JSONDeserializer::~JSONDeserializer() { delete lookahead; }
 
-JsonNode JsonDeserializer::object() {
+JSONNode JSONDeserializer::object() {
   eat(TokenType::LeftBrace);
 
   JSONObject object;
-  JsonNode nextNode = literal();
+  JSONNode nextNode = literal();
 
   while (nextNode.getNodeType() != NodeType::ObjectEnd) {
     switch (nextNode.getNodeType()) {
@@ -375,30 +375,30 @@ JsonNode JsonDeserializer::object() {
     nextNode = literal();
   }
 
-  return JsonNode(NodeType::Object, JsonData(object));
+  return JSONNode(NodeType::Object, JSONData(object));
 }
 
-JsonDocument::JsonDocument() {
+JSONDocument::JSONDocument() {
   rootNode = nullptr;
   isEmpty = true;
 }
 
-JsonDocument::JsonDocument(const JsonDocument& other) {
+JSONDocument::JSONDocument(const JSONDocument& other) {
   isEmpty = other.isEmpty;
   if (other.rootNode) {
-    rootNode = new JsonNode(*other.rootNode);
+    rootNode = new JSONNode(*other.rootNode);
   } else {
     rootNode = nullptr;
   }
 }
 
-JsonDocument::~JsonDocument() { delete rootNode; }
+JSONDocument::~JSONDocument() { delete rootNode; }
 
-JsonNode& JsonDocument::getRoot() const { return *rootNode; }
+JSONNode& JSONDocument::getRoot() const { return *rootNode; }
 
-void JsonDocument::setRoot(const JsonNode& rootNode) {
+void JSONDocument::setRoot(const JSONNode& rootNode) {
   if (this->rootNode == nullptr) {
-    this->rootNode = new JsonNode(rootNode);
+    this->rootNode = new JSONNode(rootNode);
   } else {
     *this->rootNode = rootNode;
   }
@@ -408,9 +408,9 @@ void JsonDocument::setRoot(const JsonNode& rootNode) {
   }
 }
 
-bool JsonDocument::empty() { return isEmpty; }
+bool JSONDocument::empty() { return isEmpty; }
 
-JsonDocument& JsonDocument::operator=(const JsonDocument& other) {
+JSONDocument& JSONDocument::operator=(const JSONDocument& other) {
   if (this != &other) {
     if (other.isEmpty) {
       rootNode = nullptr;
@@ -418,34 +418,34 @@ JsonDocument& JsonDocument::operator=(const JsonDocument& other) {
       return *this;
     }
 
-    rootNode = new JsonNode(*other.rootNode);
+    rootNode = new JSONNode(*other.rootNode);
     isEmpty = other.isEmpty;
   }
 
   return *this;
 }
 
-JsonNode::JsonNode() : nodeType(NodeType::Unknown), data(new JsonData) {}
+JSONNode::JSONNode() : nodeType(NodeType::Unknown), data(new JSONData) {}
 
-JsonNode::JsonNode(const NodeType type) : nodeType(type), data(nullptr) {}
+JSONNode::JSONNode(const NodeType type) : nodeType(type), data(nullptr) {}
 
-JsonNode::JsonNode(const JsonNode& other) {
+JSONNode::JSONNode(const JSONNode& other) {
   this->nodeType = other.nodeType;
   if (other.data) {
-    this->data = new JsonData(*other.data);
+    this->data = new JSONData(*other.data);
   } else {
     this->data = nullptr;
   }
 }
 
-JsonNode::JsonNode(const NodeType type, const JsonData& data) {
+JSONNode::JSONNode(const NodeType type, const JSONData& data) {
   this->nodeType = type;
-  this->data = new JsonData(data);
+  this->data = new JSONData(data);
 }
 
-JsonNode::~JsonNode() { delete data; }
+JSONNode::~JSONNode() { delete data; }
 
-JsonNode& JsonNode::operator=(const JsonNode& other) {
+JSONNode& JSONNode::operator=(const JSONNode& other) {
   if (this != &other) {
     nodeType = other.nodeType;
 
@@ -453,7 +453,7 @@ JsonNode& JsonNode::operator=(const JsonNode& other) {
       data = nullptr;
     } else {
       if (!data) {
-        data = new JsonData;
+        data = new JSONData;
       }
       *data = *other.data;
     }
@@ -462,26 +462,26 @@ JsonNode& JsonNode::operator=(const JsonNode& other) {
   return *this;
 }
 
-NodeType JsonNode::getNodeType() const { return nodeType; }
+NodeType JSONNode::getNodeType() const { return nodeType; }
 
-void JsonNode::setData(const JsonData& data) {
-  JsonData copy = JsonData(data);
+void JSONNode::setData(const JSONData& data) {
+  JSONData copy = JSONData(data);
   if (!this->data) {
-    this->data = new JsonData;
+    this->data = new JSONData;
   }
 
   *this->data = data;
 }
 
-JsonData& JsonNode::getData() {
+JSONData& JSONNode::getData() {
   if (!data) {
-    data = new JsonData;
+    data = new JSONData;
   }
 
   return *data;
 }
 
-bool JsonNode::equals(const JsonNode& other) const {
+bool JSONNode::equals(const JSONNode& other) const {
   if (this->nodeType != other.nodeType) {
     return false;
   }
@@ -497,32 +497,32 @@ bool JsonNode::equals(const JsonNode& other) const {
   return *this->data == *other.data;
 }
 
-JsonData::JsonData() {}
+JSONData::JSONData() {}
 
-JsonData::JsonData(const std::string value) { this->value = value; }
+JSONData::JSONData(const std::string value) { this->value = value; }
 
-JsonData::JsonData(const JSONObject& object) { this->object = object; }
+JSONData::JSONData(const JSONObject& object) { this->object = object; }
 
-JsonData::JsonData(const JSONArray& array) { this->array = array; }
+JSONData::JSONData(const JSONArray& array) { this->array = array; }
 
-JsonData::JsonData(const JsonData& other) {
+JSONData::JSONData(const JSONData& other) {
   array = other.array;
   value = other.value;
   object = other.object;
 }
 
-std::string& JsonData::getValue() { return value; }
+std::string& JSONData::getValue() { return value; }
 
-JsonNode& JsonData::operator[](std::string key) { return object[key]; }
+JSONNode& JSONData::operator[](std::string key) { return object[key]; }
 
-JsonNode& JsonData::operator[](int index) { return array[index]; }
+JSONNode& JSONData::operator[](int index) { return array[index]; }
 
-bool JsonData::equals(const JsonData& other) const {
+bool JSONData::equals(const JSONData& other) const {
   return this->object == other.object && this->array == other.array &&
          this->value == other.value;
 }
 
-JsonData& JsonData::operator=(const JsonData& other) {
+JSONData& JSONData::operator=(const JSONData& other) {
   if (this != &other) {
     object = other.object;
     array = other.array;
@@ -532,19 +532,19 @@ JsonData& JsonData::operator=(const JsonData& other) {
   return *this;
 }
 
-bool simpleds::operator==(const JsonNode& lhs, const JsonNode& rhs) {
+bool simpleds::operator==(const JSONNode& lhs, const JSONNode& rhs) {
   return lhs.equals(rhs);
 }
 
-bool simpleds::operator!=(const JsonNode& lhs, const JsonNode& rhs) {
+bool simpleds::operator!=(const JSONNode& lhs, const JSONNode& rhs) {
   return !(lhs.equals(rhs));
 }
 
-bool simpleds::operator==(const JsonData& lhs, const JsonData& rhs) {
+bool simpleds::operator==(const JSONData& lhs, const JSONData& rhs) {
   return lhs.equals(rhs);
 }
 
-bool simpleds::operator!=(const JsonData& lhs, const JsonData& rhs) {
+bool simpleds::operator!=(const JSONData& lhs, const JSONData& rhs) {
   return !(lhs.equals(rhs));
 }
 

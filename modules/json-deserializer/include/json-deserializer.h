@@ -13,19 +13,19 @@
 #include <vector>
 
 namespace simpleds {
-class JsonNode;
-class JsonData;
+class JSONNode;
+class JSONData;
 enum class TokenType;
 struct Token;
 
-typedef std::map<std::string, JsonNode> JSONObject;
-typedef std::vector<JsonNode> JSONArray;
+typedef std::map<std::string, JSONNode> JSONObject;
+typedef std::vector<JSONNode> JSONArray;
 typedef std::pair<TokenType, std::string> specification;
 
-bool operator==(const JsonData& lhs, const JsonData& rhs);
-bool operator!=(const JsonData& lhs, const JsonData& rhs);
-bool operator==(const JsonNode& lhs, const JsonNode& rhs);
-bool operator!=(const JsonNode& lhs, const JsonNode& rhs);
+bool operator==(const JSONData& lhs, const JSONData& rhs);
+bool operator!=(const JSONData& lhs, const JSONData& rhs);
+bool operator==(const JSONNode& lhs, const JSONNode& rhs);
+bool operator!=(const JSONNode& lhs, const JSONNode& rhs);
 bool operator==(const Token& lhs, const Token& rhs);
 bool operator!=(const Token& lhs, const Token& rhs);
 
@@ -65,22 +65,22 @@ enum class NodeType {
   Colon
 };
 
-class JsonData {
+class JSONData {
  public:
-  JsonData();
-  explicit JsonData(const std::string value);
-  explicit JsonData(const JSONObject& object);
-  explicit JsonData(const JSONArray& array);
-  JsonData(const JsonData& other);
+  JSONData();
+  explicit JSONData(const std::string value);
+  explicit JSONData(const JSONObject& object);
+  explicit JSONData(const JSONArray& array);
+  JSONData(const JSONData& other);
 
   std::string& getValue();
 
-  JsonNode& operator[](std::string key);
-  JsonNode& operator[](int index);
+  JSONNode& operator[](std::string key);
+  JSONNode& operator[](int index);
 
-  bool equals(const JsonData& other) const;
+  bool equals(const JSONData& other) const;
 
-  JsonData& operator=(const JsonData& other);
+  JSONData& operator=(const JSONData& other);
 
  private:
   JSONObject object;
@@ -88,20 +88,20 @@ class JsonData {
   std::string value;
 };
 
-class JsonNode {
+class JSONNode {
  public:
-  JsonNode();
-  explicit JsonNode(const NodeType type);
-  JsonNode(const JsonNode& other);
-  JsonNode(const NodeType type, const JsonData& data);
-  JsonNode& operator=(const JsonNode& other);
-  ~JsonNode();
+  JSONNode();
+  explicit JSONNode(const NodeType type);
+  JSONNode(const JSONNode& other);
+  JSONNode(const NodeType type, const JSONData& data);
+  JSONNode& operator=(const JSONNode& other);
+  ~JSONNode();
 
   NodeType getNodeType() const;
-  void setData(const JsonData& data);
-  JsonData& getData();
+  void setData(const JSONData& data);
+  JSONData& getData();
 
-  bool equals(const JsonNode& other) const;
+  bool equals(const JSONNode& other) const;
 
   template <class type>
   type to(const type& defaultValue = type()) {
@@ -115,25 +115,25 @@ class JsonNode {
 
  protected:
   NodeType nodeType;
-  JsonData* data;
+  JSONData* data;
 };
 
-class JsonDocument {
+class JSONDocument {
  public:
-  JsonDocument();
-  JsonDocument(const JsonDocument& other);
-  JsonDocument& operator=(const JsonDocument& other);
-  ~JsonDocument();
+  JSONDocument();
+  JSONDocument(const JSONDocument& other);
+  JSONDocument& operator=(const JSONDocument& other);
+  ~JSONDocument();
 
-  JsonNode& getRoot() const;
-  void setRoot(const JsonNode& rootNode);
+  JSONNode& getRoot() const;
+  void setRoot(const JSONNode& rootNode);
   bool empty();
 
-  JsonNode& operator[](std::string key);
-  JsonNode& operator[](int index);
+  JSONNode& operator[](std::string key);
+  JSONNode& operator[](int index);
 
  private:
-  JsonNode* rootNode;
+  JSONNode* rootNode;
   bool isEmpty;
 };
 
@@ -182,14 +182,14 @@ class Lexer {
   std::string match(const std::string& expression, const std::string& src);
 };
 
-class JsonDeserializer {
+class JSONDeserializer {
  public:
-  JsonDeserializer();
-  explicit JsonDeserializer(const std::string& jsonString);
-  ~JsonDeserializer();
+  JSONDeserializer();
+  explicit JSONDeserializer(const std::string& jsonString);
+  ~JSONDeserializer();
 
-  JsonDocument parse();
-  JsonDocument parse(const std::string& jsonString);
+  JSONDocument parse();
+  JSONDocument parse(const std::string& jsonString);
 
   Lexer getLexer();
 
@@ -197,17 +197,17 @@ class JsonDeserializer {
   Lexer lexer;
   Token* lookahead;
   Token eat(const TokenType tokenType);
-  JsonNode literal();
-  JsonNode numericLiteral();
-  JsonNode stringLiteral();
-  JsonNode nullLiteral();
-  JsonNode booleanLiteral();
-  JsonNode array();
-  JsonNode object();
+  JSONNode literal();
+  JSONNode numericLiteral();
+  JSONNode stringLiteral();
+  JSONNode nullLiteral();
+  JSONNode booleanLiteral();
+  JSONNode array();
+  JSONNode object();
 };
 
 template <>
-inline bool JsonNode::to(const bool& defaultValue) {
+inline bool JSONNode::to(const bool& defaultValue) {
   if (nodeType == NodeType::Unknown) {
     return defaultValue;
   }
@@ -222,7 +222,7 @@ inline bool JsonNode::to(const bool& defaultValue) {
 }
 
 template <>
-inline int JsonNode::to<int>(const int& defaultValue) {
+inline int JSONNode::to<int>(const int& defaultValue) {
   if (nodeType == NodeType::Unknown) {
     return defaultValue;
   }

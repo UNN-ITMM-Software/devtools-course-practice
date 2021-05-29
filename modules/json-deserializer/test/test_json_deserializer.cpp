@@ -7,295 +7,295 @@
 #include "include/json-deserializer.h"
 
 using simpleds::JSONArray;
-using simpleds::JsonData;
-using simpleds::JsonDeserializer;
-using simpleds::JsonDocument;
-using simpleds::JsonNode;
+using simpleds::JSONData;
+using simpleds::JSONDeserializer;
+using simpleds::JSONDocument;
+using simpleds::JSONNode;
 using simpleds::JSONObject;
 using simpleds::NodeType;
 
-TEST(JsonData, Can_Create_JsonData) { ASSERT_NO_THROW(JsonData data); }
+TEST(JSONData, Can_Create_JsonData) { ASSERT_NO_THROW(JSONData data); }
 
-TEST(JsonData, Can_Create_JsonData_With_String_Arg) {
-  ASSERT_NO_THROW(JsonData data(""));
+TEST(JSONData, Can_Create_JsonData_With_String_Arg) {
+  ASSERT_NO_THROW(JSONData data(""));
 }
 
-TEST(JsonData, Can_Create_JsonData_With_JSONObject_Arg) {
-  ASSERT_NO_THROW(JsonData data(JSONObject));
+TEST(JSONData, Can_Create_JsonData_With_JSONObject_Arg) {
+  ASSERT_NO_THROW(JSONData data(JSONObject));
 }
 
-TEST(JsonData, Can_Create_JsonData_With_JSONArray_Arg) {
-  ASSERT_NO_THROW(JsonData data(JSONArray));
+TEST(JSONData, Can_Create_JsonData_With_JSONArray_Arg) {
+  ASSERT_NO_THROW(JSONData data(JSONArray));
 }
 
-TEST(JsonData, Can_Create_With_Copy_Ctor) {
-  JsonData data;
+TEST(JSONData, Can_Create_With_Copy_Ctor) {
+  JSONData data;
 
-  ASSERT_NO_THROW(JsonData(data));
+  ASSERT_NO_THROW(JSONData(data));
 }
 
-TEST(JsonData, Get_Value_Returns_Default_Value) {
-  JsonData data;
+TEST(JSONData, Get_Value_Returns_Default_Value) {
+  JSONData data;
   std::string defaultValue = "";
 
   ASSERT_EQ(defaultValue, data.getValue());
 }
 
-TEST(JsonData, Equals_Compares_Instances_Properly) {
-  JsonData data("value");
-  JsonData dataCopy("value");
+TEST(JSONData, Equals_Compares_Instances_Properly) {
+  JSONData data("value");
+  JSONData dataCopy("value");
 
   ASSERT_TRUE(data.equals(dataCopy));
 }
 
-TEST(JsonData, Subscript_Int_Operator_Returns_Valid_Value) {
-  JsonNode node;
+TEST(JSONData, Subscript_Int_Operator_Returns_Valid_Value) {
+  JSONNode node;
   JSONArray arr{node};
-  JsonData data(arr);
+  JSONData data(arr);
 
   auto value = data[0];
 
   ASSERT_EQ(node, value);
 }
 
-TEST(JsonData, Subscript_String_Operator_Returns_Valid_Value) {
+TEST(JSONData, Subscript_String_Operator_Returns_Valid_Value) {
   std::string key = "key";
-  JsonNode node;
+  JSONNode node;
   JSONObject obj{std::make_pair(key, node)};
-  JsonData data(obj);
+  JSONData data(obj);
 
   auto value = data[key];
 
   ASSERT_EQ(node, value);
 }
 
-TEST(JsonData, Equality_Operator_Overloaded_Properly) {
+TEST(JSONData, Equality_Operator_Overloaded_Properly) {
   std::string value = "test";
-  JsonData data(value);
-  JsonData dataCopy(value);
+  JSONData data(value);
+  JSONData dataCopy(value);
 
   ASSERT_EQ(data, dataCopy);
 }
 
-TEST(JsonData, Inequality_Operator_Overloaded_Properly) {
-  JsonData data("val1");
-  JsonData otherData("val2");
+TEST(JSONData, Inequality_Operator_Overloaded_Properly) {
+  JSONData data("val1");
+  JSONData otherData("val2");
 
   ASSERT_NE(data, otherData);
 }
 
-TEST(JsonData, Assignment_Operator_Overloaded_Properly) {
-  JsonData data("testValue");
-  JsonData assigned("other value");
+TEST(JSONData, Assignment_Operator_Overloaded_Properly) {
+  JSONData data("testValue");
+  JSONData assigned("other value");
 
   assigned = data;
 
   ASSERT_EQ(data, assigned);
 }
 
-TEST(JsonNode, Can_Create_JsonNode) { ASSERT_NO_THROW(JsonNode n); }
+TEST(JSONNode, Can_Create_JsonNode) { ASSERT_NO_THROW(JSONNode n); }
 
-TEST(JsonNode, Can_Create_JsonNode_With_Type) {
-  ASSERT_NO_THROW(JsonNode n(NodeType::Array));
+TEST(JSONNode, Can_Create_JsonNode_With_Type) {
+  ASSERT_NO_THROW(JSONNode n(NodeType::Array));
 }
 
-TEST(JsonNode, Can_Create_JsonNode_With_Type_And_Data) {
+TEST(JSONNode, Can_Create_JsonNode_With_Type_And_Data) {
   NodeType type = NodeType::ArrayEnd;
-  JsonData data;
+  JSONData data;
 
-  ASSERT_NO_THROW(JsonNode n(type, data));
+  ASSERT_NO_THROW(JSONNode n(type, data));
 }
 
-TEST(JsonNode, Can_Create_JsonNode_With_Copy_Ctor) {
-  JsonNode node(NodeType::Object);
+TEST(JSONNode, Can_Create_JsonNode_With_Copy_Ctor) {
+  JSONNode node(NodeType::Object);
 
-  ASSERT_NO_THROW(JsonNode n(node));
+  ASSERT_NO_THROW(JSONNode n(node));
 }
 
-TEST(JsonNode, Equals_Returns_True_On_Equal_Objects) {
-  JsonData data("value");
-  JsonNode node(NodeType::String, data);
-  JsonNode nodeCopy(NodeType::String, data);
+TEST(JSONNode, Equals_Returns_True_On_Equal_Objects) {
+  JSONData data("value");
+  JSONNode node(NodeType::String, data);
+  JSONNode nodeCopy(NodeType::String, data);
 
   ASSERT_TRUE(node.equals(nodeCopy));
 }
 
-TEST(JsonNode, Equals_Returns_False_On_Unequal_Objects) {
-  JsonData data("value");
-  JsonNode node(NodeType::Array, data);
-  JsonNode nodeCopy(NodeType::String, data);
+TEST(JSONNode, Equals_Returns_False_On_Unequal_Objects) {
+  JSONData data("value");
+  JSONNode node(NodeType::Array, data);
+  JSONNode nodeCopy(NodeType::String, data);
 
   ASSERT_FALSE(node.equals(nodeCopy));
 }
 
-TEST(JsonNode, Assignment_Operator_Overloaded_Properly) {
-  JsonNode node(NodeType::Boolean);
-  JsonNode assigned(NodeType::Colon);
+TEST(JSONNode, Assignment_Operator_Overloaded_Properly) {
+  JSONNode node(NodeType::Boolean);
+  JSONNode assigned(NodeType::Colon);
 
   assigned = node;
 
   ASSERT_EQ(node, assigned);
 }
 
-TEST(JsonNode, Assignment_Operator_Works_Properly_On_Node_With_Data) {
-  JsonNode node(NodeType::Boolean, JsonData("data"));
-  JsonNode assigned(NodeType::Colon);
+TEST(JSONNode, Assignment_Operator_Works_Properly_On_Node_With_Data) {
+  JSONNode node(NodeType::Boolean, JSONData("data"));
+  JSONNode assigned(NodeType::Colon);
 
   assigned = node;
 
   ASSERT_EQ(node, assigned);
 }
 
-TEST(JsonNode, Get_Node_Type_Returns_Valid_Default_Value) {
-  JsonNode node;
+TEST(JSONNode, Get_Node_Type_Returns_Valid_Default_Value) {
+  JSONNode node;
   NodeType expectedNodeType = NodeType::Unknown;
 
   ASSERT_EQ(expectedNodeType, node.getNodeType());
 }
 
-TEST(JsonNode, Set_Data_Sets_Data_Properly) {
-  JsonData data("data");
-  JsonNode node(NodeType::Object);
+TEST(JSONNode, Set_Data_Sets_Data_Properly) {
+  JSONData data("data");
+  JSONNode node(NodeType::Object);
 
   node.setData(data);
 
   ASSERT_EQ(data, node.getData());
 }
 
-TEST(JsonNode, Can_Get_Data) {
-  JsonNode node(NodeType::Colon);
+TEST(JSONNode, Can_Get_Data) {
+  JSONNode node(NodeType::Colon);
 
   ASSERT_NO_THROW(node.getData());
 }
 
-TEST(JsonNode, Get_Data_Returns_Valid_Default_Value) {
-  JsonNode node;
-  JsonData defaultData;
+TEST(JSONNode, Get_Data_Returns_Valid_Default_Value) {
+  JSONNode node;
+  JSONData defaultData;
 
-  JsonData data = node.getData();
+  JSONData data = node.getData();
 
   ASSERT_EQ(defaultData, data);
 }
 
-TEST(JsonNode, Equality_Operator_Overloaded_Properly) {
-  JsonNode src(NodeType::Array);
-  JsonNode dst(NodeType::Array);
+TEST(JSONNode, Equality_Operator_Overloaded_Properly) {
+  JSONNode src(NodeType::Array);
+  JSONNode dst(NodeType::Array);
 
   ASSERT_EQ(src, dst);
 }
 
-TEST(JsonNode, Inequality_Operator_Overloaded_Properly) {
-  JsonNode src(NodeType::Array);
-  JsonNode dst(NodeType::Array, JsonData("data"));
+TEST(JSONNode, Inequality_Operator_Overloaded_Properly) {
+  JSONNode src(NodeType::Array);
+  JSONNode dst(NodeType::Array, JSONData("data"));
 
   ASSERT_NE(src, dst);
 }
 
-TEST(JsonDeserializer, Can_Create_Deserializer_Without_Parameters) {
-  ASSERT_NO_THROW(JsonDeserializer j);
+TEST(JSONDeserializer, Can_Create_Deserializer_Without_Parameters) {
+  ASSERT_NO_THROW(JSONDeserializer j);
 }
 
-TEST(JsonDeserializer, Parse_Throws_On_Empty_String) {
-  JsonDeserializer des;
+TEST(JSONDeserializer, Parse_Throws_On_Empty_String) {
+  JSONDeserializer des;
 
   ASSERT_ANY_THROW(des.parse(""));
 }
 
-TEST(JsonDeserializer, Can_Get_Lexer) {
-  JsonDeserializer des;
+TEST(JSONDeserializer, Can_Get_Lexer) {
+  JSONDeserializer des;
 
   ASSERT_NO_THROW(des.getLexer());
 }
 
-TEST(JsonDeserializer, Parse_Throws_On_Invalid_String) {
-  JsonDeserializer des;
+TEST(JSONDeserializer, Parse_Throws_On_Invalid_String) {
+  JSONDeserializer des;
 
   ASSERT_ANY_THROW(des.parse("\\"));
 }
 
-TEST(JsonDeserializer, Parse_Throws_On_Invalid_Json_Object) {
-  JsonDeserializer des;
+TEST(JSONDeserializer, Parse_Throws_On_Invalid_Json_Object) {
+  JSONDeserializer des;
 
   ASSERT_ANY_THROW(des.parse("{ \"field\" \"\"}"));
 }
 
-TEST(JsonDeserializer, Parse_Throws_On_Invalid_Object_Expression) {
-  JsonDeserializer des;
+TEST(JSONDeserializer, Parse_Throws_On_Invalid_Object_Expression) {
+  JSONDeserializer des;
 
   ASSERT_ANY_THROW(des.parse("{]}"));
 }
 
-TEST(JsonDeserializer, Parse_No_Throw_On_Empty_Json_Object) {
-  JsonDeserializer des;
+TEST(JSONDeserializer, Parse_No_Throw_On_Empty_Json_Object) {
+  JSONDeserializer des;
 
   ASSERT_NO_THROW(des.parse("{,}"));
 }
 
-TEST(JsonDeserializer, No_Throw_On_Parse_With_Not_Empty_String) {
-  JsonDeserializer des;
+TEST(JSONDeserializer, No_Throw_On_Parse_With_Not_Empty_String) {
+  JSONDeserializer des;
 
   ASSERT_NO_THROW(des.parse("    \"abcdef\""));
 }
 
-TEST(JsonDeserializer, Parse_Returns_Not_Empty_Document_On_String_Literal) {
+TEST(JSONDeserializer, Parse_Returns_Not_Empty_Document_On_String_Literal) {
   const std::string testString = "    \"hello world\"     ";
-  JsonDeserializer des;
+  JSONDeserializer des;
 
-  JsonDocument document = des.parse(testString);
+  JSONDocument document = des.parse(testString);
 
   ASSERT_FALSE(document.empty());
 }
 
-TEST(JsonDeserializer, Parse_Returns_String_Literal) {
-  JsonDeserializer des("    \"hello world\"     ");
+TEST(JSONDeserializer, Parse_Returns_String_Literal) {
+  JSONDeserializer des("    \"hello world\"     ");
 
-  JsonDocument document = des.parse();
+  JSONDocument document = des.parse();
   NodeType nodeType = document.getRoot().getNodeType();
 
   ASSERT_EQ(NodeType::String, nodeType);
   ASSERT_EQ("hello world", document.getRoot().to<std::string>());
 }
 
-TEST(JsonDeserializer, Parse_Returns_Numeric_Literal) {
-  JsonDeserializer des("    78964   ");
+TEST(JSONDeserializer, Parse_Returns_Numeric_Literal) {
+  JSONDeserializer des("    78964   ");
 
-  JsonDocument document = des.parse();
+  JSONDocument document = des.parse();
 
   ASSERT_EQ(NodeType::Numeric, document.getRoot().getNodeType());
   ASSERT_EQ(78964, document.getRoot().to<int>());
 }
 
-TEST(JsonDeserializer, Parse_Returns_Null_Literal) {
-  JsonDeserializer des("    null   ");
+TEST(JSONDeserializer, Parse_Returns_Null_Literal) {
+  JSONDeserializer des("    null   ");
 
-  JsonDocument document = des.parse();
+  JSONDocument document = des.parse();
 
   ASSERT_EQ(NodeType::Null, document.getRoot().getNodeType());
 }
 
-TEST(JsonDeserializer, Parse_Returns_Boolean_Literal) {
-  JsonDeserializer des("    true   ");
+TEST(JSONDeserializer, Parse_Returns_Boolean_Literal) {
+  JSONDeserializer des("    true   ");
 
-  JsonDocument document = des.parse();
+  JSONDocument document = des.parse();
 
   ASSERT_EQ(NodeType::Boolean, document.getRoot().getNodeType());
   ASSERT_EQ(true, document.getRoot().to<bool>());
 }
 
-TEST(JsonDeserializer, Parse_Returns_Array) {
-  JsonDeserializer des("[\"element\", \"element2\"]");
+TEST(JSONDeserializer, Parse_Returns_Array) {
+  JSONDeserializer des("[\"element\", \"element2\"]");
   std::string expectedValue = "element2";
 
-  JsonDocument document = des.parse();
-  JsonNode resultNode = document.getRoot();
+  JSONDocument document = des.parse();
+  JSONNode resultNode = document.getRoot();
   std::string resultValue = resultNode.getData()[1].to<std::string>();
 
   ASSERT_EQ(NodeType::Array, resultNode.getNodeType());
   ASSERT_EQ(expectedValue, resultValue);
 }
 
-TEST(JsonDeserializer, Parse_Returns_Object) {
-  JsonDeserializer des(
+TEST(JSONDeserializer, Parse_Returns_Object) {
+  JSONDeserializer des(
       "{   "
       "\"stringField\" : \"string\","
       "\"intField\" : 3421,"
@@ -315,8 +315,8 @@ TEST(JsonDeserializer, Parse_Returns_Object) {
   auto expectedNestedIntValue = 1111;
   auto expectedNestedStrValue = "stringTwo";
 
-  JsonDocument document = des.parse();
-  JsonNode resultNode = document.getRoot();
+  JSONDocument document = des.parse();
+  JSONNode resultNode = document.getRoot();
   auto data = resultNode.getData();
   auto stringResult = data["stringField"].to<std::string>();
   auto resultInt = data["intField"].to<int>();
@@ -335,70 +335,70 @@ TEST(JsonDeserializer, Parse_Returns_Object) {
             jsonObject["anotherStringField"].to<std::string>());
 }
 
-TEST(JsonDocument, Can_Create_JsonDocument) {
-  ASSERT_NO_THROW(JsonDocument doc);
+TEST(JSONDocument, Can_Create_JsonDocument) {
+  ASSERT_NO_THROW(JSONDocument doc);
 }
 
-TEST(JsonDocument, Can_Create_JsonDocument_With_Copy_Ctor) {
-  JsonDocument doc;
-  ASSERT_NO_THROW(JsonDocument docCopy(doc));
+TEST(JSONDocument, Can_Create_JsonDocument_With_Copy_Ctor) {
+  JSONDocument doc;
+  ASSERT_NO_THROW(JSONDocument docCopy(doc));
 }
 
-TEST(JsonDocument, Can_Set_Json_Node_On_Non_Empty_Document) {
-  JsonDocument doc;
-  doc.setRoot(JsonNode());
+TEST(JSONDocument, Can_Set_Json_Node_On_Non_Empty_Document) {
+  JSONDocument doc;
+  doc.setRoot(JSONNode());
 
-  ASSERT_NO_THROW(doc.setRoot(JsonNode()););
+  ASSERT_NO_THROW(doc.setRoot(JSONNode()););
 }
 
-TEST(JsonDocument, Can_Assign_Non_Empty) {
-  JsonDocument doc, other;
-  other.setRoot(JsonNode(NodeType::Colon));
+TEST(JSONDocument, Can_Assign_Non_Empty) {
+  JSONDocument doc, other;
+  other.setRoot(JSONNode(NodeType::Colon));
 
   ASSERT_NO_THROW(doc = other);
 }
 
-TEST(JsonDocument, Can_Create_JsonDocument_With_Copy_Ctor_From_Doc_With_Data) {
-  JsonDocument doc;
-  doc.setRoot(JsonNode());
-  ASSERT_NO_THROW(JsonDocument docCopy(doc));
+TEST(JSONDocument, Can_Create_JsonDocument_With_Copy_Ctor_From_Doc_With_Data) {
+  JSONDocument doc;
+  doc.setRoot(JSONNode());
+  ASSERT_NO_THROW(JSONDocument docCopy(doc));
 }
 
-TEST(JsonDocument, Throws_If_No_Data) {
-  JsonDocument doc;
+TEST(JSONDocument, Throws_If_No_Data) {
+  JSONDocument doc;
 
   ASSERT_ANY_THROW(doc[0]);
   ASSERT_ANY_THROW(doc["data"]);
 }
 
-TEST(JsonDocument, Can_Assign) {
-  JsonDocument doc, other;
+TEST(JSONDocument, Can_Assign) {
+  JSONDocument doc, other;
 
   ASSERT_NO_THROW(other = doc);
 }
 
-TEST(JsonDocument, Can_Access_Data_By_Key) {
-  JsonDocument doc;
+TEST(JSONDocument, Can_Access_Data_By_Key) {
+  JSONDocument doc;
   std::string key = "key";
   std::string value = "value";
-  JsonData dta(value);
-  JsonNode dataNode(NodeType::String, dta);
+  JSONData dta(value);
+  JSONNode dataNode(NodeType::String, dta);
   JSONObject object{std::make_pair(key, dataNode)};
-  JsonData data(object);
-  JsonNode node(NodeType::Object, data);
+  JSONData data(object);
+  JSONNode node(NodeType::Object, data);
   doc.setRoot(node);
 
   ASSERT_NO_THROW(doc["key"]);
 }
 
-TEST(JsonDocument, Can_Access_Data_By_Index) {
-  JsonDocument doc;
+TEST(JSONDocument, Can_Access_Data_By_Index) {
+  JSONDocument doc;
   std::string value = "value";
-  JsonData dta(value);
-  JsonNode dataNode(NodeType::String, dta);
+  JSONData dta(value);
+  JSONNode dataNode(NodeType::String, dta);
   JSONArray arr{dataNode};
-  JsonData data(arr);
-  JsonNode node(NodeType::Array, data);
+  JSONData data(arr);
+  JSONNode node(NodeType::Array, data);
   doc.setRoot(node);
 
   ASSERT_NO_THROW(doc[0]);
