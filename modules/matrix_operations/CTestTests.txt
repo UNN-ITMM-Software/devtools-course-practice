@@ -1,0 +1,240 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_col_number
+    COMMAND ${APPLICATION} 3 0 4 none determinant
+)
+set_tests_properties (${prefix}_invalid_col_number PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid dimension size."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_original_matrix
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 x none transpose
+)
+set_tests_properties (${prefix}_invalid_original_matrix PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid elements of matrix."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_ad_matrix_row_size
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 matrix x 4 1 2 3 4 5 6
+)
+set_tests_properties (${prefix}_invalid_ad_matrix_row_size PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid dimension size of second matrix."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_number_of_elements_for_second_matrix
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 matrix 3 2 1 2 3 + 
+)
+set_tests_properties (${prefix}_invalid_number_of_elements_for_second_matrix PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid number of arguments for second matrix."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_size_for_plus
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 matrix 3 2 1 2 3 4 5 6 +
+)
+set_tests_properties (${prefix}_invalid_size_for_plus PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid matrix sizes for the current operation."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_op
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 matrix 3 2 1 2 3 4 5 6 delete
+)
+
+set_tests_properties (${prefix}_invalid_op PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid operation."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_multiplication_with_matrix
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 matrix 3 2 7 8 9 10 11 12 *
+)
+
+set_tests_properties (${prefix}_multiplication_with_matrix PROPERTIES
+    PASS_REGULAR_EXPRESSION "58 64 139 154"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_multiplication_with_number
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 number 5 *
+)
+
+set_tests_properties (${prefix}_multiplication_with_number PROPERTIES
+    PASS_REGULAR_EXPRESSION "5 10 15 20 25 30"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_subtract
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 matrix 2 3 5 11 19 3 4 8 -
+)
+
+set_tests_properties (${prefix}_subtract PROPERTIES
+    PASS_REGULAR_EXPRESSION "-4 -9 -16 1 1 -2"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_divide
+    COMMAND ${APPLICATION} 2 3 10 250 -20 50 60 5 number 5 /
+)
+set_tests_properties (${prefix}_divide PROPERTIES
+    PASS_REGULAR_EXPRESSION "2 50 -4 10 12 1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_transpose
+    COMMAND ${APPLICATION} 2 3 10 250 -20 50 60 5 none transpose
+)
+set_tests_properties (${prefix}_transpose PROPERTIES
+    PASS_REGULAR_EXPRESSION "10 50 250 60 -20 5"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_elements_of_second_matrix
+    COMMAND ${APPLICATION} 2 3 10 250 -20 50 60 5 matrix 2 3 4 5 lol 8 9 7 +
+)
+set_tests_properties (${prefix}_invalid_elements_of_second_matrix PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid elements of second matrix."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_number
+    COMMAND ${APPLICATION} 2 3 10 250 -20 50 60 5 number + /
+)
+set_tests_properties (${prefix}_invalid_number PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid number."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_plus
+    COMMAND ${APPLICATION} 2 3 10 250 -20 50 60 5 matrix 2 3 8 7 6 5 4 3 +
+)
+set_tests_properties (${prefix}_plus PROPERTIES
+    PASS_REGULAR_EXPRESSION "18 257 -14 55 64 8"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_not_square_matrix_inverse
+    COMMAND ${APPLICATION} 3 2 10 250 -20 50 60 5 none inverse
+)
+set_tests_properties (${prefix}_not_square_matrix_inverse PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: The matrix must be square."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_not_enough_args
+    COMMAND ${APPLICATION} 1 2 3
+)
+set_tests_properties (${prefix}_not_enough_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid input of the original matrix."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_inverse
+    COMMAND ${APPLICATION} 2 2 1 2 3 4 none inverse
+)
+set_tests_properties (${prefix}_inverse PROPERTIES
+    PASS_REGULAR_EXPRESSION "-2 1 1.5 -0.5"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_determinant
+    COMMAND ${APPLICATION} 2 2 1 2 3 4 none determinant
+)
+set_tests_properties (${prefix}_determinant PROPERTIES
+    PASS_REGULAR_EXPRESSION "-2"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_wrong_op_for_none
+    COMMAND ${APPLICATION} 2 2 1 2 3 4 none delete
+)
+set_tests_properties (${prefix}_wrong_op_for_none PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid operation."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_wrong_number_arg
+    COMMAND ${APPLICATION} 2 2 1 2 3 4 number 3 2 *
+)
+set_tests_properties (${prefix}_wrong_number_arg PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid number of arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_wrong_none_arg
+    COMMAND ${APPLICATION} 2 2 1 2 3 4 none 3 2 transpose
+)
+set_tests_properties (${prefix}_wrong_none_arg PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid number of arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_wrong_second_type
+    COMMAND ${APPLICATION} 2 2 1 2 3 4 array 2 3 +
+)
+set_tests_properties (${prefix}_wrong_second_type PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid type of second argument."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_wrong_op_for_matrix_number
+    COMMAND ${APPLICATION} 2 2 1 2 3 4 number 2 transpose
+)
+set_tests_properties (${prefix}_wrong_op_for_matrix_number PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong second type or wrong operation."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_sizes_for_mult
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 matrix 2 3 7 8 9 10 11 12 *
+)
+set_tests_properties (${prefix}_invalid_sizes_for_mult PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid matrix sizes for the current operation."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_wrong_op_for_matrix_matrix
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 matrix 2 3 7 8 9 10 11 12 /
+)
+set_tests_properties (${prefix}_wrong_op_for_matrix_matrix PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong second type or wrong operation."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_op_for_matrix_number
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 number 5 count
+)
+set_tests_properties (${prefix}_invalid_op_for_matrix_number PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Invalid operation."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_wrong_op_for_single_matrix
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 none /
+)
+set_tests_properties (${prefix}_wrong_op_for_single_matrix PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong second type or wrong operation."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_square_for_deter
+    COMMAND ${APPLICATION} 2 3 1 2 3 4 5 6 none determinant
+)
+set_tests_properties (${prefix}_square_for_deter PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: The matrix must be square."
+    LABELS "${MODULE}")
