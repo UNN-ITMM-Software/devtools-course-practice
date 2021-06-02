@@ -1,6 +1,6 @@
 // Copyright 2021 Ostapovich Denis
 
-#include <iostream>
+#include <string>
 
 #include "include/application.h"
 
