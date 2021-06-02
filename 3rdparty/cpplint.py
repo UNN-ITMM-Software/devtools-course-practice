@@ -5969,7 +5969,6 @@ def FlagCxx11Features(filename, clean_lines, linenum, error):
                                       'thread',
                                       'chrono',
                                       'ratio',
-                                      'regex',
                                       'system_error',
                                      ):
     error(filename, linenum, 'build/c++11', 5,

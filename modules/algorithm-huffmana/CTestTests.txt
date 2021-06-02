@@ -1,0 +1,45 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_works_with_one_arguments
+    COMMAND ${APPLICATION} AAASRERTWTASR
+)
+set_tests_properties (${prefix}_Check_works_with_one_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "010101000101111000111010010100010"
+    LABELS "${MODULE}") 
+
+add_test(
+    NAME ${prefix}_Check_works_with_original_arguments
+    COMMAND ${APPLICATION} AAAS*E*TWTAS*
+)
+set_tests_properties (${prefix}_Check_works_with_original_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "010101000101111000111010010100010"
+    LABELS "${MODULE}") 
+
+add_test(
+    NAME ${prefix}_Check_works_without_arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_Check_works_without_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: empty argument"
+    LABELS "${MODULE}") 
+
+add_test(
+    NAME ${prefix}_Check_works_with_two_arguments
+    COMMAND ${APPLICATION} "AAS" "RRR"
+)
+set_tests_properties (${prefix}_Check_works_with_two_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "0101001111"
+    LABELS "${MODULE}") 

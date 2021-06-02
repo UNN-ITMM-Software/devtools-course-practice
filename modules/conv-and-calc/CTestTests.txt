@@ -1,0 +1,92 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application of BIN/OCT/HEX converter."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Data_Format
+    COMMAND ${APPLICATION} hex
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Data_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Value_Data1
+    COMMAND ${APPLICATION} BIN -10
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Value_Data1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: -10 is invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Value_Data2
+    COMMAND ${APPLICATION} BIN 10,1
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Value_Data2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: 10,1 is invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Value_Data3
+    COMMAND ${APPLICATION} OCT ab
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Value_Data3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: ab is invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Value_Data4
+    COMMAND ${APPLICATION} HEX ab
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Value_Data4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: ab is invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Value_Data5
+    COMMAND ${APPLICATION} ABOBA ab
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Value_Data5 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: ABOBA is invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Value_Argument1
+    COMMAND ${APPLICATION} BIN 1000
+)
+set_tests_properties (${prefix}_can_With_Valid_Value_Argument1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "BIN to OCT: 10"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Value_Argument2
+    COMMAND ${APPLICATION} OCT 10
+)
+set_tests_properties (${prefix}_can_With_Valid_Value_Argument2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "OCT to BIN: 1000"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Value_Argument3
+    COMMAND ${APPLICATION} HEX AB
+)
+set_tests_properties (${prefix}_can_With_Valid_Value_Argument3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "HEX to BIN: 10101011"
+    LABELS "${MODULE}")

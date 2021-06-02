@@ -1,0 +1,138 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a interpolation_search application."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_locate_arrayСontainsDouble
+    COMMAND ${APPLICATION}  2.5 -3 3 0
+)
+
+set_tests_properties (${prefix}_can_locate_arrayСontainsDouble PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR! Not integer"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_array_contains_char
+    COMMAND ${APPLICATION}  -100 -70 a -55 -36 36 100 420 420
+)
+
+set_tests_properties (${prefix}_array_contains_char PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR! Not integer"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_arrayContainsString
+    COMMAND ${APPLICATION}  -100 -70 asdf -55 -36 36 100 420 420
+)
+
+set_tests_properties (${prefix}_arrayContainsString PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR! Not integer"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_arrayContainsOnlyMinus
+    COMMAND ${APPLICATION}  -100 -70 - -55 -36 36 100 420 420
+)
+
+set_tests_properties (${prefix}_arrayContainsOnlyMinus PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR! Not integer"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_key_is_not_integer
+    COMMAND ${APPLICATION}  -100 -70 -60 -55 -36 36 100 420 a
+)
+
+set_tests_properties (${prefix}_key_is_not_integer PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR! Not integer"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_empty_array
+    COMMAND ${APPLICATION}  0
+)
+
+set_tests_properties (${prefix}_empty_array PROPERTIES
+    PASS_REGULAR_EXPRESSION "-1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_find_in_an_array_of_size1
+    COMMAND ${APPLICATION}  1 1
+)
+
+set_tests_properties (${prefix}_can_find_in_an_array_of_size1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_not_find_in_an_array_of_size1
+    COMMAND ${APPLICATION}  1 2
+)
+
+set_tests_properties (${prefix}_can_not_find_in_an_array_of_size1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "-1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_array_not_sorted
+    COMMAND ${APPLICATION}  100 -70 0 55 -36 36 100 420 420
+)
+
+set_tests_properties (${prefix}_array_not_sorted PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR! Array is not sorted"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_find_in_some_array
+    COMMAND ${APPLICATION}  -10 -2 0 10 15 17 21 100 0
+)
+
+set_tests_properties (${prefix}_can_find_in_some_array PROPERTIES
+    PASS_REGULAR_EXPRESSION "2"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_find_in_array_with_same_numbers
+    COMMAND ${APPLICATION}  5 5 5 0
+)
+
+set_tests_properties (${prefix}_can_find_in_array_with_same_numbers PROPERTIES
+    PASS_REGULAR_EXPRESSION "1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_exist_far_left
+    COMMAND ${APPLICATION}  -100 -70 -68 -55 -36 36 100 420 -100
+)
+
+set_tests_properties (${prefix}_exist_far_left PROPERTIES
+    PASS_REGULAR_EXPRESSION "0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_exist_far_right
+    COMMAND ${APPLICATION}  -100 -70 -68 -55 -36 36 100 420 420
+)
+
+set_tests_properties (${prefix}_exist_far_right PROPERTIES
+    PASS_REGULAR_EXPRESSION "7"
+    LABELS "${MODULE}")

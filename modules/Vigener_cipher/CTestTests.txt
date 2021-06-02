@@ -1,0 +1,61 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is  an application that calculates the Vigener cipher."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Wrong_Format_Of_Arguments
+    COMMAND ${APPLICATION} LEMON ATTACK 
+)
+set_tests_properties (${prefix}_can_Check_Wrong_Format_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_String_Format
+    COMMAND ${APPLICATION} LEMON ATT4ACK d
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_String_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong string format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Operation_Format
+    COMMAND ${APPLICATION} iitmm lobachevsky c
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong operation format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Decrypt_Chip
+    COMMAND ${APPLICATION} iitmm lobachevsky d
+)
+set_tests_properties (${prefix}_can_Decrypt_Chip PROPERTIES
+    PASS_REGULAR_EXPRESSION "Decrypt = dgioqzwcgyq"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Encrypt_Chip
+    COMMAND ${APPLICATION} NNGY university e
+)
+set_tests_properties (${prefix}_can_Encrypt_Chip PROPERTIES
+    PASS_REGULAR_EXPRESSION "Encrypt = haotreyggl"
+    LABELS "${MODULE}")

@@ -1,0 +1,45 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_run PROPERTIES
+    PASS_REGULAR_EXPRESSION ".*"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_print_help_without_arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_print_help_without_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_parse_argument_with_bad_symbols
+    COMMAND ${APPLICATION} a 1
+)
+set_tests_properties (${prefix}_cannot_parse_argument_with_bad_symbols PROPERTIES
+    PASS_REGULAR_EXPRESSION "invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_parse_argument_with_out_of_range
+    COMMAND ${APPLICATION} 1231234124124124312312 1
+)
+set_tests_properties (${prefix}_cannot_parse_argument_with_out_of_range PROPERTIES
+    PASS_REGULAR_EXPRESSION "out of range"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_with_valid_arguments_1
+    COMMAND ${APPLICATION} 4 1234
+)
+set_tests_properties (${prefix}_can_with_valid_arguments_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION ".*"
+    LABELS "${MODULE}")

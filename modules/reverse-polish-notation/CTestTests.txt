@@ -1,0 +1,28 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_first_test
+    COMMAND ${APPLICATION} "1+(2-3)*4/5^6" 13
+)
+set_tests_properties (${prefix}_first_test PROPERTIES
+    PASS_REGULAR_EXPRESSION "1 2 3 \\- 4 \\* 5 6 \\^ \\/ \\+"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_second_test
+    COMMAND ${APPLICATION} "1+(2-3)*4/5^6"
+)
+set_tests_properties (${prefix}_second_test PROPERTIES
+    PASS_REGULAR_EXPRESSION "Should be 3 arguments\\.\n\nThis is an application\\, that create reverse polish notation\\.\n\nPlease provide arguments in the following format\\:\n1\\+\\(2\\-3\\)\\*4\\/5\\^6\\.\\.\\.\\.\\. 7 \n\nWhere second digit is length of source string\n\n"
+    LABELS "${MODULE}")

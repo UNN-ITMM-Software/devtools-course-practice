@@ -1,0 +1,100 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a application of odd-even merge sort"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} -5 4 letter 8
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: letter is invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Size_Of_Vector1
+    COMMAND ${APPLICATION} -5
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Size_Of_Vector1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: -5 is not positive number"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Size_Of_Vector2
+    COMMAND ${APPLICATION} 6
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Size_Of_Vector2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: 6 is not equal of degree of two"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Size_Of_Vector3
+    COMMAND ${APPLICATION} trash
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Size_Of_Vector3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: trash is invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Size_Argument
+    COMMAND ${APPLICATION} 8
+)
+set_tests_properties (${prefix}_can_With_Valid_Size_Argument PROPERTIES
+    PASS_REGULAR_EXPRESSION "Sorted vector: 1 2 3 4 5 6 7 8"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Count_Of_Numbers_Of_Vector
+    COMMAND ${APPLICATION} 6 4 16
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Count_Of_Numbers_Of_Vector PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: count of numbers is not equal of degree of two"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Arguments_1
+    COMMAND ${APPLICATION} -5 6 24 -15
+)
+set_tests_properties (${prefix}_can_With_Valid_Arguments_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Sorted vector: -15 -5 6 24"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Arguments_2
+    COMMAND ${APPLICATION} 50 23 -124 100 -2 15 -20 43
+)
+set_tests_properties (${prefix}_can_With_Valid_Arguments_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Sorted vector: -124 -20 -2 15 23 43 50 100"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Arguments_3
+    COMMAND ${APPLICATION} -10.5 16 33.3 27.8 -45.2 -55 80 45.5
+)
+set_tests_properties (${prefix}_can_With_Valid_Arguments_3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Sorted vector: -55 -45.2 -10.5 16 27.8 33.3 45.5 80"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Arguments_4
+    COMMAND ${APPLICATION} 75 1345.8 -555 -250.5 48 143.5 -2 1200
+)
+set_tests_properties (${prefix}_can_With_Valid_Arguments_4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Sorted vector: -555 -250.5 -2 48 75 143.5 1200 1345.8"
+    LABELS "${MODULE}")

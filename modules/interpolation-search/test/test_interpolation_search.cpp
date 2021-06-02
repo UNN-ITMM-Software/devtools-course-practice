@@ -3,6 +3,7 @@
 #include <gtest/gtest.h>
 #include <algorithm>
 #include <vector>
+#include <limits>
 #include "include/interpolation_search.h"
 
 
@@ -187,9 +188,8 @@ TEST(InterpolationSearch, not_exist_outside_left_random) {
 
     std::sort(vec.begin(), vec.end());
     int res_interp = InterpSearch::interpolation_search(vec, key, false);
-    int res_linear = InterpSearch::linear_search(vec, key);
 
-    ASSERT_EQ(res_linear, res_interp);
+    ASSERT_EQ(-1, res_interp);
 }
 
 TEST(InterpolationSearch, not_exist_outside_right_random) {
@@ -198,7 +198,28 @@ TEST(InterpolationSearch, not_exist_outside_right_random) {
 
     std::sort(vec.begin(), vec.end());
     int res_interp = InterpSearch::interpolation_search(vec, key, false);
-    int res_linear = InterpSearch::linear_search(vec, key);
 
-    ASSERT_EQ(res_linear, res_interp);
+    ASSERT_EQ(-1, res_interp);
+}
+
+TEST(InterpolationSearch, can_find_int_max) {
+    int max = std::numeric_limits<int>::max();
+    std::vector<int> vec = {-100, -70, -68, -50, -36, 36, 100, 420, max};
+    const int key = max;
+
+    std::sort(vec.begin(), vec.end());
+    int res_interp = InterpSearch::interpolation_search(vec, key, false);
+
+    ASSERT_EQ(8, res_interp);
+}
+
+TEST(InterpolationSearch, can_find_int_min) {
+    int min = std::numeric_limits<int>::min();
+    std::vector<int> vec = {min, -70, -68, -50, -36, 36, 100, 420, 500};
+    const int key = min;
+
+    std::sort(vec.begin(), vec.end());
+    int res_interp = InterpSearch::interpolation_search(vec, key, false);
+
+    ASSERT_EQ(0, res_interp);
 }

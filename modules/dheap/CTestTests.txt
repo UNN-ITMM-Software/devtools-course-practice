@@ -1,0 +1,53 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_run PROPERTIES
+    PASS_REGULAR_EXPRESSION ".*"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_print_help_without_arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_print_help_without_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_create_dheap_with_wrong_base
+    COMMAND ${APPLICATION} -2 2 5 6 7
+)
+set_tests_properties (${prefix}_cannot_create_dheap_with_wrong_base PROPERTIES
+    PASS_REGULAR_EXPRESSION "Base must be greater than 1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_parse_argument_with_bad_symbols
+    COMMAND ${APPLICATION} 2 4 7 zzz
+)
+set_tests_properties (${prefix}_cannot_parse_argument_with_bad_symbols PROPERTIES
+    PASS_REGULAR_EXPRESSION "invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_parse_argument_with_out_of_range
+    COMMAND ${APPLICATION} 2 1 3 2142152154321124215421452151234213214321
+)
+set_tests_properties (${prefix}_cannot_parse_argument_with_out_of_range PROPERTIES
+    PASS_REGULAR_EXPRESSION "out of range"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_create_dheap
+    COMMAND ${APPLICATION} 4 11 9 9 6 8 3 4 12 7
+)
+set_tests_properties (${prefix}_can_create_dheap PROPERTIES
+    PASS_REGULAR_EXPRESSION "3 4 9 6 8 9 11 12 7"
+    LABELS "${MODULE}")

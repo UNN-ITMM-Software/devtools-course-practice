@@ -1,0 +1,132 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_empty_args
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_empty_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a queue application."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_arg
+    COMMAND ${APPLICATION} kekw
+)
+set_tests_properties (${prefix}_invalid_arg PROPERTIES
+    PASS_REGULAR_EXPRESSION "invalid arg"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_append
+    COMMAND ${APPLICATION} append 12345 get_first
+)
+set_tests_properties (${prefix}_append PROPERTIES
+    PASS_REGULAR_EXPRESSION "12345"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_append_invalid_arg
+    COMMAND ${APPLICATION} append kukura
+)
+set_tests_properties (${prefix}_append_invalid_arg PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_is_empty_1
+    COMMAND ${APPLICATION} is_empty
+)
+set_tests_properties (${prefix}_is_empty_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_is_empty_0
+    COMMAND ${APPLICATION} append 123 is_empty
+)
+set_tests_properties (${prefix}_is_empty_0 PROPERTIES
+    PASS_REGULAR_EXPRESSION "0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_get_first
+    COMMAND ${APPLICATION} append 123 append 456 get_first
+)
+set_tests_properties (${prefix}_get_first PROPERTIES
+    PASS_REGULAR_EXPRESSION "123"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_rm_first
+    COMMAND ${APPLICATION} append 123 append 456 rm_first get_first
+)
+set_tests_properties (${prefix}_rm_first PROPERTIES
+    PASS_REGULAR_EXPRESSION "456"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_get_last
+    COMMAND ${APPLICATION} append 123 append 456 get_last
+)
+set_tests_properties (${prefix}_get_last PROPERTIES
+    PASS_REGULAR_EXPRESSION "456"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_get_size
+    COMMAND ${APPLICATION} append 123 append 456 get_size
+)
+set_tests_properties (${prefix}_get_size PROPERTIES
+    PASS_REGULAR_EXPRESSION "2"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_get_all
+    COMMAND ${APPLICATION} append 123 append 456 append 789 get_all
+)
+set_tests_properties (${prefix}_get_all PROPERTIES
+    PASS_REGULAR_EXPRESSION "123.*456.*789"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_rm_append
+    COMMAND ${APPLICATION} append 123 append 456 rm_first append 789 get_last
+)
+set_tests_properties (${prefix}_rm_append PROPERTIES
+    PASS_REGULAR_EXPRESSION "789"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_rm_get_size
+    COMMAND ${APPLICATION} append 123 append 456 append 789 rm_first get_size
+)
+set_tests_properties (${prefix}_rm_get_size PROPERTIES
+    PASS_REGULAR_EXPRESSION "2"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_append_after_rm
+    COMMAND ${APPLICATION} append 123 append 456 rm_first append 789 append 999 get_last
+)
+set_tests_properties (${prefix}_append_after_rm PROPERTIES
+    PASS_REGULAR_EXPRESSION "999"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_all_rm
+    COMMAND ${APPLICATION} append 1 append 2 rm_first rm_first get_size
+)
+set_tests_properties (${prefix}_all_rm PROPERTIES
+    PASS_REGULAR_EXPRESSION "0"
+    LABELS "${MODULE}")

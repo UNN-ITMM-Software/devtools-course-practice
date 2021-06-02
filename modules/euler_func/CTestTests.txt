@@ -1,0 +1,89 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application that calculates Euler function for given arguments."
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} 10 ip 2 3
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong number format!"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format_3
+    COMMAND ${APPLICATION} 10 7 2 3.5
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format_3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong number format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format_4
+    COMMAND ${APPLICATION} 10 7 2 3 5a
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format_4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong number format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format_2
+    COMMAND ${APPLICATION} 10 -7 2 3 5
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: NEGATIVE NUMBER"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Calculate_with_one_argument
+    COMMAND ${APPLICATION} 1
+)
+set_tests_properties (${prefix}_can_Calculate_with_one_argument PROPERTIES
+    PASS_REGULAR_EXPRESSION "1 "
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calculate_with_two_arguments
+    COMMAND ${APPLICATION} 1 0
+)
+set_tests_properties (${prefix}_can_Calculate_with_two_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "1 0 "
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calculate_with_three_arguments
+    COMMAND ${APPLICATION} 2 3 5
+)
+set_tests_properties (${prefix}_can_Calculate_with_three_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "1 2 4 "
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calculate_with_four_arguments
+    COMMAND ${APPLICATION} 4 3 5 155
+)
+set_tests_properties (${prefix}_can_Calculate_with_four_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "2 2 4 120 "
+    LABELS "${MODULE}")
+

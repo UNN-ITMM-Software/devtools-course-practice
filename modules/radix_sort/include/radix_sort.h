@@ -10,6 +10,7 @@
 #include <stdexcept>
 #include <type_traits>
 #include <vector>
+#include <cassert>
 
 namespace RadixSort {
     /**

@@ -1,0 +1,84 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an simple String calculator application. It return sum of given arguments. "
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_negatives
+    COMMAND ${APPLICATION} + "1,-1,-2"
+)
+set_tests_properties (${prefix}_test_negatives PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: negatives not allowed : -1 -2 "
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_wrong_format
+    COMMAND ${APPLICATION} + "1,-1,-a"
+)
+set_tests_properties (${prefix}_test_wrong_format PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong number format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_0
+    COMMAND ${APPLICATION} + ""
+)
+set_tests_properties (${prefix}_test_0 PROPERTIES
+    PASS_REGULAR_EXPRESSION "0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_1
+    COMMAND ${APPLICATION} + "1,2,3"
+)
+set_tests_properties (${prefix}_test_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "6"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_2
+    COMMAND ${APPLICATION} + ":\n1:2:3"
+)
+set_tests_properties (${prefix}_test_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "6"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_3
+    COMMAND ${APPLICATION} + "1,25,35"
+)
+set_tests_properties (${prefix}_test_3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "61"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_4
+    COMMAND ${APPLICATION} - "1,2,3"
+)
+set_tests_properties (${prefix}_test_4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "-6"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_5
+    COMMAND ${APPLICATION} * "1,2,3,4"
+)
+set_tests_properties (${prefix}_test_5 PROPERTIES
+    PASS_REGULAR_EXPRESSION "24"
+    LABELS "${MODULE}")

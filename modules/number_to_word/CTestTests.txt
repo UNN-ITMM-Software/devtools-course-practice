@@ -1,0 +1,116 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_one
+    COMMAND ${APPLICATION} 1
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_one PROPERTIES
+    PASS_REGULAR_EXPRESSION "x = one"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_two
+    COMMAND ${APPLICATION} 13
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_two PROPERTIES
+    PASS_REGULAR_EXPRESSION "x = thirteen"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_three
+    COMMAND ${APPLICATION} 811
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_three PROPERTIES
+    PASS_REGULAR_EXPRESSION "x = eight hundred eleven"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_four
+    COMMAND ${APPLICATION} 20232
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_four PROPERTIES
+    PASS_REGULAR_EXPRESSION "x = twenty  thousand two hundred thirty two"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_five
+    COMMAND ${APPLICATION} 121232
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_five PROPERTIES
+    PASS_REGULAR_EXPRESSION "x = one hundred twenty one thousand two hundred thirty two"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_six
+    COMMAND ${APPLICATION} 111232
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_six PROPERTIES
+    PASS_REGULAR_EXPRESSION "x = one hundred eleven thousand two hundred thirty two"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_seven
+    COMMAND ${APPLICATION} 100232
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_seven PROPERTIES
+    PASS_REGULAR_EXPRESSION "x = one hundred thousand  two hundred thirty two"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_eight
+    COMMAND ${APPLICATION} 1000000
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_eight PROPERTIES
+    PASS_REGULAR_EXPRESSION "x = one million     "
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_nine
+    COMMAND ${APPLICATION} 11112312
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_nine PROPERTIES
+    PASS_REGULAR_EXPRESSION "x = eleven  million one hundred twelve thousand three hundred twelve"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_ten
+    COMMAND ${APPLICATION} 221112312
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_ten PROPERTIES
+    PASS_REGULAR_EXPRESSION "x = two hundred twenty one million one hundred twelve thousand three hundred twelve"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_eleven
+    COMMAND ${APPLICATION} 1 2 3
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_eleven PROPERTIES
+    PASS_REGULAR_EXPRESSION "Should be 2 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_twelve
+    COMMAND ${APPLICATION} -1
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_twelve PROPERTIES
+    PASS_REGULAR_EXPRESSION "Number must be positive!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Check_Number_Of_Arguments_thirteen
+    COMMAND ${APPLICATION} q
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments_thirteen PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number format!"
+    LABELS "${MODULE}")

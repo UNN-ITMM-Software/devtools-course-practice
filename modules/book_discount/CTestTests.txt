@@ -1,0 +1,112 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is application for class calculate price"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Checking_Number_Of_Arguments
+    COMMAND ${APPLICATION} 1 0
+)
+
+set_tests_properties (${prefix}_can_Checking_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 5 arguments"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} 1 1 la 2 7
+)
+
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong number format"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Negative_Arguments
+    COMMAND ${APPLICATION} 1 2 -4 4 5
+)
+
+set_tests_properties (${prefix}_can_Detect_Negative_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Don't negative numbers"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Overflow
+    COMMAND ${APPLICATION} 1 2 7234345435636634 1 1
+)
+
+set_tests_properties (${prefix}_can_Detect_Wrong_Overflow PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Number is out of bounds"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Price_Without_Discount_For_Same_Books
+    COMMAND ${APPLICATION} 7 0 0 0 0
+)
+
+set_tests_properties (${prefix}_can_Calculate_Price_Without_Discount_For_Same_Books PROPERTIES
+    PASS_REGULAR_EXPRESSION "56"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Price_With_Maximum_Discount
+    COMMAND ${APPLICATION} 5 4 3 2 1
+)
+
+set_tests_properties (${prefix}_can_Calculate_Price_With_Maximum_Discount PROPERTIES
+    PASS_REGULAR_EXPRESSION "100.4"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Get_Correct_Discount_On_Two_Diff_Books
+    COMMAND ${APPLICATION} 0 1 1 0 0
+)
+
+set_tests_properties (${prefix}_can_Get_Correct_Discount_On_Two_Diff_Books PROPERTIES
+    PASS_REGULAR_EXPRESSION "15.2"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Correct_Discount_On_Three_Different_Books
+    COMMAND ${APPLICATION} 0 1 1 1 0
+)
+
+set_tests_properties (${prefix}_can_Correct_Discount_On_Three_Different_Books PROPERTIES
+    PASS_REGULAR_EXPRESSION "21.6"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Correct_Discount_On_Four_Different_Books
+    COMMAND ${APPLICATION} 1 1 1 1 0
+)
+
+set_tests_properties (${prefix}_can_Correct_Discount_On_Four_Different_Books PROPERTIES
+    PASS_REGULAR_EXPRESSION "25.6"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Correct_Discount_On_All_Books
+    COMMAND ${APPLICATION} 1 1 1 1 1
+)
+
+set_tests_properties (${prefix}_can_Correct_Discount_On_All_Books PROPERTIES
+    PASS_REGULAR_EXPRESSION "30"
+    LABELS "${MODULE}")

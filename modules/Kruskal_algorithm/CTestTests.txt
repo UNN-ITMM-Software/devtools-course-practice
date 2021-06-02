@@ -1,0 +1,74 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a Kruskal algorithm application"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 5 3 2
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Incorrect arguments count."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} 7 1 4 fail
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Cannot parse arguments to integer type"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Process_Empty_Graph
+    COMMAND ${APPLICATION} 4
+)
+set_tests_properties (${prefix}_can_Process_Empty_Graph PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Find_MST_For_3_Vertices
+    COMMAND ${APPLICATION} 3 0 1 5 0 2 1 1 2 3
+)
+set_tests_properties (${prefix}_can_Find_MST_For_3_Vertices PROPERTIES
+    PASS_REGULAR_EXPRESSION "Edge: \\(0, 2\\), weight: 1"
+	PASS_REGULAR_EXPRESSION "Edge: \\(1, 2\\), weight: 3"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Find_MST_For_4_Vertices
+    COMMAND ${APPLICATION} 4 0 1 2 0 3 1 1 3 2 2 3 3
+)
+set_tests_properties (${prefix}_can_Find_MST_For_4_Vertices PROPERTIES
+    PASS_REGULAR_EXPRESSION "Edge: \\(0, 3\\), weight: 1"
+	PASS_REGULAR_EXPRESSION "Edge: \\(0, 1\\), weight: 2"
+	PASS_REGULAR_EXPRESSION "Edge: \\(2, 3\\), weight: 3"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Find_MST_For_5_Vertices
+    COMMAND ${APPLICATION} 5 0 3 5 0 1 1 0 2 3 2 1 6 2 3 1 4 1 3 4 2 2 4 3 2
+)
+set_tests_properties (${prefix}_can_Find_MST_For_5_Vertices PROPERTIES
+    PASS_REGULAR_EXPRESSION "Edge: \\(0, 1\\), weight: 1"
+	PASS_REGULAR_EXPRESSION "Edge: \\(2, 3\\), weight: 1"
+	PASS_REGULAR_EXPRESSION "Edge: \\(4, 2\\), weight: 2"
+	PASS_REGULAR_EXPRESSION "Edge: \\(0, 2\\), weight: 3"
+    LABELS "${MODULE}")

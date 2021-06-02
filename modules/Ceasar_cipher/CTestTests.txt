@@ -1,0 +1,70 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application that designed for encryption and decryption Caesar chipher "
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Argument_Format
+    COMMAND ${APPLICATION} 10 ip 2 3
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Argument_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong argument format!"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} -k e
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong number format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Decode_1
+    COMMAND ${APPLICATION} -d "a b c d"
+)
+set_tests_properties (${prefix}_can_Decode_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "z a b c"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Decode_2
+    COMMAND ${APPLICATION} -d "a b c d" -k 2
+)
+set_tests_properties (${prefix}_can_Decode_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "y z a b"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Encode_1
+    COMMAND ${APPLICATION} -e "a b c d"
+)
+set_tests_properties (${prefix}_can_Encode_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "b c d e"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Encode_2
+    COMMAND ${APPLICATION} -e "a b c d" -k 2
+)
+set_tests_properties (${prefix}_can_Encode_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "c d e f"
+    LABELS "${MODULE}")

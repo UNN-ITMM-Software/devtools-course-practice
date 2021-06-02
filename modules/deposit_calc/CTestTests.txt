@@ -1,0 +1,115 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Print_Help
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a deposit calc application"
+    LABELS "${MODULE}")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Number_Of_Arguments
+    COMMAND ${APPLICATION} 1 2 3 4
+)
+set_tests_properties (${prefix}_can_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Should be 8 arguments"
+    LABELS "${MODULE}")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Sum_Is_Negative
+    COMMAND ${APPLICATION} -1 1 1 1 1 1 0
+)
+set_tests_properties (${prefix}_can_Sum_Is_Negative PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Sum must be positive"
+    LABELS "${MODULE}")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Months_Is_Negative
+    COMMAND ${APPLICATION} 1 1 -1 1 1 1 0
+)
+set_tests_properties (${prefix}_can_Months_Is_Negative PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Number of months must be positive"
+    LABELS "${MODULE}")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Days_Is_Negative
+    COMMAND ${APPLICATION} 1 -1 1 1 1 1 0
+)
+set_tests_properties (${prefix}_can_Days_Is_Negative PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Number of days must be positive"
+    LABELS "${MODULE}")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Incorrect_Date
+    COMMAND ${APPLICATION} 1 30 2 1 1 1 0
+)
+set_tests_properties (${prefix}_can_Incorrect_Date PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect date"
+    LABELS "${MODULE}")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Interest_Rate
+    COMMAND ${APPLICATION} 1 1 1 1 -1 1 0
+)
+set_tests_properties (${prefix}_can_Interest_Rate PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Interest rate must be positive"
+    LABELS "${MODULE}")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Capitalization
+    COMMAND ${APPLICATION} 1 1 1 1 1 1 9
+)
+set_tests_properties (${prefix}_can_Capitalization PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Wrong value"
+    LABELS "${MODULE}")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Wrong_Num
+    COMMAND ${APPLICATION} 1 1 1 1 1! 1 0
+)
+set_tests_properties (${prefix}_can_Wrong_Num PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Wrong number format"
+    LABELS "${MODULE}")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Calculate_Deposit
+    COMMAND ${APPLICATION} 700000 12 07 2021 8 12 0
+)
+set_tests_properties (${prefix}_can_Calculate_Deposit PROPERTIES
+    PASS_REGULAR_EXPRESSION "Profitability= 756000"
+    LABELS "${MODULE}")

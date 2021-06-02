@@ -1,0 +1,97 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This app prints numbers with dots and lines."
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_check_Number_Of_Arguments
+    COMMAND ${APPLICATION}  12 10
+)
+
+set_tests_properties (${prefix}_check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Should be 1 argument."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_check_Null
+    COMMAND ${APPLICATION}  0
+)
+
+set_tests_properties (${prefix}_check_Null PROPERTIES
+    PASS_REGULAR_EXPRESSION "._.#|.|#|_|#"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_check_Negative
+    COMMAND ${APPLICATION}  -12
+)
+
+set_tests_properties (${prefix}_check_Negative PROPERTIES
+    PASS_REGULAR_EXPRESSION "Number must be positive!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_check_Wrong_Format
+    COMMAND ${APPLICATION}  qwerty
+)
+
+set_tests_properties (${prefix}_check_Wrong_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number format!"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_check_Number_V1
+    COMMAND ${APPLICATION}  12
+)
+
+set_tests_properties (${prefix}_check_Number_V1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "... ._.#..| ._|#..| |_.#"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_check_Number_V2
+    COMMAND ${APPLICATION}  345
+)
+
+set_tests_properties (${prefix}_check_Number_V2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "._. ... ._.#._| |_| |_.#._| ..| ._|#"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_check_Number_V3
+    COMMAND ${APPLICATION}  6789
+)
+
+set_tests_properties (${prefix}_check_Number_V3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "._. ._. ._. ._.#|_. ..| |_| |_|#|_| ..| |_| ..|#"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_check_Number_V4
+    COMMAND ${APPLICATION}  90173
+)
+
+set_tests_properties (${prefix}_check_Number_V4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "._. ._. ... ._. ._.#|_| |.| ..| ..| ._|#..| |_| ..| ..| ._|#"
+    LABELS "${MODULE}")
+
+
+

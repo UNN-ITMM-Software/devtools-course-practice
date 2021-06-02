@@ -1,0 +1,77 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+#############################################
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "It is a Converter from Arab numbers to Rom numbers and back."
+    LABELS "${MODULE}")
+#############################################
+	
+add_test(
+    NAME ${prefix}_can_Convert_From_Arab_To_Roman
+    COMMAND ${APPLICATION} 1 25
+)
+set_tests_properties (${prefix}_can_Convert_From_Arab_To_Roman PROPERTIES
+    PASS_REGULAR_EXPRESSION "Arabic to Roman = XXV"
+    LABELS "${MODULE}")
+#############################################
+	
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 2 3 4
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments."
+    LABELS "${MODULE}")
+#############################################
+	
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} 0 123
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Wrong number format."
+    LABELS "${MODULE}")
+#############################################
+	
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Arabic_Number
+    COMMAND ${APPLICATION} 1 5000
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Arabic_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number"
+    LABELS "${MODULE}")
+#############################################
+	
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Roman_Number
+    COMMAND ${APPLICATION} 2 trash
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Roman_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong string"
+    LABELS "${MODULE}")
+#############################################
+	
+	add_test(
+    NAME ${prefix}_can_Convert_From_Roman_To_Arab
+    COMMAND ${APPLICATION} 2 XXV 
+)
+set_tests_properties (${prefix}_can_Convert_From_Roman_To_Arab PROPERTIES
+    PASS_REGULAR_EXPRESSION "Roman to Arabic = 25"
+    LABELS "${MODULE}")
+	

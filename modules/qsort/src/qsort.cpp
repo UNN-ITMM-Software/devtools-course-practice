@@ -4,10 +4,12 @@
 
 #include <algorithm>
 #include <random>
+#include <stdexcept>
 #include <vector>
 
 std::vector<double> QSort::createRandomVector(int vec_size) {
-    if (vec_size <= 0) throw "Vector's size must be > 0.";
+    if (vec_size <= 0)
+        throw std::runtime_error("Vector size must be greater than 0.");
 
     std::random_device rand_d;
     std::mt19937 gen(rand_d());
@@ -20,7 +22,8 @@ std::vector<double> QSort::createRandomVector(int vec_size) {
 }
 
 void QSort::Sort(std::vector<double> *arr, int left, int right) {
-    if (left >= right) throw "Left idx must be < that right one.";
+    if (left >= right)
+        throw std::runtime_error("Left idx must be less than right one.");
 
     int pidx = (left + right) / 2;
     double p = arr->at(pidx);

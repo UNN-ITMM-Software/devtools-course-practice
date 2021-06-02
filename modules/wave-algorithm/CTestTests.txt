@@ -1,0 +1,85 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a shortest way finder"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 2 2 f,w,w,f 0,0
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 5 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format_After_Digit
+    COMMAND ${APPLICATION} 2 2NaN f,w,w,f 0,0 1,1
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format_After_Digit PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format_Before_Digit
+    COMMAND ${APPLICATION} 2 NaN2 f,w,w,f 0,0 1,1
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format_Before_Digit PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number format!"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Map_Format
+    COMMAND ${APPLICATION} 2 2 f150,w,w,f 0,0 1,1
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Map_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong map format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Map_Size
+    COMMAND ${APPLICATION} -2 2 f,w,w,f 0,0 1,1
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Map_Size PROPERTIES
+    PASS_REGULAR_EXPRESSION "Incorrect map sizes"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Point_Out_Of_Map
+    COMMAND ${APPLICATION} 2 2 f,w,w,f 0,0 1,20
+)
+set_tests_properties (${prefix}_can_Detect_Point_Out_Of_Map PROPERTIES
+    PASS_REGULAR_EXPRESSION "Point out of map"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Point_On_Wall
+    COMMAND ${APPLICATION} 2 2 f,w,w,f 0,1 1,1
+)
+set_tests_properties (${prefix}_can_Detect_Point_On_Wall PROPERTIES
+    PASS_REGULAR_EXPRESSION "Point on Wall"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Find_Way
+    COMMAND ${APPLICATION} 5 4 w,w,f,f,f,w,f,w,f,w,w,f,w,f,w,f,f,f,f,w 0,1 2,0
+)
+set_tests_properties (${prefix}_can_Find_Way PROPERTIES
+    PASS_REGULAR_EXPRESSION "Path: 0,1 -> 0,2 -> 1,3 -> 2,4 -> 3,3 -> 3,2 -> 2,1 -> 2,0"
+    LABELS "${MODULE}")

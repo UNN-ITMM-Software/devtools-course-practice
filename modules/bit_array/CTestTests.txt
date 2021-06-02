@@ -1,0 +1,84 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application of bit array."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} -5 4 letter 8
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: letter is invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Size_Of_String1
+    COMMAND ${APPLICATION} -10
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Size_Of_String1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: -10 is not positive number"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Size_Of_String2
+    COMMAND ${APPLICATION} letter
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Size_Of_String2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: letter is invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Size_Argument
+    COMMAND ${APPLICATION} 7
+)
+set_tests_properties (${prefix}_can_With_Valid_Size_Argument PROPERTIES
+    PASS_REGULAR_EXPRESSION "Bit array: 1111111"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Arguments_1
+    COMMAND ${APPLICATION} 0 4 5 7
+)
+set_tests_properties (${prefix}_can_With_Valid_Arguments_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Bit array: 10001101"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Arguments_2
+    COMMAND ${APPLICATION} 2 4 12 0
+)
+set_tests_properties (${prefix}_can_With_Valid_Arguments_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Bit array: 1010100000001"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Arguments_3
+    COMMAND ${APPLICATION} 3 4 9
+)
+set_tests_properties (${prefix}_can_With_Valid_Arguments_3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Bit array: 0001100001"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_With_Valid_Arguments_4
+    COMMAND ${APPLICATION} 0 10
+)
+set_tests_properties (${prefix}_can_With_Valid_Arguments_4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Bit array: 10000000001"
+    LABELS "${MODULE}")

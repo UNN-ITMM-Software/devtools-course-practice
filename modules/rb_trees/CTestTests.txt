@@ -1,0 +1,138 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_Can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_Can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is application for rbtree class"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Out_Reange_Values
+    COMMAND ${APPLICATION} insert 9300000000000000000
+)
+
+set_tests_properties (${prefix}_Out_Reange_Values PROPERTIES
+    PASS_REGULAR_EXPRESSION "Number is out of bounds"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Add_And_Search
+    COMMAND ${APPLICATION} insert 1 find 1 find 2
+)
+
+set_tests_properties (${prefix}_Can_Add_And_Search PROPERTIES
+    PASS_REGULAR_EXPRESSION "\\(1 is found\\) \\(2 is not found\\)"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Handles_Incorrect_Command_Args
+    COMMAND ${APPLICATION} push 1 find 1 find 2
+)
+
+set_tests_properties (${prefix}_Handles_Incorrect_Command_Args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Unknown operation: push"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Handles_Incorrect_Arguments
+    COMMAND ${APPLICATION} insert 1 find 1f insert 1 find 1
+)
+
+set_tests_properties (${prefix}_Handles_Incorrect_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "1f is not the number"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Search_Multiple_Times
+    COMMAND ${APPLICATION} insert 1 find 1 find 1
+)
+
+set_tests_properties (${prefix}_Can_Search_Multiple_Times PROPERTIES
+    PASS_REGULAR_EXPRESSION "\\(1 is found\\) \\(1 is found\\)"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Add_Multiple_Times
+    COMMAND ${APPLICATION} insert 1 insert 2 insert 3 find 1 find 2 find 3
+)
+
+set_tests_properties (${prefix}_Can_Add_Multiple_Times PROPERTIES
+    PASS_REGULAR_EXPRESSION "\\(1 is found\\) \\(2 is found\\) \\(3 is found\\)"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Add_And_Search_Negative_Numbers
+    COMMAND ${APPLICATION} insert -1 find -1
+)
+
+set_tests_properties (${prefix}_Can_Add_And_Search_Negative_Numbers PROPERTIES
+    PASS_REGULAR_EXPRESSION "(-1 is found)"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Del_Negative_Numbers
+    COMMAND ${APPLICATION} insert -1 remove -1 find -1
+)
+
+set_tests_properties (${prefix}_Can_Del_Negative_Numbers PROPERTIES
+    PASS_REGULAR_EXPRESSION "(-1 is not found)"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Handles_Numbers_With_Two_Minuses
+    COMMAND ${APPLICATION} insert -1-1
+)
+
+set_tests_properties (${prefix}_Handles_Numbers_With_Two_Minuses PROPERTIES
+    PASS_REGULAR_EXPRESSION "-1-1 is not the number"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Handles_Numbers_That_End_With_The_Letter
+    COMMAND ${APPLICATION} insert -1a
+)
+
+set_tests_properties (${prefix}_Handles_Numbers_That_End_With_The_Letter PROPERTIES
+    PASS_REGULAR_EXPRESSION "-1a is not the number"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Handles_Numbers_That_End_With_The_Dash
+    COMMAND ${APPLICATION} insert 1-
+)
+
+set_tests_properties (${prefix}_Handles_Numbers_That_End_With_The_Dash PROPERTIES
+    PASS_REGULAR_EXPRESSION "1- is not the number"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Handles_Dash_Instead_Of_Number
+    COMMAND ${APPLICATION} insert -
+)
+
+set_tests_properties (${prefix}_Handles_Dash_Instead_Of_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "- is not the number"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Can_Del_Numbers
+    COMMAND ${APPLICATION} insert 1 insert 2 remove 1 find 1
+)
+
+set_tests_properties (${prefix}_Can_Del_Numbers PROPERTIES
+    PASS_REGULAR_EXPRESSION "(1 is not found)"
+    LABELS "${MODULE}")

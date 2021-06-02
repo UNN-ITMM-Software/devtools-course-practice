@@ -1,0 +1,66 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is application for tree class"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Data_Format
+    COMMAND ${APPLICATION} ADD
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Data_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Command
+    COMMAND ${APPLICATION} 1 add
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Command PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: 1 is invalid argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Add
+    COMMAND ${APPLICATION} add 1
+)
+set_tests_properties (${prefix}_can_Add PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Add_Multiple_Times
+    COMMAND ${APPLICATION} add 1 add 12 add 3
+)
+set_tests_properties (${prefix}_can_Add_Multiple_Times PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Search_Found
+    COMMAND ${APPLICATION} add 1 find 1
+)
+set_tests_properties (${prefix}_can_Search_Found PROPERTIES
+	PASS_REGULAR_EXPRESSION "(1 is found)"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Search_No_Found
+    COMMAND ${APPLICATION} add 1 find 2
+)
+set_tests_properties (${prefix}_can_Search_No_Found PROPERTIES
+	PASS_REGULAR_EXPRESSION "(2 is not found)"
+    LABELS "${MODULE}")

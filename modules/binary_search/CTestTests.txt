@@ -1,0 +1,69 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_run PROPERTIES
+    PASS_REGULAR_EXPRESSION ".*"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_print_help_without_arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_print_help_without_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_parse_non_numeric_desired
+    COMMAND ${APPLICATION} aaa xxx yyy zzz
+)
+set_tests_properties (${prefix}_cannot_parse_non_numeric_desired PROPERTIES
+    PASS_REGULAR_EXPRESSION "[ERROR]"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_parse_desired_with_out_of_range
+    COMMAND ${APPLICATION} 2e400 1.0 1.0 1.0 1.0
+)
+set_tests_properties (${prefix}_cannot_parse_desired_with_out_of_range PROPERTIES
+    PASS_REGULAR_EXPRESSION "[ERROR]"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_parse_non_numeric_argument
+    COMMAND ${APPLICATION} 2.0 xxx yyy zzz
+)
+set_tests_properties (${prefix}_cannot_parse_non_numeric_argument PROPERTIES
+    PASS_REGULAR_EXPRESSION "[ERROR]"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_parse_argument_with_out_of_range
+    COMMAND ${APPLICATION} 1.0 1.0 1.0 1.0 2e400
+)
+set_tests_properties (${prefix}_cannot_parse_argument_with_out_of_range PROPERTIES
+    PASS_REGULAR_EXPRESSION "[ERROR]"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cannot_find_in_unsorted
+    COMMAND ${APPLICATION} 1.0 3.0 2.0 1.0 0.0
+)
+set_tests_properties (${prefix}_cannot_find_in_unsorted PROPERTIES
+    PASS_REGULAR_EXPRESSION "[ERROR]"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_find
+    COMMAND ${APPLICATION} 4.3 1.0 3 4.3 7.54 8.13 16
+)
+set_tests_properties (${prefix}_can_find PROPERTIES
+    PASS_REGULAR_EXPRESSION "2"
+    LABELS "${MODULE}")

@@ -1,0 +1,72 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_print_help_without_arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_print_help_without_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a stack app"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_wrong_operation_format
+    COMMAND ${APPLICATION} aaa
+)
+
+set_tests_properties (${prefix}_wrong_operation_format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong operation format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_wrong_number_format
+    COMMAND ${APPLICATION} push aaa
+)
+
+set_tests_properties (${prefix}_wrong_number_format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_push_and_peek
+    COMMAND ${APPLICATION} push 5.0 peek
+)
+set_tests_properties (${prefix}_push_and_peek PROPERTIES
+    PASS_REGULAR_EXPRESSION "5.0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_pop
+    COMMAND ${APPLICATION} push 5.0 push 2.5 pop peek
+)
+set_tests_properties (${prefix}_pop PROPERTIES
+    PASS_REGULAR_EXPRESSION "5.0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_isEmpty_correct
+    COMMAND ${APPLICATION} isEmpty
+)
+set_tests_properties (${prefix}_isEmpty_correct PROPERTIES
+    PASS_REGULAR_EXPRESSION "1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_isEmpty_wrong
+    COMMAND ${APPLICATION} push 5.0 push 2.5 isEmpty
+)
+set_tests_properties (${prefix}_isEmpty_wrong PROPERTIES
+    PASS_REGULAR_EXPRESSION "0"
+    LABELS "${MODULE}")
+

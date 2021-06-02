@@ -48,3 +48,21 @@ TEST(Dijkstra_Algorithm, Correct_Answer_Unoriented_5_Seq) {
         }
     }
 }
+
+TEST(Dijkstra_Algorithm, Correct_Answer_Oriented_5_Seq) {
+    double inf = std::numeric_limits<double>::infinity();
+    int verts = 5;
+    Matrix graph = {inf, 10,  30,  50,  10,
+                    inf, inf, inf, inf, inf,
+                    inf, inf, inf, inf, 10,
+                    inf, 40,  20,  inf, inf,
+                    10,  inf, 10,  30,  inf };
+    Matrix expected_result = {0, 10, 20, 40, 10};
+
+    Matrix result = GraphAlgorithms::dijkstras_algorithm(graph, verts, 0);
+    for (int i = 0; i < verts; i++) {
+        if ((expected_result[i] != inf) || (result[i] != inf)) {
+            ASSERT_NEAR(expected_result[i], result[i], EPSILON);
+        }
+    }
+}

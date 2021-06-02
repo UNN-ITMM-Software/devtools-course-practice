@@ -1,0 +1,62 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_first_test
+    COMMAND ${APPLICATION} 20
+)
+set_tests_properties (${prefix}_first_test PROPERTIES
+    PASS_REGULAR_EXPRESSION "Correctly"
+    LABELS "${MODULE}")
+add_test(
+    NAME ${prefix}_second_test
+    COMMAND ${APPLICATION} 50
+)
+set_tests_properties (${prefix}_second_test PROPERTIES
+    PASS_REGULAR_EXPRESSION "Correctly"
+    LABELS "${MODULE}")
+add_test(
+    NAME ${prefix}_big_count_test
+    COMMAND ${APPLICATION} 100
+)
+set_tests_properties (${prefix}_big_count_test PROPERTIES
+    PASS_REGULAR_EXPRESSION "Correctly"
+    LABELS "${MODULE}")
+add_test(
+    NAME ${prefix}_big_count_test1
+    COMMAND ${APPLICATION} 200
+)
+set_tests_properties (${prefix}_big_count_test1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Correctly"
+    LABELS "${MODULE}")
+add_test(
+    NAME ${prefix}_false_count
+    COMMAND ${APPLICATION} -1
+)
+set_tests_properties (${prefix}_false_count PROPERTIES
+    PASS_REGULAR_EXPRESSION "Count must be positive!"
+    LABELS "${MODULE}")
+add_test(
+NAME ${prefix}_Check_Number_Of_Arguments
+COMMAND ${APPLICATION} 
+)
+set_tests_properties (${prefix}_Check_Number_Of_Arguments PROPERTIES
+PASS_REGULAR_EXPRESSION "Should be 2 arguments."
+LABELS "${MODULE}")
+add_test(
+    NAME ${prefix}_one_count
+    COMMAND ${APPLICATION} 1
+)
+set_tests_properties (${prefix}_one_count PROPERTIES
+    PASS_REGULAR_EXPRESSION "Uncorrectly"
+    LABELS "${MODULE}")

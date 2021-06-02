@@ -9,6 +9,10 @@ TEST(Mishin_Euler, AssertThrow) {
     ASSERT_ANY_THROW(phi(-1));
 }
 
+TEST(Mishin_Euler, AssertThrow2) {
+    ASSERT_ANY_THROW(phi(-1000));
+}
+
 typedef testing::TestWithParam<std::tuple<int, int>> Parametrized;
 TEST_P(Parametrized, Check_) {
     int a = std::get<0>(GetParam());

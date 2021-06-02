@@ -1,0 +1,111 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    PASS_REGULAR_EXPRESSION ".*"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a graph's shortest paths finder application"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 2 2
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be N \\* N \\+ 3 arguments."
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} z
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong number format!"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_cannot_Work_With_Not_Enough_Data
+    COMMAND ${APPLICATION} 5 0 
+        inf inf 7   3   9
+        inf inf 2   15  4
+        7   2   inf 10  inf
+        3   15  10  inf inf
+        9   4   inf 
+)
+set_tests_properties (${prefix}_cannot_Work_With_Not_Enough_Data PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be N \\* N \\+ 3 arguments."
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_cannot_Work_With_Wrong_Number_Format
+    COMMAND ${APPLICATION} 5 0 
+        inf 10  30  50  Hello!
+        inf inf inf inf inf
+        inf inf inf inf 10
+        inf 40  20  inf inf
+        10  inf 10  30  inf
+)
+set_tests_properties (${prefix}_cannot_Work_With_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong number format!"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_cannot_Work_With_Index_Out_Of_Range
+    COMMAND ${APPLICATION} 5 7 
+        inf inf 7   3   9
+        inf inf 2   15  4
+        7   2   inf 10  inf
+        3   15  10  inf inf
+        9   4   inf inf inf
+)
+set_tests_properties (${prefix}_cannot_Work_With_Index_Out_Of_Range PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Index out of range!"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Work_With_Unoriented_Graph
+    COMMAND ${APPLICATION} 5 0 
+        inf inf 7   3   9
+        inf inf 2   15  4
+        7   2   inf 10  inf
+        3   15  10  inf inf
+        9   4   inf inf inf
+)
+set_tests_properties (${prefix}_can_Work_With_Unoriented_Graph PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: \\[0 9 7 3 9 \\]"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Work_With_Oriented_Graph
+    COMMAND ${APPLICATION} 5 0 
+        inf 10  30  50  10
+        inf inf inf inf inf
+        inf inf inf inf 10
+        inf 40  20  inf inf
+        10  inf 10  30  inf
+)
+set_tests_properties (${prefix}_can_Work_With_Oriented_Graph PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: \\[0 10 20 40 10 \\]"
+    LABELS "${MODULE}")

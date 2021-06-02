@@ -1,0 +1,56 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_runs
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_runs PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_create_set_get
+    COMMAND ${APPLICATION} create 5 set 1 3 4 get 3 4
+)
+set_tests_properties (${prefix}_create_set_get PROPERTIES
+    PASS_REGULAR_EXPRESSION "1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_create_many_set_get
+    COMMAND ${APPLICATION} create 7 set 1 3 4 set 0 3 4 get 3 4
+)
+set_tests_properties (${prefix}_create_many_set_get PROPERTIES
+    PASS_REGULAR_EXPRESSION "0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_append_get_size
+    COMMAND ${APPLICATION} create 2 append size
+)
+set_tests_properties (${prefix}_append_get_size PROPERTIES
+    PASS_REGULAR_EXPRESSION "3"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_get_count_comps
+    COMMAND ${APPLICATION} create 7 set 1 0 2 set 1 0 3
+        set 1 1 3 set 1 2 0 set 1 3 0 set 1 3 1 set 1 4 6 set 1 6 4
+        getcountcomps
+)
+set_tests_properties (${prefix}_get_count_comps PROPERTIES
+    PASS_REGULAR_EXPRESSION "3"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_multigraph
+    COMMAND ${APPLICATION} create 7 set 2 0 2 set 1 0 3
+        set 1 1 3 set 2 2 0 set 1 3 0 set 2 3 1 set 1 4 6 set 2 6 4
+        getcountcomps
+)
+set_tests_properties (${prefix}_multigraph PROPERTIES
+    PASS_REGULAR_EXPRESSION "3"
+    LABELS "${MODULE}")

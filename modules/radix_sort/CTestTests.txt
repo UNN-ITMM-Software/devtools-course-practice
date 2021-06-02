@@ -1,0 +1,85 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a radix sort application"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Sort_Positive
+    COMMAND ${APPLICATION}  5 10 7 12
+)
+
+set_tests_properties (${prefix}_can_Sort_Positive PROPERTIES
+    PASS_REGULAR_EXPRESSION "5 7 10 12"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Sort_Negative
+    COMMAND ${APPLICATION}  -5 -10 -7 -12
+)
+
+set_tests_properties (${prefix}_can_Sort_Negative PROPERTIES
+    PASS_REGULAR_EXPRESSION "-12 -10 -7 -5"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Sort_Mixed
+    COMMAND ${APPLICATION}  -5 -10 -7 -12 5 10 7 12 0
+)
+
+set_tests_properties (${prefix}_can_Sort_Mixed PROPERTIES
+    PASS_REGULAR_EXPRESSION "-12 -10 -7 -5 0 5 7 10 12"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Double
+    COMMAND ${APPLICATION}  -5 -10 -7 -12 5.5 10 7 12 0
+)
+
+set_tests_properties (${prefix}_can_Detect_Double PROPERTIES
+    PASS_REGULAR_EXPRESSION "Some arguments are not integers"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_String
+    COMMAND ${APPLICATION}  -5 -10 -7 -12 LSDF 10 7 12 0
+)
+
+set_tests_properties (${prefix}_can_Detect_String PROPERTIES
+    PASS_REGULAR_EXPRESSION "Some arguments are not integers"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Too_Big_Int
+    COMMAND ${APPLICATION}  1000000000000000 45 -23 3
+)
+
+set_tests_properties (${prefix}_can_Detect_Too_Big_Int PROPERTIES
+    PASS_REGULAR_EXPRESSION "Some arguments are out of range"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_Sort_Bigger_Int
+    COMMAND ${APPLICATION}  256 257 1 0 -257 -3 112354 3333 -123233 -323334
+)
+
+set_tests_properties (${prefix}_can_Sort_Bigger_Int PROPERTIES
+    PASS_REGULAR_EXPRESSION "-323334 -123233 -257 -3 0 1 256 257 3333 112354"
+    LABELS "${MODULE}")
