@@ -1,5 +1,7 @@
 // Copyright 2021 Ostapovich Denis
 
+#include <string>
+
 #include "include/application.h"
 
 #include "include/json-deserializer.h"
