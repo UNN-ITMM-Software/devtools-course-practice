@@ -1,0 +1,44 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_Can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Print_Help_With_No_Args
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_Can_Print_Help_With_No_Args PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a json deserialization application."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Check_Number_Of_Arguments_Greater
+    COMMAND ${APPLICATION} 1 2 3
+)
+set_tests_properties (${prefix}_Can_Check_Number_Of_Arguments_Greater PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments."
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Can_Check_Number_Of_Arguments_Less
+    COMMAND ${APPLICATION} 1
+)
+set_tests_properties (${prefix}_Can_Check_Number_Of_Arguments_Less PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments."
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Can_Get_Field_Value
+    COMMAND ${APPLICATION} "{ "name" : "user" }" "name"
+)
+set_tests_properties (${prefix}_Can_Get_Field_Value PROPERTIES
+    PASS_REGULAR_EXPRESSION "user"
+    LABELS "${MODULE}")
