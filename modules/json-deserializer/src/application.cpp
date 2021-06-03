@@ -37,7 +37,7 @@ std::string Application::operator()(int argc, const char** argv) {
     return helpMessage;
   }
 
-  JSONDeserializer deserializer(argv[2]);
+  JSONDeserializer deserializer(argv[1]);
   JSONDocument json;
 
   try {
@@ -46,5 +46,5 @@ std::string Application::operator()(int argc, const char** argv) {
     return str;
   }
 
-  return json[argv[3]].to<std::string>();
+  return json[argv[2]].to<std::string>();
 }

@@ -37,7 +37,7 @@ set_tests_properties (${prefix}_Can_Check_Number_Of_Arguments_Less PROPERTIES
 	
 add_test(
     NAME ${prefix}_Can_Get_Field_Value
-    COMMAND ${APPLICATION} "{ "name" : "user" }" "name"
+    COMMAND ${APPLICATION} "{ \"name\" : \"user\" }" "name"
 )
 set_tests_properties (${prefix}_Can_Get_Field_Value PROPERTIES
     PASS_REGULAR_EXPRESSION "user"
