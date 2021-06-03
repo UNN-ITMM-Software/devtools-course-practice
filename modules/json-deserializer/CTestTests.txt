@@ -36,9 +36,18 @@ set_tests_properties (${prefix}_Can_Check_Number_Of_Arguments_Less PROPERTIES
     LABELS "${MODULE}")
 	
 add_test(
-    NAME ${prefix}_Can_Get_Field_Value
+    NAME ${prefix}_Can_Get_String_Value
     COMMAND ${APPLICATION} "{ \"name\" : \"user\" }" "name"
 )
-set_tests_properties (${prefix}_Can_Get_Field_Value PROPERTIES
+
+set_tests_properties (${prefix}_Can_Get_String_Value PROPERTIES
     PASS_REGULAR_EXPRESSION "user"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Can_Get_Numeric_Value
+    COMMAND ${APPLICATION} "{ \"age\" : 12 }" "age"
+)
+set_tests_properties (${prefix}_Can_Get_Numeric_Value PROPERTIES
+    PASS_REGULAR_EXPRESSION "12"
     LABELS "${MODULE}")
