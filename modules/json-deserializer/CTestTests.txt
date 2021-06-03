@@ -21,10 +21,10 @@ set_tests_properties (${prefix}_Can_Print_Help_With_No_Args PROPERTIES
 
 add_test(
     NAME ${prefix}_Can_Check_Number_Of_Arguments_Greater
-    COMMAND ${APPLICATION} 1 2 3
+    COMMAND ${APPLICATION} 1 2 3 4
 )
 set_tests_properties (${prefix}_Can_Check_Number_Of_Arguments_Greater PROPERTIES
-    PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments."
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
     LABELS "${MODULE}")
 	
 add_test(
@@ -32,12 +32,12 @@ add_test(
     COMMAND ${APPLICATION} 1
 )
 set_tests_properties (${prefix}_Can_Check_Number_Of_Arguments_Less PROPERTIES
-    PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments."
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
     LABELS "${MODULE}")
 	
 add_test(
     NAME ${prefix}_Can_Get_String_Value
-    COMMAND ${APPLICATION} "{ \"name\" : \"user\" }" "name"
+    COMMAND ${APPLICATION} -o "{ \"name\" : \"user\" }" "name"
 )
 
 set_tests_properties (${prefix}_Can_Get_String_Value PROPERTIES
@@ -46,8 +46,40 @@ set_tests_properties (${prefix}_Can_Get_String_Value PROPERTIES
 	
 add_test(
     NAME ${prefix}_Can_Get_Numeric_Value
-    COMMAND ${APPLICATION} "{ \"age\" : 12 }" "age"
+    COMMAND ${APPLICATION} -o "{ \"age\" : 12 }" "age"
 )
 set_tests_properties (${prefix}_Can_Get_Numeric_Value PROPERTIES
     PASS_REGULAR_EXPRESSION "12"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Can_Get_Array_Value_By_Index
+    COMMAND ${APPLICATION} -a "[ 21, 13 ]" 1
+)
+set_tests_properties (${prefix}_Can_Get_Array_Value_By_Index PROPERTIES
+    PASS_REGULAR_EXPRESSION "13"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Can_Detect_Use_Invalid_Index_Value
+    COMMAND ${APPLICATION} -a "[ 21, 13 ]" abcdef
+)
+set_tests_properties (${prefix}_Can_Detect_Use_Invalid_Index_Value PROPERTIES
+    PASS_REGULAR_EXPRESSION "Can't parse array index"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Detect_Out_Of_Range_Index_Value
+    COMMAND ${APPLICATION} -a "[ 21, 13 ]" 21474836478
+)
+set_tests_properties (${prefix}_Can_Detect_Out_Of_Range_Index_Value PROPERTIES
+    PASS_REGULAR_EXPRESSION "Index is out of range"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_Detect_Invalid_Json_String
+    COMMAND ${APPLICATION} -a "\\" 123
+)
+set_tests_properties (${prefix}_Can_Detect_Invalid_Json_String PROPERTIES
+    PASS_REGULAR_EXPRESSION "Syntax error, unexpected token:"
     LABELS "${MODULE}")

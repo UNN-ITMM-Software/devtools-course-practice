@@ -6,6 +6,9 @@
 #include <string>
 
 namespace jsonDeserializer {
+
+enum class OperationMode { Array, Object };
+
 class Application {
  public:
   Application();
