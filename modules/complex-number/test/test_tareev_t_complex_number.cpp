@@ -9,7 +9,7 @@
 
 class CustomComplexNumberTest : public ::testing::Test {
  protected:
-    double epsilon = 1e-8;
+    double epsilon = 0,00000001;
 };
 
 TEST_F(CustomComplexNumberTest, create_zero_default) {
