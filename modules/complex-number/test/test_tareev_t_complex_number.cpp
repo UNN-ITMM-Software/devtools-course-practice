@@ -20,9 +20,8 @@ TEST_F(CustomComplexNumberTest, create_zero_default) {
     // Act
     ComplexNumber z;
 
-    // Assert
-    EXPECT_NEAR(re, z.getRe(), CustomComplexNumberTest::epsilon);
-    EXPECT_NEAR(im, z.getIm(), CustomComplexNumberTest::epsilon);
+  ASSERT_EQ(re, z.getRe());
+  ASSERT_EQ(im, z.getIm());
 }
 
 TEST_F(CustomComplexNumberTest, create_in_place) {
