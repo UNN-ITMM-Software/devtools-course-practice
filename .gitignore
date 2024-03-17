@@ -50,7 +50,6 @@ bld/
 [Ll]ogs/
 [Bb]uild/
 cmake-build-*/
-dashboard/
 
 # IDE (Editors)
 .idea/
