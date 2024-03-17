@@ -10,9 +10,9 @@ const repo = "devtools-course-practice";
 const octokit = new Octokit({
     authStrategy: createAppAuth,
     auth: {
-      appId: 318270,
+      appId: 202493,
       privateKey: process.env.PRIVATE_KEY,
-      installationId: 36435735,
+      installationId: 48547947,
     },
 });
 
