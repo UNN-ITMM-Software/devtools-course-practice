@@ -14,18 +14,18 @@
   </style>
 
   <script type="module">
-    import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
+    import { Octokit } from "https://esm.sh/@octokit/rest";
 
     const octokit = new Octokit();
 
     let realNames = {};
     try {
-      let res = await fetch("https://devtools-course-practice.onrender.com/names");
+      let res = await fetch("https://devtools-course-practice-hluq.onrender.com/names");
       realNames = await res.json();
     } catch {};
 
     octokit.paginate(octokit.rest.pulls.list, {
-        owner: "Teddy-Hackers",
+        owner: "UNN-ITMM-Software",
         repo: "devtools-course-practice",
         state: "all",
         sort: "created",
