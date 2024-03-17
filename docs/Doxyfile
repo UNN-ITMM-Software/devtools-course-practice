@@ -1,0 +1,3 @@
+WARN_NO_PARAMDOC = YES
+PROJECT_NAME = "UNN DevTools"
+INPUT += ../modules/complex-number/include/

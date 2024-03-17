@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid black;
+      text-align: center;
+      padding: 5px;
+    }
+  </style>
+
+  <script type="module">
+    import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
+
+    const octokit = new Octokit();
+
+    octokit.paginate(octokit.rest.pulls.list, {
+        owner: "UNN-ITMM-Software",
+        repo: "devtools-course-practice",
+        state: "all",
+        sort: "created",
+        direction: "asc",
+    })
+    .then(pulls => {
+        let results = {};
+        pulls.forEach(pull => {
+            let task_id = pull.title.match(/\d+/);
+            if (!task_id)
+                return;
+
+            task_id = parseInt(task_id[0]);
+            if (task_id < 1 || task_id > 3)
+                return;
+
+            let username = pull.user.login;
+            if (!(username in results)) {
+                results[username] = {1: {}, 2: {}, 3: {}};
+            }
+
+            if (pull.state === 'closed' && pull.merged_at != null) {
+                results[username][task_id].status ='success';
+                results[username][task_id].html_url = pull.html_url;
+            } else if (pull.state === 'open') {
+                results[username][task_id].status = 'progress';
+                results[username][task_id].html_url = pull.html_url;
+            }
+        });
+
+        document.getElementById("loading").innerHTML = "";
+        var table = document.getElementById("results");
+
+        var header = table.insertRow();
+        header.insertCell().innerHTML = "User name";
+        header.insertCell().innerHTML = "Lab 1";
+        header.insertCell().innerHTML = "Lab 2";
+        header.insertCell().innerHTML = "Lab 3";
+
+        for (const [userId, progress] of Object.entries(results)) {
+          var row = table.insertRow();
+          row.insertCell().innerHTML = "<a href=https://github.com/" + userId + ">" + userId + "</a>";
+          for (let i = 1; i <= 3; ++i) {
+            var cell = row.insertCell();
+            if (!progress[i].status)
+                continue;
+
+            var html = "<a href=" + progress[i].html_url + "><img src='https://img.shields.io/badge/";
+            if (progress[i].status === "success") {
+              html += "-accepted-4BC51D";
+            } else {
+              html += "-in progress-red";
+            }
+            cell.innerHTML = html + "?style=plastic'></a>";
+          }
+        }
+    });
+  </script>
+</head>
+
+<body>
+  <div id="loading">Loading...</div>
+  <table id="results"></table>
+</body>
+
+</html>

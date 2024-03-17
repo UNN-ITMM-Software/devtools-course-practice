@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+env:
+  CTEST_EXT_COLOR_OUTPUT: TRUE
+  CTEST_WITH_SUBMIT: FALSE
+
+jobs:
+  run_linux:
+    runs-on: ubuntu-20.04
+    name: Linux / Build and Test
+    strategy:
+      matrix:
+        ctest_model: [Coverage, MemCheck, CodeCheck]
+
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 2
+
+    - name: Install requirements (Coverage)
+      if: matrix.ctest_model == 'Coverage'
+      run: |
+        wget https://codecov.io/bash -O $HOME/codecov;
+        chmod +x $HOME/codecov;
+
+    - name: Install requirements (CodeCheck)
+      if: matrix.ctest_model == 'CodeCheck'
+      run: |
+        sudo apt-get install -y cppcheck
+        pip install cpplint
+
+    - name: Install requirements (MemCheck)
+      if: matrix.ctest_model == 'MemCheck'
+      run: sudo apt-get install -y valgrind
+
+    - name: Run tests
+      env:
+        CTEST_BUILD_FLAGS: -j2
+        CTEST_MODEL: ${{ matrix.ctest_model }}
+      run: |
+        ctest -VV -S devtools_test.cmake
+
+    - name: Publish coverage
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      if: matrix.ctest_model == 'Coverage'
+      run: $HOME/codecov -p dashboard/build
+
+
+  run_win:
+    runs-on: windows-2019
+    name: Windows / Build and Test
+
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@v2
+
+    - name: Run tests
+      env:
+        CTEST_TARGET_SYSTEM: "Windows-x64"
+        CTEST_MODEL: "Experimental"
+      run: |
+        ctest -VV -S devtools_test.cmake

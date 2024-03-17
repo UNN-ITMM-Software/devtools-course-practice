@@ -1,0 +1,8 @@
+{
+    "name": "devtools-course-practice",
+    "version": "1.0.0",
+    "dependencies": {
+        "@octokit/rest": "^19.0.7",
+        "@octokit/auth-app": "^3.6.1"
+    }
+}
