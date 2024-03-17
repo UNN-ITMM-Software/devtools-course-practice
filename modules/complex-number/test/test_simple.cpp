@@ -18,6 +18,7 @@ TEST_P(Parametrized, Constructor) {
     ComplexNumber number(real, imag);
     ASSERT_EQ(number.getRe(), real);
     ASSERT_EQ(number.getIm(), imag);
+
 }
 
 INSTANTIATE_TEST_CASE_P(/**/, Parametrized, testing::Combine(
