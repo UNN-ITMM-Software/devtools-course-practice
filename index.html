@@ -13,13 +13,19 @@
     }
   </style>
 
-  <script type="module">  
-    import { Octokit } from "https://esm.sh/@octokit/rest";
+  <script type="module">
+    import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
 
     const octokit = new Octokit();
 
+    let realNames = {};
+    try {
+      let res = await fetch("https://devtools-course-practice.onrender.com/names");
+      realNames = await res.json();
+    } catch {};
+
     octokit.paginate(octokit.rest.pulls.list, {
-        owner: "UNN-ITMM-Software",
+        owner: "Teddy-Hackers",
         repo: "devtools-course-practice",
         state: "all",
         sort: "created",
@@ -28,11 +34,19 @@
     .then(pulls => {
         let results = {};
         pulls.forEach(pull => {
-            let task_id = pull.title.match(/\d+/);
+            let task_id
+            let isPlagiarized = false;
+            pull.labels.forEach(label => {
+              if(label.name == "lab 1" || label.name == "lab 2" || label.name == "lab 3") {
+                task_id = label.name;
+              } else if (label.name == "plagiarized") {
+                isPlagiarized = true;
+              }
+            });
             if (!task_id)
                 return;
 
-            task_id = parseInt(task_id[0]);
+            task_id = parseInt(task_id.at(-1));
             if (task_id < 1 || task_id > 3)
                 return;
 
@@ -48,6 +62,10 @@
                 results[username][task_id].status = 'progress';
                 results[username][task_id].html_url = pull.html_url;
             }
+            if (isPlagiarized) {
+              results[username][task_id].status ='plagiarized';
+              results[username][task_id].html_url = pull.html_url;
+            }
         });
 
         document.getElementById("loading").innerHTML = "";
@@ -61,7 +79,8 @@
 
         for (const [userId, progress] of Object.entries(results)) {
           var row = table.insertRow();
-          row.insertCell().innerHTML = "<a href=https://github.com/" + userId + ">" + userId + "</a>";
+          let name = userId in realNames ? realNames[userId] : userId;
+          row.insertCell().innerHTML = "<a href=https://github.com/" + userId + ">" + name + "</a>";
           for (let i = 1; i <= 3; ++i) {
             var cell = row.insertCell();
             if (!progress[i].status)
@@ -70,6 +89,8 @@
             var html = "<a href=" + progress[i].html_url + "><img src='https://img.shields.io/badge/";
             if (progress[i].status === "success") {
               html += "-accepted-4BC51D";
+            } else if (progress[i].status === "plagiarized") {
+              html += "!-plagiarized-blueviolet";
             } else {
               html += "-in progress-red";
             }
