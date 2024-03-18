@@ -4,7 +4,7 @@
 [![HTML][html-badge]][html]
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-[![Build Status](https://github.com/UNN-ITMM-Software/devtools-course-practice/workflows/CI/badge.svg?branch=main)](https://github.com/UNN-ITMM-Software/devtools-course-practice/actions?query=branch%3Amain)
+[![Build Status](https://github.com/UNN-ITMM-Software/devtools-course-practice/workflows/CI/badge.svg?branch%3Amain)](https://github.com/UNN-ITMM-Software/devtools-course-practice/actions?query=branch%3Amain)
 [![codecov](https://codecov.io/gh/UNN-ITMM-Software/devtools-course-practice/branch/main/graph/badge.svg)](https://codecov.io/gh/UNN-ITMM-Software/devtools-course-practice)
 
  - ННГУ им. Н.И. Лобачевского
