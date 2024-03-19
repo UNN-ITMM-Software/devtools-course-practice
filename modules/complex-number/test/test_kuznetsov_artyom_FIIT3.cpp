@@ -1,4 +1,4 @@
-// Copyright 2024 Kuznetsov Artyom
+// Copyright 2024 Kuznetsov Artem
 
 #include <gtest/gtest.h>
 
