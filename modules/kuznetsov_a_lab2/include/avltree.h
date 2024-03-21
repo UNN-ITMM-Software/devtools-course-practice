@@ -29,7 +29,7 @@ class avlTree {
   size_t mSize;
 
  public:
-  avlTree() = default;
+  avlTree() : mRoot{nullptr}, mSize{0} {}
   avlTree(const avlTree& other);
   avlTree(avlTree&& other) noexcept;
 
@@ -92,7 +92,7 @@ void avlTree<T>::insert(const T& value) {
 template <typename T>
 void avlTree<T>::remove(const T& value) {
   if (empty()) {
-    throw std::logic_error{"Tree is empty"};
+    throw std::logi{"Tree is empty"};
   }
   mRoot = removeNode(mRoot, value);
 }
