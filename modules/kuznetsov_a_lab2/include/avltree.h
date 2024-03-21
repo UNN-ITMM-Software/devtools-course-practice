@@ -107,6 +107,7 @@ template <typename T>
 [[nodiscard]] size_t avlTree<T>::size() const noexcept {
   return mSize;
 }
+
 template <typename T>
 [[nodiscard]] bool avlTree<T>::empty() const noexcept {
   return mRoot == nullptr;
