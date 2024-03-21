@@ -12,7 +12,7 @@ struct Node {
   Node<T>* left;
   Node<T>* right;
 
-  Node(const T& keyValue, size_t heightVal = 0)
+  explicit Node(const T& keyValue, size_t heightVal = 0)
       : key{keyValue}, height{heightVal}, left{nullptr}, right{nullptr} {}
 
   ~Node() {
@@ -50,7 +50,7 @@ class avlTree {
   [[nodiscard]] bool operator!=(const avlTree& other) const;
 
  private:
-  Node<T>* insertNode(Node<T>*& node, const T& value);
+  Node<T>* insertNode(Node<T>** node, const T& value);
   Node<T>* balancing(Node<T>* node);
   Node<T>* rightRotate(Node<T>* node);
   Node<T>* leftRotate(Node<T>* node);
@@ -58,13 +58,13 @@ class avlTree {
   void updHeight(Node<T>* node);
   int heightNode(Node<T>* node);
 
-  Node<T>* removeNode(Node<T>*& node, const T& value);
+  Node<T>* removeNode(Node<T>** node, const T& value);
   Node<T>* findMinNode(Node<T>* node) noexcept;
   Node<T>* removeMin(Node<T>* node);
 
   const Node<T>* findNode(const Node<T>* node, const T& value) const noexcept;
   Node<T>* copyTree(const Node<T>* otherRoot);
-  void traverseFillVector(const Node<T>* node, std::vector<T>& values) const;
+  void traverseFillVector(const Node<T>* node, std::vector<T>* values) const;
 };
 
 template <typename T>
@@ -85,7 +85,7 @@ avlTree<T>::avlTree(avlTree&& other) noexcept
 
 template <typename T>
 void avlTree<T>::insert(const T& value) {
-  mRoot = insertNode(mRoot, value);
+  mRoot = insertNode(&mRoot, value);
 }
 
 template <typename T>
@@ -93,7 +93,7 @@ void avlTree<T>::remove(const T& value) {
   if (empty()) {
     throw std::logic_error{"Tree is empty"};
   }
-  mRoot = removeNode(mRoot, value);
+  mRoot = removeNode(&mRoot, value);
 }
 
 template <typename T>
@@ -124,7 +124,7 @@ template <typename T>
 
   if (mSize) {
     values.reserve(mSize);
-    traverseFillVector(mRoot, values);
+    traverseFillVector(mRoot, &values);
   }
 
   return values;
@@ -173,20 +173,20 @@ template <typename T>
 ////////////////////// PRIVATE METHODS //////////////////////
 
 template <typename T>
-Node<T>* avlTree<T>::insertNode(Node<T>*& node, const T& value) {
-  if (node == nullptr) {
+Node<T>* avlTree<T>::insertNode(Node<T>** node, const T& value) {
+  if (*node == nullptr) {
     ++mSize;
     return new Node<T>(value, 0);
   }
 
-  if (value < node->key)
-    node->left = insertNode(node->left, value);
-  else if (value > node->key)
-    node->right = insertNode(node->right, value);
+  if (value < (*node)->key)
+    (*node)->left = insertNode(&(*node)->left, value);
+  else if (value > (*node)->key)
+    (*node)->right = insertNode(&(*node)->right, value);
   else
-    return node;
+    return *node;
 
-  return balancing(node);
+  return balancing(*node);
 }
 
 template <typename T>
@@ -253,22 +253,20 @@ int avlTree<T>::heightNode(Node<T>* node) {
 }
 
 template <typename T>
-Node<T>* avlTree<T>::removeNode(Node<T>*& node, const T& value) {
-  if (node == nullptr) return nullptr;
+Node<T>* avlTree<T>::removeNode(Node<T>** node, const T& value) {
+  if (*node == nullptr) return nullptr;
 
-  if (value > node->key)
-    node->right = removeNode(node->right, value);
+  if (value > (*node)->key) {
+    (*node)->right = removeNode(&(*node)->right, value);
+  } else if (value < (*node)->key) {
+    (*node)->left = removeNode(&(*node)->left, value);
+  } else {
+    Node<T>* leftNode = (*node)->left;
+    Node<T>* rightNode = (*node)->right;
 
-  else if (value < node->key)
-    node->left = removeNode(node->left, value);
-
-  else {
-    Node<T>* leftNode = node->left;
-    Node<T>* rightNode = node->right;
-
-    node->left = nullptr;
-    node->right = nullptr;
-    delete node;
+    (*node)->left = nullptr;
+    (*node)->right = nullptr;
+    delete *node;
     --mSize;
 
     if (rightNode == nullptr) return leftNode;
@@ -281,7 +279,7 @@ Node<T>* avlTree<T>::removeNode(Node<T>*& node, const T& value) {
     return balancing(minNode);
   }
 
-  return balancing(node);
+  return balancing(*node);
 }
 
 template <typename T>
@@ -323,10 +321,10 @@ Node<T>* avlTree<T>::copyTree(const Node<T>* otherRoot) {
 
 template <typename T>
 void avlTree<T>::traverseFillVector(const Node<T>* node,
-                                    std::vector<T>& values) const {
+                                    std::vector<T>* values) const {
   if (node == nullptr) return;
 
   traverseFillVector(node->left, values);
-  values.emplace_back(node->key);
+  values->emplace_back(node->key);
   traverseFillVector(node->right, values);
 }
