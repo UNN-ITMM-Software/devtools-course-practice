@@ -1,7 +1,6 @@
 // Copyright 2024 Kuznetsov Artem
 #pragma once
 
-#include <cstdint>
 #include <stdexcept>
 #include <vector>
 
@@ -13,7 +12,7 @@ struct Node {
   Node<T>* left;
   Node<T>* right;
 
-  Node(T keyValue, size_t heightVal = 0)
+  Node(const T& keyValue, size_t heightVal = 0)
       : key{keyValue}, height{heightVal}, left{nullptr}, right{nullptr} {}
 
   ~Node() {
@@ -92,7 +91,7 @@ void avlTree<T>::insert(const T& value) {
 template <typename T>
 void avlTree<T>::remove(const T& value) {
   if (empty()) {
-    throw std::logi{"Tree is empty"};
+    throw std::logic_error{"Tree is empty"};
   }
   mRoot = removeNode(mRoot, value);
 }
@@ -157,6 +156,8 @@ avlTree<T>& avlTree<T>::operator=(avlTree&& other) noexcept {
 
 template <typename T>
 [[nodiscard]] bool avlTree<T>::operator==(const avlTree& other) const {
+  if (mSize != other.mSize) return false;
+  
   auto thisValues = getTreeAsVector();
   auto otherValues = other.getTreeAsVector();
 
