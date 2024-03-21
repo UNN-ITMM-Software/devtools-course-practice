@@ -146,7 +146,7 @@ TEST(Test_case_kuznetsov_avltree, testRandomInsert) {
   std::mt19937 gen{std::random_device{}()};
   std::uniform_int_distribution<> dist(std::numeric_limits<int>::min(),
                                        std::numeric_limits<int>::max());
-                                       
+
   for (int i = 0; i < count; ++i) {
     auto value = dist(gen);
     set.insert(value);
