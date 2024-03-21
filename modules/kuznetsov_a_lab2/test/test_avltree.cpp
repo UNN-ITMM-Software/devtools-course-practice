@@ -117,11 +117,13 @@ TEST(Test_case_kuznetsov_avltree, testMoveFuncsTyDouble) {
 
   ASSERT_TRUE(treeOne.empty());
   ASSERT_FALSE(treeTwo.empty());
+  ASSERT_EQ(treeOne.size(), 0ull);
 
   treeOne = std::move(treeTwo);
 
   ASSERT_FALSE(treeOne.empty());
   ASSERT_TRUE(treeTwo.empty());
+  ASSERT_EQ(treeTwo.size(), 0ull);
 }
 
 TEST(Test_case_kuznetsov_avltree, testFuncGetTreeAsVectorTyInt) {

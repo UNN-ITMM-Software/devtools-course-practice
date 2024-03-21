@@ -79,6 +79,7 @@ template <typename T>
 avlTree<T>::avlTree(avlTree&& other) noexcept
     : mRoot{other.mRoot}, mSize{other.mSize} {
   other.mRoot = nullptr;
+  other.mSize = 0;
 }
 
 ////////////////////// PUBLIC METHODS //////////////////////
@@ -151,6 +152,7 @@ avlTree<T>& avlTree<T>::operator=(avlTree&& other) noexcept {
     mSize = other.mSize;
     mRoot = other.mRoot;
     other.mRoot = nullptr;
+    other.mSize = 0;
   }
   return *this;
 }
