@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
 #include <limits>
 #include <random>
 #include <string>
@@ -9,12 +10,6 @@
 #include <utility>
 
 #include "include/avltree.h"
-
-template <typename T>
-constexpr T max_val = std::numeric_limits<T>::max();
-
-template <typename T>
-constexpr T min_val = std::numeric_limits<T>::min();
 
 TEST(Test_case_kuznetsov_avltree, testCreateTyDouble) {
   ASSERT_NO_THROW(avlTree<double>());
@@ -27,7 +22,7 @@ TEST(Test_case_kuznetsov_avltree, testInsertTyInt) {
   ASSERT_TRUE(tree.empty());
   for (int i = 0; i < count; ++i) {
     ASSERT_NO_THROW(tree.insert(i));
-    ASSERT_EQ(tree.size(), i + 1);
+    ASSERT_EQ(tree.size(), static_cast<size_t>(i + 1));
   }
   ASSERT_FALSE(tree.empty());
 }
@@ -39,7 +34,7 @@ TEST(Test_case_kuznetsov_avltree, testInsertOnlyZeroTyInt) {
   ASSERT_TRUE(tree.empty());
   for (int i = 0; i < count; ++i) {
     ASSERT_NO_THROW(tree.insert(0));
-    ASSERT_EQ(tree.size(), 1);
+    ASSERT_EQ(tree.size(), 1ull);
   }
   ASSERT_FALSE(tree.empty());
 }
@@ -55,7 +50,7 @@ TEST(Test_case_kuznetsov_avltree, testRemoveTyFloat) {
   ASSERT_FALSE(tree.empty());
   for (int i = 0; i < count; ++i) {
     ASSERT_NO_THROW(tree.remove(static_cast<float>(i)));
-    ASSERT_EQ(tree.size(), count - (i + 1));
+    ASSERT_EQ(tree.size(), static_cast<size_t>(count - (i + 1)));
   }
   ASSERT_TRUE(tree.empty());
 }
@@ -145,12 +140,13 @@ TEST(Test_case_kuznetsov_avltree, testFuncGetTreeAsVectorTyInt) {
 
 TEST(Test_case_kuznetsov_avltree, testRandomInsert) {
   avlTree<int> tree;
-  const int count = 100'000;
+  const int count = 100000;
   std::unordered_set<int> set;
 
   std::mt19937 gen{std::random_device{}()};
-  std::uniform_int_distribution<> dist(min_val<int>, max_val<int>);
-
+  std::uniform_int_distribution<> dist(std::numeric_limits<int>::min(),
+                                       std::numeric_limits<int>::max());
+                                       
   for (int i = 0; i < count; ++i) {
     auto value = dist(gen);
     set.insert(value);
