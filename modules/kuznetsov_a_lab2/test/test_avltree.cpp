@@ -143,7 +143,8 @@ TEST(Test_case_kuznetsov_avltree, testRandomInsert) {
   const int count = 100000;
   std::unordered_set<int> set;
 
-  std::mt19937 gen{std::random_device{}()};
+  std::random_device rd;
+  std::mt19937 gen(rd());
   std::uniform_int_distribution<> dist(std::numeric_limits<int>::min(),
                                        std::numeric_limits<int>::max());
 
