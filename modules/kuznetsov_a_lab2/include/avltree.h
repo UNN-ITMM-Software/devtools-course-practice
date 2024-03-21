@@ -157,7 +157,7 @@ avlTree<T>& avlTree<T>::operator=(avlTree&& other) noexcept {
 template <typename T>
 [[nodiscard]] bool avlTree<T>::operator==(const avlTree& other) const {
   if (mSize != other.mSize) return false;
-  
+
   auto thisValues = getTreeAsVector();
   auto otherValues = other.getTreeAsVector();
 
