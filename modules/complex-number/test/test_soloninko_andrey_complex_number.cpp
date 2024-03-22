@@ -6,10 +6,8 @@
 
 #include "include/complex_number.h"
 
-bool checkEQ(double a, double b) {
-    if (std::fabs(a - b) > 0.001) {
-        return false;
-    } else {return true;}
+bool checkEQ(double a, double b) { 
+    return std::fabs(a - b) <= 0.001; 
 }
 
 TEST(Soloninko_Andrey_ComplexNumberTest, Can_Create_Zero) {
