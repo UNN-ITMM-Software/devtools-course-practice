@@ -45,8 +45,7 @@ TEST(Soloninko_Andrey_ComplexNumberTest, Equal) {
     ComplexNumber c_val(1.25, 2.21);
     ComplexNumber c_val_eq(1.25, 2.21);
 
-    ASSERT_TRUE(checkEQ(c_val.getRe(), c_val_eq.getRe()));
-    ASSERT_TRUE(checkEQ(c_val.getIm(), c_val_eq.getIm()));
+    ASSERT_TRUE(c_val == c_val_eq);
 }
 
 TEST(Soloninko_Andrey_ComplexNumberTest, Sum_True) {
