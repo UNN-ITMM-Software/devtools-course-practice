@@ -43,7 +43,7 @@ TEST(Borisov_Saveliy_ComplexNumberTest, Can_Divide_Complex_Numbers) {
     ASSERT_DOUBLE_EQ(z3.getIm(), 1.0);
 }
 
-TEST(Borisov_Saveliy_ComplexNumberTest, Property_of_Product_of_Complex_Conjugate_Numbers_is_Satisfied) {
+TEST(Borisov_Saveliy_ComplexNumberTest, Product_of_Complex_Conjugate) {
     ComplexNumber z1(3.0, 4.0);
     ComplexNumber z2(3.0, -4.0);
 
@@ -53,7 +53,7 @@ TEST(Borisov_Saveliy_ComplexNumberTest, Property_of_Product_of_Complex_Conjugate
     ASSERT_DOUBLE_EQ(z3.getIm(), 0.0);
 }
 
-TEST(Borisov_Saveliy_ComplexNumberTest, Throws_When_Divide_Complex_Number_By_Zero) {
+TEST(Borisov_Saveliy_ComplexNumberTest, Throws_When_Divide_By_Zero) {
     ComplexNumber z1(1.1, 1.1);
     ComplexNumber z0(0.0, 0.0);
 
