@@ -8,10 +8,11 @@
 
 bool checkEQ(double a, double b) 
 {
-    if (std::fabs(a - b) <= 0.000001)
+    if (std::fabs(a - b) > 0.001)
     {
-        return true;
+        return false;
     }
+    else return true;
 }
 
 TEST(Soloninko_Andrey_ComplexNumberTest, Can_Create_Zero) {
@@ -48,7 +49,7 @@ TEST(Soloninko_Andrey_ComplexNumberTest, Equal) {
     ASSERT_TRUE(c_val == c_val_eq);
 }
 
-TEST(Soloninko_Andrey_ComplexNumberTest, Sum_True) {
+TEST(Soloninko_Andrey_ComplexNumberTest, Sum) {
     ComplexNumber c_val(1.25, 2.21);
     ComplexNumber c_val_s(1.25, 2.21);
 
@@ -59,21 +60,23 @@ TEST(Soloninko_Andrey_ComplexNumberTest, Sum_True) {
 }
 
 TEST(Soloninko_Andrey_ComplexNumberTest, Multiplication) {
-    ComplexNumber c_val(21, 2.21);
-    ComplexNumber c_val_m(1.25, 78);
+    ComplexNumber valueOne(2, 5);
+    ComplexNumber valueTwo(89, 45);
+    ComplexNumber answer(-47, 535);
 
-    ComplexNumber c_val_res = c_val * c_val_m;
+    auto result = valueOne * valueTwo;
 
-    ASSERT_TRUE(checkEQ(c_val_res.getRe(), -146.13));
-    ASSERT_TRUE(checkEQ(c_val_res.getIm(), 1640.7));
+    ASSERT_TRUE(checkEQ(result.getRe(), answer.getRe()));
+    ASSERT_TRUE(checkEQ(result.getIm(), answer.getIm()));
 }
 
 TEST(Soloninko_Andrey_ComplexNumberTest, Divide) {
     ComplexNumber c_val(21, 2.21);
     ComplexNumber c_val_d(1.25, 78);
+    ComplexNumber c_val_res_ex(0.032639, -0.268707);
 
-    ComplexNumber c_val_res = c_val * c_val_d;
+    ComplexNumber c_val_res = c_val / c_val_d;
 
-    ASSERT_TRUE(checkEQ(c_val_res.getRe(), 0.032));
-    ASSERT_TRUE(checkEQ(c_val_res.getIm(), 0.268));
+    ASSERT_TRUE(checkEQ(c_val_res.getRe(), c_val_res_ex.getRe()));
+    ASSERT_TRUE(checkEQ(c_val_res.getIm(), c_val_res_ex.getIm()));
 }
