@@ -6,12 +6,12 @@
 
 TEST(KASHIN_STEPAN_ComplexNumberTest, Constructors) {
     ASSERT_NO_THROW(ComplexNumber());
-    ASSERT_NO_THROW(ComplexNumber(1,1));
-    ASSERT_NO_THROW(ComplexNumber(ComplexNumber(1,1)));
+    ASSERT_NO_THROW(ComplexNumber(1, 1));
+    ASSERT_NO_THROW(ComplexNumber(ComplexNumber(1, 1)));
 }
 
 TEST(KASHIN_STEPAN_ComplexNumberTest, Sum) {
-    ASSERT_EQ(ComplexNumber(3,-1) + ComplexNumber(-1,2),ComplexNumber(2,1));
+    ASSERT_EQ(ComplexNumber(3, -1) + ComplexNumber(-1, 2),ComplexNumber(2,1));
 }
 
 TEST(KASHIN_STEPAN_ComplexNumberTest, Assignment) {
