@@ -19,7 +19,7 @@ class Solver {
         explicit edge(uint32_t _next_vertex = 0UL, uint64_t _weight = 0ULL);
 
         inline bool operator<(const edge& other) const {
-            if( this->weight != other.weight)
+            if (this->weight != other.weight)
                 return this->weight < other.weight;
 
             return this->next_vertex < other.next_vertex;
@@ -40,7 +40,8 @@ class Solver {
     * @param[in] to_v Second vertex
     * @param[in] weight Weight edge
     */
-    void add_directed_edge(uint32_t from_v, uint32_t to_v, uint64_t weight = 0ULL);
+    void add_directed_edge(uint32_t from_v, uint32_t to_v,
+                           uint64_t weight = 0ULL);
 
     /**
     * @brief Finding the shortest path using Dijkstra's algorithm
@@ -58,8 +59,9 @@ Solver<N>::edge::edge(uint32_t _next_vertex, uint64_t _weight) {
 }
 
 template<uint32_t N>
-void Solver<N>::add_directed_edge(uint32_t from_v, uint32_t to_v, uint64_t weight) {
-    if( from_v >= N || to_v >= N)
+void Solver<N>::add_directed_edge(uint32_t from_v, uint32_t to_v,
+                                  uint64_t weight) {
+    if (from_v >= N || to_v >= N)
         throw std::invalid_argument("vertex must be less N!");
 
     adjacency_list[from_v].push_back(edge(to_v, weight));
@@ -69,7 +71,7 @@ void Solver<N>::add_directed_edge(uint32_t from_v, uint32_t to_v, uint64_t weigh
 #include<iostream>
 template<uint32_t N>
 uint64_t Solver<N>::find_shortest_path(uint32_t start, uint32_t end) {
-    if( start >= N || end >= N)
+    if (start >= N || end >= N)
         throw std::invalid_argument("vertex must be less N!");
 
     distances.fill(NO_WAY_HOME);
@@ -79,16 +81,16 @@ uint64_t Solver<N>::find_shortest_path(uint32_t start, uint32_t end) {
     q.push(edge(start, 0ULL));
     distances[start] = 0ULL;
 
-    while( !q.empty()) {
+    while (!q.empty()) {
         edge edge_start_to_x = q.top(); q.pop();
         auto                        x = edge_start_to_x.next_vertex;
         auto dist_between_start_and_x = edge_start_to_x.weight;
 
-        for( auto e: adjacency_list[x]) {
+        for (auto e : adjacency_list[x]) {
             auto y = e.next_vertex;
             auto w = e.weight;
             auto new_dist_between_start_and_y = dist_between_start_and_x + w;
-            if( new_dist_between_start_and_y < distances[y]) {
+            if (new_dist_between_start_and_y < distances[y]) {
                 q.push(edge(y, new_dist_between_start_and_y));
                 distances[y] = new_dist_between_start_and_y;
             }
