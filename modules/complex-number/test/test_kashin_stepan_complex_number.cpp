@@ -11,7 +11,7 @@ TEST(KASHIN_STEPAN_ComplexNumberTest, Constructors) {
 }
 
 TEST(KASHIN_STEPAN_ComplexNumberTest, Sum) {
-    ASSERT_EQ(ComplexNumber(3,-1) + ComplexNumber(-1,2),ComplexNumber(2,1))
+    ASSERT_EQ(ComplexNumber(3,-1) + ComplexNumber(-1,2),ComplexNumber(2,1));
 }
 
 TEST(KASHIN_STEPAN_ComplexNumberTest, Assignment) {
