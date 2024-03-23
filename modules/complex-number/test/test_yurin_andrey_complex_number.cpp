@@ -66,7 +66,6 @@ TEST(Yurin_Andrey_ComplexNumberTest, DivisionOperator) {
 
     ASSERT_DOUBLE_EQ(z3.getRe(), 0.6);
     ASSERT_DOUBLE_EQ(z3.getIm(), -0.8);
-    
     ASSERT_ANY_THROW(ComplexNumber() / ComplexNumber());
 }
 
