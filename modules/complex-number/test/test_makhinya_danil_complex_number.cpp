@@ -55,4 +55,37 @@ TEST(Makhinya_Danil_ComplexNumberTest, Mul) {
     ASSERT_DOUBLE_EQ(res.getIm(), Re1 * Im2 + Re2 * Im1);
 }
 
+TEST(Makhinya_Danil_ComplexNumberTest, Div) {
+    const double Re1 = 7.5;
+    const double Im1 = 8.3;
+    ComplexNumber number1(Re1, Im1);
+
+    const double Re2 = 3.8;
+    const double Im2 = 4.9;
+    ComplexNumber number2(Re2, Im2);
+
+    ComplexNumber res = number1 / number2;
+
+    const double K = Re2 * Re2 + Im2 * Im2;
+    const double resRe = ( Re1 * Re2 + Im1 * Im2 ) / K;
+    const double resIm = (-Re1 * Im2 + Re2 * Im1 ) / K;
+    ASSERT_DOUBLE_EQ(res.getRe(), resRe);
+    ASSERT_DOUBLE_EQ(res.getIm(), resIm);
+}
+
+TEST(Makhinya_Danil_ComplexNumberTest, Sub) {
+    const double Re1 = 7.5;
+    const double Im1 = 8.3;
+    ComplexNumber number1(Re1, Im1);
+
+    const double Re2 = 3.8;
+    const double Im2 = 4.9;
+    ComplexNumber number2(Re2, Im2);
+
+    ComplexNumber res = number1 - number2;
+
+    ASSERT_DOUBLE_EQ(res.getRe(), Re1 - Re2);
+    ASSERT_DOUBLE_EQ(res.getIm(), Im1 - Im2);
+}
+
 
