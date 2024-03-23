@@ -67,8 +67,8 @@ TEST(Makhinya_Danil_ComplexNumberTest, Div) {
     ComplexNumber res = number1 / number2;
 
     const double K = Re2 * Re2 + Im2 * Im2;
-    const double resRe = ( Re1 * Re2 + Im1 * Im2 ) / K;
-    const double resIm = (-Re1 * Im2 + Re2 * Im1 ) / K;
+    const double resRe = (Re1 * Re2 + Im1 * Im2) / K;
+    const double resIm = (-Re1 * Im2 + Re2 * Im1) / K;
     ASSERT_DOUBLE_EQ(res.getRe(), resRe);
     ASSERT_DOUBLE_EQ(res.getIm(), resIm);
 }
