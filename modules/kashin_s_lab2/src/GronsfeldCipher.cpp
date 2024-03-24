@@ -20,7 +20,7 @@ char GronsfeldCipher::decoder_char(char word, char code) const {
 
 char GronsfeldCipher::crackLetter(string line) {
     vector<double> letters(alfabet);
-    for (int letter = 0; letter < letters.size(); letter++) {
+    for (size_t letter = 0; letter < letters.size(); letter++) {
         for (char a: line) {
             letters[letter] += letterFrequency[decoder_char(a, first + letter)];
         }
@@ -39,7 +39,7 @@ string GronsfeldCipher::getKey() {
 
 void GronsfeldCipher::setKey(string keyWord) {
     if (keyWord == "") throw TheStringDoesNotContainCharacters();
-    for (int i = 0; i < keyWord.length(); i++) {
+    for (size_t i = 0; i < keyWord.length(); i++) {
         keyWord[i] = tolower(keyWord[i]);
         if (!('a' <= keyWord[i] && keyWord[i] <= 'z')) {
             throw TheStringContainsNonLatinCharacters();
@@ -51,7 +51,7 @@ void GronsfeldCipher::setKey(string keyWord) {
 string GronsfeldCipher::encoder(string text) {
     if (text == "") throw TheStringDoesNotContainCharacters();
     string answer = "";
-    for (int i = 0; i < text.length(); i++) {
+    for (size_t i = 0; i < text.length(); i++) {
         answer += encode_char(tolower(text[i]), key[i % key.length()]);
     }
     return answer;
@@ -60,7 +60,7 @@ string GronsfeldCipher::encoder(string text) {
 string GronsfeldCipher::decoder(string text) {
     if (text == "") throw TheStringDoesNotContainCharacters();
     string answer = "";
-    for (int i = 0; i < text.length(); i++) {
+    for (size_t i = 0; i < text.length(); i++) {
         answer += decoder_char(tolower(text[i]), key[i % key.length()]);
     }
     return answer;
@@ -71,7 +71,7 @@ string GronsfeldCipher::getCrackKey(string text, int keySize) {
     if (1 > keySize || text.length() < keySize) throw IncorrectKeyLength();
 
     string lines[keySize], newKey = "";
-    for (int i = 0; i < text.length(); i++) {
+    for (size_t i = 0; i < text.length(); i++) {
         if ('a' <= tolower(text[i]) && tolower(text[i]) <= 'z') lines[i % keySize] += tolower(text[i]);
     }
     for (string line: lines) {
