@@ -12,18 +12,18 @@ TEST(Yurin_Andrey_Getting_Prime_Numbers, InvalidInput) {
 
 TEST(Yurin_Andrey_Getting_Prime_Numbers, LowerEqUpper) {
     auto x = GettingPrimeNumbers().getPrimeNumbersInRange(0, 0);
-    EXPECT_EQ(0, x.size());
+    EXPECT_EQ(uint32_t{0}, x.size());
 
     x = GettingPrimeNumbers().getPrimeNumbersInRange(10, 10);
-    EXPECT_EQ(0, x.size());
+    EXPECT_EQ(uint32_t{0}, x.size());
 
     x = GettingPrimeNumbers().getPrimeNumbersInRange(7, 7);
-    EXPECT_EQ(1, x.size());
+    EXPECT_EQ(uint32_t{1}, x.size());
 }
 
 TEST(Yurin_Andrey_Getting_Prime_Numbers, UpperEqOne) {
     auto x = GettingPrimeNumbers().getPrimeNumbersInRange(0, 1);
-    EXPECT_EQ(0, x.size());
+    EXPECT_EQ(uint32_t{0}, x.size());
 }
 
 // Выполняется правильно, но слишком долго =)

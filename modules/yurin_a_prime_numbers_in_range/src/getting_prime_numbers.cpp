@@ -20,6 +20,7 @@ std::vector<uint32_t> GettingPrimeNumbers::getPrimeNumbersInRange(uint32_t lower
             }
         }
     }
+
     return _isPrime.clear(), generateListOfPrimeNumbers();
 }
 
