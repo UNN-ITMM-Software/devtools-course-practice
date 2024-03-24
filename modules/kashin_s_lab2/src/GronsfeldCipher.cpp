@@ -2,6 +2,11 @@
 
 #include "include/GronsfeldCipher.h"
 
+using std::string;
+using std::unordered_map;
+using std::exception;
+using std::vector;
+
 char GronsfeldCipher::encode_char(char word, char code) const {
     if ('a' <= word && word <= 'z') {
         word = first + (word - first + code - first) % alfabet;
