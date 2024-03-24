@@ -15,7 +15,7 @@
 class TheStringDoesNotContainCharacters : public std::exception {
  public:
     virtual const char* what() const noexcept {
-        return "it was expected"
+        return "it was expected "
         "that the line would not be empty";
     }
 };
