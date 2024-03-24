@@ -50,3 +50,36 @@ TEST(Makhinya_Danil_DijkstraTest, CorrectDist) {
     sol.add_directed_edge(1, 0, 3ULL);
     EXPECT_EQ(sol.find_shortest_path(0, 1), 6Ull);
 }
+
+TEST(Makhinya_Danil_DijkstraTest, Loop) {
+    const uint32_t N = 5;
+    Solver<N> sol;
+    sol.add_directed_edge(0, 0, 2ULL);
+    sol.add_directed_edge(0, 2, 2ULL);
+    sol.add_directed_edge(2, 1, 4ULL);
+    sol.add_directed_edge(2, 2, 4ULL);
+    sol.add_directed_edge(1, 0, 3ULL);
+    EXPECT_EQ(sol.find_shortest_path(0, 1), 6Ull);
+}
+
+
+TEST(Makhinya_Danil_DijkstraTest, CompleteGraphWithLoop) {
+    const uint32_t N = 5;
+    Solver<N> sol;
+    
+    /*Complete Graph*/
+    for (uint32_t i = 0; i < N; ++i) {
+        for (uint32_t j = i + 1; j < N; ++j) {
+            sol.add_directed_edge(i, j, i * j + 5ULL);
+            sol.add_directed_edge(j, i, i + 5ULL);
+        }
+    }
+
+    /*Loops*/
+    sol.add_directed_edge(0, 0, 1ULL);
+    sol.add_directed_edge(2, 2, 2ULL);
+    sol.add_directed_edge(3, 3, 3ULL);
+
+    EXPECT_EQ(sol.find_shortest_path(3, 4), 10Ull);
+}
+

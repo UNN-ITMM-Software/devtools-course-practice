@@ -8,6 +8,8 @@
 #include <array>
 #include <limits>
 #include <stdexcept>
+#include <queue>
+#include <iostream>
 
 template<uint32_t N>
 class Solver {
@@ -27,7 +29,7 @@ class Solver {
     };
 
     std::array<uint64_t, N> distances;
-    std::array< std::vector< edge >, N> adjacency_list;
+    std::array<std::vector<edge>, N> adjacency_list;
 
  public:
     const uint64_t NO_WAY_HOME = std::numeric_limits<uint64_t>::max();
@@ -67,8 +69,6 @@ void Solver<N>::add_directed_edge(uint32_t from_v, uint32_t to_v,
     adjacency_list[from_v].push_back(edge(to_v, weight));
 }
 
-#include<queue>
-#include<iostream>
 template<uint32_t N>
 uint64_t Solver<N>::find_shortest_path(uint32_t start, uint32_t end) {
     if (start >= N || end >= N)
@@ -82,8 +82,9 @@ uint64_t Solver<N>::find_shortest_path(uint32_t start, uint32_t end) {
     distances[start] = 0ULL;
 
     while (!q.empty()) {
-        edge edge_start_to_x = q.top(); q.pop();
-        auto                        x = edge_start_to_x.next_vertex;
+        edge edge_start_to_x = q.top(); 
+        q.pop();
+        auto x = edge_start_to_x.next_vertex;
         auto dist_between_start_and_x = edge_start_to_x.weight;
 
         for (auto e : adjacency_list[x]) {
