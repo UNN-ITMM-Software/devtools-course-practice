@@ -11,30 +11,6 @@
 #include <vector>
 #include <algorithm>
 
-class TheStringDoesNotContainCharacters : public std::exception {
- public:
-    virtual const char* what() const noexcept {
-        return "it was expected"
-        "that the line would not be empty";
-    }
-};
-
-class TheStringContainsNonLatinCharacters : public std::exception {
- public:
-    virtual const char* what() const noexcept {
-        return "the string was"
-        " expected to contain only Latin characters";
-    }
-};
-
-class IncorrectKeyLength : public std::exception {
- public:
-    virtual const char* what() const noexcept {
-        return "the key must"
-        " be longer than 0 and less than the length of the text";
-    }
-};
-
 class  GronsfeldCipher{
  private:
     std::string key;
