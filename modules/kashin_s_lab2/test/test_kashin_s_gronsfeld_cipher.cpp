@@ -66,13 +66,7 @@ TEST(Kashin_Stepan_Gronsfeld_Cipher, Other) {
     EXPECT_NO_THROW(GronsfeldCipher().getKey());
     EXPECT_NO_THROW(GronsfeldCipher().setKey("hi"));
     EXPECT_NO_THROW(GronsfeldCipher().decoder("test"));
-    EXPECT_THROW(
-        throw TheStringDoesNotContainCharacters(),
-        TheStringDoesNotContainCharacters());
-    EXPECT_THROW(
-        throw TheStringContainsNonLatinCharacters(),
-        TheStringContainsNonLatinCharacters());
-    EXPECT_THROW(
-        throw IncorrectKeyLength(),
-        IncorrectKeyLength());
+    EXPECT_NO_THROW(TheStringDoesNotContainCharacters().what());
+    EXPECT_NO_THROW(TheStringContainsNonLatinCharacters().what());
+    EXPECT_NO_THROW(IncorrectKeyLength().what());
 }
