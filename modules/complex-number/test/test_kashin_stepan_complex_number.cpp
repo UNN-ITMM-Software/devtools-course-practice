@@ -24,10 +24,10 @@ TEST(KASHIN_STEPAN_ComplexNumberTest, Assignment) {
     ASSERT_DOUBLE_EQ(z2.getIm(), 1);
 }
 
-TEST(KASHIN_STEPAN_ComplexNumberTest, NotEqualityOperator) {
-    ComplexNumber z1(2.5, 5);
-    ComplexNumber z2(-2.5, 5);
+TEST(KASHIN_STEPAN_ComplexNumberTest, MyNoPeEqUaLiTyOpErAtOr) {
+    ASSERT_TRUE(ComplexNumber(1, 1) != ComplexNumber(1, 2) && !(ComplexNumber(1, 1) != ComplexNumber(ComplexNumber(1, 1))));
+}
 
-    ASSERT_TRUE(z1 != z2);
-    ASSERT_FALSE(z1 != ComplexNumber(z1));
+TEST(KASHIN_STEPAN_ComplexNumberTest, MyEqUaLiTyOpErAtOr) {
+    ASSERT_TRUE(ComplexNumber(1, 1) == ComplexNumber(1, 1) && ComplexNumber(1, 1) == ComplexNumber(ComplexNumber(1, 1)));
 }
