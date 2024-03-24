@@ -23,9 +23,9 @@ char GronsfeldCipher::crackLetter(string line) {
             letters[letter] += letterFrequency[decoder_char(a, first + letter)];
         }
     }
-    int maxIndex = distance(
+    int maxIndex = std::distance(
         letters.begin(),
-        max_element(letters.begin(), letters.end()));
+        std::max_element(letters.begin(), letters.end()));
     return first + maxIndex;
 }
 
@@ -76,7 +76,7 @@ string GronsfeldCipher::getCrackKey(string text, size_t keySize) {
             lines[i % keySize] += tolower(text[i]);
         }
     }
-    for (string line: lines) {
+    for (string line : lines) {
         newKey += crackLetter(line);
     }
     return  newKey;

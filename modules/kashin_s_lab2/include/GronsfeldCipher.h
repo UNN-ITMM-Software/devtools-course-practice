@@ -76,7 +76,7 @@ class  GronsfeldCipher{
     char decoder_char(char word, char code) const;
     char crackLetter(string line);
 
-public:
+ public:
     explicit GronsfeldCipher(string keyWord = "code");
 
     string getKey();
