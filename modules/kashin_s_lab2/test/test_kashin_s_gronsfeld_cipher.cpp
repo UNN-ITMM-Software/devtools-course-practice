@@ -69,4 +69,7 @@ TEST(Kashin_Stepan_Gronsfeld_Cipher, Other) {
     EXPECT_NO_THROW(TheStringDoesNotContainCharacters().what());
     EXPECT_NO_THROW(TheStringContainsNonLatinCharacters().what());
     EXPECT_NO_THROW(IncorrectKeyLength().what());
+    EXPECT_NO_THROW(TheStringDoesNotContainCharacters());
+    EXPECT_NO_THROW(TheStringContainsNonLatinCharacters());
+    EXPECT_NO_THROW(IncorrectKeyLength());
 }

@@ -2,9 +2,6 @@
 
 #ifndef MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
 #define MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-fprofile-arcs"
-#pragma GCC diagnostic ignored "-ftest-coverage"
 
 
 #include <iostream>
@@ -90,5 +87,4 @@ class  GronsfeldCipher{
     std::string getCrackKey(std::string text, size_t keySize);
 };
 
-#pragma GCC diagnostic pop
 #endif  // MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
