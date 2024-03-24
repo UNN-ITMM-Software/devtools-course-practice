@@ -62,3 +62,34 @@ TEST(Moiseev_Nikita_ComplexNumberTest, Can_Create_Default) {
     ASSERT_EQ(z1.getRe(), 0);
     ASSERT_EQ(z1.getIm(), 0);
 }
+
+TEST(Moiseev_Nikita_ComplexNumberTest, SumOperatorWithFractions) {
+    ComplexNumber z1(3.25, 4.75);
+    ComplexNumber z2(-3.25, 4.75);
+
+    ComplexNumber z3 = z1 + z2;
+
+    ASSERT_DOUBLE_EQ(z3.getRe(), 0.0);
+    ASSERT_DOUBLE_EQ(z3.getIm(), 9.5);
+}
+
+TEST(Moiseev_Nikita_ComplexNumberTest, DifferenceOperatorWithFractions) {
+    ComplexNumber z1(2.25, 53.25);
+    ComplexNumber z2(-2.25, 53.25);
+
+    ComplexNumber z3 = z1 - z2;
+
+    ASSERT_DOUBLE_EQ(z3.getRe(), 4.5);
+    ASSERT_DOUBLE_EQ(z3.getIm(), 0.0);
+}
+
+TEST(Moiseev_Nikita_ComplexNumberTest, DivisionOperatorWithFractions) {
+    ComplexNumber z1(2.25, 5.25);
+    ComplexNumber z2(-2.25, 5.25);
+
+    ComplexNumber z3 = z1 / z2;
+
+    ASSERT_NEAR(z3.getRe(), 0.6, 0.1);
+    ASSERT_NEAR(z3.getIm(), -0.7, 0.1);
+    ASSERT_ANY_THROW(ComplexNumber() / ComplexNumber());
+}
