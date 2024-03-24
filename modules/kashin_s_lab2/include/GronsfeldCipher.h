@@ -2,8 +2,6 @@
 
 #ifndef MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
 #define MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wnamespace-using-directive"
 
 #include <iostream>
 #include <cstring>
@@ -13,7 +11,9 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
+using std::string;
+using std::unordered_map;
+using std::exception;
 
 class TheStringDoesNotContainCharacters : public std::exception {
  public:
@@ -76,7 +76,7 @@ class  GronsfeldCipher{
     char decoder_char(char word, char code) const;
     char crackLetter(string line);
 
- public:
+public:
     explicit GronsfeldCipher(string keyWord = "code");
 
     string getKey();
@@ -90,5 +90,4 @@ class  GronsfeldCipher{
     string getCrackKey(string text, int keySize);
 };
 
-#pragma clang diagnostic pop
 #endif  // MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
