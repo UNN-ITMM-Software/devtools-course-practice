@@ -2,7 +2,7 @@
 // Created by Стёпа Кашин on 24.03.2024.
 //
 
-#include "GronsfeldCipher.h"
+#include "include/GronsfeldCipher.h"
 
 char GronsfeldCipher::encode_char(char word, char code) const {
     if ('a' <= word && word <= 'z') {
