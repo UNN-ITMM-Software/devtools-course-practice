@@ -14,6 +14,7 @@
 using std::string;
 using std::unordered_map;
 using std::exception;
+using std::vector;
 
 class TheStringDoesNotContainCharacters : public std::exception {
  public:
