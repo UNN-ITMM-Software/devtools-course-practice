@@ -11,11 +11,6 @@
 #include <vector>
 #include <algorithm>
 
-using std::string;
-using std::unordered_map;
-using std::exception;
-using std::vector;
-
 class TheStringDoesNotContainCharacters : public std::exception {
  public:
     virtual const char* what() const noexcept {
@@ -42,10 +37,10 @@ class IncorrectKeyLength : public std::exception {
 
 class  GronsfeldCipher{
  private:
-    string key;
+    std::string key;
     int first = 'a';
     int alfabet = 26;
-    unordered_map<char, double> letterFrequency = {
+    std::unordered_map<char, double> letterFrequency = {
             {'a', 8.17},
             {'b', 1.49},
             {'c', 2.78},
@@ -80,15 +75,15 @@ class  GronsfeldCipher{
  public:
     explicit GronsfeldCipher(string keyWord = "code");
 
-    string getKey();
+    std::string getKey();
 
-    void setKey(string keyWord);
+    void setKey(std::string keyWord);
 
-    string encoder(string text);
+    std::string encoder(std::string text);
 
-    string decoder(string text);
+    std::string decoder(std::string text);
 
-    string getCrackKey(string text, int keySize);
+    std::string getCrackKey(std::string text, size_t keySize);
 };
 
 #endif  // MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
