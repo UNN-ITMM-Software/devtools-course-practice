@@ -28,8 +28,7 @@ TEST(Yurin_Andrey_Getting_Prime_Numbers, UpperEqMaxUINT32) {
     EXPECT_NO_THROW(res =
             GettingPrimeNumbers().getPrimeNumbersInRange(
                     UINT32_MAX - 10,
-                    UINT32_MAX - 1
-                    ));
+                    UINT32_MAX - 1));
     auto ans = std::vector<uint32_t>{4294967291};
 
     EXPECT_EQ(res, ans);
