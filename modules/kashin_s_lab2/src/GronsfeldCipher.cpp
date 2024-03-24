@@ -2,30 +2,6 @@
 
 #include "include/GronsfeldCipher.h"
 
-class TheStringDoesNotContainCharacters : public std::exception {
- public:
-    virtual const char* what() const noexcept {
-        return "it was expected"
-        "that the line would not be empty";
-    }
-};
-
-class TheStringContainsNonLatinCharacters : public std::exception {
- public:
-    virtual const char* what() const noexcept {
-        return "the string was"
-        " expected to contain only Latin characters";
-    }
-};
-
-class IncorrectKeyLength : public std::exception {
- public:
-    virtual const char* what() const noexcept {
-        return "the key must"
-        " be longer than 0 and less than the length of the text";
-    }
-};
-
 char GronsfeldCipher::encode_char(char word, char code) const {
     if ('a' <= word && word <= 'z') {
         word = first + (word - first + code - first) % alfabet;

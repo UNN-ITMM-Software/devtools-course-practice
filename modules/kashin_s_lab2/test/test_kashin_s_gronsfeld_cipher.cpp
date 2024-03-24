@@ -61,3 +61,8 @@ TEST(Kashin_Stepan_Gronsfeld_Cipher, InvalidInputgetCrackKey) {
 TEST(Kashin_Stepan_Gronsfeld_Cipher, InputgetCrackKey) {
     EXPECT_NO_THROW(GronsfeldCipher().getCrackKey("code", 2));
 }
+
+TEST(Kashin_Stepan_Gronsfeld_Cipher,Other) {
+    EXPECT_NO_THROW(GronsfeldCipher().getKey());
+    EXPECT_NO_THROW(GronsfeldCipher().setKey("hi"));
+}
