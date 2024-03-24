@@ -62,7 +62,11 @@ TEST(Kashin_Stepan_Gronsfeld_Cipher, InputgetCrackKey) {
     EXPECT_NO_THROW(GronsfeldCipher().getCrackKey("code", 2));
 }
 
-TEST(Kashin_Stepan_Gronsfeld_Cipher,Other) {
+TEST(Kashin_Stepan_Gronsfeld_Cipher, Other) {
     EXPECT_NO_THROW(GronsfeldCipher().getKey());
     EXPECT_NO_THROW(GronsfeldCipher().setKey("hi"));
+    EXPECT_NO_THROW(GronsfeldCipher().decoder("test"));
+    EXPECT_NO_THROW(TheStringDoesNotContainCharacters());
+    EXPECT_NO_THROW(TheStringContainsNonLatinCharacters());
+    EXPECT_NO_THROW(IncorrectKeyLength());
 }
