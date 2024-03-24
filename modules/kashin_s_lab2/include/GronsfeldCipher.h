@@ -70,10 +70,10 @@ class  GronsfeldCipher{
     };
     char encode_char(char word, char code) const;
     char decoder_char(char word, char code) const;
-    char crackLetter(string line);
+    char crackLetter(std::string line);
 
  public:
-    explicit GronsfeldCipher(string keyWord = "code");
+    explicit GronsfeldCipher(std::string keyWord = "code");
 
     std::string getKey();
 
