@@ -47,6 +47,8 @@ void GettingPrimeNumbers::validateInputData() {
 std::vector<uint32_t> GettingPrimeNumbers::generateListOfPrimeNumbers() {
     std::vector<uint32_t> primeNumbers{};
     uint32_t startP = std::max(_lowerBound, uint32_t{2});
+    primeNumbers.reserve(_upperBound - startP + 1);
+
     for (uint64_t p = startP; p <= _upperBound; ++p) {
         if (_isPrime[p]) {
             primeNumbers.push_back(p);
