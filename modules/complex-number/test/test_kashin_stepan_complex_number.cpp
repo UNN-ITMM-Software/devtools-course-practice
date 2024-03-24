@@ -35,3 +35,12 @@ TEST(KASHIN_STEPAN_ComplexNumberTest, MyEqUaLiTyOpErAtOr) {
         ComplexNumber(1, 1) == ComplexNumber(1, 1) &&
         ComplexNumber(1, 1) == ComplexNumber(ComplexNumber(1, 1)));
 }
+
+TEST(KASHIN_STEPAN_ComplexNumberTest, MyDiVOpErAtOr) {
+    ComplexNumber z1(2.5, 5), z2(-2.5, 5), z3;
+
+    ASSERT_NO_THROW(z3 = z1 / z2);
+    ASSERT_NEAR(z3.getRe(), 0.6, 1e-6);
+    ASSERT_NEAR(z3.getIm(), -0.8, 1e-6);
+    ASSERT_ANY_THROW(ComplexNumber() / ComplexNumber());
+}
