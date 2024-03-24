@@ -50,7 +50,7 @@ void GronsfeldCipher::setKey(std::string keyWord) {
 
 std::string GronsfeldCipher::encoder(std::string text) {
     if (text == "") throw TheStringDoesNotContainCharacters();
-    string answer = "";
+    std::string answer = "";
     for (size_t i = 0; i < text.length(); i++) {
         answer += encode_char(tolower(text[i]), key[i % key.length()]);
     }
