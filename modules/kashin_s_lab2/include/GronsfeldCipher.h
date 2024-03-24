@@ -11,6 +11,8 @@
 #include <vector>
 #include <algorithm>
 
+#ifndef EXCLUDE_FROM_COVERAGE
+    
 class TheStringDoesNotContainCharacters : public std::exception {
  public:
     virtual const char* what() const noexcept {
@@ -34,6 +36,8 @@ class IncorrectKeyLength : public std::exception {
         " be longer than 0 and less than the length of the text";
     }
 };
+
+#endif
 
 class  GronsfeldCipher{
  private:
