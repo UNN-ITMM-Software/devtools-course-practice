@@ -11,7 +11,10 @@ std::vector<uint32_t> GettingPrimeNumbers::getPrimeNumbersInRange(
     _upperBound = upperBound;
     validateInputData();
 
-    _isPrime = std::vector<bool>(upperBound + 1, true);
+    if (_isPrime.size() < upperBound + 1) {
+        std::vector<bool> tempVector(upperBound - _isPrime.size() + 1, true);
+        _isPrime.insert(_isPrime.end(), tempVector.begin(), tempVector.end());
+    }
 
     if (_isPrime.size() > 1) {
         _isPrime[0] = _isPrime[1] = false;
@@ -25,7 +28,7 @@ std::vector<uint32_t> GettingPrimeNumbers::getPrimeNumbersInRange(
         }
     }
 
-    return _isPrime.clear(), generateListOfPrimeNumbers();
+    return generateListOfPrimeNumbers();
 }
 
 void GettingPrimeNumbers::validateInputData() {
