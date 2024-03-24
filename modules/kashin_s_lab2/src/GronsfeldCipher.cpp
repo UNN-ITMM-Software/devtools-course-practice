@@ -2,11 +2,6 @@
 
 #include "include/GronsfeldCipher.h"
 
-using std::string;
-using std::unordered_map;
-using std::exception;
-using std::vector;
-
 char GronsfeldCipher::encode_char(char word, char code) const {
     if ('a' <= word && word <= 'z') {
         word = first + (word - first + code - first) % alfabet;
@@ -21,8 +16,8 @@ char GronsfeldCipher::decoder_char(char word, char code) const {
     return word;
 }
 
-char GronsfeldCipher::crackLetter(string line) {
-    vector<double> letters(alfabet);
+char GronsfeldCipher::crackLetter(std::string line) {
+    std::vector<double> letters(alfabet);
     for (size_t letter = 0; letter < letters.size(); letter++) {
         for (char a : line) {
             letters[letter] += letterFrequency[decoder_char(a, first + letter)];
@@ -34,15 +29,15 @@ char GronsfeldCipher::crackLetter(string line) {
     return first + maxIndex;
 }
 
-GronsfeldCipher::GronsfeldCipher(string keyWord) {
+GronsfeldCipher::GronsfeldCipher(std::string keyWord) {
     setKey(keyWord);
 }
 
-string GronsfeldCipher::getKey() {
+std::string GronsfeldCipher::getKey() {
     return key;
 }
 
-void GronsfeldCipher::setKey(string keyWord) {
+void GronsfeldCipher::setKey(std::string keyWord) {
     if (keyWord == "") throw TheStringDoesNotContainCharacters();
     for (size_t i = 0; i < keyWord.length(); i++) {
         keyWord[i] = tolower(keyWord[i]);
@@ -53,7 +48,7 @@ void GronsfeldCipher::setKey(string keyWord) {
     key = keyWord;
 }
 
-string GronsfeldCipher::encoder(string text) {
+std::string GronsfeldCipher::encoder(std::string text) {
     if (text == "") throw TheStringDoesNotContainCharacters();
     string answer = "";
     for (size_t i = 0; i < text.length(); i++) {
@@ -62,7 +57,7 @@ string GronsfeldCipher::encoder(string text) {
     return answer;
 }
 
-string GronsfeldCipher::decoder(string text) {
+std::string GronsfeldCipher::decoder(std::string text) {
     if (text == "") throw TheStringDoesNotContainCharacters();
     string answer = "";
     for (size_t i = 0; i < text.length(); i++) {
@@ -71,17 +66,17 @@ string GronsfeldCipher::decoder(string text) {
     return answer;
 }
 
-string GronsfeldCipher::getCrackKey(string text, size_t keySize) {
+std::string GronsfeldCipher::getCrackKey(std::string text, size_t keySize) {
     if (text == "") throw TheStringDoesNotContainCharacters();
     if (1 > keySize || text.length() < keySize) throw IncorrectKeyLength();
 
-    string lines[keySize], newKey = "";
+    std::string lines[keySize], newKey = "";
     for (size_t i = 0; i < text.length(); i++) {
         if ('a' <= tolower(text[i]) && tolower(text[i]) <= 'z') {
             lines[i % keySize] += tolower(text[i]);
         }
     }
-    for (string line : lines) {
+    for (std::string line : lines) {
         newKey += crackLetter(line);
     }
     return  newKey;
