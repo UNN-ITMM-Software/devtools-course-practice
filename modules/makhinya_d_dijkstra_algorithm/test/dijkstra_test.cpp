@@ -66,7 +66,7 @@ TEST(Makhinya_Danil_DijkstraTest, Loop) {
 TEST(Makhinya_Danil_DijkstraTest, CompleteGraphWithLoop) {
     const uint32_t N = 5;
     Solver<N> sol;
-    
+
     /*Complete Graph*/
     for (uint32_t i = 0; i < N; ++i) {
         for (uint32_t j = i + 1; j < N; ++j) {

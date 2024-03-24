@@ -82,7 +82,7 @@ uint64_t Solver<N>::find_shortest_path(uint32_t start, uint32_t end) {
     distances[start] = 0ULL;
 
     while (!q.empty()) {
-        edge edge_start_to_x = q.top(); 
+        edge edge_start_to_x = q.top();
         q.pop();
         auto x = edge_start_to_x.next_vertex;
         auto dist_between_start_and_x = edge_start_to_x.weight;
