@@ -16,7 +16,6 @@
 #include <vector>
 #include <algorithm>
 
-CODECOV_OFF
 class TheStringDoesNotContainCharacters : public std::exception {
  public:
     virtual const char* what() const noexcept {
@@ -40,7 +39,6 @@ class IncorrectKeyLength : public std::exception {
         " be longer than 0 and less than the length of the text";
     }
 };
-CODECOV_ON
 
 class  GronsfeldCipher{
  private:
