@@ -25,9 +25,15 @@ TEST(KASHIN_STEPAN_ComplexNumberTest, Assignment) {
 }
 
 TEST(KASHIN_STEPAN_ComplexNumberTest, MyNoPeEqUaLiTyOpErAtOr) {
-    ASSERT_TRUE(ComplexNumber(1, 1) != ComplexNumber(1, 2) && !(ComplexNumber(1, 1) != ComplexNumber(ComplexNumber(1, 1))));
+    ASSERT_TRUE(
+        ComplexNumber(1, 1) != ComplexNumber(1, 2) &&
+        !(ComplexNumber(1, 1) != ComplexNumber(ComplexNumber(1, 1)))
+        );
 }
 
 TEST(KASHIN_STEPAN_ComplexNumberTest, MyEqUaLiTyOpErAtOr) {
-    ASSERT_TRUE(ComplexNumber(1, 1) == ComplexNumber(1, 1) && ComplexNumber(1, 1) == ComplexNumber(ComplexNumber(1, 1)));
+    ASSERT_TRUE(
+        ComplexNumber(1, 1) == ComplexNumber(1, 1) &&
+        ComplexNumber(1, 1) == ComplexNumber(ComplexNumber(1, 1))
+        );
 }
