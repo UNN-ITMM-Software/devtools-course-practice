@@ -18,7 +18,7 @@ TEST(Khodyrev_Fedor_test, test_real_and_imaginary_setters) {
     EXPECT_DOUBLE_EQ(2.0, cn.getIm());
 }
 
-TEST(Khodyrev_Fedor_test, test_operator_equal){
+TEST(Khodyrev_Fedor_test, test_operator_equal) {
     ComplexNumber cn = ComplexNumber(1.0, 2.0);
     ComplexNumber cn2 = ComplexNumber(3.0, 4.0);
     cn = cn2;
@@ -26,7 +26,7 @@ TEST(Khodyrev_Fedor_test, test_operator_equal){
     EXPECT_DOUBLE_EQ(4.0, cn.getIm());
 }
 
-TEST(Khodyrev_Fedor_test, test_operator_sum){
+TEST(Khodyrev_Fedor_test, test_operator_sum) {
     ComplexNumber cn = ComplexNumber(1.0, 2.0);
     ComplexNumber cn2 = ComplexNumber(3.0, 4.0);
     ComplexNumber cn3 = ComplexNumber();
@@ -35,7 +35,7 @@ TEST(Khodyrev_Fedor_test, test_operator_sum){
     EXPECT_DOUBLE_EQ(6.0, cn3.getIm());
 }
 
-TEST(Khodyrev_Fedor_test, test_operator_difference){
+TEST(Khodyrev_Fedor_test, test_operator_difference) {
     ComplexNumber cn = ComplexNumber(1.0, 2.0);
     ComplexNumber cn2 = ComplexNumber(3.0, 4.0);
     ComplexNumber cn3 = ComplexNumber();
@@ -44,7 +44,7 @@ TEST(Khodyrev_Fedor_test, test_operator_difference){
     EXPECT_DOUBLE_EQ(2.0, cn3.getIm());
 }
 
-TEST(Khodyrev_Fedor_test, test_operator_multiply){
+TEST(Khodyrev_Fedor_test, test_operator_multiply) {
     ComplexNumber cn = ComplexNumber(1.0, 2.0);
     ComplexNumber cn2 = ComplexNumber(3.0, 4.0);
     ComplexNumber cn3 = ComplexNumber();
@@ -53,7 +53,7 @@ TEST(Khodyrev_Fedor_test, test_operator_multiply){
     EXPECT_DOUBLE_EQ(10.0, cn3.getIm());
 }
 
-TEST(Khodyrev_Fedor_test, test_operator_division){
+TEST(Khodyrev_Fedor_test, test_operator_division) {
     ComplexNumber cn = ComplexNumber(6.0, 12.0);
     ComplexNumber cn2 = ComplexNumber(3.0, -6.0);
     ComplexNumber cn3 = ComplexNumber();
