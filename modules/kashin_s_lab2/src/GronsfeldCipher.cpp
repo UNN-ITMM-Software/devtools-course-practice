@@ -11,7 +11,7 @@ char GronsfeldCipher::encode_char(char word, char code) const {
 
 char GronsfeldCipher::decoder_char(char word, char code) const {
     if ('a' <= word && word <= 'z') {
-        word =  first + (word - code + 'z' + 1 - first) % 26 ;
+        word =  first + (word - code + 'z' + 1 - first) % 26;
     }
     return word;
 }
@@ -19,11 +19,13 @@ char GronsfeldCipher::decoder_char(char word, char code) const {
 char GronsfeldCipher::crackLetter(string line) {
     vector<double> letters(alfabet);
     for (size_t letter = 0; letter < letters.size(); letter++) {
-        for (char a: line) {
+        for (char a : line) {
             letters[letter] += letterFrequency[decoder_char(a, first + letter)];
         }
     }
-    int maxIndex = distance(letters.begin(), max_element(letters.begin(), letters.end()));
+    int maxIndex = distance(
+        letters.begin(),
+        max_element(letters.begin(), letters.end()));
     return first + maxIndex;
 }
 
@@ -64,13 +66,15 @@ string GronsfeldCipher::decoder(string text) {
     return answer;
 }
 
-string GronsfeldCipher::getCrackKey(string text, int keySize) {
+string GronsfeldCipher::getCrackKey(string text, size_t keySize) {
     if (text == "") throw TheStringDoesNotContainCharacters();
     if (1 > keySize || text.length() < keySize) throw IncorrectKeyLength();
 
     string lines[keySize], newKey = "";
     for (size_t i = 0; i < text.length(); i++) {
-        if ('a' <= tolower(text[i]) && tolower(text[i]) <= 'z') lines[i % keySize] += tolower(text[i]);
+        if ('a' <= tolower(text[i]) && tolower(text[i]) <= 'z') {
+            lines[i % keySize] += tolower(text[i]);
+        }
     }
     for (string line: lines) {
         newKey += crackLetter(line);

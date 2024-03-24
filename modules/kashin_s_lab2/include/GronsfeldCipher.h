@@ -2,6 +2,8 @@
 
 #ifndef MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
 #define MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnamespace-using-directive"
 
 #include <iostream>
 #include <cstring>
@@ -88,4 +90,5 @@ class  GronsfeldCipher{
     string getCrackKey(string text, int keySize);
 };
 
-#endif  //MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
+#pragma clang diagnostic pop
+#endif  // MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
