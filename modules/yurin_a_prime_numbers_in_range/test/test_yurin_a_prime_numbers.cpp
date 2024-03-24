@@ -6,21 +6,16 @@
 
 
 TEST(Yurin_Andrey_Getting_Prime_Numbers, InvalidInput) {
-    EXPECT_ANY_THROW(GettingPrimeNumbers().getPrimeNumbersInRange(50, 5));
-    EXPECT_ANY_THROW(
-            GettingPrimeNumbers().getPrimeNumbersInRange(0,UINT32_MAX)
-            );
+    auto g = GettingPrimeNumbers();
+    EXPECT_ANY_THROW(g.getPrimeNumbersInRange(50, 5));
+    EXPECT_ANY_THROW(g.getPrimeNumbersInRange(0, UINT32_MAX));
 }
 
 TEST(Yurin_Andrey_Getting_Prime_Numbers, LowerEqUpper) {
-    auto x = GettingPrimeNumbers().getPrimeNumbersInRange(0, 0);
-    EXPECT_EQ(uint32_t{0}, x.size());
-
-    x = GettingPrimeNumbers().getPrimeNumbersInRange(10, 10);
-    EXPECT_EQ(uint32_t{0}, x.size());
-
-    x = GettingPrimeNumbers().getPrimeNumbersInRange(7, 7);
-    EXPECT_EQ(uint32_t{1}, x.size());
+    auto g = GettingPrimeNumbers();
+    EXPECT_EQ(uint32_t{0}, g.getPrimeNumbersInRange(0, 0).size());
+    EXPECT_EQ(uint32_t{0}, g.getPrimeNumbersInRange(10, 10).size());
+    EXPECT_EQ(uint32_t{1}, g.getPrimeNumbersInRange(7, 7).size());
 }
 
 TEST(Yurin_Andrey_Getting_Prime_Numbers, UpperEqOne) {
