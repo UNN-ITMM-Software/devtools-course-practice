@@ -6,10 +6,18 @@
 
 
 TEST(Kashin_Stepan_Gronsfeld_Cipher, InvalidInputConstructor) {
-    EXPECT_THROW(GronsfeldCipher("sdfsd123sdsd"),TheStringContainsNonLatinCharacters);
-    EXPECT_THROW(GronsfeldCipher("code,-code"),TheStringContainsNonLatinCharacters);
-    EXPECT_THROW(GronsfeldCipher("ПРИВЕТ"),TheStringContainsNonLatinCharacters);
-    EXPECT_THROW(GronsfeldCipher(""),TheStringDoesNotContainCharacters);
+    EXPECT_THROW(
+        GronsfeldCipher("sdfsd123sdsd"),
+        TheStringContainsNonLatinCharacters);
+    EXPECT_THROW(
+        GronsfeldCipher("code,-code"),
+        TheStringContainsNonLatinCharacters);
+    EXPECT_THROW(
+        GronsfeldCipher("ПРИВЕТ"),
+        TheStringContainsNonLatinCharacters);
+    EXPECT_THROW(
+        GronsfeldCipher(""),
+        TheStringDoesNotContainCharacters);
 }
 
 TEST(Kashin_Stepan_Gronsfeld_Cipher, InputConstructor) {
