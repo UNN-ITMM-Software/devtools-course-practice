@@ -48,16 +48,16 @@ TEST(Kashin_Stepan_Gronsfeld_Cipher, InputDecoder) {
 
 TEST(Kashin_Stepan_Gronsfeld_Cipher, InvalidInputgetCrackKey) {
     EXPECT_THROW(
-        GronsfeldCipher().getCrackKey("",4),
+        GronsfeldCipher().getCrackKey("", 4),
         TheStringDoesNotContainCharacters);
     EXPECT_THROW(
-        GronsfeldCipher().getCrackKey("code",5),
+        GronsfeldCipher().getCrackKey("code", 5),
         IncorrectKeyLength);
     EXPECT_THROW(
-        GronsfeldCipher().getCrackKey("code",0),
+        GronsfeldCipher().getCrackKey("code", 0),
         IncorrectKeyLength);
 }
 
 TEST(Kashin_Stepan_Gronsfeld_Cipher, InputgetCrackKey) {
-    EXPECT_NO_THROW(GronsfeldCipher().getCrackKey("code",0));
+    EXPECT_NO_THROW(GronsfeldCipher().getCrackKey("code", 0));
 }
