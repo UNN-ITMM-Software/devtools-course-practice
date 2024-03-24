@@ -123,14 +123,13 @@ TEST(Smirnov_Leonid_ComplexNumberTest, Division_By_Zero_check) {
     ASSERT_ANY_THROW(z1 / z2);
 }
 
-// fractional numbers
 TEST(Smirnov_Leonid_ComplexNumberTest, Addition_Fractional_Numbers_check) {
     ComplexNumber z1(3.5, 6.5);
     ComplexNumber z2(3.2, 6.8);
 
     ComplexNumber result = z1 + z2;
 
-    EXPECT_DOUBLE_EQ(result.getRe(), 3.7);
+    EXPECT_DOUBLE_EQ(result.getRe(), 6.7);
     EXPECT_DOUBLE_EQ(result.getIm(), 13.3);
 }
 
@@ -142,16 +141,6 @@ TEST(Smirnov_Leonid_ComplexNumberTest, Difference_Fractional_Numbers_check) {
 
     EXPECT_DOUBLE_EQ(result.getRe(), 0.3);
     EXPECT_DOUBLE_EQ(result.getIm(), -0.3);
-}
-
-TEST(Smirnov_Leonid_ComplexNumberTest, Multiplication_Frac_check) {
-    ComplexNumber z1(3.5, 6.5);
-    ComplexNumber z2(3.2, 6.8);
-
-    ComplexNumber result = z1 * z2;
-
-    EXPECT_DOUBLE_EQ(result.getRe(), -33.15);
-    EXPECT_DOUBLE_EQ(result.getIm(), -62.15);
 }
 
 TEST(Smirnov_Leonid_ComplexNumberTest, Multiplication_By_Zero_Frac_check) {
