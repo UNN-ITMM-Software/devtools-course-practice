@@ -1,9 +1,7 @@
-//
-// Created by Стёпа Кашин on 24.03.2024.
-//
+// Copyright 2024 Kashin Stepa
 
-#ifndef UNTITLED4_GRONSFELDCIPHER_H
-#define UNTITLED4_GRONSFELDCIPHER_H
+#ifndef MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
+#define MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
 
 #include <iostream>
 #include <cstring>
@@ -15,28 +13,31 @@
 using namespace std;
 
 class TheStringDoesNotContainCharacters : public std::exception {
-public:
+ public:
     virtual const char* what() const noexcept {
-        return "it was expected that the line would not be empty";
+        return "it was expected"
+        "that the line would not be empty";
     }
 };
 
 class TheStringContainsNonLatinCharacters : public std::exception {
-public:
+ public:
     virtual const char* what() const noexcept {
-        return "the string was expected to contain only Latin characters";
+        return "the string was"
+        " expected to contain only Latin characters";
     }
 };
 
 class IncorrectKeyLength : public std::exception {
-public:
+ public:
     virtual const char* what() const noexcept {
-        return "the key must be longer than 0 and less than the length of the text";
+        return "the key must"
+        " be longer than 0 and less than the length of the text";
     }
 };
 
 class  GronsfeldCipher{
-private:
+ private:
     string key;
     int first = 'a';
     int alfabet = 26;
@@ -71,7 +72,7 @@ private:
     char encode_char(char word, char code) const;
     char decoder_char(char word, char code) const;
     char crackLetter(string line);
-public:
+ public:
     GronsfeldCipher(string keyWord = "code");
 
     string getKey();
@@ -87,4 +88,4 @@ public:
 };
 
 
-#endif //UNTITLED4_GRONSFELDCIPHER_H
+#endif //MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_

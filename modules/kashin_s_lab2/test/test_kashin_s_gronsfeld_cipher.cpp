@@ -1,6 +1,4 @@
-//
-// Created by Стёпа Кашин on 24.03.2024.
-//
+// Copyright 2024 Kashin Stepa
 
 #include <gtest/gtest.h>
 #include <iostream>
