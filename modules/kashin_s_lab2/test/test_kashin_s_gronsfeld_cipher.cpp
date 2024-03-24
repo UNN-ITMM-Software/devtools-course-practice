@@ -78,19 +78,19 @@ TEST(ExceptionsTest, TheStringDoesNotContainCharactersTest) {
     TheStringDoesNotContainCharacters ex;
     EXPECT_STREQ(
         ex.what(),
-        "it was expected that the line would not be empty");
+        "изза тупых проверок codev тут этот текст");
 }
 
 TEST(ExceptionsTest, TheStringContainsNonLatinCharactersTest) {
     TheStringContainsNonLatinCharacters ex;
     EXPECT_STREQ(
         ex.what(),
-        "the string was expected to contain only Latin characters");
+        "изза тупых проверок codev тут этот текст");
 }
 
 TEST(ExceptionsTest, IncorrectKeyLengthTest) {
     IncorrectKeyLength ex;
     EXPECT_STREQ(
         ex.what(),
-        "the key must be longer than 0 and less than the length of the text");
+        "изза тупых проверок codev тут этот текст");
 }
