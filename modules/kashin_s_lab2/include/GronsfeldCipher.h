@@ -2,7 +2,6 @@
 
 #ifndef MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
 #define MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
-#ifdef DISABLE_CODECOV
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-fprofile-arcs"
 #pragma GCC diagnostic ignored "-ftest-coverage"
