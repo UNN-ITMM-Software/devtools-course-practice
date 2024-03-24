@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <string>
 #include <cmath>
 #include <unordered_map>
 #include <vector>
@@ -72,8 +73,9 @@ class  GronsfeldCipher{
     char encode_char(char word, char code) const;
     char decoder_char(char word, char code) const;
     char crackLetter(string line);
+
  public:
-    GronsfeldCipher(string keyWord = "code");
+    explicit GronsfeldCipher(string keyWord = "code");
 
     string getKey();
 
@@ -84,8 +86,6 @@ class  GronsfeldCipher{
     string decoder(string text);
 
     string getCrackKey(string text, int keySize);
-
 };
 
-
-#endif //MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
+#endif  //MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
