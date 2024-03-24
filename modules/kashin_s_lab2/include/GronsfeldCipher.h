@@ -2,6 +2,13 @@
 
 #ifndef MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
 #define MODULES_KASHIN_S_LAB2_INCLUDE_GRONSFELDCIPHER_H_
+#ifdef DISABLE_CODECOV
+#define CODECOV_OFF if (false) {
+#define CODECOV_ON }
+#else
+#define CODECOV_OFF
+#define CODECOV_ON
+#endif
 
 #include <iostream>
 #include <cstring>
@@ -11,8 +18,7 @@
 #include <vector>
 #include <algorithm>
 
-#ifndef EXCLUDE_FROM_COVERAGE
-    
+CODECOV_OFF
 class TheStringDoesNotContainCharacters : public std::exception {
  public:
     virtual const char* what() const noexcept {
@@ -36,8 +42,7 @@ class IncorrectKeyLength : public std::exception {
         " be longer than 0 and less than the length of the text";
     }
 };
-
-#endif
+CODECOV_ON
 
 class  GronsfeldCipher{
  private:
