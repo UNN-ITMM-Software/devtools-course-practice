@@ -82,7 +82,7 @@ public:
 
     string decoder(string text);
 
-    string getCrackKey(string text,int keySize);
+    string getCrackKey(string text, int keySize);
 
 };
 
