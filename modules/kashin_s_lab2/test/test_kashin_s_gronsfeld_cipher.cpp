@@ -26,28 +26,38 @@ TEST(Kashin_Stepan_Gronsfeld_Cipher, InputConstructor) {
     EXPECT_NO_THROW(GronsfeldCipher("abcdefghijclmnop"));
 }
 
-// TEST(Kashin_Stepan_Gronsfeld_Cipher, InvalidInputEncoder) {
-//     EXPECT_THROW(GronsfeldCipher("code").encoder(""));
-// }
+TEST(Kashin_Stepan_Gronsfeld_Cipher, InvalidInputEncoder) {
+    EXPECT_THROW(
+        GronsfeldCipher("code").encoder(""),
+        TheStringDoesNotContainCharacters);
+}
 
-// TEST(Kashin_Stepan_Gronsfeld_Cipher, InputEncoder) {
-//     EXPECT_NO_THROW(GronsfeldCipher("code").encoder("hello, world!"));
-// }
+TEST(Kashin_Stepan_Gronsfeld_Cipher, InputEncoder) {
+    EXPECT_NO_THROW(GronsfeldCipher("code").encoder("hello, world!"));
+}
 
-// TEST(Kashin_Stepan_Gronsfeld_Cipher, InvalidInputDecoder) {
-//     EXPECT_THROW(GronsfeldCipher("code").encoder(""));
-// }
+TEST(Kashin_Stepan_Gronsfeld_Cipher, InvalidInputDecoder) {
+    EXPECT_THROW(
+        GronsfeldCipher("code").encoder(""),
+        TheStringDoesNotContainCharacters);
+}
 
-// TEST(Kashin_Stepan_Gronsfeld_Cipher, InputDecoder) {
-//     EXPECT_NO_THROW(GronsfeldCipher("code").encoder("hello, world!"));
-// }
+TEST(Kashin_Stepan_Gronsfeld_Cipher, InputDecoder) {
+    EXPECT_NO_THROW(GronsfeldCipher("code").encoder("hello, world!"));
+}
 
-// TEST(Kashin_Stepan_Gronsfeld_Cipher, InvalidInputgetCrackKey) {
-//     EXPECT_THROW(GronsfeldCipher().getCrackKey("",4));
-//     EXPECT_THROW(GronsfeldCipher().getCrackKey("code",5));
-//     EXPECT_THROW(GronsfeldCipher().getCrackKey("code",0));
-// }
+TEST(Kashin_Stepan_Gronsfeld_Cipher, InvalidInputgetCrackKey) {
+    EXPECT_THROW(
+        GronsfeldCipher().getCrackKey("",4),
+        TheStringDoesNotContainCharacters);
+    EXPECT_THROW(
+        GronsfeldCipher().getCrackKey("code",5),
+        IncorrectKeyLength);
+    EXPECT_THROW(
+        GronsfeldCipher().getCrackKey("code",0),
+        IncorrectKeyLength);
+}
 
-// TEST(Kashin_Stepan_Gronsfeld_Cipher, InputgetCrackKey) {
-//     EXPECT_NO_THROW(GronsfeldCipher().getCrackKey("code",0));
-// }
+TEST(Kashin_Stepan_Gronsfeld_Cipher, InputgetCrackKey) {
+    EXPECT_NO_THROW(GronsfeldCipher().getCrackKey("code",0));
+}

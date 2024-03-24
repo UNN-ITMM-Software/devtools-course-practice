@@ -20,7 +20,8 @@ char GronsfeldCipher::crackLetter(std::string line) {
     std::vector<double> letters(alfabet);
     for (size_t letter = 0; letter < letters.size(); letter++) {
         for (char a : line) {
-            letters[letter] += letterFrequency[decoder_char(a,(char) first + letter)];
+            letters[letter] += letterFrequency[
+                decoder_char(a, static_cast<char>(first + letter))];
         }
     }
     int maxIndex = std::distance(
