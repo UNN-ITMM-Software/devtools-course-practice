@@ -74,5 +74,5 @@ TEST(Kashin_Stepan_Gronsfeld_Cipher, Other) {
         TheStringContainsNonLatinCharacters());
     EXPECT_THROW(
         throw IncorrectKeyLength(),
-        TheStringContainsNonLatinCharacters());
+        IncorrectKeyLength());
 }
