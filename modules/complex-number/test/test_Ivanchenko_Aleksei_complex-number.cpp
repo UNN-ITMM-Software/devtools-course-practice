@@ -69,3 +69,16 @@ TEST(Ivanchenko_Aleksei_ComplexNumberTest, Can_Multiply) {
     EXPECT_EQ(re1 * re2 - im1 * im2, z.getRe());
     EXPECT_EQ(re1 * im2 + re2 * im1, z.getIm());
 }
+TEST(Ivanchenko_Aleksei_ComplexNumberTest, Can_Divide) {
+    // Arrange
+    double re1 = 100.0, re2 = 1.0;
+    double im1 = 2.0, im2 = 0.0;
+
+    // Act
+    ComplexNumber z1(re1, im1), z2(re2, im2);
+    ComplexNumber z = z1 / z2;
+
+    // Assert
+    EXPECT_EQ(re1, z.getRe());
+    EXPECT_EQ(im1, z.getIm());
+}
