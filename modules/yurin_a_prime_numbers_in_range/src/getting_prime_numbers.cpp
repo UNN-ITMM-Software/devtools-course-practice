@@ -12,7 +12,10 @@ std::vector<uint32_t> GettingPrimeNumbers::getPrimeNumbersInRange(
     validateInputData();
 
     _isPrime = std::vector<bool>(upperBound + 1, true);
-    _isPrime[0] = _isPrime[1] = false;
+
+    if (_isPrime.size() > 1) {
+        _isPrime[0] = _isPrime[1] = false;
+    }
 
     for (uint64_t p = 2; p * p <= upperBound; ++p) {
         if (_isPrime[p]) {
@@ -38,7 +41,7 @@ void GettingPrimeNumbers::validateInputData() {
 
 std::vector<uint32_t> GettingPrimeNumbers::generateListOfPrimeNumbers() {
     std::vector<uint32_t> primeNumbers{};
-    uint64_t startP = std::max(_lowerBound, uint32_t{2});
+    uint32_t startP = std::max(_lowerBound, uint32_t{2});
     for (uint64_t p = startP; p <= _upperBound; ++p) {
         if (_isPrime[p]) {
             primeNumbers.push_back(p);
