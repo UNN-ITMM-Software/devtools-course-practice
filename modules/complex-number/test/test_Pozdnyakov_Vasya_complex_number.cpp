@@ -50,3 +50,21 @@ TEST(Pozdnaykov_Vasya_ComplexNumberTest, test_comprasion_different) {
 
     EXPECT_EQ(true, z1 == z2);
 }
+
+TEST(Pozdnaykov_Vasya_ComplexNumberTest, test_sum_double) {
+    ComplexNumber z1(4.1, -2.1);
+    ComplexNumber z2(2.5, -1.1);
+    ComplexNumber res = z1 + z2;
+
+    EXPECT_DOUBLE_EQ(6.6, res.getRe());
+    EXPECT_DOUBLE_EQ(-3.2, res.getIm());
+}
+
+TEST(Pozdnaykov_Vasya_ComplexNumberTest, test_sub_double) {
+    ComplexNumber z1(4.1, -2.1);
+    ComplexNumber z2(2.5, -1.1);
+    ComplexNumber res = z1 - z2;
+
+    EXPECT_DOUBLE_EQ(1.6, res.getRe());
+    EXPECT_DOUBLE_EQ(-1.0, res.getIm());
+}
