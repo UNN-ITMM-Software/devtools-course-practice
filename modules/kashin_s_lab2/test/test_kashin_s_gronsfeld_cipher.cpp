@@ -75,13 +75,19 @@ TEST(Kashin_Stepan_Gronsfeld_Cipher, Other) {
 }
 
 // TEST(ExceptionsTest, TheStringDoesNotContainCharactersTest) {
-//     ASSERT_THROW(throw TheStringDoesNotContainCharacters(),TheStringDoesNotContainCharacters);
+//     ASSERT_THROW(
+//         throw TheStringDoesNotContainCharacters(),
+//         TheStringDoesNotContainCharacters);
 // }
 
 // TEST(ExceptionsTest, TheStringContainsNonLatinCharactersTest) {
-//     ASSERT_THROW(throw TheStringContainsNonLatinCharacters(),TheStringContainsNonLatinCharacters);
+//     ASSERT_THROW(
+//         throw TheStringContainsNonLatinCharacters(),
+//         TheStringContainsNonLatinCharacters);
 // }
 
 // TEST(ExceptionsTest, IncorrectKeyLengthTest) {
-//     ASSERT_THROW(throw IncorrectKeyLengthTest(),IncorrectKeyLengthTest);
+//     ASSERT_THROW(
+//         throw IncorrectKeyLengthTest(),
+//         IncorrectKeyLengthTest);
 // }
