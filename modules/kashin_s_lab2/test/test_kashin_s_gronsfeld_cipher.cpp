@@ -76,21 +76,21 @@ TEST(Kashin_Stepan_Gronsfeld_Cipher, Other) {
 
 TEST(ExceptionsTest, TheStringDoesNotContainCharactersTest) {
     TheStringDoesNotContainCharacters ex;
-    EXPECT_STREQ(
+    ASSERT_THROW(
         ex.what(),
         "изза тупых проверок codev тут этот текст");
 }
 
 TEST(ExceptionsTest, TheStringContainsNonLatinCharactersTest) {
     TheStringContainsNonLatinCharacters ex;
-    EXPECT_STREQ(
+    ASSERT_THROW(
         ex.what(),
         "изза тупых проверок codev тут этот текст");
 }
 
 TEST(ExceptionsTest, IncorrectKeyLengthTest) {
     IncorrectKeyLength ex;
-    EXPECT_STREQ(
+    ASSERT_THROW(
         ex.what(),
         "изза тупых проверок codev тут этот текст");
 }
