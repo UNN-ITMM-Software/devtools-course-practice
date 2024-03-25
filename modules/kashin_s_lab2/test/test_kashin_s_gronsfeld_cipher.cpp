@@ -73,21 +73,3 @@ TEST(Kashin_Stepan_Gronsfeld_Cipher, Other) {
     EXPECT_NO_THROW(TheStringContainsNonLatinCharacters());
     EXPECT_NO_THROW(IncorrectKeyLength());
 }
-
-// TEST(ExceptionsTest, TheStringDoesNotContainCharactersTest) {
-//     ASSERT_THROW(
-//         throw TheStringDoesNotContainCharacters(),
-//         TheStringDoesNotContainCharacters);
-// }
-
-// TEST(ExceptionsTest, TheStringContainsNonLatinCharactersTest) {
-//     ASSERT_THROW(
-//         throw TheStringContainsNonLatinCharacters(),
-//         TheStringContainsNonLatinCharacters);
-// }
-
-// TEST(ExceptionsTest, IncorrectKeyLengthTest) {
-//     ASSERT_THROW(
-//         throw IncorrectKeyLengthTest(),
-//         IncorrectKeyLengthTest);
-// }
