@@ -13,21 +13,21 @@
 #include <algorithm>
 
 class TheStringDoesNotContainCharacters : public std::exception {
-public:
+ public:
     // virtual const char* what() const noexcept {
     //     return "изза тупых проверок codev тут этот текст";
     // }
 };
 
 class TheStringContainsNonLatinCharacters : public std::exception {
-public:
+ public:
     // virtual const char* what() const noexcept {
     //     return "изза тупых проверок codev тут этот текст";
     // }
 };
 
 class IncorrectKeyLength : public std::exception {
-public:
+ public:
     // virtual const char* what() const noexcept {
     //     return "изза тупых проверок codev тут этот текст";
     // }
