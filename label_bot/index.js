@@ -116,15 +116,10 @@ http.createServer(function (req, res) {
                     processed += 1;
                     commit_data.data.files.forEach(file => {
                         if (file.filename == "lab-guide/topics.md") {
-                            let match_del = file.patch.match(/\-\|.*\|(.*)\|.*\|/);
-                            if (!match_del || match_del[1] != "")
+                            let matched = patch.match(/\-\|.*\|\w*\|.*\|\n\+\|.*\|(.*)\|.*\|/);
+                            if (!matched || matched.length < 2)
                                 return;
-
-                            let match_add = file.patch.match(/\+\|.*\|(.*)\|.*\|/);
-                            if (!match_add || match_add.length < 2)
-                                return;
-
-                            real_names[commit_data.data.author.login] = match_add[1].trim();
+                            real_names[commit_data.data.author.login] = matched[1].trim();
                         }
                     });
                     if (processed == commits.length) {
