@@ -58,6 +58,7 @@ class  GronsfeldCipher{
     char decoder_char(char word, char code) const;
     char crackLetter(std::string line);
     bool isLetterInAlphabet(char symbol) const;
+    
  public:
     explicit GronsfeldCipher(std::string keyWord = "code");
 
