@@ -11,4 +11,4 @@ std::string vigenereCipher(std::string data, std::string key);
 
 std::string vigenereDecipher(std::string cypher, std::string key);
 
-#endif // MODULES_NOGIN_D_VIGENERE_CIPHER_INCLUDE_VIGENERE_CIPHER_H_
+#endif  // MODULES_NOGIN_D_VIGENERE_CIPHER_INCLUDE_VIGENERE_CIPHER_H_
