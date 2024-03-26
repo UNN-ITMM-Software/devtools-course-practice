@@ -13,7 +13,7 @@
 
 class LIS{
     std::vector<int> nums;
-public:
+ public:
     LIS(): nums(std::vector<int>()) {}
     explicit LIS(std::vector<int> &nums_): nums(nums_) {}
 
