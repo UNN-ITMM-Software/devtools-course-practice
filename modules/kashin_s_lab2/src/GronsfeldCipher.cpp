@@ -3,7 +3,7 @@
 #include "include/GronsfeldCipher.h"
 
 char GronsfeldCipher::encode_char(char word, char code) const {
-    if ('a' <= word && word <= lastLetter) {
+    if (firstLetter <= word && word <= lastLetter) {
         word =
         firstLetter +
         (word - firstLetter + code - firstLetter) %
@@ -13,7 +13,7 @@ char GronsfeldCipher::encode_char(char word, char code) const {
 }
 
 char GronsfeldCipher::decoder_char(char word, char code) const {
-    if ('a' <= word && word <= lastLetter) {
+    if (firstLetter <= word && word <= lastLetter) {
         word =
         firstLetter + (word - code + lastLetter + 1 - firstLetter) %
         alfabetSize;
@@ -47,7 +47,7 @@ void GronsfeldCipher::setKey(std::string keyWord) {
     if (keyWord == "") throw TheStringDoesNotContainCharacters();
     for (size_t i = 0; i < keyWord.length(); i++) {
         keyWord[i] = tolower(keyWord[i]);
-        if (!('a' <= keyWord[i] && keyWord[i] <= lastLetter)) {
+        if (!(firstLetter <= keyWord[i] && keyWord[i] <= lastLetter)) {
             throw TheStringContainsNonLatinCharacters();
         }
     }
@@ -65,7 +65,7 @@ std::string GronsfeldCipher::encoder(std::string text) {
 
 std::string GronsfeldCipher::decoder(std::string text) {
     if (text == "") throw TheStringDoesNotContainCharacters();
-    std::string answer = "";
+    std::string answer{};
     for (size_t i = 0; i < text.length(); i++) {
         answer += decoder_char(tolower(text[i]), key[i % key.length()]);
     }
@@ -77,9 +77,9 @@ std::string GronsfeldCipher::getCrackKey(std::string text, size_t keySize) {
     if (1 > keySize || text.length() < keySize) throw IncorrectKeyLength();
 
     std::vector<std::string> lines(keySize);
-    std::string newKey = "";
+    std::string newKey{};
     for (size_t i = 0; i < text.size(); i++) {
-        if ('a' <= tolower(text[i]) && tolower(text[i]) <= lastLetter) {
+        if (firstLetter <= tolower(text[i]) && tolower(text[i]) <= lastLetter) {
             lines[i % keySize] += tolower(text[i]);
         }
     }
