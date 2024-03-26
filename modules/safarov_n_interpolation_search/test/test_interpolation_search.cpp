@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include "interpolation_search.h"
+#include "include/interpolation_search.h"
 
 TEST(Safarov_Nurlan_InterpolationSearchTest, Test_1) {
     std::vector<int> v;

@@ -1,9 +1,8 @@
 // Copyright 2024 Safarov Nurlan
 
-#include "interpolation_search.h"
+#include "include/interpolation_search.h"
 
-int interpolationSearch(const std::vector<int> &sequence, const int &target)
-{
+int interpolationSearch(const std::vector<int> &sequence, const int &target) {
     if (sequence.size() == 0) {
         return -1;
     }
@@ -11,8 +10,7 @@ int interpolationSearch(const std::vector<int> &sequence, const int &target)
     int left = 0;
     int right = sequence.size() - 1;
 
-    while (sequence[left] < target && sequence[right] > target)
-    {
+    while (sequence[left] < target && sequence[right] > target) {
         int index = (target - sequence[left]) * (left - right) / (sequence[left] - sequence[right]) + left;
 
         if (sequence[index] > target) {
