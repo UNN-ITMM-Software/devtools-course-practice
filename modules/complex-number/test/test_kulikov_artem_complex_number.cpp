@@ -58,7 +58,7 @@ TEST(Kulikov_Artem_ComplexNumberTest, Can_Multiply_Two_Numbers) {
     double re1 = 5.0;
     double im1 = 5.0;
     double re2 = 3.0;
-    double im2 = 2.0;
+    double im2 = 2.28;
 
     ComplexNumber z1(re1, im1);
     ComplexNumber z2(re2, im2);
@@ -93,7 +93,7 @@ TEST(Kulikov_Artem_ComplexNumberTest, Can_Divide_Two_Numbers) {
 TEST(Kulikov_Artem_ComplexNumberTest, Cant_Divide_By_Zero) {
     // Arrange
     double re1 = 5.0;
-    double im1 = 5.0;
+    double im1 = 6.9;
     double re2 = 0.0;
     double im2 = 0.0;
 
