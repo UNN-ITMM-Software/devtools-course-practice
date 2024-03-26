@@ -10,9 +10,9 @@ int LIS::getSize() {
     return static_cast<int>(nums.size());
 }
 
-vector<int> LIS::run() {
+std::vector<int> LIS::run() {
     size_t n = nums.size();
-    vector<int> ans;
+    std::vector<int> ans;
 
     if (n == 0)
         return ans;
@@ -22,8 +22,7 @@ vector<int> LIS::run() {
     for (size_t i = 1; i < n; i++) {
         if (nums[i] > ans.back()) {
             ans.push_back(nums[i]);
-        }
-        else {
+        } else {
             int low = lower_bound(ans.begin(), ans.end(),
                                   nums[i])
                       - ans.begin();
