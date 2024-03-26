@@ -11,7 +11,8 @@ int interpolationSearch(const std::vector<int> &sequence, const int &target) {
     int right = sequence.size() - 1;
 
     while (sequence[left] < target && sequence[right] > target) {
-        int index = (target - sequence[left]) * (left - right) / (sequence[left] - sequence[right]) + left;
+        int index = (target - sequence[left]) * (left - right) / (sequence[left] - sequence[right])
+        + left;
 
         if (sequence[index] > target) {
             right = index - 1;
