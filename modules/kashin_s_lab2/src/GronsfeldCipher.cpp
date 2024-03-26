@@ -4,14 +4,19 @@
 
 char GronsfeldCipher::encode_char(char word, char code) const {
     if ('a' <= word && word <= lastLetter) {
-        word = firstLetter + (word - firstLetter + code - firstLetter) % alfabetSize;
+        word =
+        firstLetter +
+        (word - firstLetter + code - firstLetter) %
+        alfabetSize;
     }
     return word;
 }
 
 char GronsfeldCipher::decoder_char(char word, char code) const {
     if ('a' <= word && word <= lastLetter) {
-        word =  firstLetter + (word - code + lastLetter + 1 - firstLetter) % alfabetSize;
+        word =
+        firstLetter + (word - code + lastLetter + 1 - firstLetter) %
+        alfabetSize;
     }
     return word;
 }
