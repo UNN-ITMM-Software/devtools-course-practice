@@ -3,31 +3,31 @@
 #include "include/GronsfeldCipher.h"
 
 char GronsfeldCipher::encode_char(char word, char code) const {
-    if ('a' <= word && word <= 'z') {
-        word = first + (word - first + code - first) % alfabet;
+    if ('a' <= word && word <= lastLetter) {
+        word = firstLetter + (word - firstLetter + code - firstLetter) % alfabetSize;
     }
     return word;
 }
 
 char GronsfeldCipher::decoder_char(char word, char code) const {
-    if ('a' <= word && word <= 'z') {
-        word =  first + (word - code + 'z' + 1 - first) % 26;
+    if ('a' <= word && word <= lastLetter) {
+        word =  firstLetter + (word - code + lastLetter + 1 - firstLetter) % alfabetSize;
     }
     return word;
 }
 
 char GronsfeldCipher::crackLetter(std::string line) {
-    std::vector<double> letters(alfabet);
+    std::vector<double> letters(alfabetSize);
     for (size_t letter = 0; letter < letters.size(); letter++) {
         for (char a : line) {
-            letters[letter] += letterFrequency[
-                decoder_char(a, static_cast<char>(first + letter))];
+            letters[letter] += letterFrequency.at(
+                decoder_char(a, static_cast<char>(firstLetter + letter)));
         }
     }
     int maxIndex = std::distance(
         letters.begin(),
         std::max_element(letters.begin(), letters.end()));
-    return first + maxIndex;
+    return firstLetter + maxIndex;
 }
 
 GronsfeldCipher::GronsfeldCipher(std::string keyWord) {
@@ -42,7 +42,7 @@ void GronsfeldCipher::setKey(std::string keyWord) {
     if (keyWord == "") throw TheStringDoesNotContainCharacters();
     for (size_t i = 0; i < keyWord.length(); i++) {
         keyWord[i] = tolower(keyWord[i]);
-        if (!('a' <= keyWord[i] && keyWord[i] <= 'z')) {
+        if (!('a' <= keyWord[i] && keyWord[i] <= lastLetter)) {
             throw TheStringContainsNonLatinCharacters();
         }
     }
@@ -74,7 +74,7 @@ std::string GronsfeldCipher::getCrackKey(std::string text, size_t keySize) {
     std::vector<std::string> lines(keySize);
     std::string newKey = "";
     for (size_t i = 0; i < text.size(); i++) {
-        if ('a' <= tolower(text[i]) && tolower(text[i]) <= 'z') {
+        if ('a' <= tolower(text[i]) && tolower(text[i]) <= lastLetter) {
             lines[i % keySize] += tolower(text[i]);
         }
     }

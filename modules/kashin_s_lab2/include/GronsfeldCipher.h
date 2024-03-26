@@ -24,9 +24,10 @@ class IncorrectKeyLength : public std::exception {
 class  GronsfeldCipher{
  private:
     std::string key;
-    int first = 'a';
-    int alfabet = 26;
-    std::unordered_map<char, double> letterFrequency = {
+    const int lastLetter = 'z';
+    const int firstLetter = 'a';
+    const int alfabetSize = 26;
+    const std::unordered_map<char, double> letterFrequency = {
             {'a', 8.17},
             {'b', 1.49},
             {'c', 2.78},
