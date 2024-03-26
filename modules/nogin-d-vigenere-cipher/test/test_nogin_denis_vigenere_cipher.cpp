@@ -5,86 +5,86 @@
 #include "include/vigenere_cipher.h"
 
 TEST(Nogin_Denis_VigenereCipherTest, test_cipher_1) {
-    std::string data("hello world!");
-    std::string key("key");
+  std::string data("hello world!");
+  std::string key("key");
 
-    std::string cipher = vigenereCipher(data, key);
+  std::string cipher = vigenereCipher(data, key);
 
-    EXPECT_EQ("rijvs uyvjn!", cipher);
+  EXPECT_EQ("rijvs uyvjn!", cipher);
 }
 
 TEST(Nogin_Denis_VigenereCipherTest, test_cipher_2) {
-    std::string data("HeLlO WORld!");
-    std::string key("KEy");
+  std::string data("HeLlO WORld!");
+  std::string key("KEy");
 
-    std::string cipher = vigenereCipher(data, key);
+  std::string cipher = vigenereCipher(data, key);
 
-    EXPECT_EQ("RiJvS UYVjn!", cipher);
+  EXPECT_EQ("RiJvS UYVjn!", cipher);
 }
 
 TEST(Nogin_Denis_VigenereCipherTest, test_cipher_3) {
-    std::string data("One, two, three, four!");
-    std::string key("Five");
+  std::string data("One, two, three, four!");
+  std::string key("Five");
 
-    std::string cipher = vigenereCipher(data, key);
+  std::string cipher = vigenereCipher(data, key);
 
-    EXPECT_EQ("Tvz, xbw, olwmz, jtcm!", cipher);
+  EXPECT_EQ("Tvz, xbw, olwmz, jtcm!", cipher);
 }
 
 TEST(Nogin_Denis_VigenereCipherTest, test_cipher_4) {
-    std::string data("key");
-    std::string key("hello");
+  std::string data("key");
+  std::string key("hello");
 
-    std::string cipher = vigenereCipher(data, key);
+  std::string cipher = vigenereCipher(data, key);
 
-    EXPECT_EQ("rij", cipher);
+  EXPECT_EQ("rij", cipher);
 }
 
 TEST(Nogin_Denis_VigenereCipherTest, test_cipher_5) {
-    std::string data("key");
-    std::string key("hello");
+  std::string data("key");
+  std::string key("hello");
 
-    std::string cipher = vigenereCipher(data, key);
+  std::string cipher = vigenereCipher(data, key);
 
-    EXPECT_EQ("rij", cipher);
+  EXPECT_EQ("rij", cipher);
 }
 
 TEST(Nogin_Denis_VigenereCipherTest, test_decipher_1) {
-    std::string data("hello world!");
-    std::string key("key");
+  std::string data("hello world!");
+  std::string key("key");
 
-    std::string cipher = vigenereCipher(data, key);
-    std::string decipher = vigenereDecipher(cipher, key);
+  std::string cipher = vigenereCipher(data, key);
+  std::string decipher = vigenereDecipher(cipher, key);
 
-    EXPECT_EQ(data, decipher);
+  EXPECT_EQ(data, decipher);
 }
 
 TEST(Nogin_Denis_VigenereCipherTest, test_decipher_2) {
-    std::string data("HeLlO WORld!");
-    std::string key("KEy");
+  std::string data("HeLlO WORld!");
+  std::string key("KEy");
 
-    std::string cipher = vigenereCipher(data, key);
-    std::string decipher = vigenereDecipher(cipher, key);
+  std::string cipher = vigenereCipher(data, key);
+  std::string decipher = vigenereDecipher(cipher, key);
 
-    EXPECT_EQ(data, decipher);
+  EXPECT_EQ(data, decipher);
 }
 
 TEST(Nogin_Denis_VigenereCipherTest, test_decipher_3) {
-    std::string data("rij");
-    std::string key("hello");
+  std::string data("rij");
+  std::string key("hello");
 
-    std::string decipher = vigenereDecipher(data, key);
+  std::string decipher = vigenereDecipher(data, key);
 
-    EXPECT_EQ("key", decipher);
+  EXPECT_EQ("key", decipher);
 }
 
 TEST(Nogin_Denis_VigenereCipherTest, test_decipher_4) {
-    std::string data("One, two, three, four!");
-    std::string key("Five");
+  std::string data("One, two, three, four!");
+  std::string key("Five");
 
-    std::string decipher = vigenereDecipher(data, key);
+  std::string decipher = vigenereDecipher(data, key);
 
-    EXPECT_EQ("Jfj, prg, ydmwj, bjmw!", decipher);
+  EXPECT_EQ("Jfj, prg, ydmwj, bjmw!", decipher);
 }
 
 int main(int argc, char **argv) {
