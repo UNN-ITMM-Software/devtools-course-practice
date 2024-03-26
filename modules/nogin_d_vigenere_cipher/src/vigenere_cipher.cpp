@@ -8,7 +8,7 @@ extern const int lowerCaseEnd = 122;
 extern const int upperCaseBegin = 65;
 extern const int upperCaseEnd = 90;
 extern const int alphabetSize = 26;
-} // namespace var
+}  // namespace var
 
 std::string vigenereCipher(const std::string &data, const std::string &key) {
   std::string transformKey = key;
