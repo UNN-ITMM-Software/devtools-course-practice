@@ -64,7 +64,8 @@ TEST(Skotin_ALexander_ComplexNumberTest, Can_Add_ComplexNumbers_Fractional) {
     EXPECT_DOUBLE_EQ(7.2, result.getIm());
 }
 
-TEST(Skotin_ALexander_ComplexNumberTest, Can_Subtract_ComplexNumbers_Fractional) {
+TEST(Skotin_ALexander_ComplexNumberTest,
+    Can_Subtract_ComplexNumbers_Fractional) {
     ComplexNumber z1(5.5, 6.5);
     ComplexNumber z2(2.2, 3.3);
 
@@ -74,7 +75,8 @@ TEST(Skotin_ALexander_ComplexNumberTest, Can_Subtract_ComplexNumbers_Fractional)
     EXPECT_DOUBLE_EQ(3.2, result.getIm());
 }
 
-TEST(Skotin_Alexander_ComplexNumberTest, Can_Multiply_ComplexNumbers_Fractional) {
+TEST(Skotin_Alexander_ComplexNumberTest,
+    Can_Multiply_ComplexNumbers_Fractional) {
     ComplexNumber z1(2.2, 3.3);
     ComplexNumber z2(4.4, 5.5);
 
