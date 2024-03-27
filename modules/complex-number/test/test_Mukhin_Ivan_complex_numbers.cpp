@@ -36,10 +36,10 @@ TEST_P(Mukhin_Ivan_parametric_test_2, operator_eq_and_not_eq_works) {
     auto second_pair = std::get<1>(values);
     ComplexNumber a(first_pair.first, first_pair.second);
     ComplexNumber b(second_pair.first, second_pair.second);
-    if (first_pair.first == second_pair.first && first_pair.second == second_pair.second){
+    if (first_pair.first == second_pair.first &&
+        first_pair.second == second_pair.second) {
         EXPECT_TRUE(a == b);
-    }
-    else{
+    } else {
         EXPECT_TRUE(a != b);
     }
 }
@@ -92,11 +92,11 @@ TEST_P(Mukhin_Ivan_parametric_test_2, can_mult_complex_numbers) {
     ComplexNumber b(second_pair.first, second_pair.second);
     ComplexNumber c = a * b;
     double Re = (
-        first_pair.first * second_pair.first - first_pair.second * second_pair.second
-    );
+        first_pair.first * second_pair.first - \
+        first_pair.second * second_pair.second);
     double Im = (
-        first_pair.first * second_pair.second + first_pair.second * second_pair.first
-    );
+        first_pair.first * second_pair.second + \
+        first_pair.second * second_pair.first);
     EXPECT_EQ(Re, c.getRe());
     EXPECT_EQ(Im, c.getIm());
 
