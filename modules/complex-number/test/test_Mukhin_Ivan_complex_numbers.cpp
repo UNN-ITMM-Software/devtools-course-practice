@@ -10,16 +10,19 @@ using std::make_pair;
 using std::tuple;
 using std::make_tuple;
 
-class Mukhin_Ivan_parametric_test_1 : public ::testing::TestWithParam<pair<double, double>> {};
+class Mukhin_Ivan_parametric_test_1 \
+      : public ::testing::TestWithParam<pair<double, double>> {};
 
-class Mukhin_Ivan_parametric_test_2 : public ::testing::TestWithParam<tuple<pair<double, double>, pair<double, double>>> {};
+class Mukhin_Ivan_parametric_test_2 \
+      : public ::testing::TestWithParam \
+               <tuple<pair<double, double>, pair<double, double>>> {};
 
-TEST_P(Mukhin_Ivan_parametric_test_1, can_create_complex_number){
+TEST_P(Mukhin_Ivan_parametric_test_1, can_create_complex_number) {
     auto values = GetParam();
     ASSERT_NO_THROW(ComplexNumber(values.first, values.second));
 }
 
-TEST_P(Mukhin_Ivan_parametric_test_1, copy_constructor_works){
+TEST_P(Mukhin_Ivan_parametric_test_1, copy_constructor_works) {
     auto values = GetParam();
     ComplexNumber a(values.first, values.second);
     ComplexNumber b(a);
@@ -27,7 +30,7 @@ TEST_P(Mukhin_Ivan_parametric_test_1, copy_constructor_works){
     EXPECT_EQ(a.getIm(), b.getIm());
 }
 
-TEST_P(Mukhin_Ivan_parametric_test_2, operator_eq_and_not_eq_works){
+TEST_P(Mukhin_Ivan_parametric_test_2, operator_eq_and_not_eq_works) {
     auto values = GetParam();
     auto first_pair = std::get<0>(values);
     auto second_pair = std::get<1>(values);
@@ -41,24 +44,24 @@ TEST_P(Mukhin_Ivan_parametric_test_2, operator_eq_and_not_eq_works){
     }
 }
 
-TEST(Mukhin_Ivan_tests_cases, can_set_re_and_im){
+TEST(Mukhin_Ivan_tests_cases, can_set_re_and_im) {
     ComplexNumber a;
     ASSERT_NO_THROW(a.setIm(1.0));
     ASSERT_NO_THROW(a.setRe(2.0));
 }
 
-TEST(Mukhin_Ivan_tests_cases, cant_divide_by_zero){
+TEST(Mukhin_Ivan_tests_cases, cant_divide_by_zero) {
     ASSERT_ANY_THROW(ComplexNumber(2, 8) / ComplexNumber(0, 0));
 }
 
-TEST_P(Mukhin_Ivan_parametric_test_1, can_take_re_and_im_parts_of_number){
+TEST_P(Mukhin_Ivan_parametric_test_1, can_take_re_and_im_parts_of_number) {
     auto values = GetParam();
     ComplexNumber a(values.first, values.second);
     EXPECT_EQ(values.first, a.getRe());
     EXPECT_EQ(values.second, a.getIm());
 }
 
-TEST_P(Mukhin_Ivan_parametric_test_2, can_sum_complex_numbers){
+TEST_P(Mukhin_Ivan_parametric_test_2, can_sum_complex_numbers) {
     auto values = GetParam();
     auto first_pair = std::get<0>(values);
     auto second_pair = std::get<1>(values);
@@ -67,10 +70,9 @@ TEST_P(Mukhin_Ivan_parametric_test_2, can_sum_complex_numbers){
     ComplexNumber c = a + b;
     EXPECT_EQ(first_pair.first + second_pair.first, c.getRe());
     EXPECT_EQ(first_pair.second + second_pair.second, c.getIm());
-
 }
 
-TEST_P(Mukhin_Ivan_parametric_test_2, can_sub_complex_numbers){
+TEST_P(Mukhin_Ivan_parametric_test_2, can_sub_complex_numbers) {
     auto values = GetParam();
     auto first_pair = std::get<0>(values);
     auto second_pair = std::get<1>(values);
@@ -82,7 +84,7 @@ TEST_P(Mukhin_Ivan_parametric_test_2, can_sub_complex_numbers){
 
 }
 
-TEST_P(Mukhin_Ivan_parametric_test_2, can_mult_complex_numbers){
+TEST_P(Mukhin_Ivan_parametric_test_2, can_mult_complex_numbers) {
     auto values = GetParam();
     auto first_pair = std::get<0>(values);
     auto second_pair = std::get<1>(values);
