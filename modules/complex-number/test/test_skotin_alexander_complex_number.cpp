@@ -43,3 +43,43 @@ TEST(Skotin_ALexander_ComplexNumberTest, Can_Multiply_ComplexNumbers) {
     EXPECT_EQ(-7.0, result.getRe());
     EXPECT_EQ(22.0, result.getIm());
 }
+
+TEST(Skotin_ALexander_ComplexNumberTest, Can_Create_Nonzero_Fractional) {
+    double re = 2.5;
+    double im = -3.7;
+
+    ComplexNumber z(re, im);
+
+    EXPECT_EQ(re, z.getRe());
+    EXPECT_EQ(im, z.getIm());
+}
+
+TEST(Skotin_ALexander_ComplexNumberTest, Can_Add_ComplexNumbers_Fractional) {
+    ComplexNumber z1(1.5, 2.5);
+    ComplexNumber z2(3.2, 4.7);
+
+    ComplexNumber result = z1 + z2;
+
+    EXPECT_DOUBLE_EQ(4.7, result.getRe());
+    EXPECT_DOUBLE_EQ(7.2, result.getIm());
+}
+
+TEST(Skotin_ALexander_ComplexNumberTest, Can_Subtract_ComplexNumbers_Fractional) {
+    ComplexNumber z1(5.5, 6.5);
+    ComplexNumber z2(2.2, 3.3);
+
+    ComplexNumber result = z1 - z2;
+
+    EXPECT_DOUBLE_EQ(3.3, result.getRe());
+    EXPECT_DOUBLE_EQ(3.2, result.getIm());
+}
+
+TEST(Skotin_ALexander_ComplexNumberTest, Can_Multiply_ComplexNumbers_Fractional) {
+    ComplexNumber z1(2.2, 3.3);
+    ComplexNumber z2(4.4, 5.5);
+
+    ComplexNumber result = z1 * z2;
+
+    EXPECT_DOUBLE_EQ(-7.61, result.getRe());
+    EXPECT_DOUBLE_EQ(23.1, result.getIm());
+}
