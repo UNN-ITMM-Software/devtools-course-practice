@@ -1,7 +1,7 @@
 // Copyright 2024 Mukhin Ivan
 
-#include <gtest/gtest.h>
 #include "include/complex_number.h"
+#include <gtest/gtest.h>
 #include <tuple>
 #include <utility>
 
@@ -81,7 +81,6 @@ TEST_P(Mukhin_Ivan_parametric_test_2, can_sub_complex_numbers) {
     ComplexNumber c = a - b;
     EXPECT_EQ(first_pair.first - second_pair.first, c.getRe());
     EXPECT_EQ(first_pair.second - second_pair.second, c.getIm());
-
 }
 
 TEST_P(Mukhin_Ivan_parametric_test_2, can_mult_complex_numbers) {
@@ -99,7 +98,6 @@ TEST_P(Mukhin_Ivan_parametric_test_2, can_mult_complex_numbers) {
         first_pair.second * second_pair.first);
     EXPECT_EQ(Re, c.getRe());
     EXPECT_EQ(Im, c.getIm());
-
 }
 
 
