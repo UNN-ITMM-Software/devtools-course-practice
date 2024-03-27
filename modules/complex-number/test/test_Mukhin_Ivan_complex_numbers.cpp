@@ -1,8 +1,8 @@
 // Copyright 2024 Mukhin Ivan
 
+#include <gtest/gtest.h>
 #include <tuple>
 #include <utility>
-#include <gtest/gtest.h>
 #include "include/complex_number.h"
 
 using std::pair;
