@@ -14,8 +14,8 @@ TEST(Safarov_Nurlan_InterpolationSearchTest, Test_1) {
 }
 
 TEST(Safarov_Nurlan_InterpolationSearchTest, Test_2) {
-    std::vector<int> v = {5, 7, 11};
-    int target = 7;
+    std::vector<int> v = {1, 3, 5, 7, 9};
+    int target = 3;
 
     int result = interpolationSearch(v, target);
 
