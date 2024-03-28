@@ -49,10 +49,10 @@ TEST(Alesia_Shemiakina_ComplexNumberTest, Check_Commutativity) {
     // Arrange
     double re1 = 3.0, re2 = 2.5;
     double im1 = 4.0, im2 = 3.5;
-
     // Act
     ComplexNumber z1(re1, im1);
     ComplexNumber z2(re2, im2);
+
     // Assert
     EXPECT_EQ(z1 + z2, z2 + z1);
 }
