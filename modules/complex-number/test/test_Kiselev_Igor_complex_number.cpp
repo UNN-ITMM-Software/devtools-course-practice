@@ -95,3 +95,39 @@ TEST(KiselevIgorTests, Check_Not_Equal_Operator_Res) {
     EXPECT_TRUE(cn1 != cn2);
     EXPECT_FALSE(cn1 != cn3);
 }
+
+TEST(KiselevIgorTests, Check_Sum_Operator_Res_Double) {
+    ComplexNumber cn1 = ComplexNumber(1.6, 1.4);
+    ComplexNumber cn2 = ComplexNumber(2.4, 2.6);
+    ComplexNumber cn3 = ComplexNumber();
+    cn3 = cn1 + cn2;
+    EXPECT_DOUBLE_EQ(cn3.getRe(), 4);
+    EXPECT_DOUBLE_EQ(cn3.getIm(), 4);
+}
+
+TEST(KiselevIgorTests, Check_Diference_Operator_Res_Double) {
+    ComplexNumber cn1 = ComplexNumber(1.5, 1.7);
+    ComplexNumber cn2 = ComplexNumber(2, 2);
+    ComplexNumber cn3 = ComplexNumber();
+    cn3 = cn2 - cn1;
+    EXPECT_DOUBLE_EQ(cn3.getRe(), 0.5);
+    EXPECT_DOUBLE_EQ(cn3.getIm(), 0.3);
+}
+
+TEST(KiselevIgorTests, Check_Multiply_Operator_Res_Double) {
+    ComplexNumber cn1 = ComplexNumber(2.2, 2.2);
+    ComplexNumber cn2 = ComplexNumber(3, 0);
+    ComplexNumber cn3 = ComplexNumber();
+    cn3 = cn2 * cn1;
+    EXPECT_DOUBLE_EQ(cn3.getRe(), 6.6);
+    EXPECT_DOUBLE_EQ(cn3.getIm(), 6.6);
+}
+
+TEST(KiselevIgorTests, Check_Divide_Operator_Res_Double) {
+    ComplexNumber cn1 = ComplexNumber(0, 2);
+    ComplexNumber cn2 = ComplexNumber(2.2, 2.2);
+    ComplexNumber cn3 = ComplexNumber();
+    cn3 = cn2 / cn1;
+    EXPECT_DOUBLE_EQ(cn3.getRe(), 1.1);
+    EXPECT_DOUBLE_EQ(cn3.getIm(), -1.1);
+}
