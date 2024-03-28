@@ -18,7 +18,7 @@ TEST(Vasilev_Ivan_ComplexNumberTest, Check_suma) {
     ComplexNumber x(3.5, 0.5);
     ComplexNumber y(5.5, 1.0);
     ComplexNumber z = x + y;
- 
+
     EXPECT_DOUBLE_EQ(z.getRe(), 9.0);
     EXPECT_DOUBLE_EQ(z.getIm(), 1.5);
 }
@@ -27,7 +27,7 @@ TEST(Vasilev_Ivan_ComplexNumberTest, Check_subtraction) {
     ComplexNumber x(7.0, 1.5);
     ComplexNumber y(3.7, 1.5);
     ComplexNumber z = x - y;
- 
+
     EXPECT_DOUBLE_EQ(z.getRe(), 3.3);
     EXPECT_DOUBLE_EQ(z.getIm(), 0.0);
 }
@@ -36,7 +36,7 @@ TEST(Vasilev_Ivan_ComplexNumberTest, Check_mult) {
     ComplexNumber x(1.0, 1.0);
     ComplexNumber y(4.0, -2.0);
     ComplexNumber z = x * y;
- 
+
     EXPECT_DOUBLE_EQ(z.getRe(), 6.0);
     EXPECT_DOUBLE_EQ(z.getIm(), 2.0);
 }
@@ -45,7 +45,7 @@ TEST(Vasilev_Ivan_ComplexNumberTest, Check_div) {
     ComplexNumber x(20.0, 2.5);
     ComplexNumber y(4.0, 0.5);
     ComplexNumber z = x / y;
- 
+
     EXPECT_DOUBLE_EQ(z.getRe(), 5.0);
     EXPECT_DOUBLE_EQ(z.getIm(), 0.0);
 }
