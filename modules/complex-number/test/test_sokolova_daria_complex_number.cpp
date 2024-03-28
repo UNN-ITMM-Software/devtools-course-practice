@@ -86,3 +86,18 @@ TEST(Sokolova_Daria_ComplexNumberTest, Can_Subtract_Negative_Numbers) {
     ASSERT_EQ(diff.getRe(), -2);
     ASSERT_EQ(diff.getIm(), -2);
 }
+TEST(Sokolova_Daria_ComplexNumberTest, Can_Add_Complex_Numbers_With_Fractional_Values) {
+    ComplexNumber z1(3.5, 4.5);
+    ComplexNumber z2(1.5, 2.5);
+    ComplexNumber division = z1 + z2;
+    ASSERT_DOUBLE_EQ(division.getRe(), 5);
+    ASSERT_DOUBLE_EQ(division.getIm(), 7);
+}
+TEST(Sokolova_Daria_ComplexNumberTest, Can_Subtract_Complex_Numbers_With_Fractional_Values) {
+    ComplexNumber z1(3.5, 4.5);
+    ComplexNumber z2(1.5, 2.5);
+    ComplexNumber division = z1 - z2;
+    ASSERT_DOUBLE_EQ(division.getRe(), 2);
+    ASSERT_DOUBLE_EQ(division.getIm(), 2);
+}
+
