@@ -1,4 +1,4 @@
-// Copyright 2017 Dmitry Vanushkin
+// Copyright 2024 Dmitry Vanushkin
 
 #include <gtest/gtest.h>
 
