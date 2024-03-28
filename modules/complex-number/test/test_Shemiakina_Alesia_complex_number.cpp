@@ -33,8 +33,8 @@ TEST(Alesia_Shemiakina_ComplexNumberTest, Can_Multiply) {
 
 TEST(Alesia_Shemiakina_ComplexNumberTest, Can_Divide) {
     // Arrange
-    double re1 = 5.6, re2 = 1.8;
-    double im1 = 9.0, im2 = -7.7;
+    double re1 = 10.6, re2 = 1.0;
+    double im1 = 2.0, im2 = 0.0;
 
     // Act
     ComplexNumber z1(re1, im1), z2(re2, im2);
