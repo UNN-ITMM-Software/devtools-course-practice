@@ -47,8 +47,8 @@ TEST(Alesia_Shemiakina_ComplexNumberTest, Can_Divide) {
 
 TEST(Alesia_Shemiakina_ComplexNumberTest, Check_Commutativity) {
     // Arrange
-    double re1 = 3.0, double re2 = 2.5;
-    double im1 = 4.0, double im2 = 3.5;
+    double re1 = 3.0, re2 = 2.5;
+    double im1 = 4.0, im2 = 3.5;
 
     // Act
     ComplexNumber z1(re1, im1);
