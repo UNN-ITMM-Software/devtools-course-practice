@@ -78,7 +78,7 @@ TEST(Vanuskin_Dmitry_Base64DecoderTests, DecodeEncodedFirstTestCodeAsMessage) {
 }
 
 TEST(Vanuskin_Dmitry_Base64DecoderTests,
-     DecodeMessageWithTooMuchSpecificSymbols) {
+     DecodeMessageWithMoreThan2TimesSpecificSymbols) {
     auto encodedMessage = "===";
 
     auto decoder = Base64Decoder(encodedMessage);
@@ -87,8 +87,26 @@ TEST(Vanuskin_Dmitry_Base64DecoderTests,
 }
 
 TEST(Vanuskin_Dmitry_Base64DecoderTests,
+     DecodeMessageWith4TimesSpecificSymbols) {
+    auto encodedMessage = "3PL=AM=Q=L=B";
+
+    auto decoder = Base64Decoder(encodedMessage);
+
+    ASSERT_ANY_THROW(decoder.Decode());
+}
+
+TEST(Vanuskin_Dmitry_Base64DecoderTests,
+     DecodeMessageWith3TimesSpecificSymbols) {
+    auto encodedMessage = "31===";
+
+    auto decoder = Base64Decoder(encodedMessage);
+
+    ASSERT_ANY_THROW(decoder.Decode());
+}
+
+TEST(Vanuskin_Dmitry_Base64DecoderTests,
      DecodeMessageWithInvalidSpecificSymbolsPositions) {
-    auto encodedMessage = "A=B=C";
+    auto encodedMessage = "A=B=";
 
     auto decoder = Base64Decoder(encodedMessage);
 
@@ -97,7 +115,7 @@ TEST(Vanuskin_Dmitry_Base64DecoderTests,
 
 TEST(Vanuskin_Dmitry_Base64DecoderTests,
      DecodeMessageWithInvalidSymbols) {
-    auto encodedMessage = ";'\n";
+    auto encodedMessage = "AB;CDEFG";
 
     auto decoder = Base64Decoder(encodedMessage);
 
@@ -115,7 +133,7 @@ TEST(Vanuskin_Dmitry_Base64DecoderTests,
 
 TEST(Vanuskin_Dmitry_Base64DecoderTests,
      DecodeMessageWithOnlySpeciicSymbols) {
-    auto encodedMessage = "==";
+    auto encodedMessage = "====";
 
     auto decoder = Base64Decoder(encodedMessage);
 
