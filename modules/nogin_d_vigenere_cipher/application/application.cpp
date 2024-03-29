@@ -1,15 +1,13 @@
 // Copyright 2024 Kuznetsov Artem
 
-// #include <stdio.h>
-// #include <stdlib.h>
-
-// #include <string>
+#include <iostream>
 
 #include "include/vigenere_cipher_app.h"
 
 int main(int argc, char* argv[]) {
-//   ComplexCalculator app;
-//   std::string output = app(argc, argv);
-//   printf("%s\n", output.c_str());
+  auto output = VigenereApplication()(argc, argv);
+
+  std::cout << output << '\n';
+
   return 0;
 }
