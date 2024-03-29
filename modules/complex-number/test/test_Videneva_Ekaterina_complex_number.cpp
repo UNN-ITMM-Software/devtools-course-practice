@@ -71,7 +71,7 @@ TEST(Videneva_Ekaterina_ComplexNumberTest, Division_By_Zero_ComplexNumbers) {
     ASSERT_ANY_THROW(z1 / z2);
 }
 
-TEST(Videneva_Ekaterina_ComplexNumberTest, Multiplication_By_Zero_ComplexNumbers) {
+TEST(Videneva_Ekaterina_ComplexNumberTest, Mult_By_Zero_ComplexNumbers) {
     ComplexNumber z1(2.0, 4.0);
     ComplexNumber z2(0.0, 0.0);
 
