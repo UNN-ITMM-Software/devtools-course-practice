@@ -14,8 +14,6 @@ class Base64Encoder {
  public:
     explicit Base64Encoder(const std::string &message);
 
-    explicit Base64Encoder(std::string &&message);
-
     std::string Encode() const;
 
  private:

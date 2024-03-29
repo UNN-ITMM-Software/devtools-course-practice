@@ -7,9 +7,6 @@
 
 Base64Encoder::Base64Encoder(const std::string &message) : _message(message) {}
 
-Base64Encoder::Base64Encoder(std::string &&message):
-    _message(std::move(message)) {}
-
 // Конвертирует сообщение (с кодировкой ASCII без расширения)
 // в формат base64
 // Реализация:
