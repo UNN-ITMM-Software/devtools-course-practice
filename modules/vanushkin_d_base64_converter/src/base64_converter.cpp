@@ -1,6 +1,8 @@
 // Copyright 2024 Vanushkin Dmitry
 
+#include <algorithm>
 #include <unordered_map>
+#include <stdexcept>
 #include "include/base64_converter.h"
 
 Base64Encoder::Base64Encoder(const std::string &message) : _message(message) {}
@@ -61,7 +63,7 @@ std::vector<char> Base64Encoder
         buffer.push_back(0);
     }
 
-    return std::move(buffer);
+    return buffer;
 }
 
 // Преобразует группу из 6ти битов в число, по заданному
@@ -122,7 +124,7 @@ std::string Base64Decoder::Decode() const {
         auto message = "Encoded message must as least have "
                 + std::to_string(alsoBytesNeedToDecode)
                 + " bytes to decode";
-        throw std::exception(message.c_str());
+        throw std::runtime_error(message);
     }
 
     auto pair = ConvertEncodedMessageBytesFromBase64Alphabet();
@@ -173,7 +175,7 @@ std::pair<std::vector<unsigned char>, size_t>
             _encodedMessage.begin(), _encodedMessage.end(), '=');
 
     if (countOfSpecialByteSymbol > 2) {
-        throw std::exception(
+        throw std::runtime_error(
                 "special symbol must be appears max 2 times at the endl");
     }
 
@@ -183,7 +185,7 @@ std::pair<std::vector<unsigned char>, size_t>
 
     for (const auto &c : expectOnlySpecialSymbolsStringEndOfEncoded)
         if (c != '=')
-            throw std::exception(
+            throw std::runtime_error(
                     "special symbol must be appears max 2 times at the endl");
 
     for (const auto& symbol : _encodedMessage) {
@@ -210,7 +212,7 @@ internal::Base64Alphabet::Base64Alphabet():
 unsigned char internal::Base64Alphabet::GetIndexBySymbol(
         unsigned char symbol) const {
     if (!inverseAlphabet.count(symbol)) {
-        throw std::exception("Unknown symbol");
+        throw std::runtime_error("Unknown symbol");
     }
     return inverseAlphabet.at(symbol);
 }
