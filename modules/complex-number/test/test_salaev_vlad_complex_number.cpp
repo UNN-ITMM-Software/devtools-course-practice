@@ -66,3 +66,10 @@ TEST(Salaev_Vlad_ComplexNumberTest, Can_Multiply_Complex_Numbers) {
     EXPECT_EQ(-5.0, z.getRe());
     EXPECT_EQ(10.0, z.getIm());
 }
+
+TEST(Salaev_Vlad_ComplexNumberTest, Throw_Div_By_Zero) {
+    ComplexNumber z1(1.0, 1.0);
+    ComplexNumber z2(0.0, 0.0);
+
+    EXPECT_THROW(z1 / z2, std::string);
+}
