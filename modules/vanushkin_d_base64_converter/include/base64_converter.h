@@ -19,10 +19,9 @@ class Base64Encoder {
     std::string Encode() const;
 
  private:
-    std::vector<char> ConvertStringToByteBufferWithAlignment(
-            const std::string &str) const;
+    std::vector<char> ConvertStringToBytesByAddingEmptyBytes() const;
 
-    size_t ExtractSixthBitsAsSizeT(
+    unsigned char InterpretSixthBitsGroupToUChar(
             const std::vector<char> &vector, size_t sixthIndex) const;
 };
 

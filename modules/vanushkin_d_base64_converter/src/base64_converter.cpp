@@ -8,8 +8,18 @@ Base64Encoder::Base64Encoder(const std::string &message) : _message(message) {}
 Base64Encoder::Base64Encoder(std::string &&message):
     _message(std::move(message)) {}
 
+// Конвертирует сообщение (с кодировкой ASCII без расширения)
+// в формат base64
+// Реализация:
+//  разбиваем байты сообщения на блоки размера по 6 бит
+//  каждый такой блок, в численной интерпретации
+//  представляет собой число в диапазоне от 0..63,
+//  преобразуем каждый такой блок в символ кодирующего
+//  алфавита (A-Za-z0-9) (блок выступает индексом)
+//  получаем в итоге закодированное сообщение из
+//  преобразованных символов
 std::string Base64Encoder::Encode() const {
-    auto buffer = ConvertStringToByteBufferWithAlignment(_message);
+    auto buffer = ConvertStringToBytesByAddingEmptyBytes();
     auto addedEmptyBytes = buffer.size() - _message.size();
 
     auto sixthsCount = (buffer.size() * 8) / 6;
@@ -18,28 +28,33 @@ std::string Base64Encoder::Encode() const {
     encodedMessage.reserve(sixthsCount);
 
     for (size_t sixthIndex = 0; sixthIndex < sixthsCount; ++sixthIndex) {
-        auto number = ExtractSixthBitsAsSizeT(buffer, sixthIndex);
-        if (number >= 64) {
-            throw std::exception("Awful");
-        }
+        auto number = InterpretSixthBitsGroupToUChar(buffer, sixthIndex);
 
         encodedMessage.push_back(internal::Base64Alphabet::GetInstance()
-        .GetSymbolByIndex(number));
+            .GetSymbolByIndex(number));
     }
 
+    // Пустые байты кодируются символом =
     for (size_t i = 0; i < addedEmptyBytes; ++i) {
         encodedMessage[encodedMessage.size() - 1 - i] = '=';
     }
 
+    // Создаём строку из вектора символов
     return {encodedMessage.cbegin(), encodedMessage.cend()};
 }
 
-std::vector<char> Base64Encoder::ConvertStringToByteBufferWithAlignment(
-        const std::string &str) const {
-    auto remainder = str.size() % 3;
+// Преобразует сообщение в набор символов,
+// добавляя необходимое количество нулевых байтов в конец,
+// такое, чтобы общее число бит было кратно 6,
+// откуда следует, что сумма n + k должна делится на 3,
+// где n - число символов в сообщении (число байт),
+// k - необходимое для делимости нулевые байты
+std::vector<char> Base64Encoder
+    ::ConvertStringToBytesByAddingEmptyBytes() const {
+    auto remainder = _message.size() % 3;
     auto emptyBytesNeeded = (3 - remainder) % 3;
 
-    std::vector<char> buffer(str.cbegin(), str.cend());
+    std::vector<char> buffer(_message.cbegin(), _message.cend());
 
     buffer.reserve(emptyBytesNeeded);
     while (emptyBytesNeeded--) {
@@ -49,26 +64,33 @@ std::vector<char> Base64Encoder::ConvertStringToByteBufferWithAlignment(
     return std::move(buffer);
 }
 
-size_t Base64Encoder::ExtractSixthBitsAsSizeT(
+// Преобразует группу из 6ти битов в число, по заданному
+// индексу группы и выровненному набору байтов сообщения
+// 8 - размер байта в битах (кто не знал)
+unsigned char Base64Encoder::InterpretSixthBitsGroupToUChar(
         const std::vector<char>& vector, size_t sixthIndex) const {
     auto startByteIndex = (6 * sixthIndex) / 8;
     auto startBitIndex = (6 * sixthIndex) % 8;
 
-    auto endBitIndex = (startBitIndex + 5) % 8;
+    auto endBitIndex = (startBitIndex + 6 - 1) % 8;
 
     auto startByte = vector[startByteIndex];
 
-    // Sixth include in byte entirely
+    // Шестёрка битов полностью содержится в байте
     if (endBitIndex > startBitIndex) {
-        // Extract sixth from byte
+        // Смещаем байт к концу, удаляя последние 2 - startBitIndex битов
         auto part = (unsigned char) (startByte >> (2 - startBitIndex));
 
-        // Set first and second bits of part to zero
+        // Set first and second bits of part to zero, 192 is 0x0011 11111
         return part & ~192;
     }
 
+    // Шестёрка содержится в соседних байтах
+    // Достаём часть из первого байта, выравниваем до двух нулевых битов слева
     auto highestPart = ((unsigned char)(startByte << startBitIndex))
             >> (startBitIndex - 1 - endBitIndex);
+
+    // Достаём часть из второго байта, выравнивая по правому краю
     auto lowestPart = vector[startByteIndex + 1] >> (7 - endBitIndex);
 
     return highestPart + lowestPart;
@@ -80,16 +102,25 @@ Base64Decoder::Base64Decoder(const std::string &encodedMessage) :
 Base64Decoder::Base64Decoder(std::string &&encodedMessage) :
     _encodedMessage(std::move(encodedMessage)) {}
 
+// Конвертирует сообщение в формате base64 в исходное сообщение
+// Реализация:
+//  каждый байт интерпретируем,
+//  как символ кодирующего алфавита (A-Za-z0-9), преобразуя байт
+//  в индекс символа из этого алфавита,
+//  получаем новый набор байт, в котором у каждого байта
+//  первые два символа - нулевые, т.е. 6 существенных битов
+//  преобразуем сообщение в новый набор байтов, игнорируя
+//  у каждого исходного байта первые два бита
+//  конвертируем набор байтов в строку
 std::string Base64Decoder::Decode() const {
-    if (_encodedMessage.empty()) {
-        return "";
-    }
+    // Чтобы сообщение могло быть декодированно, существенно число бит
+    // (игрорируя первые два у каждого байта) должно делится на 8
+    // (8 - 2)k ⋮ 8 => 3k ⋮ 4
+    auto alsoBytesNeedToDecode = (3 * _encodedMessage.size()) % 4;
 
-    auto otherBytesNeedToDecode = (3 * _encodedMessage.size()) % 4;
-
-    if (otherBytesNeedToDecode != 0) {
+    if (alsoBytesNeedToDecode != 0) {
         auto message = "Encoded message must as least have "
-                + std::to_string(otherBytesNeedToDecode)
+                + std::to_string(alsoBytesNeedToDecode)
                 + " bytes to decode";
         throw std::exception(message.c_str());
     }
