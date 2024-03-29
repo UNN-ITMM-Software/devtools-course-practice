@@ -98,9 +98,6 @@ unsigned char Base64Encoder::InterpretSixthBitsGroupToUChar(
 Base64Decoder::Base64Decoder(const std::string &encodedMessage) :
     _encodedMessage(encodedMessage) {}
 
-Base64Decoder::Base64Decoder(std::string &&encodedMessage) :
-    _encodedMessage(std::move(encodedMessage)) {}
-
 // Конвертирует сообщение в формате base64 в исходное сообщение
 // Реализация:
 //  каждый байт интерпретируем,

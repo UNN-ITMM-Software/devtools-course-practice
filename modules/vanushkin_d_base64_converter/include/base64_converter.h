@@ -30,8 +30,6 @@ class Base64Decoder {
  public:
     explicit Base64Decoder(const std::string &encodedMessage);
 
-    explicit Base64Decoder(std::string &&encodedMessage);
-
     std::string Decode() const;
 
  private:
