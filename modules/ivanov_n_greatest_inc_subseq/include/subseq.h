@@ -1,4 +1,4 @@
-// Copyright 3100 Ivanov Nikita
+// Copyright 2024 Ivanov Nikita
 
 #pragma once
 
@@ -11,6 +11,9 @@
 #include <ctime>
 
 
+/**
+ * @brief Longest increasing subsequence
+ */
 class LIS{
     std::vector<int> nums;
  public:

@@ -1,4 +1,4 @@
-// Copyright 3100 Ivanov Nikita
+// Copyright 2024 Ivanov Nikita
 
 #include "include/subseq.h"
 
@@ -17,18 +17,33 @@ std::vector<int> LIS::run() {
     if (n == 0)
         return ans;
 
-    ans.push_back(nums[0]);
+    std::vector<int> prev(n, -1);
+    std::vector<int> d(n, 1);
 
-    for (size_t i = 1; i < n; i++) {
-        if (nums[i] > ans.back()) {
-            ans.push_back(nums[i]);
-        } else {
-            int low = lower_bound(ans.begin(), ans.end(),
-                                  nums[i])
-                      - ans.begin();
-            ans[low] = nums[i];
+    for (size_t i = 0; i < n; ++i) {
+        for (size_t j = 0; j < i; ++j) {
+            if (nums[j] < nums[i] && d[j] + 1 > d[i]) {
+                d[i] = d[j] + 1;
+                prev[i] = j;
+            }
         }
     }
+
+    int pos = 0;
+    int length = d[0];
+    for (size_t i = 0; i < n; ++i) {
+        if (d[i] > length) {
+            pos = i;
+            length = d[i];
+        }
+    }
+
+    // восстановление ответа
+    while (pos != -1) {
+        ans.push_back(nums[pos]);
+        pos = prev[pos];
+    }
+    std::reverse(ans.begin(), ans.end());
 
     return ans;
 }
