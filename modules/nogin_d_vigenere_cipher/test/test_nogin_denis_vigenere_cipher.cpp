@@ -87,6 +87,15 @@ TEST(Nogin_Denis_VigenereCipherTest, test_decipher_4) {
   EXPECT_EQ("Jfj, prg, ydmwj, bjmw!", decipher);
 }
 
+TEST(Nogin_Denis_VigenereCipherTest, test_invalid_key) {
+  std::string data("One, two, three, four!");
+  std::string key1("Five-1--4234--523-523--./$#@");
+  std::string key2{};
+
+  ASSERT_EQ(vigenereCipher(data, key1), std::string{});
+  ASSERT_EQ(vigenereCipher(data, key2), std::string{});
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
