@@ -63,3 +63,20 @@ TEST(Videneva_Ekaterina_ComplexNumberTest, Can_Create_Copy_ComplexNumbers) {
 
     ASSERT_TRUE(z1 == z2);
 }
+
+TEST(Videneva_Ekaterina_ComplexNumberTest, Division_By_Zero_ComplexNumbers) {
+    ComplexNumber z1(2.0, 4.0);
+    ComplexNumber z2(0.0, 0.0);
+
+    ASSERT_ANY_THROW(z1 / z2);
+}
+
+TEST(Videneva_Ekaterina_ComplexNumberTest, Multiplication_By_Zero_ComplexNumbers) {
+    ComplexNumber z1(2.0, 4.0);
+    ComplexNumber z2(0.0, 0.0);
+
+    ComplexNumber result1 = z1 * z2;
+
+    EXPECT_DOUBLE_EQ(result1.getRe(), 0.0);
+    EXPECT_DOUBLE_EQ(result1.getIm(), 0.0);
+}
