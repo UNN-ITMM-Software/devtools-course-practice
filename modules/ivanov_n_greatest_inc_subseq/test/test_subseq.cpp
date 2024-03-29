@@ -15,7 +15,7 @@ TEST(Test_case_ivanov_lis, run_dec_nums) {
     std::vector<int> nums{5, 4, 3, 2, 1, 0};
     LIS lis(nums);
     auto res = lis.run();
-    ASSERT_EQ((int)res.size(), 1);
+    ASSERT_EQ(res.size(), 1ull);
     ASSERT_EQ(res[0], 5);
 }
 
@@ -32,7 +32,7 @@ TEST(Test_case_ivanov_lis, add_num) {
 
     ASSERT_NO_THROW(lis.addNumber(-1));
 
-    ASSERT_EQ(lis.getSize(), 7);
+    ASSERT_EQ(lis.getSize(), 7ull);
 }
 
 TEST(Test_case_ivanov_lis, run1) {
@@ -40,11 +40,8 @@ TEST(Test_case_ivanov_lis, run1) {
     LIS lis(nums);
     auto res = lis.run();
 
-    ASSERT_EQ(res[0], 10);
-    ASSERT_EQ(res[1], 22);
-    ASSERT_EQ(res[2], 33);
-    ASSERT_EQ(res[3], 50);
-    ASSERT_EQ(res[4], 60);
+    std::vector<int> ans{10, 22, 33, 50, 60};
+    ASSERT_EQ(res, ans);
 }
 
 TEST(Test_case_ivanov_lis, run2) {
@@ -52,7 +49,6 @@ TEST(Test_case_ivanov_lis, run2) {
     LIS lis(nums);
     auto res = lis.run();
 
-    ASSERT_EQ(res[0], 3);
-    ASSERT_EQ(res[1], 4);
-    ASSERT_EQ(res[2], 9);
+    std::vector<int> ans{3, 4, 9};
+    ASSERT_EQ(res, ans);
 }

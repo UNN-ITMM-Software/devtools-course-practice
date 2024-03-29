@@ -6,8 +6,8 @@ void LIS::addNumber(int a) {
     nums.push_back(a);
 }
 
-int LIS::getSize() {
-    return static_cast<int>(nums.size());
+size_t LIS::getSize() {
+    return nums.size();
 }
 
 std::vector<int> LIS::run() {

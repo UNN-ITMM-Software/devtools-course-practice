@@ -17,11 +17,11 @@
 class LIS{
     std::vector<int> nums;
  public:
-    LIS(): nums(std::vector<int>()) {}
-    explicit LIS(std::vector<int> &nums_): nums(nums_) {}
+    LIS(): nums() {}
+    explicit LIS(const std::vector<int> &nums_): nums(nums_) {}
 
     void addNumber(int a);
-    int getSize();
+    size_t getSize();
 
     std::vector<int> run();
 };
