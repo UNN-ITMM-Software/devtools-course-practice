@@ -76,3 +76,48 @@ TEST(Vanuskin_Dmitry_Base64DecoderTests, DecodeEncodedFirstTestCodeAsMessage) {
 
     ASSERT_EQ(Base64Decoder(encodedMessage).Decode(), expectResult);
 }
+
+TEST(Vanuskin_Dmitry_Base64DecoderTests,
+     DecodeMessageWithTooMuchSpecificSymbols) {
+    auto encodedMessage = "===";
+
+    auto decoder = Base64Decoder(encodedMessage);
+
+    ASSERT_ANY_THROW(decoder.Decode());
+}
+
+TEST(Vanuskin_Dmitry_Base64DecoderTests,
+     DecodeMessageWithInvalidSpecificSymbolsPositions) {
+    auto encodedMessage = "A=B=C";
+
+    auto decoder = Base64Decoder(encodedMessage);
+
+    ASSERT_ANY_THROW(decoder.Decode());
+}
+
+TEST(Vanuskin_Dmitry_Base64DecoderTests,
+     DecodeMessageWithInvalidSymbols) {
+    auto encodedMessage = ";'\n";
+
+    auto decoder = Base64Decoder(encodedMessage);
+
+    ASSERT_ANY_THROW(decoder.Decode());
+}
+
+TEST(Vanuskin_Dmitry_Base64DecoderTests,
+     DecodeMessageWithNotEnoughSpecificSymbols) {
+    auto encodedMessage = "QQ=";
+
+    auto decoder = Base64Decoder(encodedMessage);
+
+    ASSERT_ANY_THROW(decoder.Decode());
+}
+
+TEST(Vanuskin_Dmitry_Base64DecoderTests,
+     DecodeMessageWithOnlySpeciicSymbols) {
+    auto encodedMessage = "==";
+
+    auto decoder = Base64Decoder(encodedMessage);
+
+    ASSERT_ANY_THROW(decoder.Decode());
+}
