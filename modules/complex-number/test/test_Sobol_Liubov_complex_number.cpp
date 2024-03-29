@@ -40,3 +40,9 @@ TEST(Sobol_Liubov_ComplexNumberTest, Can_Divide_Complex_numbers) {
     ASSERT_DOUBLE_EQ(2, answer.getRe());
     ASSERT_DOUBLE_EQ(0.0, answer.getIm());
 }
+TEST(Sobol_Liubov_ComplexNumberTest, Can_Not_Divide_on_zero) {
+    ComplexNumber z1(0.0, 0.0);
+    ComplexNumber z2(2.0, 2.0);
+
+    ASSERT_ANY_THROW(z2 / z1);
+}
