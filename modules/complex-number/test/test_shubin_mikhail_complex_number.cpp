@@ -1,8 +1,8 @@
 // Copyright 2024 Shubin Mikhail
 
-#include <random>
-
 #include <gtest/gtest.h>
+
+#include <random>
 
 #include "include/complex_number.h"
 
@@ -83,8 +83,12 @@ TEST(Shubin_Mikhail_ComplexNumberTest, Can_Div_Random) {
     ComplexNumber z2(re2, im2);
     ComplexNumber z = z1 / z2;
 
-    EXPECT_EQ(round_double((re1 * re2 + im1 * im2) / (re2 * re2 + im2 * im2), 8), round_double(z.getRe(), 8));
-    EXPECT_EQ(round_double((im1 * re2 - re1 * im2) / (re2 * re2 + im2 * im2), 8), round_double(z.getIm(), 8));
+    EXPECT_EQ(round_double((re1 * re2 + im1 * im2) /
+              (re2 * re2 + im2 * im2), 8),
+              round_double(z.getRe(), 8));
+    EXPECT_EQ(round_double((im1 * re2 - re1 * im2) /
+              (re2 * re2 + im2 * im2), 8),
+              round_double(z.getIm(), 8));
 }
 
 TEST(Shubin_Mikhail_ComplexNumberTest, Can_Check_Eq) {
