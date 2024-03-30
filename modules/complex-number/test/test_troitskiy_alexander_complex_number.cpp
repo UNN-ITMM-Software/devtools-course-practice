@@ -55,6 +55,6 @@ TEST(Troitskiy_Alexander_ComplexNumberDivisionTest, Division) {
     ComplexNumber z2(3.0, 4.0);
 
     ComplexNumber division = z1 / z2;
-    EXPECT_DOUBLE_EQ(division.getRe(), 0.44); 
+    EXPECT_DOUBLE_EQ(division.getRe(), 0.44);
     EXPECT_DOUBLE_EQ(division.getIm(), 0.08);
 }
