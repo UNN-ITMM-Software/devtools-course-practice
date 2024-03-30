@@ -1,0 +1,114 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_run_use_option_e
+    COMMAND ${APPLICATION} -e hey "Hello World!"
+)
+set_tests_properties (${prefix}_run_use_option_e PROPERTIES
+    PASS_REGULAR_EXPRESSION "Oijss Uvvjk!"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_run_use_option_d
+    COMMAND ${APPLICATION} -d hey "Oijss Uvvjk!"
+)
+set_tests_properties (${prefix}_run_use_option_d PROPERTIES
+    PASS_REGULAR_EXPRESSION "Hello World!"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_error_more_args
+    COMMAND ${APPLICATION} 1 2 3 4 5
+)
+set_tests_properties (${prefix}_error_more_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: incorrect number of arguments"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_error_unknown_option
+    COMMAND ${APPLICATION} -blablabla hey "Hello World!"
+)
+set_tests_properties (${prefix}_error_unknown_option PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: unknown argument '-blablabla'"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_invalid_key
+    COMMAND ${APPLICATION} -d hey3_ "Hello World!"
+)
+set_tests_properties (${prefix}_invalid_key PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: invalid key"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_success_test_1_option_e
+    COMMAND ${APPLICATION} -e devtools "abrakadabra 2024!"
+)
+set_tests_properties (${prefix}_success_test_1_option_e PROPERTIES
+    PASS_REGULAR_EXPRESSION "dfmtyoosevv 2024!"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_success_test_2_option_e
+    COMMAND ${APPLICATION} -e ping "./%@! pong"
+)
+set_tests_properties (${prefix}_success_test_2_option_e PROPERTIES
+    PASS_REGULAR_EXPRESSION "./%@! ewam"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_success_test_2_option_d
+    COMMAND ${APPLICATION} -d ping "./%@! ewam"
+)
+set_tests_properties (${prefix}_success_test_2_option_d PROPERTIES
+    PASS_REGULAR_EXPRESSION "./%@! pong"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_test_random_pos_help
+    COMMAND ${APPLICATION} -e test --help
+)
+set_tests_properties (${prefix}_test_random_pos_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
