@@ -15,7 +15,7 @@ std::string VigenereApplication::operator()(int argc, char* argv[]) {
   }
 
   if (mMessage.empty()) {
-    help(argv[0], "invalid aguments");
+    help(argv[0], "invalid key");
   }
 
   return mMessage;
