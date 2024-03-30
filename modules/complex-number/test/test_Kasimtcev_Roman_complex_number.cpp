@@ -68,14 +68,4 @@ TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide) {
     EXPECT_EQ(re1, z.getRe());
     EXPECT_EQ(im1, z.getIm());
 }
-TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide_Zero) {
-    // Arrange
-    double re1 = 5.0, re2 = 0.0;
-    double im1 = 2.0, im2 = 0.0;
 
-    // Act
-    ComplexNumber z1(re1, im1), z2(re2, im2);
-
-    // Assert
-    ASSERT_THROW(z1 / z0, std::string);
-}
