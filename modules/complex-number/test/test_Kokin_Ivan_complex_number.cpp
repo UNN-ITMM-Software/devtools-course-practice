@@ -35,7 +35,5 @@ TEST(Kokin_Ivan_ComplexNumberTest, falseTrue) {
 TEST(Kokin_Ivan_ComplexNumberTest, TestZeroDel) {
     ComplexNumber z1(123, 3422);
     ComplexNumber z2(0, 0);
-    ComplexNumber z3 = z1 / z2;
-    ASSERT_EQ(z3.getRe(), 0);
-    ASSERT_EQ(z3.getIm(), 0);
+    ASSERT_THROW(z1 / z2,  std::invalid_argument);
 }
