@@ -125,7 +125,8 @@ TEST(Konovalov_Igor_ComplexNumberTest, can_add_correctly_fractional_numbers) {
   EXPECT_EQ(im_res, res.getIm());
 }
 
-TEST(Konovalov_Igor_ComplexNumberTest, DISABLED_can_substract_correctly_fractional_numbers) {
+TEST(Konovalov_Igor_ComplexNumberTest, 
+  DISABLED_can_substract_correctly_fractional_numbers) {
   // Arrange
   double re1 = 1.5;
   double im1 = 1.5;
@@ -144,7 +145,8 @@ TEST(Konovalov_Igor_ComplexNumberTest, DISABLED_can_substract_correctly_fraction
   EXPECT_EQ(im_res, res.getIm());
 }
 
-TEST(Konovalov_Igor_ComplexNumberTest, can_multiply_correctly_fractional_numbers) {
+TEST(Konovalov_Igor_ComplexNumberTest, 
+  can_multiply_correctly_fractional_numbers) {
   // Arrange
   double re1 = 1.5;
   double im1 = 1.6;
@@ -163,7 +165,8 @@ TEST(Konovalov_Igor_ComplexNumberTest, can_multiply_correctly_fractional_numbers
   EXPECT_EQ(im_res, res.getIm());
 }
 
-TEST(Konovalov_Igor_ComplexNumberTest, DISABLED_can_divide_correctly_fractional_numbers) {
+TEST(Konovalov_Igor_ComplexNumberTest,
+  DISABLED_can_divide_correctly_fractional_numbers) {
   // Arrange
   double re1 = 1.5;
   double im1 = 1.6;
