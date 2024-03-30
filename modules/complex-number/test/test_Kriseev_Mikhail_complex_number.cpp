@@ -61,7 +61,7 @@ TEST(Kriseev_Mikhail_ComplexNumberTest, AssignmentOperator) {
 }
 
 TEST(Kriseev_Mikhail_ComplexNumberTest, AdditionOperator) {
-   double re1 = 0.4;
+    double re1 = 0.4;
     double re2 = -9.0;
     double im1 = 2.4;
     double im2 = 2.5;
