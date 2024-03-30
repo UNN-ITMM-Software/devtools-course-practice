@@ -79,3 +79,10 @@ TEST(Morgachev_Stepan_ComlpexNumberTests, nonEqualTest) {
 
     EXPECT_FALSE(first == second);
 }
+
+TEST(Morgachev_Stepan_ComlpexNumberTests, divideByZero) {
+    ComplexNumber first = ComplexNumber(1.0, 1.0);
+    ComplexNumber zero = ComplexNumber(0.0, 0.0);
+
+    ASSERT_ANY_THROW(first / zero);
+}
