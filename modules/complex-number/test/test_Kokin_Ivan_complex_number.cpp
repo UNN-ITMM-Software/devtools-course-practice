@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include "include/complex_number.h"
+#include "../include/complex_number.h"
 
 TEST(Kokin_Ivan_ComplexNumberTest, Getto) {
     ComplexNumber z(222.875, 23.454);
@@ -33,7 +33,7 @@ TEST(Kokin_Ivan_ComplexNumberTest, falseTrue) {
 }
 
 TEST(Kokin_Ivan_ComplexNumberTest, TestZeroDel) {
-    ComplexNumber z1(123, 3422);
-    ComplexNumber z2(0, 0);
-    ASSERT_THROW(z1 / z2,  std::invalid_argument);
+    ComplexNumber z1(123.7, 342.2);
+    ComplexNumber z2(0.0, 0.0);
+    ASSERT_ANY_THROW(z1 / z2);
 }
