@@ -1,6 +1,8 @@
 // Copyright 2024 Kuznetsov Artem
 #pragma once
 
+#include <string>
+
 #include "include/vigenere_cipher.h"
 
 class VigenereApplication {
