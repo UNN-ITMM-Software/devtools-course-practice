@@ -17,7 +17,7 @@ TEST(Saratova_Marina_Complex_Numbers, Test_Can_Create_Complex_Number) {
     EXPECT_DOUBLE_EQ(1.0, z.getIm());
 }
 
-TEST(Saratova_Marina_Complex_Numbers, Test_Operator_Equality_Of_Complex_Numbers) {
+TEST(Saratova_Marina_Complex_Numbers, Test_Operator_Equality) {
   ComplexNumber z1(2.0, 3.0);
   ComplexNumber z2(4.0, 5.0);
   ComplexNumber z3(2.0, 3.0);
