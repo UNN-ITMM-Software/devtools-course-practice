@@ -72,3 +72,13 @@ TEST(Kochetov_Nikolay_ComplexNumberTest, Can_Subtract_negative) {
     ComplexNumber z3(re3, im3);
     EXPECT_EQ(z1 - z2, z3);
 }
+
+TEST(Kochetov_Nikolay_ComplexNumberTest, Cant_Devide_by_zero) {
+    double re1 = 14.4;
+    double im1 = 1.0;
+    ComplexNumber z1(re1, im1);
+    double re2 = 0.0;
+    double im2 = 0.0;
+    ComplexNumber z2(re2, im2);
+    ASSERT_ANY_THROW(z1 / z2);
+}
