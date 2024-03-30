@@ -102,3 +102,13 @@ set_tests_properties (${prefix}_success_test_2_option_d PROPERTIES
     PASS_REGULAR_EXPRESSION "./%@! pong"
     LABELS "${MODULE}"
 )
+
+
+add_test(
+    NAME ${prefix}_test_random_pos_help
+    COMMAND ${APPLICATION} -e test --help
+)
+set_tests_properties (${prefix}_test_random_pos_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
