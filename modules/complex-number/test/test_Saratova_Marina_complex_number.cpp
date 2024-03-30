@@ -35,6 +35,14 @@ TEST(Saratova_Marina_Complex_Numbers, Test_Sum_Of_Complex_Numbers) {
   EXPECT_DOUBLE_EQ(8.0, z.getIm());
 }
 
+TEST(Saratova_Marina_Complex_Numbers, Test_Sum_With_Fraction) {
+  ComplexNumber a(2.1, 3.2);
+  ComplexNumber b(4.5, 5.6);
+  ComplexNumber z = a + b;
+  EXPECT_DOUBLE_EQ(6.6, z.getRe());
+  EXPECT_DOUBLE_EQ(8.8, z.getIm());
+}
+
 TEST(Saratova_Marina_Complex_Numbers, Test_Difference_Of_Complex_Numbers) {
   ComplexNumber a(2.0, 3.0);
   ComplexNumber b(4.0, 5.0);
@@ -43,12 +51,28 @@ TEST(Saratova_Marina_Complex_Numbers, Test_Difference_Of_Complex_Numbers) {
   EXPECT_DOUBLE_EQ(2.0, z.getIm());
 }
 
+TEST(Saratova_Marina_Complex_Numbers, Test_Difference_With_Fraction) {
+  ComplexNumber a(2.2, 3.1);
+  ComplexNumber b(4.5, 5.9);
+  ComplexNumber z = b - a;
+  EXPECT_DOUBLE_EQ(2.3, z.getRe());
+  EXPECT_DOUBLE_EQ(2.8, z.getIm());
+}
+
 TEST(Saratova_Marina_Complex_Numbers, Test_Multiply_Of_Complex_Numbers) {
   ComplexNumber a(2.0, 3.0);
   ComplexNumber b(4.0, 5.0);
   ComplexNumber z = a * b;
   EXPECT_DOUBLE_EQ(2.0 * 4.0 - 3.0 * 5.0, z.getRe());
   EXPECT_DOUBLE_EQ(2.0 * 5.0 + 3.0 * 4.0, z.getIm());
+}
+
+TEST(Saratova_Marina_Complex_Numbers, Test_Multiply_With_Fraction) {
+  ComplexNumber a(2.2, 3.1);
+  ComplexNumber b(4.5, 5.7);
+  ComplexNumber z = a * b;
+  EXPECT_DOUBLE_EQ(2.2 * 4.5 - 3.1 * 5.7, z.getRe());
+  EXPECT_DOUBLE_EQ(2.2 * 5.7 + 3.1 * 4.5, z.getIm());
 }
 
 TEST(Saratova_Marina_Complex_Numbers, Test_Divide_Complex_Number_By_Zero) {
