@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include "/include/complex_number.h"
+#include "include/complex_number.h"
 
 TEST(Kokin_Ivan_ComplexNumberTest, Getto) {
     ComplexNumber z(222.875, 23.454);
