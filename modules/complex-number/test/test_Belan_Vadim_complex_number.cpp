@@ -46,3 +46,29 @@ TEST(Belan_Vadim_ComplexNumberTest, Multiply_Two_Complex_Numbers) {
   EXPECT_EQ(re1 * re2 - im1 * im2, product.getRe());
   EXPECT_EQ(re1 * im2 + im1 * re2, product.getIm());
 }
+
+TEST(Belan_Vadim_ComplexNumberTest, Divide_Two_Complex_Numbers) {
+  double re1 = 4.0;
+  double im1 = 6.0;
+  double re2 = 2.0;
+  double im2 = 3.0;
+  ComplexNumber z1(re1, im1);
+  ComplexNumber z2(re2, im2);
+  ComplexNumber quotient = z1 / z2;
+  double expected_re = (re1 * re2 + im1 * im2) / (re2 * re2 + im2 * im2);
+  double expected_im = (im1 * re2 - re1 * im2) / (re2 * re2 + im2 * im2);
+  EXPECT_EQ(expected_re, quotient.getRe());
+  EXPECT_EQ(expected_im, quotient.getIm());
+}
+
+TEST(Belan_Vadim_ComplexNumberTest, Divide_By_Zero) {
+  double re1 = 2.0;
+  double im1 = 3.0;
+  double re2 = 0.0;
+  double im2 = 0.0;
+  ComplexNumber z1(re1, im1);
+  ComplexNumber z2(re2, im2);
+  ComplexNumber quotient = z1 / z2;
+  EXPECT_EQ(std::numeric_limits<double>::infinity(), quotient.getRe());
+  EXPECT_EQ(std::numeric_limits<double>::infinity(), quotient.getIm());
+}
