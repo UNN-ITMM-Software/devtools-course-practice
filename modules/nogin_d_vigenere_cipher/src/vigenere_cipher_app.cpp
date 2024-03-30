@@ -6,18 +6,17 @@
 #include <sstream>
 
 std::string VigenereApplication::operator()(int argc, char* argv[]) {
-  if (!validate(argc, argv)) return mMessage;
+  if (validate(argc, argv)) {
+    if (mArgs.mOption == Option::ENCRYPT) {
+      mMessage = vigenereCipher(mArgs.mStr, mArgs.mKey);
+    } else {
+      mMessage = vigenereDecipher(mArgs.mStr, mArgs.mKey);
+    }
 
-  if (mArgs.mOption == Option::ENCRYPT) {
-    mMessage = vigenereCipher(mArgs.mStr, mArgs.mKey);
-  } else {
-    mMessage = vigenereDecipher(mArgs.mStr, mArgs.mKey);
+    if (mMessage.empty()) {
+      help(argv[0], "invalid key");
+    }
   }
-
-  if (mMessage.empty()) {
-    help(argv[0], "invalid key");
-  }
-
   return mMessage;
 }
 
