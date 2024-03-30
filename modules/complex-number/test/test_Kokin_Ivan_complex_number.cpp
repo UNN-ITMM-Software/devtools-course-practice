@@ -33,7 +33,7 @@ TEST(Kokin_Ivan_ComplexNumberTest, falseTrue) {
 }
 
 TEST(Kokin_Ivan_ComplexNumberTest, TestZeroDel) {
-    ComplexNumber z1(12.43, 34.54);
+    ComplexNumber z1(123, 3422);
     ComplexNumber z2(0, 0);
     ComplexNumber z3 = z1 / z2;
     ASSERT_EQ(z3.getRe(), 0);
