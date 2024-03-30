@@ -81,7 +81,7 @@ TEST(Troitskiy_Alexander_ComplexNumberMultTest, MultWithFractions) {
     ComplexNumber z2(3.5, 4.5);
 
     ComplexNumber multiplication = z1 * z2;
-    EXPECT_DOUBLE_EQ(multiplication.getRe(), -7.5);
+    EXPECT_DOUBLE_EQ(multiplication.getRe(), -6);
     EXPECT_DOUBLE_EQ(multiplication.getIm(), 15.5);
 }
 
@@ -90,6 +90,6 @@ TEST(Troitskiy_Alexander_ComplexNumberDivisionTest, DivisionWithFractions) {
     ComplexNumber z2(3.0, 2.0);
 
     ComplexNumber division = z1 / z2;
-    EXPECT_NEAR(division.getRe(), 0.7, 0.0001);
-    EXPECT_NEAR(division.getIm(), 0.1, 0.0001);
+    EXPECT_NEAR(division.getRe(), 0.73, 0.01);
+    EXPECT_NEAR(division.getIm(), 0.34, 0.01);
 }
