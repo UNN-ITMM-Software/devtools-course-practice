@@ -67,7 +67,7 @@ TEST(Troitskiy_Alexander_ComplexNumberAdditionTest, AdditionWithFractions) {
     EXPECT_DOUBLE_EQ(sum.getIm(), 7.0);
 }
 
-TEST(Troitskiy_Alexander_ComplexNumberSubtractionTest, SubtractionWithFractions) {
+TEST(Troitskiy_Alexander_ComplexNumberSubTest, SubWithFractions) {
     ComplexNumber z1(2.5, 3.5);
     ComplexNumber z2(1.5, 2.5);
 
@@ -76,7 +76,7 @@ TEST(Troitskiy_Alexander_ComplexNumberSubtractionTest, SubtractionWithFractions)
     EXPECT_DOUBLE_EQ(difference.getIm(), 1.0);
 }
 
-TEST(Troitskiy_Alexander_ComplexNumberMultiplicationTest, MultiplicationWithFractions) {
+TEST(Troitskiy_Alexander_ComplexNumberMultTest, MultWithFractions) {
     ComplexNumber z1(1.5, 2.5);
     ComplexNumber z2(3.5, 4.5);
 
