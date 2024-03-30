@@ -125,7 +125,7 @@ TEST(Konovalov_Igor_ComplexNumberTest, can_add_correctly_fractional_numbers) {
   EXPECT_EQ(im_res, res.getIm());
 }
 
-TEST(Konovalov_Igor_ComplexNumberTest, 
+TEST(Konovalov_Igor_ComplexNumberTest,
   DISABLED_can_substract_correctly_fractional_numbers) {
   // Arrange
   double re1 = 1.5;
@@ -145,7 +145,7 @@ TEST(Konovalov_Igor_ComplexNumberTest,
   EXPECT_EQ(im_res, res.getIm());
 }
 
-TEST(Konovalov_Igor_ComplexNumberTest, 
+TEST(Konovalov_Igor_ComplexNumberTest,
   can_multiply_correctly_fractional_numbers) {
   // Arrange
   double re1 = 1.5;
