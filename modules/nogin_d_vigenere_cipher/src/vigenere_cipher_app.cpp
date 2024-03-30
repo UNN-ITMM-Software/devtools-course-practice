@@ -39,11 +39,10 @@ bool VigenereApplication::validate(int argc, char* argv[]) {
     }
   }
 
-  if (std::strcmp(argv[1], "-e") == 0 || std::strcmp(argv[1], "-d") == 0) {
-    if (std::strcmp(argv[1], "-e") == 0)
-      mArgs.mOption = Option::ENCRYPT;
-    else
-      mArgs.mOption = Option::DECRYPT;
+  if (std::strcmp(argv[1], "-e") == 0) {
+    mArgs.mOption = Option::ENCRYPT;
+  } else if (std::strcmp(argv[1], "-d") == 0) {
+    mArgs.mOption = Option::DECRYPT;
   } else {
     std::stringstream msgError;
     msgError << "unknown argument '" << argv[1] << "'\n";
