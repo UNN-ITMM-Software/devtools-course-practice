@@ -10,12 +10,12 @@ TEST(Kokin_Ivan_ComplexNumberTest, Getto) {
     ASSERT_DOUBLE_EQ(z.getIm(), 23.454);
 }
 
-TEST(Kokin_Ivan_ComplexNumberTest, CanUmn) {
+TEST(Kokin_Ivan_ComplexNumberTest, CanSum) {
     ComplexNumber z1(11, 12);
     ComplexNumber z2(13, 14);
-    ComplexNumber z3 = z1 * z2;
-    ASSERT_EQ(z3.getRe(), 143);
-    ASSERT_EQ(z3.getIm(), 168);
+    ComplexNumber z3 = z1 + z2;
+    ASSERT_EQ(z3.getRe(), 24);
+    ASSERT_EQ(z3.getIm(), 26);
 }
 
 TEST(Kokin_Ivan_ComplexNumberTest, Setto) {
