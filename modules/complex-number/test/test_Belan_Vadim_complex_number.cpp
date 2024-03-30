@@ -58,3 +58,13 @@ TEST(Belan_Vadim_ComplexNumberTest, Divide_Two_Complex_Numbers) {
   EXPECT_EQ(re1 / re2, quotient.getRe());
   EXPECT_EQ(im1 / re2, quotient.getIm());
 }
+
+TEST(Belan_Vadim_ComplexNumberTest, Divide_By_Zero) {
+  double re1 = 4.0;
+  double im1 = 5.0;
+  double re2 = 0.0;
+  double im2 = 0.0;
+  ComplexNumber z1(re1, im1);
+  ComplexNumber z2(re2, im2);
+  EXPECT_THROW(z1 / z2, std::string);
+}
