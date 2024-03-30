@@ -80,3 +80,27 @@ TEST(Tushentsova_Karina_ComplexNumberTest, Can_Compare) {
     ASSERT_TRUE(z2 == z3);
     ASSERT_FALSE(z1 == z2);
 }
+
+TEST(Tushentsova_Karina_ComplexNumberTest, Can_Create_Fractional) {
+    double re = 1.5, im = 2.0;
+
+    ComplexNumber z(re, im);
+
+    EXPECT_EQ(re, z.getRe());
+    EXPECT_EQ(im, z.getIm());
+}
+
+TEST(Tushentsova_Karina_ComplexNumberTest, Can_Addition_Fractional) {
+    ComplexNumber z1(1.3, 2.1), z2(1.0, 1.5);
+
+    ComplexNumber result = z1 + z2;
+
+    EXPECT_EQ(result.getRe(), 2.3);
+    EXPECT_EQ(result.getIm(), 3.6);
+}
+
+TEST(Tushentsova_Karina_ComplexNumberTest, Can_Divide_Fractional_By_Zero) {
+    ComplexNumber z1(1.5, 2.5), z2(0.0, 0.0);
+
+    ASSERT_THROW(z1 / z2, std::string);
+}
