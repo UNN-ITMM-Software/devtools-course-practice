@@ -85,3 +85,16 @@ TEST(Alesia_Shemiakina_ComplexNumberTest, Check_Mult_On_Zero) {
     EXPECT_EQ(0.0, z3.getRe());
     EXPECT_EQ(0.0, z3.getIm());
 }
+
+TEST(Alesia_Shemiakina_ComplexNumberTest, Check_Divide_On_Zero) {
+    // Arrange
+    double re = 2.1;
+    double im = 3.5;
+
+    // Act
+    ComplexNumber z1(re, im);
+    ComplexNumber z2(0.0, 0.0);
+
+    // Assert
+    ASSERT_ANY_THROW(z1 / z2);
+}
