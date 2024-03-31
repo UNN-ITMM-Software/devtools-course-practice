@@ -46,3 +46,9 @@ TEST(Vinokurov_Ivan_ComplexNumberTest, testDivisionByZero) {
     ComplexNumber z2(0.0, 0.0);
     EXPECT_THROW(z1 / z2, std::string);
 }
+
+TEST(Vinokurov_Ivan_ComplexNumberTest, testFractionalCreation) {
+    ComplexNumber z(1.33, 4.424);
+    EXPECT_DOUBLE_EQ(1.33, z.getRe());
+    EXPECT_DOUBLE_EQ(4.424, z.getIm());
+}
