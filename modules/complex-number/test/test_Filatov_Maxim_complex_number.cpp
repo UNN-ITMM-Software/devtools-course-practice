@@ -3,6 +3,7 @@
 #include <gtest/gtest.h>
 #include <tuple>
 #include <utility>
+#include <climits>
 #include "include/complex_number.h"
 
 class Filatov_Maxim_ComplexNumberTestWithFirstPairValues
