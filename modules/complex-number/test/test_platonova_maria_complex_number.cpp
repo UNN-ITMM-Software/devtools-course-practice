@@ -27,13 +27,14 @@ TEST(Platonova_Maria_ComlpexNumberTests, setTest) {
 }
 
 TEST(Platonova_Maria_ComlpexNumberTests, sumTest) {
-    ComplexNumber first = ComplexNumber(1.0, 1.0);
-    ComplexNumber second = ComplexNumber(2.0, 2.0);
+    
+    ComplexNumber a(5.2, 7.1);
+    ComplexNumber b(3.3, 9.9);
 
-    ComplexNumber sum = first + second;
+    ComplexNumber c = a + b;
 
-    ASSERT_EQ(sum.getRe(), 3.0);
-    ASSERT_EQ(sum.getIm(), 3.0);
+    EXPECT_DOUBLE_EQ(c.getRe(), 8.5);
+    EXPECT_DOUBLE_EQ(c.getIm(), 17.0);
 }
 
 TEST(Platonova_Maria_ComlpexNumberTests, subTest) {
