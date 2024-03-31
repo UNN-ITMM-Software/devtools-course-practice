@@ -37,8 +37,8 @@ TEST(Vinokurov_Ivan_ComplexNumberTest, testDivision) {
     ComplexNumber z1(2.0, 3.0);
     ComplexNumber z2(1.0, -1.0);
     ComplexNumber result = z1 / z2;
-    EXPECT_EQ(result.getRe(), 2.5);
-    EXPECT_EQ(result.getIm(), 0.5);
+    EXPECT_EQ(result.getRe(), -0.5);
+    EXPECT_EQ(result.getIm(), 2.5);
 }
 
 TEST(Vinokurov_Ivan_ComplexNumberTest, testDivisionByZero) {
