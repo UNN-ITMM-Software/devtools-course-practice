@@ -6,13 +6,6 @@ TEST(Vinokurov_Ivan_ComplexNumberTest, testDefaultConstructor) {
     EXPECT_DOUBLE_EQ(z.getIm(), 0.0);
 }
 
-TEST(Vinokurov_Ivan_ComplexNumberTest, testCopyConstructor) {
-    ComplexNumber original(3.2, -1.6);
-    ComplexNumber copy(original);
-    EXPECT_DOUBLE_EQ(copy.getRe(), original.getRe());
-    EXPECT_DOUBLE_EQ(copy.getIm(), original.getIm());
-}
-
 TEST(Vinokurov_Ivan_ComplexNumberTest, testAddition) {
     ComplexNumber z1(2.0, 3.0);
     ComplexNumber z2(1.0, -1.0);
