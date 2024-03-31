@@ -1,3 +1,4 @@
+// Copyright 2024 Karagodin Andrey
 #include "include/complex_number.h"
 #include <gtest/gtest.h>
 
