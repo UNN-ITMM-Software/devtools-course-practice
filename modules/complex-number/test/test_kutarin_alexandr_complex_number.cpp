@@ -11,8 +11,8 @@ TEST(Kutarin_Alexandr_ComplexNumberTest, Can_Create_Zero) {
 
     // Act
     ComplexNumber z(re, im);
-   // Assert
- 
+    // Assert
+
     EXPECT_EQ(re, z.getRe());
     EXPECT_EQ(im, z.getIm());
 }
