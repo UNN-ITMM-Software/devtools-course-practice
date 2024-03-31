@@ -96,8 +96,8 @@ TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide_Drob) {
 }
 TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide_By_Zero) {
     // Arrange
-    double re1 = 5.5, re2 =0;
-    double im1 = 4.1, im2 =0;
+    double re1 = 5.5, re2 =0.0;
+    double im1 = 4.1, im2 =0.0;
 
     // Act
     ComplexNumber z1(re1, im1);
