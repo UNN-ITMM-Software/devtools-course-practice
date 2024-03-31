@@ -91,6 +91,15 @@ TEST(Shubin_Mikhail_ComplexNumberTest, Can_Div_Random) {
               round_double(z.getIm(), 8));
 }
 
+TEST(Shubin_Mikhail_ComplexNumberTest, Cannot_Divide_By_Zero) {
+    std::uniform_real_distribution<double> unif(MIN_RAND, MAX_RAND);
+    std::default_random_engine re;
+    ComplexNumber z(unif(re), unif(re));
+    ComplexNumber z0(0.0, 0.0);
+
+    ASSERT_ANY_THROW(z / z0);
+}
+
 TEST(Shubin_Mikhail_ComplexNumberTest, Can_Check_Eq) {
     double re1 = 0.0;
     double im1 = 0.0;
