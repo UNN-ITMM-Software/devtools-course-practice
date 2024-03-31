@@ -7,7 +7,7 @@ namespace {
     double precision = 0.0001;
 
     bool Eq(double a, double b) {
-        return std::abs(a - b) < precision);
+        return std::abs(a - b) < precision;
     }
 }
 
