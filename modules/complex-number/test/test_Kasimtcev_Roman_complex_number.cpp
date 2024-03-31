@@ -94,14 +94,14 @@ TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide_Drob) {
     EXPECT_DOUBLE_EQ(re1 / re2, z.getRe());
     EXPECT_DOUBLE_EQ(im1 / re2, z.getIm());
 }
-TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide_By_Zero) {
+TEST(Kasimtcev_Roman_ComplexNumberTestt, Can_Complex_Divide_Drob_By_Zero) {
     // Arrange
-    double re1 = 5.5, re2 =0.0;
-    double im1 = 4.1, im2 =0.0;
+    double re = 2.5;
+    double im = 3.1;
 
     // Act
-    ComplexNumber z1(re1, im1);
-    ComplexNumber z2(re2, im2);
+    ComplexNumber z1(re, im);
+    ComplexNumber z2(0.0, 0.0);
 
     // Assert
     ASSERT_ANY_THROW(z1 / z2);
