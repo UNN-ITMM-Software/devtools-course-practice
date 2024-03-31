@@ -70,29 +70,29 @@ TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide) {
 }
 TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Multiply_Drob) {
     // Arrange
-    double re1 = 5.7, re2 = -7.2;
-    double im1 = -7.2, im2 = 5.7;
+    double re1 = 1.1, re2 = 3.3;
+    double im1 = 2.2, im2 = -4.4;
 
     // Act
     ComplexNumber z1(re1, im1), z2(re2, im2);
     ComplexNumber z = z1 * z2;
 
     // Assert
-    EXPECT_EQ(re1 * re2 - im1 * im2, z.getRe());
-    EXPECT_EQ(re1 * im2 + re2 * im1, z.getIm());
+    EXPECT_DOUBLE_EQ(re1 * re2 - im1 * im2, z.getRe());
+    EXPECT_DOUBLE_EQ(re1 * im2 + re2 * im1, z.getIm());
 }
 TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide_Drob) {
     // Arrange
-    double re1 = 1.7, re2 = 1.4;
-    double im1 = 2.2, im2 = 1.3;
+    double re1 = 100.7, re2 = 0.5;
+    double im1 = 2.9, im2 = 0.0;
 
     // Act
     ComplexNumber z1(re1, im1), z2(re2, im2);
     ComplexNumber z = z1 / z2;
 
     // Assert
-    EXPECT_EQ(re1, z.getRe());
-    EXPECT_EQ(im1, z.getIm());
+    EXPECT_DOUBLE_EQ(re1 / re2, z.getRe());
+    EXPECT_DOUBLE_EQ(im1 / re2, z.getIm());
 }
 
 
