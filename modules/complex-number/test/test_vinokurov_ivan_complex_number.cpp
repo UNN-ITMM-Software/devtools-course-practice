@@ -14,7 +14,7 @@ TEST(Vinokurov_Ivan_ComplexNumberTest, testAddition) {
     ComplexNumber z2(1.0, -1.0);
     ComplexNumber result = z1 + z2;
     EXPECT_EQ(result.getRe(), 3.0);
-    EXPECT_EQ(sult.getIm(), 2.0);
+    EXPECT_EQ(result.getIm(), 2.0);
 }
 
 TEST(Vinokurov_Ivan_ComplexNumberTest, testSubtraction) {
