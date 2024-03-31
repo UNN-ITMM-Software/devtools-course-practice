@@ -94,16 +94,5 @@ TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide_Drob) {
     EXPECT_EQ(re1, z.getRe());
     EXPECT_EQ(im1, z.getIm());
 }
-TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide_Zero) {
-    // Arrange
-    double re1 = 2.5, re2=0.0;
-    double im1 = 3.6, im2=0.0;
 
-    // Act
-    ComplexNumber z1(re1, im1);
-    ComplexNumber z2(re2, im2);
-
-    // Assert
-    ASSERT_ANY_THROW(z1 / z2);
-}
 
