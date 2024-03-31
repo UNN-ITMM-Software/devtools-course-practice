@@ -27,7 +27,6 @@ TEST(Platonova_Maria_ComlpexNumberTests, setTest) {
 }
 
 TEST(Platonova_Maria_ComlpexNumberTests, sumTest) {
-    
     ComplexNumber a(5.2, 7.1);
     ComplexNumber b(3.3, 9.9);
 
