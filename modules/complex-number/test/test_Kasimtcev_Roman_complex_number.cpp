@@ -94,7 +94,7 @@ TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide_Drob) {
     EXPECT_EQ(re1, z.getRe());
     EXPECT_EQ(im1, z.getIm());
 }
-TEST(Khramov_Ivan_ComplexNumberTest, Can_Complex_Divide_Zero) {
+TEST(Kasimtcev_Roman_ComplexNumberTest, Can_Complex_Divide_Zero) {
     // Arrange
     double re1 = 2.5, re2=0.0;
     double im1 = 3.1; im2=0.0;
