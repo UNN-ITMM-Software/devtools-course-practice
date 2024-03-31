@@ -5,6 +5,10 @@
 
 namespace {
     double precision = 0.0001;
+
+    bool Eq(double a, double b) {
+        return std::abs(a - b) < precision);
+    }
 }
 
 TEST(ComplexNumerTest_Lesnikov_Nikita, ZeroDevisionTest) {
@@ -82,6 +86,6 @@ TEST(ComplexNumerTest_Lesnikov_Nikita, DivTest) {
 
     ComplexNumber n3 = n1 / n2;
 
-    EXPECT_TRUE(std::abs(n3.getRe() - 0.8275862068965517) < precision);
-    EXPECT_TRUE(std::abs(n3.getIm() - (-0.06896551724137931)) < precision);
+    EXPECT_TRUE(Eq(n3.getRe(), 0.8275862068965517));
+    EXPECT_TRUE(Eq(n3.getIm(), -0.06896551724137931));
 }
