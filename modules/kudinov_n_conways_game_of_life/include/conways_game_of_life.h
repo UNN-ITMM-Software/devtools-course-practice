@@ -16,6 +16,7 @@ class ConwaysGameOfLife {
     std::size_t _calculateBoardIndexFromCellPosition(
       std::size_t y,
       std::size_t x) const;
+
  public:
     ConwaysGameOfLife(std::size_t board_height, std::size_t board_width);
     explicit ConwaysGameOfLife(const std::vector<std::vector<bool>>& cells);

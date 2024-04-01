@@ -123,7 +123,10 @@ void ConwaysGameOfLife::simulateNextGeneration() {
             continue;
           }
 
-          const std::size_t i = this->_calculateBoardIndexFromCellPosition(y_pos, x_pos);
+          const std::size_t i = this->_calculateBoardIndexFromCellPosition(
+            y_pos,
+	    x_pos);
+
           alive_neighbors += std::uint8_t(this->_board[i]);
         }
       }
@@ -144,7 +147,9 @@ void ConwaysGameOfLife::resetBoard() {
   std::fill(this->_board.begin(), this->_board.end(), false);
 }
 
-std::string ConwaysGameOfLife::toString(char cell_alive_char, char cell_dead_char) {
+std::string ConwaysGameOfLife::toString(
+  char cell_alive_char,
+  char cell_dead_char) {
   std::string out;
 
   for (std::size_t y = 0; y < this->_board_height; y += 1) {
