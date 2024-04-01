@@ -38,7 +38,6 @@ std::vector<int> LIS::run() {
         }
     }
 
-    // восстановление ответа
     while (pos != -1) {
         ans.push_back(nums[pos]);
         pos = prev[pos];
