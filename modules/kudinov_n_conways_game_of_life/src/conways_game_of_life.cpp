@@ -5,7 +5,9 @@
 #include <exception>
 #include <iostream>
 
-void ConwaysGameOfLife::_checkCellPositionOrThrow(std::size_t y, std::size_t x) const {
+void ConwaysGameOfLife::_checkCellPositionOrThrow(
+  std::size_t y,
+  std::size_t x) const {
   if (y >= this->_board_height) {
     throw std::invalid_argument("y position should be less than board height");
   }
@@ -15,17 +17,25 @@ void ConwaysGameOfLife::_checkCellPositionOrThrow(std::size_t y, std::size_t x) 
   }
 }
 
-std::size_t ConwaysGameOfLife::_calculateBoardIndexFromCellPosition(std::size_t y, std::size_t x) const {
+std::size_t ConwaysGameOfLife::_calculateBoardIndexFromCellPosition(
+  std::size_t y,
+  std::size_t x) const {
   return y * this->_board_width + x;
 }
 
-ConwaysGameOfLife::ConwaysGameOfLife(std::size_t board_height, std::size_t board_width): _board(board_height * board_width, false), _board_height(board_height), _board_width(board_width) {
+ConwaysGameOfLife::ConwaysGameOfLife(
+  std::size_t board_height,
+  std::size_t board_width):
+  _board(board_height * board_width, false),
+  _board_height(board_height),
+  _board_width(board_width) {
   if (board_height == 0 || board_width == 0) {
     throw std::invalid_argument("board cannot be empty");
   }
 }
 
-ConwaysGameOfLife::ConwaysGameOfLife(const std::vector<std::vector<bool>>& cells) {
+ConwaysGameOfLife::ConwaysGameOfLife(
+  const std::vector<std::vector<bool>>& cells) {
   if (cells.empty()) {
     throw std::invalid_argument("board cannot be empty");
   }
@@ -41,11 +51,12 @@ ConwaysGameOfLife::ConwaysGameOfLife(const std::vector<std::vector<bool>>& cells
 
   for (const auto& row : cells) {
     if (row.size() != this->_board_width) {
-      throw std::invalid_argument("all rows in cells vector should have the same size");
+      throw std::invalid_argument(
+        "all rows in cells vector should have the same size");
     }
 
     for (bool cell_state : row) {
-	this->_board.push_back(cell_state);
+      this->_board.push_back(cell_state);
     }
   }
 }
@@ -63,7 +74,9 @@ const std::vector<bool>& ConwaysGameOfLife::getBoard() const {
 }
 
 std::vector<std::vector<bool>> ConwaysGameOfLife::getBoard2d() const {
-  std::vector<std::vector<bool>> out(this->_board_height, std::vector<bool>(this->_board_width));
+  std::vector<std::vector<bool>> out(
+    this->_board_height,
+    std::vector<bool>(this->_board_width));
 
   for (std::size_t y = 0; y < this->_board_height; y += 1) {
     for (std::size_t x = 0; x < this->_board_width; x += 1) {
@@ -101,13 +114,17 @@ void ConwaysGameOfLife::simulateNextGeneration() {
       for (std::ptrdiff_t dy = -1; dy <= 1; dy += 1) {
         for (std::ptrdiff_t dx = -1; dx <= 1; dx += 1) {
           if (dy == 0 && dx == 0) { continue; }
-	  const std::ptrdiff_t y_pos = y + dy;
-	  const std::ptrdiff_t x_pos = x + dx;
-          if (y_pos < 0 || std::size_t(y_pos) >= this->_board_height) { continue; }
-          if (x_pos < 0 || std::size_t(x_pos) >= this->_board_width) { continue; }
+          const std::ptrdiff_t y_pos = y + dy;
+          const std::ptrdiff_t x_pos = x + dx;
+          if (y_pos < 0 || std::size_t(y_pos) >= this->_board_height) {
+            continue;
+          }
+          if (x_pos < 0 || std::size_t(x_pos) >= this->_board_width) {
+            continue;
+          }
 
-	  const std::size_t i = this->_calculateBoardIndexFromCellPosition(y_pos, x_pos);
-	  alive_neighbors += std::uint8_t(this->_board[i]);
+          const std::size_t i = this->_calculateBoardIndexFromCellPosition(y_pos, x_pos);
+          alive_neighbors += std::uint8_t(this->_board[i]);
         }
       }
 
@@ -129,7 +146,7 @@ void ConwaysGameOfLife::resetBoard() {
 
 std::string ConwaysGameOfLife::toString(char cell_alive_char, char cell_dead_char) {
   std::string out;
-  
+
   for (std::size_t y = 0; y < this->_board_height; y += 1) {
     for (std::size_t x = 0; x < this->_board_width; x += 1) {
       std::size_t i = this->_calculateBoardIndexFromCellPosition(y, x);

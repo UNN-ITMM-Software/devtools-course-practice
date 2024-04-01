@@ -117,8 +117,8 @@ TEST(Kudinov_Nikita_Conways_Game_Of_Life, CanSetCellStateInBounds) {
   const std::size_t width = 10;
   auto cgol = ConwaysGameOfLife(height, width);
 
-  const auto y = 1; 
-  const auto x = 1; 
+  const auto y = 1;
+  const auto x = 1;
 
   ASSERT_FALSE(cgol.getCellState(y, x));
   ASSERT_NO_THROW(cgol.setCellState(y, x, true));
