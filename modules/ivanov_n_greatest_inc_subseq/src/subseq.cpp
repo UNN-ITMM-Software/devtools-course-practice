@@ -14,7 +14,7 @@ std::vector<int> LIS::run() {
     size_t n = nums.size();
     std::vector<int> ans;
 
-    if (n == 0)
+    if (n == 0ull)
         return ans;
 
     std::vector<int> prev(n, -1);
