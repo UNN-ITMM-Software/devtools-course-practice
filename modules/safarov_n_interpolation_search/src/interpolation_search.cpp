@@ -5,7 +5,6 @@
 const int NOT_FOUND = -1;
 
 int interpolationSearch(const std::vector<int> &sequence, const int &target) {
-
     if (sequence.size() == 0) {
         return NOT_FOUND;
     }
