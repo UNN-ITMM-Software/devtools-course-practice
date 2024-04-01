@@ -24,7 +24,7 @@ TEST(Kudinov_Nikita_ComplexNumberTest, CanGetFields) {
 
     EXPECT_NO_THROW(cn.getRe());
     EXPECT_NO_THROW(cn.getIm());
-    
+
     EXPECT_DOUBLE_EQ(cn.getRe(), re);
     EXPECT_DOUBLE_EQ(cn.getIm(), im);
 }
@@ -36,7 +36,7 @@ TEST(Kudinov_Nikita_ComplexNumberTest, CanSetFields) {
 
     EXPECT_NO_THROW(cn.setRe(re));
     EXPECT_NO_THROW(cn.setIm(im));
-    
+
     EXPECT_DOUBLE_EQ(cn.getRe(), re);
     EXPECT_DOUBLE_EQ(cn.getIm(), im);
 }
