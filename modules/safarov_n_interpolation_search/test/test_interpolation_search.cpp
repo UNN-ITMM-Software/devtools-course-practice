@@ -4,28 +4,23 @@
 
 #include "include/interpolation_search.h"
 
-int binarySearch(const std::vector<int>& v, const int& target)
-{
+int binarySearch(const std::vector<int>& v, const int& target) {
     int left = 0;
     int right = v.size() - 1;
     int middle;
     const int NOT_FOUND = -1;
 
-    while (left <= right)
-    {
+    while (left <= right) {
         middle = (left + right) / 2;
 
         if (v[middle] == target) {
             return middle;
-        }
-        else if (v[middle] < target) {
+        } else if (v[middle] < target) {
             left = middle + 1;
-        }
-        else {
+        } else {
             right = middle - 1;
         }
     }
-
     return NOT_FOUND;
 }
 
