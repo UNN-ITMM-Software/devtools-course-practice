@@ -11,7 +11,7 @@ size_t LIS::getSize() {
 }
 
 std::vector<int> LIS::run() {
-    size_t n = nums.size();
+    size_t n = getSize();
     std::vector<int> ans;
 
     if (n == 0)
