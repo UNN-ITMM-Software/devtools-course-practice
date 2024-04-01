@@ -18,7 +18,9 @@
         }                                                                     \
     } while (0)
 
-TEST(Kudinov_Nikita_Conways_Game_Of_Life, CanConstructFromNonZeroHeightAndWidth) {
+TEST(
+  Kudinov_Nikita_Conways_Game_Of_Life,
+  CanConstructFromNonZeroHeightAndWidth) {
   ASSERT_NO_THROW((ConwaysGameOfLife{5, 10}));
 }
 
@@ -31,7 +33,9 @@ TEST(Kudinov_Nikita_Conways_Game_Of_Life, CannotConstructFromZeroWidth) {
 }
 
 TEST(Kudinov_Nikita_Conways_Game_Of_Life, CanConstructFromCells) {
-  std::vector<std::vector<bool>> cells = {{ true, false, true }, { false, false, true }};
+  std::vector<std::vector<bool>> cells = {
+    { true, false, true },
+    { false, false, true }};
 
   ASSERT_NO_THROW(ConwaysGameOfLife{cells});
 }
@@ -42,7 +46,9 @@ TEST(Kudinov_Nikita_Conways_Game_Of_Life, CannotConstructFromCellsWhenEmpty) {
   ASSERT_THROW(ConwaysGameOfLife{cells}, std::invalid_argument);
 }
 
-TEST(Kudinov_Nikita_Conways_Game_Of_Life, CannotConstructFromCellsWhenCellRowsArentEqual) {
+TEST(
+  Kudinov_Nikita_Conways_Game_Of_Life,
+  CannotConstructFromCellsWhenCellRowsArentEqual) {
   std::vector<std::vector<bool>> cells = {{ true, false, true }, { false }};
 
   ASSERT_THROW(ConwaysGameOfLife{cells}, std::invalid_argument);
