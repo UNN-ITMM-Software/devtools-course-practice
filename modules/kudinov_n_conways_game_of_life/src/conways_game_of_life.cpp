@@ -125,7 +125,7 @@ void ConwaysGameOfLife::simulateNextGeneration() {
 
           const std::size_t i = this->_calculateBoardIndexFromCellPosition(
             y_pos,
-	    x_pos);
+            x_pos);
 
           alive_neighbors += std::uint8_t(this->_board[i]);
         }
