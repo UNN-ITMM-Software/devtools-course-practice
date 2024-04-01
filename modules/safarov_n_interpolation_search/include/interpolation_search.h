@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 int interpolationSearch(const std::vector<int> &sequence, const int &target);
 

@@ -2,9 +2,12 @@
 
 #include "include/interpolation_search.h"
 
+const int NOT_FOUND = -1;
+
 int interpolationSearch(const std::vector<int> &sequence, const int &target) {
+
     if (sequence.size() == 0) {
-        return -1;
+        return NOT_FOUND;
     }
 
     int left = 0;
@@ -29,5 +32,5 @@ int interpolationSearch(const std::vector<int> &sequence, const int &target) {
         return right;
     }
 
-    return -1;
+    return NOT_FOUND;
 }
