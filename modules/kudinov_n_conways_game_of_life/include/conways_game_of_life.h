@@ -32,7 +32,6 @@ class ConwaysGameOfLife {
     void simulateNextGeneration();
     void resetBoard();
     std::string toString(char cell_alive_char = '*', char cell_dead_char = '.');
-    void printBoard(char cell_alive_char = '*', char cell_dead_char = '.');
 };
 
 #endif  // MODULES_KUDINOV_N_CONWAYS_GAME_OF_LIFE_INCLUDE_CONWAYS_GAME_OF_LIFE_H_

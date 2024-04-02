@@ -29,7 +29,11 @@ ConwaysGameOfLife::ConwaysGameOfLife(
   _board(board_height * board_width, false),
   _board_height(board_height),
   _board_width(board_width) {
-  if (board_height == 0 || board_width == 0) {
+  if (board_height == 0) {
+    throw std::invalid_argument("board cannot be empty");
+  }
+
+  if (board_width == 0) {
     throw std::invalid_argument("board cannot be empty");
   }
 }
@@ -163,8 +167,4 @@ std::string ConwaysGameOfLife::toString(
   }
 
   return out;
-}
-
-void ConwaysGameOfLife::printBoard(char cell_alive_char, char cell_dead_char) {
-  std::cout << this->toString(cell_alive_char, cell_dead_char) << std::endl;
 }

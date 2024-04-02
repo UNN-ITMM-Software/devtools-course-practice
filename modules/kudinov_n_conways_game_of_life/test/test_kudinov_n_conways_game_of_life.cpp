@@ -46,6 +46,12 @@ TEST(Kudinov_Nikita_Conways_Game_Of_Life, CannotConstructFromCellsWhenEmpty) {
   ASSERT_THROW(ConwaysGameOfLife{cells}, std::invalid_argument);
 }
 
+TEST(Kudinov_Nikita_Conways_Game_Of_Life, CannotConstructFromCellsWhenRowEmpty) {
+  std::vector<std::vector<bool>> cells = {{}};
+
+  ASSERT_THROW(ConwaysGameOfLife{cells}, std::invalid_argument);
+}
+
 TEST(
   Kudinov_Nikita_Conways_Game_Of_Life,
   CannotConstructFromCellsWhenCellRowsArentEqual) {
