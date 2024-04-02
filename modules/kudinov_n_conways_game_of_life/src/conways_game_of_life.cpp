@@ -26,14 +26,11 @@ std::size_t ConwaysGameOfLife::_calculateBoardIndexFromCellPosition(
 ConwaysGameOfLife::ConwaysGameOfLife(
   std::size_t board_height,
   std::size_t board_width):
-  _board(board_height * board_width, false),
   _board_height(board_height),
   _board_width(board_width) {
-  if (board_height == 0) {
-    throw std::invalid_argument("board cannot be empty");
-  }
+  this->_board = std::vector(board_height * board_width, false);
 
-  if (board_width == 0) {
+  if (board_height == 0 || board_width == 0) {
     throw std::invalid_argument("board cannot be empty");
   }
 }
