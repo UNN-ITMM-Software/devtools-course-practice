@@ -5,7 +5,7 @@
 #include "include/complex_number.h"
 
 TEST(Smirnova_Daria_ComplexNumberTest, Can_Square_Complex) {
-	ComplexNumber a(3.0, 2.0);
+ComplexNumber a(3.0, 2.0);
 
 	ComplexNumber result = a * a;
 
@@ -14,7 +14,6 @@ TEST(Smirnova_Daria_ComplexNumberTest, Can_Square_Complex) {
 }
 
 TEST(Smirnova_Daria_ComplexNumberTest, Cant_Divide_By_Zero) {
-
 	ComplexNumber a(-32., 24.);
 	ComplexNumber b(0., 0.);
 
