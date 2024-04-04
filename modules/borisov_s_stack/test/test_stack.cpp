@@ -20,17 +20,14 @@ TEST(Borisov_StackTest, can_show_stack_top) {
 
     stack.push(5);
 
-    EXPECT_EQ(5, stack.top());
+    EXPECT_EQ(5, stack.show_top());
     EXPECT_EQ(false, stack.isEmpty());
 }
 
 TEST(Borisov_StackTest, throws_when_show_empty_stack_top) {
     Stack<int> stack(3);
-
-    int this_top;
-
     EXPECT_EQ(true, stack.isEmpty());
-    ASSERT_ANY_THROW(this_top = stack.top());
+    ASSERT_ANY_THROW(stack.show_top());
 }
 
 TEST(Borisov_StackTest, can_push_int_elem) {
@@ -38,7 +35,7 @@ TEST(Borisov_StackTest, can_push_int_elem) {
 
     stack.push(5);
 
-    EXPECT_EQ(5, stack.top());
+    EXPECT_EQ(5, stack.show_top());
 }
 
 TEST(Borisov_StackTest, can_push_double_elem) {
@@ -46,7 +43,7 @@ TEST(Borisov_StackTest, can_push_double_elem) {
 
     stack.push(3.14);
 
-    ASSERT_DOUBLE_EQ(stack.top(), 3.14);
+    ASSERT_DOUBLE_EQ(stack.show_top(), 3.14);
 }
 
 TEST(Borisov_StackTest, can_push_elem_into_full_stack) {
@@ -54,7 +51,7 @@ TEST(Borisov_StackTest, can_push_elem_into_full_stack) {
     stack.push(1);
     EXPECT_EQ(true, stack.isFull());
     stack.push(2);
-    EXPECT_EQ(2, stack.top());
+    EXPECT_EQ(2, stack.show_top());
 }
 
 TEST(Borisov_StackTest, can_pop_elem) {
@@ -64,16 +61,15 @@ TEST(Borisov_StackTest, can_pop_elem) {
     stack.push(2);
 
     EXPECT_EQ(2, stack.pop());
-    EXPECT_EQ(1, stack.top());
+    EXPECT_EQ(1, stack.show_top());
     EXPECT_EQ(1, stack.pop());
     EXPECT_EQ(true, stack.isEmpty());
 }
 
 TEST(Borisov_StackTest, throws_when_pop_elem_from_empty_stack) {
     Stack<int> stack(3);
-    int this_top;
     EXPECT_EQ(true, stack.isEmpty());
-    ASSERT_ANY_THROW(this_top = stack.pop());
+    ASSERT_ANY_THROW(stack.pop());
 }
 
 TEST(Borisov_StackTest, can_check_stack_is_empty) {

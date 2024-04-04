@@ -2,12 +2,14 @@
 
 #pragma once
 
+#include <string>
+
 template<class T>
 class Stack {
 private:
-    int top;
+    int top = -1;
     T* pMem;
-    size_t size;
+    int size;
 
     void oversize() {
         T* tmpMem = new T[size * 2];
@@ -17,15 +19,17 @@ private:
         size *= 2;
     }
 public:
-    Stack(size_t sz = 1) : size(sz), top(-1) {
+    Stack(int sz = 1) {
+        size = sz;
+
         if (sz <= 0) {
-            throw std::exception("Stack size should be greater than zero");
+            throw std::string("Stack size should be greater than zero");
         } else {
             pMem = new T[size];
         }
     }
 
-    size_t current_size() const {
+    int current_size() const {
         return top + 1;
     }
 
@@ -49,13 +53,13 @@ public:
 
     T pop() {
         if (isEmpty())
-            throw std::exception("Stack is empty");
+            throw std::string("Stack is empty");
         return pMem[top--];
     }
 
-    T top() const {
+    T show_top() const {
         if (isEmpty())
-            throw std::exception("Stack is empty");
+            throw std::string("Stack is empty");
         return pMem[top];
     }
 
