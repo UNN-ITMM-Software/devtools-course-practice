@@ -20,7 +20,7 @@ template<uint32_t N>
 class Graph {
  protected:
     std::vector<std::vector<uint64_t>> dist;
-    std::vector<std::vector<std::pair<uint32_t, u_int64_t>>> adj;
+    std::vector<std::vector<std::pair<uint32_t, uint64_t>>> adj;
     bool valid = true;
     void find_dist(uint32_t start) {
         std::priority_queue<std::pair<uint64_t, uint32_t>> q;
