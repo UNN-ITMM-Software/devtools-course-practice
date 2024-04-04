@@ -67,7 +67,7 @@ class Graph {
         if (!valid) {
             for (auto& el : dist) el.assign(N, INF);
         }
-        for (uint32_t i = 0;i < N; ++i) {
+        for (uint32_t i = 0; i < N; ++i) {
             find_dist(i);
 
             for (uint32_t j = 0 ; j < N; ++j) {
