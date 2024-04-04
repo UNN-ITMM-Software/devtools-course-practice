@@ -5,7 +5,7 @@
 #include "include/graph.h"
 
 class GraphTest : public ::testing::Test {
-protected:
+ protected:
     Graph<50> graph;
 };
 
@@ -33,7 +33,7 @@ TEST_F(GraphTest, FindDiameterLinearGraph) {
 
     uint64_t diam = linearGraph.find_diam();
 
-    ASSERT_EQ(diam, uint64_t(15)); // Diameter should be 15
+    ASSERT_EQ(diam, uint64_t(15));  // Diameter should be 15
 }
 
 // Test finding the diameter of a cyclic graph
@@ -46,7 +46,7 @@ TEST_F(GraphTest, FindDiameterCyclicGraph) {
 
     uint64_t diam = cyclicGraph.find_diam();
 
-    ASSERT_EQ(diam, uint64_t(15)); // Diameter should be 15
+    ASSERT_EQ(diam, uint64_t(15));  // Diameter should be 15
 }
 
 // Test finding the diameter of a disconnected graph
@@ -55,11 +55,11 @@ TEST_F(GraphTest, FindDiameterDisconnectedGraph) {
     disconnectedGraph.add_edge(0, 1, 5);
     disconnectedGraph.add_edge(2, 3, 8);
 
-    ASSERT_EQ(disconnectedGraph.find_diam(), INF); // Diameter should be INF (since it's disconnected)
+    ASSERT_EQ(disconnectedGraph.find_diam(), INF);
 }
 
 // Test finding the diameter of an empty graph
 TEST_F(GraphTest, FindDiameterEmptyGraph) {
     Graph<3> emptyGraph;
-    ASSERT_EQ(emptyGraph.find_diam(), uint64_t(0)); // Diameter of an empty graph should be 0
+    ASSERT_EQ(emptyGraph.find_diam(), uint64_t(0));
 }
