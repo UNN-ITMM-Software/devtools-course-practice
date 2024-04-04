@@ -14,4 +14,4 @@ void sort(std::vector<int>& arr) {
     arr[j + 1] = key;
   }
 }
-}
+}  // namespace InsertionSort
