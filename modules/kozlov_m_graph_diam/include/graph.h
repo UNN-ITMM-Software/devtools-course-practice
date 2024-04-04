@@ -67,19 +67,17 @@ class Graph {
         if (!valid) {
             for (auto& el : dist) el.assign(N, INF);
         }
-        for (uint32_t i = 0;i < N;++i) {
+        for (uint32_t i = 0;i < N; ++i) {
             find_dist(i);
 
-            for (uint32_t j = 0 ; j < N; ++j) { 
+            for (uint32_t j = 0 ; j < N; ++j) {
                 if (dist[i][j] == INF) return INF;
                 if (i != j) {
                     ans = std::max(ans, dist[i][j]);
                 }
             }
-
         }
         return ans;
-
     }
 };
 
