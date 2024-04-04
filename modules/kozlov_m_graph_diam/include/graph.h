@@ -48,7 +48,7 @@ class Graph {
  public:
     Graph() {
         dist = std::vector<std::vector<uint64_t>> (N, std::vector<uint64_t>(N));
-        adj = std::vector<std::vector<std::pair<uint32_t, u_int64_t>>>(N);
+        adj = std::vector<std::vector<std::pair<uint32_t, uint64_t>>>(N);
     }
 
     void add_edge(uint32_t v, uint32_t u, uint64_t weight = 0ULL) {
