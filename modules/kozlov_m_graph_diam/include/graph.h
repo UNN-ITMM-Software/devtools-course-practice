@@ -10,6 +10,8 @@
 #include <limits>
 #include <stdexcept>
 #include <queue>
+#include <algorithm>
+#include <utility>
 #include <iostream>
 
 const uint64_t INF = std::numeric_limits<uint64_t>::max();
@@ -34,7 +36,6 @@ class Graph {
                 uint32_t u = e.first;
                 uint64_t w = e.second;
                 if (dist[start][x]+w < dist[start][u]) {
-
                     dist[start][u] = dist[start][x]+w;
                     dist[u][start] = dist[start][u];
                     q.emplace(-dist[start][u], u);
@@ -50,28 +51,27 @@ class Graph {
         adj = std::vector<std::vector<std::pair<uint32_t, u_int64_t>>>(N);
     }
 
-    void add_edge(uint32_t v, uint32_t u, uint64_t weight = 0ULL){
+    void add_edge(uint32_t v, uint32_t u, uint64_t weight = 0ULL) {
         if (v >= N || u >= N)
             throw std::invalid_argument("vertex out of range");
         if (v == u) throw std::invalid_argument("same vertex");
 
         valid = false;
 
-        adj[v].emplace_back(u,weight);
+        adj[v].emplace_back(u, weight);
     }
 
     uint64_t find_diam() {
         uint64_t ans = 0;
 
-        if (!valid){
-            for(auto& el: dist) el.assign(N,INF);
+        if (!valid) {
+            for (auto& el : dist) el.assign(N, INF);
         }
-        for(uint32_t i=0;i<N;++i){
-
+        for (uint32_t i = 0;i < N;++i) {
             find_dist(i);
 
-            for(uint32_t j = 0 ; j < N ; ++j){ 
-                if (dist[i][j]==INF) return INF;
+            for (uint32_t j = 0 ; j < N; ++j) { 
+                if (dist[i][j] == INF) return INF;
                 if (i != j) {
                     ans = std::max(ans, dist[i][j]);
                 }
