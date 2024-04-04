@@ -1,11 +1,13 @@
 // Copyright 2024 Borovkov Sergey
-#ifndef INSERTION_SORT_H
-#define INSERTION_SORT_H
-
+#ifndef MODULES_BOROVKOV_S_SORT_INCLUDE_INSERTION_SORT_H_
+#define MODULES_BOROVKOV_S_SORT_INCLUDE_INSERTION_SORT_H_
+#include <iostream>
 #include <vector>
+#include <algorithm>
+
 
 namespace InsertionSort {
 void sort(std::vector<int>& arr);
 }
 
-#endif  // INSERTION_SORT_H
+#endif  // MODULES_BOROVKOV_S_SORT_INCLUDE_INSERTION_SORT_H_
