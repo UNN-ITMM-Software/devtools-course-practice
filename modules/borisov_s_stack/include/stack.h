@@ -3,10 +3,11 @@
 #pragma once
 
 #include <string>
+#include <algorithm>
 
 template<class T>
 class Stack {
-private:
+ private:
     int top = -1;
     T* pMem;
     int size;
@@ -18,8 +19,9 @@ private:
         this->pMem = tmpMem;
         size *= 2;
     }
-public:
-    Stack(int sz = 1) {
+
+ public:
+    explicit Stack(int sz = 1) {
         size = sz;
 
         if (sz <= 0) {
