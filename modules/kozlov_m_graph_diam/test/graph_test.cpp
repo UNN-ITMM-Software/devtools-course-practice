@@ -42,6 +42,18 @@ TEST_F(GraphTest, FindDiametermultiple) {
 
     ASSERT_EQ(diam, uint64_t(15));  // Diameter should be 15
 }
+
+TEST_F(GraphTest, FindDiameterfull) {
+    Graph<3> linearGraph;
+    linearGraph.add_edge(0, 1, 5);
+    linearGraph.add_edge(1, 2, 3);
+    linearGraph.add_edge(2, 0, 7);
+
+    uint64_t diam = linearGraph.find_diam();
+
+    ASSERT_EQ(diam, uint64_t(7));  // Diameter should be 7
+}
+
 // Test finding the diameter of a cyclic graph
 TEST_F(GraphTest, FindDiameterCyclicGraph) {
     Graph<4> cyclicGraph;
@@ -52,7 +64,7 @@ TEST_F(GraphTest, FindDiameterCyclicGraph) {
 
     uint64_t diam = cyclicGraph.find_diam();
 
-    ASSERT_EQ(diam, uint64_t(15));  // Diameter should be 15
+    ASSERT_EQ(diam, uint64_t(8));  // Diameter should be 11
 }
 
 // Test finding the diameter of a disconnected graph

@@ -35,7 +35,7 @@ class Graph {
             for (auto e : adj[x]) {
                 uint32_t u = e.first;
                 uint64_t w = e.second;
-                if (dist[start][x]+w < dist[start][u]) {
+                if (dist[start][x]+w <= dist[start][u]) {
                     dist[start][u] = dist[start][x]+w;
                     dist[u][start] = dist[start][u];
                     q.emplace(-dist[start][u], u);
@@ -55,8 +55,10 @@ class Graph {
         if (v >= N || u >= N)
             throw std::invalid_argument("vertex out of range");
         if (v != u) valid = false;
+        else return;
 
         adj[v].emplace_back(u, weight);
+        adj[u].emplace_back(v, weight);
     }
 
     uint64_t find_diam() {
@@ -67,9 +69,9 @@ class Graph {
         }
         for (uint32_t i = 0; i < N; ++i) {
             find_dist(i);
-
+        }
+        for (uint32_t i = 0; i < N; ++i) {
             for (uint32_t j = 0 ; j < N; ++j) {
-                if (dist[i][j] == INF) return INF;
                 if (i != j) {
                     ans = std::max(ans, dist[i][j]);
                 }
