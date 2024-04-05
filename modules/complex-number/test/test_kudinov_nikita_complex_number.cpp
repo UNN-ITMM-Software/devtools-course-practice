@@ -95,6 +95,13 @@ TEST(Kudinov_Nikita_ComplexNumberTest, CanDivide) {
     EXPECT_DOUBLE_EQ(cn3.getIm(), -0.5);
 }
 
+TEST(Kudinov_Nikita_ComplexNumberTest, CannotDivideBy0) {
+    auto cn1 = ComplexNumber(7.0, 2.0);
+    auto cn2 = ComplexNumber();
+
+    EXPECT_THROW(cn1 / cn2, std::string);
+}
+
 TEST(Kudinov_Nikita_ComplexNumberTest, CanCheckEquality) {
     auto cn1 = ComplexNumber(7.0, 2.0);
     auto cn2 = ComplexNumber(7.0, 2.0);
