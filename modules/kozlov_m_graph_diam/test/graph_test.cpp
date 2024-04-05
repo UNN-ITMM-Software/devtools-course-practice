@@ -14,11 +14,6 @@ TEST_F(GraphTest, AddSingleEdge) {
     EXPECT_NO_THROW(graph.add_edge(0, 1, 5));
 }
 
-// Test adding an edge with the same source and destination
-TEST_F(GraphTest, AddEdgeSameSourceDestination) {
-    ASSERT_THROW(graph.add_edge(1, 1, 10), std::invalid_argument);
-}
-
 // Test adding an edge with out of range vertices
 TEST_F(GraphTest, AddEdgeOutOfRangeVertices) {
     ASSERT_THROW(graph.add_edge(5, 106, 8), std::invalid_argument);
@@ -36,6 +31,17 @@ TEST_F(GraphTest, FindDiameterLinearGraph) {
     ASSERT_EQ(diam, uint64_t(15));  // Diameter should be 15
 }
 
+TEST_F(GraphTest, FindDiametermultiple) {
+    Graph<4> linearGraph;
+    linearGraph.add_edge(0, 1, 5);
+    linearGraph.add_edge(1, 2, 3);
+    linearGraph.add_edge(2, 3, 7);
+    linearGraph.add_edge(2, 3, 7);
+
+    uint64_t diam = linearGraph.find_diam();
+
+    ASSERT_EQ(diam, uint64_t(15));  // Diameter should be 15
+}
 // Test finding the diameter of a cyclic graph
 TEST_F(GraphTest, FindDiameterCyclicGraph) {
     Graph<4> cyclicGraph;

@@ -54,9 +54,7 @@ class Graph {
     void add_edge(uint32_t v, uint32_t u, uint64_t weight = 0ULL) {
         if (v >= N || u >= N)
             throw std::invalid_argument("vertex out of range");
-        if (v == u) throw std::invalid_argument("same vertex");
-
-        valid = false;
+        if (v != u) valid = false;
 
         adj[v].emplace_back(u, weight);
     }
