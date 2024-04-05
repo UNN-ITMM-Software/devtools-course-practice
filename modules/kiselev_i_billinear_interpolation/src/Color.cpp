@@ -38,7 +38,7 @@ char Color::getB() const {
     return B;
 }
 
-char Color::setR(int r) {
+void Color::setR(int r) {
     if (r > 255) R = 255;
     else
         if (r < 0) R = 0;
@@ -46,7 +46,7 @@ char Color::setR(int r) {
             R = r;
 }
 
-char Color::setG(int g) {
+void Color::setG(int g) {
     if (g > 255) G = 255;
     else
         if (g < 0) G = 0;
@@ -54,7 +54,7 @@ char Color::setG(int g) {
             G = g;
 }
 
-char Color::setB(int b) {
+void Color::setB(int b) {
     if (b > 255) B = 255;
     else 
         if (b < 0) B = 0;
