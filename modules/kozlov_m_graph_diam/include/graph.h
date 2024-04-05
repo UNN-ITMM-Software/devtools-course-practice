@@ -55,7 +55,7 @@ class Graph {
         if (v >= N || u >= N)
             throw std::invalid_argument("vertex out of range");
         if (v != u) valid = false;
-        else 
+        else
         return;
 
         adj[v].emplace_back(u, weight);
