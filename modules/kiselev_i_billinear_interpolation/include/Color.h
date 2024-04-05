@@ -1,23 +1,23 @@
 // Copyright 2024 Kiselev Igor
 
-#ifndef MODULES_COLOR_INCLUDE_COLOR_H_
-#define MODULES_COLOR_INCLUDE_COLOR_H_
+#ifndef MODULES_KISELEV_I_BILLINEAR_INTERPOLATION_INCLUDE_COLOR_H_
+#define MODULES_KISELEV_I_BILLINEAR_INTERPOLATION_INCLUDE_COLOR_H_
 
 class Color {
-private:
-	short R;
-	short G;
-	short B;
-public:
-	Color(int r, int g, int b);
-	Color(const Color& c);
+ private:
+    char R;
+    char G;
+    char B;
+ public:
+    Color(int r, int g, int b);
+    Color(const Color& c);
 
-	short getR() const;
-	short getG() const;
-	short getB() const;
-	void setR(int r);
-	void setG(int g);
-	void setB(int b);
+    char getR() const;
+    char getG() const;
+    char getB() const;
+    void setR(int r);
+    void setG(int g);
+    void setB(int b);
 };
 
-#endif  // MODULES_COLOR_INCLUDE_COLOR_H_
+#endif  // MODULES_KISELEV_I_BILLINEAR_INTERPOLATION_INCLUDE_COLOR_H_

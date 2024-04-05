@@ -2,7 +2,7 @@
 
 #include "include/Billinear_interpolation.h"
 
-BillinearInterpolation::BillinearInterpolation(std::vector<std::vector<Color>> sr) {
+explicit BillinearInterpolation::BillinearInterpolation(std::vector<std::vector<Color>> sr) {
     size_t n = sr.size();
     size_t m = sr[0].size();
     source = std::vector<std::vector<Color>>(n,std::vector<Color>(m, Color(0, 0, 0)));

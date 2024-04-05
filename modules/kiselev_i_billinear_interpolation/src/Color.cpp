@@ -20,31 +20,31 @@ Color::Color(const Color& c) {
     B = c.getB();
 }
 
-short Color::getR() const {
+char Color::getR() const {
     return R;
 }
 
-short Color::getG() const {
+char Color::getG() const {
     return G;
 }
 
-short Color::getB() const {
+char Color::getB() const {
     return B;
 }
 
-void Color::setR(int r) {
+char Color::setR(int r) {
     if (r > 255) R = 255;
     else if (r < 0) R = 0;
     else R = r;
 }
 
-void Color::setG(int g) {
+char Color::setG(int g) {
     if (g > 255) G = 255;
     else if (g < 0) G = 0;
     else G = g;
 }
 
-void Color::setB(int b) {
+char Color::setB(int b) {
     if (b > 255) B = 255;
     else if (b < 0) B = 0;
     else B = b;
