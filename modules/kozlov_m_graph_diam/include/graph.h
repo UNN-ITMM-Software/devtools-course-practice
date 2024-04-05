@@ -32,7 +32,7 @@ class Graph {
             uint32_t x = q.top().second;
             q.pop();
 
-            for (auto e : adj[x]) {
+            for (const auto& e : adj[x]) {
                 uint32_t u = e.first;
                 uint64_t w = e.second;
                 if (dist[start][x]+w <= dist[start][u]) {
