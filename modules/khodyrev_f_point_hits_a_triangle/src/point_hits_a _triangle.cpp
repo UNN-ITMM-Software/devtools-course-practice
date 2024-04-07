@@ -58,9 +58,6 @@ bool Triangle::isInside(const Point& p) const {
     double subArea2 = triangleArea(v2, v3, p);
     double subArea3 = triangleArea(v3, v1, p);
 
-    //return (totalArea == subArea1 + subArea2 + subArea3);
-
     const double epsilon = 1e-9;
     return fabs(totalArea - (subArea1 + subArea2 + subArea3)) < epsilon;
-
 }
