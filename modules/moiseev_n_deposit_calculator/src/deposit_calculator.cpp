@@ -5,6 +5,11 @@
 
 #include "include/deposit_calculator.h"
 
+namespace constants {
+    constexpr int kMonthsInYear = 12;
+    constexpr int kPercentageConversionFactor = 100;
+}
+
 DepositCalculator::DepositCalculator() {}
 
 DepositCalculator::~DepositCalculator() {}
@@ -21,7 +26,7 @@ double DepositCalculator::calculateProfitCapitalization(double depositAmount,
     validateArguments(depositAmount, interestRate, months);
     int percent = 100;
     int percentMonth = 12;
-    double monthlyInterestRate = interestRate / percent / percentMonth;
+    double monthlyInterestRate = interestRate / constants::kPercentageConversionFactor / constants::kMonthsInYear;
     double currentDepositAmount = depositAmount;
 
     for (int i = 0; i < months; ++i) {
@@ -35,7 +40,7 @@ double DepositCalculator::calculateProfit(double depositAmount,
     int percent = 100;
     int percentMonth = 12;
     validateArguments(depositAmount, interestRate, months);
-    double monthlyInterestRate = interestRate / percent / percentMonth;
+    double monthlyInterestRate = interestRate / constants::kPercentageConversionFactor / constants::kMonthsInYear;
 
     return depositAmount * monthlyInterestRate * months;
 }
