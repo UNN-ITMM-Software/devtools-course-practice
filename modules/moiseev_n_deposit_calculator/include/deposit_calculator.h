@@ -5,6 +5,11 @@
 
 #include <string>
 
+namespace constants {
+    constexpr int kMonthsInYear;
+    constexpr int kPercentageConversionFactor;
+}
+
 class DepositCalculator {
  public:
     DepositCalculator();
