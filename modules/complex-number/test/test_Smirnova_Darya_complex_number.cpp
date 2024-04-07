@@ -48,3 +48,11 @@ ComplexNumber z3 = z1 + z2;
 EXPECT_EQ(4.5, z3.getRe());
 EXPECT_EQ(8.5, z3.getIm());
 }
+
+TEST(Smirnova_Daria_ComplexNumberTest, Can_Equal) {
+ComplexNumber z1(1.0, 3.2);
+ComplexNumber z2(2.0, 5.0);
+
+ASSERT_TRUE(z1 != z2);
+ASSERT_FALSE(z1 == z2);
+}
