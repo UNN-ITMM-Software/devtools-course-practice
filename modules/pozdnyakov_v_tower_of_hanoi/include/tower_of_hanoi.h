@@ -8,10 +8,10 @@
 
 class TowerOfHanoi {
  protected:
-    static std::vector<std::vector<int>> RecursiveCalculate(int n,
-     int from, int to);
+    static std::vector<std::vector<int>> RecursiveCalculate(int numberOfRings,
+     int fromRod, int toRod);
  public:
-    static std::vector<std::vector<int>> CalculateSteps(int n);
+    static std::vector<std::vector<int>> CalculateSteps(int numberOfRings);
 };
 
 #endif  // MODULES_POZDNYAKOV_V_TOWER_OF_HANOI_INCLUDE_TOWER_OF_HANOI_H_
