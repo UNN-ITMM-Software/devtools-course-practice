@@ -19,8 +19,6 @@ void DepositCalculator::validateArguments(double depositAmount,
 double DepositCalculator::calculateProfitCapitalization(double depositAmount,
     double interestRate, int months) {
     validateArguments(depositAmount, interestRate, months);
-    int percent = 100;
-    int percentMonth = 12;
     double monthlyInterestRate = interestRate /
         constants::kPercentageConversionFactor / constants::kMonthsInYear;
     double currentDepositAmount = depositAmount;
@@ -33,8 +31,6 @@ double DepositCalculator::calculateProfitCapitalization(double depositAmount,
 }
 double DepositCalculator::calculateProfit(double depositAmount,
     double interestRate, int months) {
-    int percent = 100;
-    int percentMonth = 12;
     validateArguments(depositAmount, interestRate, months);
     double monthlyInterestRate = interestRate /
         constants::kPercentageConversionFactor / constants::kMonthsInYear;
