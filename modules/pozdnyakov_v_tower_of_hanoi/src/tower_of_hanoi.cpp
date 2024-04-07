@@ -6,6 +6,7 @@ std::vector<std::vector<int>> TowerOfHanoi::RecursiveCalculate(int numberOfRings
     if ((fromRod < 1 && fromRod > 3) || (toRod < 1 && toRod > 3)) {
         throw std::range_error("Number of rods must be 1, 2 or 3");
     }
+    
     if (numberOfRings == 1) {
         return std::vector<std::vector<int>>(1, {fromRod, toRod});
     }
