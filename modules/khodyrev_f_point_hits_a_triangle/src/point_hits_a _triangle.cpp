@@ -29,15 +29,18 @@ bool Triangle::isValid() const {
     double side2 = Triangle::distance(v1, v3);
     double side3 = Triangle::distance(v2, v3);
 
-    if (!(side1 + side2 > side3) || !(side1 + side3 > side2) || !(side2 + side3 > side1)) {
-        throw std::invalid_argument("Triangle with given vertices does not exist.");
+    if (!(side1 + side2 > side3) || !(side1 + side3 > side2) ||
+    !(side2 + side3 > side1)) {
+        throw std::invalid_argument("Triangle with given vertices
+        does not exist.");
     }
 
     return true;
 }
 
 double triangleArea(const Point& a, const Point& b, const Point& c) {
-    return fabs((a.getX() * (b.getY() - c.getY()) + b.getX() * (c.getY() - a.getY())
+    return fabs((a.getX() * (b.getY() - c.getY()) + b.getX()
+    * (c.getY() - a.getY())
     + c.getX()*(a.getY()-b.getY())) / 2);
 }
 
