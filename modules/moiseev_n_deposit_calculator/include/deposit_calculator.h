@@ -3,12 +3,12 @@
 #ifndef MODULES_MOISEEV_N_DEPOSIT_CALCULATOR_INCLUDE_DEPOSIT_CALCULATOR_H_
 #define MODULES_MOISEEV_N_DEPOSIT_CALCULATOR_INCLUDE_DEPOSIT_CALCULATOR_H_
 
-#include <string>
-
 namespace constants {
-    constexpr int kMonthsInYear;
-    constexpr int kPercentageConversionFactor;
+    constexpr int kMonthsInYear = 12;
+    constexpr int kPercentageConversionFactor = 100;
 }
+
+#include <string>
 
 class DepositCalculator {
  public:

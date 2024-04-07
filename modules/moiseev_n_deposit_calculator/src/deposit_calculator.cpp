@@ -5,11 +5,6 @@
 
 #include "include/deposit_calculator.h"
 
-namespace constants {
-    constexpr int kMonthsInYear = 12;
-    constexpr int kPercentageConversionFactor = 100;
-}
-
 DepositCalculator::DepositCalculator() {}
 
 DepositCalculator::~DepositCalculator() {}
