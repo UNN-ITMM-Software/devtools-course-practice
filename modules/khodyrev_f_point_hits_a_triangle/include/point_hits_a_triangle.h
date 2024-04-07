@@ -12,7 +12,7 @@ class Point {
   Point(double x_coord, double y_coord);
   double getX() const;
   double getY() const;
-  bool operator==(const Point& other) const;  
+  bool operator==(const Point& other) const;
 };
 
 class Triangle {
