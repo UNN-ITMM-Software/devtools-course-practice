@@ -8,6 +8,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <memory>
 
 struct Node {
   char ch;
@@ -66,13 +67,13 @@ std::string decode(Node *root, int &index, std::string str,
 
 void buildHuffmanTree(std::string text, std::string &dec_str) {
   std::unordered_map<char, int> freq;
-  for (char ch : text) {
+  for (const char& ch : text) {
     freq[ch]++;
   }
 
   std::priority_queue<Node *, std::vector<Node *>, comp> pq;
 
-  for (auto pair : freq) {
+  for (const auto& pair : freq) {
     pq.push(getNode(pair.first, pair.second, nullptr, nullptr));
   }
 
@@ -91,26 +92,21 @@ void buildHuffmanTree(std::string text, std::string &dec_str) {
   std::unordered_map<char, std::string> huffmanCode;
   encode(root, "", huffmanCode);
 
-  std::cout << "Huffman Codes are :\n" << '\n';
-  for (auto pair : huffmanCode) {
-    std::cout << pair.first << " " << pair.second << '\n';
-  }
-
-  std::cout << "\nOriginal string was :\n" << text << '\n';
-
   std::string str = "";
-  for (char ch : text) {
+  for (const char& ch : text) {
     str += huffmanCode[ch];
   }
 
-  std::cout << "\nEncoded string is :\n" << str << '\n';
-
   int index = -1;
-  std::cout << "\nDecoded string is: \n";
   while (index < static_cast<int>(str.size()) - 1) {
     dec_str = decode(root, index, str, dec_str);
   }
-  std::cout << dec_str << "\n";
+
+  while(!pq.empty()) {
+    Node * t = pq.top();
+    pq.pop();
+    delete t;
+  }
 }
 
 bool compare_str(std::string str1, std::string str2) {

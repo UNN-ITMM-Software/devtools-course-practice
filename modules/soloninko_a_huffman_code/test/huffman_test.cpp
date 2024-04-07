@@ -38,6 +38,13 @@ TEST(Soloninko_Huffman, Test_5) {
   ASSERT_TRUE(compare_str(s1, dec_s1));
 }
 
+TEST(Soloninko_Huffman, Test_6) {
+  std::string s1 = "@@@Qwer11yuiop&%";
+  std::string dec_s1;
+  buildHuffmanTree(s1, dec_s1);
+  ASSERT_TRUE(compare_str(s1, dec_s1));
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
