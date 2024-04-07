@@ -31,8 +31,7 @@ bool Triangle::isValid() const {
 
     if (!(side1 + side2 > side3) || !(side1 + side3 > side2) ||
     !(side2 + side3 > side1)) {
-        throw std::invalid_argument("Triangle with given vertices
-        does not exist.");
+        throw std::invalid_argument("Triangle does not exist.");
     }
 
     return true;
