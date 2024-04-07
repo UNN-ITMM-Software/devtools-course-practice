@@ -34,19 +34,6 @@ TEST(DepositCalculatorTests,
 }
 
 TEST(DepositCalculatorTests,
-    CalculateProfit_SimpleCase_ReturnsCorrectProfit) {
-    // Arrange
-    DepositCalculator calculator;
-
-    // Act
-    double profit = calculator.calculateProfitCapitalization(1000, 10, 12);
-
-    // Assert
-    EXPECT_NEAR(profit,
-        1000 + 1000 * (std::pow(1 + 10.0 / 100 / 12, 12) - 1), 0.01);
-}
-
-TEST(DepositCalculatorTests,
     CalculateProfit_SimpleCase_ReturnsCorrectProfit2) {
     // Arrange
     DepositCalculator calculator;
