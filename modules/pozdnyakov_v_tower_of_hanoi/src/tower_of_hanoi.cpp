@@ -2,9 +2,14 @@
 
 #include "include/tower_of_hanoi.h"
 
+#define SUM_OF_RODS_NUMBERS 6
+#define START_ROD 1
+#define END_ROD 3
+
 std::vector<std::vector<int>> TowerOfHanoi::RecursiveCalculate
     (int numberOfRings, int fromRod, int toRod) {
-    if ((fromRod < 1 && fromRod > 3) || (toRod < 1 && toRod > 3)) {
+    if ((fromRod < START_ROD && fromRod > END_ROD)
+    || (toRod < START_ROD && toRod > END_ROD)) {
         throw std::range_error("Number of rods must be 1, 2 or 3");
     }
 
@@ -12,7 +17,7 @@ std::vector<std::vector<int>> TowerOfHanoi::RecursiveCalculate
         return std::vector<std::vector<int>>(1, {fromRod, toRod});
     }
 
-    int unused = 6 - fromRod - toRod;
+    int unused = SUM_OF_RODS_NUMBERS - fromRod - toRod;
 
     std::vector<std::vector<int>> localResult =
         RecursiveCalculate(numberOfRings - 1, fromRod, unused);
@@ -30,5 +35,5 @@ std::vector<std::vector<int>> TowerOfHanoi::CalculateSteps(int numberOfRings) {
         throw std::range_error("Number of rings must be positive");
     }
 
-    return RecursiveCalculate(numberOfRings, 1, 3);
+    return RecursiveCalculate(numberOfRings, START_ROD, END_ROD);
 }
