@@ -26,7 +26,8 @@ double DepositCalculator::calculateProfitCapitalization(double depositAmount,
     validateArguments(depositAmount, interestRate, months);
     int percent = 100;
     int percentMonth = 12;
-    double monthlyInterestRate = interestRate / constants::kPercentageConversionFactor / constants::kMonthsInYear;
+    double monthlyInterestRate = interestRate / 
+        constants::kPercentageConversionFactor / constants::kMonthsInYear;
     double currentDepositAmount = depositAmount;
 
     for (int i = 0; i < months; ++i) {
@@ -40,7 +41,8 @@ double DepositCalculator::calculateProfit(double depositAmount,
     int percent = 100;
     int percentMonth = 12;
     validateArguments(depositAmount, interestRate, months);
-    double monthlyInterestRate = interestRate / constants::kPercentageConversionFactor / constants::kMonthsInYear;
+    double monthlyInterestRate = interestRate / 
+        constants::kPercentageConversionFactor / constants::kMonthsInYear;
 
     return depositAmount * monthlyInterestRate * months;
 }
