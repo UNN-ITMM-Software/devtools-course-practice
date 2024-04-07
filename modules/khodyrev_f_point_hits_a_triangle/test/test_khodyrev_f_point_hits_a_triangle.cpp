@@ -54,3 +54,14 @@ TEST(Khodyrev_Fedor_Point_Hits_A_Triangle, Point_Is_Not_In_Triangle) {
 
     EXPECT_EQ(triangle.isInside(point), false);
 }
+
+TEST(Khodyrev_Fedor_Point_Hits_A_Triangle, Point_Is_Top) {
+    Point v1(0, 0);
+    Point v2(4, 0);
+    Point v3(2, 3);
+
+    Triangle triangle(v1, v2, v3);
+    Point point(0, 0);
+
+    EXPECT_EQ(triangle.isInside(point), false);
+}

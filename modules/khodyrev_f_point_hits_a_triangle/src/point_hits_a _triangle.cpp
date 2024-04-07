@@ -15,6 +15,11 @@ double Point::getY() const {
     return y;
 }
 
+bool Point::operator==(const Point& other) const {
+    const double epsilon = 1e-9;
+    return (fabs(x - other.x) < epsilon && fabs(y - other.y) < epsilon);
+}
+
 double Triangle::distance(const Point& p1, const Point& p2) {
     double dx = p2.getX() - p1.getX();
     double dy = p2.getY() - p1.getY();
@@ -44,6 +49,10 @@ double triangleArea(const Point& a, const Point& b, const Point& c) {
 }
 
 bool Triangle::isInside(const Point& p) const {
+    if (p == v1 || p == v2 || p == v3) {
+        return true;
+    }
+
     double totalArea = triangleArea(v1, v2, v3);
     double subArea1 = triangleArea(v1, v2, p);
     double subArea2 = triangleArea(v2, v3, p);
