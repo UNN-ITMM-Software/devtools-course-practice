@@ -4,11 +4,11 @@
 #define MODULES_SOLONINKO_A_HUFFMAN_CODE_INCLUDE_HUFFMAN_H_
 
 #include <iostream>
+#include <memory>
 #include <queue>
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <memory>
 
 struct Node {
   char ch;
@@ -67,13 +67,13 @@ std::string decode(Node *root, int &index, std::string str,
 
 void buildHuffmanTree(std::string text, std::string &dec_str) {
   std::unordered_map<char, int> freq;
-  for (const char& ch : text) {
+  for (const char &ch : text) {
     freq[ch]++;
   }
 
   std::priority_queue<Node *, std::vector<Node *>, comp> pq;
 
-  for (const auto& pair : freq) {
+  for (const auto &pair : freq) {
     pq.push(getNode(pair.first, pair.second, nullptr, nullptr));
   }
 
@@ -93,7 +93,7 @@ void buildHuffmanTree(std::string text, std::string &dec_str) {
   encode(root, "", huffmanCode);
 
   std::string str = "";
-  for (const char& ch : text) {
+  for (const char &ch : text) {
     str += huffmanCode[ch];
   }
 
@@ -102,8 +102,8 @@ void buildHuffmanTree(std::string text, std::string &dec_str) {
     dec_str = decode(root, index, str, dec_str);
   }
 
-  while(!pq.empty()) {
-    Node * t = pq.top();
+  while (!pq.empty()) {
+    Node *t = pq.top();
     pq.pop();
     delete t;
   }
@@ -117,4 +117,4 @@ bool compare_str(std::string str1, std::string str2) {
   }
 }
 
-#endif  // MODULES_SOLONINKO_A_HUFFMAN_CODE_INCLUDE_HUFFMAN_H_
+#endif // MODULES_SOLONINKO_A_HUFFMAN_CODE_INCLUDE_HUFFMAN_H_
