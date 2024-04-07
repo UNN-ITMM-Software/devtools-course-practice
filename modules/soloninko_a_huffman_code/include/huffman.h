@@ -26,11 +26,6 @@ Node *getNode(char ch, int freq, Node *left, Node *right) {
 
   return node;
 }
-
-struct comp {
-  bool operator()(Node *l, Node *r) { return l->freq > r->freq; }
-};
-
 void encode(Node *root, std::string str,
             std::unordered_map<char, std::string> &huffmanCode) {
   if (root == nullptr)
@@ -71,7 +66,8 @@ void buildHuffmanTree(std::string text, std::string &dec_str) {
     freq[ch]++;
   }
 
-  std::priority_queue<Node *, std::vector<Node *>, comp> pq;
+  std::priority_queue<Node *, std::vector<Node *>, bool (*)(Node *, Node *)> pq(
+      [](Node *l, Node *r) { return l->freq > r->freq; });
 
   for (const auto &pair : freq) {
     pq.push(getNode(pair.first, pair.second, nullptr, nullptr));
