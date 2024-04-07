@@ -7,6 +7,7 @@
 #include <queue>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 struct Node {
   char ch;
@@ -44,7 +45,6 @@ void encode(Node *root, std::string str,
 
 std::string decode(Node *root, int &index, std::string str,
                    std::string &dec_str) {
-
   if (root == nullptr) {
     return dec_str;
   }
@@ -107,7 +107,7 @@ void buildHuffmanTree(std::string text, std::string &dec_str) {
 
   int index = -1;
   std::cout << "\nDecoded string is: \n";
-  while (index < (int)str.size() - 1) {
+  while (index < static_cast<int>(str.size()) - 1) {
     dec_str = decode(root, index, str, dec_str);
   }
   std::cout << dec_str << "\n";
@@ -121,4 +121,4 @@ bool compare_str(std::string str1, std::string str2) {
   }
 }
 
-#endif //  MODULES_SOLONINKO_A_HUFFMAN_CODE_INCLUDE_HUFFMAN_H_
+#endif  // MODULES_SOLONINKO_A_HUFFMAN_CODE_INCLUDE_HUFFMAN_H_
