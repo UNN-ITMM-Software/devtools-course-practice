@@ -38,7 +38,6 @@ TEST(DepositCalculatorTests,
 }
 TEST(DepositCalculatorTests,
     CalculateProfit_NegativeDepositAmount_ThrowsException) {
- 
     DepositCalculator calculator;
 
     EXPECT_THROW(calculator.calculateProfit(-1000, 10, 12),
@@ -49,7 +48,6 @@ TEST(DepositCalculatorTests,
 
 TEST(DepositCalculatorTests,
     CalculateProfit_ZeroMonths_ThrowsException) {
- 
     DepositCalculator calculator;
 
     EXPECT_THROW(calculator.calculateProfit(1000, 10, 0),
