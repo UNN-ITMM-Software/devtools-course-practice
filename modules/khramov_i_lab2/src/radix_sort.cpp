@@ -48,7 +48,8 @@ void RadixSort::countSort(std::vector<int>& array, int digit, bool order) {
         }
     } else {
         for (i = 0; i < array_size; i++) {
-            sorted_digit[array_size - count_numbers[(array[i] / digit) % 10]] = array[i];
+            sorted_digit[array_size - count_numbers[(array[i] / digit) % 10]] =
+             array[i];
             count_numbers[(array[i] / digit) % 10]--;
         }
     }

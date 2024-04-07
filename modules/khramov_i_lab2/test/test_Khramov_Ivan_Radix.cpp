@@ -21,7 +21,8 @@ TEST(Khramov_Ivan_RadixTest, Check_Descending_Sort) {
     std::vector<int> data {170, 45, 75, 90, 802, 24, 2, 66};
     std::vector<int> expected = data;
     // Act
-    std::sort(expected.begin(), expected.end(), [](int a, int b) { return a > b; });
+    std::sort(expected.begin(), expected.end(),
+     [](int a, int b) { return a > b; });
     RadixSort::radixSort(data, false);
     // Assert
     EXPECT_EQ(data, expected);
@@ -60,7 +61,8 @@ TEST(Khramov_Ivan_RadixTest, Check_Descending_Negative_Array_Sort) {
     std::vector<int> data {-5, -3, -2, -7, -12};
     std::vector<int> expected = data;
     // Act
-    std::sort(expected.begin(), expected.end(), [](int a, int b) { return a > b; });
+    std::sort(expected.begin(), expected.end(),
+     [](int a, int b) { return a > b; });
     RadixSort::radixSort(data, false);
     // Assert
     EXPECT_EQ(data, expected);
