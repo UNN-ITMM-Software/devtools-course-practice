@@ -110,11 +110,7 @@ void buildHuffmanTree(std::string text, std::string &dec_str) {
 }
 
 bool compare_str(std::string str1, std::string str2) {
-  if (str1.compare(str2) == 0) {
-    return true;
-  } else {
-    return false;
-  }
+  return str1.compare(str2) == 0;
 }
 
-#endif // MODULES_SOLONINKO_A_HUFFMAN_CODE_INCLUDE_HUFFMAN_H_
+#endif  // MODULES_SOLONINKO_A_HUFFMAN_CODE_INCLUDE_HUFFMAN_H_
