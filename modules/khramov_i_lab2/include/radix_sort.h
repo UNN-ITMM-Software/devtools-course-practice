@@ -17,7 +17,7 @@ class RadixSort {
     int array_size = array.size();
     int i{};
     if (array_size == 0) {
-        throw std::runtime_error("The array is empty. Nothing to sort.");
+        throw std::invalid_argument("The array is empty. Nothing to sort.");
     }
 
     T extreme_el = RadixSort<T>::getMaximumOrMinimum(array);
