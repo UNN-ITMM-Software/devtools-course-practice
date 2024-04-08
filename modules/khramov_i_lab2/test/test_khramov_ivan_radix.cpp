@@ -113,11 +113,11 @@ TEST(Khramov_Ivan_RadixTest, Check_Big_Range_Array_Sort) {
 
 TEST(Khramov_Ivan_RadixTest, Check_Short_Type_Array_Sort) {
     // Arrange
-    std::vector<short> data = RadixSort<short>::getRandomVector(10000);
-    std::vector<short> expected = data;
+    std::vector<short> data = RadixSort<short>::getRandomVector(10000); //NOLINT
+    std::vector<short> expected = data; //NOLINT
     // Act
     std::sort(expected.begin(), expected.end());
-    RadixSort<short>::radixSort(data);
+    RadixSort<short>::radixSort(data); //NOLINT
     // Assert
     EXPECT_EQ(data, expected);
 }

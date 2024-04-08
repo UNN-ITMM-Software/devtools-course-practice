@@ -9,7 +9,8 @@
 #include <stdexcept>
 #include <random>
 
-template<typename T, typename = typename std::enable_if<std::is_integral<T>::value>::type>
+template<typename T, typename =
+ typename std::enable_if<std::is_integral<T>::value>::type>
 class RadixSort {
  public:
   static void radixSort(std::vector<T>& array, bool order = true) {
