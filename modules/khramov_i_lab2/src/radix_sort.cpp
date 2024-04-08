@@ -1,5 +1,7 @@
 // Copyright 2024 Khramov Ivan
 
+#include <string>
+
 #include "include/radix_sort.h"
 
 void RadixSort::radixSort(std::vector<int>& array, bool order) {
