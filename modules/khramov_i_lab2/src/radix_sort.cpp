@@ -31,7 +31,8 @@ void RadixSort::radixSort(std::vector<int>& array, bool order) {
 
 void RadixSort::countSort(std::vector<int>& array, int digit, bool order) {
     int array_size = array.size();
-    int i{}, base = 10;
+    int i{};
+    const int base = 10;
     std::vector<int> sorted_digit(array_size, 0);
     std::vector<int> count_numbers(base, 0);
 
