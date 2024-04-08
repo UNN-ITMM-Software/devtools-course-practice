@@ -67,3 +67,37 @@ TEST(Khramov_Ivan_RadixTest, Check_Descending_Negative_Array_Sort) {
     // Assert
     EXPECT_EQ(data, expected);
 }
+
+TEST(Khramov_Ivan_RadixTest, Check_One_Element_Array_Sort) {
+    // Arrange
+    std::vector<int> data {3};
+    std::vector<int> expected = data;
+    // Act
+    std::sort(expected.begin(), expected.end());
+    RadixSort::radixSort(data);
+    // Assert
+    EXPECT_EQ(data, expected);
+}
+
+TEST(Khramov_Ivan_RadixTest, Check_Already_Sorted_Array_Sort) {
+    // Arrange
+    std::vector<int> data {1, 2, 3};
+    std::vector<int> expected = data;
+    // Act
+    std::sort(expected.begin(), expected.end());
+    RadixSort::radixSort(data);
+    // Assert
+    EXPECT_EQ(data, expected);
+}
+
+TEST(Khramov_Ivan_RadixTest, Check_Descending_Already_Sorted_Array_Sort) {
+    // Arrange
+    std::vector<int> data {3, 2, 1};
+    std::vector<int> expected = data;
+    // Act
+    std::sort(expected.begin(), expected.end(),
+     [](int a, int b) { return a > b; });
+    RadixSort::radixSort(data, false);
+    // Assert
+    EXPECT_EQ(data, expected);
+}
