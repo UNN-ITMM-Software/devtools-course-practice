@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include <string>
+#include <stdexcept>
 #include <utility>
 #include <algorithm>
 
@@ -26,7 +26,7 @@ class Stack {
         size = sz;
 
         if (sz <= 0) {
-            throw std::string("Stack size should be greater than zero");
+            throw std::invalid_argument("Invalid stack size");
         } else {
             pMem = new T[size];
         }
@@ -57,10 +57,12 @@ class Stack {
     }
 
     Stack& operator=(Stack&& other) noexcept {
-        delete[] pMem;
-        pMem = nullptr;
-        size = 0;
-        swap(*this, other);
+        if (this != &other) {
+            delete[] pMem;
+            pMem = nullptr;
+            size = 0;
+            swap(*this, other);
+        }
         return *this;
     }
 
@@ -88,13 +90,13 @@ class Stack {
 
     T pop() {
         if (isEmpty())
-            throw std::string("Stack is empty");
+            throw std::logic_error("Stack is empty");
         return pMem[top--];
     }
 
     T show_top() const {
         if (isEmpty())
-            throw std::string("Stack is empty");
+            throw std::logic_error("Stack is empty");
         return pMem[top];
     }
 
