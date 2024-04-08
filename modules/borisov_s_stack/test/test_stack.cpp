@@ -1,7 +1,9 @@
 // Copyright 2024 Borisov Saveliy
 
-#include <utility>
 #include <gtest/gtest.h>
+
+#include <utility>
+
 #include "include/stack.h"
 
 TEST(Borisov_StackTest, can_create_stack_with_positive_length) {
