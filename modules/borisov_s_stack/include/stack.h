@@ -31,6 +31,38 @@ class Stack {
         }
     }
 
+    Stack(const Stack& other) {
+        top = other.top;
+        size = other.size;
+        pMem = new T[size];
+        std::copy(other.pMem, other.pMem + size, pMem);
+    }
+
+    Stack& operator=(const Stack& other) {
+        if (this != &other) {
+            delete[] pMem;
+            top = other.top;
+            size = other.size;
+            pMem = new T[size];
+            std::copy(other.pMem, other.pMem + size, pMem);
+        }
+        return *this;
+    }
+
+    Stack(Stack&& other) noexcept {
+        pMem = nullptr;
+        size = 0;
+        swap(*this, other);
+    }
+
+    Stack& operator=(Stack&& other) noexcept {
+        delete[] pMem;
+        pMem = nullptr;
+        size = 0;
+        swap(*this, other);
+        return *this;
+    }
+
     int current_size() const {
         return top + 1;
     }
@@ -63,6 +95,28 @@ class Stack {
         if (isEmpty())
             throw std::string("Stack is empty");
         return pMem[top];
+    }
+
+    bool operator==(const Stack& other) const {
+        if (top != other.top)
+            return false;
+        if (show_top() != other.show_top())
+            return false;
+        for (int i = 0; i <= top; ++i) {
+            if (pMem[i] != other.pMem[i])
+                return false;
+        }
+        return true;
+    }
+
+    bool operator!=(const Stack& other) const {
+        return !(*this == other);
+    }
+
+    friend void swap(Stack& lhs, Stack& rhs) noexcept {
+        std::swap(lhs.top, rhs.top);
+        std::swap(lhs.size, rhs.size);
+        std::swap(lhs.pMem, rhs.pMem);
     }
 
     ~Stack() {

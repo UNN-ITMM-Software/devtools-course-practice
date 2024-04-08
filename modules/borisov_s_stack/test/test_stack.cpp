@@ -1,5 +1,6 @@
 // Copyright 2024 Borisov Saveliy
 
+#include <utility>
 #include <gtest/gtest.h>
 #include "include/stack.h"
 
@@ -99,4 +100,96 @@ TEST(Borisov_StackTest, can_clear_stack) {
     EXPECT_EQ(false, stack.isEmpty());
     stack.clear();
     EXPECT_EQ(true, stack.isEmpty());
+}
+
+TEST(Borisov_StackTest, can_copy_stack) {
+    Stack<int> stack1(3);
+    stack1.push(1);
+    stack1.push(2);
+
+    Stack<int> stack2 = stack1;
+
+    EXPECT_EQ(stack1.pop(), stack2.pop());
+    EXPECT_EQ(stack1.pop(), stack2.pop());
+}
+
+TEST(Borisov_StackTest, can_assign_stack) {
+    Stack<int> stack1(3);
+    stack1.push(1);
+    stack1.push(2);
+
+    Stack<int> stack2(5);
+    stack2 = stack1;
+
+    EXPECT_EQ(stack1.pop(), stack2.pop());
+    EXPECT_EQ(stack1.pop(), stack2.pop());
+}
+
+TEST(Borisov_StackTest, can_move_stack) {
+    Stack<int> stack1(3);
+    stack1.push(1);
+    stack1.push(2);
+
+    Stack<int> stack2(std::move(stack1));
+
+    EXPECT_EQ(true, stack1.isEmpty());
+    EXPECT_EQ(2, stack2.pop());
+    EXPECT_EQ(1, stack2.pop());
+}
+
+TEST(Borisov_StackTest, can_assign_move_stack) {
+    Stack<int> stack1(3);
+    stack1.push(1);
+    stack1.push(2);
+
+    Stack<int> stack2(5);
+    stack2 = std::move(stack1);
+
+    EXPECT_EQ(true, stack1.isEmpty());
+    EXPECT_EQ(2, stack2.pop());
+    EXPECT_EQ(1, stack2.pop());
+}
+
+TEST(Borisov_StackTest, eq_oper_returns_true_for_eq_stacks) {
+    Stack<int> stack1(3);
+    stack1.push(1);
+    stack1.push(2);
+
+    Stack<int> stack2 = stack1;
+
+    EXPECT_TRUE(stack1 == stack2);
+}
+
+TEST(Borisov_StackTest, eq_oper_returns_false_for_uneq_stacks) {
+    Stack<int> stack1(3);
+    stack1.push(1);
+    stack1.push(2);
+
+    Stack<int> stack2(3);
+    stack2.push(1);
+    stack2.push(3);
+
+    EXPECT_FALSE(stack1 == stack2);
+}
+
+TEST(Borisov_StackTest, ineq_oper_returns_true_for_uneq_stacks) {
+    Stack<int> stack1(3);
+    stack1.push(1);
+    stack1.push(2);
+
+    Stack<int> stack2(3);
+    stack2.push(1);
+    stack2.push(3);
+
+    EXPECT_TRUE(stack1 != stack2);
+}
+
+TEST(Borisov_StackTest, ineq_oper_returns_false_for_eq_stacks) {
+    Stack<int> stack1(3);
+    stack1.push(1);
+    stack1.push(2);
+
+    Stack<int> stack2 = stack1;
+
+    EXPECT_FALSE(stack1 != stack2);
 }
