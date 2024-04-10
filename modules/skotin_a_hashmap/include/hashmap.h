@@ -1,7 +1,7 @@
 // Copyright 2024 Skotin Alexander
 
-#ifndef DEVTOOLS_COURSE_PRACTICE_MODULES_SKOTIN_A_HASHMAP_INCLUDE_HASHMAP_H_
-#define DEVTOOLS_COURSE_PRACTICE_MODULES_SKOTIN_A_HASHMAP_INCLUDE_HASHMAP_H_
+#ifndef MODULES_SKOTIN_A_HASHMAP_INCLUDE_HASHMAP_H_
+#define MODULES_SKOTIN_A_HASHMAP_INCLUDE_HASHMAP_H_
 
 #include <functional>
 #include <stdexcept>
@@ -150,4 +150,4 @@ size_t HashMap<KeyType, ValueType>::hashFunction(const KeyType& key) const {
     return std::hash<KeyType>{}(key) % capacity;
 }
 
-#endif  // DEVTOOLS_COURSE_PRACTICE_MODULES_SKOTIN_A_HASHMAP_INCLUDE_HASHMAP_H_
+#endif  // MODULES_SKOTIN_A_HASHMAP_INCLUDE_HASHMAP_H_
