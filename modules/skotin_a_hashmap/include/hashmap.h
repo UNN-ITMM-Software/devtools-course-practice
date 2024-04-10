@@ -9,6 +9,7 @@
 
 template <typename KeyType, typename ValueType>
 struct Node {
+    KeyType key;
     ValueType value;
     Node<KeyType, ValueType>* next;
 
