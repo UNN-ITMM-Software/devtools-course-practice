@@ -19,6 +19,7 @@ class Vector3d {
   double x;
   double y;
   double z;
+  double squareNorm() const;
 };
 
 #endif  // MODULES_KRISEEV_M_VECTOR_3D_INCLUDE_VECTOR_3D_H_
