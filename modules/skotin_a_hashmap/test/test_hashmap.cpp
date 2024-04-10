@@ -36,7 +36,7 @@ TEST(Skotin_Alexander_HashMapTest, SizeIsCorrectAfterInsertions) {
     HashMap<int, std::string> map;
     map.insert(1, "One");
     map.insert(2, "Two");
-    EXPECT_EQ(map.getSize(), 2);
+    EXPECT_EQ(map.getSize(), 2u);
 }
 
 TEST(Skotin_Alexander_HashMapTest, CanUpdateValueByKey) {
