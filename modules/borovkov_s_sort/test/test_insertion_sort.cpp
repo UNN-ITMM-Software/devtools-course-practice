@@ -2,9 +2,9 @@
 #include <gtest/gtest.h>
 
 #include <algorithm>
+#include <random>
 
 #include "include/insertion_sort.h"
-
 TEST(Borovkov_Sergey_InsertionSortTest, SortTest_1) {
   std::vector<int> test1{5, 2, 4, 6, 1, 3};
   InsertionSort::sort(test1);
@@ -27,7 +27,7 @@ TEST(Borovkov_Sergey_InsertionSortTest, SortTest_3) {
 }
 
 TEST(Borovkov_Sergey_InsertionSortTest, SortIntVector) {
-  std::vector<int> vec = {4, 2, 7, 1, 5};
+  std::vector<int> vec{4, 2, 7, 1, 5};
   std::vector<int> insertionSortedVec = vec;
   InsertionSort::sort(insertionSortedVec);
   std::sort(vec.begin(), vec.end());
@@ -35,7 +35,7 @@ TEST(Borovkov_Sergey_InsertionSortTest, SortIntVector) {
 }
 
 TEST(Borovkov_Sergey_InsertionSortTest, SortDoubleVector) {
-  std::vector<double> vec = {3.14, 2.71, 1.618, 0.1};
+  std::vector<double> vec{3.14, 2.71, 1.618, 0.1};
   std::vector<double> insertionSortedVec = vec;
   InsertionSort::sort(insertionSortedVec);
   std::sort(vec.begin(), vec.end());
@@ -43,7 +43,7 @@ TEST(Borovkov_Sergey_InsertionSortTest, SortDoubleVector) {
 }
 
 TEST(Borovkov_Sergey_InsertionSortTest, SortSizeTVector) {
-  std::vector<size_t> vec = {10, 5, 20, 1, 15};
+  std::vector<size_t> vec{10, 5, 20, 1, 15};
   std::vector<size_t> insertionSortedVec = vec;
   InsertionSort::sort(insertionSortedVec);
   std::sort(vec.begin(), vec.end());
@@ -59,11 +59,11 @@ TEST(Borovkov_Sergey_InsertionSortTest, SortRandomIntVector) {
   ASSERT_EQ(insertionSortedVec, vec);
 }
 
-TEST(Borovkov_Sergey_InsertionSortTest, SortRandomDoubleVector) {
+TEST(Borovkov_Sergey_InsertionSortTest, SortUniformDoubleVector) {
   std::vector<double> vec(1000);
-  std::generate(vec.begin(), vec.end(), []() {
-    return static_cast<double>(rand()) / RAND_MAX * 1000.0;
-  });
+  std::uniform_real_distribution<double> distribution(0.0, 1000.0);
+  std::mt19937 engine;
+  std::generate(vec.begin(), vec.end(), [&]() { return distribution(engine); });
   std::vector<double> insertionSortedVec = vec;
   InsertionSort::sort(insertionSortedVec);
   std::sort(vec.begin(), vec.end());
