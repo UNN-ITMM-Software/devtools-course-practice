@@ -4,6 +4,8 @@
 
 #include <cmath>
 #include <stdexcept>
+#include <vector>
+#include <utility>
 #include <algorithm>
 
 int GrahamScan::orientation(std::pair<double, double>& p,
