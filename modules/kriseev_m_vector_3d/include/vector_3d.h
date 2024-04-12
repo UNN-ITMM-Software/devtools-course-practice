@@ -14,7 +14,7 @@ class Vector3d {
   Vector3d getNormalizedVector() const;
   double dotProduct(const Vector3d &vector) const;
   Vector3d crossProduct(const Vector3d &vector) const;
-
+  // TODO: add comparison operator
  private:
   double x;
   double y;
