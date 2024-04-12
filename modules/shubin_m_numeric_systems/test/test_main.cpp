@@ -1,4 +1,4 @@
-﻿// Copyright 2024 Shubin Mikhail
+﻿  // Copyright 2024 Shubin Mikhail
 
 #include <gtest/gtest.h>
 
