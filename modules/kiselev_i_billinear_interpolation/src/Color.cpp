@@ -3,16 +3,16 @@
 #include "include/Color.h"
 
 Color::Color(int r, int g, int b) {
-    if (r > (int)max) R = max;
-    else if (r < (int)min) R = min;
+    if (r > static_cast<int>(max)) R = max;
+    else if (r < static_cast<int>(min)) R = min;
     else
             R = r;
-    if (g > (int)max) G = max;
-    else if (g < (int)min) G = min;
+    if (g > static_cast<int>(max)) G = max;
+    else if (g < static_cast<int>(min)) G = min;
     else
             G = g;
-    if (b > (int)max) B = max;
-    else if (b < (int)min) B = min;
+    if (b > static_cast<int>(max)) B = max;
+    else if (b < static_cast<int>(min)) B = min;
     else
             B = b;
 }
@@ -36,22 +36,22 @@ char Color::getB() const {
 }
 
 void Color::setR(int r) {
-    if (r > (int)max) R = max;
-    else if (r < (int)min) R = min;
+    if (r > static_cast<int>(max)) R = max;
+    else if (r < static_cast<int>(min)) R = min;
     else
             R = r;
 }
 
 void Color::setG(int g) {
-    if (g > (int)max) G = max;
-    else if (g < (int)min) G = min;
+    if (g > static_cast<int>(max)) G = max;
+    else if (g < static_cast<int>(min)) G = min;
     else
             G = g;
 }
 
 void Color::setB(int b) {
-    if (b > (int)max) B = max;
-    else if (b < (int)min) B = min;
+    if (b > static_cast<int>(max)) B = max;
+    else if (b < static_cast<int>(min)) B = min;
     else
             B = b;
 }
