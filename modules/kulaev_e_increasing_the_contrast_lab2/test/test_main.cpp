@@ -1,4 +1,4 @@
-﻿// Copyright 2024 Kulaev Zhenya
+﻿  // Copyright 2024 Kulaev Zhenya
 
 #include <gtest/gtest.h>
 
