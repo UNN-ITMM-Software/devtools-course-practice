@@ -7,11 +7,11 @@
 #include <stdexcept>
 
 class ComplexCalculator {
-private:
+ private:
     double real;
     double imaginary;
 
-public:
+ public:
     ComplexCalculator(double real, double imaginary);
 
     double getReal() const;
