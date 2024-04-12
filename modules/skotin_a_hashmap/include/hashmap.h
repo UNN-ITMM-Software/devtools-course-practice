@@ -22,15 +22,19 @@ template <typename KeyType, typename ValueType>
 
 class HashMap {
  public:
-    HashMap();
-    ~HashMap();
+     HashMap();
+     ~HashMap();
+     HashMap(const HashMap& other);
+     HashMap(HashMap&& other) noexcept;
+     HashMap& operator=(const HashMap& other);
+     HashMap& operator=(HashMap&& other) noexcept;
 
-    void insert(const KeyType& key, const ValueType& value);
-    ValueType find(const KeyType& key) const;
-    void remove(const KeyType& key);
-    void clear();
-    bool empty() const;
-    size_t getSize() const;
+     void insert(const KeyType& key, const ValueType& value);
+     ValueType find(const KeyType& key) const;
+     void remove(const KeyType& key);
+     void clear();
+     bool empty() const;
+     size_t getSize() const;
 
  private:
     Node<KeyType, ValueType>** table;
@@ -42,14 +46,67 @@ class HashMap {
 };
 
 template <typename KeyType, typename ValueType>
-HashMap<KeyType, ValueType>::HashMap() : capacity(defaultCapacity), size(0) {
-    table = new Node<KeyType, ValueType>* [capacity]();
+HashMap<KeyType, ValueType>::HashMap()
+    : table(new Node<KeyType, ValueType>* [defaultCapacity]()), capacity(defaultCapacity), size(0) {
+    for (size_t i = 0; i < capacity; i++) {
+        table[i] = nullptr;
+    }
 }
 
 template <typename KeyType, typename ValueType>
 HashMap<KeyType, ValueType>::~HashMap() {
     clear();
     delete[] table;
+}
+
+template <typename KeyType, typename ValueType>
+HashMap<KeyType, ValueType>::HashMap(const HashMap& other) : table(nullptr), capacity(other.capacity), size(other.size) {
+    table = new Node<KeyType, ValueType>* [capacity]();
+    for (size_t i = 0; i < capacity; ++i) {
+        Node<KeyType, ValueType>* current = other.table[i];
+        Node<KeyType, ValueType>** local = &table[i];
+        while (current != nullptr) {
+            *local = new Node<KeyType, ValueType>(current->key, current->value);
+            local = &((*local)->next);
+            current = current->next;
+        }
+    }
+}
+
+template <typename KeyType, typename ValueType>
+HashMap<KeyType, ValueType>& HashMap<KeyType, ValueType>::operator=(const HashMap& other) {
+    if (this != &other) {
+        HashMap tmp(other);
+        std::swap(table, tmp.table);
+        std::swap(capacity, tmp.capacity);
+        std::swap(size, tmp.size);
+    }
+    return *this;
+}
+
+template <typename KeyType, typename ValueType>
+HashMap<KeyType, ValueType>::HashMap(HashMap&& other) noexcept
+    : table(other.table), capacity(other.capacity), size(other.size) {
+    other.table = nullptr;
+    other.size = 0;
+    other.capacity = 0;
+}
+
+template <typename KeyType, typename ValueType>
+HashMap<KeyType, ValueType>& HashMap<KeyType, ValueType>::operator=(HashMap&& other) noexcept {
+    if (this != &other) {
+        clear();
+        delete[] table;
+
+        table = other.table;
+        capacity = other.capacity;
+        size = other.size;
+
+        other.table = nullptr;
+        other.capacity = 0;
+        other.size = 0;
+    }
+    return *this;
 }
 
 template <typename KeyType, typename ValueType>
