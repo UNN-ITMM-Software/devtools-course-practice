@@ -9,7 +9,7 @@
 #include <vector>
 
 #define digit_t size_t
-#define number_t long
+#define number_t int64_t
 
 class CustomNSNumber {
  protected:
