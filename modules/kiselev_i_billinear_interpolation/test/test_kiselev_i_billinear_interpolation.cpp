@@ -40,6 +40,8 @@ TEST(Kiselev_Igor_Billinear_interpolation_test,
     ASSERT_NO_THROW(BillinearInterpolation bi1 = BillinearInterpolation(v));
     BillinearInterpolation bi1 = BillinearInterpolation(v);
     ASSERT_NO_THROW(BillinearInterpolation bi2 = BillinearInterpolation(bi1));
+    ASSERT_NO_THROW(BillinearInterpolation bi3 = std::move(bi1));
+    ASSERT_NO_THROW(BillinearInterpolation bi4 = bi1);
 }
 
 TEST(Kiselev_Igor_Billinear_interpolation_test, test_twoCore_is_no_fall) {
@@ -84,16 +86,4 @@ TEST(Kiselev_Igor_Billinear_interpolation_test, test_threeCore_is_correct) {
     ASSERT_EQ(ans, res[1][1].getR());
     ASSERT_EQ(res[1][1].getG(), ans);
     ASSERT_EQ(res[1][1].getB(), ans);
-}
-
-TEST(Kiselev_Igor_Billinear_interpolation_test, test_move_operator) {
-    std::vector<std::vector<Color>> v(3, std::vector<Color>
-        (3, Color(0, 0, 0)));
-    v[2][2] = Color(60, 60, 60);
-    v[2][0] = Color(50, 50, 50);
-    v[0][2] = Color(50, 50, 50);
-    v[0][0] = Color(40, 40, 40);
-    BillinearInterpolation bi1 = BillinearInterpolation(v);
-    BillinearInterpolation bi2 = bi1;
-    ASSERT_TRUE(&bi2 == &bi1);
 }
