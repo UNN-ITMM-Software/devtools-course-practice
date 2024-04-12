@@ -23,7 +23,7 @@ std::string CaesarCipher::CaesarCipherEncoder
 
     for (const char c : plaintext) {
         if (isalpha(c)) {
-            result += shiftChar(c, offset);
+            result += ShiftChar(c, offset);
         } else {
             result += c;
         }
@@ -40,7 +40,7 @@ std::string CaesarCipher::CaesarCipherDecoder
 
     for (const char c : ciphertext) {
         if (isalpha(c)) {
-            result += shiftChar(c, 26 - offset);
+            result += ShiftChar(c, 26 - offset);
         } else {
             result += c;
         }
