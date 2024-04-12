@@ -5,7 +5,7 @@
 bool Convertor::isRomanValid(const std::string roman_num) {
     int previousValue = 0;
 
-    for (size_t i = roman_num.length() - 1; i >= 0; --i) {
+    for (int i = roman_num.length() - 1; i >= 0; --i) {
         int currentValue = roman_nums[roman_num[i]];
 
         if (currentValue >= previousValue) {
