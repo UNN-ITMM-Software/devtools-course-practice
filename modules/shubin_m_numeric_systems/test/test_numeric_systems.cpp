@@ -6,8 +6,8 @@
 
 #include "include/CustomNSNumber.hpp"
 
-#define RAND_CUST_MIN 0
-#define RAND_CUST_MAX 10000
+#define RND_MIN 0
+#define RND_MAX 10000
 
 #define DEC 10
 #define BIN 2
@@ -28,7 +28,7 @@ TEST(Shubin_Mikhail_NS_Test, CannotCreate_NS_1) {
 TEST(Shubin_Mikhail_NS_Test, Cannot_NS_Any_Set_NS_0) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, DEC);
@@ -39,7 +39,7 @@ TEST(Shubin_Mikhail_NS_Test, Cannot_NS_Any_Set_NS_0) {
 TEST(Shubin_Mikhail_NS_Test, Cannot_NS_Any_Set_NS_1) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, DEC);
@@ -50,7 +50,7 @@ TEST(Shubin_Mikhail_NS_Test, Cannot_NS_Any_Set_NS_1) {
 TEST(Shubin_Mikhail_NS_Test, Cannot_NS_Any_To_NS_0) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, DEC);
@@ -61,7 +61,7 @@ TEST(Shubin_Mikhail_NS_Test, Cannot_NS_Any_To_NS_0) {
 TEST(Shubin_Mikhail_NS_Test, Cannot_NS_Any_To_NS_1) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, DEC);
@@ -72,7 +72,7 @@ TEST(Shubin_Mikhail_NS_Test, Cannot_NS_Any_To_NS_1) {
 TEST(Shubin_Mikhail_NS_Test, CannotSum_Different_NS) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -85,7 +85,7 @@ TEST(Shubin_Mikhail_NS_Test, CannotSum_Different_NS) {
 TEST(Shubin_Mikhail_NS_Test, CannotSub_Different_NS) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -98,7 +98,7 @@ TEST(Shubin_Mikhail_NS_Test, CannotSub_Different_NS) {
 TEST(Shubin_Mikhail_NS_Test, CannotMult_Different_NS) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -111,7 +111,7 @@ TEST(Shubin_Mikhail_NS_Test, CannotMult_Different_NS) {
 TEST(Shubin_Mikhail_NS_Test, CanComp_EQ_Different_NS) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
@@ -123,7 +123,7 @@ TEST(Shubin_Mikhail_NS_Test, CanComp_EQ_Different_NS) {
 TEST(Shubin_Mikhail_NS_Test, CanComp_NE_Different_NS) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
@@ -159,7 +159,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(DEC, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(DEC, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
@@ -188,7 +188,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(DEC, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(DEC, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
@@ -204,7 +204,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
@@ -215,7 +215,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
@@ -226,7 +226,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_DEC_Set_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, DEC);
@@ -238,7 +238,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_DEC_Set_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_DEC_Set_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, DEC);
@@ -250,7 +250,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_DEC_Set_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_DEC_To_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
@@ -262,7 +262,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_DEC_To_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_DEC_To_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
@@ -274,7 +274,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_DEC_To_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_Positive_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -288,7 +288,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_Positive_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_Negative_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -302,7 +302,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_Negative_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_DiffSign_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -316,7 +316,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_DiffSign_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_Positive_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -330,7 +330,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_Positive_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_Negative_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -344,7 +344,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_Negative_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_DiffSign_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -358,7 +358,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_DiffSign_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_Positive_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -372,7 +372,7 @@ TEST(Shubin_Mikhail_NS_Test, CanMult_Positive_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_Negative_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -386,7 +386,7 @@ TEST(Shubin_Mikhail_NS_Test, CanMult_Negative_NS_DEC) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_DiffSign_NS_DEC) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -424,7 +424,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(BIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(BIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_bin_num = CustomNSNumber(_num, BIN);
@@ -453,7 +453,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(BIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(BIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_bin_num = CustomNSNumber(_num, BIN);
@@ -469,7 +469,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_bin_num = CustomNSNumber(_num, BIN);
@@ -480,7 +480,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_bin_num = CustomNSNumber(_num, BIN);
@@ -491,7 +491,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_BIN_Set_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, BIN);
@@ -503,7 +503,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_BIN_Set_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_BIN_Set_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, BIN);
@@ -515,7 +515,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_BIN_Set_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_BIN_To_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_bin_num = CustomNSNumber(_num, BIN);
@@ -527,7 +527,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_BIN_To_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_BIN_To_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_bin_num = CustomNSNumber(_num, BIN);
@@ -539,7 +539,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_BIN_To_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_Positive_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -553,7 +553,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_Positive_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_Negative_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -567,7 +567,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_Negative_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_DiffSign_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -581,7 +581,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_DiffSign_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_Positive_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -595,7 +595,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_Positive_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_Negative_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -609,7 +609,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_Negative_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_DiffSign_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -623,7 +623,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_DiffSign_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_Positive_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -637,7 +637,7 @@ TEST(Shubin_Mikhail_NS_Test, CanMult_Positive_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_Negative_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -651,7 +651,7 @@ TEST(Shubin_Mikhail_NS_Test, CanMult_Negative_NS_BIN) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_DiffSign_NS_BIN) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -689,7 +689,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(OCT, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(OCT, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_oct_num = CustomNSNumber(_num, OCT);
@@ -718,7 +718,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(OCT, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(OCT, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_oct_num = CustomNSNumber(_num, OCT);
@@ -734,7 +734,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_oct_num = CustomNSNumber(_num, OCT);
@@ -745,7 +745,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_oct_num = CustomNSNumber(_num, OCT);
@@ -756,7 +756,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_OCT_Set_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, OCT);
@@ -768,7 +768,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_OCT_Set_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_OCT_Set_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, OCT);
@@ -780,7 +780,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_OCT_Set_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_OCT_To_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_oct_num = CustomNSNumber(_num, OCT);
@@ -792,7 +792,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_OCT_To_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_OCT_To_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_oct_num = CustomNSNumber(_num, OCT);
@@ -804,7 +804,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_OCT_To_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_Positive_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -818,7 +818,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_Positive_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_Negative_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -832,7 +832,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_Negative_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_DiffSign_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -846,7 +846,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_DiffSign_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_Positive_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -860,7 +860,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_Positive_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_Negative_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -874,7 +874,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_Negative_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_DiffSign_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -888,7 +888,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_DiffSign_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_Positive_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -902,7 +902,7 @@ TEST(Shubin_Mikhail_NS_Test, CanMult_Positive_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_Negative_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -916,7 +916,7 @@ TEST(Shubin_Mikhail_NS_Test, CanMult_Negative_NS_OCT) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_DiffSign_NS_OCT) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -954,7 +954,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(HEX, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(HEX, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_hex_num = CustomNSNumber(_num, HEX);
@@ -983,7 +983,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(HEX, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(HEX, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_hex_num = CustomNSNumber(_num, HEX);
@@ -999,7 +999,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_hex_num = CustomNSNumber(_num, HEX);
@@ -1010,7 +1010,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_hex_num = CustomNSNumber(_num, HEX);
@@ -1021,7 +1021,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_HEX_Set_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, HEX);
@@ -1033,7 +1033,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_HEX_Set_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_HEX_Set_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_var_num = CustomNSNumber(_num, HEX);
@@ -1045,7 +1045,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_HEX_Set_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_HEX_To_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = number_t_dist(rng);
   CustomNSNumber ns_hex_num = CustomNSNumber(_num, HEX);
@@ -1057,7 +1057,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Positive_NS_HEX_To_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_HEX_To_NS_CUST) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num = -number_t_dist(rng);
   CustomNSNumber ns_hex_num = CustomNSNumber(_num, HEX);
@@ -1069,7 +1069,7 @@ TEST(Shubin_Mikhail_NS_Test, CanReturnToDec_Negative_NS_HEX_To_NS_CUST) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_Positive_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -1083,7 +1083,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_Positive_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_Negative_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -1097,7 +1097,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_Negative_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanSum_DiffSign_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -1111,7 +1111,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSum_DiffSign_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_Positive_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -1125,7 +1125,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_Positive_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_Negative_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -1139,7 +1139,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_Negative_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanSub_DiffSign_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -1153,7 +1153,7 @@ TEST(Shubin_Mikhail_NS_Test, CanSub_DiffSign_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_Positive_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = number_t_dist(rng);
@@ -1167,7 +1167,7 @@ TEST(Shubin_Mikhail_NS_Test, CanMult_Positive_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_Negative_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = -number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
@@ -1181,7 +1181,7 @@ TEST(Shubin_Mikhail_NS_Test, CanMult_Negative_NS_HEX) {
 TEST(Shubin_Mikhail_NS_Test, CanMult_DiffSign_NS_HEX) {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<number_t> number_t_dist(RAND_CUST_MIN, RAND_CUST_MAX);
+  std::uniform_int_distribution<number_t> number_t_dist(RND_MIN, RND_MAX);
 
   number_t _num_1 = number_t_dist(rng);
   number_t _num_2 = -number_t_dist(rng);
