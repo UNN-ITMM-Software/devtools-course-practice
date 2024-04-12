@@ -14,6 +14,7 @@ class BillinearInterpolation {
     BillinearInterpolation(BillinearInterpolation&& bi);
     BillinearInterpolation(const BillinearInterpolation &bi);
     BillinearInterpolation& operator=(BillinearInterpolation&& bi);
+    BillinearInterpolation operator=(BillinearInterpolation& bi);
     std::vector<std::vector<Color>> twoCore();
     std::vector<std::vector<Color>> threeCore();
 };

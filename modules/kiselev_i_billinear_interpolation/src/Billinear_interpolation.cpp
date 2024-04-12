@@ -41,6 +41,12 @@ BillinearInterpolation& BillinearInterpolation::operator=
     return *this;
 }
 
+BillinearInterpolation BillinearInterpolation::operator=
+(BillinearInterpolation& bi) {
+    BillinearInterpolation ans = BillinearInterpolation(bi);
+    return ans;
+}
+
 std::vector<std::vector<Color>> BillinearInterpolation::twoCore() {
     size_t n = source.size();
     size_t m = source[0].size();

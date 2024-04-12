@@ -39,9 +39,10 @@ TEST(Kiselev_Igor_Billinear_interpolation_test,
         (2, Color(0, 0, 0)));
     ASSERT_NO_THROW(BillinearInterpolation bi1 = BillinearInterpolation(v));
     BillinearInterpolation bi1 = BillinearInterpolation(v);
-    ASSERT_NO_THROW(BillinearInterpolation bi2 = BillinearInterpolation(bi1));
-    ASSERT_NO_THROW(BillinearInterpolation bi3 = std::move(bi1));
+    BillinearInterpolation bi2 = BillinearInterpolation(v);
+    ASSERT_NO_THROW(BillinearInterpolation bi3 = BillinearInterpolation(bi1));
     ASSERT_NO_THROW(BillinearInterpolation bi4 = bi1);
+    ASSERT_NO_THROW(bi2 = bi1);
 }
 
 TEST(Kiselev_Igor_Billinear_interpolation_test, test_twoCore_is_no_fall) {
