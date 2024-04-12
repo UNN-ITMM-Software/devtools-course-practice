@@ -9,7 +9,7 @@ CaesarCipher::CaesarCipher(const int _offset) {
     this->offset = _offset;
 }
 
-char CaesarCipher::shiftChar(char c, int offset) const {
+char CaesarCipher::ShiftChar(char c, int offset) const {
     char base = isupper(c) ? 'A' : 'a';
     return static_cast<char>((c - base + offset) % 26 + base);
 }

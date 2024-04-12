@@ -13,7 +13,7 @@ class CaesarCipher {
  public:
     explicit CaesarCipher(int _offset);
 
-    char shiftChar(char c, int offset) const;
+    char ShiftChar(char c, int offset) const;
     std::string CaesarCipherEncoder(const std::string& plaintext) const;
     std::string CaesarCipherDecoder(const std::string& ciphertext) const;
 };
