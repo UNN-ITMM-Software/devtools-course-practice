@@ -6,6 +6,7 @@
 #include <functional>
 #include <stdexcept>
 #include <vector>
+#include <utility>
 
 template <typename KeyType, typename ValueType>
 struct Node {
@@ -47,7 +48,8 @@ class HashMap {
 
 template <typename KeyType, typename ValueType>
 HashMap<KeyType, ValueType>::HashMap()
-    : table(new Node<KeyType, ValueType>* [defaultCapacity]()), capacity(defaultCapacity), size(0) {
+    : table(new Node<KeyType, ValueType>* [defaultCapacity]()),
+    capacity(defaultCapacity), size(0) {
     for (size_t i = 0; i < capacity; i++) {
         table[i] = nullptr;
     }
@@ -60,7 +62,8 @@ HashMap<KeyType, ValueType>::~HashMap() {
 }
 
 template <typename KeyType, typename ValueType>
-HashMap<KeyType, ValueType>::HashMap(const HashMap& other) : table(nullptr), capacity(other.capacity), size(other.size) {
+HashMap<KeyType, ValueType>::HashMap(const HashMap& other) : table(nullptr),
+capacity(other.capacity), size(other.size) {
     table = new Node<KeyType, ValueType>* [capacity]();
     for (size_t i = 0; i < capacity; ++i) {
         Node<KeyType, ValueType>* current = other.table[i];
@@ -74,7 +77,8 @@ HashMap<KeyType, ValueType>::HashMap(const HashMap& other) : table(nullptr), cap
 }
 
 template <typename KeyType, typename ValueType>
-HashMap<KeyType, ValueType>& HashMap<KeyType, ValueType>::operator=(const HashMap& other) {
+HashMap<KeyType, ValueType>& HashMap<KeyType,
+    ValueType>::operator=(const HashMap& other) {
     if (this != &other) {
         HashMap tmp(other);
         std::swap(table, tmp.table);
@@ -93,7 +97,8 @@ HashMap<KeyType, ValueType>::HashMap(HashMap&& other) noexcept
 }
 
 template <typename KeyType, typename ValueType>
-HashMap<KeyType, ValueType>& HashMap<KeyType, ValueType>::operator=(HashMap&& other) noexcept {
+HashMap<KeyType, ValueType>& HashMap<KeyType,
+    ValueType>::operator=(HashMap&& other) noexcept {
     if (this != &other) {
         clear();
         delete[] table;
