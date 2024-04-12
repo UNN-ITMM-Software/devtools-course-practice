@@ -29,7 +29,7 @@ TEST(Kulaev_Zhenya_ComplexTest, test_2_setter) {
 
     z.setIm(im);
     z.setRe(re);
-    
+
     EXPECT_TRUE(isEqualWithD(z, re, im));
 }
 
