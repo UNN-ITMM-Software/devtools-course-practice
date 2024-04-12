@@ -54,7 +54,7 @@ void CustomNSNumber::SetNumSys(size_t _num_sys) {
   digit_t digit_t_num_sys = static_cast<digit_t>(num_sys);
   digit_t digit_t__num_sys = static_cast<digit_t>(_num_sys);
 
-  for (int i = 0; i < digits.size() - 1; i++) {
+  for (size_t i = 0; i < digits.size() - 1; i++) {
     temp_number *= digit_t_num_sys;
   }
   while (temp_number > 0) {
@@ -63,7 +63,7 @@ void CustomNSNumber::SetNumSys(size_t _num_sys) {
   }
   for (size_t i = digits.size() - 1; i > 0; i--) {
     temp_number = digits[i - 1];
-    for (int j = 0; j < i - 1; j++) {
+    for (size_t j = 0; j < i - 1; j++) {
       temp_number *= digit_t_num_sys;
     }
     size_t k = 0;
@@ -74,7 +74,7 @@ void CustomNSNumber::SetNumSys(size_t _num_sys) {
     }
   }
   digit_t move_digit = 0;
-  for (int i = 0; i < res.digits.size(); i++) {
+  for (size_t i = 0; i < res.digits.size(); i++) {
     temp_number = res.digits[i] + move_digit;
     res.digits[i] = temp_number % digit_t__num_sys;
     move_digit = temp_number / digit_t__num_sys;
@@ -109,7 +109,7 @@ CustomNSNumber CustomNSNumber::ToNumSys(size_t _num_sys) const {
   digit_t digit_t_num_sys = static_cast<digit_t>(num_sys);
   digit_t digit_t__num_sys = static_cast<digit_t>(_num_sys);
 
-  for (int i = 0; i < digits.size() - 1; i++) {
+  for (size_t i = 0; i < digits.size() - 1; i++) {
     temp_number *= digit_t_num_sys;
   }
   while (temp_number > 0) {
@@ -118,7 +118,7 @@ CustomNSNumber CustomNSNumber::ToNumSys(size_t _num_sys) const {
   }
   for (size_t i = digits.size() - 1; i > 0; i--) {
     temp_number = digits[i - 1];
-    for (int j = 0; j < i - 1; j++) {
+    for (size_t j = 0; j < i - 1; j++) {
       temp_number *= digit_t_num_sys;
     }
     size_t k = 0;
@@ -130,7 +130,7 @@ CustomNSNumber CustomNSNumber::ToNumSys(size_t _num_sys) const {
   }
 
   digit_t move_digit = 0;
-  for (int i = 0; i < res.digits.size(); i++) {
+  for (size_t i = 0; i < res.digits.size(); i++) {
     temp_number = res.digits[i] + move_digit;
     res.digits[i] = temp_number % digit_t__num_sys;
     move_digit = temp_number / digit_t__num_sys;
@@ -153,9 +153,9 @@ number_t CustomNSNumber::ToDec() {
 
   number_t temp_number = 0;
   number_t number_t_num_sys = static_cast<number_t>(num_sys);
-  for (int i = 0; i < digits.size(); i++) {
+  for (size_t i = 0; i < digits.size(); i++) {
     temp_number = static_cast<number_t>(digits[i]);
-    for (int j = 0; j < i; j++) {
+    for (size_t j = 0; j < i; j++) {
       temp_number *= number_t_num_sys;
     }
     res += temp_number;
@@ -215,7 +215,7 @@ CustomNSNumber CustomNSNumber::operator+(const CustomNSNumber& _num) {
 
   digit_t temp_number = 0;
   digit_t move_digit = 0;
-  for (int i = 0; i < res.digits.size(); i++) {
+  for (size_t i = 0; i < res.digits.size(); i++) {
     temp_number = res.digits[i] + move_digit;
     res.digits[i] = temp_number % digit_t_num_sys;
     move_digit = temp_number / digit_t_num_sys;
@@ -273,7 +273,7 @@ CustomNSNumber CustomNSNumber::operator-(const CustomNSNumber& _num) {
 
   digit_t temp_number = 0;
   digit_t move_digit = 0;
-  for (int i = 0; i < res.digits.size(); i++) {
+  for (size_t i = 0; i < res.digits.size(); i++) {
     temp_number = res.digits[i] + move_digit;
     res.digits[i] = temp_number % digit_t_num_sys;
     move_digit = temp_number / digit_t_num_sys;
@@ -322,7 +322,7 @@ CustomNSNumber CustomNSNumber::operator*(const CustomNSNumber& _num) {
     }
   }
 
-  for (int i = 0; i < res.digits.size(); i++) {
+  for (size_t i = 0; i < res.digits.size(); i++) {
     temp_number = res.digits[i] + move_digit;
     res.digits[i] = temp_number % digit_t_num_sys;
     move_digit = temp_number / digit_t_num_sys;
