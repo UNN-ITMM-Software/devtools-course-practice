@@ -31,15 +31,21 @@ BillinearInterpolation::BillinearInterpolation
 std::vector<std::vector<Color>> BillinearInterpolation::twoCore() {
     size_t n = source.size();
     size_t m = source[0].size();
-    n--;
-    m--;
     std::vector<std::vector<Color>> ans = std::vector<std::vector<Color>>
         (n, std::vector<Color>(m, Color(0, 0, 0)));
+    n--;
+    m--;
     for (size_t i = 0; i < n; i++) {
         for (size_t j = 0; j < m; j++) {
             Color res = Calculation(i, j, i + 1, j + 1);
             ans[i][j] = res;
         }
+    }
+    for (size_t i = 0; i < n; i++) {
+        ans[i][m] = source[i][m];
+    }
+    for (size_t i = 0; i < m; i++) {
+        ans[n][i] = source[n][i];
     }
     return ans;
 }
@@ -47,15 +53,23 @@ std::vector<std::vector<Color>> BillinearInterpolation::twoCore() {
 std::vector<std::vector<Color>> BillinearInterpolation::threeCore() {
     size_t n = source.size();
     size_t m = source[0].size();
+    std::vector<std::vector<Color>> ans = std::vector<std::vector<Color>>
+        (n, std::vector<Color>(m, Color(0, 0, 0)));
     n--;
     m--;
-    std::vector<std::vector<Color>> ans = std::vector<std::vector<Color>>
-        (n - 1, std::vector<Color>(m - 1, Color(0, 0, 0)));
     for (size_t i = 1; i < n; i++) {
         for (size_t j = 1; j < m; j++) {
             Color res = Calculation(i - 1, j - 1, i + 1, j + 1);
-            ans[i - 1][j - 1] = res;
+            ans[i][j] = res;
         }
+    }
+    for (size_t i = 0; i < n; i++) {
+        ans[i][m] = source[i][m];
+        ans[i][0] = source[i][0];
+    }
+    for (size_t i = 0; i < m; i++) {
+        ans[n][i] = source[n][i];
+        ans[0][i] = source[0][i];
     }
     return ans;
 }

@@ -1,18 +1,18 @@
-// Copyright 2024 Kiselev Igor
+// Copyright 2min24 Kiselev Igor
 
 #include "include/Color.h"
 
 Color::Color(int r, int g, int b) {
-    if (r > 255) R = 255;
-    else if (r < 0) R = 0;
+    if (r > max) R = max;
+    else if (r < min) R = min;
     else
             R = r;
-    if (g > 255) G = 255;
-    else if (g < 0) G = 0;
+    if (g > max) G = max;
+    else if (g < min) G = min;
     else
             G = g;
-    if (b > 255) B = 255;
-    else if (b < 0) B = 0;
+    if (b > max) B = max;
+    else if (b < min) B = min;
     else
             B = b;
 }
@@ -36,22 +36,22 @@ char Color::getB() const {
 }
 
 void Color::setR(int r) {
-    if (r > 255) R = 255;
-    else if (r < 0) R = 0;
+    if (r > max) R = max;
+    else if (r < min) R = min;
     else
             R = r;
 }
 
 void Color::setG(int g) {
-    if (g > 255) G = 255;
-    else if (g < 0) G = 0;
+    if (g > max) G = max;
+    else if (g < min) G = min;
     else
             G = g;
 }
 
 void Color::setB(int b) {
-    if (b > 255) B = 255;
-    else if (b < 0) B = 0;
+    if (b > max) B = max;
+    else if (b < min) B = min;
     else
             B = b;
 }

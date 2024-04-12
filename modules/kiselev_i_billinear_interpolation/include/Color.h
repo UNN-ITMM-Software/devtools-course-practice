@@ -8,6 +8,8 @@ class Color {
     char R;
     char G;
     char B;
+    char max = 255;
+    char min = 0;
  public:
     Color(int r, int g, int b);
     Color(const Color& c);
