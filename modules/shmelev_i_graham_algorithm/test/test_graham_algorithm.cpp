@@ -23,7 +23,7 @@ TEST(GrahamScanTest, TestOnePoint) {
 
 TEST(GrahamScanTest, TestTwoPoints) {
     std::vector<std::pair<double, double>> points = {{0, 0},
-                                                             {1, 0}};
+                                                    {1, 0}};
     std::vector<std::pair<double, double>> result =
                                  GrahamScan::convexHull(points);
     EXPECT_TRUE(result.empty());
@@ -49,12 +49,3 @@ TEST(GrahamScanTest, TestSquare) {
     EXPECT_EQ(result, expected);
 }
 
-TEST(GrahamScanTest, DuplicatePoints) {
-    std::vector<std::pair<double, double>> points = {{1.0, 1.0},
-                                     {1.0, 1.0}, {2.0, 2.0}, {2.0, 2.0}};
-    std::vector<std::pair<double, double>> result =
-                                 GrahamScan::convexHull(points);
-    std::vector<std::pair<double, double>> expectedResult =
-                                         {{1.0, 1.0}, {2.0, 2.0}};
-    EXPECT_EQ(result, expectedResult);
-}

@@ -8,6 +8,7 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <string>
 
 class GrahamScan {
  public:
