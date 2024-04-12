@@ -7,10 +7,10 @@
 #include <utility>
 
 class GrahamScan {
-public:
+ public:
     static std::vector<std::pair<double, double>> convexHull
                         (std::vector<std::pair<double, double>>& points);
-private:
+ private:
     static int orientation(std::pair<double, double>& p,
              std::pair<double, double>& q, std::pair<double, double>& r);
     static std::vector<std::pair<double, double>> sortPoints
