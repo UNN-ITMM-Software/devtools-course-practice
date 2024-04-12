@@ -3,7 +3,11 @@
 #ifndef MODULES_SHMELEV_I_GRAHAM_ALGORITHM_INCLUDE_GRAHAM_ALGORITHM_H_
 #define MODULES_SHMELEV_I_GRAHAM_ALGORITHM_INCLUDE_GRAHAM_ALGORITHM_H_
 
-
+#include <cmath>
+#include <stdexcept>
+#include <vector>
+#include <utility>
+#include <algorithm>
 
 class GrahamScan {
  public:

@@ -2,11 +2,7 @@
 
 #include "include/graham_algorithm.h"
 
-#include <cmath>
-#include <stdexcept>
-#include <vector>
-#include <utility>
-#include <algorithm>
+
 
 int GrahamScan::orientation(std::pair<double, double>& p,
     std::pair<double, double>& q, std::pair<double, double>& r) {
