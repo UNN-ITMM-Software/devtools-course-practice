@@ -21,6 +21,7 @@ class Convertor {
         "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"
     };
  public:
+    bool isRomanValid(const std::string roman_num);
     std::string ArabicToRoman(const int arabic_num);
     int RomanToArabic(const std::string roman_num);
 };

@@ -2,6 +2,25 @@
 
 #include "../include/ra_convertor.h"
 
+bool Convertor::isRomanValid(const std::string roman_num) {
+    int previousValue = 0;
+
+    for (int i = roman_num.length() - 1; i >= 0; --i) {
+        int currentValue = roman_nums[roman_num[i]];
+
+        if (currentValue >= previousValue) {
+            previousValue = currentValue;
+        } else {
+            if (previousValue <= 5 * currentValue) {
+                return false;
+            } else {
+                previousValue = currentValue;
+            }
+        }
+    }
+
+    return true;
+}
 
 std::string Convertor::ArabicToRoman(const int arabic_num) {
     if (arabic_num < 1 || arabic_num > 15000) {
@@ -32,7 +51,7 @@ int Convertor::RomanToArabic(const std::string roman_num) {
         return roman_nums[roman_num[0]];
     }
 
-    if (l > 2 && roman_nums[roman_num[0]] < roman_nums[roman_num[l - 1]]) {
+    if (!isRomanValid(roman_num)) {
         throw std::invalid_argument("Incorrect input");
     }
 
