@@ -1,8 +1,7 @@
 // Copyright 2024 Sobol Liubov
 
-#include "include/tbitfield.h"
-
 #include <gtest/gtest.h>
+#include "include/tbitfield.h"
 
 TEST(TBitField, can_set_and_get_bit) {
     const int size = 70;
@@ -14,7 +13,8 @@ TEST(TBitField, can_set_and_get_bit) {
     for (int i = 0; i < size; i++)
         if (i == bitNum)
             ASSERT_EQ(1, bf.GetBit(i));
-        else ASSERT_EQ(0, bf.GetBit(i));
+        else 
+            ASSERT_EQ(0, bf.GetBit(i));
 }
 
 TEST(TBitField, can_create_bitfield_with_positive_length) {
@@ -30,8 +30,7 @@ TEST(TBitField, new_bitfield_is_set_to_zero) {
   TBitField bf(100);
 
   int sum = 0;
-  for (int i = 0; i < bf.GetLength(); i++)
-  {
+  for (int i = 0; i < bf.GetLength(); i++) {
     sum += bf.GetBit(i);
   }
 
@@ -102,8 +101,7 @@ TEST(TBitField, throws_when_clear_bit_with_too_large_index) {
 TEST(TBitField, can_assign_bitfields_of_equal_size) {
   const int size = 2;
   TBitField bf1(size), bf2(size);
-  for (int i = 0; i < size; i++)
-  {
+  for (int i = 0; i < size; i++) {
     bf1.SetBit(i);
   }
   bf2 = bf1;
@@ -115,8 +113,7 @@ TEST(TBitField, can_assign_bitfields_of_equal_size) {
 TEST(TBitField, assign_operator_changes_bitfield_size) {
   const int size1 = 2, size2 = 5;
   TBitField bf1(size1), bf2(size2);
-  for (int i = 0; i < size1; i++)
-  {
+  for (int i = 0; i < size1; i++) {
     bf1.SetBit(i);
   }
   bf2 = bf1;
@@ -127,8 +124,7 @@ TEST(TBitField, assign_operator_changes_bitfield_size) {
 TEST(TBitField, can_assign_bitfields_of_non_equal_size) {
   const int size1 = 2, size2 = 5;
   TBitField bf1(size1), bf2(size2);
-  for (int i = 0; i < size1; i++)
-  {
+  for (int i = 0; i < size1; i++) {
     bf1.SetBit(i);
   }
   bf2 = bf1;
@@ -140,8 +136,7 @@ TEST(TBitField, can_assign_bitfields_of_non_equal_size) {
 TEST(TBitField, compare_equal_bitfields_of_equal_size) {
   const int size = 2;
   TBitField bf1(size), bf2(size);
-  for (int i = 0; i < size; i++)
-  {
+  for (int i = 0; i < size; i++) {
     bf1.SetBit(i);
   }
   bf2 = bf1;
@@ -236,17 +231,17 @@ TEST(TBitField, can_invert_large_bitfield) {
   bf.SetBit(35);
   negBf = ~bf;
 
-  for(int i = 0; i < size; i++)
+  for (int i = 0; i < size; i++)
     expNegBf.SetBit(i);
   expNegBf.ClrBit(35);
-
 
   EXPECT_EQ(expNegBf, negBf);
 }
 
 TEST(TBitField, invert_plus_and_operator_on_different_size_bitfield) {
   const int firstSze = 4, secondSize = 8;
-  TBitField firstBf(firstSze), negFirstBf(firstSze), secondBf(secondSize), testBf(secondSize);
+  TBitField firstBf(firstSze), negFirstBf(firstSze),
+  secondBf(secondSize), testBf(secondSize);
   // firstBf = 0001
   firstBf.SetBit(0);
   negFirstBf = ~firstBf;
@@ -280,7 +275,7 @@ TEST(TBitField, can_invert_many_random_bits_bitfield) {
 
   negBf = ~bf;
 
-  for(int i = 0; i < size; i++)
+  for (int i = 0; i < size; i++)
     expNegBf.SetBit(i);
   for (unsigned int i = 0; i < bits.size(); i++)
     expNegBf.ClrBit(bits[i]);
