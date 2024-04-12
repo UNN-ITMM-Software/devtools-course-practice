@@ -77,6 +77,6 @@ TEST(Kiselev_Igor_Billinear_interpolation_test, test_threeCore_is_correct) {
     int ans = 50;
     std::vector<std::vector<Color>> res = bi1.threeCore();
     ASSERT_EQ(ans, res[0][0].getR());
-    ASSERT_EQ(res[0][0].getG(), ans);
-    ASSERT_EQ(res[0][0].getB(), ans);
+    ASSERT_EQ(res[1][1].getG(), ans);
+    ASSERT_EQ(res[1][1].getB(), ans);
 }
