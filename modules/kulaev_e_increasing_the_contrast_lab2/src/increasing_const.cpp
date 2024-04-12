@@ -13,6 +13,8 @@ void streaching(std::vector<int>& image, int old_min,
 
 void increase_contrast(std::vector<int>& image, size_t m, size_t n,
     int new_min, int new_max) {
+    if (image.empty()) return;
+
     int global_min = *std::min_element(image.begin(), image.end());
     int global_max = *std::max_element(image.begin(), image.end());
 
