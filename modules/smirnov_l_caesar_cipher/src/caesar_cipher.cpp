@@ -9,6 +9,11 @@ CaesarCipher::CaesarCipher(const int _offset) {
     this->offset = _offset;
 }
 
+char CaesarCipher::shiftChar(char c, int offset) const {
+    char base = isupper(c) ? 'A' : 'a';
+    return static_cast<char>((c - base + offset) % 26 + base);
+}
+
 std::string CaesarCipher::CaesarCipherEncoder
 (const std::string& plaintext) const {
     if (plaintext.empty()) {
@@ -18,12 +23,7 @@ std::string CaesarCipher::CaesarCipherEncoder
 
     for (const char c : plaintext) {
         if (isalpha(c)) {
-            if (isupper(c)) {
-                result += static_cast<char>((c - 'A' + offset) % 26 + 'A');
-            }
-            if (islower(c)) {
-                result += static_cast<char>((c - 'a' + offset) % 26 + 'a');
-            }
+            result += shiftChar(c, offset);
         } else {
             result += c;
         }
@@ -40,12 +40,7 @@ std::string CaesarCipher::CaesarCipherDecoder
 
     for (const char c : ciphertext) {
         if (isalpha(c)) {
-            if (isupper(c)) {
-                result += static_cast<char>((c - 'A' - offset + 26) % 26 + 'A');
-            }
-            if (islower(c)) {
-                result += static_cast<char>((c - 'a' - offset + 26) % 26 + 'a');
-            }
+            result += shiftChar(c, 26 - offset);
         } else {
             result += c;
         }
