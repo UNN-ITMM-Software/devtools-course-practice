@@ -10,7 +10,7 @@ TEST(ChuvashovAndreyTests, ArabicToRomanCheckZero) {
 }
 
 TEST(ChuvashovAndreyTests, ArabicToRomanCheckNegative) {
-    EXPECT_ANY_THROW(cnvrtr.ArabicToRoman(-1'000'000));
+    EXPECT_ANY_THROW(cnvrtr.ArabicToRoman(-1000000));
 }
 
 TEST(ChuvashovAndreyTests, ArabicToRomanCheckSmall) {
@@ -22,7 +22,7 @@ TEST(ChuvashovAndreyTests, ArabicToRomanCheckHuge) {
 }
 
 TEST(ChuvashovAndreyTests, ArabicToRomanCheckTooHugeForThat) {
-    EXPECT_ANY_THROW(cnvrtr.ArabicToRoman(2'000'000'000));
+    EXPECT_ANY_THROW(cnvrtr.ArabicToRoman(2000000000));
 }
 
 TEST(ChuvashovAndreyTests, RomanToArabicCheckZeroLength) {
