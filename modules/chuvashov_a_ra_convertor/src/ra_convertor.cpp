@@ -29,7 +29,7 @@ std::string Convertor::ArabicToRoman(const int arabic_num) {
     }
     std::string roman_num = "";
     int current = arabic_num;
-    for (int i = 0; i < 13; i++) {
+    for (int i = 0; i < values.size(); i++) {
         int times = current / values[i];
         while (times--) {
             roman_num += chars[i];
