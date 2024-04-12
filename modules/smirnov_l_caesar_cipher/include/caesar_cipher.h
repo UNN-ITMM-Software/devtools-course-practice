@@ -7,11 +7,11 @@
 #include <stdexcept>
 
 class CaesarCipher {
-private:
-	int offset;
+ private:
+    int offset;
 
-public:
-	CaesarCipher(int _offset);
-	std::string CaesarCipherEncoder(const std::string& plaintext);
-	std::string CaesarCipherDecoder(const std::string& ciphertext);
+ public:
+    explicit CaesarCipher(int _offset);
+    std::string CaesarCipherEncoder(const std::string& plaintext) const;
+    std::string CaesarCipherDecoder(const std::string& ciphertext) const;
 };
