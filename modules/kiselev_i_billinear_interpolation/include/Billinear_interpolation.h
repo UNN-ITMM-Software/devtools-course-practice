@@ -11,7 +11,9 @@ class BillinearInterpolation {
     Color Calculation(size_t x1, size_t y1, size_t x2, size_t y2);
  public:
     explicit BillinearInterpolation(std::vector<std::vector<Color>> sr);
+    BillinearInterpolation(BillinearInterpolation&& bi);
     BillinearInterpolation(const BillinearInterpolation &bi);
+    BillinearInterpolation& operator=(BillinearInterpolation&& bi);
     std::vector<std::vector<Color>> twoCore();
     std::vector<std::vector<Color>> threeCore();
 };

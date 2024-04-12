@@ -28,6 +28,19 @@ BillinearInterpolation::BillinearInterpolation
     }
 }
 
+BillinearInterpolation::BillinearInterpolation
+(BillinearInterpolation&& bi) {
+    source = std::move(bi.source);
+}
+
+BillinearInterpolation& BillinearInterpolation::operator=
+(BillinearInterpolation&& bi) {
+    if (&bi != this) {
+        source = std::move(bi.source);
+    }
+    return *this;
+}
+
 std::vector<std::vector<Color>> BillinearInterpolation::twoCore() {
     size_t n = source.size();
     size_t m = source[0].size();

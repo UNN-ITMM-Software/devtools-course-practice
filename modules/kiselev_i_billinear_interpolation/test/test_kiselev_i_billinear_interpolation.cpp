@@ -85,3 +85,15 @@ TEST(Kiselev_Igor_Billinear_interpolation_test, test_threeCore_is_correct) {
     ASSERT_EQ(res[1][1].getG(), ans);
     ASSERT_EQ(res[1][1].getB(), ans);
 }
+
+TEST(Kiselev_Igor_Billinear_interpolation_test, test_move_operator) {
+    std::vector<std::vector<Color>> v(3, std::vector<Color>
+        (3, Color(0, 0, 0)));
+    v[2][2] = Color(60, 60, 60);
+    v[2][0] = Color(50, 50, 50);
+    v[0][2] = Color(50, 50, 50);
+    v[0][0] = Color(40, 40, 40);
+    BillinearInterpolation bi1 = BillinearInterpolation(v);
+    BillinearInterpolation bi2 = bi1;
+    ASSERT_TRUE(&bi2 == &bi1);
+}
