@@ -13,7 +13,7 @@ TEST(TBitField, can_set_and_get_bit) {
     for (int i = 0; i < size; i++)
         if (i == bitNum)
             ASSERT_EQ(1, bf.GetBit(i));
-        else 
+        else
             ASSERT_EQ(0, bf.GetBit(i));
 }
 
