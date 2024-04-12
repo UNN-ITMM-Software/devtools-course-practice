@@ -92,7 +92,8 @@ Color BillinearInterpolation::
         ld.getB() + (rd.getB() - ld.getB()) * (x2 - x1) / (2 * x2 - x1));
 
     Color ans = Color(0, 0, 0);
-    ans.setColor(h1.getR() + (h2.getR() - h1.getR()) * (y2 - y1) / (2 * y2 - y1),
+    ans.setColor(
+        h1.getR() + (h2.getR() - h1.getR()) * (y2 - y1) / (2 * y2 - y1),
         h1.getG() + (h2.getG() - h1.getG()) * (y2 - y1) / (2 * y2 - y1),
         h1.getB() + (h2.getB() - h1.getB()) * (y2 - y1) / (2 * y2 - y1));
     return ans;
