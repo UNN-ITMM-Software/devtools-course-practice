@@ -111,7 +111,7 @@ TEST(Kirillov_M_Quadratic_Solution, TestGetComplexRoots) {
     std::vector<std::complex<double>> roots = solver.solveComplex();
     std::complex<double> expectedRoot1(-1, 2);
     std::complex<double> expectedRoot2(-1, -2);
-    EXPECT_TRUE(roots[0] == expectedRoot1 && roots[1] == expectedRoot2 ||
-            roots[1] == expectedRoot1 && roots[0] == expectedRoot2);
+    EXPECT_TRUE(((roots[0] == expectedRoot1 && roots[1] == expectedRoot2) ||
+    (roots[1] == expectedRoot1 && roots[0] == expectedRoot2)));
 }
 
