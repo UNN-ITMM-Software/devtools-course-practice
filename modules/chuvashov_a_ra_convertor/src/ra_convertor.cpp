@@ -5,7 +5,7 @@
 bool Convertor::isRomanValid(const std::string roman_num) {
     int previousValue = 0;
 
-    for (int i = roman_num.length() - 1; i >= 0; --i) {
+    for (size_t i = roman_num.length() - 1; i >= 0; --i) {
         int currentValue = roman_nums[roman_num[i]];
 
         if (currentValue >= previousValue) {
@@ -29,7 +29,7 @@ std::string Convertor::ArabicToRoman(const int arabic_num) {
     }
     std::string roman_num = "";
     int current = arabic_num;
-    for (int i = 0; i < values.size(); i++) {
+    for (size_t i = 0; i < values.size(); i++) {
         int times = current / values[i];
         while (times--) {
             roman_num += chars[i];
