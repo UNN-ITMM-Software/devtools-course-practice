@@ -83,17 +83,17 @@ Color BillinearInterpolation::
     Color h1 = Color(0, 0, 0);  // Helper 1
     Color h2 = Color(0, 0, 0);  // Helper 2
 
-    h1.setR(lu.getR() + (ru.getR() - lu.getR()) * (x2 - x1) / (2 * x2 - x1));
-    h1.setG(lu.getG() + (ru.getG() - lu.getG()) * (x2 - x1) / (2 * x2 - x1));
-    h1.setB(lu.getB() + (ru.getB() - lu.getB()) * (x2 - x1) / (2 * x2 - x1));
+    h1.setColor(lu.getR() + (ru.getR() - lu.getR()) * (x2 - x1) / (2 * x2 - x1),
+        lu.getG() + (ru.getG() - lu.getG()) * (x2 - x1) / (2 * x2 - x1),
+        lu.getB() + (ru.getB() - lu.getB()) * (x2 - x1) / (2 * x2 - x1));
 
-    h2.setR(ld.getR() + (rd.getR() - ld.getR()) * (x2 - x1) / (2 * x2 - x1));
-    h2.setG(ld.getG() + (rd.getG() - ld.getG()) * (x2 - x1) / (2 * x2 - x1));
-    h2.setB(ld.getB() + (rd.getB() - ld.getB()) * (x2 - x1) / (2 * x2 - x1));
+    h2.setColor(ld.getR() + (rd.getR() - ld.getR()) * (x2 - x1) / (2 * x2 - x1),
+        ld.getG() + (rd.getG() - ld.getG()) * (x2 - x1) / (2 * x2 - x1),
+        ld.getB() + (rd.getB() - ld.getB()) * (x2 - x1) / (2 * x2 - x1));
 
     Color ans = Color(0, 0, 0);
-    ans.setR(h1.getR() + (h2.getR() - h1.getR()) * (y2 - y1) / (2 * y2 - y1));
-    ans.setG(h1.getG() + (h2.getG() - h1.getG()) * (y2 - y1) / (2 * y2 - y1));
-    ans.setB(h1.getB() + (h2.getB() - h1.getB()) * (y2 - y1) / (2 * y2 - y1));
+    ans.setColor(h1.getR() + (h2.getR() - h1.getR()) * (y2 - y1) / (2 * y2 - y1),
+        h1.getG() + (h2.getG() - h1.getG()) * (y2 - y1) / (2 * y2 - y1),
+        h1.getB() + (h2.getB() - h1.getB()) * (y2 - y1) / (2 * y2 - y1));
     return ans;
 }

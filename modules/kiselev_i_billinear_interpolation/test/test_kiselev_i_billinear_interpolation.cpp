@@ -20,12 +20,17 @@ TEST(Kiselev_Igor_Billinear_interpolation_test,
 
 TEST(Kiselev_Igor_Billinear_interpolation_test, test_color_setters) {
     Color c1 = Color(0, 0, 0);
+    Color c2 = Color(0, 0, 0);
     c1.setR(12);
     c1.setG(23);
     c1.setB(34);
+    c2.setColor(12, 23, 34);
     ASSERT_EQ(c1.getR(), 12);
     ASSERT_EQ(c1.getG(), 23);
     ASSERT_EQ(c1.getB(), 34);
+    ASSERT_EQ(c2.getR(), 12);
+    ASSERT_EQ(c2.getG(), 23);
+    ASSERT_EQ(c2.getB(), 34);
 }
 
 TEST(Kiselev_Igor_Billinear_interpolation_test,

@@ -55,3 +55,18 @@ void Color::setB(int b) {
     else
             B = b;
 }
+
+void Color::setColor(int r, int g, int b) {
+    if (r > static_cast<int>(max)) R = max;
+    else if (r < static_cast<int>(min)) R = min;
+    else
+        R = r;
+    if (g > static_cast<int>(max)) G = max;
+    else if (g < static_cast<int>(min)) G = min;
+    else
+        G = g;
+    if (b > static_cast<int>(max)) B = max;
+    else if (b < static_cast<int>(min)) B = min;
+    else
+        B = b;
+}

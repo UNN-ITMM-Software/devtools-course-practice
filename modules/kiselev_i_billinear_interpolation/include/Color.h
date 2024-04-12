@@ -20,6 +20,7 @@ class Color {
     void setR(int r);
     void setG(int g);
     void setB(int b);
+    void setColor(int r, int g, int b);
 };
 
 #endif  // MODULES_KISELEV_I_BILLINEAR_INTERPOLATION_INCLUDE_COLOR_H_
