@@ -74,34 +74,34 @@ TEST(Vector3d, getNorm_from_zero_vector_correct) {
 }
 
 TEST(Vector3d, getNormalizedVector_valid_vector_correct) {
-    // Arrange
-    double x = 2.0;
-    double y = 3.0;
-    double z = 4.0;
-    double expectedNorm = 1.0;
-    Vector3d vector(x, y, z);
-    // Act
-    double actualNorm = vector.getNormalizedVector().getNorm();
-    // Assert
-    ASSERT_NEAR(expectedNorm, actualNorm, 1e-9);
+  // Arrange
+  double x = 2.0;
+  double y = 3.0;
+  double z = 4.0;
+  double expectedNorm = 1.0;
+  Vector3d vector(x, y, z);
+  // Act
+  double actualNorm = vector.getNormalizedVector().getNorm();
+  // Assert
+  ASSERT_NEAR(expectedNorm, actualNorm, 1e-9);
 }
 TEST(Vector3d, getNormalizedVector_unit_vector_unchanged) {
-    // Arrange
-    double x = 1.0;
-    double y = 0.0;
-    double z = 0.0;
-    Vector3d vector(x, y, z);
-    // Act
-    Vector3d normalizedVector = vector.getNormalizedVector();
-    // Assert
-    ASSERT_EQ(vector.getNorm(), normalizedVector.getNorm());
+  // Arrange
+  double x = 1.0;
+  double y = 0.0;
+  double z = 0.0;
+  Vector3d vector(x, y, z);
+  // Act
+  Vector3d normalizedVector = vector.getNormalizedVector();
+  // Assert
+  ASSERT_EQ(normalizedVector, vector);
 }
 TEST(Vector3d, getNormalizedVector_zero_vector_throws) {
-    // Arrange
-    double x = 0.0;
-    double y = 0.0;
-    double z = 0.0;
-    Vector3d vector(x, y, z);
-    // Act & Assert (?)
-    ASSERT_ANY_THROW(vector.getNormalizedVector());
+  // Arrange
+  double x = 0.0;
+  double y = 0.0;
+  double z = 0.0;
+  Vector3d vector(x, y, z);
+  // Act & Assert (?)
+  ASSERT_ANY_THROW(vector.getNormalizedVector());
 }
