@@ -2,13 +2,11 @@
 
 #include "../include/ra_convertor.h"
 
-Convertor::Convertor() {}
 
 std::string Convertor::ArabicToRoman(const int arabic_num) {
     if (arabic_num < 1 || arabic_num > 15000) {
         throw std::invalid_argument(
-            "Input must be greater then 0 and less then 15000"
-        );
+            "Input must be greater then 0 and less then 15000");
     }
     std::string roman_num = "";
     int current = arabic_num;
@@ -27,8 +25,7 @@ int Convertor::RomanToArabic(const std::string roman_num) {
 
     if (!l || l > 15) {
         throw std::invalid_argument(
-            "Input's length must be greater then 0 and less then 15"
-        );
+            "Input's length must be greater then 0 and less then 15");
     }
 
     if (l == 1) {
@@ -44,8 +41,7 @@ int Convertor::RomanToArabic(const std::string roman_num) {
     for (int i = 0; i < l; i++) {
         if (roman_nums[roman_num[i]] < roman_nums[roman_num[i+1]]) {
             arabic_num -= roman_nums[roman_num[i]];
-        }
-        else {
+        } else {
             arabic_num += roman_nums[roman_num[i]];
         }
     }
