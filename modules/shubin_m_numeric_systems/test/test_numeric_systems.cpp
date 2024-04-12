@@ -139,7 +139,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateZero_NS_DEC) {
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
 
   EXPECT_EQ(ns_dec_num.IsNegative(), false);
-  EXPECT_EQ(ns_dec_num.GetNumSys(), DEC);
+  EXPECT_EQ(ns_dec_num.GetNumSys(), static_cast<size_t>(DEC));
   EXPECT_EQ(static_cast<number_t>(ns_dec_num[0]), _num);
 }
 
@@ -152,7 +152,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_DEC) {
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
 
   EXPECT_EQ(ns_dec_num.IsNegative(), false);
-  EXPECT_EQ(ns_dec_num.GetNumSys(), DEC);
+  EXPECT_EQ(ns_dec_num.GetNumSys(), static_cast<size_t>(DEC));
   EXPECT_EQ(static_cast<number_t>(ns_dec_num[0]), _num);
 }
 
@@ -165,7 +165,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_DEC) {
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
 
   EXPECT_EQ(ns_dec_num.IsNegative(), false);
-  EXPECT_EQ(ns_dec_num.GetNumSys(), DEC);
+  EXPECT_EQ(ns_dec_num.GetNumSys(), static_cast<size_t>(DEC));
   for (size_t i = 0; i < ns_dec_num.GetLength(); i++) {
     EXPECT_EQ(static_cast<number_t>(ns_dec_num[i]), static_cast<number_t>(_num % DEC));
     _num /= DEC;
@@ -181,7 +181,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_DEC) {
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
 
   EXPECT_EQ(ns_dec_num.IsNegative(), true);
-  EXPECT_EQ(ns_dec_num.GetNumSys(), DEC);
+  EXPECT_EQ(ns_dec_num.GetNumSys(), static_cast<size_t>(DEC));
   EXPECT_EQ(static_cast<number_t>(ns_dec_num[0]), (-_num));
 }
 
@@ -194,7 +194,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_DEC) {
   CustomNSNumber ns_dec_num = CustomNSNumber(_num, DEC);
 
   EXPECT_EQ(ns_dec_num.IsNegative(), true);
-  EXPECT_EQ(ns_dec_num.GetNumSys(), DEC);
+  EXPECT_EQ(ns_dec_num.GetNumSys(), static_cast<size_t>(DEC));
   for (size_t i = 0; i < ns_dec_num.GetLength(); i++) {
     EXPECT_EQ(static_cast<number_t>(ns_dec_num[i]), static_cast<number_t>((-_num) % DEC));
     _num /= DEC;
@@ -404,7 +404,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateZero_NS_BIN) {
   CustomNSNumber ns_bin_num = CustomNSNumber(_num, BIN);
 
   EXPECT_EQ(ns_bin_num.IsNegative(), false);
-  EXPECT_EQ(ns_bin_num.GetNumSys(), BIN);
+  EXPECT_EQ(ns_bin_num.GetNumSys(), static_cast<size_t>(BIN));
   EXPECT_EQ(static_cast<number_t>(ns_bin_num[0]), _num);
 }
 
@@ -417,7 +417,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_BIN) {
   CustomNSNumber ns_bin_num = CustomNSNumber(_num, BIN);
 
   EXPECT_EQ(ns_bin_num.IsNegative(), false);
-  EXPECT_EQ(ns_bin_num.GetNumSys(), BIN);
+  EXPECT_EQ(ns_bin_num.GetNumSys(), static_cast<size_t>(BIN));
   EXPECT_EQ(static_cast<number_t>(ns_bin_num[0]), _num);
 }
 
@@ -430,7 +430,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_BIN) {
   CustomNSNumber ns_bin_num = CustomNSNumber(_num, BIN);
 
   EXPECT_EQ(ns_bin_num.IsNegative(), false);
-  EXPECT_EQ(ns_bin_num.GetNumSys(), BIN);
+  EXPECT_EQ(ns_bin_num.GetNumSys(), static_cast<size_t>(BIN));
   for (size_t i = 0; i < ns_bin_num.GetLength(); i++) {
     EXPECT_EQ(static_cast<number_t>(ns_bin_num[i]), static_cast<number_t>(_num % BIN));
     _num /= BIN;
@@ -446,7 +446,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_BIN) {
   CustomNSNumber ns_bin_num = CustomNSNumber(_num, BIN);
 
   EXPECT_EQ(ns_bin_num.IsNegative(), true);
-  EXPECT_EQ(ns_bin_num.GetNumSys(), BIN);
+  EXPECT_EQ(ns_bin_num.GetNumSys(), static_cast<size_t>(BIN));
   EXPECT_EQ(static_cast<number_t>(ns_bin_num[0]), (-_num));
 }
 
@@ -459,7 +459,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_BIN) {
   CustomNSNumber ns_bin_num = CustomNSNumber(_num, BIN);
 
   EXPECT_EQ(ns_bin_num.IsNegative(), true);
-  EXPECT_EQ(ns_bin_num.GetNumSys(), BIN);
+  EXPECT_EQ(ns_bin_num.GetNumSys(), static_cast<size_t>(BIN));
   for (size_t i = 0; i < ns_bin_num.GetLength(); i++) {
     EXPECT_EQ(static_cast<number_t>(ns_bin_num[i]), static_cast<number_t>((-_num) % BIN));
     _num /= BIN;
@@ -669,7 +669,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateZero_NS_OCT) {
   CustomNSNumber ns_oct_num = CustomNSNumber(_num, OCT);
 
   EXPECT_EQ(ns_oct_num.IsNegative(), false);
-  EXPECT_EQ(ns_oct_num.GetNumSys(), OCT);
+  EXPECT_EQ(ns_oct_num.GetNumSys(), static_cast<size_t>(OCT));
   EXPECT_EQ(static_cast<number_t>(ns_oct_num[0]), _num);
 }
 
@@ -682,7 +682,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_OCT) {
   CustomNSNumber ns_oct_num = CustomNSNumber(_num, OCT);
 
   EXPECT_EQ(ns_oct_num.IsNegative(), false);
-  EXPECT_EQ(ns_oct_num.GetNumSys(), OCT);
+  EXPECT_EQ(ns_oct_num.GetNumSys(), static_cast<size_t>(OCT));
   EXPECT_EQ(static_cast<number_t>(ns_oct_num[0]), _num);
 }
 
@@ -695,7 +695,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_OCT) {
   CustomNSNumber ns_oct_num = CustomNSNumber(_num, OCT);
 
   EXPECT_EQ(ns_oct_num.IsNegative(), false);
-  EXPECT_EQ(ns_oct_num.GetNumSys(), OCT);
+  EXPECT_EQ(ns_oct_num.GetNumSys(), static_cast<size_t>(OCT));
   for (size_t i = 0; i < ns_oct_num.GetLength(); i++) {
     EXPECT_EQ(static_cast<number_t>(ns_oct_num[i]), static_cast<number_t>(_num % OCT));
     _num /= OCT;
@@ -711,7 +711,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_OCT) {
   CustomNSNumber ns_oct_num = CustomNSNumber(_num, OCT);
 
   EXPECT_EQ(ns_oct_num.IsNegative(), true);
-  EXPECT_EQ(ns_oct_num.GetNumSys(), OCT);
+  EXPECT_EQ(ns_oct_num.GetNumSys(), static_cast<size_t>(OCT));
   EXPECT_EQ(static_cast<number_t>(ns_oct_num[0]), (-_num));
 }
 
@@ -724,7 +724,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_OCT) {
   CustomNSNumber ns_oct_num = CustomNSNumber(_num, OCT);
 
   EXPECT_EQ(ns_oct_num.IsNegative(), true);
-  EXPECT_EQ(ns_oct_num.GetNumSys(), OCT);
+  EXPECT_EQ(ns_oct_num.GetNumSys(), static_cast<size_t>(OCT));
   for (size_t i = 0; i < ns_oct_num.GetLength(); i++) {
     EXPECT_EQ(static_cast<number_t>(ns_oct_num[i]), static_cast<number_t>((-_num) % OCT));
     _num /= OCT;
@@ -934,7 +934,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateZero_NS_HEX) {
   CustomNSNumber ns_hex_num = CustomNSNumber(_num, HEX);
 
   EXPECT_EQ(ns_hex_num.IsNegative(), false);
-  EXPECT_EQ(ns_hex_num.GetNumSys(), HEX);
+  EXPECT_EQ(ns_hex_num.GetNumSys(), static_cast<size_t>(HEX));
   EXPECT_EQ(static_cast<number_t>(ns_hex_num[0]), _num);
 }
 
@@ -947,7 +947,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_HEX) {
   CustomNSNumber ns_hex_num = CustomNSNumber(_num, HEX);
 
   EXPECT_EQ(ns_hex_num.IsNegative(), false);
-  EXPECT_EQ(ns_hex_num.GetNumSys(), HEX);
+  EXPECT_EQ(ns_hex_num.GetNumSys(), static_cast<size_t>(HEX));
   EXPECT_EQ(static_cast<number_t>(ns_hex_num[0]), _num);
 }
 
@@ -960,7 +960,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_HEX) {
   CustomNSNumber ns_hex_num = CustomNSNumber(_num, HEX);
 
   EXPECT_EQ(ns_hex_num.IsNegative(), false);
-  EXPECT_EQ(ns_hex_num.GetNumSys(), HEX);
+  EXPECT_EQ(ns_hex_num.GetNumSys(), static_cast<size_t>(HEX));
   for (size_t i = 0; i < ns_hex_num.GetLength(); i++) {
     EXPECT_EQ(static_cast<number_t>(ns_hex_num[i]), static_cast<number_t>(_num % HEX));
     _num /= HEX;
@@ -976,7 +976,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_HEX) {
   CustomNSNumber ns_hex_num = CustomNSNumber(_num, HEX);
 
   EXPECT_EQ(ns_hex_num.IsNegative(), true);
-  EXPECT_EQ(ns_hex_num.GetNumSys(), HEX);
+  EXPECT_EQ(ns_hex_num.GetNumSys(), static_cast<size_t>(HEX));
   EXPECT_EQ(static_cast<number_t>(ns_hex_num[0]), (-_num));
 }
 
@@ -989,7 +989,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_HEX) {
   CustomNSNumber ns_hex_num = CustomNSNumber(_num, HEX);
 
   EXPECT_EQ(ns_hex_num.IsNegative(), true);
-  EXPECT_EQ(ns_hex_num.GetNumSys(), HEX);
+  EXPECT_EQ(ns_hex_num.GetNumSys(), static_cast<size_t>(HEX));
   for (size_t i = 0; i < ns_hex_num.GetLength(); i++) {
     EXPECT_EQ(static_cast<number_t>(ns_hex_num[i]), static_cast<number_t>((-_num) % HEX));
     _num /= HEX;
