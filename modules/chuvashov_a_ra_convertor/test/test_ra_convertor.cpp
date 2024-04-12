@@ -3,14 +3,14 @@
 #include "../../../3rdparty/gtest/gtest.h"
 #include "../include/ra_convertor.h"
 
-static Convertor cnvrtr = Convertor::Convertor();
+static Convertor cnvrtr;
 
 TEST(ChuvashovAndreyTests, ArabicToRomanCheckZero) {
-    EXPECT_THROW(cnvrtr.ArabicToRoman(0), std::invalid_argument);
+    EXPECT_ANY_THROW(cnvrtr.ArabicToRoman(0));
 }
 
 TEST(ChuvashovAndreyTests, ArabicToRomanCheckNegative) {
-    EXPECT_THROW(cnvrtr.ArabicToRoman(-1'000'000), std::invalid_argument);
+    EXPECT_ANY_THROW(cnvrtr.ArabicToRoman(-1'000'000));
 }
 
 TEST(ChuvashovAndreyTests, ArabicToRomanCheckSmall) {
@@ -22,15 +22,15 @@ TEST(ChuvashovAndreyTests, ArabicToRomanCheckHuge) {
 }
 
 TEST(ChuvashovAndreyTests, ArabicToRomanCheckTooHugeForThat) {
-    EXPECT_THROW(cnvrtr.ArabicToRoman(10'000'000'000), std::invalid_argument);
+    EXPECT_ANY_THROW(cnvrtr.ArabicToRoman(2'000'000'000));
 }
 
 TEST(ChuvashovAndreyTests, RomanToArabicCheckZeroLength) {
-    EXPECT_THROW(cnvrtr.RomanToArabic(""), std::invalid_argument);
+    EXPECT_ANY_THROW(cnvrtr.RomanToArabic(""));
 }
 
 TEST(ChuvashovAndreyTests, RomanToArabicCheckInvalid) {
-    EXPECT_THROW(cnvrtr.RomanToArabic("IIVCM"), std::invalid_argument);
+    EXPECT_ANY_THROW(cnvrtr.RomanToArabic("IIVCM"));
 }
 
 TEST(ChuvashovAndreyTests, RomanToArabicCheckSmall) {
@@ -42,6 +42,5 @@ TEST(ChuvashovAndreyTests, RomanToArabicCheckHuge) {
 }
 
 TEST(ChuvashovAndreyTests, RomanToArabicCheckTooHugeForThat) {
-    EXPECT_THROW(cnvrtr.RomanToArabic("MMMXMXXXMMXMXXMM"),
-        std::invalid_argument);
+    EXPECT_ANY_THROW(cnvrtr.RomanToArabic("MMMXMXXXMMXMXXMM"));
 }

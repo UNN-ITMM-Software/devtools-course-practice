@@ -58,7 +58,7 @@ int Convertor::RomanToArabic(const std::string roman_num) {
 
     int arabic_num = 0;
 
-    for (int i = 0; i < l; i++) {
+    for (size_t i = 0; i < l; i++) {
         if (roman_nums[roman_num[i]] < roman_nums[roman_num[i+1]]) {
             arabic_num -= roman_nums[roman_num[i]];
         } else {
