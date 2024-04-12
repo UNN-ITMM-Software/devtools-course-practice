@@ -7,9 +7,9 @@
 #include <algorithm>
 
 int GrahamScan::orientation(std::pair<double, double>& p,
-                     std::pair<double, double>& q, std::pair<double, double>& r) {
+    std::pair<double, double>& q, std::pair<double, double>& r) {
     double val = (q.second - p.second) * (r.first - q.first) -
-                                     (q.first - p.first) * (r.second - q.second);
+                        (q.first - p.first) * (r.second - q.second);
     if (val == 0) return 0;
     return (val > 0) ? 1 : 2;
 }
@@ -32,7 +32,7 @@ std::vector<std::pair<double, double>> GrahamScan::sortPoints
             return (a.first - points[0].first) * (a.first - points[0].first) +
              (a.second - points[0].second) * (a.second - points[0].second) <
                    (b.first - points[0].first) * (b.first - points[0].first) +
-                    (b.second - points[0].second) * (b.second - points[0].second);
+            (b.second - points[0].second) * (b.second - points[0].second);
         }
         return orient == 2;
     });
