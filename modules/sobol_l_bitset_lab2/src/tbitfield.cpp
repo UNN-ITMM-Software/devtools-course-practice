@@ -124,7 +124,7 @@ TBitField TBitField::operator|(const TBitField& bf) // операция "или"
 
 TBitField TBitField::operator&(const TBitField& bf) // операция "и"
 {
-    TBitField temp(max(BitLen, bf.BitLen));
+    TBitField temp(std::max(BitLen, bf.BitLen));
     for (int i = 0; i < temp.BitLen; i++) {
         temp.SetBit(i);
         if (i >= BitLen || i >= bf.BitLen || (!GetBit(i)) || (!bf.GetBit(i)))
@@ -148,7 +148,7 @@ TBitField TBitField::operator~(void) // отрицание
 
 // ввод/вывод
 
-istream& operator>>(istream& istr, TBitField& bf) // ввод
+std::istream& operator>>(std::istream& istr, TBitField& bf) // ввод
 {
     char input;
     int i = 0;
@@ -164,7 +164,7 @@ istream& operator>>(istream& istr, TBitField& bf) // ввод
     return istr;
 }
 
-ostream& operator<<(ostream& ostr, const TBitField& bf) // вывод
+std::ostream& operator<<(std::ostream& ostr, const TBitField& bf) // вывод
 {
     int n = bf.BitLen;
     for (int i = 0; i < n; i++) {
