@@ -140,7 +140,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateZero_NS_DEC) {
 
   ASSERT_EQ(ns_dec_num.IsNegative(), false);
   ASSERT_EQ(ns_dec_num.GetNumSys(), DEC);
-  ASSERT_EQ(ns_dec_num[0], _num);
+  ASSERT_EQ(static_cast<number_t>(ns_dec_num[0]), _num);
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_DEC) {
@@ -153,7 +153,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_DEC) {
 
   ASSERT_EQ(ns_dec_num.IsNegative(), false);
   ASSERT_EQ(ns_dec_num.GetNumSys(), DEC);
-  ASSERT_EQ(ns_dec_num[0], _num);
+  ASSERT_EQ(static_cast<number_t>(ns_dec_num[0]), _num);
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_DEC) {
@@ -167,7 +167,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_DEC) {
   ASSERT_EQ(ns_dec_num.IsNegative(), false);
   ASSERT_EQ(ns_dec_num.GetNumSys(), DEC);
   for (size_t i = 0; i < ns_dec_num.GetLength(); i++) {
-    ASSERT_EQ(ns_dec_num[i], _num % DEC);
+    ASSERT_EQ(static_cast<number_t>(ns_dec_num[i]), static_cast<number_t>(_num % DEC));
     _num /= DEC;
   }
 }
@@ -182,7 +182,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_DEC) {
 
   ASSERT_EQ(ns_dec_num.IsNegative(), true);
   ASSERT_EQ(ns_dec_num.GetNumSys(), DEC);
-  ASSERT_EQ(ns_dec_num[0], (-_num));
+  ASSERT_EQ(static_cast<number_t>(ns_dec_num[0]), (-_num));
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_DEC) {
@@ -196,7 +196,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_DEC) {
   ASSERT_EQ(ns_dec_num.IsNegative(), true);
   ASSERT_EQ(ns_dec_num.GetNumSys(), DEC);
   for (size_t i = 0; i < ns_dec_num.GetLength(); i++) {
-    ASSERT_EQ(ns_dec_num[i], (-_num) % DEC);
+    ASSERT_EQ(static_cast<number_t>(ns_dec_num[i]), static_cast<number_t>((-_num) % DEC));
     _num /= DEC;
   }
 }
@@ -405,7 +405,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateZero_NS_BIN) {
 
   ASSERT_EQ(ns_bin_num.IsNegative(), false);
   ASSERT_EQ(ns_bin_num.GetNumSys(), BIN);
-  ASSERT_EQ(ns_bin_num[0], _num);
+  ASSERT_EQ(static_cast<number_t>(ns_bin_num[0]), _num);
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_BIN) {
@@ -418,7 +418,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_BIN) {
 
   ASSERT_EQ(ns_bin_num.IsNegative(), false);
   ASSERT_EQ(ns_bin_num.GetNumSys(), BIN);
-  ASSERT_EQ(ns_bin_num[0], _num);
+  ASSERT_EQ(static_cast<number_t>(ns_bin_num[0]), _num);
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_BIN) {
@@ -432,7 +432,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_BIN) {
   ASSERT_EQ(ns_bin_num.IsNegative(), false);
   ASSERT_EQ(ns_bin_num.GetNumSys(), BIN);
   for (size_t i = 0; i < ns_bin_num.GetLength(); i++) {
-    ASSERT_EQ(ns_bin_num[i], _num % BIN);
+    ASSERT_EQ(static_cast<number_t>(ns_bin_num[i]), static_cast<number_t>(_num % BIN));
     _num /= BIN;
   }
 }
@@ -447,7 +447,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_BIN) {
 
   ASSERT_EQ(ns_bin_num.IsNegative(), true);
   ASSERT_EQ(ns_bin_num.GetNumSys(), BIN);
-  ASSERT_EQ(ns_bin_num[0], (-_num));
+  ASSERT_EQ(static_cast<number_t>(ns_bin_num[0]), (-_num));
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_BIN) {
@@ -461,7 +461,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_BIN) {
   ASSERT_EQ(ns_bin_num.IsNegative(), true);
   ASSERT_EQ(ns_bin_num.GetNumSys(), BIN);
   for (size_t i = 0; i < ns_bin_num.GetLength(); i++) {
-    ASSERT_EQ(ns_bin_num[i], (-_num) % BIN);
+    ASSERT_EQ(static_cast<number_t>(ns_bin_num[i]), static_cast<number_t>((-_num) % BIN));
     _num /= BIN;
   }
 }
@@ -670,7 +670,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateZero_NS_OCT) {
 
   ASSERT_EQ(ns_oct_num.IsNegative(), false);
   ASSERT_EQ(ns_oct_num.GetNumSys(), OCT);
-  ASSERT_EQ(ns_oct_num[0], _num);
+  ASSERT_EQ(static_cast<number_t>(ns_oct_num[0]), _num);
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_OCT) {
@@ -683,7 +683,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_OCT) {
 
   ASSERT_EQ(ns_oct_num.IsNegative(), false);
   ASSERT_EQ(ns_oct_num.GetNumSys(), OCT);
-  ASSERT_EQ(ns_oct_num[0], _num);
+  ASSERT_EQ(static_cast<number_t>(ns_oct_num[0]), _num);
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_OCT) {
@@ -697,7 +697,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_OCT) {
   ASSERT_EQ(ns_oct_num.IsNegative(), false);
   ASSERT_EQ(ns_oct_num.GetNumSys(), OCT);
   for (size_t i = 0; i < ns_oct_num.GetLength(); i++) {
-    ASSERT_EQ(ns_oct_num[i], _num % OCT);
+    ASSERT_EQ(static_cast<number_t>(ns_oct_num[i]), static_cast<number_t>(_num % OCT));
     _num /= OCT;
   }
 }
@@ -712,7 +712,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_OCT) {
 
   ASSERT_EQ(ns_oct_num.IsNegative(), true);
   ASSERT_EQ(ns_oct_num.GetNumSys(), OCT);
-  ASSERT_EQ(ns_oct_num[0], (-_num));
+  ASSERT_EQ(static_cast<number_t>(ns_oct_num[0]), (-_num));
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_OCT) {
@@ -726,7 +726,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_OCT) {
   ASSERT_EQ(ns_oct_num.IsNegative(), true);
   ASSERT_EQ(ns_oct_num.GetNumSys(), OCT);
   for (size_t i = 0; i < ns_oct_num.GetLength(); i++) {
-    ASSERT_EQ(ns_oct_num[i], (-_num) % OCT);
+    ASSERT_EQ(static_cast<number_t>(ns_oct_num[i]), static_cast<number_t>((-_num) % OCT));
     _num /= OCT;
   }
 }
@@ -935,7 +935,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateZero_NS_HEX) {
 
   ASSERT_EQ(ns_hex_num.IsNegative(), false);
   ASSERT_EQ(ns_hex_num.GetNumSys(), HEX);
-  ASSERT_EQ(ns_hex_num[0], _num);
+  ASSERT_EQ(static_cast<number_t>(ns_hex_num[0]), _num);
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_HEX) {
@@ -948,7 +948,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroBelowNS_NS_HEX) {
 
   ASSERT_EQ(ns_hex_num.IsNegative(), false);
   ASSERT_EQ(ns_hex_num.GetNumSys(), HEX);
-  ASSERT_EQ(ns_hex_num[0], _num);
+  ASSERT_EQ(static_cast<number_t>(ns_hex_num[0]), _num);
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_HEX) {
@@ -962,7 +962,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNonZeroAboveNS_NS_HEX) {
   ASSERT_EQ(ns_hex_num.IsNegative(), false);
   ASSERT_EQ(ns_hex_num.GetNumSys(), HEX);
   for (size_t i = 0; i < ns_hex_num.GetLength(); i++) {
-    ASSERT_EQ(ns_hex_num[i], _num % HEX);
+    ASSERT_EQ(static_cast<number_t>(ns_hex_num[i]), static_cast<number_t>(_num % HEX));
     _num /= HEX;
   }
 }
@@ -977,7 +977,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroBelowNS_NS_HEX) {
 
   ASSERT_EQ(ns_hex_num.IsNegative(), true);
   ASSERT_EQ(ns_hex_num.GetNumSys(), HEX);
-  ASSERT_EQ(ns_hex_num[0], (-_num));
+  ASSERT_EQ(static_cast<number_t>(ns_hex_num[0]), (-_num));
 }
 
 TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_HEX) {
@@ -991,7 +991,7 @@ TEST(Shubin_Mikhail_NS_Test, CanCreateNegativeNonZeroAboveNS_NS_HEX) {
   ASSERT_EQ(ns_hex_num.IsNegative(), true);
   ASSERT_EQ(ns_hex_num.GetNumSys(), HEX);
   for (size_t i = 0; i < ns_hex_num.GetLength(); i++) {
-    ASSERT_EQ(ns_hex_num[i], (-_num) % HEX);
+    ASSERT_EQ(static_cast<number_t>(ns_hex_num[i]), static_cast<number_t>((-_num) % HEX));
     _num /= HEX;
   }
 }
