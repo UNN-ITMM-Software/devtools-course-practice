@@ -33,7 +33,7 @@ class HashMap {
      void insert(const KeyType& key, const ValueType& value);
      ValueType find(const KeyType& key) const;
      void remove(const KeyType& key);
-     void clear();
+     void clear() noexcept;
      bool empty() const;
      size_t getSize() const;
 
@@ -80,10 +80,7 @@ template <typename KeyType, typename ValueType>
 HashMap<KeyType, ValueType>& HashMap<KeyType,
     ValueType>::operator=(const HashMap& other) {
     if (this != &other) {
-        HashMap tmp(other);
-        std::swap(table, tmp.table);
-        std::swap(capacity, tmp.capacity);
-        std::swap(size, tmp.size);
+        *this = HashMap(other);
     }
     return *this;
 }
@@ -185,7 +182,7 @@ void HashMap<KeyType, ValueType>::remove(const KeyType& key) {
 }
 
 template <typename KeyType, typename ValueType>
-void HashMap<KeyType, ValueType>::clear() {
+void HashMap<KeyType, ValueType>::clear() noexcept {
     for (size_t i = 0; i < capacity; ++i) {
         Node<KeyType, ValueType>* temp = table[i];
         while (temp != nullptr) {
