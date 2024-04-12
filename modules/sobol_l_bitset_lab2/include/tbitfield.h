@@ -7,7 +7,6 @@
 
 typedef unsigned int TELEM;
 class TBitField {
-
  private:
   int  BitLen;  // длина битового поля - макс. к-во битов
   TELEM *pMem;  // память для представления битового поля
@@ -24,8 +23,8 @@ class TBitField {
 
   // доступ к битам
   int GetLength(void) const;      // получить длину (к-во битов)
-  void SetBit(const int n);       // установить бит 
-  void ClrBit(const int n);       // очистить бит 
+  void SetBit(const int n);       // установить бит
+  void ClrBit(const int n);       // очистить бит
   int  GetBit(const int n) const;  // получить значение бита
 
   // битовые операции
@@ -45,4 +44,4 @@ class TBitField {
 //   массив pМем рассматривается как последовательность MemLen элементов
 //   биты в эл-тах pМем нумеруются справа налево (от младших к старшим)
 
-#endif // MODULES_SOBOL_L_BITSET_LAB2_INCLUDE_TBITFIELD_H_
+#endif  // MODULES_SOBOL_L_BITSET_LAB2_INCLUDE_TBITFIELD_H_
