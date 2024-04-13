@@ -31,7 +31,6 @@ namespace KnuthMorrisPratt {
 
     std::vector<int> findPattern(const std::string& text,
         const std::string& pattern) {
-
         std::vector<int> pi = computePrefixFunction(pattern);
         std::vector<int> occurrences;
         int n = text.size();
@@ -58,5 +57,4 @@ namespace KnuthMorrisPratt {
 
         return occurrences;
     }
-}
-// namespace KnuthMorrisPratt
+} // namespace KnuthMorrisPratt
