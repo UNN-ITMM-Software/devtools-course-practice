@@ -1,10 +1,8 @@
 // Copyright 2024 Konovalov Igor
 
-#include <gtest/gtest.h>
-
 #include "include/konovalov_i_euler_f.h"
-
 #include <random>
+#include <gtest/gtest.h>
 
 
 TEST(Konovalov_Igor_Euler_Funcion, throws_when_negative_number_is_given) {
