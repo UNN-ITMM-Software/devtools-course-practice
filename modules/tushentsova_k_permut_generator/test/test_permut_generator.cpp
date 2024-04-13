@@ -57,7 +57,7 @@ TEST(Tushentsova_Karina_Permut_Generator, CanGetNextSet) {
     PermutGenerator arr(a, size);
 
     EXPECT_TRUE(arr.NextSet());
-    EXPECT_EQ("021", arr.PrintArray()); 
+    EXPECT_EQ("021", arr.PrintArray());
 }
 
 TEST(Tushentsova_Karina_Permut_Generator, CanBubbleSort) {

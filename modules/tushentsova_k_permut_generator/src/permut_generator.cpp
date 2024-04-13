@@ -22,7 +22,7 @@ std::string PermutGenerator::PrintArray() {
 bool PermutGenerator::CreateArray() {
     for (int i = 0; i < size_; i++) {
         array_[i] = i;
-    }   
+    }
     return true;
 }
 
