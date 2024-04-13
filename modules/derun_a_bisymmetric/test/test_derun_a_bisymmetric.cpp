@@ -64,3 +64,15 @@ TEST(Derun_A_Bisymmetric, Set_Element) {
   ASSERT_EQ(m.getElement(2, 0), 'g');
   ASSERT_EQ(m.getElement(0, 2), 'g');
 }
+
+TEST(Derun_A_Bisymmetric, Set_Element_Exc) {
+  auto m = BisymmetricMatrix<char>(
+      {{'a', 'b', 'c'}, {'b', 'd', 'b'}, {'c', 'b', 'a'}});
+  ASSERT_ANY_THROW(m.setElement(10, 0, 'a'));
+}
+
+TEST(Derun_A_Bisymmetric, Get_Element_Exc) {
+  auto m = BisymmetricMatrix<char>(
+      {{'a', 'b', 'c'}, {'b', 'd', 'b'}, {'c', 'b', 'a'}});
+  ASSERT_ANY_THROW(m.getElement(10, 0));
+}

@@ -85,7 +85,7 @@ class BisymmetricMatrix {
   }
 
  public:
-  explicit BisymmetricMatrix() : size(0), n(0) {}
+  BisymmetricMatrix() : size(0), n(0) {}
 
   explicit BisymmetricMatrix(int n) : size(convertSize(n)), n(n) {
     matrix.resize(convertSize(n), T());
