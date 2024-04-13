@@ -8,8 +8,8 @@ int GrahamScan::orientation(std::pair<double, double>& p,
     std::pair<double, double>& q, std::pair<double, double>& r) {
     double val = (q.second - p.second) * (r.first - q.first) -
                         (q.first - p.first) * (r.second - q.second);
-    if (val == 0) return 0;
-    return (val > 0) ? 1 : 2;
+    if (val == 0) return COLLINEAR;
+    return (val > 0) ? LEFT_TURN : RIGHT_TURN;
 }
 
 std::vector<std::pair<double, double>> GrahamScan::sortPoints

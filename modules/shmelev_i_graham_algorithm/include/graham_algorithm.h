@@ -10,6 +10,11 @@
 #include <algorithm>
 #include <string>
 
+constexpr int LEFT_TURN = 0;
+constexpr int RIGHT_TURN = 2;
+constexpr int COLLINEAR = 1;
+
+
 class GrahamScan {
  public:
     static std::vector<std::pair<double, double>> convexHull
