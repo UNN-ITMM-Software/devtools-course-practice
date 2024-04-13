@@ -5,7 +5,6 @@
 
 #include "include/lcs.h"
 
-
 std::string LCS::findLCS(const std::string& str1, const std::string& str2) {
     auto lengths = getLCSLengths(str1, str2);
     return constructLCS(str1, str2, lengths);
