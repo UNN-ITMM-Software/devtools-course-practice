@@ -1,8 +1,9 @@
 // Copyright 2024 Vinichuk Timofey
 
-#include <numeric>
 #include <gtest/gtest.h>
+#include <numeric>
 #include "include/BinarySearch.h"
+
 
 TEST(BinarySearchTest, test_find_middle) {
     std::vector<int> v = {1, 2, 3, 4, 5, 6, 7};
