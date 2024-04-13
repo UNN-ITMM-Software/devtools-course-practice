@@ -9,15 +9,15 @@ class PermutGenerator {
  public:
     PermutGenerator(int* arr, int size);
     std::string PrintArray();
-    void CreateArray();
+    bool CreateArray();
+    void Swap(int i, int j);
+    bool NextSet();
     std::string GeneratorPermut();
+    bool BubbleSort();
 
  private:
     int size_;
     int* array_;
-    void Swap(int i, int j);
-    bool NextSet();
-    void BubbleSort();
 };
 
 #endif  // MODULES_TUSHENTSOVA_K_PERMUT_GENERATOR_INCLUDE_PERMUT_GENERATOR_H_

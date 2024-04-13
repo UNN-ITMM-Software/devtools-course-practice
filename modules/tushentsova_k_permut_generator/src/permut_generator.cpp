@@ -19,13 +19,17 @@ std::string PermutGenerator::PrintArray() {
     return result;
 }
 
-void PermutGenerator::CreateArray() {
+bool PermutGenerator::CreateArray() {
     for (int i = 0; i < size_; i++) {
         array_[i] = i;
-    }
+    }   
+    return true;
 }
 
 void PermutGenerator::Swap(int i, int j) {
+    if (i < 0 || j >= size_) {
+        throw std::string("invalid value");
+    }
     int t = array_[i];
     array_[i] = array_[j];
     array_[j] = t;
@@ -56,7 +60,7 @@ std::string PermutGenerator::GeneratorPermut() {
     return result;
 }
 
-void PermutGenerator::BubbleSort() {
+bool PermutGenerator::BubbleSort() {
     int listLength = size_;
     while (listLength--) {
         bool swapped = false;
@@ -71,4 +75,5 @@ void PermutGenerator::BubbleSort() {
         if (swapped == false)
             break;
     }
+    return true;
 }
