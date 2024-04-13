@@ -106,7 +106,6 @@ TEST(ivanchenko_a_metrics, l1_not_zero_if_not_equal) {
 
     v1 = {0.1, 0.2, 0.3};
     v2 = {0.1, 0.22, 0.3};
-
     zero = 0;
 
     EXPECT_NE(zero, metrics::l1(v1, v2));
@@ -117,7 +116,6 @@ TEST(ivanchenko_a_metrics, l2_not_zero_if_not_equal) {
 
     v1 = {0.1, 0.2, 0.3};
     v2 = {0.1, 0.22, 0.3};
-
     zero = 0;
 
     EXPECT_NE(zero, metrics::l2(v1, v2));
