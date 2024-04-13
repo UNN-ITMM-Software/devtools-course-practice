@@ -28,7 +28,7 @@ class QuadraticSolver {
     double getB() const;
     double getC() const;
     double getDiscriminant() const;
-    std::pair<bool, std::unordered_set<double>> solve() const;
+    std::pair<bool, std::unordered_set<double>> solveRealRoots() const;
     std::pair<bool, std::unordered_set<std::complex<double>>>
-    solveComplex() const;
+    solveComplexRoots() const;
 };

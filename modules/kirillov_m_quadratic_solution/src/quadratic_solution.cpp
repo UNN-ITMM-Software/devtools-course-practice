@@ -22,7 +22,7 @@ double QuadraticSolver::getDiscriminant() const {
 }
 
 // Pair: first means if the roots are finite, second means what are the roots
-std::pair<bool, std::unordered_set<double>> QuadraticSolver::solve() const {
+std::pair<bool, std::unordered_set<double>> QuadraticSolver::solveRealRoots() const {
     if (a == 0) {
         if (b == 0) {
             if (c == 0) {
@@ -36,7 +36,7 @@ std::pair<bool, std::unordered_set<double>> QuadraticSolver::solve() const {
     } else {
         double discriminator = getDiscriminant();
         if (discriminator < 0) {
-            return {false, {}};
+            throw std::runtime_error("No real roots");
         } else {
             double sqrt_disc = sqrt(discriminator);
             double root1 = (-b - sqrt_disc) / (2 * a);
@@ -48,7 +48,7 @@ std::pair<bool, std::unordered_set<double>> QuadraticSolver::solve() const {
 
 
 std::pair<bool, std::unordered_set<std::complex<double>>>
-QuadraticSolver::solveComplex() const {
+QuadraticSolver::solveComplexRoots() const {
     double discriminator = getDiscriminant();
     if (discriminator >= 0) {
         double sqrt_disc = sqrt(discriminator);
