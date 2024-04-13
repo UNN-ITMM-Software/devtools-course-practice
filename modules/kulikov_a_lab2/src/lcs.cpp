@@ -11,7 +11,8 @@ std::string LCS::findLCS(const std::string& str1, const std::string& str2) {
     return constructLCS(str1, str2, lengths);
 }
 
-std::vector<std::vector<int>> LCS::getLCSLengths(const std::string& str1, const std::string& str2) {
+std::vector<std::vector<int>> LCS::getLCSLengths(const std::string& str1,
+                                                 const std::string& str2) {
     int m = str1.size();
     int n = str2.size();
     std::vector<std::vector<int>> lengths(m + 1, std::vector<int>(n + 1, 0));
