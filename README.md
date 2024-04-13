@@ -22,7 +22,7 @@
 
 <!-- LINKS -->
 
-[chat]:              https://t.me/+p1ccGh1eSedhMjgy
+[chat]:              https://t.me/+TBx0NsRiJ-IxNTMy
 [hall-of-fame]:      https://UNN-ITMM-Software.github.io/devtools-course-practice
 [labs]:              ./lab-guide
 [control-questions]: https://github.com/UNN-ITMM-Software/devtools-course-theory/blob/master/slides/control-questions.md
