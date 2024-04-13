@@ -57,4 +57,4 @@ namespace KnuthMorrisPratt {
 
         return occurrences;
     }
-}// namespace KnuthMorrisPratt
+}  // namespace KnuthMorrisPratt
