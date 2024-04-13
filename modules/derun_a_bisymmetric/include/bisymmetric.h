@@ -129,7 +129,7 @@ class BisymmetricMatrix {
   int getN() const { return n; }
 
   void setElement(int i, int j, const T& value) {
-    if (i < 0 || i >= size || j < 0 || j >= size) {
+    if (i < 0 || i > n || j < 0 || j > n) {
       std::cerr << "Invalid index\n";
       throw std::out_of_range("Invalid index");
     }
@@ -138,7 +138,7 @@ class BisymmetricMatrix {
   }
 
   T getElement(int i, int j) const {
-    if (i < 0 || i >= size || j < 0 || j >= size) {
+    if (i < 0 || i > n || j < 0 || j > n) {
       std::cerr << "Invalid index\n";
       throw std::out_of_range("Invalid index");
     }
