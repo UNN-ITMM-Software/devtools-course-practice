@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include "include/konovalov_i_euler_function.h"
+#include "include/konovalov_i_euler_f.h"
 
 #include <random>
 

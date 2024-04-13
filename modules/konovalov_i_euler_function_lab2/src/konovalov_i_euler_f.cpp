@@ -1,6 +1,6 @@
 // Copyright 2024 Konovalov Igor
 
-#include "include/konovalov_i_euler_function.h"
+#include "include/konovalov_i_euler_f.h"
 #include <math.h>
 #include <stdexcept>
 
