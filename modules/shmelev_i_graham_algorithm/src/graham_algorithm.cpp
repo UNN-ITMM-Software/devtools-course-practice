@@ -4,8 +4,9 @@
 
 
 
-int GrahamScan::orientation(std::pair<double, double>& p,
-    std::pair<double, double>& q, std::pair<double, double>& r) {
+int GrahamScan::orientation(const std::pair<double, double>& p,
+                             const std::pair<double, double>& q,
+                             const std::pair<double, double>& r) {
     double val = (q.second - p.second) * (r.first - q.first) -
                         (q.first - p.first) * (r.second - q.second);
     if (val == 0) return COLLINEAR;

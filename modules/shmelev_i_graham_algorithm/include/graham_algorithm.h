@@ -20,8 +20,8 @@ class GrahamScan {
     static std::vector<std::pair<double, double>> convexHull
                         (std::vector<std::pair<double, double>>& points);
  private:
-    static int orientation(std::pair<double, double>& p,
-             std::pair<double, double>& q, std::pair<double, double>& r);
+    static int orientation(const std::pair<double, double>& p,
+   const std::pair<double, double>& q, const std::pair<double, double>& r);
     static std::vector<std::pair<double, double>> sortPoints
                         (std::vector<std::pair<double, double>>& points);
 };
