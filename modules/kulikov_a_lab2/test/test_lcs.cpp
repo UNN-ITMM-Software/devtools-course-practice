@@ -53,7 +53,7 @@ TEST(LCSTest, EmptyAndNonEmptyStrings) {
 TEST(LCSTest, SameCharsDifferentOrder) {
     std::string str1 = "aabbcc";
     std::string str2 = "abcabc";
-    ASSERT_EQ("abc", LCS::findLCS(str1, str2));
+    ASSERT_EQ("abcc", LCS::findLCS(str1, str2));
 }
 
 TEST(LCSTest, StringsWithWhitespace) {
