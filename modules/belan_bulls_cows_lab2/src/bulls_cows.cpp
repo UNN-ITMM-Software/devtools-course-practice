@@ -1,12 +1,12 @@
 // Copyright 2024 Belan Vadim
 
 #include "include/bulls_cows.h"
-#include <random>
+#include <cstdlib>
+#include <ctime>
 
 BullsCows::BullsCows() : attemptsLeft(3) {
     difficultyLevel = 4;
-    unsigned int seed = static_cast<unsigned int>(time(nullptr));
-    srand(seed);
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
 }
 
 void BullsCows::setDifficulty(int level) {
@@ -15,12 +15,10 @@ void BullsCows::setDifficulty(int level) {
 
 std::string BullsCows::generateSecretNumber() {
     std::string secret;
-    unsigned int seed = static_cast<unsigned int>(time(nullptr));
     for (int i = 0; i < difficultyLevel; ++i) {
-        char digit = '0' + rand_r(&seed) % 10;
+        char digit = '0' + std::rand() % 10;
         while (secret.find(digit) != std::string::npos) {
-            seed = static_cast<unsigned int>(time(nullptr));
-            digit = '0' + rand_r(&seed) % 10;
+            digit = '0' + std::rand() % 10;
         }
         secret += digit;
     }
@@ -67,7 +65,7 @@ int BullsCows::getDifficultyLevel() const {
 }
 
 char BullsCows::getHint() {
-    return secretNumber[rand() % secretNumber.length()];
+    return secretNumber[std::rand() % secretNumber.length()];
 }
 
 int BullsCows::getAttemptsLeft() const {
