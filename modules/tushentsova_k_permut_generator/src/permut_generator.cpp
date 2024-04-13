@@ -3,9 +3,10 @@
 #include "include/permut_generator.h"
 #include <string>
 
-PermutGenerator::PermutGenerator() {}
-
 PermutGenerator::PermutGenerator(int* arr, int size) {
+    if (size <= 0) {
+        throw std::string("invalid value");
+    }
     size_ = size;
     array_ = arr;
 }
@@ -35,13 +36,13 @@ bool PermutGenerator::NextSet() {
     while (j != -1 && array_[j] >= array_[j + 1])
         j--;
     if (j == -1)
-        return false; // больше перестановок нет
+        return false;
 
     int k = size_ - 1;
     while (array_[j] >= array_[k])
         k--;
     Swap(j, k);
-    int l = j + 1, r = size_ - 1; // сортируем оставшуюся часть последовательности
+    int l = j + 1, r = size_ - 1;
     while (l < r)
         Swap(l++, r--);
     return true;

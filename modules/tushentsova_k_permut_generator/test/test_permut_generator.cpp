@@ -3,15 +3,13 @@
 #include <gtest/gtest.h>
 #include "include/permut_generator.h"
 
-TEST(Tushentsova_Karina_Permut_Generator, CanCreateArrWhithoutParameters) {
-    ASSERT_NO_THROW(PermutGenerator arr);
-}
 
 TEST(Tushentsova_Karina_Permut_Generator, CanGetArrCertainLength) {
     int a[] = { 1, 2, 3 };
-    ASSERT_NO_THROW(PermutGenerator arr(a, 3));
+    ASSERT_THROW(PermutGenerator arr(a, 0), std::string);
+    ASSERT_THROW(PermutGenerator arr(a, -3), std::string);
+    ASSERT_NO_THROW(PermutGenerator arr(a, 3), std::string);
 }
-
 
 TEST(Tushentsova_Karina_Permut_Generator, CanPrintArray) {
     int const size = 3;
