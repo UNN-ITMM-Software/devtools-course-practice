@@ -43,7 +43,7 @@ BillinearInterpolation& BillinearInterpolation::operator=
 
 BillinearInterpolation& BillinearInterpolation::operator=
 (BillinearInterpolation& bi) {
-    if(&bi != this) {
+    if (&bi != this) {
         *this = BillinearInterpolation(bi);
     }
     return *this;
