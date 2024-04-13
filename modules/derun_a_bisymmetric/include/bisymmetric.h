@@ -60,6 +60,8 @@ class BisymmetricMatrix {
       side -= 2;
     }
     k += i0 - j0;
+
+    return k;
   }
 
   static bool checkBisymmetric(
