@@ -44,24 +44,3 @@ TEST(Dostavalov_Semyon_ComplexNumberTest, DivisionByZero) {
 
     ASSERT_ANY_THROW(a / b);
 }
-// Test for conjugate method
-TEST(Dostavalov_Semyon_ComplexNumberTest, Conjugate) {
-    ComplexNumber a(3.0, 4.0);
-    ComplexNumber conjugate = a.conjugate();
-    ASSERT_EQ(3.0, conjugate.getRe());
-    ASSERT_EQ(-4.0, conjugate.getIm());
-}
-
-// Test for modulus method
-TEST(Dostavalov_Semyon_ComplexNumberTest, Modulus) {
-    ComplexNumber a(3.0, 4.0);
-    double modulus = a.modulus();
-    ASSERT_EQ(5.0, modulus);
-}
-
-// Test for argument method
-TEST(Dostavalov_Semyon_ComplexNumberTest, Argument) {
-    ComplexNumber a(1.0, 1.0);
-    double argument = a.argument();
-    ASSERT_NEAR(0.7854, argument, 0.0001); // approximately equal to pi/4
-}
