@@ -7,11 +7,11 @@
 #include <vector>
 
 class LCS {
-public:
+ public:
     static std::string findLCS(const std::string& str1,
                                const std::string& str2);
 
-private:
+ private:
     static std::vector<std::vector<int>> getLCSLengths(const std::string& str1,
                                                        const std::string& str2);
     static std::string constructLCS(
