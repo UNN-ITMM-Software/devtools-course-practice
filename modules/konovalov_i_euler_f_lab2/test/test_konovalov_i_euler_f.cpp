@@ -1,8 +1,8 @@
 // Copyright 2024 Konovalov Igor
 
-#include "include/konovalov_i_euler_f.h"
 #include <random>
 #include <gtest/gtest.h>
+#include "include/konovalov_i_euler_f.h"
 
 
 TEST(Konovalov_Igor_Euler_Funcion, throws_when_negative_number_is_given) {
@@ -25,7 +25,7 @@ TEST(Konovalov_Igor_Euler_Funcion, returns_400_when_given_1000) {
   EXPECT_EQ(400, EulerFunction::euler(1000));
 }
 
-TEST(Konovalov_Igor_Euler_Funcion, naive_implementation_gives_same_result_on_random_input) {
+TEST(Konovalov_Igor_Euler_Funcion, gives_same_result_as_naive_impl) {
   std::random_device dev;
   std::mt19937 rng(dev());
   std::uniform_int_distribution<std::mt19937::result_type> dist6(1, 1000);
