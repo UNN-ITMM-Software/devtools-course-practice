@@ -4,7 +4,7 @@
 #include "include/KMP.h"
 
 TEST(dostavalov_s_knuth_morris_prath, BigFind) {
-    std::string text = "ABABABACABAABABACÑABABCABAACABAABBBACABA";
+    std::string text = "ABABABACABAABABACCABABCABAACABAABBBACABA";
     std::string pattern = "ABACABA";
 
     std::vector<int> expected = { 4 };
