@@ -41,10 +41,12 @@ BillinearInterpolation& BillinearInterpolation::operator=
     return *this;
 }
 
-BillinearInterpolation BillinearInterpolation::operator=
+BillinearInterpolation& BillinearInterpolation::operator=
 (BillinearInterpolation& bi) {
-    BillinearInterpolation ans = BillinearInterpolation(bi);
-    return ans;
+    if(&bi != this) {
+        *this = BillinearInterpolation(bi);
+    }
+    return *this;
 }
 
 std::vector<std::vector<Color>> BillinearInterpolation::twoCore() {
