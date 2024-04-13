@@ -5,52 +5,51 @@
 
 PermutGenerator::PermutGenerator() {}
 
-PermutGenerator::PermutGenerator(int size) {
+PermutGenerator::PermutGenerator(int* arr, int size) {
     size_ = size;
+    array_ = arr;
 }
 
-std::string PermutGenerator::PrintArray(int array[]) {
+std::string PermutGenerator::PrintArray() {
     std::string result = "";
     for (int i = 0; i < size_; i++) {
-        result += std::to_string(array[i]);
+        result += std::to_string(array_[i]);
     }
     return result;
 }
 
-void PermutGenerator::CreateArray(int array[]) {
+void PermutGenerator::CreateArray() {
     for (int i = 0; i < size_; i++) {
-        array[i] = i;
+        array_[i] = i;
     }
 }
 
-void PermutGenerator::swap(int* a, int i, int j) {
-    int t = a[i];
-    a[i] = a[j];
-    a[j] = t;
+void PermutGenerator::Swap(int i, int j) {
+    int t = array_[i];
+    array_[i] = array_[j];
+    array_[j] = t;
 }
 
-bool PermutGenerator::NextSet(int* array) {
+bool PermutGenerator::NextSet() {
     int j = size_ - 2;
-    while (j != -1 && array[j] >= array[j + 1])
+    while (j != -1 && array_[j] >= array_[j + 1])
         j--;
     if (j == -1)
         return false; // больше перестановок нет
 
     int k = size_ - 1;
-    while (array[j] >= array[k])
+    while (array_[j] >= array_[k])
         k--;
-    swap(array, j, k);
+    Swap(j, k);
     int l = j + 1, r = size_ - 1; // сортируем оставшуюся часть последовательности
     while (l < r)
-        swap(array, l++, r--);
+        Swap(l++, r--);
     return true;
 }
 
-
-std::string PermutGenerator::GeneratorPermut(int array[]) {
-    std::string result = PrintArray(array);
-    while (NextSet(array))
-        result += ' ' + PrintArray(array);
+std::string PermutGenerator::GeneratorPermut() {
+    std::string result = PrintArray();
+    while (NextSet())
+        result += ' ' + PrintArray();
     return result;
 }
-

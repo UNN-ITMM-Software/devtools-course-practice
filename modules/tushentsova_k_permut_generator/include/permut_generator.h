@@ -8,16 +8,16 @@
 class PermutGenerator {
 public:
 	PermutGenerator();
-	PermutGenerator(int size);
-	std::string PrintArray(int array[]);
-	void CreateArray(int array[]);
-	std::string GeneratorPermut(int array[]);
-
+	PermutGenerator(int* arr, int size);
+	std::string PrintArray();
+	void CreateArray();
+	std::string GeneratorPermut();
 
 private:
 	int size_;
-	void swap(int* a, int i, int j);
-	bool NextSet(int* array);
+	int* array_;
+	void Swap(int i, int j);
+	bool NextSet();
 };
 
 #endif  // MODULES_TUSHENTSOVA_K_PERMUT_GENERATOR_H_
