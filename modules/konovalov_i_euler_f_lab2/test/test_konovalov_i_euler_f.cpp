@@ -1,7 +1,7 @@
 // Copyright 2024 Konovalov Igor
 
-#include <random>
 #include <gtest/gtest.h>
+#include <random>
 #include "include/konovalov_i_euler_f.h"
 
 
