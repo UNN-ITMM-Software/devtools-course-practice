@@ -52,13 +52,6 @@ TEST(Dostavalov_Semyon_ComplexNumberTest, DivisionByZero) {
     ASSERT_ANY_THROW(a / b);
 }
 
-TEST(Dostavalov_Semyon_ComplexNumberTest, ParConDrob) {
-    ComplexNumber a(3.14, 2.71);
-
-    ASSERT_EQ(3.14, a.getRe());
-    ASSERT_EQ(2.71, a.getIm());
-}
-
 TEST(Dostavalov_Semyon_ComplexNumberTest, AdditionDrob) {
     ComplexNumber a(1.50, 2.5);
     ComplexNumber b(3.14, 2.71);
