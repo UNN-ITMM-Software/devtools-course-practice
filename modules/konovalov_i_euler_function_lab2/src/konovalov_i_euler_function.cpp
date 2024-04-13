@@ -1,11 +1,10 @@
 // Copyright 2024 Konovalov Igor
 
 #include "include/konovalov_i_euler_function.h"
-#include <stdexcept>
 #include <math.h>
+#include <stdexcept>
 
-bool EulerFunction::contains_divider(int n, std::vector<int>& v)
-{
+bool EulerFunction::contains_divider(int n, std::vector<int>& v) {
   for (int i : v) {
     if (n % i == 0)
       return true;
@@ -13,8 +12,7 @@ bool EulerFunction::contains_divider(int n, std::vector<int>& v)
   return false;
 }
 
-int EulerFunction::euler(int n)
-{
+int EulerFunction::euler(int n) {
   if (n < 1)
     throw std::runtime_error("invalid number for euler function");
 
@@ -31,8 +29,7 @@ int EulerFunction::euler(int n)
   return res;
 }
 
-int EulerFunction::euler_naive(int n)
-{
+int EulerFunction::euler_naive(int n) {
   if (n < 1)
     throw std::runtime_error("invalid number for euler function");
 
@@ -41,8 +38,7 @@ int EulerFunction::euler_naive(int n)
   for (int i = 1; i < n; i++) {
     if (i != 1 && n % i == 0) {
       prev.push_back(i);
-    }
-    else if (!contains_divider(i, prev)) {
+    } else if (!contains_divider(i, prev)) {
       res++;
     }
   }
