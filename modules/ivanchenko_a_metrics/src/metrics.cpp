@@ -20,7 +20,7 @@ float metrics::l2(std::vector<float> v1, std::vector<float> v2) {
     for(size_t i = 0; i < v1.size(); i++) {
         res += std::pow(std::abs(v1[i] - v2[i]), 2);
     }
-    return std::pow(res, 0.5);
+    return std::pow(res, 1.0 / 2);
 }
 float metrics::l3(std::vector<float> v1, std::vector<float> v2) {
     if(v1.size() != v2.size())
