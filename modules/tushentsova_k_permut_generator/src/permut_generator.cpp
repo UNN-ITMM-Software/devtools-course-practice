@@ -3,7 +3,7 @@
 #include "include/permut_generator.h"
 #include <string>
 
-PermutGenerator::PermutGenerator(int* arr, int size) {
+PermutGenerator::PermutGenerator(int* arr, const int size) {
     if (size <= 0) {
         throw std::string("invalid value");
     }
@@ -49,8 +49,26 @@ bool PermutGenerator::NextSet() {
 }
 
 std::string PermutGenerator::GeneratorPermut() {
+    BubbleSort();
     std::string result = PrintArray();
     while (NextSet())
         result += ' ' + PrintArray();
     return result;
+}
+
+void PermutGenerator::BubbleSort() {
+    int listLength = size_;
+    while (listLength--) {
+        bool swapped = false;
+
+        for (int i = 0; i < listLength; i++) {
+            if (array_[i] > array_[i + 1]) {
+                Swap(i, i + 1);
+                swapped = true;
+            }
+        }
+
+        if (swapped == false)
+            break;
+    }
 }

@@ -77,3 +77,19 @@ TEST(Tushentsova_Karina_Permut_Generator, CanPermutWithRepetitions3) {
 
     EXPECT_EQ("1122 1212 1221 2112 2121 2211", arr.GeneratorPermut());
 }
+
+TEST(Tushentsova_Karina_Permut_Generator, CanPermutUnsortedArray) {
+    int const size = 3;
+    int a[size] = { 2, 0, 1 };
+    PermutGenerator arr(a, size);
+
+    EXPECT_EQ("012 021 102 120 201 210", arr.GeneratorPermut());
+}
+
+TEST(Tushentsova_Karina_Permut_Generator, CanNegativeValues) {
+    int const size = 3;
+    int a[size] = { -1, -1, -2 };
+    PermutGenerator arr(a, size);
+
+    EXPECT_EQ("-2-1-1 -1-2-1 -1-1-2", arr.GeneratorPermut());
+}

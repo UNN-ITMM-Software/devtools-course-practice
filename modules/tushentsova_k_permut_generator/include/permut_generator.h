@@ -17,6 +17,7 @@ class PermutGenerator {
     int* array_;
     void Swap(int i, int j);
     bool NextSet();
+    void BubbleSort();
 };
 
 #endif  // MODULES_TUSHENTSOVA_K_PERMUT_GENERATOR_INCLUDE_PERMUT_GENERATOR_H_
