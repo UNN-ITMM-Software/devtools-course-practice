@@ -122,6 +122,7 @@ TEST(KriseevM_Vector3d, dotProduct_correct) {
   ASSERT_NEAR(expectedDotProduct, actualDotProduct, 1e-9);
 }
 TEST(KriseevM_Vector3d, crossProduct_collinear_vectors_correct) {
+  // Arrange
   double x1 = 2.0;
   double y1 = 3.0;
   double z1 = 4.0;
@@ -140,6 +141,7 @@ TEST(KriseevM_Vector3d, crossProduct_collinear_vectors_correct) {
   ASSERT_EQ(expectedCrossProduct, actualCrossProduct);
 }
 TEST(KriseevM_Vector3d, crossProduct_non_collinear_vectors_correct) {
+  // Arrange
   double x1 = 2.0;
   double y1 = 3.0;
   double z1 = 4.0;
@@ -157,7 +159,7 @@ TEST(KriseevM_Vector3d, crossProduct_non_collinear_vectors_correct) {
   // Assert
   ASSERT_EQ(expectedCrossProduct, actualCrossProduct);
 }
-TEST(KriseevM_Vector3d, divide_operator_correct) {
+TEST(KriseevM_Vector3d, division_operator_correct) {
   // Arrange
   double factor = 2.0;
   double x1 = 2.0;
@@ -190,6 +192,7 @@ TEST(KriseevM_Vector3d, multiply_operator_correct) {
   ASSERT_EQ(expected, actual);
 }
 TEST(KriseevM_Vector3d, addition_operator_correct) {
+  // Arrange
   double x1 = 2.0;
   double y1 = 3.0;
   double z1 = 4.0;
@@ -209,6 +212,7 @@ TEST(KriseevM_Vector3d, addition_operator_correct) {
 }
 
 TEST(KriseevM_Vector3d, subtraction_operator_correct) {
+  // Arrange
   double x1 = 2.0;
   double y1 = 3.0;
   double z1 = 4.0;
@@ -228,6 +232,7 @@ TEST(KriseevM_Vector3d, subtraction_operator_correct) {
 }
 
 TEST(KriseevM_Vector3d, equality_operator_equal_correct) {
+  // Arrange
   double x1 = 2.0;
   double y1 = 3.0;
   double z1 = 4.0;
@@ -242,6 +247,7 @@ TEST(KriseevM_Vector3d, equality_operator_equal_correct) {
   ASSERT_TRUE(actual);
 }
 TEST(KriseevM_Vector3d, equality_operator_non_equal_correct) {
+  // Arrange
   double x1 = 2.0;
   double y1 = 3.0;
   double z1 = 4.0;
@@ -256,6 +262,7 @@ TEST(KriseevM_Vector3d, equality_operator_non_equal_correct) {
   ASSERT_FALSE(actual);
 }
 TEST(KriseevM_Vector3d, non_equality_operator_equal_correct) {
+  // Arrange
   double x1 = 2.0;
   double y1 = 3.0;
   double z1 = 4.0;
@@ -270,6 +277,7 @@ TEST(KriseevM_Vector3d, non_equality_operator_equal_correct) {
   ASSERT_FALSE(actual);
 }
 TEST(KriseevM_Vector3d, non_equality_operator_non_equal_correct) {
+  // Arrange
   double x1 = 2.0;
   double y1 = 3.0;
   double z1 = 4.0;
@@ -282,4 +290,18 @@ TEST(KriseevM_Vector3d, non_equality_operator_non_equal_correct) {
   bool actual = vector1 != vector2;
   // Assert
   ASSERT_TRUE(actual);
+}
+TEST(KriseevM_Vector3d, division_operator_division_by_zero_throws) {
+  // Arrange
+  double factor = 0.0;
+  double x1 = 2.0;
+  double y1 = 3.0;
+  double z1 = 4.0;
+  Vector3d vector{x1, y1, z1};
+  double expectedX = 1.0;
+  double expectedY = 1.5;
+  double expectedZ = 2.0;
+  Vector3d expected{expectedX, expectedY, expectedZ};
+  // Act & Assert (?)
+  ASSERT_ANY_THROW(vector / factor);
 }

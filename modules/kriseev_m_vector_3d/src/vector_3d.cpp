@@ -41,6 +41,9 @@ double Vector3d::squareNorm() const {
 }
 
 Vector3d Vector3d::operator/(double factor) const {
+  if (std::abs(factor) < EPSILON) {
+    throw std::runtime_error("Attempted division by zero");
+  }
   return Vector3d{this->x / factor, this->y / factor, this->z / factor};
 }
 
