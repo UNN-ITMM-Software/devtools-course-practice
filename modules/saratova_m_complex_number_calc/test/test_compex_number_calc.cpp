@@ -59,3 +59,20 @@ TEST(ComplexCalculatorTest, Division) {
     EXPECT_DOUBLE_EQ(result.getReal(), 4);
     EXPECT_DOUBLE_EQ(result.getImaginary(), 0);
 }
+
+TEST(ComplexCalculatorTest, Division2) {
+    ComplexCalculator num1(6, 2);
+    ComplexCalculator num2(2, 1);
+
+    ComplexCalculator result = num1.divide(num2);
+
+    EXPECT_DOUBLE_EQ(result.getReal(), 2.8);
+    EXPECT_DOUBLE_EQ(result.getImaginary(), -0.4);
+}
+
+TEST(ComplexCalculatorTest, DivisionByZero) {
+    ComplexCalculator num1(3, 4);
+    ComplexCalculator num2(0, 0);
+
+    EXPECT_THROW(num1.divide(num2), std::invalid_argument);
+}
