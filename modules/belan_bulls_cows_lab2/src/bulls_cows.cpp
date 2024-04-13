@@ -1,6 +1,6 @@
 // Copyright 2024 Belan Vadim
 
-#include "/Users/vadimbelan/Desktop/belan_bulls_cows_lab2/include/bulls_cows.h"
+#include "include/bulls_cows.h"
 #include <random>
 
 BullsCows::BullsCows() : attemptsLeft(3) {
@@ -19,7 +19,7 @@ std::string BullsCows::generateSecretNumber() {
     for (int i = 0; i < difficultyLevel; ++i) {
         char digit = '0' + rand_r(&seed) % 10;
         while (secret.find(digit) != std::string::npos) {
-            seed = static_cast<unsigned int>(time(nullptr)); // Update seed
+            seed = static_cast<unsigned int>(time(nullptr));
             digit = '0' + rand_r(&seed) % 10;
         }
         secret += digit;
