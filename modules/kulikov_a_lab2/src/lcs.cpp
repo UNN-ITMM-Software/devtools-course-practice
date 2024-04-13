@@ -10,14 +10,15 @@ std::string LCS::findLCS(const std::string& str1, const std::string& str2) {
     return constructLCS(str1, str2, lengths);
 }
 
-std::vector<std::vector<int>> LCS::getLCSLengths(const std::string& str1,
-                                                 const std::string& str2) {
-    int m = str1.size();
-    int n = str2.size();
-    std::vector<std::vector<int>> lengths(m + 1, std::vector<int>(n + 1, 0));
+std::vector<std::vector<size_t>> LCS::getLCSLengths(const std::string& str1,
+                                                    const std::string& str2) {
+    size_t m = str1.size();
+    size_t n = str2.size();
+    std::vector<std::vector<size_t>> lengths(m + 1,
+                                             std::vector<size_t>(n + 1, 0));
 
-    for (int i = 1; i <= m; ++i) {
-        for (int j = 1; j <= n; ++j) {
+    for (size_t i = 1; i <= m; ++i) {
+        for (size_t j = 1; j <= n; ++j) {
             if (str1[i - 1] == str2[j - 1]) {
                 lengths[i][j] = lengths[i - 1][j - 1] + 1;
             } else {
@@ -29,9 +30,9 @@ std::vector<std::vector<int>> LCS::getLCSLengths(const std::string& str1,
 }
 
 std::string LCS::constructLCS(const std::string& str1, const std::string& str2,
-                              const std::vector<std::vector<int>>& lengths) {
-    int i = str1.size();
-    int j = str2.size();
+                              const std::vector<std::vector<size_t>>& lengths) {
+    size_t i = str1.size();
+    size_t j = str2.size();
     std::string result;
 
     while (i > 0 && j > 0) {
