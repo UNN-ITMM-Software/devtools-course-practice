@@ -1,4 +1,4 @@
-// Copyright 2024 Kashin Stepa
+// Copyright 2024 Vinichuk Timofey
 
 #include <gtest/gtest.h>
 
