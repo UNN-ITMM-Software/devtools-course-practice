@@ -1,5 +1,5 @@
 // Copyright 2024 Vasilev Ivan
-#pragma once 
+#pragma once
 #include <iostream>
 #include <cstring>
 #include <string>
@@ -7,11 +7,11 @@
 #include <unordered_map>
 #include <vector>
 #include <algorithm>
-#include <vector>
 
 
-namespace KCombinations{
-void combinationsUtil(const std::vector<int>& arr, int n, int k, int index, std::vector<int>& data, int i, std::vector<std::vector<int>>& result) {
+namespace KCombinations {
+void combinationsUtil(const std::vector<int>& arr, int n, int k, int index,
+                     std::vector<int>& data, int i, std::vector<std::vector<int>>& result) {
     if (index == k) {
         result.push_back(data);
         return;
@@ -24,7 +24,8 @@ void combinationsUtil(const std::vector<int>& arr, int n, int k, int index, std:
     combinationsUtil(arr, n, k, index, data, i + 1, result);
 }
 
-std::vector<std::vector<int>>generateCombinations(const std::vector<int>& arr, int k) {
+std::vector<std::vector<int> >generateCombinations
+(const std::vector<int>& arr, int k) {
     std::vector<std::vector<int>> result;
     int n = arr.size();
     std::vector<int> data(k);
@@ -32,3 +33,4 @@ std::vector<std::vector<int>>generateCombinations(const std::vector<int>& arr, i
     return result;
 }
 }
+// namespace KCombinations
