@@ -47,31 +47,34 @@ TEST(GrahamScan, CollinearPoints) {
 
 TEST(GrahamScanTest, TenPointsTest) {
     std::vector<std::pair<double, double>> points = {
-        {0, 0},
-        {1, 1},
-        {2, 2},
-        {3, 3},
-        {4, 4},
-        {5, 0},
-        {6, 1},
-        {7, 2},
-        {8, 3},
-        {9, 4}
+        {0.0, 0.0},
+        {1.0, 1.0},
+        {2.0, 2.0},
+        {3.0, 3.0},
+        {4.0, 4.0},
+        {5.0, 1.0},
+        {6.0, 3.0},
+        {7.0, 2.0},
+        {8.0, 5.0},
+        {9.0, 4.0}
     };
 
     std::vector<std::pair<double, double>> expected_hull = {
-        {0, 0},
-        {5, 0},
-        {9, 4},
-        {4, 4}
+        {0.0, 0.0},
+        {4.0, 4.0},
+        {8.0, 5.0},
+        {9.0, 4.0},
+        {7.0, 2.0},
+        {5.0, 1.0}
     };
 
-    std::vector<std::pair<double, double>> hull =
+    std::vector<std::pair<double, double>> result =
                                  GrahamScan::convexHull(points);
 
-    ASSERT_EQ(hull.size(), expected_hull.size());
-    for (size_t i = 0; i < hull.size(); i++) {
-        ASSERT_DOUBLE_EQ(hull[i].first, expected_hull[i].first);
-        ASSERT_DOUBLE_EQ(hull[i].second, expected_hull[i].second);
+    ASSERT_EQ(expected_hull.size(), result.size());
+
+    for (size_t i = 0; i < expected_hull.size(); ++i) {
+        EXPECT_DOUBLE_EQ(expected_hull[i].first, result[i].first);
+        EXPECT_DOUBLE_EQ(expected_hull[i].second, result[i].second);
     }
 }

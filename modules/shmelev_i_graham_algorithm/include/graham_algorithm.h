@@ -18,11 +18,12 @@ using Point = std::pair<double, double>;
 using Points = std::vector<Point>;
 
 class GrahamScan {
- public:
+public:
     static Points convexHull(Points& points);
- private:
+private:
     static int orientation(const Point& p, const Point& q, const Point& r);
     static Points sortPoints(Points& points);
+    static bool comparePoints(const Point& a, const Point& b);
 };
 
 #endif  // MODULES_SHMELEV_I_GRAHAM_ALGORITHM_INCLUDE_GRAHAM_ALGORITHM_H_
