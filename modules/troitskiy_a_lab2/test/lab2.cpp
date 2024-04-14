@@ -44,7 +44,6 @@ TEST(Troitskiy_A_Lab2Test, PushPopAlternating) {
     heap.push(5);
     heap.pop();
     heap.push(8);
-    
     EXPECT_EQ(heap.top(), 8);
 }
 
