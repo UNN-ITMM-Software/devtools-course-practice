@@ -3,7 +3,7 @@
 #include "include/caesar_cipher.h"
 
 CaesarCipher::CaesarCipher(const int _offset) {
-    if (_offset < 1 || _offset > 25) {
+    if (_offset < MIN_OFFSET || _offset > MAX_OFFSET) {
         throw std::invalid_argument("invalid value");
     }
     this->offset = _offset;
@@ -11,7 +11,7 @@ CaesarCipher::CaesarCipher(const int _offset) {
 
 char CaesarCipher::ShiftChar(char c, int offset) const {
     char base = isupper(c) ? 'A' : 'a';
-    return static_cast<char>((c - base + offset) % 26 + base);
+    return static_cast<char>((c - base + offset) % ALPHABET_SIZE + base);
 }
 
 std::string CaesarCipher::CaesarCipherEncoder
@@ -40,7 +40,7 @@ std::string CaesarCipher::CaesarCipherDecoder
 
     for (const char c : ciphertext) {
         if (isalpha(c)) {
-            result += ShiftChar(c, 26 - offset);
+            result += ShiftChar(c, ALPHABET_SIZE - offset);
         } else {
             result += c;
         }

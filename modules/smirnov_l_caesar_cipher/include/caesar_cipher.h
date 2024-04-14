@@ -9,6 +9,9 @@
 class CaesarCipher {
  private:
     int offset;
+    static const int MIN_OFFSET = 1;
+    static const int MAX_OFFSET = 25;
+    static const int ALPHABET_SIZE = 26;
 
  public:
     explicit CaesarCipher(int _offset);
