@@ -22,13 +22,6 @@ TEST(FractionCalculatorTest, Find_NOD_Different_Numbers) {
     int x = a.NOD(30, 45);
 
     EXPECT_EQ(x, 15);
-
-    /*int x;
-    FractionCalculator a;
-    // Act
-    x = a.NOD(24, 36);
-    // Assert
-    EXPECT_EQ(x, 12); */
 }
 
 TEST(FractionCalculatorTest, Add_Fractions_Diff_Denominators) {
@@ -81,6 +74,18 @@ TEST(FractionCalculatorTest, Divide_Fractions_Diff_Denominators) {
     FractionCalculator x;
 
     x = a / b;
+
+    EXPECT_EQ(x.GetNum(), res.GetNum());
+    EXPECT_EQ(x.GetDen(), res.GetDen());
+}
+
+TEST(FractionCalculatorTest, Multiplication_Result) {
+    FractionCalculator a(2, 3);
+    FractionCalculator b(3, 4);
+    FractionCalculator res(1, 2);
+    FractionCalculator x;
+
+    x = a * b;
 
     EXPECT_EQ(x.GetNum(), res.GetNum());
     EXPECT_EQ(x.GetDen(), res.GetDen());
