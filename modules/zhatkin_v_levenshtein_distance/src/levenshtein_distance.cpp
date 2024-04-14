@@ -32,10 +32,9 @@ int LevenshteinDistance::distance() {
             int cost = (str1[i - 1] == str2[j - 1]) ? 0 : 1;
 
             matrix[i][j] = std::min(
-                matrix[i - 1][j] + 1, 
+                matrix[i - 1][j] + 1,
                 std::min(matrix[i][j - 1] + 1,
-                matrix[i - 1][j - 1] + cost)
-            );
+                matrix[i - 1][j - 1] + cost));
         }
     }
 
