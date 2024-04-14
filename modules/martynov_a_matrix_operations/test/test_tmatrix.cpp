@@ -120,8 +120,8 @@ TEST(TDynamicMatrix, cant_subtract_matrixes_with_not_equal_size) {
 TEST(TDynamicMatrix, can_find_determinant) {
   size_t size = 3;
   TDynamicMatrix<double> m(size);
-  for (int q = 0; q < size; q++) {
-    for (int w = 0; w < size; w++) {
+  for (size_t q = 0; q < size; q++) {
+    for (size_t w = 0; w < size; w++) {
       m[q][w] = q+w+1;
     }
   }
@@ -132,8 +132,8 @@ TEST(TDynamicMatrix, can_find_inverse) {
   size_t size = 3;
   TDynamicMatrix<double> m(size);
   TDynamicMatrix<double> mat(size);
-  for (int q = 0; q < size; q++) {
-    for (int w = 0; w < size; w++) {
+  for (size_t q = 0; q < size; q++) {
+    for (size_t w = 0; w < size; w++) {
       m[q][w] = q + w + 1;
     }
   }
@@ -155,8 +155,8 @@ TEST(TDynamicMatrix, inverse_matrix_with_null_determ) {
   size_t size = 3;
   TDynamicMatrix<double> m(size);
   TDynamicMatrix<double> mat(size);
-  for (int q = 0; q < size; q++) {
-    for (int w = 0; w < size; w++) {
+  for (size_t q = 0; q < size; q++) {
+    for (size_t w = 0; w < size; w++) {
       m[q][w] = q + w + 1;
       mat[q][w] = 1;
     }
