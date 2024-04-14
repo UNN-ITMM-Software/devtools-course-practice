@@ -10,7 +10,7 @@ struct Node {
 };
 
 class Deque {
-public:
+ public:
     Deque();
     ~Deque();
     void push_front(int value);
@@ -18,7 +18,7 @@ public:
     int pop_front();
     int pop_back();
     bool empty() const;
-private:
+ private:
     Node* front_;
     Node* back_;
 };
