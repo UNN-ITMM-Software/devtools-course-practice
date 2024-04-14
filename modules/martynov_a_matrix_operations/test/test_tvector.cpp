@@ -126,7 +126,7 @@ TEST(TDynamicVector, can_add_vectors_with_equal_size) {
         v1[i] = i;
     }
     v2 = v1 + v;
-    for (size_t i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++) {
         EXPECT_EQ(v2[i], 2*i);
     }
 }
