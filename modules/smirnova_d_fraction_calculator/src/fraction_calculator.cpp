@@ -7,7 +7,8 @@
 
 FractionCalculator::FractionCalculator() : num(0), den(1) {}
 
-FractionCalculator::FractionCalculator(const int numerator, const int denominator)
+FractionCalculator::FractionCalculator(const int numerator,
+    const int denominator)
     : num(numerator) {
     if (denominator == 0)
         throw std::string("Denominator cannot be a zero");
@@ -42,7 +43,12 @@ int FractionCalculator::NOD(int a, int b) const {
     return a;
 }
 
-FractionCalculator FractionCalculator::operator+(const FractionCalculator& obj) const {
+FractionCalculator FractionCalculator::operator+(
+    const FractionCalculator& obj) const {
+
+    //int numerator;
+    //int denominator;
+
     int numerator = this->GetNum() * obj.GetDen() + obj.GetNum() * this->GetDen();
     int denominator = this->GetDen() * obj.GetDen();
     int nod = NOD(numerator, denominator);
@@ -55,8 +61,10 @@ FractionCalculator FractionCalculator::operator+(const FractionCalculator& obj) 
     return sum;
 }
 
-FractionCalculator FractionCalculator::operator-(const FractionCalculator& obj) const {
-    int numerator = this->GetNum() * obj.GetDen() - obj.GetNum() * this->GetDen();
+FractionCalculator FractionCalculator::operator-(
+    const FractionCalculator& obj) const {
+    int numerator = this->GetNum() * obj.GetDen()
+        - obj.GetNum() * this->GetDen();
     int denominator = this->GetDen() * obj.GetDen();
     int nod = NOD(numerator, denominator);
 
@@ -68,7 +76,8 @@ FractionCalculator FractionCalculator::operator-(const FractionCalculator& obj) 
     return diff;
 }
 
-FractionCalculator FractionCalculator::operator*(const FractionCalculator& obj) const {
+FractionCalculator FractionCalculator::operator*(
+    const FractionCalculator& obj) const {
     int numerator = this->GetNum() * obj.GetNum();
     int denominator = this->GetDen() * obj.GetDen();
     int nod = NOD(numerator, denominator);
@@ -81,7 +90,8 @@ FractionCalculator FractionCalculator::operator*(const FractionCalculator& obj) 
     return product;
 }
 
-FractionCalculator FractionCalculator::operator/(const FractionCalculator& obj) const {
+FractionCalculator FractionCalculator::operator/(
+    const FractionCalculator& obj) const {
     int numerator = this->GetNum() * obj.GetDen();
     int denominator = this->GetDen() * obj.GetNum();
 

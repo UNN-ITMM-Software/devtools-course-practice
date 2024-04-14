@@ -22,6 +22,13 @@ TEST(FractionCalculatorTest, Find_NOD_Different_Numbers) {
     int x = a.NOD(30, 45);
 
     EXPECT_EQ(x, 15);
+
+    /*int x;
+    FractionCalculator a;
+    // Act
+    x = a.NOD(24, 36);
+    // Assert
+    EXPECT_EQ(x, 12); */
 }
 
 TEST(FractionCalculatorTest, Can_Add_Fractions_With_Different_Denominators) {
