@@ -6,7 +6,6 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
 
 // Структура для представления точки в двумерном пространстве
 struct Point {
@@ -23,7 +22,7 @@ class ConvexHull {
 
  public:
     // Конструктор класса, принимающий вектор точек
-    ConvexHull(std::vector<Point>& _points);
+    explicit ConvexHull(std::vector<Point>& _points);
 
     // Функция для построения выпуклой оболочки
     std::vector<Point> findConvexHull();
