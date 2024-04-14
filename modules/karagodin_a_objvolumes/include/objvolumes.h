@@ -2,7 +2,9 @@
 
 #ifndef MODULES_KARAGODIN_A_OBJVOLUMES_INCLUDE_OBJVOLUMES_H_
 #define MODULES_KARAGODIN_A_OBJVOLUMES_INCLUDE_OBJVOLUMES_H_
+#define _USE_MATH_DEFINES
 
+#include <math.h>
 #include <cmath>
 #include <stdexcept>
 
