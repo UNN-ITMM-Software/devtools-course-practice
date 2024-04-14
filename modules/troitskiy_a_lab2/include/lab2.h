@@ -10,9 +10,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <utility>
 
 template <int N> class Heap {
-private:
+ private:
   std::array<double, N + 2> t;
   int real_size = 0;
   void heapify(int n) {
@@ -32,9 +33,9 @@ private:
     }
   }
 
-public:
+ public:
   Heap() = default;
-  Heap(const std::vector<double> &arr) {
+  explicit Heap(const std::vector<double> &arr) {
     for (const auto &el : arr)
       push(el);
   }
@@ -64,4 +65,4 @@ public:
   }
   int size() { return real_size; }
 };
-#endif // MODULES_TROITSKIY_A_LAB2_INCLUDE_LAB2_H_
+#endif  // MODULES_TROITSKIY_A_LAB2_INCLUDE_LAB2_H_
