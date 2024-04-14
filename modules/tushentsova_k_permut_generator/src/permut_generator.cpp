@@ -4,13 +4,13 @@
 #include <string>
 
 PermutGenerator::PermutGenerator(int* arr, const int size) {
-    if (size <= 0) {
+    if (size <= 0 || arr == NULL) {
         throw std::string("invalid value");
     }
     size_ = size;
     array_ = arr;
 }
-
+/*
 std::string PermutGenerator::PrintArray() {
     std::string result = "";
     for (int i = 0; i < size_; i++) {
@@ -77,3 +77,4 @@ bool PermutGenerator::BubbleSort() {
     }
     return true;
 }
+*/
