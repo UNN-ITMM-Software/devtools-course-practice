@@ -19,7 +19,7 @@ TEST(zhatkin_v_levenshtein_distance, EmptyStrings) {
 TEST(zhatkin_v_levenshtein_distance, OneCharString) {
     LevenshteinDistance ld1("a", "a");
     LevenshteinDistance ld2("a", "b");
-    EXPECT_EQ(0, ld1.getResult());   
+    EXPECT_EQ(0, ld1.getResult());
     EXPECT_EQ(1, ld2.getResult());
 }
 

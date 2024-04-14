@@ -8,14 +8,16 @@ LevenshteinDistance::LevenshteinDistance() {
     result = 0;
 }
 
-LevenshteinDistance::LevenshteinDistance(const std::string& str1_, const std::string& str2_) {
+LevenshteinDistance::LevenshteinDistance(const std::string& str1_,
+    const std::string& str2_) {
     str1 = str1_;
     str2 = str2_;
     result = distance();
 }
 
 int LevenshteinDistance::distance() {
-    std::vector<std::vector<int>> matrix(str1.size() + 1, std::vector<int>(str2.size() + 1));
+    std::vector<std::vector<int>> matrix(str1.size() + 1,
+        std::vector<int>(str2.size() + 1));
 
     for (int i = 0; i <= str1.size(); i++) {
         matrix[i][0] = i;
@@ -30,9 +32,9 @@ int LevenshteinDistance::distance() {
             int cost = (str1[i - 1] == str2[j - 1]) ? 0 : 1;
 
             matrix[i][j] = std::min({
-                matrix[i - 1][j] + 1, // удаление
-                matrix[i][j - 1] + 1, // вставка
-                matrix[i - 1][j - 1] + cost // замена
+                matrix[i - 1][j] + 1,
+                matrix[i][j - 1] + 1,
+                matrix[i - 1][j - 1] + cost
                 });
         }
     }
