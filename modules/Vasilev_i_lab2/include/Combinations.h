@@ -33,5 +33,5 @@ std::vector<std::vector<int> >generateCombinations
     combinationsUtil(arr, n, k, 0, data, 0, result);
     return result;
 }
-// namespace KCombinations
-}// namespace KCombinations
+
+}  // namespace KCombinations
