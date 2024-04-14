@@ -36,7 +36,7 @@ TEST(TDynamicVector, copied_vector_has_its_own_memory) {
 TEST(TDynamicVector, can_get_size) {
     TDynamicVector<int> v(4);
 
-    EXPECT_EQ(4, v.size());
+    EXPECT_EQ((size_t)4, v.size());
 }
 
 TEST(TDynamicVector, can_set_and_get_element) {
@@ -71,7 +71,7 @@ TEST(TDynamicVector, can_assign_vectors_of_equal_size) {
 TEST(TDynamicVector, assign_operator_change_vector_size) {
     TDynamicVector<int> v(4), v1(2);
     v1 = v;
-    EXPECT_EQ(4, v1.size());
+    EXPECT_EQ((size_t)4, v1.size());
 }
 
 TEST(TDynamicVector, can_assign_vectors_of_different_size) {
