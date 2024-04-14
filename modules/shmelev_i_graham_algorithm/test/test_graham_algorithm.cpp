@@ -46,7 +46,7 @@ TEST(GrahamScan, CollinearPoints) {
 }
 
 TEST(GrahamScanTest, TenPointsTest) {
-    std::vector<std::pair<double, double>> points = {
+    std::vector<std::pair<double, double>> points{
         {0.0, 0.0},
         {1.0, 1.0},
         {2.0, 2.0},
@@ -59,7 +59,7 @@ TEST(GrahamScanTest, TenPointsTest) {
         {9.0, 4.0}
     };
 
-    std::vector<std::pair<double, double>> expected_hull = {
+    std::vector<std::pair<double, double>> expected_hull{
         {0.0, 0.0},
         {4.0, 4.0},
         {8.0, 5.0},
