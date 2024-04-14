@@ -231,7 +231,7 @@ TDynamicVector<TDynamicVector<T>>(V) {}
     T det = 1.0;
     TDynamicMatrix<T>tdm(m);
     for (size_t i = 0; i < tdm.size(); i++) {
-      int pivot = i;
+      size_t pivot = i;
       for (size_t j = i + 1; j < tdm.size(); j++) {
         if (abs(tdm[j][i]) > abs(tdm[pivot][i])) {
           pivot = j;
@@ -276,7 +276,7 @@ TDynamicVector<TDynamicVector<T>>(V) {}
       for (size_t j = 0; j < size; j++) {
         if (i != j) {
           temp2 = A[j][i] / A[i][i];
-          for (int q = 0; q < size; q++) {
+          for (size_t q = 0; q < size; q++) {
             A[j][q] = A[j][q] - A[i][q] * temp2;
             matE[j][q] = matE[j][q] - matE[i][q] * temp2;
           }
