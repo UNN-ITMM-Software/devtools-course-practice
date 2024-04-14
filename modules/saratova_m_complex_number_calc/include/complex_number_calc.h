@@ -17,11 +17,10 @@ class ComplexCalculator {
     double getReal() const;
     double getImaginary() const;
 
-    ComplexCalculator add(const ComplexCalculator& other) const;
-    ComplexCalculator subtract(const ComplexCalculator& other) const;
-    ComplexCalculator multiply(const ComplexCalculator& other) const;
-    ComplexCalculator divide(const ComplexCalculator& other) const;
+    ComplexCalculator operator+(const ComplexCalculator& other) const;
+    ComplexCalculator operator-(const ComplexCalculator& other) const;
+    ComplexCalculator operator*(const ComplexCalculator& other) const;
+    ComplexCalculator operator/(const ComplexCalculator& other) const;
 };
-
 
 #endif  // MODULES_SARATOVA_M_COMPLEX_NUMBER_CALC_INCLUDE_COMPLEX_NUMBER_CALC_H_
