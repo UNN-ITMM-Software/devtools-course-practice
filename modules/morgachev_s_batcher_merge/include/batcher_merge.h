@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <random>
+#include <stdexcept>
 #include <utility>
 
 template<typename T>
