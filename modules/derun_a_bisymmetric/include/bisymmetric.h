@@ -103,26 +103,23 @@ class BisymmetricMatrix {
     size = convertSize(n);
     matrix.resize(size, T());
 
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    int middle = (n % 2 == 0) ? (n / 2) : (n + 1) / 2;
+
     std::vector<std::vector<T>> m(n);
 
-    {
-      int i = 0;
-      for (const auto& row : list) {
-        m[i] = std::vector<T>(row);
-        i++;
+    for (const auto& row : list) {
+      m[i] = std::vector<T>(row);
+      i++;
+    }
+
+    for (j = 0; j < middle; j++)
+      for (i = j; i < n - j; i++) {
+        matrix[k] = m[i][j];
+        k++;
       }
-    }
-
-    {
-      int k = 0;
-
-      int middle = (n % 2 == 0) ? (n / 2) : (n + 1) / 2;
-      for (int j = 0; j < middle; j++)
-        for (int i = j; i < n - j; i++) {
-          matrix[k] = m[i][j];
-          k++;
-        }
-    }
   }
 
   int getN() const { return n; }
