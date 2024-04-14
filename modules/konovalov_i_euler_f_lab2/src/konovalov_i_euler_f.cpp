@@ -35,7 +35,7 @@ int EulerFunction::euler_naive(int n) {
 
   int res = 0;
   std::vector<int> prev{};
-  for (int i = 1; i < n; i++) {
+  for (int i = 1; i <= n; i++) {
     if (i != 1 && n % i == 0) {
       prev.push_back(i);
     } else if (!contains_divider(i, prev)) {
