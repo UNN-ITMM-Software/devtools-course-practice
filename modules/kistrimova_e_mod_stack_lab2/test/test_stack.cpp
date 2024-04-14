@@ -78,3 +78,16 @@ TEST(Kistrimova_StackTest, can_push_and_pop_multiple_elements) {
     EXPECT_EQ(1, popped);
     EXPECT_EQ(true, stack.isEmpty());
 }
+
+TEST(Kistrimova_StackTest, can_handle_stack_overflow) {
+    Stack<int> stack(2);
+    stack.push(1);
+    stack.push(2);
+    EXPECT_EQ(2, stack.current_size());
+
+    // Попытка добавить элемент в уже заполненный стек
+    ASSERT_NO_THROW(stack.push(3));
+    EXPECT_EQ(3, stack.current_size());
+    EXPECT_EQ(3, stack.show_top());
+    EXPECT_EQ(1, stack.getMin());
+}
