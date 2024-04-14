@@ -11,7 +11,8 @@
 
 namespace KCombinations {
 void combinationsUtil(const std::vector<int>& arr, int n, int k, int index,
-                     std::vector<int>& data, int i, std::vector<std::vector<int>>& result) {
+                      std::vector<int>& data, int i,
+                      std::vector<std::vector<int>>& result) {
     if (index == k) {
         result.push_back(data);
         return;
@@ -32,5 +33,5 @@ std::vector<std::vector<int> >generateCombinations
     combinationsUtil(arr, n, k, 0, data, 0, result);
     return result;
 }
-}
 // namespace KCombinations
+}// namespace KCombinations
