@@ -6,9 +6,9 @@
 
 // Тест для поиска выпуклой оболочки для пустого набора точек
 TEST(Kochetov_n_djarvis, EmptySet) {
-    vector<Point> points;
+    std::vector<Point> points;
     ConvexHull convexHull(points);
-    vector<Point> hull = convexHull.findConvexHull();
+    std::vector<Point> hull = convexHull.findConvexHull();
 
     // Ожидаем, что выпуклая оболочка пуста для пустого набора точек
     ASSERT_TRUE(hull.empty());
@@ -17,9 +17,9 @@ TEST(Kochetov_n_djarvis, EmptySet) {
 // Тест для поиска выпуклой оболочки для набора точек,
 // образующих выпуклый многоугольник
 TEST(Kochetov_n_djarvis, ConvexPolygon) {
-    vector<Point> points = {{0, 0}, {1, 2}, {2, 3}, {3, 1}, {1, 0}};
+    std::vector<Point> points = {{0, 0}, {1, 2}, {2, 3}, {3, 1}, {1, 0}};
     ConvexHull convexHull(points);
-    vector<Point> hull = convexHull.findConvexHull();
+    std::vector<Point> hull = convexHull.findConvexHull();
 
     // Ожидаем, что выпуклая оболочка содержит 5 точек
     ASSERT_EQ(hull.size(), 5);
@@ -38,9 +38,9 @@ TEST(Kochetov_n_djarvis, ConvexPolygon) {
 // Тест для поиска выпуклой оболочки для набора точек,
 // образующих невыпуклый многоугольник
 TEST(Kochetov_n_djarvis, ConcavePolygon) {
-    vector<Point> points = {{0, 0}, {1, 1}, {2, 3}, {3, 1}, {1, 0}};
+    std::vector<Point> points = {{0, 0}, {1, 1}, {2, 3}, {3, 1}, {1, 0}};
     ConvexHull convexHull(points);
-    vector<Point> hull = convexHull.findConvexHull();
+    std::vector<Point> hull = convexHull.findConvexHull();
 
     // Ожидаем, что выпуклая оболочка содержит 4 точки
     ASSERT_EQ(hull.size(), 4);
