@@ -92,7 +92,7 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Side) {
 }
 
 TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Full) {
-    double r = 2.3, l = 3.7, resApproximate = 42.588;
+    double r = 2.3, l = 3.7, resApproximate = 43.353;
     FigureSurface figureSurfaceCalc;
 
     ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceConeFull(r, l));
@@ -102,7 +102,7 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Full) {
 }
 
 TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Sphere) {
-    double r = 2.0, resApproximate = 50.24;
+    double r = 2.0, resApproximate = 50.265;
     FigureSurface figureSurfaceCalc;
 
     ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceSphere(r));
