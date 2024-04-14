@@ -1,7 +1,5 @@
 // Copyright 2024 Kochetov Nikolay
 
-#ifndef MODULES_KOCHETOV_N_DJARVIS_INCLUDE_DJARVIS_H_
-#define MODULES_KOCHETOV_N_DJARVIS_INCLUDE_DJARVIS_H_
 
 #include "include/djarvis.h"
 
@@ -47,5 +45,3 @@ std::vector<Point> ConvexHull::findConvexHull() {
 
     return hull;
 }
-
-#endif  // MODULES_KOCHETOV_N_DJARVIS_INCLUDE_DJARVIS_H_
