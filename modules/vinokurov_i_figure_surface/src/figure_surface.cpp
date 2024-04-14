@@ -2,7 +2,7 @@
 
 #include "include/figure_surface.h"
 
-double FigureSurface::fnCalculateSurfaceParallelepiped(double _a, 
+double FigureSurface::fnCalculateSurfaceParallelepiped(double _a,
        double _b, double _c) {
     double result = 0.0;
 

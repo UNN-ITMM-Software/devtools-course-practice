@@ -24,7 +24,6 @@ class FigureSurface {
      double fnCalculateSurfaceConeFull(double _r, double _l);
 
      double fnCalculateSurfaceSphere(double _r);
-
 };
 
-#endif // MODULES_VINOKUROV_I_FIGURE_SURFACE_INCLUDE_FIGURE_SURFACE_H_
+#endif  // MODULES_VINOKUROV_I_FIGURE_SURFACE_INCLUDE_FIGURE_SURFACE_H_
