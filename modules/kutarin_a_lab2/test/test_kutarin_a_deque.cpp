@@ -99,3 +99,18 @@ TEST(DequeTest, Order) {
     EXPECT_EQ(pop_result1, value1);
     EXPECT_EQ(pop_result2, value2);
 }
+
+TEST(DequeTest, LargeAmount) {
+    // Arrange
+    Deque dq;
+    int n = 1000;
+
+    // Act & Assert
+    for (int i = 0; i < n; ++i) {
+        dq.push_back(i);
+    }
+    for (int i = 0; i < n; ++i) {
+        EXPECT_EQ(dq.pop_front(), i);
+    }
+    EXPECT_TRUE(dq.empty());
+}
