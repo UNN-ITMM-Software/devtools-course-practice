@@ -64,10 +64,11 @@ TEST(Filatov_Maxim_List_tests, can_size) {
 
 TEST(Filatov_Maxim_List_tests, correctly_size) {
     CList<int> l;
+    size_t size = 3;
     l.push_back(2);
     l.push_back(2);
     l.push_front(3);
-    EXPECT_EQ(l.size(), 3);
+    EXPECT_EQ(l.size(), size);
 }
 
 TEST(Filatov_Maxim_List_tests, can_clear_head_and_teil) {
