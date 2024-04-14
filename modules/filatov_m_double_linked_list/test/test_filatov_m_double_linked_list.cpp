@@ -1,6 +1,7 @@
 // Copyright 2024 Filatov Maxim
-#include <gtest/gtest.h>
 
+#include <gtest/gtest.h>
+#include <iostream>
 #include "include/DoubleLinkedList.h"
 
 TEST(Filatov_Maxim_List_tests, can_create) {

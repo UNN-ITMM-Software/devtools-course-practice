@@ -1,8 +1,8 @@
-// Copyright 2024 Filatov Maxim
+// Copyright 2024 Kashin Stepa
 
 #include <gtest/gtest.h>
 
 int main(int argc, char **argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

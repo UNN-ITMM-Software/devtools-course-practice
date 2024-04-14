@@ -3,6 +3,31 @@
 #include "include/DoubleLinkedList.h"
 
 template <class T>
+iterator<T>::iterator() {}
+
+template <class T>
+iterator<T>::iterator(CNode<T>* ptr) : ptr(ptr) {}
+
+template <class T>
+iterator<T>::~iterator() {}
+
+template <class T>
+iterator<T> iterator<T>::operator++() {
+    ptr = ptr->get_next_node();
+    return *this;
+}
+
+template <class T>
+bool iterator<T>::operator!=(const iterator<T>& other) const {
+    return ptr != other.ptr;
+}
+
+template <class T>
+CNode<T>& iterator<T>::operator*() {
+    return *ptr;
+}
+
+template <class T>
 CList<T>::CList() : head(nullptr), tail(nullptr) {}
 
 template <class T>
@@ -198,4 +223,63 @@ iterator<T> CList<T>::begin() const {
 template <class T>
 iterator<T> CList<T>::end() const {
     return iterator<T>(tail->get_next_node());
+}
+
+template <class T>
+CNode<T>::CNode(T value) : data(value), next(nullptr) {}
+
+template <class T>
+CNode<T>::~CNode() {}
+
+template <class T>
+void CNode<T>::set_next(CNode<T>* next_node) {
+    next = next_node;
+}
+
+template <class T>
+void CNode<T>::set_prev(CNode<T>* prev_node) {
+    next = prev_node;
+}
+
+template <class T>
+CNode<T>* CNode<T>::get_next_node() {
+    return next;
+}
+
+template <class T>
+CNode<T>* CNode<T>::get_prev_node() {
+    return prev;
+}
+
+template <class T>
+void CNode<T>::set_data(T _data) {
+    data = _data;
+}
+
+template <class T>
+T CNode<T>::check_data() const {
+    return data;
+}
+
+template <class T>
+T CNode<T>::get_data() {
+    return data;
+}
+
+template <class T>
+void CNode<T>::print() {
+    std::cout << data;
+}
+
+template <class T>
+void CNode<T>::del_next() {
+    delete next;
+    next = nullptr;
+}
+
+template <class T>
+void CNode<T>::operator = (CNode<T>* node) {
+    data = node->get_data();
+    next = node->get_next_node();
+    prev = node->get_prev_node();
 }
