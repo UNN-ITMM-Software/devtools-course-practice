@@ -1,4 +1,4 @@
-// Copyright 2024 Sobol Liubov
+// Copyright 2024 Sobol Lyubov
 
 #ifndef MODULES_SOBOL_L_BITSET_LAB2_INCLUDE_TBITFIELD_H_
 #define MODULES_SOBOL_L_BITSET_LAB2_INCLUDE_TBITFIELD_H_

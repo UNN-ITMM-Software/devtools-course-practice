@@ -1,4 +1,4 @@
-// Copyright 2024 Sobol Liubov
+// Copyright 2024 Sobol Lyubov
 
 #include <gtest/gtest.h>
 #include "include/tbitfield.h"

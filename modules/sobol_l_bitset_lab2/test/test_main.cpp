@@ -1,4 +1,4 @@
-// Copyright 2024 Makhinya Danil
+// Copyright 2024 Sobol Lyubov
 
 #include <gtest/gtest.h>
 
