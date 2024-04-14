@@ -18,20 +18,15 @@ TEST(LinkedListTest, Display) {
     list.add(2);
     list.add(3);
 
-    // Перенаправляем std::cout в строковый поток
     std::stringstream buffer;
     std::streambuf* prevcoutbuf = std::cout.rdbuf(buffer.rdbuf());
 
-    // Вызываем функцию display
     list.display();
 
-    // Восстанавливаем стандартный вывод
     std::cout.rdbuf(prevcoutbuf);
 
-    // Получаем строку из потока
     std::string output = buffer.str();
 
-    // Убеждаемся, что вывод соответствует ожидаемому
     ASSERT_EQ(output, "3 2 1 \n");
 }
 

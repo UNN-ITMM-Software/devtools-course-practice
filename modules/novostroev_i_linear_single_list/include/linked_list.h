@@ -1,7 +1,7 @@
 // Copyright 2024 Novostroev Ivan
 
-#ifndef LINKED_LIST_H
-#define LINKED_LIST_H
+#ifndef MODULES_NOVOSTROEV_I_LINEAR_SINGLE_LIST_INCLUDE_LINKED_LIST_H_
+#define MODULES_NOVOSTROEV_I_LINEAR_SINGLE_LIST_INCLUDE_LINKED_LIST_H_
 
 struct Node {
     int data;
@@ -9,7 +9,7 @@ struct Node {
 };
 
 class LinkedList {
-public:
+ public:
     LinkedList();
     ~LinkedList();
 
@@ -20,8 +20,8 @@ public:
     void clear();
     bool remove(int data);
 
-private:
+ private:
     Node* head;
 };
 
-#endif // LINKED_LIST_H
+#endif // MODULES_NOVOSTROEV_I_LINEAR_SINGLE_LIST_INCLUDE_LINKED_LIST_H_
