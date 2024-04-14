@@ -96,7 +96,6 @@ class BisymmetricMatrix {
   explicit BisymmetricMatrix(
       const std::initializer_list<std::initializer_list<T>>& list) {
     if (!checkBisymmetric(list)) {
-      std::cerr << "List is not bisymmetric\n";
       throw std::logic_error("List is not bisymmetric");
     }
 
@@ -130,7 +129,6 @@ class BisymmetricMatrix {
 
   void setElement(int i, int j, const T& value) {
     if (i < 0 || i > n || j < 0 || j > n) {
-      std::cerr << "Invalid index\n";
       throw std::out_of_range("Invalid index");
     }
     int i0 = convertIndex(i, j, n);
@@ -139,7 +137,6 @@ class BisymmetricMatrix {
 
   T getElement(int i, int j) const {
     if (i < 0 || i > n || j < 0 || j > n) {
-      std::cerr << "Invalid index\n";
       throw std::out_of_range("Invalid index");
     }
     int i0 = convertIndex(i, j, n);
