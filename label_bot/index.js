@@ -47,6 +47,15 @@ async function putLabNumber(pull_id) {
         issue_number: pull_id,
         labels: ["lab " + task_id],
     });
+    if (task_id == "2" && new Date(pullInfo.data.created_at) >= new Date("2024-04-15T08:00:00Z") ||
+        task_id == "3" && new Date(pullInfo.data.created_at) >= new Date("2024-05-02T08:00:00Z")) {
+        octokit.rest.issues.addLabels({
+            owner: owner,
+            repo: repo,
+            issue_number: pull_id,
+            labels: ["delayed"],
+        });
+    }
 }
 
 async function checkReadiness(pull_id) {
