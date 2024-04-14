@@ -66,7 +66,8 @@ TEST(GrahamScanTest, TenPointsTest) {
         {4, 4}
     };
 
-    std::vector<std::pair<double, double>> hull = GrahamScan::convexHull(points);
+    std::vector<std::pair<double, double>> hull =
+                                 GrahamScan::convexHull(points);
 
     ASSERT_EQ(hull.size(), expected_hull.size());
     for (size_t i = 0; i < hull.size(); i++) {
