@@ -120,3 +120,25 @@ TEST(Tushentsova_Karina_Permut_Generator, CanPermutNegativeValues) {
     EXPECT_EQ("-2-1 -1-2", arr1.GeneratorPermut());
     EXPECT_EQ("-2-1-1 -1-2-1 -1-1-2", arr2.GeneratorPermut());
 }
+
+TEST(Tushentsova_Karina_Permut_Generator, CanPermutOneValue) {
+    int const size1 = 1, size2 = 1;
+    int a1[size1] = { -1 },
+        a2[size2] = { 1 };
+    PermutGenerator arr1(a1, size1);
+    PermutGenerator arr2(a2, size2);
+
+    EXPECT_EQ("-1", arr1.GeneratorPermut());
+    EXPECT_EQ("1", arr2.GeneratorPermut());
+}
+
+TEST(Tushentsova_Karina_Permut_Generator, CanPermutDifferentValues) {
+    int const size1 = 2, size2 = 3;
+    int a1[size1] = { 1, -2 },
+        a2[size2] = { -1, -1, 2 };
+    PermutGenerator arr1(a1, size1);
+    PermutGenerator arr2(a2, size2);
+
+    EXPECT_EQ("-21 1-2", arr1.GeneratorPermut());
+    EXPECT_EQ("-1-12 -12-1 2-1-1", arr2.GeneratorPermut());
+}
