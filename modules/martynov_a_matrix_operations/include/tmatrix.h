@@ -180,11 +180,11 @@ TDynamicVector<TDynamicVector<T>>(V) {}
       return TDynamicVector<TDynamicVector<T>>::operator==(m);
   }
   TDynamicVector<T> operator*(const T& val) {
-      return TDynamicVector<TDynamicVector<T>>::operator*(val)
+      return TDynamicVector<TDynamicVector<T>>::operator*(val);
   }
   TDynamicVector<T> operator*(const TDynamicVector<T>& v) {
       TDynamicVector<T> tdv(sz);
-      for (int i = 0; i < sz; i++) {
+      for (size_t i = 0; i < sz; i++) {
           tdv[i] = v * pMem[i];
       }
       return tdv;
@@ -220,8 +220,8 @@ TDynamicVector<TDynamicVector<T>>(V) {}
           throw "sizes of matrix must are equals";
       }
       TDynamicMatrix tdm(sz);
-      for (int i = 0; i < sz; i++) {
-          for (int k = 0; k < sz; k++) {
+      for (size_t i = 0; i < sz; i++) {
+          for (size_t k = 0; k < sz; k++) {
               tdm[i][k] += pMem[i][k] * m.pMem[k][i];
           }
       }
@@ -230,9 +230,9 @@ TDynamicVector<TDynamicVector<T>>(V) {}
   T findDeterm(const TDynamicMatrix& m) {
     T det = 1.0;
     TDynamicMatrix<T>tdm(m);
-    for (int i = 0; i < tdm.size(); i++) {
+    for (size_t i = 0; i < tdm.size(); i++) {
       int pivot = i;
-      for (int j = i + 1; j < tdm.size(); j++) {
+      for (size_t j = i + 1; j < tdm.size(); j++) {
         if (abs(tdm[j][i]) > abs(tdm[pivot][i])) {
           pivot = j;
         }
@@ -245,9 +245,9 @@ TDynamicVector<TDynamicVector<T>>(V) {}
         return 0;
       }
       det *= tdm[i][i];
-      for (int j = i + 1; j < tdm.size(); j++) {
+      for (size_t j = i + 1; j < tdm.size(); j++) {
         double factor = tdm[j][i] / tdm[i][i];
-        for (int k = i + 1; k < tdm.size(); k++) {
+        for (size_t k = i + 1; k < tdm.size(); k++) {
           tdm[j][k] -= factor * tdm[i][k];
         }
       }
