@@ -37,3 +37,19 @@ TEST(Troitskiy_A_Lab2Test, EmptyHeapTop) {
   Heap<5> heap;
   EXPECT_THROW(heap.top(), std::logic_error);
 }
+
+TEST(Troitskiy_A_Lab2Test, PushPopAlternating) {
+    Heap<5> heap;
+    heap.push(10);
+    heap.push(5);
+    heap.pop();
+    heap.push(8);
+    
+    EXPECT_EQ(heap.top(), 8);
+}
+
+TEST(Troitskiy_A_Lab2Test, PopFromEmptyHeap) {
+    Heap<10> heap;
+    EXPECT_THROW(heap.pop(), std::logic_error);
+}
+
