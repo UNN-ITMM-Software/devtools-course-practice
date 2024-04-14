@@ -121,12 +121,12 @@ TEST(TDynamicVector, can_multiply_scalar_by_vector) {
 
 TEST(TDynamicVector, can_add_vectors_with_equal_size) {
     TDynamicVector<int> v(3), v1(3), v2;
-    for (int i = 0; i < 3; i++) {
+    for (size_t i = 0; i < 3; i++) {
         v[i] = i;
         v1[i] = i;
     }
     v2 = v1 + v;
-    for (int i = 0; i < 3; i++) {
+    for (size_t i = 0; i < 3; i++) {
         EXPECT_EQ(v2[i], 2*i);
     }
 }
@@ -138,12 +138,12 @@ TEST(TDynamicVector, cant_add_vectors_with_not_equal_size) {
 
 TEST(TDynamicVector, can_subtract_vectors_with_equal_size) {
     TDynamicVector<int> v(3), v1(3), v2;
-    for (int i = 0; i < 3; i++) {
+    for (size_t i = 0; i < 3; i++) {
         v[i] = i;
         v1[i] = i;
     }
     v2 = v1 - v;
-    for (int i = 0; i < 3; i++) {
+    for (size_t i = 0; i < 3; i++) {
         EXPECT_EQ(v2[i], 0);
     }
 }
@@ -155,7 +155,7 @@ TEST(TDynamicVector, cant_subtract_vectors_with_not_equal_size) {
 
 TEST(TDynamicVector, can_multiply_vectors_with_equal_size) {
     TDynamicVector<int> v(3), v1(3);
-    for (int i = 0; i < 3; i++) {
+    for (size_t i = 0; i < 3; i++) {
         v[i] = i;
         v1[i] = i;
     }
