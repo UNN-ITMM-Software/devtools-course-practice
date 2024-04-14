@@ -57,16 +57,18 @@ inline bool BisymmetricMatrix<T>::isInside(int i, int j, int n) {
 
 template <typename T>
 inline int BisymmetricMatrix<T>::convertIndex(int i1, int j1, int n) {
-  int i2 = j1;
+  // i1, j1 - original orientation
+
+  int i2 = j1;  // main diagonal symmetry
   int j2 = i1;
 
-  int i3 = n - j1 - 1;
+  int i3 = n - j1 - 1;  // minor diagonal symmetry 1
   int j3 = n - i1 - 1;
 
-  int i4 = n - i1 - 1;
+  int i4 = n - i1 - 1;  // minor diagonal symmetry 2
   int j4 = n - j1 - 1;
 
-  int i0 = 0;
+  int i0 = 0;  // i,j for the data inside the left central triangle
   int j0 = 0;
 
   if (isInside(i1, j1, n)) {
