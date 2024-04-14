@@ -62,3 +62,11 @@ TEST(LinkedListTest, Remove) {
     ASSERT_FALSE(list.remove(3));
     ASSERT_EQ(list.size(), 1);
 }
+
+TEST(LinkedListTest, AddToEmptyList) {
+    LinkedList list;
+    ASSERT_TRUE(list.isEmpty());
+    list.add(1);
+    ASSERT_FALSE(list.isEmpty());
+    ASSERT_EQ(list.size(), 1);
+}
