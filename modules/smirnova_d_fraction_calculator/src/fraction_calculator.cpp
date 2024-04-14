@@ -46,10 +46,8 @@ int FractionCalculator::NOD(int a, int b) const {
 FractionCalculator FractionCalculator::operator+(
     const FractionCalculator& obj) const {
 
-    //int numerator;
-    //int denominator;
-
-    int numerator = this->GetNum() * obj.GetDen() + obj.GetNum() * this->GetDen();
+    int numerator = this->GetNum() * obj.GetDen()
+        + obj.GetNum() * this->GetDen();
     int denominator = this->GetDen() * obj.GetDen();
     int nod = NOD(numerator, denominator);
 
