@@ -6,16 +6,19 @@
 #include <utility>
 #include <unordered_set>
 
-namespace std {
-template<>
-struct hash<std::complex<double>> {
+struct ComplexHash {
     size_t operator()(const std::complex<double>& value) const {
-        size_t h1 = hash<double>()(value.real());
-        size_t h2 = hash<double>()(value.imag());
+        std::hash<double> hasher;
+        size_t h1 = hasher(value.real());
+        size_t h2 = hasher(value.imag());
         return h1 ^ (h2 << 1);
     }
 };
-}
+
+using ComplexRoots = std::unordered_set<std::complex<double>, ComplexHash>;
+using RealRoots = std::unordered_set<double>;
+using ComplexResult = std::pair<bool, ComplexRoots>;
+using RealResult = std::pair<bool, RealRoots>;
 
 class QuadraticSolver {
  private:
@@ -28,7 +31,6 @@ class QuadraticSolver {
     double getB() const;
     double getC() const;
     double getDiscriminant() const;
-    std::pair<bool, std::unordered_set<double>> solveRealRoots() const;
-    std::pair<bool, std::unordered_set<std::complex<double>>>
-    solveComplexRoots() const;
+    RealResult solveRealRoots() const;
+    ComplexResult solveComplexRoots() const;
 };

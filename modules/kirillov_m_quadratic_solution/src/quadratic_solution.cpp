@@ -22,15 +22,10 @@ double QuadraticSolver::getDiscriminant() const {
 }
 
 // Pair: first means if the roots are finite, second means what are the roots
-std::pair<bool, std::unordered_set<double>>
-QuadraticSolver::solveRealRoots() const {
+RealResult QuadraticSolver::solveRealRoots() const {
     if (a == 0) {
         if (b == 0) {
-            if (c == 0) {
-                return {false, {}};
-            } else {
-                return {true, {}};
-            }
+            return { c != 0, {} };
         } else {
             return {true, {-c / b}};
         }
@@ -47,21 +42,23 @@ QuadraticSolver::solveRealRoots() const {
     }
 }
 
-
-std::pair<bool, std::unordered_set<std::complex<double>>>
-QuadraticSolver::solveComplexRoots() const {
+ComplexResult QuadraticSolver::solveComplexRoots() const {
     double discriminator = getDiscriminant();
+    ComplexHash hasher;
     if (discriminator >= 0) {
         double sqrt_disc = sqrt(discriminator);
         double root1 = (-b - sqrt_disc) / (2 * a);
         double root2 = (-b + sqrt_disc) / (2 * a);
-        return {true, {root1, root2}};
+        ComplexRoots roots(2, hasher);
+        roots.insert(root1);
+        roots.insert(root2);
+        return {true, roots};
     } else {
         double realPart = -b / (2 * a);
         double imagPart = std::sqrt(-discriminator) / (2 * a);
-        return {true, {
-                std::complex<double>(realPart, imagPart),
-                std::complex<double>(realPart, -imagPart)
-        }};
+        ComplexRoots roots(2, hasher);
+        roots.insert({realPart, imagPart});
+        roots.insert({realPart, -imagPart});
+        return {true, roots};
     }
 }

@@ -35,7 +35,7 @@ TEST(Kirillov_M_Quadratic_Solution, TestGetRealRoots) {
     QuadraticSolver solver(a, b, c);
     auto solution = solver.solveRealRoots();
     EXPECT_TRUE(solution.first);
-    std::unordered_set<double> expectedRoots = {2, 3};
+    std::unordered_set<double> expectedRoots {2, 3};
     EXPECT_EQ(expectedRoots, solution.second);
 }
 
@@ -44,7 +44,7 @@ TEST(Kirillov_M_Quadratic_Solution, TestGetOneRealRoot) {
     QuadraticSolver solver(a, b, c);
     auto solution = solver.solveRealRoots();
     EXPECT_TRUE(solution.first);
-    std::unordered_set<double> expectedRoots = {1};
+    std::unordered_set<double> expectedRoots {1};
     EXPECT_EQ(expectedRoots, solution.second);
 }
 
@@ -53,7 +53,7 @@ TEST(Kirillov_M_Quadratic_Solution, TestFirstCoefficientEqualsZero) {
     QuadraticSolver solver(a, b, c);
     auto solution = solver.solveRealRoots();
     EXPECT_TRUE(solution.first);
-    std::unordered_set<double> expectedRoots = {0.5};
+    std::unordered_set<double> expectedRoots {0.5};
     EXPECT_EQ(expectedRoots, solution.second);
 }
 TEST(Kirillov_M_Quadratic_Solution, TestSecondCoefficientEqualsZero) {
@@ -61,7 +61,7 @@ TEST(Kirillov_M_Quadratic_Solution, TestSecondCoefficientEqualsZero) {
     QuadraticSolver solver(a, b, c);
     auto solution = solver.solveRealRoots();
     EXPECT_TRUE(solution.first);
-    std::unordered_set<double> expectedRoots = {3, -3};
+    std::unordered_set<double> expectedRoots {3, -3};
     EXPECT_EQ(expectedRoots, solution.second);
 }
 TEST(Kirillov_M_Quadratic_Solution, TestThirdCoefficientEqualsZero) {
@@ -69,7 +69,7 @@ TEST(Kirillov_M_Quadratic_Solution, TestThirdCoefficientEqualsZero) {
     QuadraticSolver solver(a, b, c);
     auto solution = solver.solveRealRoots();
     EXPECT_TRUE(solution.first);
-    std::unordered_set<double> expectedRoots = {0,  -4};
+    std::unordered_set<double> expectedRoots {0,  -4};
     EXPECT_EQ(expectedRoots, solution.second);
 }
 
@@ -78,7 +78,7 @@ TEST(Kirillov_M_Quadratic_Solution, TestSecondThirdCoefficientsEqualsZero) {
     QuadraticSolver solver(a, b, c);
     auto solution = solver.solveRealRoots();
     EXPECT_TRUE(solution.first);
-    std::unordered_set<double> expectedRoots = {0};
+    std::unordered_set<double> expectedRoots {0};
     EXPECT_EQ(expectedRoots, solution.second);
 }
 
@@ -87,7 +87,7 @@ TEST(Kirillov_M_Quadratic_Solution, TestFirstSecondCoefficientsEqualsZero) {
     QuadraticSolver solver(a, b, c);
     auto solution = solver.solveRealRoots();
     EXPECT_TRUE(solution.first);  // finite roots
-    std::unordered_set<double> expectedRoots = {};  // no roots == empty set
+    std::unordered_set<double> expectedRoots {};  // no roots == empty set
     EXPECT_EQ(solution.second, expectedRoots);
 }
 
@@ -96,7 +96,7 @@ TEST(Kirillov_M_Quadratic_Solution, TestFirstThirdCoefficientsEqualsZero) {
     QuadraticSolver solver(a, b, c);
     auto solution = solver.solveRealRoots();
     EXPECT_TRUE(solution.first);
-    std::unordered_set<double> expectedRoots = {0};
+    std::unordered_set<double> expectedRoots {0};
     EXPECT_EQ(expectedRoots, solution.second);
 }
 
@@ -105,7 +105,7 @@ TEST(Kirillov_M_Quadratic_Solution, TestAllCoefficientsEqualsZero) {
     QuadraticSolver solver(a, b, c);
     auto solution = solver.solveRealRoots();
     EXPECT_FALSE(solution.first);  // infinite roots
-    std::unordered_set<double> expectedRoots = {};  // infinite roots == any set
+    std::unordered_set<double> expectedRoots {};  // infinite roots == any set
     EXPECT_EQ(solution.second, expectedRoots);
 }
 
@@ -114,9 +114,9 @@ TEST(Kirillov_M_Quadratic_Solution, TestSolveComplex) {
     QuadraticSolver solver(a, b, c);
     auto solution = solver.solveComplexRoots();
     EXPECT_TRUE(solution.first);
-    std::unordered_set<std::complex<double>> expectedRoots = {
-            std::complex<double>(-1, 2),
-            std::complex<double>(-1, -2)
-    };
+    ComplexHash hasher;
+    ComplexRoots expectedRoots(2, hasher);
+    expectedRoots.insert({-1, 2});
+    expectedRoots.insert({-1, -2});
     EXPECT_EQ(expectedRoots, solution.second);
 }
