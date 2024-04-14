@@ -34,13 +34,13 @@ TEST(TDynamicMatrix, copied_matrix_has_its_own_memory) {
 
 TEST(TDynamicMatrix, can_get_size) {
     TDynamicMatrix<int> m(5);
-    EXPECT_EQ(5, m[0].size());
+    EXPECT_EQ((size_t)5, m[0].size());
 }
 
 TEST(TDynamicMatrix, can_set_and_get_element) {
     TDynamicMatrix<int> m(5);
     m[0][0] = 5;
-    EXPECT_EQ(5, m[0][0]);
+    EXPECT_EQ((int)5, m[0][0]);
 }
 
 TEST(TDynamicMatrix, throws_when_set_element_with_negative_index) {
@@ -62,7 +62,7 @@ TEST(TDynamicMatrix, can_assign_matrices_of_equal_size) {
     TDynamicMatrix<int> m(5), m1(5);
     m[0][0] = 5;
     m1 = m;
-    EXPECT_EQ(5, m1[0][0]);
+    EXPECT_EQ((int)5, m1[0][0]);
 }
 
 
@@ -93,8 +93,8 @@ TEST(TDynamicMatrix, can_add_matrices_with_equal_size) {
     m[0][0] = 5;
     m1[0][1] = 2;
     m2 = m + m1;
-    EXPECT_EQ(5, m2[0][0]);
-    EXPECT_EQ(2, m2[0][1]);
+    EXPECT_EQ((int)5, m2[0][0]);
+    EXPECT_EQ((int)2, m2[0][1]);
 }
 
 TEST(TDynamicMatrix, cant_add_matrices_with_not_equal_size) {
@@ -109,8 +109,8 @@ TEST(TDynamicMatrix, can_subtract_matrices_with_equal_size) {
     m[0][1] = 5;
     m1[0][1] = 2;
     m2 = m - m1;
-    EXPECT_EQ(1, m2[0][0]);
-    EXPECT_EQ(3, m2[0][1]);
+    EXPECT_EQ((int)1, m2[0][0]);
+    EXPECT_EQ((int)3, m2[0][1]);
 }
 
 TEST(TDynamicMatrix, cant_subtract_matrixes_with_not_equal_size) {
