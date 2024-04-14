@@ -10,20 +10,20 @@
 
 class FigureSurface {
  public:
-	 FigureSurface();
-	 ~FigureSurface();
-	
-	 double fnCalculateSurfaceParallelepiped(double _a, double _b, double _c);
+     FigureSurface();
+    ~FigureSurface();
 
-	 double fnCalculateSurfaceCylinderSide(double _r, double _h);
+     double fnCalculateSurfaceParallelepiped(double _a, double _b, double _c);
 
-	 double fnCalculateSurfaceCylinderFull(double _r, double _h);
+     double fnCalculateSurfaceCylinderSide(double _r, double _h);
 
-	 double fnCalculateSurfaceConeSide(double _r, double _l);
+     double fnCalculateSurfaceCylinderFull(double _r, double _h);
 
-	 double fnCalculateSurfaceConeFull(double _r, double _l);
+     double fnCalculateSurfaceConeSide(double _r, double _l);
 
-	 double fnCalculateSurfaceSphere(double _r);
+     double fnCalculateSurfaceConeFull(double _r, double _l);
+
+     double fnCalculateSurfaceSphere(double _r);
 
 
 };
