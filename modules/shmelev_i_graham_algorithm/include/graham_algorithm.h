@@ -14,16 +14,15 @@ constexpr int LEFT_TURN = 0;
 constexpr int RIGHT_TURN = 2;
 constexpr int COLLINEAR = 1;
 
+using Point = std::pair<double, double>;
+using Points = std::vector<Point>;
 
 class GrahamScan {
  public:
-    static std::vector<std::pair<double, double>> convexHull
-                        (std::vector<std::pair<double, double>>& points);
+    static Points convexHull(Points& points);
  private:
-    static int orientation(const std::pair<double, double>& p,
-   const std::pair<double, double>& q, const std::pair<double, double>& r);
-    static std::vector<std::pair<double, double>> sortPoints
-                        (std::vector<std::pair<double, double>>& points);
+    static int orientation(const Point& p, const Point& q, const Point& r);
+    static Points sortPoints(Points& points);
 };
 
 #endif  // MODULES_SHMELEV_I_GRAHAM_ALGORITHM_INCLUDE_GRAHAM_ALGORITHM_H_
