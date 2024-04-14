@@ -23,6 +23,7 @@ class Shape3DTest : public ::testing::Test {
 };
 
 TEST_F(Shape3DTest, SphereConstructorTestZero) { EXPECT_ANY_THROW(Sphere(0)); }
+
 TEST_F(Shape3DTest, CubeConstructorTestZero) { EXPECT_ANY_THROW(Cube(0)); }
 
 TEST_F(Shape3DTest, CylinderConstructorTestZero) {
