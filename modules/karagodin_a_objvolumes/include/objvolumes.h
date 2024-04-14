@@ -4,6 +4,7 @@
 #define MODULES_KARAGODIN_A_OBJVOLUMES_INCLUDE_OBJVOLUMES_H_
 
 #include <cmath>
+#include <stdexcept>
 
 class Shape3D {
  public:
