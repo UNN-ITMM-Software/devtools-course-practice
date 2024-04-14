@@ -10,15 +10,15 @@
 template<typename T>
 class BatcherMerge {
  public:
-  static void batcherMerge(const std::vector<T>& vector) {
+  static void batcherMerge(std::vector<T>& vector) {
       size_t size = vector.size();
       if (size == 0) {
           throw std::invalid_argument("The array is empty");
        }
-      for (int p = 1; p < size; p += p) {
-          for (int k = p; k > 0; k /= 2) {
-              for (int j = k % p; j + k < size; j += 2 * k) {
-                  for (int i = 0; i < size - j - k; i++) {
+      for (size_t p = 1; p < size; p += p) {
+          for (size_t k = p; k > 0; k /= 2) {
+              for (size_t j = k % p; j + k < size; j += 2 * k) {
+                  for (size_t i = 0; i < size - j - k; i++) {
                       if ((i + j) / (2 * p) == (i + j + k) / (2 * p)) {
                           compareAndSwap(vector[j + i], vector[j + i + k]);
                       }
@@ -42,7 +42,7 @@ class BatcherMerge {
   static void compareAndSwap(T& a, T& b) {
       if (b < a)
           std::swap(a, b);
-  }
+      }
 };
 
 #endif  // MODULES_MORGACHEV_S_LAB2_INCLUDE_BATHCER_MERGE_H_
