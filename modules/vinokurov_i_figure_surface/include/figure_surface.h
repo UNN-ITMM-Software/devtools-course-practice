@@ -25,8 +25,6 @@ class FigureSurface {
 
      double fnCalculateSurfaceSphere(double _r);
 
-
 };
-
 
 #endif // MODULES_VINOKUROV_I_FIGURE_SURFACE_INCLUDE_FIGURE_SURFACE_H_
