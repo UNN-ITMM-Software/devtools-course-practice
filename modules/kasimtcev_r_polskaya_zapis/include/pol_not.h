@@ -15,4 +15,4 @@ class PolNot {
     TQueue<P_Lex>* sEOL(std::string _s);
     std::string revPolNot(TQueue<P_Lex>* q);
 };
-#endif  // MODULES_KASIMTCEV_R_POLSKAYA_ZAPIS_INCLUDE_POL_NOT_H_"
+#endif  // MODULES_KASIMTCEV_R_POLSKAYA_ZAPIS_INCLUDE_POL_NOT_H_

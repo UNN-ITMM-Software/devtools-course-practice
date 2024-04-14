@@ -134,4 +134,4 @@ TQueue<T>::TQueue(int _N) :N(_N) {
     last = N - 1;
 }
 
-#endif
+#endif  // MODULES_KASIMTCEV_R_POLSKAYA_ZAPIS_INCLUDE_STACK_H_
