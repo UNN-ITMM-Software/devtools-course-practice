@@ -8,7 +8,7 @@ TEST(FractionCalculatorTest, Can_Create_Fraction) {
     ASSERT_NO_THROW(FractionCalculator());
 }
 
-TEST(FractionCalculatorTest, Cant_Create_Zero_Den_Fraction ) {
+TEST(FractionCalculatorTest, Zero_Den_Fraction ) {
     ASSERT_ANY_THROW(FractionCalculator(5, 0));
 }
 
@@ -31,7 +31,7 @@ TEST(FractionCalculatorTest, Find_NOD_Different_Numbers) {
     EXPECT_EQ(x, 12); */
 }
 
-TEST(FractionCalculatorTest, Can_Add_Fractions_With_Different_Denominators) {
+TEST(FractionCalculatorTest, Add_Fractions_Diff_Denominators) {
     FractionCalculator a(1, 4);
     FractionCalculator b(1, 6);
     FractionCalculator res(5, 12);
@@ -43,7 +43,7 @@ TEST(FractionCalculatorTest, Can_Add_Fractions_With_Different_Denominators) {
     EXPECT_EQ(x.GetDen(), res.GetDen());
 }
 
-TEST(FractionCalculatorTest, Can_Subtract_Fractions_With_Different_Denominators) {
+TEST(FractionCalculatorTest, Subtract_Fractions_Diff_Denominators) {
     FractionCalculator a(1, 4);
     FractionCalculator b(1, 6);
     FractionCalculator res(1, 12);
@@ -55,7 +55,7 @@ TEST(FractionCalculatorTest, Can_Subtract_Fractions_With_Different_Denominators)
     EXPECT_EQ(x.GetDen(), res.GetDen());
 }
 
-TEST(FractionCalculatorTest, Can_Multiply_Fractions_With_Different_Denominators) {
+TEST(FractionCalculatorTest, Multiply_Fractions_Diff_Denominators) {
     FractionCalculator a(1, 4);
     FractionCalculator b(1, 6);
     FractionCalculator res(1, 24);
@@ -74,7 +74,7 @@ TEST(FractionCalculatorTest, Denominator_Zero_Throws_Exception) {
         }, std::string);
 }
 
-TEST(FractionCalculatorTest, Can_Divide_Fractions_With_Different_Denominators) {
+TEST(FractionCalculatorTest, Divide_Fractions_Diff_Denominators) {
     FractionCalculator a(1, 4);
     FractionCalculator b(1, 6);
     FractionCalculator res(3, 2);
