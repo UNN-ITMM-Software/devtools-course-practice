@@ -30,6 +30,14 @@ TEST_F(Shape3DTest, CylinderConstructorTestZero) {
   EXPECT_ANY_THROW(Cylinder(0, 0));
 }
 
+TEST_F(Shape3DTest, SphereConstructorTestNegative) { EXPECT_ANY_THROW(Sphere(-75562)); }
+
+TEST_F(Shape3DTest, CubeConstructorTestNegative) { EXPECT_ANY_THROW(Cube(-75443)); }
+
+TEST_F(Shape3DTest, CylinderConstructorTestNegative) {
+  EXPECT_ANY_THROW(Cylinder(-172, -365));
+}
+
 TEST_F(Shape3DTest, SphereVolumeTest) {
   EXPECT_NEAR(sphere->volume(), 33.51, 0.01);
 }
