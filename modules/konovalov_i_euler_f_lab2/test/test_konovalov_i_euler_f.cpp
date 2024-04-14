@@ -9,6 +9,14 @@ TEST(Konovalov_Igor_Euler_Funcion, throws_when_negative_number_is_given) {
     EXPECT_ANY_THROW(EulerFunction::euler(-5));
 }
 
+TEST(Konovalov_Igor_Euler_Funcion, naive_throws_when_negative_number_is_given) {
+  EXPECT_ANY_THROW(EulerFunction::euler_naive(-5));
+}
+
+TEST(Konovalov_Igor_Euler_Funcion, naive_returns_1_when_given_1) {
+  EXPECT_EQ(1, EulerFunction::euler_naive(1));
+}
+
 TEST(Konovalov_Igor_Euler_Funcion, returns_1_when_given_1) {
   EXPECT_EQ(1, EulerFunction::euler(1));
 }
