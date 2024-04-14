@@ -1,14 +1,14 @@
 // Copyright 2024 Karagodin Andrey
 
-#ifndef MODULES_KARAGODIN_A_3D_OBJECT_VOLUME_INCLUDE_OBJVOLUMES_H_
-#define MODULES_KARAGODIN_A_3D_OBJECT_VOLUME_INCLUDE_OBJVOLUMES_H_
+#ifndef MODULES_KARAGODIN_A_OBJVOLUMES_INCLUDE_OBJVOLUMES_H_
+#define MODULES_KARAGODIN_A_OBJVOLUMES_INCLUDE_OBJVOLUMES_H_
 
 #include <cmath>
 
 class Shape3D {
  public:
-  virtual double volume() const = 0;
-  virtual ~Shape3D() {}
+    virtual double volume() const = 0;
+    virtual ~Shape3D() {}
 };
 
 class Sphere : public Shape3D {
@@ -17,7 +17,7 @@ class Sphere : public Shape3D {
 
  public:
   explicit Sphere(double r);
-  double volume() const override;
+  double volume() const;
 };
 
 class Cube : public Shape3D {
@@ -26,7 +26,7 @@ class Cube : public Shape3D {
 
  public:
   explicit Cube(double s);
-  double volume() const override;
+  double volume() const;
 };
 
 class Cylinder : public Shape3D {
@@ -35,7 +35,7 @@ class Cylinder : public Shape3D {
 
  public:
   Cylinder(double r, double h);
-  double volume() const override;
+  double volume() const;
 };
 
-#endif  // MODULES_KARAGODIN_A_3D_OBJECT_VOLUME_INCLUDE_OBJVOLUMES_H_
+#endif  // MODULES_KARAGODIN_A_OBJVOLUMES_INCLUDE_OBJVOLUMES_H_

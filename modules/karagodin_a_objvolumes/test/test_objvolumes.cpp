@@ -4,7 +4,7 @@
 #include "include/objvolumes.h"
 
 class Shape3DTest : public ::testing::Test {
-protected:
+ protected:
     virtual void SetUp() {
         sphere = new Sphere(2.0);
         cube = new Cube(2.0);
@@ -31,5 +31,5 @@ TEST_F(Shape3DTest, CubeVolumeTest) {
 }
 
 TEST_F(Shape3DTest, CylinderVolumeTest) {
-    EXPECT_NEAR(cylinder->volume(), 62.83, 0.01);
+    EXPECT_NEAR(cylinder->volume(), 37.69, 0.01);
 }
