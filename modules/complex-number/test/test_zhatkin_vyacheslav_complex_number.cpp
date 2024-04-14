@@ -1,79 +1,98 @@
 // Copyright 2024 Zhatkin Vyacheslav
 
-//#include <gtest/gtest.h>
-//#include "include/complex_number.h"
-//
-//TEST(Zhatkin_Vyacheslav_ComplexNumberTest, TestDefaultConstructor) {
-//    ASSERT_NO_THROW(ComplexNumber());
-//    ComplexNumber c;
-//    EXPECT_EQ(c.getRe(), 0.0);
-//    EXPECT_EQ(c.getIm(), 0.0);
-//}
-//
-//TEST(Zhatkin_Vyacheslav_ComplexNumberTest, TestParameterizedConstructor) {
-//    ASSERT_NO_THROW(ComplexNumber(3.0, 4.0));
-//    ComplexNumber cn1(3.0, 4.0);
-//    ASSERT_EQ(cn1.getRe(), 3.0);
-//    ASSERT_EQ(cn1.getIm(), 4.0);
-//}
-//
-//TEST(Zhatkin_Vyacheslav_ComplexNumberTest, TestCopyConstructor) {
-//    ComplexNumber cn1(8.0, 7.0);
-//    ASSERT_NO_THROW(ComplexNumber(cn1));
-//    ComplexNumber cn2(cn1);
-//    ASSERT_EQ(cn2.getRe(), 8.0);
-//    ASSERT_EQ(cn2.getIm(), 7.0);
-//}
-//
-//TEST(Zhatkin_Vyacheslav_ComplexNumberTest, TestAssignmentOperator) {
-//    ComplexNumber cn1(2.0, 5.0);
-//    ComplexNumber cn2;
-//    ASSERT_NO_THROW(cn2 = cn1);
-//    ASSERT_EQ(cn2.getRe(), 2.0);
-//    ASSERT_EQ(cn2.getIm(), 5.0);
-//}
-//
-//TEST(Zhatkin_Vyacheslav_ComplexNumberTest, TestSumOperator) {
-//    ComplexNumber cn1(2.0, 5.0);
-//    ComplexNumber cn2(3.0, 4.0);
-//    ComplexNumber sum = cn1 + cn2;
-//    ASSERT_NO_THROW(cn1 + cn2);
-//    EXPECT_EQ(sum.getRe(), 5.0);
-//    EXPECT_EQ(sum.getIm(), 9.0);
-//}
-//
-//TEST(Zhatkin_Vyacheslav_ComplexNumberTest, TestSubtractionOperator) {
-//    ComplexNumber cn1(4.0, 5.0);
-//    ComplexNumber cn2(3.0, 4.0);
-//    ASSERT_NO_THROW(cn1 - cn2);
-//    ComplexNumber diff = cn1 - cn2;
-//    EXPECT_EQ(diff.getRe(), 1.0);
-//    EXPECT_EQ(diff.getIm(), 1.0);
-//}
-//
-//TEST(Zhatkin_Vyacheslav_ComplexNumberTest, TestMultiplicationOperator) {
-//    ComplexNumber cn1(3.0, 4.0);
-//    ComplexNumber cn2(1.0, 2.0);
-//    ASSERT_NO_THROW(cn1 * cn2);
-//    ComplexNumber prod = cn1 * cn2;
-//    EXPECT_EQ(prod.getRe(), -5.0);
-//    EXPECT_EQ(prod.getIm(), 10.0);
-//}
-//
-//TEST(Zhatkin_Vyacheslav_ComplexNumberTest, TestDivisionOperator) {
-//    ComplexNumber cn1(3.0, 4.0);
-//    ComplexNumber cn2(1.0, 2.0);
-//    ASSERT_NO_THROW(cn1 / cn2);
-//    ComplexNumber cn3;
-//    EXPECT_THROW(cn1 / cn3, std::string);
-//}
-//
-//TEST(Zhatkin_Vyacheslav_ComplexNumberTest, TestEqualityAndInequality) {
-//    ComplexNumber cn1(6.0, 4.0);
-//    ComplexNumber cn2(5.0, 8.0);
-//    ComplexNumber cn3(6.0, 4.0);
-//    EXPECT_TRUE(cn1 == cn3);
-//    EXPECT_FALSE(cn1 == cn2);
-//    EXPECT_FALSE(cn1 != cn3);
-//    EXPECT_TRUE(cn1 != cn2);
-//}
+#include <gtest/gtest.h>
+#include "include/complex_number.h"
+
+TEST(Zhatkin_Vyacheslav_ComplexNumberTest, Subtraction_negative_Test) {
+	double cmp1 = -4.5;
+	double im1 = -3.0;
+	ComplexNumber num1(cmp1, im1);
+
+	double cmp2 = -2.5;
+	double im2 = -5.0;
+	ComplexNumber num2(cmp2, im2);
+
+	double cmp3 = -2.0;
+	double im3 = 2.0;
+	ComplexNumber num3(cmp3, im3);
+
+	EXPECT_EQ(num1 - num2, num3);
+}
+
+TEST(Zhatkin_Vyacheslav_ComplexNumberTest, Is_Zero_Possible_Test) {
+	double cmp = 0.0;
+	double im = 0.0;
+
+	ComplexNumber num(cmp, im);
+	EXPECT_EQ(cmp, num.getRe());
+	EXPECT_EQ(im, num.getIm());
+}
+
+TEST(Zhatkin_Vyacheslav_ComplexNumberTest, Subtraction_Test) {
+	double cmp1 = 3.5;
+	double im1 = 5.0;
+	ComplexNumber num1(cmp1, im1);
+
+	double cmp2 = 5.5;
+	double im2 = 7.0;
+	ComplexNumber num2(cmp2, im2);
+
+	double cmp3 = -2.0;
+	double im3 = -2.0;
+	ComplexNumber num3(cmp3, im3);
+
+	EXPECT_EQ(num1 - num2, num3);
+}
+TEST(Zhatkin_Vyacheslav_ComplexNumberTest, Division_By_Zero_Not_Possible_Test) {
+	double re1 = 20.24;
+	double im1 = 5.0;
+	ComplexNumber num1(re1, im1);
+
+	double re2 = 0.0;
+	double im2 = 0.0;
+	ComplexNumber num2(re2, im2);
+
+	ASSERT_ANY_THROW(num1 / num2);
+}
+
+TEST(Zhatkin_Vyacheslav_ComplexNumberTest, Summ_Test) {
+	double cmp1 = 9.2;
+	double im1 = 6.6;
+	ComplexNumber num1(cmp1, im1);
+
+	double cmp2 = 0.8;
+	double im2 = 2.0;
+	ComplexNumber num2(cmp2, im2);
+
+	double cmp3 = 10.0;
+	double im3 = 8.6;
+	ComplexNumber num3(cmp3, im3);
+
+	EXPECT_EQ(num1 + num2, num3);
+}
+
+TEST(Zhatkin_Vyacheslav_ComplexNumberTest, Operation_Equal_Test) {
+	double cmp = 2.2;
+	double im = 7.0;
+
+	ComplexNumber num1(cmp, im);
+	ComplexNumber num2(cmp, im);
+
+	EXPECT_EQ(num1 == num2, true);
+}
+
+TEST(Zhatkin_Vyacheslav_ComplexNumberTest, Can_Summ_Negative_Test) {
+	double cmp1 = -8.4;
+	double im1 = -9.0;
+	ComplexNumber num1(cmp1, im1);
+
+	double cmp2 = -2.5;
+	double im2 = -1.0;
+	ComplexNumber num2(cmp2, im2);
+
+	double cmp3 = -10.9;
+	double im3 = -10.0;
+	ComplexNumber num3(cmp3, im3);
+
+	EXPECT_EQ(num1 + num2, num3);
+}
