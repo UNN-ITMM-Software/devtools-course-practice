@@ -28,14 +28,14 @@ int LevenshteinDistance::distance() {
     }
 
     for (int i = 1; i <= (int)str1.size(); i++) {
-        for (int j = 1; j <= (int)str2.size(); j++) {
+        for (int j = 1; j <= str2.size(); j++) {
             int cost = (str1[i - 1] == str2[j - 1]) ? 0 : 1;
 
-            matrix[i][j] = std::min(
+            matrix[i][j] = std::min({
                 matrix[i - 1][j] + 1,
                 matrix[i][j - 1] + 1,
                 matrix[i - 1][j - 1] + cost
-                );
+                });
         }
     }
 
