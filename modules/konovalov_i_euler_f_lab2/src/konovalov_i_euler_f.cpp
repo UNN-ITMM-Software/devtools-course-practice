@@ -4,8 +4,8 @@
 #include <math.h>
 #include <stdexcept>
 
-bool EulerFunction::contains_divider(int n, std::vector<int>& v) {
-  for (int i : v) {
+bool EulerFunction::contains_divider(int n, const std::vector<int>& v) {
+  for (const int& i : v) {
     if (n % i == 0)
       return true;
   }
@@ -14,7 +14,7 @@ bool EulerFunction::contains_divider(int n, std::vector<int>& v) {
 
 int EulerFunction::euler(int n) {
   if (n < 1)
-    throw std::runtime_error("invalid number for euler function");
+    throw std::invalid_argument("invalid number for euler function");
 
   int res = 1;
   for (int i = 2; i <= n; i++) {
@@ -31,7 +31,7 @@ int EulerFunction::euler(int n) {
 
 int EulerFunction::euler_naive(int n) {
   if (n < 1)
-    throw std::runtime_error("invalid number for euler function");
+    throw std::invalid_argument("invalid number for euler function");
 
   int res = 0;
   std::vector<int> prev{};

@@ -7,7 +7,7 @@
 
 class EulerFunction {
  private:
-  static bool contains_divider(int n, std::vector<int>& v);
+  static bool contains_divider(int n, const std::vector<int>& v);
 
  public:
   static int euler(int n);
