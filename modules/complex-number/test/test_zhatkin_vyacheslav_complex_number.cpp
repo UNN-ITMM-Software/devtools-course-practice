@@ -19,7 +19,7 @@ TEST(Zhatkin_Vyacheslav_ComplexNumberTest, TestParameterizedConstructor) {
 
 TEST(Zhatkin_Vyacheslav_ComplexNumberTest, TestCopyConstructor) {
     ComplexNumber cn1(8.0, 7.0);
-    ASSERT_NO_THROW(ComplexNumber(cn1));
+    ASSERT_NO_THROW(ComplexNumber(ComplexNumber(8.0, 7.0)));
     ComplexNumber cn2(cn1);
     ASSERT_EQ(cn2.getRe(), 8.0);
     ASSERT_EQ(cn2.getIm(), 7.0);
