@@ -2,6 +2,11 @@
 
 #include "include/objvolumes.h"
 
+class Shape3D {
+ public:
+    virtual ~Shape3D() {}
+};
+
 Sphere::Sphere(double r) : radius(r) {}
 double Sphere::volume() const {
     return (4.0 / 3.0) * M_PI * std::pow(radius, 3);

@@ -6,6 +6,7 @@
 #include <cmath>
 
 class Shape3D {
+ public:
   virtual double volume() const = 0;
   virtual ~Shape3D() {}
 };
