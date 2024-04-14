@@ -127,27 +127,27 @@ class BisymmetricMatrix {
 
   int getN() const { return n; }
 
-  void setElement(int i, int j, const T& value) {
-    if (i < 0 || i > n || j < 0 || j > n) {
+  void setElement(int i_2d, int j_2d, const T& value) {
+    if (i_2d < 0 || i_2d > n || j_2d < 0 || j_2d > n) {
       throw std::out_of_range("Invalid index");
     }
-    int i0 = convertIndex(i, j, n);
-    matrix[i0] = value;
+    int i_1d = convertIndex(i_2d, j_2d, n);
+    matrix[i_1d] = value;
   }
 
-  T getElement(int i, int j) const {
-    if (i < 0 || i > n || j < 0 || j > n) {
+  T getElement(int i_2d, int j_2d) const {
+    if (i_2d < 0 || i_2d > n || j_2d < 0 || j_2d > n) {
       throw std::out_of_range("Invalid index");
     }
-    int i0 = convertIndex(i, j, n);
-    return matrix[i0];
+    int i_1d = convertIndex(i_2d, j_2d, n);
+    return matrix[i_1d];
   }
 
   void display() const {
     for (int i = 0; i < n; ++i) {
       for (int j = 0; j < n; ++j) {
-        int i0 = convertIndex(i, j, n);
-        std::cout << matrix[i0] << " ";
+        int i_1d = convertIndex(i, j, n);
+        std::cout << matrix[i_1d] << " ";
       }
       std::cout << "\n";
     }
