@@ -8,6 +8,13 @@
 class PermutGenerator {
  public:
     PermutGenerator(int* arr, int size);
+    std::string PrintArray();
+    bool CreateArray();
+    void Swap(int i, int j);
+    bool NextSet();
+    std::string GeneratorPermut();
+    bool BubbleSort();
+
  private:
     int size_;
     int* array_;
