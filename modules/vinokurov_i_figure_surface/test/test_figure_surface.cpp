@@ -3,10 +3,6 @@
 #include <gtest/gtest.h>
 #include "include/figure_surface.h"
 
-TEST(Vinokurov_I_Figure_Surface, Default_Constructor_Works) {
-    ASSERT_NO_THROW(new FigureSurface());
-}
-
 TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Parallelepiped) {
     double a = 2.0, b = 3.0, c = 0.0;
     FigureSurface figureSurfaceCalc;

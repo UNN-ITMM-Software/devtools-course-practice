@@ -10,8 +10,6 @@
 
 class FigureSurface {
  public:
-     FigureSurface();
-    ~FigureSurface();
 
      double fnCalculateSurfaceParallelepiped(double _a, double _b, double _c);
 
