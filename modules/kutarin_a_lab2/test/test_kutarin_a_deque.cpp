@@ -82,3 +82,20 @@ TEST(DequeTest, PushBackPopFront) {
     EXPECT_EQ(pop_result, value);
     EXPECT_TRUE(dq.empty());
 }
+
+TEST(DequeTest, Order) {
+    // Arrange
+    Deque dq;
+    int value1 = 1;
+    int value2 = 2;
+
+    // Act
+    dq.push_back(value1);
+    dq.push_back(value2);
+    int pop_result1 = dq.pop_front();
+    int pop_result2 = dq.pop_front();
+
+    // Assert
+    EXPECT_EQ(pop_result1, value1);
+    EXPECT_EQ(pop_result2, value2);
+}
