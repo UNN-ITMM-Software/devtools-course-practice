@@ -56,8 +56,8 @@ TEST(CombinationGeneratorTest, LargerArray) {
                                               {1, 4, 6}, {1, 5, 6},
                                               {2, 3, 4}, {2, 3, 5},
                                               {2, 3, 6}, {2, 4, 5},
-                                              {2, 4, 6}, {2, 5, 6}, 
-                                              {3, 4, 5}, {3, 4, 6}, 
+                                              {2, 4, 6}, {2, 5, 6},
+                                              {3, 4, 5}, {3, 4, 6},
                                               {3, 5, 6}, {4, 5, 6}};
     auto result = KCombinations::generateCombinations(arr, k);
     ASSERT_EQ(result, expected);
