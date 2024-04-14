@@ -5,7 +5,7 @@
 
 TEST(Tushentsova_Karina_Permut_Generator, CanGetArrCertainLength) {
     int a[] = { 1, 2, 3 };
-    ASSERT_NO_THROW(PermutGenerator arr(a, 3), std::string);
+    ASSERT_NO_THROW(PermutGenerator arr(a, 3));
 }
 
 TEST(Tushentsova_Karina_Permut_Generator, CanGetArrInvalidValue) {
