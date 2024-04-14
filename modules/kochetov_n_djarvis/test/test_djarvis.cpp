@@ -44,7 +44,7 @@ TEST(Kochetov_n_djarvis, ConcavePolygon) {
 
     // Ожидаем, что выпуклая оболочка содержит 4 точки
     ASSERT_EQ(hull.size(), 4);
-    
+
     // Ожидаем, что выпуклая оболочка содержит вершины выпуклой оболочки
     EXPECT_EQ(hull[0].x, 0);
     EXPECT_EQ(hull[0].y, 0);
