@@ -4,7 +4,7 @@
 
 const int CaesarCipher::MIN_OFFSET = 1;
 const int CaesarCipher::MAX_OFFSET = 25;
-const int CaesarCipher::ALPHABET_SIZE = 26
+const int CaesarCipher::ALPHABET_SIZE = 26;
 
 CaesarCipher::CaesarCipher(const int _offset) {
     if (_offset < MIN_OFFSET || _offset > MAX_OFFSET) {
