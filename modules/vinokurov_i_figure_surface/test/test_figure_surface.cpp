@@ -56,13 +56,13 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Sphere) {
 }
 
 TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Parallelepiped) {
-    double a = 2.0, b = 3.0, c = 2.5, resApproximate = 37.0;
-    FigureSurface figureSurfaceCalc = new FigureSurface();
+  double a = 2.0, b = 3.0, c = 2.5, resApproximate = 37.0;
+  FigureSurface figureSurfaceCalc = new FigureSurface();
 
-    ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceParallelepiped(a, b, c));
-    ASSERT_LE(
-    figureSurfaceCalc.fnCalculateSurfaceParallelepiped(r) - resApproximate,
-    0.001)
+  ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceParallelepiped(a, b, c));
+  ASSERT_LE(
+  figureSurfaceCalc.fnCalculateSurfaceParallelepiped(r) - resApproximate,
+  0.001)
 }
 
 TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cylinder_Side) {
