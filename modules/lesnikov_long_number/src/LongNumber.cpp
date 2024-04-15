@@ -175,7 +175,7 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
             fut = 0;
         } else {
             fut = 1;
-            val = static_cast<BIG_TYPE>(curDataVal) 
+            val = static_cast<BIG_TYPE>(curDataVal)
                 + _getMaxTypeValue() + 1
                 - static_cast<BIG_TYPE>(n._data[i]);
         }
@@ -353,7 +353,7 @@ bool LongNumber::_absIsEqual(const LongNumber& n) const {
 }
 
 void LongNumber::_checkZero(LongNumber& n) {
-    long long firstNonZero = -1;
+    int64_t firstNonZero = -1;
 
     for (int64_t i = n._data.size() - 1; i >= 0; i--) {
         if (n._data[i] != 0) {
@@ -362,7 +362,7 @@ void LongNumber::_checkZero(LongNumber& n) {
         }
     }
 
-    long long shift = firstNonZero + 1LL;
+    int64_t shift = firstNonZero + 1LL;
 
     std::vector<TYPE> cropped(n._data.begin()
         , n._data.begin() + shift);
