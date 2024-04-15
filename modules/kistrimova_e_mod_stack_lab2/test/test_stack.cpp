@@ -91,3 +91,8 @@ TEST(Kistrimova_StackTest, can_handle_stack_overflow) {
     EXPECT_EQ(3, stack.show_top());
     EXPECT_EQ(1, stack.getMin());
 }
+
+TEST(Kistrimova_StackTest, throws_when_create_stack_with_negative_size) {
+    // Попытка создать стек с отрицательным размером
+    ASSERT_ANY_THROW(Stack<int> stack(-1));
+}
