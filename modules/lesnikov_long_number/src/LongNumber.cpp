@@ -85,7 +85,6 @@ LongNumber LongNumber::operator+(const LongNumber& n) const {
     }
 
     size_t minSize = std::min(_data.size(), n._data.size());
-    size_t maxSize = std::max(_data.size(), n._data.size());
 
     BIG_TYPE resVal = 0;
     TYPE quot = 0;
@@ -161,7 +160,6 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
     }
 
     size_t minSize = std::min(_data.size(), n._data.size());
-    size_t maxSize = std::max(_data.size(), n._data.size());
 
     BIG_TYPE fut = 0;
     BIG_TYPE val = 0;
@@ -254,8 +252,8 @@ LongNumber LongNumber::operator-() const {
 }
 
 bool LongNumber::operator==(const LongNumber& n) const {
-    return _data.size() == 0 && n._data.size() == 0
-        || _negative == n._negative && _data == n._data;
+    return (_data.size() == 0 && n._data.size() == 0)
+        || (_negative == n._negative && _data == n._data);
 }
 
 bool LongNumber::operator!=(const LongNumber& n) const {
