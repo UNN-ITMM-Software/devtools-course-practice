@@ -11,7 +11,6 @@
 
 class LongNumber {
 public:
-
     LongNumber();
     LongNumber(const LongNumber& n);
     LongNumber(LongNumber&& n) noexcept;
