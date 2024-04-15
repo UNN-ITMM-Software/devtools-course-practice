@@ -43,12 +43,10 @@ LongNumber::LongNumber(LongNumber&& n) noexcept
 	: _data(std::move(n._data))
 	, _negative(n._negative) {}
 
-LongNumber::LongNumber(std::string s)
-{
+LongNumber::LongNumber(std::string s) {
 	if (s.size() == 0) {
 		return;
-	}
-	else if (s[0] == '-') {
+	} else if (s[0] == '-') {
 		_negative = true;
 	}
 
@@ -149,8 +147,7 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
 			result = n - *this;
 			result._negative = true;
 			return result;
-		}
-		else {
+		} else {
 			result._negative = false;
 		}
 	}
@@ -160,8 +157,7 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
 			result = n - *this;
 			result._negative = false;
 			return result;
-		}
-		else {
+		} else {
 			result._negative = true;
 		}
 	}
@@ -179,8 +175,7 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
 		if (curDataVal >= n._data[i]) {
 			val = curDataVal - n._data[i];
 			fut = 0;
-		}
-		else {
+		} else {
 			fut = 1;
 			val = static_cast<BIG_TYPE>(curDataVal) + _getMaxTypeValue() + 1
 				- static_cast<BIG_TYPE>(n._data[i]);
@@ -194,8 +189,7 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
 		if (curDataVal >= 0) {
 			val = curDataVal;
 			fut = 0;
-		}
-		else {
+		} else {
 			val = curDataVal + _getMaxTypeValue() + 1;
 			fut = 1;
 		}
@@ -273,8 +267,7 @@ bool LongNumber::operator<(const LongNumber& n) const
 {
 	if (!_negative && !n._negative) {
 		return _absIsLess(n);
-	}
-	else if (_negative && n._negative) {
+	} else if (_negative && n._negative) {
 		return _absIsGreater(n);
 	}
 	if (_data.size() == 0 && n._data.size() == 0) {
@@ -321,16 +314,14 @@ bool LongNumber::_absIsLess(const LongNumber& n) const
 {
 	if (_data.size() < n._data.size()) {
 		return true;
-	}
-	else if (_data.size() > n._data.size()) {
+	} else if (_data.size() > n._data.size()) {
 		return false;
 	}
 
 	for (long long i = _data.size() - 1; i >= 0; i--) {
 		if (_data[i] < n._data[i]) {
 			return true;
-		}
-		else if (_data[i] > n._data[i]) {
+		} else if (_data[i] > n._data[i]) {
 			return false;
 		}
 	}
@@ -342,16 +333,14 @@ bool LongNumber::_absIsGreater(const LongNumber& n) const
 {
 	if (_data.size() > n._data.size()) {
 		return true;
-	}
-	else if (_data.size() < n._data.size()) {
+	} else if (_data.size() < n._data.size()) {
 		return false;
 	}
 
 	for (long long i = _data.size() - 1; i >= 0; i--) {
 		if (_data[i] < n._data[i]) {
 			return false;
-		}
-		else if (_data[i] > n._data[i]) {
+		} else if (_data[i] > n._data[i]) {
 			return true;
 		}
 	}

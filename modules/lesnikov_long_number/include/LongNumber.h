@@ -9,8 +9,7 @@
 #define TYPE uint8_t
 #define BIG_TYPE int32_t
 
-class LongNumber
-{
+class LongNumber {
 public:
 	LongNumber();
 	LongNumber(const LongNumber& n);
