@@ -48,7 +48,7 @@ LongNumber::LongNumber(std::string s) {
         _negative = true;
     }
 
-    for (int64_t i = s.size() - 1; 
+    for (int64_t i = s.size() - 1;
         i >= static_cast<int>(s[0] == '-'); i--) {
         _data.push_back(charToTYPE[s[i]]);
     }
@@ -97,7 +97,7 @@ LongNumber LongNumber::operator+(const LongNumber& n) const {
             static_cast<BIG_TYPE>(quot);
         quot = resVal / (_getMaxTypeValue() + 1);
         rem = resVal % (_getMaxTypeValue() + 1);
-        
+
         result._data.push_back(rem);
     }
 
@@ -254,7 +254,7 @@ LongNumber LongNumber::operator-() const {
 }
 
 bool LongNumber::operator==(const LongNumber& n) const {
-    return _data.size() == 0 && n._data.size() == 0 
+    return _data.size() == 0 && n._data.size() == 0
         || _negative == n._negative && _data == n._data;
 }
 
@@ -315,7 +315,7 @@ bool LongNumber::_absIsLess(const LongNumber& n) const {
         return false;
     }
 
-    for (long long i = _data.size() - 1; i >= 0; i--) {
+    for (int64_t i = _data.size() - 1; i >= 0; i--) {
         if (_data[i] < n._data[i]) {
             return true;
         } else if (_data[i] > n._data[i]) {
@@ -333,7 +333,7 @@ bool LongNumber::_absIsGreater(const LongNumber& n) const {
         return false;
     }
 
-    for (long long i = _data.size() - 1; i >= 0; i--) {
+    for (int64_t i = _data.size() - 1; i >= 0; i--) {
         if (_data[i] < n._data[i]) {
             return false;
         } else if (_data[i] > n._data[i]) {
@@ -355,7 +355,7 @@ bool LongNumber::_absIsEqual(const LongNumber& n) const {
 void LongNumber::_checkZero(LongNumber& n) {
     long long firstNonZero = -1;
 
-    for (long long i = n._data.size() - 1; i >= 0; i--) {
+    for (int64_t i = n._data.size() - 1; i >= 0; i--) {
         if (n._data[i] != 0) {
             firstNonZero = i;
             break;
