@@ -7,48 +7,86 @@
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, EmptyHeap) {
   FibonacciHeap<int> heap;
-  EXPECT_TRUE(heap.empty());
+  ASSERT_TRUE(heap.empty());
 }
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, OneElementNoChildren) {
   FibonacciHeap<int> heap;
   heap.insert(42);
-  EXPECT_FALSE(heap.empty());
-  EXPECT_EQ(heap.minimum(), 42);
-  EXPECT_EQ(heap.extractMin(), 42);
-  EXPECT_TRUE(heap.empty());
+  ASSERT_FALSE(heap.empty());
+  ASSERT_EQ(heap.minimum(), 42);
+  ASSERT_EQ(heap.extractMin(), 42);
+  ASSERT_TRUE(heap.empty());
 }
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, OneElementOneChild) {
   FibonacciHeap<int> heap;
   FibonacciHeapNode<int> *parent = heap.insert(42);
+  ASSERT_NE(parent, nullptr);
+
   FibonacciHeapNode<int> *child = heap.insert(24);
+  ASSERT_NE(child, nullptr);
+
   child->parent = parent;
   parent->child = child;
-  EXPECT_FALSE(heap.empty());
-  EXPECT_EQ(heap.minimum(), 24);
-  EXPECT_EQ(heap.extractMin(), 24);
-  EXPECT_FALSE(heap.empty());
-  EXPECT_EQ(heap.minimum(), 42);
-  EXPECT_EQ(heap.extractMin(), 42);
-  EXPECT_TRUE(heap.empty());
+
+  ASSERT_FALSE(heap.empty());
+  ASSERT_EQ(heap.minimum(), 24);
+  ASSERT_EQ(heap.extractMin(), 24);
+  ASSERT_FALSE(heap.empty());
+  ASSERT_EQ(heap.minimum(), 42);
+  ASSERT_EQ(heap.extractMin(), 42);
+  ASSERT_TRUE(heap.empty());
 }
+
+TEST(Bodrov_Daniil_FibonacciHeapTest, ManyElementsOneChild) {
+  FibonacciHeap<int> heap;
+  FibonacciHeapNode<int> *parent = heap.insert(42);
+  ASSERT_NE(parent, nullptr);
+
+  FibonacciHeapNode<int> *node1 = heap.insert(24);
+  ASSERT_NE(node1, nullptr);
+
+  FibonacciHeapNode<int> *node2 = heap.insert(16);
+  ASSERT_NE(node2, nullptr);
+
+  FibonacciHeapNode<int> *child = heap.insert(32);
+  ASSERT_NE(child, nullptr);
+
+  child->parent = parent;
+  parent->child = child;
+
+  ASSERT_FALSE(heap.empty());
+  ASSERT_EQ(heap.minimum(), 16);
+  ASSERT_EQ(heap.extractMin(), 16);
+  ASSERT_FALSE(heap.empty());
+  ASSERT_EQ(heap.minimum(), 24);
+  ASSERT_EQ(heap.extractMin(), 24);
+  ASSERT_FALSE(heap.empty());
+  ASSERT_EQ(heap.minimum(), 32);
+  ASSERT_EQ(heap.extractMin(), 32);
+  ASSERT_FALSE(heap.empty());
+  ASSERT_EQ(heap.minimum(), 42);
+  ASSERT_EQ(heap.extractMin(), 42);
+  ASSERT_TRUE(heap.empty());
+}
+
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, BasicOperations) {
   FibonacciHeap<int> heap;
-  EXPECT_TRUE(heap.empty());
+  ASSERT_TRUE(heap.empty());
 
   heap.insert(5);
   heap.insert(10);
   heap.insert(3);
   heap.insert(7);
 
-  EXPECT_EQ(heap.minimum(), 3);
+  ASSERT_EQ(heap.minimum(), 3);
 
   int min = heap.extractMin();
 
-  EXPECT_EQ(min, 3);
-  EXPECT_EQ(heap.minimum(), 5);
+  ASSERT_EQ(min, 3);
+  ASSERT_EQ(heap.minimum(), 5);
 }
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, DecreaseKey) {
@@ -58,13 +96,13 @@ TEST(Bodrov_Daniil_FibonacciHeapTest, DecreaseKey) {
   FibonacciHeapNode<int> *node3 = heap.insert(7);
 
   heap.decreaseKey(node3, 2);
-  EXPECT_EQ(heap.minimum(), 2);
+  ASSERT_EQ(heap.minimum(), 2);
 
   heap.decreaseKey(node1, 1);
-  EXPECT_EQ(heap.minimum(), 1);
+  ASSERT_EQ(heap.minimum(), 1);
 
   heap.decreaseKey(node2, 0);
-  EXPECT_EQ(heap.minimum(), 0);
+  ASSERT_EQ(heap.minimum(), 0);
 }
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, Merge) {
@@ -80,19 +118,19 @@ TEST(Bodrov_Daniil_FibonacciHeapTest, Merge) {
 
   heap1.merge(&heap2);
 
-  EXPECT_EQ(heap1.minimum(), 2);
-  EXPECT_EQ(heap1.extractMin(), 2);
-  EXPECT_EQ(heap1.minimum(), 3);
-  EXPECT_EQ(heap1.extractMin(), 3);
-  EXPECT_EQ(heap1.minimum(), 4);
-  EXPECT_EQ(heap1.extractMin(), 4);
-  EXPECT_EQ(heap1.minimum(), 5);
-  EXPECT_EQ(heap1.extractMin(), 5);
-  EXPECT_EQ(heap1.minimum(), 7);
-  EXPECT_EQ(heap1.extractMin(), 7);
-  EXPECT_EQ(heap1.minimum(), 8);
-  EXPECT_EQ(heap1.extractMin(), 8);
-  EXPECT_TRUE(heap1.empty());
+  ASSERT_EQ(heap1.minimum(), 2);
+  ASSERT_EQ(heap1.extractMin(), 2);
+  ASSERT_EQ(heap1.minimum(), 3);
+  ASSERT_EQ(heap1.extractMin(), 3);
+  ASSERT_EQ(heap1.minimum(), 4);
+  ASSERT_EQ(heap1.extractMin(), 4);
+  ASSERT_EQ(heap1.minimum(), 5);
+  ASSERT_EQ(heap1.extractMin(), 5);
+  ASSERT_EQ(heap1.minimum(), 7);
+  ASSERT_EQ(heap1.extractMin(), 7);
+  ASSERT_EQ(heap1.minimum(), 8);
+  ASSERT_EQ(heap1.extractMin(), 8);
+  ASSERT_TRUE(heap1.empty());
 }
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, DeleteNode) {
@@ -104,11 +142,11 @@ TEST(Bodrov_Daniil_FibonacciHeapTest, DeleteNode) {
 
   heap.deleteNode(node3);
 
-  EXPECT_EQ(heap.minimum(), 5);
-  EXPECT_EQ(heap.extractMin(), 5);
-  EXPECT_EQ(heap.minimum(), 7);
-  EXPECT_EQ(heap.extractMin(), 7);
-  EXPECT_EQ(heap.minimum(), 10);
-  EXPECT_EQ(heap.extractMin(), 10);
-  EXPECT_TRUE(heap.empty());
+  ASSERT_EQ(heap.minimum(), 5);
+  ASSERT_EQ(heap.extractMin(), 5);
+  ASSERT_EQ(heap.minimum(), 7);
+  ASSERT_EQ(heap.extractMin(), 7);
+  ASSERT_EQ(heap.minimum(), 10);
+  ASSERT_EQ(heap.extractMin(), 10);
+  ASSERT_TRUE(heap.empty());
 }
