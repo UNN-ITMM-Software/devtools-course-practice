@@ -49,7 +49,7 @@ template <typename T>
 FibonacciHeap<T>::FibonacciHeap() : minNode(nullptr), size(0) {}
 
 template <typename T> FibonacciHeap<T>::~FibonacciHeap() {
-  // huy
+  // :)
 }
 
 template <typename T> bool FibonacciHeap<T>::empty() const {
