@@ -4,35 +4,32 @@
 
 #include <unordered_map>
 
-// namespace
-namespace {
-    std::unordered_map<char, TYPE> charToTYPE = {
-        {'0', 0},
-        {'1', 1},
-        {'2', 2},
-        {'3', 3},
-        {'4', 4},
-        {'5', 5},
-        {'6', 6},
-        {'7', 7},
-        {'8', 8},
-        {'9', 9},
-    };
 
-    std::unordered_map<TYPE, char> typeToChar = {
-        {0, '0'},
-        {1, '1'},
-        {2, '2'},
-        {3, '3'},
-        {4, '4'},
-        {5, '5'},
-        {6, '6'},
-        {7, '7'},
-        {8, '8'},
-        {9, '9'},
-    };
-}
+const std::unordered_map<char, TYPE> charToTYPE = {
+       {'0', 0},
+       {'1', 1},
+       {'2', 2},
+       {'3', 3},
+       {'4', 4},
+       {'5', 5},
+       {'6', 6},
+       {'7', 7},
+       {'8', 8},
+       {'9', 9},
+};
 
+const std::unordered_map<TYPE, char> typeToChar = {
+    {0, '0'},
+    {1, '1'},
+    {2, '2'},
+    {3, '3'},
+    {4, '4'},
+    {5, '5'},
+    {6, '6'},
+    {7, '7'},
+    {8, '8'},
+    {9, '9'},
+};
 LongNumber::LongNumber()
     : _negative(false) {}
 
@@ -109,7 +106,7 @@ LongNumber LongNumber::operator+(const LongNumber& n) const {
             static_cast<BIG_TYPE>(quot);
         quot = resVal / (_getMaxTypeValue() + 1);
         rem = resVal % (_getMaxTypeValue() + 1);
-        
+
         result._data.push_back(rem);
     }
 
@@ -121,7 +118,6 @@ LongNumber LongNumber::operator+(const LongNumber& n) const {
 
         result._data.push_back(rem);
     }
-
     result._data.push_back(quot);
     _checkZero(result);
 
