@@ -38,4 +38,3 @@ TEST(Fedotov_Kirill_ComplexNumberTest, equalOperator) {
 TEST(Fedotov_Kirill_ComplexNumberTest, substract) {
    ASSERT_DOUBLE_EQ(ComplexNumber u(2.0,1.0) - ComplexNumber(0.1, 1.0), ComplexNumber(1.9, 0.0));
 }
-
