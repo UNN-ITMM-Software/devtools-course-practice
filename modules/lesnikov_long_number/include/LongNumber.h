@@ -10,7 +10,7 @@
 #define BIG_TYPE int32_t
 
 class LongNumber {
-public:
+ public:
     LongNumber();
     LongNumber(const LongNumber& n);
     LongNumber(LongNumber&& n) noexcept;
@@ -33,7 +33,7 @@ public:
 
     std::string getString() const;
 
-private:
+ private:
     bool _absIsLess(const LongNumber& n) const;
     bool _absIsGreater(const LongNumber& n) const;
     bool _absIsEqual(const LongNumber& n) const;
