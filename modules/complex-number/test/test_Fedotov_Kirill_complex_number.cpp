@@ -5,7 +5,7 @@
 #include "include/complex_number.h"
 
 TEST(Fedotov_Kirill_ComplexNumberTest, defaultConstruct) {
-    ComplexNumber z(re, im);
+    ComplexNumber z;
 
     ASSERT_DOUBLE_EQ(0.0, z.getRe());
     ASSERT_DOUBLE_EQ(0.0, z.getIm());
@@ -23,7 +23,7 @@ TEST(Fedotov_Kirill_ComplexNumberTest, setter) {
     u.setRe(2.0);
     u.setIm(5.1);
 
-    ASSERT_DOUBLE_EQ(u, ComplexNumber(2.0, 5.1));
+    ASSERT_EQ(u, ComplexNumber(2.0, 5.1));
 }
 
 TEST(Fedotov_Kirill_ComplexNumberTest, equalOperator) {
@@ -36,6 +36,6 @@ TEST(Fedotov_Kirill_ComplexNumberTest, equalOperator) {
 }
 
 TEST(Fedotov_Kirill_ComplexNumberTest, substract) {
-    ASSERT_DOUBLE_EQ(ComplexNumber u(2.0, 1.0) - ComplexNumber(0.1, 1.0),
+    ASSERT_EQ(ComplexNumber u(2.0, 1.0) - ComplexNumber(0.1, 1.0),
     ComplexNumber(1.9, 0.0));
 }
