@@ -108,3 +108,13 @@ TEST(Salaev_Vlad_JsonDecoderTest, WrongJsonInput) {
     size_t index = 0;
     EXPECT_THROW(parseJson(json, index), std::runtime_error);
 }
+
+TEST(Salaev_Vlad_JsonDecoderTest, SupportEscapedCharacters) {
+    std::string json = R"({"Ñoordinate \"X\"": 24.0124010872935, "Ñoordinate \"Y\"":49.7740722529036})";
+    size_t index = 0;
+    JsonValue js = parseJson(json, index);
+    auto key = js.objectValues.begin();
+    EXPECT_EQ(key->first, "Ñoordinate \"X\"");
+    ++key;
+    EXPECT_EQ(key->first, "Ñoordinate \"Y\"");
+}
