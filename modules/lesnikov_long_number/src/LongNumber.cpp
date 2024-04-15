@@ -4,6 +4,7 @@
 
 #include <unordered_map>
 
+// namespace
 namespace {
     std::unordered_map<char, TYPE> charToTYPE = {
         {'0', 0},
@@ -50,7 +51,8 @@ LongNumber::LongNumber(std::string s) {
         _negative = true;
     }
 
-    for (long long i = s.size() - 1; i >= static_cast<int>(s[0] == '-'); i--) {
+    for (int64_t i = s.size() - 1; 
+        i >= static_cast<int>(s[0] == '-'); i--) {
         _data.push_back(charToTYPE[s[i]]);
     }
 
@@ -94,7 +96,7 @@ LongNumber LongNumber::operator+(const LongNumber& n) const {
 
     for (size_t i = 0; i < minSize; i++) {
         resVal = static_cast<BIG_TYPE>(_data[i])
-            + static_cast<BIG_TYPE>(n._data[i]) + 
+            + static_cast<BIG_TYPE>(n._data[i]) +
             static_cast<BIG_TYPE>(quot);
         quot = resVal / (_getMaxTypeValue() + 1);
         rem = resVal % (_getMaxTypeValue() + 1);
@@ -177,7 +179,8 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
             fut = 0;
         } else {
             fut = 1;
-            val = static_cast<BIG_TYPE>(curDataVal) + _getMaxTypeValue() + 1
+            val = static_cast<BIG_TYPE>(curDataVal) 
+                + _getMaxTypeValue() + 1
                 - static_cast<BIG_TYPE>(n._data[i]);
         }
         result._data.push_back(val);
@@ -230,7 +233,8 @@ LongNumber LongNumber::operator*(const LongNumber& n) {
         }
         _checkZero(tempResult);
         std::vector<TYPE> empty(i);
-        tempResult._data.insert(tempResult._data.begin(), empty.begin(), empty.end());
+        tempResult._data.insert(tempResult._data.begin()
+            , empty.begin(), empty.end());
         result += tempResult;
     }
 
@@ -258,13 +262,11 @@ bool LongNumber::operator==(const LongNumber& n) const {
         || _negative == n._negative && _data == n._data;
 }
 
-bool LongNumber::operator!=(const LongNumber& n) const
-{
+bool LongNumber::operator!=(const LongNumber& n) const {
     return !(*this == n);
 }
 
-bool LongNumber::operator<(const LongNumber& n) const
-{
+bool LongNumber::operator<(const LongNumber& n) const {
     if (!_negative && !n._negative) {
         return _absIsLess(n);
     } else if (_negative && n._negative) {
@@ -303,15 +305,14 @@ std::string LongNumber::getString() const {
         s += "-";
     }
 
-    for (long long i = _data.size() - 1; i >= 0; i--) {
+    for (int64_t i = _data.size() - 1; i >= 0; i--) {
         s += typeToChar[_data[i]];
     }
 
     return s;
 }
 
-bool LongNumber::_absIsLess(const LongNumber& n) const
-{
+bool LongNumber::_absIsLess(const LongNumber& n) const {
     if (_data.size() < n._data.size()) {
         return true;
     } else if (_data.size() > n._data.size()) {
@@ -329,8 +330,7 @@ bool LongNumber::_absIsLess(const LongNumber& n) const
     return false;
 }
 
-bool LongNumber::_absIsGreater(const LongNumber& n) const
-{
+bool LongNumber::_absIsGreater(const LongNumber& n) const {
     if (_data.size() > n._data.size()) {
         return true;
     } else if (_data.size() < n._data.size()) {
@@ -348,8 +348,7 @@ bool LongNumber::_absIsGreater(const LongNumber& n) const
     return false;
 }
 
-bool LongNumber::_absIsEqual(const LongNumber& n) const
-{
+bool LongNumber::_absIsEqual(const LongNumber& n) const {
     if (_data.size() != n._data.size()) {
         return false;
     }
@@ -357,8 +356,7 @@ bool LongNumber::_absIsEqual(const LongNumber& n) const
     return _data == n._data;
 }
 
-void LongNumber::_checkZero(LongNumber& n)
-{
+void LongNumber::_checkZero(LongNumber& n) {
     long long firstNonZero = -1;
 
     for (long long i = n._data.size() - 1; i >= 0; i--) {
@@ -370,7 +368,8 @@ void LongNumber::_checkZero(LongNumber& n)
 
     long long shift = firstNonZero + 1LL;
 
-    std::vector<TYPE> cropped(n._data.begin(), n._data.begin() + shift);
+    std::vector<TYPE> cropped(n._data.begin()
+        , n._data.begin() + shift);
     n._data = std::move(cropped);
 }
 
