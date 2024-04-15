@@ -42,9 +42,9 @@ BillinearInterpolation& BillinearInterpolation::operator=
 }
 
 BillinearInterpolation& BillinearInterpolation::operator=
-(BillinearInterpolation& bi) {
+(const BillinearInterpolation& bi) {
     if (&bi != this) {
-        *this = BillinearInterpolation(bi);
+        source = bi.source;
     }
     return *this;
 }
