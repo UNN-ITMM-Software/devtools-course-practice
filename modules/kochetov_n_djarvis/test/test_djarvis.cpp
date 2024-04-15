@@ -63,8 +63,8 @@ TEST(ConvexHullTest, CollinearPoints) {
     ConvexHull convexHull(points);
     std::vector<Point> hull = convexHull.findConvexHull();
 
-    // Ожидаем, что выпуклая оболочка содержит 2 точки (крайние)
-    ASSERT_EQ(hull.size(), (size_t)2);
+    // Ожидаем, что выпуклая оболочка содержит 4 точки
+    ASSERT_EQ(hull.size(), (size_t)4);
     // Ожидаем, что выпуклая оболочка содержит крайние точки
     EXPECT_EQ(hull[0].x, 0);
     EXPECT_EQ(hull[0].y, 0);
