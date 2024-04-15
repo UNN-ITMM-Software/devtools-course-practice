@@ -21,14 +21,8 @@ TEST(Bodrov_Daniil_FibonacciHeapTest, OneElementNoChildren) {
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, OneElementOneChild) {
   FibonacciHeap<int> heap;
-  FibonacciHeapNode<int> *parent = heap.insert(42);
-  ASSERT_NE(parent, nullptr);
-
-  FibonacciHeapNode<int> *child = heap.insert(24);
-  ASSERT_NE(child, nullptr);
-
-  child->parent = parent;
-  parent->child = child;
+  heap.insert(42);
+  heap.insert(24);
 
   ASSERT_FALSE(heap.empty());
   ASSERT_EQ(heap.minimum(), 24);
@@ -39,22 +33,12 @@ TEST(Bodrov_Daniil_FibonacciHeapTest, OneElementOneChild) {
   ASSERT_TRUE(heap.empty());
 }
 
-TEST(Bodrov_Daniil_FibonacciHeapTest, ManyElementsOneChild) {
+TEST(Bodrov_Daniil_FibonacciHeapTest, ManyElements) {
   FibonacciHeap<int> heap;
-  FibonacciHeapNode<int> *parent = heap.insert(42);
-  ASSERT_NE(parent, nullptr);
-
-  FibonacciHeapNode<int> *node1 = heap.insert(24);
-  ASSERT_NE(node1, nullptr);
-
-  FibonacciHeapNode<int> *node2 = heap.insert(16);
-  ASSERT_NE(node2, nullptr);
-
-  FibonacciHeapNode<int> *child = heap.insert(32);
-  ASSERT_NE(child, nullptr);
-
-  child->parent = parent;
-  parent->child = child;
+  heap.insert(42);
+  heap.insert(24);
+  heap.insert(16);
+  heap.insert(32);
 
   ASSERT_FALSE(heap.empty());
   ASSERT_EQ(heap.minimum(), 16);
