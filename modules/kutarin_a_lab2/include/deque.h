@@ -3,6 +3,8 @@
 #ifndef MODULES_KUTARIN_A_LAB2_INCLUDE_DEQUE_H_
 #define MODULES_KUTARIN_A_LAB2_INCLUDE_DEQUE_H_
 
+#include <cstddef>
+
 template <typename T>
 struct Node {
     T value;

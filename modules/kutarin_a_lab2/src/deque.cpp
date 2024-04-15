@@ -3,8 +3,9 @@
 #include "include/deque.h"
 #include <stdexcept>
 
-Deque(const Deque& other) : front_(nullptr), back_(nullptr), size_(0) {
-    Node* current = other.front_;
+template <typename T>
+Deque<T>::Deque(const Deque<T>& other) : front_(nullptr), back_(nullptr), size_(0) {
+    Node<T>* current = other.front_;
     while (current) {
         push_back(current->value);
         current = current->next;
