@@ -209,11 +209,11 @@ void CList<T>::insert(T _data, int index) {
         push_front(_data);
         return;
     }
-    if (index == size()) {
+    if (static_cast<size_t>(index) == size()) {
         push_back(_data);
         return;
     }
-    if (index > size()) {
+    if (static_cast<size_t>(index) > size()) {
         throw std::out_of_range("out of range");
     }
     CNode<T>* tmp = new CNode<T>(_data);
