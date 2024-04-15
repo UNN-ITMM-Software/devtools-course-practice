@@ -5,25 +5,25 @@
 #include "include/DoubleLinkedList.h"
 
 TEST(Filatov_Maxim_List_tests, can_create) {
-    ASSERT_NO_THROW(CList<int>());
+    ASSERT_NO_THROW(DoubleLinkedList<int>());
 }
 
 TEST(Filatov_Maxim_List_tests, can_push_back) {
-    ASSERT_NO_THROW(CList<int>().push_back(1));
+    ASSERT_NO_THROW(DoubleLinkedList<int>().push_back(1));
 }
 
 TEST(Filatov_Maxim_List_tests, can_push_front) {
-    ASSERT_NO_THROW(CList<int>().push_front(1));
+    ASSERT_NO_THROW(DoubleLinkedList<int>().push_front(1));
 }
 
 TEST(Filatov_Maxim_List_tests, can_front) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(1);
     ASSERT_NO_THROW(l.front());
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_front) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(5);
     l.push_back(1);
     l.push_back(1);
@@ -31,13 +31,13 @@ TEST(Filatov_Maxim_List_tests, correctly_front) {
 }
 
 TEST(Filatov_Maxim_List_tests, can_back) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(1);
     ASSERT_NO_THROW(l.back());
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_back) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(1);
     l.push_back(1);
     l.push_back(5);
@@ -45,13 +45,13 @@ TEST(Filatov_Maxim_List_tests, correctly_back) {
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_push_back) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(2);
     EXPECT_EQ((l.front())->get_data(), 2);
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_push_front) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(2);
     l.push_back(2);
     l.push_front(3);
@@ -59,11 +59,11 @@ TEST(Filatov_Maxim_List_tests, correctly_push_front) {
 }
 
 TEST(Filatov_Maxim_List_tests, can_size) {
-    ASSERT_NO_THROW(CList<int>().size());
+    ASSERT_NO_THROW(DoubleLinkedList<int>().size());
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_size) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     size_t size = 3;
     l.push_back(2);
     l.push_back(2);
@@ -72,11 +72,11 @@ TEST(Filatov_Maxim_List_tests, correctly_size) {
 }
 
 TEST(Filatov_Maxim_List_tests, can_clear_head_and_teil) {
-    ASSERT_NO_THROW(CList<int>().clearHeadAndTail());
+    ASSERT_NO_THROW(DoubleLinkedList<int>().clearHeadAndTail());
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_clear_head_and_teil) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(2);
     l.push_back(2);
     l.push_front(3);
@@ -85,7 +85,7 @@ TEST(Filatov_Maxim_List_tests, correctly_clear_head_and_teil) {
 }
 
 TEST(Filatov_Maxim_List_tests, can_erase) {
-    CList<int> a;
+    DoubleLinkedList<int> a;
     a.push_back(1);
     a.push_back(1);
     a.push_back(1);
@@ -93,7 +93,7 @@ TEST(Filatov_Maxim_List_tests, can_erase) {
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_erase) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     size_t size = 2;
     l.push_back(2);
     l.push_back(2);
@@ -103,7 +103,7 @@ TEST(Filatov_Maxim_List_tests, correctly_erase) {
 }
 
 TEST(Filatov_Maxim_List_tests, can_get_index) {
-    CList<int> a;
+    DoubleLinkedList<int> a;
     a.push_back(1);
     a.push_back(1);
     a.push_back(1);
@@ -111,7 +111,7 @@ TEST(Filatov_Maxim_List_tests, can_get_index) {
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_get_index) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(2);
     l.push_back(2);
     l.push_back(3);
@@ -120,12 +120,12 @@ TEST(Filatov_Maxim_List_tests, correctly_get_index) {
 }
 
 TEST(Filatov_Maxim_List_tests, can_empty) {
-    CList<int> a;
+    DoubleLinkedList<int> a;
     ASSERT_NO_THROW(a.isEmpty());
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_empty) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(2);
     l.push_back(2);
     l.push_back(3);
@@ -135,7 +135,7 @@ TEST(Filatov_Maxim_List_tests, correctly_empty) {
 }
 
 TEST(Filatov_Maxim_List_tests, can_reverse) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(1);
     l.push_back(2);
     l.push_back(3);
@@ -143,7 +143,7 @@ TEST(Filatov_Maxim_List_tests, can_reverse) {
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_reverse) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(1);
     l.push_back(2);
     l.push_back(3);
@@ -154,14 +154,14 @@ TEST(Filatov_Maxim_List_tests, correctly_reverse) {
 }
 
 TEST(Filatov_Maxim_List_tests, can_insert) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(1);
     l.push_back(3);
     ASSERT_NO_THROW(l.insert(2, 1));
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_insert) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     size_t size1 = 2;
     size_t size2 = 3;
     l.push_back(1);
@@ -175,14 +175,14 @@ TEST(Filatov_Maxim_List_tests, correctly_insert) {
 }
 
 TEST(Filatov_Maxim_List_tests, can_clear) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(1);
     l.push_back(3);
     ASSERT_NO_THROW(l.clear());
 }
 
 TEST(Filatov_Maxim_List_tests, correctly_clear) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(1);
     l.push_back(3);
     l.clear();
@@ -190,21 +190,21 @@ TEST(Filatov_Maxim_List_tests, correctly_clear) {
 }
 
 TEST(List_iterator_tests, can_begin) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(1);
     l.push_back(3);
     ASSERT_NO_THROW(l.begin());
 }
 
 TEST(List_iterator_tests, can_end) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(1);
     l.push_back(3);
     ASSERT_NO_THROW(l.end());
 }
 
 TEST(List_iterator_tests, can_iterator) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     l.push_back(1);
     l.push_back(2);
     l.push_back(3);
@@ -212,7 +212,7 @@ TEST(List_iterator_tests, can_iterator) {
 }
 
 TEST(List_iterator_tests, correctly_iterator) {
-    CList<int> l;
+    DoubleLinkedList<int> l;
     bool f1, f2, f3;
     f1 = f2 = f3 = false;
     l.push_back(1);
