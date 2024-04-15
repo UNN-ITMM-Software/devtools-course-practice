@@ -8,6 +8,7 @@
 
 #define TYPE uint8_t
 #define BIG_TYPE int32_t
+#define MAX_VALUE 9
 
 class LongNumber {
  public:
@@ -38,7 +39,6 @@ class LongNumber {
     bool _absIsGreater(const LongNumber& n) const;
     bool _absIsEqual(const LongNumber& n) const;
     static void _checkZero(LongNumber& n);
-    static BIG_TYPE _getMaxTypeValue();
 
     std::vector<TYPE> _data;
     bool _negative = false;

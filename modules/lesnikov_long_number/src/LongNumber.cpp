@@ -94,8 +94,8 @@ LongNumber LongNumber::operator+(const LongNumber& n) const {
         resVal = static_cast<BIG_TYPE>(_data[i])
             + static_cast<BIG_TYPE>(n._data[i]) +
             static_cast<BIG_TYPE>(quot);
-        quot = resVal / (_getMaxTypeValue() + 1);
-        rem = resVal % (_getMaxTypeValue() + 1);
+        quot = resVal / (MAX_VALUE + 1);
+        rem = resVal % (MAX_VALUE + 1);
 
         result._data.push_back(rem);
     }
@@ -103,8 +103,8 @@ LongNumber LongNumber::operator+(const LongNumber& n) const {
     for (size_t i = minSize; i < _data.size(); i++) {
         resVal = static_cast<BIG_TYPE>(_data[i]) +
             static_cast<BIG_TYPE>(quot);
-        quot = resVal / (_getMaxTypeValue() + 1);
-        rem = resVal % (_getMaxTypeValue() + 1);
+        quot = resVal / (MAX_VALUE + 1);
+        rem = resVal % (MAX_VALUE + 1);
 
         result._data.push_back(rem);
     }
@@ -112,8 +112,8 @@ LongNumber LongNumber::operator+(const LongNumber& n) const {
     for (size_t i = minSize; i < n._data.size(); i++) {
         resVal = static_cast<BIG_TYPE>(n._data[i]) +
             static_cast<BIG_TYPE>(quot);
-        quot = resVal / (_getMaxTypeValue() + 1);
-        rem = resVal % (_getMaxTypeValue() + 1);
+        quot = resVal / (MAX_VALUE + 1);
+        rem = resVal % (MAX_VALUE + 1);
 
         result._data.push_back(rem);
     }
@@ -174,7 +174,7 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
         } else {
             fut = 1;
             val = static_cast<BIG_TYPE>(curDataVal)
-                + _getMaxTypeValue() + 1
+                + MAX_VALUE + 1
                 - static_cast<BIG_TYPE>(n._data[i]);
         }
         result._data.push_back(val);
@@ -187,7 +187,7 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
             val = curDataVal;
             fut = 0;
         } else {
-            val = curDataVal + _getMaxTypeValue() + 1;
+            val = curDataVal + MAX_VALUE + 1;
             fut = 1;
         }
 
@@ -216,13 +216,13 @@ LongNumber LongNumber::operator*(const LongNumber& n) {
         for (size_t j = 0; j < _data.size(); j++) {
             val = static_cast<BIG_TYPE>(_data[j]) *
                 static_cast<BIG_TYPE>(n._data[i]) + quot;
-            quot = val / (_getMaxTypeValue() + 1);
-            rem = val % (_getMaxTypeValue() + 1);
+            quot = val / (MAX_VALUE + 1);
+            rem = val % (MAX_VALUE + 1);
             tempResult._data.push_back(rem);
         }
         while (quot > 0) {
-            rem = quot % (_getMaxTypeValue() + 1);
-            quot /= (_getMaxTypeValue() + 1);
+            rem = quot % (MAX_VALUE + 1);
+            quot /= (MAX_VALUE + 1);
             tempResult._data.push_back(rem);
         }
         _checkZero(tempResult);
@@ -365,8 +365,4 @@ void LongNumber::_checkZero(LongNumber& n) {
     std::vector<TYPE> cropped(n._data.begin()
         , n._data.begin() + shift);
     n._data = std::move(cropped);
-}
-
-BIG_TYPE LongNumber::_getMaxTypeValue() {
-    return 9;
 }
