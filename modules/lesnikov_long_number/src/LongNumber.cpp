@@ -1,3 +1,5 @@
+// Copyright 2024 Lesnikov Nikita
+
 #include "include/LongNumber.h"
 
 #include <unordered_map>
@@ -132,7 +134,7 @@ void LongNumber::operator+=(const LongNumber& n) {
 
 LongNumber LongNumber::operator-(const LongNumber& n) const {
 	if (_negative && !n._negative) {
-		return (-(*this)) + n;
+		return -((-(*this)) + n);
 	}
 	if (!_negative && n._negative) {
 		return *this + (-n);
@@ -254,6 +256,11 @@ LongNumber LongNumber::operator-() const {
 bool LongNumber::operator==(const LongNumber& n) const {
 	return _data.size() == 0 && n._data.size() == 0 
 		|| _negative == n._negative && _data == n._data;
+}
+
+bool LongNumber::operator!=(const LongNumber& n) const
+{
+	return !(*this == n);
 }
 
 bool LongNumber::operator<(const LongNumber& n) const

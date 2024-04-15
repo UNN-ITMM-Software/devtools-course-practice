@@ -1,3 +1,5 @@
+// Copyright 2024 Lesnikov Nikita
+
 #pragma once
 
 #include <vector>
@@ -24,6 +26,7 @@ public:
 	void operator*=(const LongNumber& n);
 	LongNumber operator-() const;
 	bool operator==(const LongNumber& n) const;
+	bool operator!=(const LongNumber& n) const;
 	bool operator<(const LongNumber& n) const;
 	bool operator>(const LongNumber& n) const;
 	bool operator<=(const LongNumber& n) const;
