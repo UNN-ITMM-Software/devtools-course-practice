@@ -2,6 +2,7 @@
 
 #include "include/permut_generator.h"
 #include <string>
+#include <stdexcept>
 
 PermutGenerator::PermutGenerator(int* arr, const int size) {
     if (size <= 0 || arr == NULL) {
