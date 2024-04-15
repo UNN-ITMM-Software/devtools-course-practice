@@ -1,7 +1,7 @@
 // Copyright 2024 Lesnikov Nikita
 
-#include "include/LongNumber.h"
 #include <gtest/gtest.h>
+#include "include/LongNumber.h"
 
 class BuildingFromStringParameterizedTestFixture :
     public ::testing::TestWithParam<std::pair<std::string, std::string>> {
