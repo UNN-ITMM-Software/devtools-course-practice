@@ -40,7 +40,7 @@ TEST(Fedotov_Kirill_ComplexNumberTest, substract) {
     ComplexNumber v(0.1, 1.0);
     ComplexNumber res;
     res = u - v;
-    
+        
     ASSERT_DOUBLE_EQ(1.9, res.getRe());
     ASSERT_DOUBLE_EQ(0.0, res.getIm());
 }
