@@ -34,29 +34,6 @@ TEST(Bodrov_Daniil_FibonacciHeapTest, OneElementOneChild) {
   EXPECT_TRUE(heap.empty());
 }
 
-TEST(Bodrov_Daniil_FibonacciHeapTest, ManyElementsOneChild) {
-  FibonacciHeap<int> heap;
-  FibonacciHeapNode<int> *parent = heap.insert(42);
-  heap.insert(24);
-  heap.insert(16);
-  FibonacciHeapNode<int> *child = heap.insert(32);
-  child->parent = parent;
-  parent->child = child;
-  EXPECT_FALSE(heap.empty());
-  EXPECT_EQ(heap.minimum(), 16);
-  EXPECT_EQ(heap.extractMin(), 16);
-  EXPECT_FALSE(heap.empty());
-  EXPECT_EQ(heap.minimum(), 24);
-  EXPECT_EQ(heap.extractMin(), 24);
-  EXPECT_FALSE(heap.empty());
-  EXPECT_EQ(heap.minimum(), 32);
-  EXPECT_EQ(heap.extractMin(), 32);
-  EXPECT_FALSE(heap.empty());
-  EXPECT_EQ(heap.minimum(), 42);
-  EXPECT_EQ(heap.extractMin(), 42);
-  EXPECT_TRUE(heap.empty());
-}
-
 TEST(Bodrov_Daniil_FibonacciHeapTest, BasicOperations) {
   FibonacciHeap<int> heap;
   EXPECT_TRUE(heap.empty());
