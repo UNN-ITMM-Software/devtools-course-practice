@@ -1,8 +1,9 @@
 // Copyright 2024 Bodrov Daniil
 
-#include "include/fibonacci_heap.h"
-#include <algorithm>
 #include <gtest/gtest.h>
+#include <algorithm>
+
+#include "include/fibonacci_heap.h"
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, EmptyHeap) {
   FibonacciHeap<int> heap;
