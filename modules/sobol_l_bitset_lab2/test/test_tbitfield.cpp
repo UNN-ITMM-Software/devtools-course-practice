@@ -146,7 +146,9 @@ TEST(TBitField, compare_equal_bitfields_of_equal_size) {
 
 TEST(TBitField, or_operator_applied_to_bitfields_of_equal_size) {
   const int size = 4;
-  TBitField bf1(size), bf2(size), expBf(size);
+  TBitField bf1(size);
+  TBitField bf2(size);
+  TBitField expBf(size);
   // bf1 = 0011
   bf1.SetBit(2);
   bf1.SetBit(3);

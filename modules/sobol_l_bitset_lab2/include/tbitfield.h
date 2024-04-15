@@ -4,6 +4,7 @@
 #define MODULES_SOBOL_L_BITSET_LAB2_INCLUDE_TBITFIELD_H_
 
 #include <iostream>
+#include <stdexcept>
 
 typedef unsigned char TELEM;
 class TBitField {
@@ -17,10 +18,11 @@ class TBitField {
   TELEM GetMemMask(const int n) const;  // битовая маска для бита n
 
  public:
+  TBitField() = default;
   explicit TBitField(int len);
   TBitField(const TBitField &bf);
-  TBitField(TBitField&& bf);
-  TBitField& operator=(TBitField&& bf);
+  TBitField(TBitField&& bf) noexcept;
+  TBitField& operator=(TBitField&& bf) noexcept;
   ~TBitField();
 
   // доступ к битам
@@ -39,6 +41,16 @@ class TBitField {
 
   friend std::istream &operator>>(std::istream &istr, TBitField &bf);
   friend std::ostream &operator<<(std::ostream &ostr, const TBitField &bf);
+
+  friend void swap(TBitField& lhs, TBitField& rhs) noexcept {
+      std::swap(lhs.BitLen, rhs.BitLen);
+      std::swap(lhs.MemLen, rhs.MemLen);
+      std::swap(lhs.pMem, rhs.pMem);
+  }
+  TBitField CreateBitField(int buff) {
+      TBitField retBuff(buff);
+      return retBuff;
+  }
 };
 
 // Структура хранения битового поля

@@ -25,20 +25,20 @@ TBitField::TBitField(const TBitField& bf) {  // конструктор копи�
         pMem[i] = bf.pMem[i];
 }
 
-TBitField::TBitField(TBitField&& bf) {
+TBitField::TBitField(TBitField&& bf) noexcept {
     pMem = 0;
     BitLen = 0;
     MemLen = 0;
-    std::swap(*this, bf);
+    swap(*this, bf);
 }
 
-TBitField& TBitField::operator=(TBitField&& bf) {
+TBitField& TBitField::operator=(TBitField&& bf) noexcept {
     if (this != &bf) {
         delete[] pMem;
         pMem = nullptr;
         BitLen = 0;
         MemLen = 0;
-        std::swap(*this, bf);
+        swap(*this, bf);
     }
     return *this;
 }
