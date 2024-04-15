@@ -218,5 +218,34 @@ TEST(Lesnikov_Nikita_LongNumber, MultBigNumbers)
 
     EXPECT_EQ((n * n2).getString(), "-2339924362961827418436");
     EXPECT_EQ((n * n3).getString(), "33126359017785337435197");
-  
+}
+
+TEST(Lesnikov_Nikita_LongNumber, AddToSelf)
+{
+    LongNumber n("1");
+    LongNumber n2("-1");
+    LongNumber n3("100");
+    
+    EXPECT_EQ((n += n2).getString(), "0");
+    EXPECT_EQ((n += n3).getString(), "100");
+}
+
+TEST(Lesnikov_Nikita_LongNumber, SubSelf)
+{
+    LongNumber n("1");
+    LongNumber n2("-1");
+    LongNumber n3("100");
+
+    EXPECT_EQ((n -= n2).getString(), "2");
+    EXPECT_EQ((n -= n3).getString(), "-98");
+}
+
+TEST(Lesnikov_Nikita_LongNumber, MultSelf)
+{
+    LongNumber n("1");
+    LongNumber n2("-1");
+    LongNumber n3("100");
+
+    EXPECT_EQ((n *= n2).getString(), "-1");
+    EXPECT_EQ((n *= n3).getString(), "-100");
 }

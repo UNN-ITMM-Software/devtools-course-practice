@@ -88,7 +88,7 @@ LongNumber LongNumber::operator+(const LongNumber& n) const {
 	}
 
 	size_t minSize = std::min(_data.size(), n._data.size());
-	size_t maxSize = std::min(_data.size(), n._data.size());
+	size_t maxSize = std::max(_data.size(), n._data.size());
 
 	BIG_TYPE resVal = 0;
 	TYPE quot = 0;
@@ -128,8 +128,10 @@ LongNumber LongNumber::operator+(const LongNumber& n) const {
 	return result;
 }
 
-void LongNumber::operator+=(const LongNumber& n) {
+LongNumber& LongNumber::operator+=(const LongNumber& n) {
 	*this = *this + n;
+
+	return *this;
 }
 
 LongNumber LongNumber::operator-(const LongNumber& n) const {
@@ -165,7 +167,7 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
 	}
 
 	size_t minSize = std::min(_data.size(), n._data.size());
-	size_t maxSize = std::min(_data.size(), n._data.size());
+	size_t maxSize = std::max(_data.size(), n._data.size());
 
 	BIG_TYPE fut = 0;
 	BIG_TYPE val = 0;
@@ -194,7 +196,7 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
 			fut = 0;
 		}
 		else {
-			val = curDataVal + _getMaxTypeValue();
+			val = curDataVal + _getMaxTypeValue() + 1;
 			fut = 1;
 		}
 
@@ -206,8 +208,10 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
 	return result;
 }
 
-void LongNumber::operator-=(const LongNumber& n) {
+LongNumber& LongNumber::operator-=(const LongNumber& n) {
 	*this = *this - n;
+
+	return *this;
 }
 
 LongNumber LongNumber::operator*(const LongNumber& n) {
@@ -241,8 +245,10 @@ LongNumber LongNumber::operator*(const LongNumber& n) {
 	return result;
 }
 
-void LongNumber::operator*=(const LongNumber& n) {
+LongNumber& LongNumber::operator*=(const LongNumber& n) {
 	*this = *this * n;
+
+	return *this;
 }
 
 LongNumber LongNumber::operator-() const {

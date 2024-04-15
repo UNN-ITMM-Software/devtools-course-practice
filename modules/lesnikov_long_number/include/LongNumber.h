@@ -19,11 +19,11 @@ public:
 	LongNumber& operator=(const LongNumber& n);
 	LongNumber& operator=(LongNumber&& n) noexcept;
 	LongNumber operator+(const LongNumber& n) const;
-	void operator+=(const LongNumber& n);
+	LongNumber& operator+=(const LongNumber& n);
 	LongNumber operator-(const LongNumber& n) const;
-	void operator-=(const LongNumber& n);
+	LongNumber& operator-=(const LongNumber& n);
 	LongNumber operator*(const LongNumber& n);
-	void operator*=(const LongNumber& n);
+	LongNumber& operator*=(const LongNumber& n);
 	LongNumber operator-() const;
 	bool operator==(const LongNumber& n) const;
 	bool operator!=(const LongNumber& n) const;
