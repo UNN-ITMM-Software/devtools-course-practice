@@ -262,6 +262,7 @@ void CList<T>::reverse() {
         current = current->prev;
     }
     if (temp != nullptr) {
+        tail = head;
         head = temp->prev;
     }
 }
