@@ -234,11 +234,11 @@ void CList<T>::erase(int index) {
         pop_front();
         return;
     }
-    if (index == size() - 1) {
+    if (static_cast<size_t>(index) == size() - 1) {
         pop_back();
         return;
     }
-    if (index >= size() - 1) {
+    if (static_cast<size_t>(index) >= size() - 1) {
         throw std::out_of_range("out of range");
     }
     CNode<T>* del_elem = (*this)[index];
