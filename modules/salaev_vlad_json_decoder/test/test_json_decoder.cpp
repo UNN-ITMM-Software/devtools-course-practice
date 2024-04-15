@@ -118,3 +118,15 @@ TEST(Salaev_Vlad_JsonDecoderTest, SupportEscapedCharacters) {
     ++key;
     EXPECT_EQ(key->first, "Coordinate \"Y\"");
 }
+
+TEST(Salaev_Vlad_JsonDecoderTest, ParseAllDataTypes) {
+    std::string json = R"({"str": "string", "num": 1, "bool": true, "null": null, "array": [], "object": {}})";
+    size_t index = 0;
+    JsonValue result = parseJson(json, index);
+    EXPECT_EQ(result.objectValues["str"].type, JsonType::String);
+    EXPECT_EQ(result.objectValues["num"].type, JsonType::Number);
+    EXPECT_EQ(result.objectValues["bool"].type, JsonType::Boolean);
+    EXPECT_EQ(result.objectValues["null"].type, JsonType::Null);
+    EXPECT_EQ(result.objectValues["array"].type, JsonType::Array);
+    EXPECT_EQ(result.objectValues["object"].type, JsonType::Object);
+}
