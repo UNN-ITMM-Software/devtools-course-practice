@@ -59,9 +59,9 @@ TEST(Kochetov_n_djarvis, ConcavePolygon) {
 // Тест для поиска выпуклой оболочки для набора точек,
 // все из которых находятся на одной прямой
 TEST(ConvexHullTest, CollinearPoints) {
-    vector<Point> points = {{0, 0}, {1, 1}, {2, 2}, {3, 3}};
+    std::vector<Point> points = {{0, 0}, {1, 1}, {2, 2}, {3, 3}};
     ConvexHull convexHull(points);
-    vector<Point> hull = convexHull.findConvexHull();
+    std::vector<Point> hull = convexHull.findConvexHull();
 
     // Ожидаем, что выпуклая оболочка содержит 2 точки (крайние)
     ASSERT_EQ(hull.size(), (size_t)2);
