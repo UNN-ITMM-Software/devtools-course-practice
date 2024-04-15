@@ -94,11 +94,12 @@ TEST(Filatov_Maxim_List_tests, can_erase) {
 
 TEST(Filatov_Maxim_List_tests, correctly_erase) {
     CList<int> l;
+    size_t size = 2;
     l.push_back(2);
     l.push_back(2);
     l.push_front(3);
     l.erase(1);
-    EXPECT_EQ(l.size(), 2);
+    EXPECT_EQ(l.size(), size);
 }
 
 TEST(Filatov_Maxim_List_tests, can_get_index) {
@@ -161,11 +162,13 @@ TEST(Filatov_Maxim_List_tests, can_insert) {
 
 TEST(Filatov_Maxim_List_tests, correctly_insert) {
     CList<int> l;
+    size_t size1 = 2;
+    size_t size2 = 3;
     l.push_back(1);
     l.push_back(3);
-    EXPECT_EQ(l.size(), 2);
+    EXPECT_EQ(l.size(), size1);
     ASSERT_NO_THROW(l.insert(2, 1));
-    EXPECT_EQ(l.size(), 3);
+    EXPECT_EQ(l.size(), size2);
     EXPECT_EQ(l.front()->get_data(), 1);
     EXPECT_EQ(l.back()->get_data(), 3);
     EXPECT_EQ(l[1]->get_data(), 2);
