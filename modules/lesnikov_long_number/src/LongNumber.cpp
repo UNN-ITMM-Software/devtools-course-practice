@@ -5,7 +5,7 @@
 #include <unordered_map>
 
 
-const std::unordered_map<char, TYPE> charToTYPE = {
+std::unordered_map<char, TYPE> charToTYPE = {
        {'0', 0},
        {'1', 1},
        {'2', 2},
@@ -18,7 +18,7 @@ const std::unordered_map<char, TYPE> charToTYPE = {
        {'9', 9},
 };
 
-const std::unordered_map<TYPE, char> typeToChar = {
+std::unordered_map<TYPE, char> typeToChar = {
     {0, '0'},
     {1, '1'},
     {2, '2'},
@@ -41,7 +41,7 @@ LongNumber::LongNumber(LongNumber&& n) noexcept
     : _data(std::move(n._data))
     , _negative(n._negative) {}
 
-LongNumber::LongNumber(std::string s) {
+LongNumber::LongNumber(const std::string& s) {
     if (s.size() == 0) {
         return;
     } else if (s[0] == '-') {

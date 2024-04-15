@@ -11,10 +11,11 @@
 
 class LongNumber {
 public:
+
     LongNumber();
     LongNumber(const LongNumber& n);
     LongNumber(LongNumber&& n) noexcept;
-    LongNumber(std::string s);
+    explicit LongNumber(const std::string& s);
     LongNumber& operator=(const LongNumber& n);
     LongNumber& operator=(LongNumber&& n) noexcept;
     LongNumber operator+(const LongNumber& n) const;
