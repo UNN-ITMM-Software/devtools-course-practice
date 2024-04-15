@@ -9,7 +9,7 @@ class PermutGenerator {
  public:
     PermutGenerator(int* arr, int size);
     std::string PrintArray();
-    bool CreateArray();
+    void CreateArray();
     void Swap(int i, int j);
     bool NextSet();
     std::string GeneratorPermut();

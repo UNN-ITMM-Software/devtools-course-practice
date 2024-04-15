@@ -4,21 +4,22 @@
 #include "include/permut_generator.h"
 
 TEST(Tushentsova_Karina_Permut_Generator, CanGetArrCertainLength) {
-    int a[] = { 1, 2, 3 };
+    int a[] { 1, 2, 3 };
     ASSERT_NO_THROW(PermutGenerator arr(a, 3));
 }
 
 TEST(Tushentsova_Karina_Permut_Generator, CanGetArrInvalidValue) {
-    int a[] = { 1, 2, 3 };
-    ASSERT_THROW(PermutGenerator arr(a, 0), std::string);
-    ASSERT_THROW(PermutGenerator arr(a, -3), std::string);
+    int a[] { 1, 2, 3 };
+    ASSERT_ANY_THROW(PermutGenerator arr(a, 0));
+    ASSERT_ANY_THROW(PermutGenerator arr(a, -3));
     int* p = NULL;
-    ASSERT_THROW(PermutGenerator arr(p, 3), std::string);
+    ASSERT_ANY_THROW(PermutGenerator arr(p, 3));
 }
+
 
 TEST(Tushentsova_Karina_Permut_Generator, CanPrintArray) {
     int const size = 3;
-    int a1[] = { 1, 1, 1 }, a2[] = { 1, 2, 3 };
+    int a1[] { 1, 1, 1 }, a2[] { 1, 2, 3 };
 
     PermutGenerator arr1(a1, size);
     PermutGenerator arr2(a2, size);
@@ -29,24 +30,22 @@ TEST(Tushentsova_Karina_Permut_Generator, CanPrintArray) {
 
 TEST(Tushentsova_Karina_Permut_Generator, CanCreateSerialArray) {
     int const size = 5;
-    int a[size] = { 0 };
+    int a[size] { 0 };
     PermutGenerator arr(a, size);
     arr.CreateArray();
 
     for (int i = 0; i < size; i++)
         EXPECT_EQ(a[i], i);
-
-    EXPECT_TRUE(arr.CreateArray());
 }
 
 TEST(Tushentsova_Karina_Permut_Generator, CanSwap) {
     int const size = 2;
-    int a[size] = { 0, 1 };
+    int a[size] { 0, 1 };
     PermutGenerator arr(a, size);
 
     EXPECT_NO_THROW(arr.Swap(0, 1));
-    ASSERT_THROW(arr.Swap(-1, 1), std::string);
-    ASSERT_THROW(arr.Swap(0, 3), std::string);
+    ASSERT_ANY_THROW(arr.Swap(-1, 1));
+    ASSERT_ANY_THROW(arr.Swap(0, 3));
 
     EXPECT_EQ(a[0], 1);
     EXPECT_EQ(a[1], 0);
@@ -54,7 +53,7 @@ TEST(Tushentsova_Karina_Permut_Generator, CanSwap) {
 
 TEST(Tushentsova_Karina_Permut_Generator, CanGetNextSet) {
     int const size = 3;
-    int a[size] = { 0, 1, 2};
+    int a[size] { 0, 1, 2};
     PermutGenerator arr(a, size);
 
     EXPECT_TRUE(arr.NextSet());
@@ -65,7 +64,7 @@ TEST(Tushentsova_Karina_Permut_Generator, CanGetNextSet) {
 
 TEST(Tushentsova_Karina_Permut_Generator, CanBubbleSort) {
     int const size = 3;
-    int a[size] = { 2, 0, 1 };
+    int a[size] { 2, 0, 1 };
     PermutGenerator arr(a, size);
 
     EXPECT_TRUE(arr.BubbleSort());
@@ -74,7 +73,7 @@ TEST(Tushentsova_Karina_Permut_Generator, CanBubbleSort) {
 
 TEST(Tushentsova_Karina_Permut_Generator, CanPermutWithoutRepetitions) {
     int const size1 = 2, size2 = 3;
-    int a1[size1] = { 0 }, a2[size2] = { 0 };
+    int a1[size1] { 0 }, a2[size2] { 0 };
     PermutGenerator arr1(a1, size1);
     PermutGenerator arr2(a2, size2);
 
@@ -87,9 +86,9 @@ TEST(Tushentsova_Karina_Permut_Generator, CanPermutWithoutRepetitions) {
 
 TEST(Tushentsova_Karina_Permut_Generator, CanPermutWithRepetitions) {
     int const size1 = 2, size2 = 3, size3 = 4;
-    int a1[size1] = { 1, 1 },
-        a2[size2] = { 1, 1, 2 },
-        a3[size3] = { 1, 1, 2, 2 };
+    int a1[size1] { 1, 1 },
+        a2[size2] { 1, 1, 2 },
+        a3[size3] { 1, 1, 2, 2 };
     PermutGenerator arr1(a1, size1);
     PermutGenerator arr2(a2, size2);
     PermutGenerator arr3(a3, size3);
@@ -101,8 +100,8 @@ TEST(Tushentsova_Karina_Permut_Generator, CanPermutWithRepetitions) {
 
 TEST(Tushentsova_Karina_Permut_Generator, CanPermutUnsortedArray) {
     int const size1 = 2, size2 = 3;
-    int a1[size1] = { 2, 0 },
-        a2[size2] = { 2, 0, 1 };
+    int a1[size1] { 2, 0 },
+        a2[size2] { 2, 0, 1 };
     PermutGenerator arr1(a1, size1);
     PermutGenerator arr2(a2, size2);
 
@@ -112,8 +111,8 @@ TEST(Tushentsova_Karina_Permut_Generator, CanPermutUnsortedArray) {
 
 TEST(Tushentsova_Karina_Permut_Generator, CanPermutNegativeValues) {
     int const size1 = 2, size2 = 3;
-    int a1[size1] = { -1, -2 },
-        a2[size2] = { -1, -1, -2 };
+    int a1[size1] { -1, -2 },
+        a2[size2] { -1, -1, -2 };
     PermutGenerator arr1(a1, size1);
     PermutGenerator arr2(a2, size2);
 
@@ -123,8 +122,8 @@ TEST(Tushentsova_Karina_Permut_Generator, CanPermutNegativeValues) {
 
 TEST(Tushentsova_Karina_Permut_Generator, CanPermutOneValue) {
     int const size1 = 1, size2 = 1;
-    int a1[size1] = { -1 },
-        a2[size2] = { 1 };
+    int a1[size1] { -1 },
+        a2[size2] { 1 };
     PermutGenerator arr1(a1, size1);
     PermutGenerator arr2(a2, size2);
 
@@ -134,8 +133,8 @@ TEST(Tushentsova_Karina_Permut_Generator, CanPermutOneValue) {
 
 TEST(Tushentsova_Karina_Permut_Generator, CanPermutDifferentValues) {
     int const size1 = 2, size2 = 3;
-    int a1[size1] = { 1, -2 },
-        a2[size2] = { -1, -1, 2 };
+    int a1[size1] { 1, -2 },
+        a2[size2] { -1, -1, 2 };
     PermutGenerator arr1(a1, size1);
     PermutGenerator arr2(a2, size2);
 

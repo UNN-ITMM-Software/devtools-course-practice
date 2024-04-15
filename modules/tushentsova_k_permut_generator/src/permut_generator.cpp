@@ -5,30 +5,29 @@
 
 PermutGenerator::PermutGenerator(int* arr, const int size) {
     if (size <= 0 || arr == NULL) {
-        throw std::string("invalid value");
+        throw std::invalid_argument("invalid value");
     }
     size_ = size;
     array_ = arr;
 }
 
 std::string PermutGenerator::PrintArray() {
-    std::string result = "";
+    std::string result;
     for (int i = 0; i < size_; i++) {
         result += std::to_string(array_[i]);
     }
     return result;
 }
 
-bool PermutGenerator::CreateArray() {
+void PermutGenerator::CreateArray() {
     for (int i = 0; i < size_; i++) {
         array_[i] = i;
     }
-    return true;
 }
 
 void PermutGenerator::Swap(int i, int j) {
     if (i < 0 || j >= size_) {
-        throw std::string("invalid value");
+        throw std::invalid_argument("invalid value");
     }
     int t = array_[i];
     array_[i] = array_[j];
