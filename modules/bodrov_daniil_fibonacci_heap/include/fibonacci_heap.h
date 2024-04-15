@@ -31,7 +31,7 @@ template <typename T> class FibonacciHeap {
   bool empty() const;
   const T &minimum() const;
   FibonacciHeapNode<T> *insert(const T &key);
-  void merge(FibonacciHeap<T> &other);
+  void merge(FibonacciHeap<T> *other);
   T extractMin();
   void decreaseKey(FibonacciHeapNode<T> *node, const T &newKey);
   void deleteNode(FibonacciHeapNode<T> *node);
@@ -79,21 +79,21 @@ FibonacciHeapNode<T> *FibonacciHeap<T>::insert(const T &key) {
 }
 
 template <typename T>
-void FibonacciHeap<T>::merge(FibonacciHeap<T> &other) {
+void FibonacciHeap<T>::merge(FibonacciHeap<T> *other) {
   // Пока other не пуста, перемещаем элементы из other в основную кучу
-  while (!other.empty()) {
+  while (!other->empty()) {
     // Извлекаем минимальный узел из other
-    FibonacciHeapNode<T> *otherMin = other.minNode;
+    FibonacciHeapNode<T> *otherMin = other->minNode;
 
     // Удаляем минимальный узел из other
-    if (other.minNode == other.minNode->right) {
-      other.minNode = nullptr;
+    if (other->minNode == other->minNode->right) {
+      other->minNode = nullptr;
     } else {
-      other.minNode->left->right = other.minNode->right;
-      other.minNode->right->left = other.minNode->left;
-      other.minNode = other.minNode->right;
+      other->minNode->left->right = other->minNode->right;
+      other->minNode->right->left = other->minNode->left;
+      other->minNode = other->minNode->right;
     }
-    other.size--;
+    other->size--;
 
     // Добавляем извлеченный узел в основную кучу
     if (minNode == nullptr) {
@@ -111,6 +111,7 @@ void FibonacciHeap<T>::merge(FibonacciHeap<T> &other) {
     size++;
   }
 }
+
 
 template <typename T> T FibonacciHeap<T>::extractMin() {
   FibonacciHeapNode<T> *oldMin = minNode;

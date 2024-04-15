@@ -100,7 +100,7 @@ TEST(Bodrov_Daniil_FibonacciHeapTest, Merge) {
   heap2.insert(8);
   heap2.insert(4);
 
-  heap1.merge(heap2);
+  heap1.merge(&heap2);
 
   EXPECT_EQ(heap1.minimum(), 2);
   EXPECT_EQ(heap1.extractMin(), 2);
