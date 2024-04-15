@@ -22,7 +22,7 @@ TEST(Kochetov_n_djarvis, ConvexPolygon) {
     std::vector<Point> hull = convexHull.findConvexHull();
 
     // Ожидаем, что выпуклая оболочка содержит 5 точек
-    ASSERT_EQ(hull.size(), 5);
+    ASSERT_EQ(hull.size(), (size_t)5);
 
     // Ожидаем, что выпуклая оболочка содержит угловые точки многоугольника
     EXPECT_EQ(hull[0].x, 0);
@@ -43,7 +43,7 @@ TEST(Kochetov_n_djarvis, ConcavePolygon) {
     std::vector<Point> hull = convexHull.findConvexHull();
 
     // Ожидаем, что выпуклая оболочка содержит 5 точек
-    ASSERT_EQ(hull.size(), 5);
+    ASSERT_EQ(hull.size(), (size_t)5);
 
     // Ожидаем, что выпуклая оболочка содержит вершины выпуклой оболочки
     EXPECT_EQ(hull[0].x, 0);
