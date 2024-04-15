@@ -23,12 +23,12 @@ TEST(Fedotov_Kirill_ComplexNumberTest, setter) {
     u.setRe(2.0);
     u.setIm(5.1);
 
-    ASSERT_DOUBLE_EQ(u, ComplexNumber(2.0,5.1));
+    ASSERT_DOUBLE_EQ(u, ComplexNumber(2.0, 5.1));
 }
 
 TEST(Fedotov_Kirill_ComplexNumberTest, equalOperator) {
     ComplexNumber u;
-    ComplexNumber v(2.0,3.0);
+    ComplexNumber v(2.0, 3.0);
     u = v;
 
     ASSERT_DOUBLE_EQ(2.0, u.getRe());
@@ -36,5 +36,6 @@ TEST(Fedotov_Kirill_ComplexNumberTest, equalOperator) {
 }
 
 TEST(Fedotov_Kirill_ComplexNumberTest, substract) {
-   ASSERT_DOUBLE_EQ(ComplexNumber u(2.0,1.0) - ComplexNumber(0.1, 1.0), ComplexNumber(1.9, 0.0));
+    ASSERT_DOUBLE_EQ(ComplexNumber u(2.0, 1.0) - ComplexNumber(0.1, 1.0), 
+    ComplexNumber(1.9, 0.0));
 }
