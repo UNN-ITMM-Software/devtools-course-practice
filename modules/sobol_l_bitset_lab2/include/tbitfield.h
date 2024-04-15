@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-typedef unsigned int TELEM;
+typedef unsigned char TELEM;
 class TBitField {
  private:
   int  BitLen;  // длина битового поля - макс. к-во битов
@@ -19,6 +19,8 @@ class TBitField {
  public:
   explicit TBitField(int len);
   TBitField(const TBitField &bf);
+  TBitField(TBitField&& bf);
+  TBitField& operator=(TBitField&& bf);
   ~TBitField();
 
   // доступ к битам
