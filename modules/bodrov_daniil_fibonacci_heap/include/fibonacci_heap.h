@@ -77,40 +77,38 @@ FibonacciHeapNode<T> *FibonacciHeap<T>::insert(const T &key) {
   return newNode;
 }
 
-template <typename T>
-void FibonacciHeap<T>::merge(FibonacciHeap<T> &other) {
-    // Пока other не пуста, перемещаем элементы из other в основную кучу
-    while (!other.empty()) {
-        // Извлекаем минимальный узел из other
-        FibonacciHeapNode<T> *otherMin = other.minNode;
+template <typename T> void FibonacciHeap<T>::merge(FibonacciHeap<T> &other) {
+  // Пока other не пуста, перемещаем элементы из other в основную кучу
+  while (!other.empty()) {
+    // Извлекаем минимальный узел из other
+    FibonacciHeapNode<T> *otherMin = other.minNode;
 
-        // Удаляем минимальный узел из other
-        if (other.minNode == other.minNode->right) {
-            other.minNode = nullptr;
-        } else {
-            other.minNode->left->right = other.minNode->right;
-            other.minNode->right->left = other.minNode->left;
-            other.minNode = other.minNode->right;
-        }
-        other.size--;
-
-        // Добавляем извлеченный узел в основную кучу
-        if (minNode == nullptr) {
-            minNode = otherMin;
-            minNode->left = minNode->right = minNode;
-        } else {
-            otherMin->left = minNode;
-            otherMin->right = minNode->right;
-            minNode->right->left = otherMin;
-            minNode->right = otherMin;
-            if (otherMin->key < minNode->key) {
-                minNode = otherMin;
-            }
-        }
-        size++;
+    // Удаляем минимальный узел из other
+    if (other.minNode == other.minNode->right) {
+      other.minNode = nullptr;
+    } else {
+      other.minNode->left->right = other.minNode->right;
+      other.minNode->right->left = other.minNode->left;
+      other.minNode = other.minNode->right;
     }
-}
+    other.size--;
 
+    // Добавляем извлеченный узел в основную кучу
+    if (minNode == nullptr) {
+      minNode = otherMin;
+      minNode->left = minNode->right = minNode;
+    } else {
+      otherMin->left = minNode;
+      otherMin->right = minNode->right;
+      minNode->right->left = otherMin;
+      minNode->right = otherMin;
+      if (otherMin->key < minNode->key) {
+        minNode = otherMin;
+      }
+    }
+    size++;
+  }
+}
 
 template <typename T> T FibonacciHeap<T>::extractMin() {
   FibonacciHeapNode<T> *oldMin = minNode;
