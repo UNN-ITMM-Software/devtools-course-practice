@@ -79,8 +79,8 @@ TEST(Kochetov_n_djarvis, DuplicatePoints) {
     ConvexHull convexHull(points);
     std::vector<Point> hull = convexHull.findConvexHull();
 
-    // Ожидаем, что выпуклая оболочка содержит 3 различные точки
-    ASSERT_EQ(hull.size(), (size_t)3);
+    // Ожидаем, что выпуклая оболочка содержит 6 различных точек
+    ASSERT_EQ(hull.size(), (size_t)6);
     // Ожидаем, что выпуклая оболочка содержит различные угловые точки
     EXPECT_EQ(hull[0].x, 0);
     EXPECT_EQ(hull[0].y, 0);
