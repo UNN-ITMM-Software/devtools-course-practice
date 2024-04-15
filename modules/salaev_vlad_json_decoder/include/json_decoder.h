@@ -73,8 +73,11 @@ JsonValue parseString(const std::string& str, size_t& index) {
     std::ostringstream out;
     ++index;  // skip '"'
 
-    while (str[index] != '"') {
-        out << str[index++];
+    while (str[index] != '"' || str[index-1] == '\\') {
+        if (str[index] != '\\')
+            out << str[index++];
+        else
+            index++;
     }
 
     ++index;  // skip closing '"'
