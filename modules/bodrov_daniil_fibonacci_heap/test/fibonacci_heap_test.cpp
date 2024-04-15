@@ -3,7 +3,6 @@
 #include "include/fibonacci_heap.h"
 #include <algorithm>
 #include <gtest/gtest.h>
-#include <iostream>
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, EmptyHeap) {
   FibonacciHeap<int> heap;

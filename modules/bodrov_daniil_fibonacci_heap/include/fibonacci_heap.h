@@ -1,11 +1,12 @@
 // Copyright 2024 Bodrov Daniil
 
-#ifndef MODULES_BODROV_DANIIL_FIBONACCI_LAB2_INCLUDE_FIBONACCI_HEAP_H_
-#define MODULES_BODROV_DANIIL_FIBONACCI_LAB2_INCLUDE_FIBONACCI_HEAP_H_
+#ifndef MODULES_BODROV_DANIIL_FIBONACCI_HEAP_INCLUDE_FIBONACCI_HEAP_H_
+#define MODULES_BODROV_DANIIL_FIBONACCI_HEAP_INCLUDE_FIBONACCI_HEAP_H_
 
 #include <limits>
 #include <queue>
 #include <unordered_set>
+#include <utility>
 #include <vector>
 
 template <typename T> struct FibonacciHeapNode {
@@ -17,13 +18,13 @@ template <typename T> struct FibonacciHeapNode {
   int degree;
   bool marked;
 
-  FibonacciHeapNode(const T &key)
+  explicit FibonacciHeapNode(const T &key)
       : key(key), parent(nullptr), child(nullptr), left(this), right(this),
         degree(0), marked(false) {}
 };
 
 template <typename T> class FibonacciHeap {
-public:
+ public:
   FibonacciHeap();
   ~FibonacciHeap();
 
@@ -35,7 +36,7 @@ public:
   void decreaseKey(FibonacciHeapNode<T> *node, const T &newKey);
   void deleteNode(FibonacciHeapNode<T> *node);
 
-private:
+ private:
   FibonacciHeapNode<T> *minNode;
   std::size_t size;
 
@@ -77,7 +78,8 @@ FibonacciHeapNode<T> *FibonacciHeap<T>::insert(const T &key) {
   return newNode;
 }
 
-template <typename T> void FibonacciHeap<T>::merge(FibonacciHeap<T> &other) {
+template <typename T>
+void FibonacciHeap<T>::merge(FibonacciHeap<T> &other) {
   // Пока other не пуста, перемещаем элементы из other в основную кучу
   while (!other.empty()) {
     // Извлекаем минимальный узел из other
@@ -113,7 +115,8 @@ template <typename T> void FibonacciHeap<T>::merge(FibonacciHeap<T> &other) {
 template <typename T> T FibonacciHeap<T>::extractMin() {
   FibonacciHeapNode<T> *oldMin = minNode;
   if (oldMin == nullptr)
-    return T(); // Return default value for type T if the heap is empty
+    return T();
+
   if (oldMin->child != nullptr) {
     FibonacciHeapNode<T> *child = oldMin->child;
     do {
@@ -128,9 +131,9 @@ template <typename T> T FibonacciHeap<T>::extractMin() {
   }
   oldMin->left->right = oldMin->right;
   oldMin->right->left = oldMin->left;
-  if (oldMin == oldMin->right)
+  if (oldMin == oldMin->right) {
     minNode = nullptr;
-  else {
+  } else {
     minNode = oldMin->right;
     consolidate();
   }
@@ -185,9 +188,9 @@ template <typename T> void FibonacciHeap<T>::consolidate() {
   minNode = nullptr;
   for (FibonacciHeapNode<T> *node : degreeTable) {
     if (node != nullptr) {
-      if (minNode == nullptr)
+      if (minNode == nullptr) {
         minNode = node;
-      else {
+      } else {
         node->left->right = node->right;
         node->right->left = node->left;
         minNode->left->right = node;
@@ -227,27 +230,22 @@ void FibonacciHeap<T>::link(FibonacciHeapNode<T> *child,
 template <typename T>
 void FibonacciHeap<T>::cut(FibonacciHeapNode<T> *node,
                            FibonacciHeapNode<T> *parent) {
-  // If node is the only child of parent, set parent's child to nullptr
-  if (node->right == node)
+  if (node->right == node) {
     parent->child = nullptr;
-  else {
-    // Remove node from parent's child list
+  } else {
     node->left->right = node->right;
     node->right->left = node->left;
 
-    // Update parent's child if necessary
     if (parent->child == node)
       parent->child = node->right;
   }
 
-  // Decrement parent's degree and add node to the root list
   parent->degree--;
   node->left = minNode->left;
   node->right = minNode;
   minNode->left->right = node;
   minNode->left = node;
 
-  // Reset node's parent and mark status
   node->parent = nullptr;
   node->marked = false;
 }
@@ -256,16 +254,13 @@ template <typename T>
 void FibonacciHeap<T>::cascadingCut(FibonacciHeapNode<T> *node) {
   FibonacciHeapNode<T> *parent = node->parent;
   if (parent != nullptr) {
-    // If the node has already been marked, perform a cut operation and
-    // recursively cascade cut its parent
     if (node->marked) {
       cut(node, parent);
       cascadingCut(parent);
     } else {
-      // Mark the node
       node->marked = true;
     }
   }
 }
 
-#endif // MODULES_BODROV_DANIIL_FIBONACCI_LAB2_INCLUDE_FIBONACCI_HEAP_H_
+#endif  // MODULES_BODROV_DANIIL_FIBONACCI_HEAP_INCLUDE_FIBONACCI_HEAP_H_
