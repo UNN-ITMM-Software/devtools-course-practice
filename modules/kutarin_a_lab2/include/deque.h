@@ -21,6 +21,7 @@ class Deque {
     ~Deque();
     void push_front(T value);
     void push_back(T value);
+    Deque& operator=(const Deque& other);
     T pop_front();
     T pop_back();
     bool empty() const;
@@ -115,6 +116,21 @@ bool Deque<T>::empty() const {
 template <typename T>
 size_t Deque<T>::size() const {
     return size_;
+}
+
+template <typename T>
+Deque<T>& Deque<T>::operator=(const Deque<T>& other) {
+    if (this != &other) {
+        while (!empty()) {
+            pop_front();
+        }
+        Node<T>* current = other.front_;
+        while (current) {
+            push_back(current->value);
+            current = current->next;
+        }
+    }
+    return *this;
 }
 
 #endif  // MODULES_KUTARIN_A_LAB2_INCLUDE_DEQUE_H_
