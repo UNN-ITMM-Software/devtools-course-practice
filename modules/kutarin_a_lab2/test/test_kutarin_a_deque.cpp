@@ -7,7 +7,7 @@
 
 TEST(DequeTest, PushPopFront) {
     // Arrange
-    Deque dq;
+    Deque<int> dq;
     int value = 1;
 
     // Act
@@ -21,7 +21,7 @@ TEST(DequeTest, PushPopFront) {
 
 TEST(DequeTest, PushPopBack) {
     // Arrange
-    Deque dq;
+    Deque<int> dq;
     int value = 1;
 
     // Act
@@ -35,7 +35,7 @@ TEST(DequeTest, PushPopBack) {
 
 TEST(DequeTest, Empty) {
     // Arrange
-    Deque dq;
+    Deque<int> dq;
 
     // Act & Assert
     EXPECT_TRUE(dq.empty());
@@ -49,7 +49,7 @@ TEST(DequeTest, Empty) {
 
 TEST(DequeTest, PopEmpty) {
     // Arrange
-    Deque dq;
+    Deque<int> dq;
 
     // Act & Assert
     EXPECT_THROW(dq.pop_front(), std::runtime_error);
@@ -58,7 +58,7 @@ TEST(DequeTest, PopEmpty) {
 
 TEST(DequeTest, PushFrontPopBack) {
     // Arrange
-    Deque dq;
+    Deque<int> dq;
     int value = 1;
 
     // Act
@@ -72,7 +72,7 @@ TEST(DequeTest, PushFrontPopBack) {
 
 TEST(DequeTest, PushBackPopFront) {
     // Arrange
-    Deque dq;
+    Deque<int> dq;
     int value = 1;
 
     // Act
@@ -86,7 +86,7 @@ TEST(DequeTest, PushBackPopFront) {
 
 TEST(DequeTest, Order) {
     // Arrange
-    Deque dq;
+    Deque<int> dq;
     int value1 = 1;
     int value2 = 2;
 
@@ -103,7 +103,7 @@ TEST(DequeTest, Order) {
 
 TEST(DequeTest, LargeAmount) {
     // Arrange
-    Deque dq;
+    Deque<int> dq;
     int n = 1000;
 
     // Act & Assert
@@ -118,7 +118,7 @@ TEST(DequeTest, LargeAmount) {
 
 TEST(DequeTest, Double) {
     // Arrange
-    Deque<double> dq;
+    Deque<int><double> dq;
     double value = 1.5;
 
     // Act
@@ -132,7 +132,7 @@ TEST(DequeTest, Double) {
 
 TEST(DequeTest, String) {
     // Arrange
-    Deque<std::string> dq;
+    Deque<int><std::string> dq;
     std::string value = "test";
 
     // Act
@@ -146,12 +146,12 @@ TEST(DequeTest, String) {
 
 TEST(DequeTest, CopyConstructor) {
     // Arrange
-    Deque<int> dq1;
+    Deque<int><int> dq1;
     dq1.push_back(1);
     dq1.push_back(2);
 
     // Act
-    Deque<int> dq2 = dq1;
+    Deque<int><int> dq2 = dq1;
 
     // Assert
     EXPECT_EQ(dq2.pop_front(), 1);
@@ -161,12 +161,12 @@ TEST(DequeTest, CopyConstructor) {
 
 TEST(DequeTest, MoveConstructor) {
     // Arrange
-    Deque<int> dq1;
+    Deque<int><int> dq1;
     dq1.push_back(1);
     dq1.push_back(2);
 
     // Act
-    Deque<int> dq2 = std::move(dq1);
+    Deque<int><int> dq2 = std::move(dq1);
 
     // Assert
     EXPECT_EQ(dq2.pop_front(), 1);
@@ -176,10 +176,10 @@ TEST(DequeTest, MoveConstructor) {
 
 TEST(DequeTest, CopyAssignment) {
     // Arrange
-    Deque<int> dq1;
+    Deque<int><int> dq1;
     dq1.push_back(1);
     dq1.push_back(2);
-    Deque<int> dq2;
+    Deque<int><int> dq2;
 
     // Act
     dq2 = dq1;
@@ -192,10 +192,10 @@ TEST(DequeTest, CopyAssignment) {
 
 TEST(DequeTest, MoveAssignment) {
     // Arrange
-    Deque<int> dq1;
+    Deque<int><int> dq1;
     dq1.push_back(1);
     dq1.push_back(2);
-    Deque<int> dq2;
+    Deque<int><int> dq2;
 
     // Act
     dq2 = std::move(dq1);
