@@ -3,16 +3,27 @@
 #include "include/deque.h"
 #include <stdexcept>
 
-Deque::Deque() : front_(nullptr), back_(nullptr) {}
+Deque(const Deque& other) : front_(nullptr), back_(nullptr), size_(0) {
+    Node* current = other.front_;
+    while (current) {
+        push_back(current->value);
+        current = current->next;
+    }
+}
 
-Deque::~Deque() {
+template <typename T>
+Deque<T>::Deque() : front_(nullptr), back_(nullptr) {}
+
+template <typename T>
+Deque<T>::~Deque() {
     while (!empty()) {
         pop_front();
     }
 }
 
-void Deque::push_front(int value) {
-    Node* new_node = new Node{value, front_, nullptr};
+template <typename T>
+void Deque<T>::push_front(T value) {
+    Node<T>* new_node = new Node<T>{value, front_, nullptr};
     if (front_) {
         front_->prev = new_node;
     } else {
@@ -21,8 +32,9 @@ void Deque::push_front(int value) {
     front_ = new_node;
 }
 
-void Deque::push_back(int value) {
-    Node* new_node = new Node{value, nullptr, back_};
+template <typename T>
+void Deque<T>::push_back(T value) {
+    Node<T>* new_node = new Node<T>{value, nullptr, back_};
     if (back_) {
         back_->next = new_node;
     } else {
@@ -31,12 +43,13 @@ void Deque::push_back(int value) {
     back_ = new_node;
 }
 
-int Deque::pop_front() {
+template <typename T>
+T Deque<T>::pop_front() {
     if (empty()) {
         throw std::runtime_error("Deque is empty");
     }
-    int value = front_->value;
-    Node* old_front = front_;
+    T value = front_->value;
+    Node<T>* old_front = front_;
     front_ = front_->next;
     if (front_) {
         front_->prev = nullptr;
@@ -47,12 +60,13 @@ int Deque::pop_front() {
     return value;
 }
 
-int Deque::pop_back() {
+template <typename T>
+T Deque<T>::pop_back() {
     if (empty()) {
         throw std::runtime_error("Deque is empty");
     }
-    int value = back_->value;
-    Node* old_back = back_;
+    T value = back_->value;
+    Node<T>* old_back = back_;
     back_ = back_->prev;
     if (back_) {
         back_->next = nullptr;
@@ -63,6 +77,12 @@ int Deque::pop_back() {
     return value;
 }
 
-bool Deque::empty() const {
+template <typename T>
+bool Deque<T>::empty() const {
     return front_ == nullptr;
+}
+
+template <typename T>
+size_t Deque<T>::size() const {
+    return size_;
 }
