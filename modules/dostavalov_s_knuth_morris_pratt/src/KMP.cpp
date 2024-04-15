@@ -20,12 +20,6 @@ namespace KnuthMorrisPratt {
             prefixArray[q] = border;
         }
 
-        std::cout << "Prefix: ";
-        for (int value : prefixArray) {
-            std::cout << value << " ";
-        }
-        std::cout << std::endl;
-
         return prefixArray;
     }
 
@@ -48,12 +42,6 @@ namespace KnuthMorrisPratt {
                 border = prefixArray[border - 1];
             }
         }
-
-        std::cout << "found at positions: ";
-        for (int position : occurrences) {
-            std::cout << position << " ";
-        }
-        std::cout << std::endl;
 
         return occurrences;
     }
