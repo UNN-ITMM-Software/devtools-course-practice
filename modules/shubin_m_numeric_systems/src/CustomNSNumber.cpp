@@ -37,11 +37,10 @@ CustomNSNumber::CustomNSNumber(const CustomNSNumber& _num) {
 CustomNSNumber::CustomNSNumber(CustomNSNumber&& _num) {
   num_sys = _num.num_sys;
   negative = _num.negative;
-  digits = _num.digits;
+  digits = std::move(_num.digits);
 
   _num.num_sys = 0;
   _num.negative = false;
-  _num.digits.clear();
 }
 
 void CustomNSNumber::SetNumSys(size_t _num_sys) {
@@ -91,11 +90,11 @@ void CustomNSNumber::SetNumSys(size_t _num_sys) {
   }
 }
 
-size_t CustomNSNumber::GetNumSys() {
+size_t CustomNSNumber::GetNumSys() const noexcept {
   return num_sys;
 }
 
-size_t CustomNSNumber::GetLength() {
+size_t CustomNSNumber::GetLength() const noexcept {
   return digits.size();
 }
 
@@ -148,7 +147,7 @@ CustomNSNumber CustomNSNumber::ToNumSys(size_t _num_sys) const {
   return res;
 }
 
-number_t CustomNSNumber::ToDec() {
+number_t CustomNSNumber::ToDec() const noexcept {
   number_t res = 0;
 
   number_t temp_number = 0;
@@ -168,7 +167,7 @@ number_t CustomNSNumber::ToDec() {
   return res;
 }
 
-bool CustomNSNumber::IsNegative() {
+bool CustomNSNumber::IsNegative() const noexcept {
   return negative;
 }
 
@@ -338,32 +337,20 @@ CustomNSNumber CustomNSNumber::operator*(const CustomNSNumber& _num) {
   return res;
 }
 
-bool CustomNSNumber::operator==(const CustomNSNumber& _num) {
-  CustomNSNumber temp = _num;
-  number_t lhs = ToDec();
-  number_t rhs = temp.ToDec();
-  return (lhs == rhs);
+bool CustomNSNumber::operator==(const CustomNSNumber& _num) const noexcept {
+  return (ToDec() == _num.ToDec());
 }
 
-bool CustomNSNumber::operator!=(const CustomNSNumber& _num) {
-  CustomNSNumber temp = _num;
-  number_t lhs = ToDec();
-  number_t rhs = temp.ToDec();
-  return (lhs != rhs);
+bool CustomNSNumber::operator!=(const CustomNSNumber& _num) const noexcept {
+  return (ToDec() != _num.ToDec());
 }
 
-bool CustomNSNumber::operator<(const CustomNSNumber& _num) {
-  CustomNSNumber temp = _num;
-  number_t lhs = ToDec();
-  number_t rhs = temp.ToDec();
-  return (lhs < rhs);
+bool CustomNSNumber::operator<(const CustomNSNumber& _num) const noexcept {
+  return (ToDec() < _num.ToDec());
 }
 
-bool CustomNSNumber::operator>(const CustomNSNumber& _num) {
-  CustomNSNumber temp = _num;
-  number_t lhs = ToDec();
-  number_t rhs = temp.ToDec();
-  return (lhs > rhs);
+bool CustomNSNumber::operator>(const CustomNSNumber& _num) const noexcept {
+  return (ToDec() > _num.ToDec());
 }
 
 digit_t& CustomNSNumber::operator[](size_t ind) {
@@ -388,11 +375,10 @@ CustomNSNumber& CustomNSNumber::operator=(CustomNSNumber&& _num) {
   if (this != &_num) {
     num_sys = _num.num_sys;
     negative = _num.negative;
-    digits = _num.digits;
+    digits = std::move(_num.digits);
 
     _num.num_sys = 0;
     _num.negative = false;
-    _num.digits.clear();
   }
 
   return *this;

@@ -8,8 +8,8 @@
 #include <iostream>
 #include <vector>
 
-#define digit_t size_t
-#define number_t int64_t
+using digit_t = size_t;
+using number_t = int64_t;
 
 class CustomNSNumber {
  protected:
@@ -25,20 +25,20 @@ class CustomNSNumber {
   ~CustomNSNumber() = default;
 
   void SetNumSys(size_t _num_sys);
-  size_t GetNumSys();
-  size_t GetLength();
+  size_t GetNumSys() const noexcept;
+  size_t GetLength() const noexcept;
   CustomNSNumber ToNumSys(size_t _num_sys) const;
-  number_t ToDec();
-  bool IsNegative();
+  number_t ToDec() const noexcept;
+  bool IsNegative() const noexcept;
 
   CustomNSNumber operator+(const CustomNSNumber& _num);
   CustomNSNumber operator-(const CustomNSNumber& _num);
   CustomNSNumber operator*(const CustomNSNumber& _num);
 
-  bool operator==(const CustomNSNumber& _num);
-  bool operator!=(const CustomNSNumber& _num);
-  bool operator>(const CustomNSNumber& _num);
-  bool operator<(const CustomNSNumber& _num);
+  bool operator==(const CustomNSNumber& _num) const noexcept;
+  bool operator!=(const CustomNSNumber& _num) const noexcept;
+  bool operator>(const CustomNSNumber& _num) const noexcept;
+  bool operator<(const CustomNSNumber& _num) const noexcept;
 
   digit_t& operator[](size_t ind);
   const digit_t& operator[](size_t ind) const;
