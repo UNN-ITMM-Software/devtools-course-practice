@@ -18,10 +18,12 @@ class Deque {
  public:
     Deque();
     Deque(const Deque& other);
+    Deque(Deque&& other) noexcept;
     ~Deque();
     void push_front(T value);
     void push_back(T value);
     Deque& operator=(const Deque& other);
+    Deque& operator=(Deque&& other) noexcept;
     T pop_front();
     T pop_back();
     bool empty() const;
@@ -44,6 +46,14 @@ Deque<T>::Deque(const Deque<T>& other) : front_(nullptr),
 
 template <typename T>
 Deque<T>::Deque() : front_(nullptr), back_(nullptr) {}
+
+template <typename T>
+Deque<T>::Deque(Deque<T>&& other) noexcept : front_(other.front_),
+ back_(other.back_), size_(other.size_) {
+    other.front_ = nullptr;
+    other.back_ = nullptr;
+    other.size_ = 0;
+}
 
 template <typename T>
 Deque<T>::~Deque() {
@@ -129,6 +139,22 @@ Deque<T>& Deque<T>::operator=(const Deque<T>& other) {
             push_back(current->value);
             current = current->next;
         }
+    }
+    return *this;
+}
+
+template <typename T>
+Deque<T>& Deque<T>::operator=(Deque<T>&& other) noexcept {
+    if (this != &other) {
+        while (!empty()) {
+            pop_front();
+        }
+        front_ = other.front_;
+        back_ = other.back_;
+        size_ = other.size_;
+        other.front_ = nullptr;
+        other.back_ = nullptr;
+        other.size_ = 0;
     }
     return *this;
 }
