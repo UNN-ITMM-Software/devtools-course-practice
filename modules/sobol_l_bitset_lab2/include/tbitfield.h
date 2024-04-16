@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <utility>
 
 typedef unsigned char TELEM;
 class TBitField {
