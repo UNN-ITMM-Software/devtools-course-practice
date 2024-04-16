@@ -44,13 +44,15 @@ template <typename T> class FibonacciHeap {
   void link(FibonacciHeapNode<T> *child, FibonacciHeapNode<T> *parent);
   void cut(FibonacciHeapNode<T> *node, FibonacciHeapNode<T> *parent);
   void cascadingCut(FibonacciHeapNode<T> *node);
+  void release(FibonacciHeapNode<T>* heapNode);
 };
 
 template <typename T>
 FibonacciHeap<T>::FibonacciHeap() : minNode(nullptr), size(0) {}
 
-template <typename T> FibonacciHeap<T>::~FibonacciHeap() {
-  // :)
+template <typename T>
+FibonacciHeap<T>::~FibonacciHeap() {
+  release(minNode);
 }
 
 template <typename T> bool FibonacciHeap<T>::empty() const {
@@ -262,6 +264,22 @@ void FibonacciHeap<T>::cascadingCut(FibonacciHeapNode<T> *node) {
       node->marked = true;
     }
   }
+}
+
+template <typename T>
+void FibonacciHeap<T>::release(FibonacciHeapNode<T>* heapNode) {
+    if (heapNode == nullptr) {
+        return;
+    }
+
+    FibonacciHeapNode<T>* end = heapNode;
+    do {
+        release(heapNode->child);
+
+        FibonacciHeapNode<T>* right = heapNode->right;
+        delete heapNode;
+        heapNode = right;
+    } while (heapNode != end);
 }
 
 #endif  // MODULES_BODROV_DANIIL_FIBONACCI_HEAP_INCLUDE_FIBONACCI_HEAP_H_
