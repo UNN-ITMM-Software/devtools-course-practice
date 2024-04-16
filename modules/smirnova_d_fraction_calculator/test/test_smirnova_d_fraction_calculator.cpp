@@ -64,7 +64,7 @@ TEST(FractionCalculatorTest, Denominator_Zero_Throws_Exception) {
     EXPECT_THROW({
         FractionCalculator a(3, 8);
         FractionCalculator b(5, 0);
-        }, std::string);
+        }, std::invalid_argument);
 }
 
 TEST(FractionCalculatorTest, Divide_Fractions_Diff_Denominators) {

@@ -3,6 +3,7 @@
 #include "include/fraction_calculator.h"
 
 #include <math.h>
+#include <stdexcept>
 #include <string>
 
 FractionCalculator::FractionCalculator() : num(0), den(1) {}
@@ -11,7 +12,7 @@ FractionCalculator::FractionCalculator(const int numerator,
     const int denominator)
     : num(numerator) {
     if (denominator == 0)
-        throw std::string("Denominator cannot be a zero");
+        throw std::invalid_argument("Denominator cannot be a zero");
     else
         den = denominator;
 }
@@ -30,7 +31,7 @@ int FractionCalculator::GetDen() const {
 
 void FractionCalculator::SetDen(const int denominator) {
     if (denominator == 0)
-        throw std::string("Denominator cannot be a zero");
+        throw std::invalid_argument("Denominator cannot be zero");
     den = denominator;
 }
 
@@ -94,7 +95,7 @@ FractionCalculator FractionCalculator::operator/(
     int denominator = this->GetDen() * obj.GetNum();
 
     if (denominator == 0)
-        throw std::string("Division by zero");
+        throw std::invalid_argument("Division by zero");
 
     int nod = NOD(numerator, denominator);
 
