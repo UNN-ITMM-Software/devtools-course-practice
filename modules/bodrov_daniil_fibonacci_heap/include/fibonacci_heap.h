@@ -44,7 +44,7 @@ template <typename T> class FibonacciHeap {
   void link(FibonacciHeapNode<T> *child, FibonacciHeapNode<T> *parent);
   void cut(FibonacciHeapNode<T> *node, FibonacciHeapNode<T> *parent);
   void cascadingCut(FibonacciHeapNode<T> *node);
-  void release(FibonacciHeapNode<T>* heapNode);
+  void clear(FibonacciHeapNode<T>* heapNode);
 };
 
 template <typename T>
@@ -52,7 +52,7 @@ FibonacciHeap<T>::FibonacciHeap() : minNode(nullptr), size(0) {}
 
 template <typename T>
 FibonacciHeap<T>::~FibonacciHeap() {
-  release(minNode);
+  clear(minNode);
 }
 
 template <typename T> bool FibonacciHeap<T>::empty() const {
@@ -267,14 +267,14 @@ void FibonacciHeap<T>::cascadingCut(FibonacciHeapNode<T> *node) {
 }
 
 template <typename T>
-void FibonacciHeap<T>::release(FibonacciHeapNode<T>* heapNode) {
+void FibonacciHeap<T>::clear(FibonacciHeapNode<T>* heapNode) {
     if (heapNode == nullptr) {
         return;
     }
 
     FibonacciHeapNode<T>* end = heapNode;
     do {
-        release(heapNode->child);
+        clear(heapNode->child);
 
         FibonacciHeapNode<T>* right = heapNode->right;
         delete heapNode;
