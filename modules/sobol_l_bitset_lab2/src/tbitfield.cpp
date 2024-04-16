@@ -8,7 +8,7 @@ static TBitField FAKE_BITFIELD(1);
 
 TBitField::TBitField(int len) {
     if (len < 0)
-        throw -1;
+        throw std::invalid_argument("Invalid BitField size");
     BitLen = len;
     const int bitsInElem = sizeof(TELEM) * 8;
     MemLen = (BitLen - 1) / bitsInElem + 1;
@@ -66,19 +66,19 @@ int TBitField::GetLength(void) const {  // получить длину (к-во 
 
 void TBitField::SetBit(const int n) {  // установить бит
     if ((n >= BitLen) || (n <= -1))
-        throw -1;
+        throw std::out_of_range("Wrong position");
     pMem[GetMemIndex(n)] |= GetMemMask(n);
 }
 
 void TBitField::ClrBit(const int n) {  // очистить бит
     if ((n >= BitLen) || (n <= -1))
-        throw -1;
+        throw std::out_of_range("Wrong position");
     pMem[GetMemIndex(n)] &= ~GetMemMask(n);
 }
 
 int TBitField::GetBit(const int n) const {  // получить значение бита
     if ((n >= BitLen) || (n <= -1))
-        throw -1;
+        throw std::out_of_range("Wrong position");
     int ans = 0;
     if ((pMem[GetMemIndex(n)] & GetMemMask(n)) != 0)
         ans = 1;
@@ -161,7 +161,7 @@ std::istream& operator>>(std::istream& istr, TBitField& bf) {  // ввод
         else if (input == '0')
             bf.ClrBit(i++);
         else
-            throw -1;
+            throw std::invalid_argument("Invalid input");
     } while (input != ' ');
     return istr;
 }
@@ -174,7 +174,7 @@ std::ostream& operator<<(std::ostream& ostr, const TBitField& bf) {  // выво
         else if (bf.GetBit(i) == 0)
             ostr << 0;
         else
-            throw -1;
+            throw std::invalid_argument("Invalid input");
     }
     return ostr;
     // формат данных xxxxx(e.g 00110)

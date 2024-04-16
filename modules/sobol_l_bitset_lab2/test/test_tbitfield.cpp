@@ -21,6 +21,11 @@ TEST(TBitField, can_create_bitfield_with_positive_length) {
   ASSERT_NO_THROW(TBitField bf(3));
 }
 
+TEST(TBitField, check_move_constructor) {
+    TBitField bf(3);
+    ASSERT_NO_THROW(TBitField a = std::move(bf););
+}
+
 TEST(TBitField, can_get_length) {
   TBitField bf(3);
   EXPECT_EQ(3, bf.GetLength());
@@ -219,7 +224,8 @@ TEST(TBitField, can_invert_bitfield) {
   TBitField bf(size), negBf(size), expNegBf(size);
   // bf = 01
   bf.SetBit(1);
-  negBf = ~bf;
+
+  ASSERT_NO_THROW(negBf = ~bf);
 
   // expNegBf = 10
   expNegBf.SetBit(0);
