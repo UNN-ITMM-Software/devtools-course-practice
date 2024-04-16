@@ -11,6 +11,16 @@ class ChessBoard {
   std::set<Point> obstacles;
 
  public:
+  /**
+   * @brief Constructs a ChessBoard object.
+   *
+   * Initializes a ChessBoard object with the specified size and set of
+   * obstacles.
+   *
+   * @param size The size of the chessboard (default is 8x8).
+   * @param obstacles A set of obstacles represented as a set of points (default
+   * is empty).
+   */
   explicit ChessBoard(int size = 8, const std::set<Point> &obstacles = {})
       : _size(size), obstacles(obstacles) {}
   void addObstacle(const ChessBoard::Point &point);
@@ -21,10 +31,10 @@ class ChessBoard {
   bool available(const ChessBoard::Point &point);
   std::set<Point> getPossibleMoves(const ChessBoard::Point &point);
   int bfs(Point start, Point end);
-  std::set<Point> knightMoves = {{1, 2},   {2, 1},    /*I quarter*/
-                                 {2, -1},  {1, -2},   /*II quarter*/
-                                 {-1, -2}, {-2, -1},  /*III quarter*/
-                                 {-2, 1},  {-1, 2}};  /*IV quarter*/
+  std::set<Point> knightMoves = {{1, 2},   {2, 1},   /*I quarter*/
+                                 {2, -1},  {1, -2},  /*II quarter*/
+                                 {-1, -2}, {-2, -1}, /*III quarter*/
+                                 {-2, 1},  {-1, 2}}; /*IV quarter*/
 };
 
 #endif  // MODULES_PODYACHIKH_KNIGHT_MOVES_LAB2_INCLUDE_CHESS_BOARD_H_

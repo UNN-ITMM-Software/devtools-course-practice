@@ -2,7 +2,7 @@
 
 #include <map>
 #include <queue>
-#include <string>
+#include <stdexcept>
 
 #include "include/chess_board.h"
 
@@ -16,7 +16,8 @@
  */
 void ChessBoard::addObstacle(const ChessBoard::Point &point) {
   if (!inside(point)) {
-    throw std::string("The point of the added obstacle outside the chessboard");
+    throw std::invalid_argument(
+        "The point of the added obstacle outside the chessboard");
   }
   obstacles.insert(point);
 }
@@ -58,17 +59,17 @@ ChessBoard::getPossibleMoves(const ChessBoard::Point &point) {
  *
  * @param start The starting point (row, column) on the chessboard.
  * @param end The ending point (row, column) on the chessboard.
- * @throws std::string Exception with appropriate message if start or end point
- * is not available.
+ * @throws std::invalid_argument Exception with appropriate message if start or
+ * end point is not available.
  * @return The minimum number of moves required for the knight to reach from
  * start to end. Returns -1 if the endpoint is unreachable
  */
 int ChessBoard::knightDistance(ChessBoard::Point start, ChessBoard::Point end) {
   if (!available(start)) {
-    throw std::string("Start point is not available");
+    throw std::invalid_argument("Start point is not available");
   }
   if (!available(end)) {
-    throw std::string("End point is not available");
+    throw std::invalid_argument("End point is not available");
   }
   return bfs(start, end);
 }

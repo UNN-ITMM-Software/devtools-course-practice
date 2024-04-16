@@ -13,10 +13,10 @@ TEST(testMinKnightMoves, obstacleExceptions) {
 
 TEST(testMinKnightMoves, knightExceptions) {
   ChessBoard board = ChessBoard(12);
-  std::pair<int, int> available = {2, 5};
-  std::pair<int, int> notAvailable = {-1, 4};
-  std::pair<int, int> obstacle1 = {1, 2};
-  std::pair<int, int> obstacle2 = {7, 10};
+  std::pair<int, int> available{2, 5};
+  std::pair<int, int> notAvailable{-1, 4};
+  std::pair<int, int> obstacle1{1, 2};
+  std::pair<int, int> obstacle2{7, 10};
   board.addObstacle(obstacle1);
   board.addObstacle(obstacle2);
   ASSERT_ANY_THROW(board.knightDistance(available, notAvailable));
@@ -28,24 +28,24 @@ TEST(testMinKnightMoves, knightExceptions) {
 
 TEST(testMinKnightMoves, emptyBoardOneMove) {
   ChessBoard emptyBoard = ChessBoard();
-  std::pair<int, int> start = {0, 0};
-  std::pair<int, int> end = {1, 2};
+  std::pair<int, int> start{0, 0};
+  std::pair<int, int> end{1, 2};
   int dist = emptyBoard.knightDistance(start, end);
   EXPECT_EQ(dist, 1);
 }
 
 TEST(testMinKnightMoves, emptyBoardCorners) {
   ChessBoard emptyBoard = ChessBoard();
-  std::pair<int, int> start = {0, 0};
-  std::pair<int, int> end = {7, 7};
+  std::pair<int, int> start{0, 0};
+  std::pair<int, int> end{7, 7};
   int dist = emptyBoard.knightDistance(start, end);
   EXPECT_EQ(dist, 6);
 }
 
 TEST(testMinKnightMoves, zeroDistance) {
   ChessBoard board = ChessBoard();
-  std::pair<int, int> start = {0, 0};
-  std::pair<int, int> end = {0, 0};
+  std::pair<int, int> start{0, 0};
+  std::pair<int, int> end{0, 0};
   int dist = board.knightDistance(start, end);
   EXPECT_EQ(dist, 0);
 }
@@ -64,8 +64,8 @@ TEST(testMinKnightMoves, unreachable) {
 TEST(testMinKnightMoves, smallBoard) {
   ChessBoard board = ChessBoard(3);
 
-  std::pair<int, int> start = {0, 0};
-  std::pair<int, int> end = {1, 1};
+  std::pair<int, int> start{0, 0};
+  std::pair<int, int> end{1, 1};
   int dist = board.knightDistance(start, end);
   EXPECT_EQ(dist, -1);
 
