@@ -98,7 +98,7 @@
 
 | Тема | ЛР#2 | ЛР#3 |
 |---|---|---|
-| [Игра "Жизнь" Конвея](https://github.com/garora/TDD-Katas/blob/master/KatasReadme.md#game-of-life-) |Кудинов Никита 3821Б1ПР1||
+| [Игра "Жизнь" Конвея](https://github.com/garora/TDD-Katas/blob/master/KatasReadme.md#game-of-life-) |Кудинов Никита 3821Б1ПР1|Киселёв Игорь 3821Б1ПР1|
 | [Правило 30](https://en.wikipedia.org/wiki/Rule_30) |||
 | [Вычисление скидок на книги](https://github.com/garora/TDD-Katas/blob/master/KatasReadme.md#harry-potter-) |||
 | [Перевод чисел в их словесное написание на английском](http://codingdojo.org/kata/NumbersInWords/) |||
