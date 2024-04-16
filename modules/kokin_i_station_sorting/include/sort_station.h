@@ -20,10 +20,9 @@ class SortStation {
 class SortStationDerived : public SortStation {
  public:
      double evaluateFunction(const std::string& expression) override;
-
+     double evaluatePostfixExpression(const std::string& postfix);
  private:
      double applyOperator(double a, double b, char op);
-     double evaluatePostfixExpression(const std::string& postfix);
      std::string convertToPostfix(const std::string& expression);
 };
 

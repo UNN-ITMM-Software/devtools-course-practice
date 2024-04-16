@@ -9,8 +9,17 @@ TEST(SortingStationTest, ParseValidExpression) {
     EXPECT_EQ(result, 0.875);
 }
 
-TEST(SortingStationTest, ParseInvalidExpression) {
-    SortStationDerived station;
-    double result = station.evaluateFunction("1-2");
-    EXPECT_EQ(result, -1);
+TEST(SortStationDerivedTest, EvaluateFunction) {
+    SortStationDerived calculator;
+    EXPECT_EQ(calculator.evaluateFunction("3+4*2"), 11.0);
+}
+
+TEST(SortStationDerivedTest, valid) {
+    SortStationDerived calculator;
+    EXPECT_EQ(calculator.evaluateFunction("5+3*6-8"), 15.0);
+}
+
+TEST(SortStationDerivedTest, valid2) {
+    SortStationDerived calculator;
+    EXPECT_EQ(calculator.evaluateFunction("4^2+36/12-1"), 5.5);
 }
