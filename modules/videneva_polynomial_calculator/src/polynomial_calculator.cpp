@@ -34,7 +34,8 @@ polynomial_calculator(const polynomial_calculator& _Polynom) {
     }
 }
 
-polynomial_calculator& polynomial_calculator::operator=(const polynomial_calculator& v) {
+polynomial_calculator& polynomial_calculator::
+operator=(const polynomial_calculator& v) {
     if (this != &v) {
     coeff_a.clear();
     for (int i = 0; i < v.GetSize(); i++) {
@@ -44,14 +45,16 @@ polynomial_calculator& polynomial_calculator::operator=(const polynomial_calcula
   return *this;
 }
 
-polynomial_calculator& polynomial_calculator:: operator=(polynomial_calculator&& v) noexcept {
+polynomial_calculator& polynomial_calculator::
+operator=(polynomial_calculator&& v) noexcept {
 if (this != &v) {
     coeff_a = std::move(v.coeff_a);
   }
   return *this;
 }
 
-polynomial_calculator:: polynomial_calculator(polynomial_calculator&& v) noexcept {
+polynomial_calculator::
+polynomial_calculator(polynomial_calculator&& v) noexcept {
   coeff_a = std::move(v.coeff_a);
 }
 
