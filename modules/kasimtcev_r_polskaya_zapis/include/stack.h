@@ -72,7 +72,7 @@ TStack<T>& TStack<T>::operator=(const TStack& v) {
 }
 
 template<class T>
-inline TStack<T>::TStack(TStack&& v) noexcept {
+inline TStack<T>& TStack<T>::operator=(TStack&& v) noexcept {
     if (this != &v) {
         if (mem != nullptr) delete [] mem;
         N = v.N;
