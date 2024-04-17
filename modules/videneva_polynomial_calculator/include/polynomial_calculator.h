@@ -10,7 +10,7 @@
 class polynomial_calculator {
  private:
     std::vector<double> coeff_a;
- 
+
  public:
     polynomial_calculator();
     ~polynomial_calculator() = default;
