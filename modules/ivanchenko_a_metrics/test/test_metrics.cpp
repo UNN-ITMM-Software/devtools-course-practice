@@ -14,6 +14,7 @@ TEST(ivanchenko_a_metrics, l1_zero_if_equal) {
 
     EXPECT_FLOAT_EQ(expected, metrics::l1(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l2_zero_if_equal) {
     std::vector<float> v1, v2;
     float expected;
@@ -25,6 +26,7 @@ TEST(ivanchenko_a_metrics, l2_zero_if_equal) {
 
     EXPECT_FLOAT_EQ(expected, metrics::l2(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l3_zero_if_equal) {
     std::vector<float> v1, v2;
     float expected;
@@ -36,6 +38,7 @@ TEST(ivanchenko_a_metrics, l3_zero_if_equal) {
 
     EXPECT_FLOAT_EQ(expected, metrics::l3(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l4_zero_if_equal) {
     std::vector<float> v1, v2;
     float expected;
@@ -47,6 +50,7 @@ TEST(ivanchenko_a_metrics, l4_zero_if_equal) {
 
     EXPECT_FLOAT_EQ(expected, metrics::l4(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, linf_zero_if_equal) {
     std::vector<float> v1, v2;
     float expected;
@@ -67,6 +71,7 @@ TEST(ivanchenko_a_metrics, l1_throws_if_different_size) {
 
     EXPECT_ANY_THROW(metrics::l1(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l2_throws_if_different_size) {
     std::vector<float> v1, v2;
 
@@ -75,6 +80,7 @@ TEST(ivanchenko_a_metrics, l2_throws_if_different_size) {
 
     EXPECT_ANY_THROW(metrics::l2(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l3_throws_if_different_size) {
     std::vector<float> v1, v2;
 
@@ -83,6 +89,7 @@ TEST(ivanchenko_a_metrics, l3_throws_if_different_size) {
 
     EXPECT_ANY_THROW(metrics::l3(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l4_throws_if_different_size) {
     std::vector<float> v1, v2;
 
@@ -91,6 +98,7 @@ TEST(ivanchenko_a_metrics, l4_throws_if_different_size) {
 
     EXPECT_ANY_THROW(metrics::l4(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, linf_throws_if_different_size) {
     std::vector<float> v1, v2;
 
@@ -110,6 +118,7 @@ TEST(ivanchenko_a_metrics, l1_not_zero_if_not_equal) {
 
     EXPECT_NE(zero, metrics::l1(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l2_not_zero_if_not_equal) {
     std::vector<float> v1, v2;
     float zero;
@@ -120,6 +129,7 @@ TEST(ivanchenko_a_metrics, l2_not_zero_if_not_equal) {
 
     EXPECT_NE(zero, metrics::l2(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l3_not_zero_if_not_equal) {
     std::vector<float> v1, v2;
     float zero;
@@ -131,6 +141,7 @@ TEST(ivanchenko_a_metrics, l3_not_zero_if_not_equal) {
 
     EXPECT_NE(zero, metrics::l3(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l4_not_zero_if_not_equal) {
     std::vector<float> v1, v2;
     float zero;
@@ -141,6 +152,7 @@ TEST(ivanchenko_a_metrics, l4_not_zero_if_not_equal) {
 
     EXPECT_NE(zero, metrics::l4(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, linf_not_zero_if_not_equal) {
     std::vector<float> v1, v2;
     float zero;
@@ -162,6 +174,7 @@ TEST(ivanchenko_a_metrics, l1_expamle) {
 
     EXPECT_FLOAT_EQ(expected, metrics::l1(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l2_expamle) {
     std::vector<float> v1, v2;
     float expected;
@@ -172,6 +185,7 @@ TEST(ivanchenko_a_metrics, l2_expamle) {
 
     EXPECT_FLOAT_EQ(expected, metrics::l2(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l3_example) {
     std::vector<float> v1, v2;
     float expected;
@@ -183,6 +197,7 @@ TEST(ivanchenko_a_metrics, l3_example) {
 
     EXPECT_FLOAT_EQ(expected, metrics::l3(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, l4_example) {
     std::vector<float> v1, v2;
     float expected;
@@ -193,6 +208,7 @@ TEST(ivanchenko_a_metrics, l4_example) {
 
     EXPECT_FLOAT_EQ(expected, metrics::l4(v1, v2));
 }
+
 TEST(ivanchenko_a_metrics, linf_example) {
     std::vector<float> v1, v2;
     float expected;
