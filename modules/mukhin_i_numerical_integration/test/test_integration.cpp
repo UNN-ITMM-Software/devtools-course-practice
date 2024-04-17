@@ -60,8 +60,7 @@ TEST(mukhin_i_test_cases, throw_if_splits_negative) {
         IntegrationMethods::integrate_trapezoid([](double x) { return x; },
                                                 0,
                                                 1,
-                                                -50)
-    );
+                                                -50));
 }
 
 
