@@ -34,33 +34,25 @@ polynomial_calculator(const polynomial_calculator& _Polynom) {
     }
 }
 
-polynomial_calculator& polynomial_calculator::operator=(const polynomial_calculator& v)
-{
-    if (this != &v) 
-  {
+polynomial_calculator& polynomial_calculator::operator=(const polynomial_calculator& v) {
+    if (this != &v) {
     coeff_a.clear();
     for (int i = 0; i < v.GetSize(); i++) {
         coeff_a.push_back(v.coeff_a[i]);
     }
   }
-
   return *this;
 }
 
-polynomial_calculator& polynomial_calculator:: operator=(polynomial_calculator&& v) noexcept
-{
-if (this != &v) 
-  {
-    coeff_a=std::move(v.coeff_a);
+polynomial_calculator& polynomial_calculator:: operator=(polynomial_calculator&& v) noexcept {
+if (this != &v) {
+    coeff_a = std::move(v.coeff_a);
   }
-
   return *this;
-
 }
 
-polynomial_calculator:: polynomial_calculator (polynomial_calculator&& v) noexcept
-{
-  coeff_a=std::move(v.coeff_a);
+polynomial_calculator:: polynomial_calculator(polynomial_calculator&& v) noexcept {
+  coeff_a = std::move(v.coeff_a);
 }
 
 double polynomial_calculator::value(double x) {
