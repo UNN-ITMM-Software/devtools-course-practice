@@ -2,13 +2,16 @@
 
 #include "include/integration_methods.h"
 #include <cstdlib>
+#include <stdexcept>
 
 double IntegrationMethods::integrate_trapezoid(
         const std::function<double(double)> &f,
         double x0, double xn, int n
     ) {
-    n = static_cast<double>(n);
-    double step = std::abs(xn - x0) / n;
+    if (n <= 0) {
+        throw std::invalid_argument("Number of splits must be positive.");
+    }
+    double step = std::abs(xn - x0) / static_cast<double>(n);
     double result = 0.0;
     for (int i = 0; i < n; i++) {
         double x_next = x0 + (i + 1) * step;
@@ -21,8 +24,10 @@ double IntegrationMethods::integrate_quads(
         const std::function<double(double)> &f,
         double x0, double xn, int n
     ) {
-    n = static_cast<double>(n);
-    double step = std::abs(xn - x0) / n;
+    if (n <= 0) {
+        throw std::invalid_argument("Number of splits must be positive.");
+    }
+    double step = std::abs(xn - x0) / static_cast<double>(n);
     double result = 0.0;
     for (int i = 0; i < n; i++) {
         double x_next = x0 + i * step;

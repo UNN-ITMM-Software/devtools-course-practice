@@ -55,6 +55,16 @@ TEST_P(
 }
 
 
+TEST(mukhin_i_test_cases, throw_if_splits_negative) {
+    ASSERT_ANY_THROW(
+        IntegrationMethods::integrate_trapezoid([](double x) { return x; },
+                                                0,
+                                                1,
+                                                -50)
+    );
+}
+
+
 TEST_P(
 
     mukhin_i_parametric_tests_1,
@@ -74,10 +84,10 @@ TEST_P(
 INSTANTIATE_TEST_CASE_P(mukhin_i_test_cases, mukhin_i_parametric_tests_1,
 testing::Values(
     TestCasesHelper([](double x) { return x * x; },
-                                0,
-                                1,
-                                10000,
-                                1.0 / 3.0),
+                    0,
+                    1,
+                    10000,
+                    1.0 / 3.0),
     TestCasesHelper([](double x) { return x * x; },
                     0,
                     10,
