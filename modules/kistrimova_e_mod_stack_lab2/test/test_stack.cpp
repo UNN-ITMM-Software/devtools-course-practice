@@ -96,3 +96,53 @@ TEST(Kistrimova_StackTest, throws_when_create_stack_with_negative_size) {
     // Попытка создать стек с отрицательным размером
     ASSERT_ANY_THROW(Stack<int> stack(-1));
 }
+
+// Тесты для типа данных double
+TEST(Kistrimova_StackTest, can_handle_double_data_type) {
+    Stack<double> stack(3);
+    stack.push(1.1);
+    stack.push(2.2);
+    stack.push(3.3);
+    EXPECT_EQ(false, stack.isEmpty());
+    EXPECT_DOUBLE_EQ(3.3, stack.show_top());
+    EXPECT_DOUBLE_EQ(1.1, stack.getMin());
+
+    double popped = stack.pop();
+    EXPECT_DOUBLE_EQ(3.3, popped);
+    EXPECT_DOUBLE_EQ(2.2, stack.show_top());
+    EXPECT_DOUBLE_EQ(1.1, stack.getMin());
+
+    popped = stack.pop();
+    EXPECT_DOUBLE_EQ(2.2, popped);
+    EXPECT_DOUBLE_EQ(1.1, stack.show_top());
+    EXPECT_DOUBLE_EQ(1.1, stack.getMin());
+
+    popped = stack.pop();
+    EXPECT_DOUBLE_EQ(1.1, popped);
+    EXPECT_EQ(true, stack.isEmpty());
+}
+
+// Тесты для типа данных std::string
+TEST(Kistrimova_StackTest, can_handle_string_data_type) {
+    Stack<std::string> stack(3);
+    stack.push("Hello");
+    stack.push("World");
+    stack.push("!");
+    EXPECT_EQ(false, stack.isEmpty());
+    EXPECT_EQ("!", stack.show_top());
+    EXPECT_EQ("!", stack.getMin());
+
+    std::string popped = stack.pop();
+    EXPECT_EQ("!", popped);
+    EXPECT_EQ("World", stack.show_top());
+    EXPECT_EQ("Hello", stack.getMin());
+
+    popped = stack.pop();
+    EXPECT_EQ("World", popped);
+    EXPECT_EQ("Hello", stack.show_top());
+    EXPECT_EQ("Hello", stack.getMin());
+
+    popped = stack.pop();
+    EXPECT_EQ("Hello", popped);
+    EXPECT_EQ(true, stack.isEmpty());
+}
