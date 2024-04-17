@@ -2,10 +2,10 @@
 
 #define _USE_MATH_DEFINES
 
-#include "include/integration_methods.h"
 #include <gtest/gtest.h>
 #include <cmath>
 #include <functional>
+#include "include/integration_methods.h"
 
 
 struct TestCasesHelper {
@@ -19,12 +19,11 @@ struct TestCasesHelper {
         double x0,
         double xn,
         double n,
-        double expected_answer
-        ) : f(f_),
-            x0(x0),
-            xn(xn),
-            n(n),
-            expected_answer(expected_answer) { }
+        double expected_answer) : f(f_),
+                                  x0(x0),
+                                  xn(xn),
+                                  n(n),
+                                  expected_answer(expected_answer) { }
 };
 
 
@@ -37,7 +36,7 @@ double equals_zero(double x) {
 
 
 class mukhin_i_parametric_tests_1 : 
-      public ::testing::TestWithParam<TestCasesHelper> { };
+    public ::testing::TestWithParam<TestCasesHelper> { };
 
 
 TEST_P(
@@ -45,8 +44,7 @@ TEST_P(
     mukhin_i_parametric_tests_1,
     can_correctly_integrate_trapezoid_with_small_precision
 
-    )
-{
+    ) {
     TestCasesHelper helper = GetParam();
     double numeric_answer = IntegrationMethods::integrate_trapezoid(helper.f,
                                                                     helper.x0,
@@ -62,8 +60,7 @@ TEST_P(
     mukhin_i_parametric_tests_1,
     can_correctly_integrate_quads_with_small_precision
 
-    )
-{
+    ) {
     TestCasesHelper helper = GetParam();
     double numeric_answer = IntegrationMethods::integrate_quads(helper.f,
                                                                 helper.x0,
