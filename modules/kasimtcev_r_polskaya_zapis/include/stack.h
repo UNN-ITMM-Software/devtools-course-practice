@@ -72,34 +72,29 @@ TStack<T>& TStack<T>::operator=(const TStack& v) {
 }
 
 template<class T>
-inline TStack<T>::TStack(TStack&& v) noexcept
-{
-  if (this != &v) 
-  {
-    if (mem != nullptr) delete [] mem;
+inline TStack<T>::TStack(TStack&& v) noexcept{
+    if (this != &v){
+        if (mem != nullptr) delete [] mem;
+        N = v.N;
+        i=v.i;
+        mem = v.mem;
+        v.N = 0;
+        v.i = 0;
+        v.mem = nullptr;
+    }
 
+    return *this;
+}
+
+template<class T>
+inline TStack<T>::TStack(TStack&& v) noexcept{
     N = v.N;
-    i=v.i;
+    i = v.i;
     mem = v.mem;
 
     v.N = 0;
     v.i = 0;
     v.mem = nullptr;
-  }
-
-  return *this;
-}
-
-template<class T>
-inline TStack<T>::TStack(TStack&& v) noexcept
-{
-  N = v.N;
-  i = v.i;
-  mem = v.mem;
-
-  v.N = 0;
-  v.i = 0;
-  v.mem = nullptr;
 }
 
 template <class T>
