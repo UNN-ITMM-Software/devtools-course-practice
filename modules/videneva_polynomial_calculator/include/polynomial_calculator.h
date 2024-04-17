@@ -8,14 +8,19 @@
 #include <iostream>
 
 class polynomial_calculator {
- public:
+ private:
     std::vector<double> coeff_a;
+ public:
     polynomial_calculator();
-    ~polynomial_calculator();
+    ~polynomial_calculator()=default;
     explicit polynomial_calculator(double a0);
     polynomial_calculator(std::vector<double> A, int len);
     polynomial_calculator(const polynomial_calculator& P);
-
+    polynomial_calculator& operator=(const polynomial_calculator& v);
+    polynomial_calculator& operator=(polynomial_calculator&& v) noexcept;
+    polynomial_calculator (polynomial_calculator&& v) noexcept;
+   
+   
     int GetSize() const;
     double value(double x);
 
@@ -26,7 +31,7 @@ class polynomial_calculator {
     polynomial_calculator operator +
         (const polynomial_calculator& P);
     polynomial_calculator operator -
-        (const polynomial_calculator& P);
+        (const polynomial_calculator& P); 
     polynomial_calculator operator *
         (const polynomial_calculator& P);
     polynomial_calculator operator + (const double& _Num) const;
