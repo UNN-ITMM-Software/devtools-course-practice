@@ -4,7 +4,7 @@
 #include <cstdlib>
 
 double IntegrationMethods::integrate_trapezoid(
-        const std::function<double (double)> &f,
+        const std::function<double(double)> &f,
         double x0, double xn, int n
     ) {
     n = static_cast<double>(n);
@@ -18,7 +18,7 @@ double IntegrationMethods::integrate_trapezoid(
 }
 
 double IntegrationMethods::integrate_quads(
-        const std::function<double (double)> &f,
+        const std::function<double(double)> &f,
         double x0, double xn, int n
     ) {
     n = static_cast<double>(n);
