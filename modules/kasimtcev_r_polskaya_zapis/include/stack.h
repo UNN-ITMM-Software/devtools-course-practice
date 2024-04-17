@@ -14,10 +14,12 @@ class TStack {
  public:
     explicit TStack(int _N = 100);
     TStack(const TStack& v);
+    TStack(TStack&& v) noexcept;
     ~TStack();
     void push(T v);
     T pop();
     TStack& operator=(const TStack& v);
+    TStack& operator=(TStack&& v) noexcept;
     bool isEmpty() { return i < 0; }
     bool isFull() { return i >= N - 1; }
 };
@@ -67,6 +69,37 @@ TStack<T>& TStack<T>::operator=(const TStack& v) {
         mem[i] = v.mem[i];
 
     return *this;
+}
+
+template<class T>
+inline TStack<T>::TStack(TStack&& v) noexcept
+{
+  if (this != &v) 
+  {
+    if (mem != nullptr) delete [] mem;
+
+    N = v.N;
+    i=v.i;
+    mem = v.mem;
+
+    v.N = 0;
+    v.i = 0;
+    v.mem = nullptr;
+  }
+
+  return *this;
+}
+
+template<class T>
+inline TStack<T>::TStack(TStack&& v) noexcept
+{
+  N = v.N;
+  i = v.i;
+  mem = v.mem;
+
+  v.N = 0;
+  v.i = 0;
+  v.mem = nullptr;
 }
 
 template <class T>
