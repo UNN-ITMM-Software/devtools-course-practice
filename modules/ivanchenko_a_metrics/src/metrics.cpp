@@ -4,7 +4,7 @@
 
 #include <cmath>
 
-float metrics::l1(std::vector<float> v1, std::vector<float> v2) {
+float metrics::l1(const std::vector<float>&v1, const std::vector<float>&v2) {
     if (v1.size() != v2.size())
         throw std::invalid_argument("vectors have different sizes");
     float res = 0;
@@ -13,7 +13,7 @@ float metrics::l1(std::vector<float> v1, std::vector<float> v2) {
     }
     return res;
 }
-float metrics::l2(std::vector<float> v1, std::vector<float> v2) {
+float metrics::l2(const std::vector<float>&v1, const std::vector<float>&v2) {
     if (v1.size() != v2.size())
         throw std::invalid_argument("vectors have different sizes");
     float res = 0;
@@ -22,7 +22,7 @@ float metrics::l2(std::vector<float> v1, std::vector<float> v2) {
     }
     return std::pow(res, 1.0 / 2);
 }
-float metrics::l3(std::vector<float> v1, std::vector<float> v2) {
+float metrics::l3(const std::vector<float>&v1, const std::vector<float>&v2) {
     if (v1.size() != v2.size())
         throw std::invalid_argument("vectors have different sizes");
     float res = 0;
@@ -31,7 +31,7 @@ float metrics::l3(std::vector<float> v1, std::vector<float> v2) {
     }
     return std::pow(res, 1.0 / 3);
 }
-float metrics::l4(std::vector<float> v1, std::vector<float> v2) {
+float metrics::l4(const std::vector<float>&v1, const std::vector<float>&v2) {
     if (v1.size() != v2.size())
         throw std::invalid_argument("vectors have different sizes");
     float res = 0;
@@ -40,7 +40,7 @@ float metrics::l4(std::vector<float> v1, std::vector<float> v2) {
     }
     return std::pow(res, 1.0 / 4);
 }
-float metrics::linf(std::vector<float> v1, std::vector<float> v2) {
+float metrics::linf(const std::vector<float>&v1, const std::vector<float>&v2) {
     if (v1.size() != v2.size())
         throw std::invalid_argument("vectors have different sizes");
     float res = 0;
