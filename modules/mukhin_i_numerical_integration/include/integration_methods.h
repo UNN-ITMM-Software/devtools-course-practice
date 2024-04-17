@@ -1,3 +1,5 @@
+// Copyright 2024 Mukhin Ivan
+
 #include <functional>
 
 class IntegrationMethods{

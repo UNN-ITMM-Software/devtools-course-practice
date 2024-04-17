@@ -1,3 +1,5 @@
+// Copyright 2024 Mukhin Ivan
+
 #define _USE_MATH_DEFINES
 
 #include <cmath>

@@ -1,3 +1,5 @@
+// Copyright 2024 Mukhin Ivan
+
 #include "include/integration_methods.h"
 #include <cstdlib>
 
