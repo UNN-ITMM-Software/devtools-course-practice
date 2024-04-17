@@ -35,7 +35,7 @@ double equals_zero(double x) {
 }
 
 
-class mukhin_i_parametric_tests_1 : 
+class mukhin_i_parametric_tests_1 :
     public ::testing::TestWithParam<TestCasesHelper> { };
 
 
