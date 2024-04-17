@@ -76,7 +76,7 @@ inline TStack<T>::TStack(TStack&& v) noexcept {
     if (this != &v) {
         if (mem != nullptr) delete [] mem;
         N = v.N;
-        i=v.i;
+        i = v.i;
         mem = v.mem;
         v.N = 0;
         v.i = 0;
