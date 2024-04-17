@@ -12,4 +12,4 @@ class IntegrationMethods{
                                   double x0, double xn, int n);
 };
 
-#endif // MODULES_MUKHIN_I_NUMERICAL_INTEGRATION_INCLUDE_INTEGRATION_METHODS_H_
+#endif  // MODULES_MUKHIN_I_NUMERICAL_INTEGRATION_INCLUDE_INTEGRATION_METHODS_H_
