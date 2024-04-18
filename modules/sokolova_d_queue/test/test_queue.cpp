@@ -81,4 +81,8 @@ TEST(SokolovaDaria_QueueTest, ThrowsExceptionWhenDequeueFromEmptyQueue) {
     Queue<double> q;
     EXPECT_THROW(q.dequeue(), std::out_of_range);
 }
-
+TEST(SokolovaDaria_QueueTest,
+    ThrowsExceptionDequeueFromEmptyQueue) {
+    Queue<double> q;
+    EXPECT_THROW(q.dequeue(), std::out_of_range);
+}
