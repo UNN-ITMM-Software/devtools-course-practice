@@ -21,8 +21,8 @@ TEST(SokolovaDaria_QueueTest,
     ThrowsExceptionFrontOrBackOfEmptyQueue) {
     Queue<std::string> q;
 
-    EXPECT_THROW(q.front(), std::runtime_error);
-    EXPECT_THROW(q.back(), std::runtime_error);
+    EXPECT_THROW(q.front(), std::out_of_range);
+    EXPECT_THROW(q.back(), std::out_of_range);
 }
 
 TEST(SokolovaDaria_QueueTest, IsEmptyInitially) {
@@ -76,5 +76,9 @@ TEST(SokolovaDaria_QueueTest,
     EXPECT_EQ(q2.size(), actualSize);
     EXPECT_EQ(q2.front(), 100);
     EXPECT_EQ(q2.back(), 200);
+}
+TEST(SokolovaDaria_QueueTest, ThrowsExceptionWhenDequeueFromEmptyQueue) {
+    Queue<double> q;
+    EXPECT_THROW(q.dequeue(), std::out_of_range);
 }
 

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <stdexcept>
 
+#define DEFAULT_QUEUE_SIZE 10
 
 template <class ValueType>
 class  Queue {
@@ -17,7 +18,7 @@ class  Queue {
     size_t capacity;
 
  public:
-    explicit Queue(size_t size = 10);
+    explicit Queue(size_t size = DEFAULT_QUEUE_SIZE);
     ~Queue();
     Queue(const Queue& other);
     Queue& operator=(const Queue& other);
@@ -88,7 +89,7 @@ template <class ValueType>
 void Queue<ValueType>::enqueue(
     const ValueType& element) {
     if (isFull()) {
-        throw std::runtime_error("Queue is full");
+        throw std::out_of_range("Queue is full");
     }
     buffer[tail] = element;
     tail = (tail + 1) % capacity;
@@ -101,7 +102,7 @@ void Queue<ValueType>::dequeue() {
         head = (head + 1) % capacity;
         --count;
     } else {
-        throw std::runtime_error("Queue is empty");
+        throw std::out_of_range("Queue is empty");
     }
 }
 
@@ -109,7 +110,7 @@ template <class ValueType>
 const ValueType& Queue<ValueType>::front() const {
     if (!isEmpty()) {
         return buffer[head];
-    } else { throw std::runtime_error("Queue is empty");
+    } else { throw std::out_of_range("Queue is empty");
     }
 }
 
@@ -118,7 +119,7 @@ const ValueType& Queue<ValueType>::back() const {
     if (!isEmpty()) {
         return buffer[(tail + capacity - 1) % capacity];
     } else {
-        throw std::runtime_error("Queue is empty");
+        throw std::out_of_range("Queue is empty");
     }
 }
 
