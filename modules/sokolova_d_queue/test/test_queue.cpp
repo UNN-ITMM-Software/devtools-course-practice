@@ -45,8 +45,8 @@ TEST(SokolovaDaria_QueueTest,
     Queue<std::string> q;
     q.enqueue("one");
     q.enqueue("two");
-
-    EXPECT_EQ(q.size(), 2);
+    size_t actualSize = 2;
+    EXPECT_EQ(q.size(), static_cast<size_t>(actualSize));
 }
 
 TEST(SokolovaDaria_QueueTest, CanCopyQueue) {
