@@ -46,7 +46,8 @@ TEST(SokolovaDaria_QueueTest,
     q.enqueue("one");
     q.enqueue("two");
     size_t actualSize = 2;
-    EXPECT_EQ(q.size(), static_cast<size_t>(actualSize));
+
+    EXPECT_EQ(q.size(), actualSize);
 }
 
 TEST(SokolovaDaria_QueueTest, CanCopyQueue) {
@@ -67,11 +68,12 @@ TEST(SokolovaDaria_QueueTest,
     Queue<int> q1;
     q1.enqueue(100);
     q1.enqueue(200);
+    size_t actualSize = 2;
 
     Queue<int> q2;
     q2 = q1;
 
-    EXPECT_EQ(q2.size(), 2);
+    EXPECT_EQ(q2.size(), actualSize);
     EXPECT_EQ(q2.front(), 100);
     EXPECT_EQ(q2.back(), 200);
 }
