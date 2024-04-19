@@ -79,7 +79,7 @@ add_test(
     NAME ${prefix}_not_hull
     COMMAND ${APPLICATION} "(0.0, 0.0)" "(1.0, 3.0)"
 )
-set_tests_properties (${prefix}_incorrect_input_2 PROPERTIES
+set_tests_properties (${prefix}_not_hull PROPERTIES
     PASS_REGULAR_EXPRESSION ""
     LABELS "${MODULE}"
 )

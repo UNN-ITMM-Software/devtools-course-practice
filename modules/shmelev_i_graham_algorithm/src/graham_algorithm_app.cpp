@@ -26,6 +26,7 @@ bool GrahamScanApplication::validate(int argc, char* argv[]) {
       char comma, open_bracket, close_bracket;
       if (!(ss >> open_bracket >> x >> comma >> y >> close_bracket)) {
         help(argv[0], "Wrong number format, write --help to see how it is needed");
+        points.clear();
         return false;
       }
       points[i - 1] = {x, y};
@@ -57,6 +58,8 @@ std::string GrahamScanApplication::operator()(int argc, char* argv[]){
     for (auto& point : hull) {
       ss << "(" << point.first << ", " << point.second << ") ";
     }
+    points.clear();
+    hull.clear();
     hullMessage = ss.str();
   }
   return hullMessage;
