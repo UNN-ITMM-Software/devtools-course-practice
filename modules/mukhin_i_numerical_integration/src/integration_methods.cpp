@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <cstdlib>
 #include <stdexcept>
-#include <sys/types.h>
 
 double IntegrationMethods::integrate_trapezoid(
         const std::function<double(double)> &f,
