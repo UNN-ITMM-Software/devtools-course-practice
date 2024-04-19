@@ -3,7 +3,6 @@
 #define MODULES_MUKHIN_I_NUMERICAL_INTEGRATION_INCLUDE_INTEGRATION_METHODS_H_
 
 #include <functional>
-#include <cstdint>
 
 class IntegrationMethods{
  public:
