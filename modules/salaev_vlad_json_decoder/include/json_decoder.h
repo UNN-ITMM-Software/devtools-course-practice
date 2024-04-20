@@ -24,16 +24,16 @@ struct JsonValue {
     std::map<std::string, JsonValue> objectValues;
 };
 
-std::string trim(const std::string& str) {
+inline std::string trim(const std::string& str) {
     size_t first = str.find_first_not_of(" \n\r\t");
     size_t last = str.find_last_not_of(" \n\r\t");
     return (first == std::string::npos || last == std::string::npos) ? "" :
         str.substr(first, (last - first + 1));
 }
 
-JsonValue parseJson(const std::string& str, size_t& index);
+inline JsonValue parseJson(const std::string& str, size_t& index);
 
-JsonValue parseObject(const std::string& str, size_t& index) {
+inline JsonValue parseObject(const std::string& str, size_t& index) {
     JsonValue value;
     value.type = JsonType::Object;
     ++index;  // skip '{'
@@ -52,7 +52,7 @@ JsonValue parseObject(const std::string& str, size_t& index) {
     return value;
 }
 
-JsonValue parseArray(const std::string& str, size_t& index) {
+inline JsonValue parseArray(const std::string& str, size_t& index) {
     JsonValue value;
     value.type = JsonType::Array;
     ++index;  // skip '['
@@ -67,7 +67,7 @@ JsonValue parseArray(const std::string& str, size_t& index) {
     return value;
 }
 
-JsonValue parseString(const std::string& str, size_t& index) {
+inline JsonValue parseString(const std::string& str, size_t& index) {
     JsonValue value;
     value.type = JsonType::String;
     std::ostringstream out;
@@ -85,7 +85,7 @@ JsonValue parseString(const std::string& str, size_t& index) {
     return value;
 }
 
-JsonValue parseNumber(const std::string& str, size_t& index) {
+inline JsonValue parseNumber(const std::string& str, size_t& index) {
     JsonValue value;
     value.type = JsonType::Number;
     std::string num;
@@ -98,7 +98,7 @@ JsonValue parseNumber(const std::string& str, size_t& index) {
     return value;
 }
 
-JsonValue parseJson(const std::string& str, size_t& index) {
+inline JsonValue parseJson(const std::string& str, size_t& index) {
     while (index < str.length() && std::isspace(str[index])) ++index;
 
     if (str[index] == '{') {
