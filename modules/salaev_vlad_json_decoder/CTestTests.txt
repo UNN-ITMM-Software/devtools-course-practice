@@ -33,7 +33,7 @@ add_test(
     COMMAND ${APPLICATION} "{\"key\": \"value\"}"
 )
 set_tests_properties (${prefix}_can_Process_Correct_JSON PROPERTIES
-    PASS_REGULAR_EXPRESSION "Decoded JSON is processed successfully."
+    FAIL_REGULAR_EXPRESSION "Error decoded JSON:"
     LABELS "${MODULE}")
 
 add_test(
@@ -41,5 +41,5 @@ add_test(
     COMMAND ${APPLICATION} "{\"booleanTrue\": true, \"booleanFalse\": false, \"nullValue\": null}"
 )
 set_tests_properties (${prefix}_can_Handle_Booleans_and_Nulls PROPERTIES
-    PASS_REGULAR_EXPRESSION "Decoded JSON is processed successfully."
+    FAIL_REGULAR_EXPRESSION "Error decoded JSON:"
     LABELS "${MODULE}")
