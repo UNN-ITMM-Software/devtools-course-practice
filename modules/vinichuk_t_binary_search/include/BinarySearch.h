@@ -9,7 +9,7 @@
 static const size_t NOT_LISTED = -1;
 
 // implementing a template function implies
-// its definition in the place of declaration(header file)
+// its definition in the place of declaration(header file) (Tim)
 template <typename T>
 int binary_search(const std::vector<T>& arr, const T& target) {
     int left = 0;
