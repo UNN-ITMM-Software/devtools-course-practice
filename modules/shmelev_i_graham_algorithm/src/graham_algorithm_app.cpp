@@ -15,17 +15,17 @@ bool GrahamScanApplication::validate(int argc, char* argv[]) {
   } else if (std::strcmp(argv[1], "--help") == 0) {
     help(argv[0]);
     return false;
-  } 
+  }
 
-  if(argc != 1 && argc <= 8 ) {
+  if (argc != 1 && argc <= 8) {
     points.resize(argc);
-    for (int i = 1; i < argc; i++)
-    {
+    for (int i = 1; i < argc; i++) {
       std::stringstream ss(argv[i]);
       double x, y;
       char comma, open_bracket, close_bracket;
       if (!(ss >> open_bracket >> x >> comma >> y >> close_bracket)) {
-        help(argv[0], "Wrong number format, write --help to see how it is needed");
+        help(argv[0],
+                "Wrong number format, write --help to see how it is needed");
         points.clear();
         return false;
       }
@@ -39,19 +39,22 @@ void GrahamScanApplication::help(const char* appName, const char* msg) {
   std::stringstream message;
 
   if (msg) message << "Error: " << msg << '\n';
-  
-  message <<  "This is an application for calculating the convex hull by Graham's algorithm.\n\n";
+
+  message <<  "This is an application for calculating the convex hull";
+  message << "by Graham's algorithm.\n\n";
   message <<  "Please provide arguments in the following format:\n\n";
 
-  message <<  " $ " + std::string(appName) + " (point1.x, point1.y), ... ,  (point10.x, point10.y)," +
-      
-   "The coordinates of the points are floating point numbers(double)" 
+  message <<  " $ " + std::string(appName) +
+        " (point1.x, point1.y), ... ,  (point10.x, point10.y)," +
+
+  "The coordinates of the points are " +
+  "floating point numbers(double)"
    "at the end, it will output a convex hull";
 
   hullMessage = message.str();
 }
 
-std::string GrahamScanApplication::operator()(int argc, char* argv[]){
+std::string GrahamScanApplication::operator()(int argc, char* argv[]) {
   if (validate(argc, argv)) {
     Points hull = GrahamScan::convexHull(points);
     std::stringstream ss;
