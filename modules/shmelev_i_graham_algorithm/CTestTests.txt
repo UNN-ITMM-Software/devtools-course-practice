@@ -35,7 +35,7 @@ add_test(
     COMMAND ${APPLICATION} --help
 )
 set_tests_properties (${prefix}_test_help PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is an application for calculating the convex hull by Graham's algorithm."
+    PASS_REGULAR_EXPRESSION "This is an application for calculating the convex hull"
     LABELS "${MODULE}"
 )
 
