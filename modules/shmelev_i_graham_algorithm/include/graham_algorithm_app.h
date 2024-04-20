@@ -11,7 +11,6 @@
 #include "include/graham_algorithm.h"
 
 class GrahamScanApplication{
-
  public:
   GrahamScanApplication() = default;
   std::string operator()(int argc, char* argv[]);
