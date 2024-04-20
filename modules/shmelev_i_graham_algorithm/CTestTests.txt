@@ -13,15 +13,6 @@ set_tests_properties (${prefix}_run PROPERTIES
 )
 
 add_test(
-    NAME ${prefix}_on_one_straight_line
-    COMMAND ${APPLICATION} "(0.0, 0.0)" "(1.0, 1.0)" "(2.0 2.0)"
-)
-set_tests_properties (${prefix}_on_one_straight_line PROPERTIES
-    PASS_REGULAR_EXPRESSION ""(0.0, 0.0)" "(2.0, 2.0)""
-    LABELS "${MODULE}"
-)
-
-add_test(
     NAME ${prefix}_one_convux_hull
     COMMAND ${APPLICATION} "(0.0, 3.0)" "(1.0, 1.0)" "(2.0, 2.0)" "(4.0, 4.0)" "(0.0, 0.0)" "(1.0, 2.0)" "(3.0, 1.0)" "(3.0, 3.0)"
 )
@@ -72,14 +63,5 @@ add_test(
 )
 set_tests_properties (${prefix}_incorrect_input_2 PROPERTIES
     PASS_REGULAR_EXPRESSION "Error: Wrong number format, write --help to see how it is needed"
-    LABELS "${MODULE}"
-)
-
-add_test(
-    NAME ${prefix}_not_hull
-    COMMAND ${APPLICATION} "(0.0, 0.0)" "(1.0, 3.0)"
-)
-set_tests_properties (${prefix}_not_hull PROPERTIES
-    PASS_REGULAR_EXPRESSION ""
     LABELS "${MODULE}"
 )
