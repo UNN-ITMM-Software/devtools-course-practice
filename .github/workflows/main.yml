@@ -11,7 +11,7 @@ env:
 
 jobs:
   run_linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: Linux / Build and Test
     strategy:
       matrix:
