@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 
-const int NOT_LISTED = -1;
+const int8_t NOT_LISTED = -1;
 
 // implementing a template function implies
 // its definition in the place of declaration(header file)
