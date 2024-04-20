@@ -7,13 +7,13 @@
 
 bool RadixSortApplication::Validate(int argc, char* argv[]) {
     if (argc == 1) {
-        Help();
+        Help(argv[0]);
         return false;
     }
     bool inArray = false;
     for (int i = 1; i < argc; i++) {
         if (std::strcmp(argv[i], "--help") == 0) {
-            Help();
+            Help(argv[0]);
             return false;
         } else if (std::strcmp(argv[i], "-a") == 0) {
             inArray = true;
@@ -24,30 +24,34 @@ bool RadixSortApplication::Validate(int argc, char* argv[]) {
             try {
                 array.emplace_back(std::stoi(argv[i]));
             } catch (const std::exception& e) {
-                Help("at least one of array elements is not number");
+                Help(argv[0], "at least one of array elements is not number");
                 return false;
             }
         } else {
-            Help("incorrect input");
+            Help(argv[0], "incorrect input");
             return false;
         }
     }
     if (array.size() == 0) {
-        Help("array elements are not entered");
+        Help(argv[0], "array elements are not entered");
         return false;
     }
     return true;
 }
 
-void RadixSortApplication::Help(const char* errorMsg) {
+void RadixSortApplication::Help(const char* appName, const char* errorMsg) {
     if (errorMsg != nullptr) {
         returnMsg += "Error: ";
         returnMsg += errorMsg;
         returnMsg += '\n';
     } 
     returnMsg += "Ussage:\n";
-    returnMsg += "\t-a <array> = input int array\n";
-    returnMsg += "\t-r = reverse sorting\n";
+    returnMsg += '\t';
+    returnMsg += appName;
+    returnMsg += " -a <number1 number2 ...> = input integer array\n";
+    returnMsg += '\t';
+    returnMsg += appName;
+    returnMsg += " -r = reverse sorting\n";
 }
 
 std::string RadixSortApplication::Sort(int argc, char* argv[]) {
