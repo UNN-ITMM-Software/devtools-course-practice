@@ -104,7 +104,7 @@ std::string MetricsApp::operator()(int argc, const char** argv) {
         stream << "Metric = " << metrics::l4(args.v1, args.v2);
         break;
     }
-  } catch (std::exception e) {
+  } catch (std::exception& e) {
     return e.what();
   }
 
