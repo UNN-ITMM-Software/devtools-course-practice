@@ -45,10 +45,10 @@ set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Add_Complexs
+    NAME ${prefix}_can_Detect_Wrong_Vector_Size
     COMMAND ${APPLICATION} 1,1 1,2,3 l1
 )
-set_tests_properties (${prefix}_can_Add_Complexs PROPERTIES
+set_tests_properties (${prefix}_can_Detect_Wrong_Vector_Size PROPERTIES
     PASS_REGULAR_EXPRESSION "vectors have different sizes"
     LABELS "${MODULE}")
 
@@ -56,6 +56,118 @@ add_test(
     NAME ${prefix}_l1_zero_if_equal
     COMMAND ${APPLICATION} 0.1,0.2,0.3 0.1,0.2,0.3 l1
 )
-set_tests_properties (${prefix}_can_Add_Complexs PROPERTIES
+set_tests_properties (${prefix}_l1_zero_if_equal PROPERTIES
     PASS_REGULAR_EXPRESSION "Metric = 0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l2_zero_if_equal
+    COMMAND ${APPLICATION} 0.1,0.2,0.3 0.1,0.2,0.3 l2
+)
+set_tests_properties (${prefix}_l2_zero_if_equal PROPERTIES
+    PASS_REGULAR_EXPRESSION "Metric = 0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l3_zero_if_equal
+    COMMAND ${APPLICATION} 0.1,0.2,0.3 0.1,0.2,0.3 l3
+)
+set_tests_properties (${prefix}_l3_zero_if_equal PROPERTIES
+    PASS_REGULAR_EXPRESSION "Metric = 0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l4_zero_if_equal
+    COMMAND ${APPLICATION} 0.1,0.2,0.3 0.1,0.2,0.3 l4
+)
+set_tests_properties (${prefix}_l4_zero_if_equal PROPERTIES
+    PASS_REGULAR_EXPRESSION "Metric = 0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_linf_zero_if_equal
+    COMMAND ${APPLICATION} 0.1,0.2,0.3 0.1,0.2,0.3 linf
+)
+set_tests_properties (${prefix}_linf_zero_if_equal PROPERTIES
+    PASS_REGULAR_EXPRESSION "Metric = 0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l1_throws_if_different_size
+    COMMAND ${APPLICATION} 0.1,0.2 0.1,0.2,0.3 l1
+)
+set_tests_properties (${prefix}_l1_throws_if_different_size PROPERTIES
+    PASS_REGULAR_EXPRESSION "vectors have different sizes"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l2_throws_if_different_size
+    COMMAND ${APPLICATION} 0.1,0.2 0.1,0.2,0.3 l2
+)
+set_tests_properties (${prefix}_l2_throws_if_different_size PROPERTIES
+    PASS_REGULAR_EXPRESSION "vectors have different sizes"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l3_throws_if_different_size
+    COMMAND ${APPLICATION} 0.1,0.2 0.1,0.2,0.3 l3
+)
+set_tests_properties (${prefix}_l3_throws_if_different_size PROPERTIES
+    PASS_REGULAR_EXPRESSION "vectors have different sizes"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l4_throws_if_different_size
+    COMMAND ${APPLICATION} 0.1,0.2 0.1,0.2,0.3 l4
+)
+set_tests_properties (${prefix}_l4_throws_if_different_size PROPERTIES
+    PASS_REGULAR_EXPRESSION "vectors have different sizes"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_linf_throws_if_different_size
+    COMMAND ${APPLICATION} 0.1,0.2 0.1,0.2,0.3 linf
+)
+set_tests_properties (${prefix}_linf_throws_if_different_size PROPERTIES
+    PASS_REGULAR_EXPRESSION "vectors have different sizes"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l1_expamle
+    COMMAND ${APPLICATION} 0.11,0.2,0.33 0.1,0.22,0.3 l1
+)
+set_tests_properties (${prefix}_l1_expamle PROPERTIES
+    PASS_REGULAR_EXPRESSION "Metric = 0.06"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l2_expamle
+    COMMAND ${APPLICATION} 1,2,3 1,5,7 l2
+)
+set_tests_properties (${prefix}_l2_expamle PROPERTIES
+    PASS_REGULAR_EXPRESSION "Metric = 5"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l3_expamle
+    COMMAND ${APPLICATION} 0.1,0.2,0.34 0.1,0.22,0.3 l3
+)
+set_tests_properties (${prefix}_l3_expamle PROPERTIES
+    PASS_REGULAR_EXPRESSION "Metric = 0.0416017"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l4_expamle
+    COMMAND ${APPLICATION} 0.1,0.2,0.34 0.1,0.22,0.3 l4
+)
+set_tests_properties (${prefix}_l4_expamle PROPERTIES
+    PASS_REGULAR_EXPRESSION "Metric = 0.0406109"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_linf_expamle
+    COMMAND ${APPLICATION} 1,2,3 2,2.5,3.25 linf
+)
+set_tests_properties (${prefix}_linf_expamle PROPERTIES
+    PASS_REGULAR_EXPRESSION "Metric = 1"
     LABELS "${MODULE}")
