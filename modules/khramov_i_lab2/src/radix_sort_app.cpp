@@ -44,7 +44,7 @@ void RadixSortApplication::Help(const char* appName, const char* errorMsg) {
         returnMsg += "Error: ";
         returnMsg += errorMsg;
         returnMsg += '\n';
-    } 
+    }
     returnMsg += "Ussage:\n";
     returnMsg += '\t';
     returnMsg += appName;
@@ -55,7 +55,7 @@ void RadixSortApplication::Help(const char* appName, const char* errorMsg) {
 }
 
 std::string RadixSortApplication::Sort(int argc, char* argv[]) {
-    if (Validate(argc, argv)){
+    if (Validate(argc, argv)) {
         RadixSort<int>::radixSort(array, order);
         for (size_t i = 0; i < array.size(); i++) {
             returnMsg += std::to_string(array[i]);
@@ -64,5 +64,4 @@ std::string RadixSortApplication::Sort(int argc, char* argv[]) {
         returnMsg += '\n';
     }
     return returnMsg;
-    
 }
