@@ -1,0 +1,61 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a metrics calculator application."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 1 2
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Vector_Format
+    COMMAND ${APPLICATION} a1.0 1.0 l1
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Vector_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong vector format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Operation_Format
+    COMMAND ${APPLICATION} 1.0 1.0 l5
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong operation format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Add_Complexs
+    COMMAND ${APPLICATION} 1,1 1,2,3 l1
+)
+set_tests_properties (${prefix}_can_Add_Complexs PROPERTIES
+    PASS_REGULAR_EXPRESSION "vectors have different sizes"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_l1_zero_if_equal
+    COMMAND ${APPLICATION} 0.1,0.2,0.3 0.1,0.2,0.3 l1
+)
+set_tests_properties (${prefix}_can_Add_Complexs PROPERTIES
+    PASS_REGULAR_EXPRESSION "Metric = 0"
+    LABELS "${MODULE}")
