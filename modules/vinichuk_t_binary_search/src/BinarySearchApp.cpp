@@ -17,8 +17,7 @@ std::string BinarySearchApplication::operator()(int argc, char* argv[]) {
 
     if (index != binsearch::NOT_LISTED) {
         mMessage = "Target found at index: " + std::to_string(index);
-    }
-    else {
+    } else {
         mMessage = "Target not found";
     }
 
@@ -29,8 +28,7 @@ bool BinarySearchApplication::validate(int argc, char* argv[]) {
     if (argc == 1 || (argc == 2 && std::strcmp(argv[1], "--help") == 0)) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 3) {
+    } else if (argc != 3) {
         help(argv[0], "Incorrect number of arguments");
         return false;
     }
