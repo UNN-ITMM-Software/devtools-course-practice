@@ -6,11 +6,11 @@
 #include "include/BinarySearch.h"
 
 class BinarySearchApplication {
-public:
+ public:
     BinarySearchApplication() = default;
     std::string operator()(int argc, char* argv[]);
 
-private:
+ private:
     bool validate(int argc, char* argv[]);
     void help(const char* appName, const char* msg = nullptr);
     template<typename T>
