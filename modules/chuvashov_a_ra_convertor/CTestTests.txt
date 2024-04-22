@@ -58,6 +58,15 @@ LABELS "${MODULE}"
 )
 
 add_test(
+    NAME ${prefix}_test_roman_to_arabic_2
+    COMMAND ${APPLICATION} "II"
+)
+set_tests_properties (${prefix}_test_roman_to_arabic_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "2"
+    LABELS "${MODULE}"
+)
+
+add_test(
 NAME ${prefix}_test_roman_to_arabic_3
 COMMAND ${APPLICATION} "XVI"
 )
@@ -72,6 +81,23 @@ COMMAND ${APPLICATION} "MDCLXVI"
 )
 set_tests_properties (${prefix}_test_roman_to_arabic_4 PROPERTIES
 PASS_REGULAR_EXPRESSION "1666"
+LABELS "${MODULE}"
+)
+add_test(
+    NAME ${prefix}_test_arabic_to_roman_1
+    COMMAND ${APPLICATION} "4"
+)
+set_tests_properties (${prefix}_test_arabic_to_roman_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "IV"
+    LABELS "${MODULE}"
+)
+
+add_test(
+NAME ${prefix}_test_arabic_to_roman_2
+COMMAND ${APPLICATION} "1000"
+)
+set_tests_properties (${prefix}_test_arabic_to_roman_2 PROPERTIES
+PASS_REGULAR_EXPRESSION "M"
 LABELS "${MODULE}"
 )
 
