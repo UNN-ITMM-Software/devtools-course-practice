@@ -45,7 +45,7 @@ void RadixSortApplication::Help(const char* appName, const char* errorMsg) {
         returnMsg += errorMsg;
         returnMsg += '\n';
     }
-    returnMsg += "Ussage:\n";
+    returnMsg += "Usage:\n";
     returnMsg += '\t';
     returnMsg += appName;
     returnMsg += " -a <number1 number2 ...> = input integer array\n";

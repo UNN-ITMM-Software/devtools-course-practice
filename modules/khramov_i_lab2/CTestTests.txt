@@ -5,7 +5,7 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_run PROPERTIES
-    PASS_REGULAR_EXPRESSION "Ussage:"
+    PASS_REGULAR_EXPRESSION "Usage:"
     LABELS "${MODULE}"
 )
 
@@ -14,7 +14,7 @@ add_test(
     COMMAND ${APPLICATION} --help
 )
 set_tests_properties (${prefix}_run_help PROPERTIES
-    PASS_REGULAR_EXPRESSION "Ussage:"
+    PASS_REGULAR_EXPRESSION "Usage:"
     LABELS "${MODULE}"
 )
 
@@ -23,7 +23,7 @@ add_test(
     COMMAND ${APPLICATION} -a 1 2 3 --help
 )
 set_tests_properties (${prefix}_run_help_2 PROPERTIES
-    PASS_REGULAR_EXPRESSION "Ussage:"
+    PASS_REGULAR_EXPRESSION "Usage:"
     LABELS "${MODULE}"
 )
 
