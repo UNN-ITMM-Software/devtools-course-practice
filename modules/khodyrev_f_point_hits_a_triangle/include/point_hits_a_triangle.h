@@ -9,6 +9,7 @@ class Point {
   double y;
 
  public:
+  Point() = default;
   Point(double x_coord, double y_coord);
   double getX() const;
   double getY() const;
@@ -23,6 +24,7 @@ class Triangle {
   static double distance(const Point& p1, const Point& p2);
 
  public:
+  Triangle() = default;
   Triangle(const Point& v1, const Point& v2, const Point& v3);
   bool isValid() const;
   bool isInside(const Point& p) const;
