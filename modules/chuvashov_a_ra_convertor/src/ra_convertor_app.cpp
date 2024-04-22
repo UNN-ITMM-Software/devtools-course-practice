@@ -33,7 +33,6 @@ bool ConverterApplication::validate(int argc, char* argv[]) {
     return true;
 }
 
-
 void ConverterApplication::help(const char* appName, const char* msg) {
     std::stringstream message;
 
