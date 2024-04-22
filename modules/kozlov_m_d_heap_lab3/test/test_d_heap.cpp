@@ -1,8 +1,8 @@
 // Copyright 2024 Kozlov Mikhail
 
-#include "include/Heap.h"
 #include <gtest/gtest.h>
 #include <limits>
+#include "include/Heap.h"
 
 // Test case for default constructor
 TEST(Kozlov_heap_test, DefaultConstructor) {
