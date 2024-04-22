@@ -46,7 +46,6 @@ uint64_t parseInt(const char *arg) {
 }
 
 void check_first(char c, bool first) {
-
   if (c != 'B' && first)
     throw std::string("Wrong operation");
 
