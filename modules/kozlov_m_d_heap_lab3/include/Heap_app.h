@@ -9,12 +9,12 @@
 #include "include/Heap.h"
 
 class Heap_app {
-public:
+ public:
   Heap_app() = default;
 
   std::string operator()(int argc, const char **argv);
 
-private:
+ private:
   void help(const char *appname, const char *message = "");
   bool validateNumberOfArguments(int argc, const char **argv);
   std::string message_;
@@ -24,4 +24,4 @@ private:
   } Arguments;
 };
 
-#endif // MODULES_KOZLOV_M_D_HEAP_LAB3_INCLUDE_HEAP_APP_H_
+#endif   // MODULES_KOZLOV_M_D_HEAP_LAB3_INCLUDE_HEAP_APP_H_

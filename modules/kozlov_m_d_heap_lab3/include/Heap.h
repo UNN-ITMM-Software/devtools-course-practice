@@ -20,8 +20,8 @@ template <int N> class Heap {
   void heapify(int n);
 
  public:
-  Heap () = default;
-  explicit (const std::vector<double> &arr);
+  Heap() = default;
+  explicit(const std::vector<double> &arr);
   void push(const double &el);
   void pop();
   double top();
