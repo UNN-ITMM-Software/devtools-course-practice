@@ -5,7 +5,6 @@
 #include "include/Heap_app.h"
 
 int main(int argc, const char *argv[]) {
-
   Heap_app app;
   auto output = app(argc, argv);
 

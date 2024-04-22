@@ -11,16 +11,17 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <utility>
 
 template <int N> class Heap {
-private:
+ private:
   std::array<double, N> t;
   uint64_t real_size = 0;
   void heapify(int n);
 
-public:
+ public:
   Heap() = default;
-  Heap(const std::vector<double> &arr);
+  explicit (const std::vector<double> &arr);
   void push(const double &el);
   void pop();
   double top();
@@ -84,4 +85,4 @@ template <int N> uint64_t Heap<N>::size() { return real_size; }
 
 template <int N> bool Heap<N>::empty() { return real_size == 0; }
 
-#endif // MODULES_KOZLOV_M_D_HEAP_LAB3_INCLUDE_HEAP_H_
+#endif  // MODULES_KOZLOV_M_D_HEAP_LAB3_INCLUDE_HEAP_H_
