@@ -21,7 +21,7 @@ template <int N> class Heap {
 
  public:
   Heap() = default;
-  explicit(const std::vector<double> &arr);
+  explicit Heap(const std::vector<double> &arr);
   void push(const double &el);
   void pop();
   double top();
