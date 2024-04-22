@@ -38,8 +38,8 @@ void ConverterApplication::help(const char* appName, const char* msg) {
 
     if (msg) message << "Error: " << msg << '\n';
 
-    message << "This is an application for converting Roman numerals
-        to Arabic and vice versa\n";
+    message << "This is an application for converting Roman numerals "
+        << "to Arabic and vice versa\n";
     message << "Please provide a single Roman or Arabic numeral argument.\n\n";
     message << "Example usage:\n";
     message << " $ " << appName << " IX\n";
