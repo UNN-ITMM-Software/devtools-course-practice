@@ -1,0 +1,19 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(NAME ${prefix}_print_help_without_param 
+    COMMAND ${APPLICATION})
+
+set_tests_properties(${prefix}_print_help_without_param PROPERTIES 
+    PASS_REGULAR_EXPRESSION "This application is used for calculate euler function" 
+    LABELS "${MODULE}")
+
+add_test(NAME ${prefix}_handle_negative_num
+    COMMAND ${APPLICATION} 10 -3)
+
+set_tests_properties(${prefix}_handle_negative_num PROPERTIES 
+    WILL_FAIL true
+    LABELS "${MODULE}")
