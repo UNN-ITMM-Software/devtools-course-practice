@@ -5,7 +5,7 @@
 #include <cmath>
 #include <stdexcept>
 
-Point::Point(double x_coord = 0, double y_coord = 0) : x(x_coord), y(y_coord) {}
+Point::Point(double x_coord, double y_coord) : x(x_coord), y(y_coord) {}
 
 double Point::getX() const { return x; }
 
@@ -22,8 +22,7 @@ double triangleArea(const Point& a, const Point& b, const Point& c) {
     + c.getX()*(a.getY()-b.getY())) / 2);
 }
 
-Triangle::Triangle(const Point& v1 = Point(0, 0),
- const Point& v2 = Point(1, 0), const Point& v3 = Point(0, 0))
+Triangle::Triangle(const Point& v1, const Point& v2, const Point& v3)
     : v1(v1), v2(v2), v3(v3) {}
 
 double Triangle::distance(const Point& p1, const Point& p2) {
