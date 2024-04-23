@@ -3,6 +3,8 @@
 
 #include "include/KMP.h"
 
+#include <string>
+
 class KMPApplication {
  public:
   KMPApplication() = default;
