@@ -7,13 +7,14 @@
 #include <sstream>
 
 bool PointTriangleApplication::Validate(int argc, char *argv[]) {
+    int required_argc = 9;
     if (argc == 1) {
         Help(argv[0]);
         return false;
     } else if (std::strcmp(argv[1], "--help") == 0) {
         Help(argv[0]);
         return false;
-    } else if (argc != 9) {
+    } else if (argc != required_argc) {
         Help(argv[0], "Incorrect number of arguments.");
         return false;
     } else {
