@@ -34,15 +34,15 @@ void IncreasingContrastApp::help(const char *appName, const char *msg) {
     std::string message = msg ? "Error: " + std::string(msg) + "\n\n" : "";
     message =
             std::string(message) +
-            "This is an image contrast increasing application.\\n\\n" +
+            "This is an image contrast increasing application.\n" +
             "Please provide arguments in the following format:\n\n"+
 
             "  $ " + appName + " <pixel_1> <pixel_2> ..." +
             " <width> <height> <new_min> <new_max>\n\n" +
-            "Where <pixel_1>, <pixel_2>, ... are the pixel values," +
-            "<width> and <height> are the image dimensions," +
+            "Where <pixel_1>, <pixel_2>, ... are the pixel values, " +
+            "<width> and <height> are the image dimensions, " +
             "<new_min> and <new_max> are the new minimum and " +
-            "maximum pixel values,\n";
+            "maximum pixel values.\n";
     message_ = message;
 }
 
