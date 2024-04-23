@@ -1,5 +1,5 @@
 // Copyright 2024 Kirillov Maxim
-#include <string>
+#include <cstring>
 #include <iostream>
 #include <sstream>
 #include "include/increasing_cont_app.h"
@@ -15,9 +15,9 @@ bool IncreasingContrastApp::validate(int argc, char **argv) {
         help(argv[0], "Incorrect number of arguments");
         return false;
     } else {
-        size_t width = std::stoi(argv[argc - 4]);
-        size_t height = std::stoi(argv[argc - 3]);
-        size_t image_size = width * height;
+        int width = std::stoi(argv[argc - 4]);
+        int height = std::stoi(argv[argc - 3]);
+        int image_size = width * height;
         if (image_size == 0) {
             help(argv[0], "Image cannot be empty");
             return false;
@@ -52,8 +52,8 @@ std::string IncreasingContrastApp::operator()(int argc, char **argv) {
         for (int i = 1; i < argc - 4; i++) {
             image.push_back(std::stoi(argv[i]));
         }
-        size_t width = std::stoi(argv[argc - 4]);
-        size_t height = std::stoi(argv[argc - 3]);
+        int width = std::stoi(argv[argc - 4]);
+        int height = std::stoi(argv[argc - 3]);
         int newMin = std::stoi(argv[argc - 2]);
         int newMax = std::stoi(argv[argc - 1]);
         increase_contrast(image, width, height, newMin, newMax);
