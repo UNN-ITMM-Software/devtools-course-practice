@@ -42,7 +42,7 @@ std::string KMPApplication::operator()(int argc, char* argv[]) {
     for (const auto& patternIndex : patternIndexes) {
       this->outputMessage += text + "\n";
       this->outputMessage += std::string(patternIndex, ' ')
-	+ std::string(pattern.size(), '^') + "\n";
+        + std::string(pattern.size(), '^') + "\n";
     }
   }
 
