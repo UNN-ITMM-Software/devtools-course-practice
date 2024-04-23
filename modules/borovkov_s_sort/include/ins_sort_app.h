@@ -11,11 +11,10 @@
 #include "include/insertion_sort.h"
 
 class SortApp {
-public:
+ public:
     SortApp() = default;
     std::string sort_application(int argc, char* argv[]);
-
-private:
+ private:
     std::string sortMsg{};
     std::vector<int> test;
     bool validate(int argc, char *argv[]);
