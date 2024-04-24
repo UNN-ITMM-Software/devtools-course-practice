@@ -43,7 +43,6 @@ class LinkedList {
     }
     bool isEmpty() {
         return head == nullptr;
-
     }
     int size() {
         int count = 0;
