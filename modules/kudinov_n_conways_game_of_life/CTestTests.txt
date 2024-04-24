@@ -1,0 +1,68 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Calls_help
+    COMMAND ${APPLICATION}  
+)
+set_tests_properties (${prefix}_Calls_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is application for Conway's game of life."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Filter_not_enough_arguments
+    COMMAND ${APPLICATION} 1 
+)
+set_tests_properties (${prefix}_Filter_not_enough_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect count of arguments!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Filter_incorrect_generations
+    COMMAND ${APPLICATION} 1 2 -3
+)
+set_tests_properties (${prefix}_Filter_incorrect_generations PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect number of generations!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Filter_incorrect_height
+    COMMAND ${APPLICATION} -2 2 3
+)
+set_tests_properties (${prefix}_Filter_incorrect_height PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect height or width!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Filter_incorrect_width
+    COMMAND ${APPLICATION} 2 -2 3
+)
+set_tests_properties (${prefix}_Filter_incorrect_width PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect height or width!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Filter_incorrect_points
+    COMMAND ${APPLICATION} 2 2 3 6 6
+)
+set_tests_properties (${prefix}_Filter_incorrect_points PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Some of points are incorret!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Pass
+    COMMAND ${APPLICATION} 4 4 1 0 0 0 1
+)
+set_tests_properties (${prefix}_Pass PROPERTIES
+    PASS_REGULAR_EXPRESSION "...."
+    LABELS "${MODULE}")
