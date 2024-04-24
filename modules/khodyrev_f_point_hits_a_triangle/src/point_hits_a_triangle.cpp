@@ -7,27 +7,29 @@
 
 Point::Point(double x_coord, double y_coord) : x(x_coord), y(y_coord) {}
 
-double Point::getX() const {
-    return x;
-}
+double Point::getX() const { return x; }
 
-double Point::getY() const {
-    return y;
-}
+double Point::getY() const { return y; }
 
 bool Point::operator==(const Point& other) const {
     const double epsilon = 1e-9;
     return (fabs(x - other.x) < epsilon && fabs(y - other.y) < epsilon);
 }
 
+double triangleArea(const Point& a, const Point& b, const Point& c) {
+    return fabs((a.getX() * (b.getY() - c.getY()) + b.getX()
+    * (c.getY() - a.getY())
+    + c.getX()*(a.getY()-b.getY())) / 2);
+}
+
+Triangle::Triangle(const Point& v1, const Point& v2, const Point& v3)
+    : v1(v1), v2(v2), v3(v3) {}
+
 double Triangle::distance(const Point& p1, const Point& p2) {
     double dx = p2.getX() - p1.getX();
     double dy = p2.getY() - p1.getY();
     return std::sqrt(dx * dx + dy * dy);
 }
-
-Triangle::Triangle(const Point& v1, const Point& v2, const Point& v3)
-    : v1(v1), v2(v2), v3(v3) {}
 
 bool Triangle::isValid() const {
     double side1 = Triangle::distance(v1, v2);
@@ -40,12 +42,6 @@ bool Triangle::isValid() const {
     }
 
     return true;
-}
-
-double triangleArea(const Point& a, const Point& b, const Point& c) {
-    return fabs((a.getX() * (b.getY() - c.getY()) + b.getX()
-    * (c.getY() - a.getY())
-    + c.getX()*(a.getY()-b.getY())) / 2);
 }
 
 bool Triangle::isInside(const Point& p) const {
