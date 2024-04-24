@@ -4,7 +4,7 @@
 #include "include/linked_list.h"
 
 TEST(LinkedListTest, Add) {
-    LinkedList list;
+    LinkedList<int> list;
     ASSERT_EQ(list.size(), 0);
     list.add(1);
     ASSERT_EQ(list.size(), 1);
@@ -13,7 +13,7 @@ TEST(LinkedListTest, Add) {
 }
 
 TEST(LinkedListTest, Display) {
-    LinkedList list;
+    LinkedList<int> list;
     list.add(1);
     list.add(2);
     list.add(3);
@@ -31,14 +31,14 @@ TEST(LinkedListTest, Display) {
 }
 
 TEST(LinkedListTest, IsEmpty) {
-    LinkedList list;
+    LinkedList<int> list;
     ASSERT_TRUE(list.isEmpty());
     list.add(1);
     ASSERT_FALSE(list.isEmpty());
 }
 
 TEST(LinkedListTest, Size) {
-    LinkedList list;
+    LinkedList<int> list;
     ASSERT_EQ(list.size(), 0);
     list.add(1);
     ASSERT_EQ(list.size(), 1);
@@ -47,7 +47,7 @@ TEST(LinkedListTest, Size) {
 }
 
 TEST(LinkedListTest, Clear) {
-    LinkedList list;
+    LinkedList<int> list;
     list.add(1);
     list.add(2);
     list.clear();
@@ -55,7 +55,7 @@ TEST(LinkedListTest, Clear) {
 }
 
 TEST(LinkedListTest, Remove) {
-    LinkedList list;
+    LinkedList<int> list;
     list.add(1);
     list.add(2);
     ASSERT_TRUE(list.remove(1));
@@ -64,9 +64,32 @@ TEST(LinkedListTest, Remove) {
 }
 
 TEST(LinkedListTest, AddToEmptyList) {
-    LinkedList list;
+    LinkedList<int> list;
     ASSERT_TRUE(list.isEmpty());
     list.add(1);
     ASSERT_FALSE(list.isEmpty());
     ASSERT_EQ(list.size(), 1);
+}
+
+TEST(LinkedListTest, CopyConstructor) {
+    LinkedList<int> list1;
+    list1.add(1);
+    list1.add(2);
+    list1.add(3);
+
+    LinkedList<int> list2(list1);
+
+    ASSERT_EQ(list1.size(), list2.size());
+}
+
+TEST(LinkedListTest, MoveConstructor) {
+    LinkedList<int> list1;
+    list1.add(1);
+    list1.add(2);
+    list1.add(3);
+
+    LinkedList<int> list2(std::move(list1));
+
+    ASSERT_EQ(list2.size(), 3);
+    ASSERT_TRUE(list1.isEmpty());
 }
