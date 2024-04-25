@@ -102,5 +102,5 @@ TEST(CaesarCipherTest, WordsWithDifferentRegister) {
     CaesarCipher cipher(1);
     EXPECT_EQ(cipher.CaesarCipherEncoder("AbC"), "BcD");
     EXPECT_EQ(cipher.CaesarCipherEncoder("HeLLo"), "IfMMp");
-    EXPECT_EQ(cipher.CaesarCipherEncoder("XyZ"), "YzA");        
+    EXPECT_EQ(cipher.CaesarCipherEncoder("XyZ"), "YzA");
 }
