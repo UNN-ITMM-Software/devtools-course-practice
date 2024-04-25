@@ -105,6 +105,6 @@
 | [Работа с числовыми промежутками](http://codingdojo.org/kata/Range/) |||
 | [Реализовать печать цифр в псевдографике](https://github.com/garora/TDD-Katas/blob/master/KatasReadme.md#lcd-digits-) |||
 | Поиск в тексте регулярных выражений (упрощенные) |||
-| [Ипотечный калькулятор](http://calculator-ipoteka.ru/calculator.php) ||Смирнов Павел 3821Б1ПР3|
+| [Ипотечный калькулятор](http://calculator-ipoteka.ru/calculator.php) |Мусаев Ильгар 3821Б1ПР3|Смирнов Павел 3821Б1ПР3|
 | [Калькулятор доходности вкладов](http://www.banki.ru/services/calculators/deposits/) |Моисеев Никита 3821Б1ПР1|Подъячих Михаил 3821Б1ПР1|
 | Игра "Быки и коровы" |Белан Вадим 3821Б1ПР2|Новостроев Иван 3821Б1ПР2|
