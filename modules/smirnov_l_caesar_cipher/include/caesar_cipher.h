@@ -5,7 +5,6 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
-#include <regex>
 
 class CaesarCipher {
  private:
