@@ -1,4 +1,4 @@
-// Copyright 2014 Videneva Ekaterina
+// Copyright 2024 Videneva Ekaterina
 
 #include <gtest/gtest.h>
 
