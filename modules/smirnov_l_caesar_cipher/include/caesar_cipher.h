@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include <regex>
 
 class CaesarCipher {
  private:
@@ -14,6 +15,7 @@ class CaesarCipher {
     static const int ALPHABET_SIZE;
 
  public:
+    CaesarCipher() : offset(0) {}
     explicit CaesarCipher(int _offset);
 
     char ShiftChar(char c, int offset) const;

@@ -90,4 +90,17 @@ TEST(CaesarCipherTest, LargeStrings) {
     EXPECT_EQ(cipher.CaesarCipherDecoder(encrypted), plaintext);
 }
 
+TEST(CaesarCipherTest, NonEnglishCharacters) {
+    // Проверка на то, что русские буквы не шифруются
+    CaesarCipher cipher(1);
+    EXPECT_EQ(cipher.CaesarCipherEncoder("абв"), "абв");
+    EXPECT_EQ(cipher.CaesarCipherDecoder("где"), "где");
+}
 
+TEST(CaesarCipherTest, WordsWithDifferentRegister) {
+    // Проверка на шифрование строк, с различными регистрами
+    CaesarCipher cipher(1);
+    EXPECT_EQ(cipher.CaesarCipherEncoder("AbC"), "BcD");
+    EXPECT_EQ(cipher.CaesarCipherEncoder("HeLLo"), "IfMMp");
+    EXPECT_EQ(cipher.CaesarCipherEncoder("XyZ"), "YzA");        
+}
