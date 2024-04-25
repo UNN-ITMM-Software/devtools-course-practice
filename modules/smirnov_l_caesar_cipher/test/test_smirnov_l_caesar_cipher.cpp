@@ -91,7 +91,7 @@ TEST(CaesarCipherTest, LargeStrings) {
 }
 
 TEST(CaesarCipherTest, NonEnglishCharacters) {
-    // Проверка на то, что русские буквы не шифруются
+    // Проверка на отсутствие шифрования русских букв
     CaesarCipher cipher(1);
     EXPECT_EQ(cipher.CaesarCipherEncoder("абв"), "абв");
     EXPECT_EQ(cipher.CaesarCipherDecoder("где"), "где");
