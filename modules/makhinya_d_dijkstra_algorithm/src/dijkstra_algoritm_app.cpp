@@ -44,12 +44,14 @@ void DijkstraAlgorithmApp::help(const char* appName, const char* msg = nullptr) 
 void DijkstraAlgorithmApp::help(const char *appName, const char *msg) {
   std::stringstream message;
 
-  message << "This is an application for using Dijkstra's algorithm to find the shortest path in a graph.\n";
+  message << "This is an application for using Dijkstra's 
+            algorithm to find the shortest path in a graph.\n";
 
   DijkstraAlgorithmMsg = message.str();
 }
 
-std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc, char* argv[]) {
+std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc,
+                                                          char* argv[]) {
   if (validate(argc, argv)) {
       // Parse arguments
       uint32_t start_vertex = std::stoi(argv[1]);
