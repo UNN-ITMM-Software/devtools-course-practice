@@ -31,19 +31,15 @@ bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
 
   return true;
 }
-/*
-void DijkstraAlgorithmApp::help(const char* appName, const char* msg = nullptr) {
-  std::string message = "This is an application for using Dijkstra's algorithm to find the shortest path in a graph.\n";
-
-  if (msg != nullptr) {
-      message += msg;
-  }
-
-  DijkstraAlgorithmMsg = message;
-} */
 
 void DijkstraAlgorithmApp::help(const char *appName, const char *msg) {
   std::stringstream message;
+
+  if (msg != nullptr) {
+    message << "Incorrect program arguments. Try again.\n";
+    DijkstraAlgorithmMsg = message.str();
+    return;
+  }
 
   message << "This is an application for using Dijkstra's ";
   message << "algorithm to find the shortest path in a graph.\n";
@@ -70,7 +66,12 @@ std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc,
       uint64_t result = obj.find_shortest_path(start_vertex, end_vertex);
 
       // Return result
+      // std::string output;
+      // if (result == 18446744073709551615) {
+      // output = "Incorrect program arguments. Try again.";
+      // } else { 
       std::string output = "Shortest path length: " + std::to_string(result);
+      // }
       return output;
   }
 

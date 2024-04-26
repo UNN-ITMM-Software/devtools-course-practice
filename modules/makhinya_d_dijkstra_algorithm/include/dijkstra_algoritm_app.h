@@ -11,18 +11,6 @@
 #include <string>
 
 #include "include/dijkstra_algoritm.h"
-/*
-class DijkstraAlgorithmApp {
- public:
-  DijkstraAlgorithmApp() = default;
-  std::string dijkstra_algorithm_application(int argc, char* argv[]);
-
- private:
-  std::string DijkstraAlgorithmMsg{};
-  Solver<15> obj;
-  bool validate(int argc, char* argv[]);
-  void help(char* appName, char* msg = nullptr);
-};*/
 
 class DijkstraAlgorithmApp {
  public:
