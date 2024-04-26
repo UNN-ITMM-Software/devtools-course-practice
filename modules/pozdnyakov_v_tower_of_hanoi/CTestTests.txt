@@ -62,3 +62,12 @@ set_tests_properties (${prefix}_run_incorrect_number_args PROPERTIES
     PASS_REGULAR_EXPRESSION "Error: Incorrect number of arguments."
     LABELS "${MODULE}"
 )
+
+add_test(
+    NAME ${prefix}_run_hanoi_tower_0_rings
+    COMMAND ${APPLICATION} 0
+)
+set_tests_properties (${prefix}_run_hanoi_tower_0_rings PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Count of rings has to be more than zero"
+    LABELS "${MODULE}"
+)
