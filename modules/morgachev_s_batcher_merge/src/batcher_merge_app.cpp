@@ -37,9 +37,11 @@ void BatcherMergeApplication::help(const char* appName,
     const char* errorMessage) {
     if (errorMessage != nullptr) {
         returnMessage += "Error: ";
-        returnMessage += errorMessage + '\n';
+        returnMessage += errorMessage;
+        returnMessage += '\n';
     }
-    returnMessage += "Usage:\n\t";
+    returnMessage += "Usage:\n";
+    returnMessage += '\t';
     returnMessage += appName;
     returnMessage += " -init <double_1 double_2 ...> = input double array\n";
 }
