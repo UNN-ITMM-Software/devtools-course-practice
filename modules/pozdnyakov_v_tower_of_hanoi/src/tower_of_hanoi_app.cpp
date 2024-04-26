@@ -50,7 +50,7 @@ std::string TowerOfHanoiApplication::TowerOfHanoiCount
 (int argc, char *argv[]) {
     if (Validate(argc, argv)) {
         try {
-            std::vector<std::vector<int>> steps = 
+            std::vector<std::vector<int>> steps =
                     tower.CalculateSteps(std::stoi(argv[1]));
             return tower.GetStepsAsString(steps);
         }
