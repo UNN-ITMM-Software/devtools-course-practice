@@ -21,7 +21,6 @@ double QuadraticSolver::getDiscriminant() const {
     return b * b - 4 * a * c;
 }
 
-// Pair: first means if the roots are finite, second means what are the roots
 RealResult QuadraticSolver::solveRealRoots() const {
     if (a == 0) {
         if (b == 0) {
@@ -52,7 +51,6 @@ ComplexResult QuadraticSolver::solveComplexRoots() const {
         return {true, roots};
     }
     double imagPart = std::sqrt(-discriminator) / (2 * a);
-    // Проверяем, являются ли корни комплексными
     if (imagPart != 0.0) {
         double realPart = -b / (2 * a);
         ComplexRoots roots(2, hasher);
@@ -60,6 +58,5 @@ ComplexResult QuadraticSolver::solveComplexRoots() const {
         roots.insert({realPart, -imagPart});
         return {true, roots};
     }
-    // Если мнимая часть равна нулю, значит, у нас есть два действительных корня
     return {false, {}};
 }

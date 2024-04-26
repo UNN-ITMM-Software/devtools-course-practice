@@ -1,4 +1,5 @@
 // Copyright 2024 Kirillov Maxim
+
 #pragma once
 
 #include <vector>

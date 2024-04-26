@@ -1,6 +1,4 @@
-//
-// Created by smirn on 26.04.2024.
-//
+// Copyright 2024 Smirnov Leonid
 
 #pragma once
 
