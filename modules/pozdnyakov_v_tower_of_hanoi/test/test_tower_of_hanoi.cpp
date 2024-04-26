@@ -24,7 +24,7 @@ TEST(Pozdnyakov_Vasya_HanoiTests, number_of_rings_is_positive) {
 
 TEST(Pozdnyakov_Vasya_HanoiTests, number_of_rings_is_1) {
     int rings = 1;
-    TowerOfHanoi tower;    
+    TowerOfHanoi tower;
     std::vector<std::vector<int>> answer = {{1, 3}};
     std::vector<std::vector<int>> result;
 
@@ -35,7 +35,7 @@ TEST(Pozdnyakov_Vasya_HanoiTests, number_of_rings_is_1) {
 
 TEST(Pozdnyakov_Vasya_HanoiTests, number_of_rings_is_2) {
     int rings = 2;
-    TowerOfHanoi tower;    
+    TowerOfHanoi tower;
     std::vector<std::vector<int>> answer = {{1, 2}, {1, 3}, {2, 3}};
     std::vector<std::vector<int>> result;
 
@@ -46,7 +46,7 @@ TEST(Pozdnyakov_Vasya_HanoiTests, number_of_rings_is_2) {
 
 TEST(Pozdnyakov_Vasya_HanoiTests, number_of_rings_is_3) {
     int rings = 3;
-    TowerOfHanoi tower;    
+    TowerOfHanoi tower;
     std::vector<std::vector<int>> answer = {{1, 3}, {1, 2}, {3, 2},
                                             {1, 3}, {2, 1}, {2, 3},
                                             {1, 3}};
@@ -59,7 +59,7 @@ TEST(Pozdnyakov_Vasya_HanoiTests, number_of_rings_is_3) {
 
 TEST(Pozdnyakov_Vasya_HanoiTests, number_of_rings_is_4) {
     int rings = 4;
-    TowerOfHanoi tower;    
+    TowerOfHanoi tower;
     std::vector<std::vector<int>> answer = {{1, 2}, {1, 3}, {2, 3},
                                             {1, 2}, {3, 1}, {3, 2},
                                             {1, 2}, {1, 3}, {2, 3},
@@ -74,12 +74,12 @@ TEST(Pozdnyakov_Vasya_HanoiTests, number_of_rings_is_4) {
 
 TEST(Pozdnyakov_Vasya_HanoiTests, number_of_rings_is_5) {
     int rings = 5;
-    TowerOfHanoi tower;    
-    std::vector<std::vector<int>> answer = { { 1, 3 }, { 1, 2 }, 
-    { 3, 2 }, { 1, 3 }, { 2, 1 }, { 2, 3 }, { 1, 3 }, { 1, 2 }, 
-    { 3, 2 }, { 3, 1 }, { 2, 1 }, { 3, 2 }, { 1, 3 }, { 1, 2 }, 
-    { 3, 2 }, { 1, 3 }, { 2, 1 }, { 2, 3 }, { 1, 3 }, { 2, 1 }, 
-    { 3, 2 }, { 3, 1 }, { 2, 1 }, { 2, 3 }, { 1, 3 }, { 1, 2 }, 
+    TowerOfHanoi tower;
+    std::vector<std::vector<int>> answer = { { 1, 3 }, { 1, 2 },
+    { 3, 2 }, { 1, 3 }, { 2, 1 }, { 2, 3 }, { 1, 3 }, { 1, 2 },
+    { 3, 2 }, { 3, 1 }, { 2, 1 }, { 3, 2 }, { 1, 3 }, { 1, 2 },
+    { 3, 2 }, { 1, 3 }, { 2, 1 }, { 2, 3 }, { 1, 3 }, { 2, 1 },
+    { 3, 2 }, { 3, 1 }, { 2, 1 }, { 2, 3 }, { 1, 3 }, { 1, 2 },
     { 3, 2 }, { 1, 3 }, { 2, 1 }, { 2, 3 }, { 1, 3 } };
     std::vector<std::vector<int>> result;
 
