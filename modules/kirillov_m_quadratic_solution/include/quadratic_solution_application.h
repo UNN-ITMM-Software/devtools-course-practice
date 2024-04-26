@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "quadratic_solution.h"
+#include "include/quadratic_solution.h"
 
 #include <string>
 
