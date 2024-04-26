@@ -9,6 +9,8 @@ double QuadraticSolver::getA() const {
     return a;
 }
 
+
+
 double QuadraticSolver::getB() const {
     return b;
 }
