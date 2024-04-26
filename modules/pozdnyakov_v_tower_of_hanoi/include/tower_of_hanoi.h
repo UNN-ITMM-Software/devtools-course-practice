@@ -7,11 +7,14 @@
 #include <stdexcept>
 
 class TowerOfHanoi {
+ public:
+    TowerOfHanoi() {}
+    std::string GetStepsAsString(const std::vector<std::vector<int>>& steps);
  protected:
-    static std::vector<std::vector<int>> RecursiveCalculate(int numberOfRings,
+    std::vector<std::vector<int>> RecursiveCalculate(int numberOfRings,
      int fromRod, int toRod);
  public:
-    static std::vector<std::vector<int>> CalculateSteps(int numberOfRings);
+    std::vector<std::vector<int>> CalculateSteps(int numberOfRings);
 };
 
 #endif  // MODULES_POZDNYAKOV_V_TOWER_OF_HANOI_INCLUDE_TOWER_OF_HANOI_H_
