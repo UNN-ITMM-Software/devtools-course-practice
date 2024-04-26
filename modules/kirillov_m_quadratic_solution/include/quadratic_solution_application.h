@@ -7,7 +7,6 @@
 #include <string>
 
 class QuadraticSolverApplication {
- private:
     std::string msg;
     QuadraticSolver solver;
     void Help(const char* appName, const char* errorMsg = nullptr);
