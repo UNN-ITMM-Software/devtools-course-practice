@@ -69,7 +69,7 @@ std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc,
       // std::string output;
       // if (result == 18446744073709551615) {
       // output = "Incorrect program arguments. Try again.";
-      // } else { 
+      // } else {
       std::string output = "Shortest path length: " + std::to_string(result);
       // }
       return output;
