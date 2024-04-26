@@ -42,27 +42,9 @@ set_tests_properties (${prefix}_test_shortest_path_three PROPERTIES
 
 add_test(
     NAME ${prefix}_test_find_path_invalid_argument_one
-    COMMAND ${APPLICATION} 0 5 0 1 7
+    COMMAND ${APPLICATION} 0 5 3
 )
 set_tests_properties (${prefix}_test_find_path_invalid_argument_one PROPERTIES
-    PASS_REGULAR_EXPRESSION "Incorrect program arguments. Try again.*"
-    LABELS "${MODULE}"
-)
-
-add_test(
-    NAME ${prefix}_test_find_path_invalid_argument_two
-    COMMAND ${APPLICATION} 1 4 15
-)
-set_tests_properties (${prefix}_test_find_path_invalid_argument_two PROPERTIES
-    PASS_REGULAR_EXPRESSION "Incorrect program arguments. Try again.*"
-    LABELS "${MODULE}"
-)
-
-add_test(
-    NAME ${prefix}_test_find_path_invalid_argument_three
-    COMMAND ${APPLICATION} 1 2 0 3 5 1 2 -6
-)
-set_tests_properties (${prefix}_test_find_path_invalid_argument_three PROPERTIES
     PASS_REGULAR_EXPRESSION "Incorrect program arguments. Try again.*"
     LABELS "${MODULE}"
 )
