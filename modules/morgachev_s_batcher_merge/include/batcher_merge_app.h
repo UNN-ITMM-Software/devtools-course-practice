@@ -6,7 +6,6 @@
 #include <cstring>
 #include <string>
 #include <vector>
-
 #include "../include/batcher_merge.h"
 
 class BatcherMergeApplication {
