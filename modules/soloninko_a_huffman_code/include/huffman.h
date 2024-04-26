@@ -52,6 +52,36 @@ public:
         return dec_str;
     }
 
+    std::string decode(const std::string& str, const std::unordered_map<std::string, char>& codes) {
+        int prev = 0;
+
+        std::string decoded;
+
+        for (int i = 0; i < str.size(); i++) // abcdef
+        {
+            std::string cur = str.substr(prev, i - prev + 1);
+
+            auto it = codes.find(cur);
+            if (it != codes.end())
+            {
+                decoded += (*it).second;
+            }
+        }
+
+        return decoded;
+    }
+
+    std::unordered_map<std::string, char> getHaffmanCodes() {
+        std::unordered_map<std::string, char> huffmanCode;
+
+        for (const auto& i : _huffmanCode)
+        {
+            huffmanCode[i.second] = i.first;
+        }
+
+        return huffmanCode;
+    }
+
 private:
     void _clearTree(std::priority_queue<Node*, std::vector<Node*>, bool (*)(Node*, Node*)>& pq)
     {

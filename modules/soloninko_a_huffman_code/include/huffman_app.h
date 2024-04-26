@@ -31,5 +31,20 @@ class Logger {
 
 class HuffmanApp {
  public:
+	 HuffmanApp()
+		: _logger(&std::cout) {}
 	
+	 void help()
+	 {
+		 _logger.log("	This is an application that allows you to \
+			 find the optimal Huffman code for a given sequence \
+			 of characters. This operation allows you to compress data.\n \
+				For encoding, you must enter the data to be compressed in \
+			 text format. The output will be a compressed string and \
+			 a list of new character codes.");
+
+	 }
+
+ private:
+	 Logger _logger;
 };
