@@ -5,6 +5,12 @@
 #include <unordered_set>
 #include "../include/quadratic_solution.h"
 
+QuadraticSolver::QuadraticSolver(double _a, double _b, double _c) {
+    this->a = _a;
+    this->b = _b;
+    this->c = _c;
+}
+
 double QuadraticSolver::getA() const {
     return a;
 }
