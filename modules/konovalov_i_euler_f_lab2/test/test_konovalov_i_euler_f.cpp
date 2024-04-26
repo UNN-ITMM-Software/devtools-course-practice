@@ -4,7 +4,6 @@
 #include <random>
 #include "include/konovalov_i_euler_f.h"
 
-
 TEST(Konovalov_Igor_Euler_Funcion, throws_when_negative_number_is_given) {
     EXPECT_ANY_THROW(EulerFunction::euler(-5));
 }

@@ -25,3 +25,4 @@ add_test(
 )
 set_tests_properties (${MODULE}_gtest PROPERTIES
     LABELS "${MODULE}")
+    
