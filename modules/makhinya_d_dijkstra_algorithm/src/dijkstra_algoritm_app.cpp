@@ -1,5 +1,6 @@
 // Copyright 2024 Safarov Nurlan
 #include "include/dijkstra_algoritm_app.h"
+#include <sstream>
 
 bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
   if (argc == 1 || std::strcmp(argv[1], "--help") == 0) {
@@ -29,17 +30,23 @@ bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
 
   return true;
 }
-
+/*
 void DijkstraAlgorithmApp::help(const char* appName, const char* msg = nullptr) {
-  std::string message =
-            "This is an application for using Dijkstra's algorithm to find the shortest path in a graph.\n\n"
-            "Please provide arguments for the application.\n\n";
+  std::string message = "This is an application for using Dijkstra's algorithm to find the shortest path in a graph.\n";
 
   if (msg != nullptr) {
       message += msg;
   }
 
   DijkstraAlgorithmMsg = message;
+} */
+
+void DijkstraAlgorithmApp::help(const char *appName, const char *msg) {
+  std::stringstream message;
+
+  message << "This is an application for using Dijkstra's algorithm to find the shortest path in a graph.\n";
+
+  DijkstraAlgorithmMsg = message.str();
 }
 
 std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc, char* argv[]) {

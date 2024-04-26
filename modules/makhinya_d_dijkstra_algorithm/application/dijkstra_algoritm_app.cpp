@@ -2,6 +2,7 @@
 #include "include/dijkstra_algoritm_app.h"
 
 #include <iostream>
+#include <string>
 
 int main(int argc, char* argv[]) {
   DijkstraAlgorithmApp appObject;
