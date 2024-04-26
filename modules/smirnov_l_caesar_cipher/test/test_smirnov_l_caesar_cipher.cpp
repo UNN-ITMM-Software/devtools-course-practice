@@ -87,6 +87,6 @@ TEST(CaesarCipherTest, WordsWithDifferentRegister) {
 
 TEST(CaesarCipherTest, DoesntWorkWithNonEnglish) {
     CaesarCipher cipher(3);
-    EXPECT_EQ(cipher.CaesarCipherEncoder("áéíóú"), "áéíóú");
+    EXPECT_EQ(cipher.CaesarCipherEncoder("@#%$Hello (123)"), "@#%$Khoor (123)");
 }
 
