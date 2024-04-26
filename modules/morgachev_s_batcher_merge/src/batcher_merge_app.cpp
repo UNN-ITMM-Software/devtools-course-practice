@@ -43,12 +43,12 @@ void BatcherMergeApplication::help(const char* appName,
     returnMessage += "Usage:\n";
     returnMessage += '\t';
     returnMessage += appName;
-    returnMessage += " -init <double_1 double_2 ...> = input double array\n";
+    returnMessage += " -init <int_1 int_2 ...> = input int array\n";
 }
 
 std::string BatcherMergeApplication::Sort(int argc, char* argv[]) {
     if (validate(argc, argv)) {
-        BatcherMerge<double>::batcherMerge(array);
+        BatcherMerge<int>::batcherMerge(array);
         for (size_t i = 0; i < array.size(); i++) {
             returnMessage += std::to_string(array[i]);
             returnMessage += ' ';

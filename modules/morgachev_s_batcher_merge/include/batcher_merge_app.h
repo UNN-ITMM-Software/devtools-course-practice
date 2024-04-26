@@ -11,7 +11,7 @@
 class BatcherMergeApplication {
  private:
     std::string returnMessage;
-    std::vector<double> array;
+    std::vector<int> array;
     void help(const char* appName, const char* errorMessage = nullptr);
     bool validate(int argc, char* argv[]);
  public:
