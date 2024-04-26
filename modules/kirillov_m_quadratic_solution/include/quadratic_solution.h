@@ -36,4 +36,3 @@ class QuadraticSolver {
     RealResult solveRealRoots() const;
     ComplexResult solveComplexRoots() const;
 };
-

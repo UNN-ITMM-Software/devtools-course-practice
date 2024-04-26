@@ -17,4 +17,3 @@ class QuadraticSolverApplication {
     QuadraticSolverApplication() = default;
     std::string SolveQuadraticEquation(int argc, char* argv[]);
 };
-
