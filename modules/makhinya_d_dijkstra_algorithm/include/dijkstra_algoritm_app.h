@@ -25,12 +25,12 @@ class DijkstraAlgorithmApp {
 };*/
 
 class DijkstraAlgorithmApp {
-public:
+ public:
     DijkstraAlgorithmApp() = default;
-    std::string dijkstra_algorithm_application(int argc, char* argv[]); // Делаем метод статическим
-private:
+    std::string dijkstra_algorithm_application(int argc, char* argv[]);
+ private:
     bool validate(int argc, char* argv[]);
     void help(const char *appName, const char *msg = nullptr);
-    std::string DijkstraAlgorithmMsg; // Делаем переменную статической
+    std::string DijkstraAlgorithmMsg;
     Solver<15> obj;
 };
