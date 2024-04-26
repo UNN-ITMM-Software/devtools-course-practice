@@ -1,5 +1,6 @@
 // Copyright 2024 Safarov Nurlan
 #include "include/dijkstra_algoritm_app.h"
+#include <string>
 #include <sstream>
 
 bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
