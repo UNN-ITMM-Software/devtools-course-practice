@@ -84,3 +84,9 @@ TEST(CaesarCipherTest, WordsWithDifferentRegister) {
     EXPECT_EQ(cipher.CaesarCipherEncoder("HeLLo"), "IfMMp");
     EXPECT_EQ(cipher.CaesarCipherEncoder("XyZ"), "YzA");
 }
+
+TEST(CaesarCipherTest, DoesntWorkWithNonEnglish) {
+    CaesarCipher cipher(3);
+    EXPECT_EQ(cipher.CaesarCipherEncoder("áéíóú"), "áéíóú");
+}
+
