@@ -5,6 +5,7 @@
 #include <math.h>
 #include <stdexcept>
 #include <string>
+#include <sstream>
 
 FractionCalculator::FractionCalculator() : num(0), den(1) {}
 
@@ -105,4 +106,19 @@ FractionCalculator FractionCalculator::operator/(
     FractionCalculator quotient(numerator, denominator);
 
     return quotient;
+}
+
+FractionCalculator& FractionCalculator::operator=
+(const FractionCalculator& obj) {
+    if (this != &obj) {
+        num = obj.num;
+        den = obj.den;
+    }
+    return *this;
+}
+
+std::string FractionCalculator::ToString() const {
+    std::stringstream ss;
+    ss << num << "/" << den;
+    return ss.str();
 }
