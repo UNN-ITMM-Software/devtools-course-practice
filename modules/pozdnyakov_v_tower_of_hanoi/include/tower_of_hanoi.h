@@ -4,6 +4,7 @@
 #define MODULES_POZDNYAKOV_V_TOWER_OF_HANOI_INCLUDE_TOWER_OF_HANOI_H_
 
 #include <vector>
+#include <string>
 #include <stdexcept>
 
 class TowerOfHanoi {

@@ -9,7 +9,6 @@
 class TowerOfHanoiApplication {
  private:
     std::string msg;
-    
     TowerOfHanoi tower;
     bool Validate(int argc, char* argv[]);
     void Help(const char* application, const char* errMsg = nullptr);
