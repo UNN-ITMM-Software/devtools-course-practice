@@ -44,8 +44,8 @@ void DijkstraAlgorithmApp::help(const char* appName, const char* msg = nullptr) 
 void DijkstraAlgorithmApp::help(const char *appName, const char *msg) {
   std::stringstream message;
 
-  message << "This is an application for using Dijkstra's 
-            algorithm to find the shortest path in a graph.\n";
+  message << "This is an application for using Dijkstra's ";
+  message << "algorithm to find the shortest path in a graph.\n";
 
   DijkstraAlgorithmMsg = message.str();
 }
