@@ -3,6 +3,22 @@
 #include <cstring>
 #include <sstream>
 
+
+void DijkstraAlgorithmApp::help(const char *appName, const char *msg) {
+  std::stringstream message;
+
+  // if (msg) {
+  //   message << "Error: Incorrect program arguments. Try again.";
+  //   DijkstraAlgorithmMsg = message.str();
+  //   return;
+  // }
+
+  message << "This is an application for using Dijkstra's ";
+  message << "algorithm to find the shortest path in a graph.\n";
+
+  DijkstraAlgorithmMsg = message.str();
+}
+
 bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
   if (argc == 1 || std::strcmp(argv[1], "--help") == 0) {
       help(argv[0]);
@@ -10,7 +26,8 @@ bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
   }
 
   // Check if the number of arguments is correct
-  if (argc < 4) {
+  int check = argc - 3;
+  if (check % 3 != 0) {
       help(argv[0], "Insufficient arguments provided.");
       return false;
   }
@@ -30,15 +47,6 @@ bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
   }
 
   return true;
-}
-
-void DijkstraAlgorithmApp::help(const char *appName, const char *msg) {
-  std::stringstream message;
-
-  message << "This is an application for using Dijkstra's ";
-  message << "algorithm to find the shortest path in a graph.\n";
-
-  DijkstraAlgorithmMsg = message.str();
 }
 
 std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc,
@@ -62,8 +70,6 @@ std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc,
       // Return result
       std::string output = "Shortest path length: " + std::to_string(result);
       return output;
-  } else {
-    return "Incorrect program arguments. Try again.";
   }
 
   return DijkstraAlgorithmMsg;
