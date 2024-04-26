@@ -99,3 +99,15 @@ TEST(FractionCalculatorTest, Test_Operator_Equal) {
     EXPECT_EQ(a.GetNum(), b.GetNum());
     EXPECT_EQ(a.GetDen(), b.GetDen());
 }
+
+TEST(FractionCalculatorTest, Divide_Fractions) {
+    FractionCalculator a(2, 2);
+    FractionCalculator b(1, 1);
+    FractionCalculator res(1, 1);
+    FractionCalculator x;
+
+    x = a / b;
+
+    EXPECT_EQ(x.GetNum(), res.GetNum());
+    EXPECT_EQ(x.GetDen(), res.GetDen());
+}
