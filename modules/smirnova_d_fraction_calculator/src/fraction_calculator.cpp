@@ -108,7 +108,8 @@ FractionCalculator FractionCalculator::operator/(
     return quotient;
 }
 
-FractionCalculator& FractionCalculator::operator=(const FractionCalculator& obj) {
+FractionCalculator& FractionCalculator::operator=
+(const FractionCalculator& obj) {
     if (this != &obj) {
         num = obj.num;
         den = obj.den;
