@@ -27,8 +27,7 @@ class QuadraticSolver {
     double b;
     double c;
  public:
-    explicit QuadraticSolver
-    (double a = 0, double b = 0, double c = 0): a(a), b(b), c(c) {}
+    QuadraticSolver(double a = 0, double b = 0, double c = 0): a(a), b(b), c(c) {}
     double getA() const;
     double getB() const;
     double getC() const;
