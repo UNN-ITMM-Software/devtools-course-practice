@@ -1,7 +1,6 @@
 // Copyright 2024 Soloninko Andrey
 
-#ifndef MODULES_SOLONINKO_A_HUFFMAN_CODE_INCLUDE_HUFFMAN_H_
-#define MODULES_SOLONINKO_A_HUFFMAN_CODE_INCLUDE_HUFFMAN_H_
+#pragma once
 
 #include <iostream>
 #include <memory>
@@ -16,97 +15,125 @@ struct Node {
   Node *left, *right;
 };
 
-Node *getNode(char ch, int freq, Node *left, Node *right) {
-  Node *node = new Node();
+class Huffman {
+public:
+    void buildHuffmanTree(const std::string& text) {
+        _clear();
 
-  node->ch = ch;
-  node->freq = freq;
-  node->left = left;
-  node->right = right;
+        std::unordered_map<char, int> freq = _collectFrequency(text);
 
-  return node;
-}
-void encode(Node *root, std::string str,
-            std::unordered_map<char, std::string> &huffmanCode) {
-  if (root == nullptr)
-    return;
+        _pq = std::priority_queue<Node*, std::vector<Node*>, bool (*)(Node*, Node*)>(
+            [](Node* l, Node* r) { return l->freq > r->freq; });
 
-  if (!root->left && !root->right) {
-    huffmanCode[root->ch] = str;
-  }
+        _buildHuffmanTree(freq);
 
-  encode(root->left, str + "0", huffmanCode);
-  encode(root->right, str + "1", huffmanCode);
-}
+        _collectCodes(_pq.top(), "");
+    }
 
-std::string decode(Node *root, int &index, std::string str,
-                   std::string &dec_str) {
-  if (root == nullptr) {
-    return dec_str;
-  }
+    std::string encode(const std::string& text)
+    {
+        std::string str = "";
+        for (const char& ch : text) {
+            str += _huffmanCode[ch];
+        }
 
-  if (!root->left && !root->right) {
-    dec_str += root->ch;
-    return dec_str;
-  }
+        return str;
+    }
 
-  index++;
+    std::string decode(const std::string& str)
+    {
+        std::string dec_str;
 
-  if (str[index] == '0')
-    decode(root->left, index, str, dec_str);
-  else
-    decode(root->right, index, str, dec_str);
+        int index = -1;
+        while (index < static_cast<int>(str.size()) - 1) {
+            dec_str = _decode(_pq.top(), index, str, dec_str);
+        }
 
-  return dec_str;
-}
+        return dec_str;
+    }
 
-void buildHuffmanTree(std::string text, std::string &dec_str) {
-  std::unordered_map<char, int> freq;
-  for (const char &ch : text) {
-    freq[ch]++;
-  }
+private:
+    void _clearTree(std::priority_queue<Node*, std::vector<Node*>, bool (*)(Node*, Node*)>& pq)
+    {
+        while (!pq.empty()) {
+            Node* cur = pq.top();
+            pq.pop();
+            delete cur;
+        }
+    }
 
-  std::priority_queue<Node *, std::vector<Node *>, bool (*)(Node *, Node *)> pq(
-      [](Node *l, Node *r) { return l->freq > r->freq; });
+    Node* _getNode(char ch, int freq, Node* left, Node* right) {
+        Node* node = new Node();
 
-  for (const auto &pair : freq) {
-    pq.push(getNode(pair.first, pair.second, nullptr, nullptr));
-  }
+        node->ch = ch;
+        node->freq = freq;
+        node->left = left;
+        node->right = right;
 
-  while (pq.size() != 1) {
-    Node *left = pq.top();
-    pq.pop();
-    Node *right = pq.top();
-    pq.pop();
+        return node;
+    }
 
-    int sum = left->freq + right->freq;
-    pq.push(getNode('\0', sum, left, right));
-  }
+    void _collectCodes(Node* root, std::string str) {
+        if (root == nullptr)
+            return;
 
-  Node *root = pq.top();
+        if (!root->left && !root->right) {
+            _huffmanCode[root->ch] = str;
+        }
 
-  std::unordered_map<char, std::string> huffmanCode;
-  encode(root, "", huffmanCode);
+        _collectCodes(root->left, str + "0");
+        _collectCodes(root->right, str + "1");
+    }
 
-  std::string str = "";
-  for (const char &ch : text) {
-    str += huffmanCode[ch];
-  }
+    std::string _decode(Node* root, int& index, std::string str
+        , std::string& dec_str) {
+        if (root == nullptr) 
+            return dec_str;
 
-  int index = -1;
-  while (index < static_cast<int>(str.size()) - 1) {
-    dec_str = decode(root, index, str, dec_str);
-  }
+        if (!root->left && !root->right) {
+            dec_str += root->ch;
+            return dec_str;
+        }
 
-  while (!pq.empty()) {
-    Node *t = pq.top();
-    pq.pop();
-    delete t;
-  }
-}
+        index++;
 
-bool compare_str(std::string str1, std::string str2) {
-  return str1.compare(str2) == 0;
-}
+        if (str[index] == '0')
+            _decode(root->left, index, str, dec_str);
+        else
+            _decode(root->right, index, str, dec_str);
 
-#endif  // MODULES_SOLONINKO_A_HUFFMAN_CODE_INCLUDE_HUFFMAN_H_
+        return dec_str;
+    }
+
+    std::unordered_map<char, int> _collectFrequency(const std::string& text)
+    {
+        std::unordered_map<char, int> freq;
+
+        for (const char& ch : text)
+            freq[ch]++;
+
+        return freq;
+    }
+
+    void _buildHuffmanTree(const std::unordered_map<char, int>& freq) {
+        for (const auto& pair : freq) 
+            _pq.push(_getNode(pair.first, pair.second, nullptr, nullptr));
+
+        while (_pq.size() != 1) {
+            Node* left = _pq.top();
+            _pq.pop();
+            Node* right = _pq.top();
+            _pq.pop();
+            int sum = left->freq + right->freq;
+            _pq.push(_getNode('\0', sum, left, right));
+        }
+    }
+
+    void _clear() {
+        _clearTree(_pq);
+        _huffmanCode.clear();
+    }
+
+    std::priority_queue<Node*, std::vector<Node*>, bool (*)(Node*, Node*)> _pq;
+    std::unordered_map<char, std::string> _huffmanCode;
+};
