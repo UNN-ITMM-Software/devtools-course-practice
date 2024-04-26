@@ -26,7 +26,8 @@ class QuadraticSolver {
     double b;
     double c;
  public:
-    QuadraticSolver(double a, double b, double c) : a(a), b(b), c(c) {}
+    explicit QuadraticSolver(double a = 0, double b = 0, double c = 0)
+    : a(a), b(b), c(c) {}
     double getA() const;
     double getB() const;
     double getC() const;
@@ -34,3 +35,4 @@ class QuadraticSolver {
     RealResult solveRealRoots() const;
     ComplexResult solveComplexRoots() const;
 };
+

@@ -26,20 +26,17 @@ RealResult QuadraticSolver::solveRealRoots() const {
     if (a == 0) {
         if (b == 0) {
             return { c != 0, {} };
-        } else {
-            return {true, {-c / b}};
         }
-    } else {
-        double discriminator = getDiscriminant();
-        if (discriminator < 0) {
-            throw std::runtime_error("No real roots");
-        } else {
-            double sqrt_disc = sqrt(discriminator);
-            double root1 = (-b - sqrt_disc) / (2 * a);
-            double root2 = (-b + sqrt_disc) / (2 * a);
-            return {true, {root1, root2}};
-        }
+        return {true, {-c / b}};
     }
+    double discriminator = getDiscriminant();
+    if (discriminator < 0) {
+        throw std::runtime_error("No real roots");
+    }
+    double sqrt_disc = sqrt(discriminator);
+    double root1 = (-b - sqrt_disc) / (2 * a);
+    double root2 = (-b + sqrt_disc) / (2 * a);
+    return {true, {root1, root2}};
 }
 
 ComplexResult QuadraticSolver::solveComplexRoots() const {
@@ -53,12 +50,16 @@ ComplexResult QuadraticSolver::solveComplexRoots() const {
         roots.insert(root1);
         roots.insert(root2);
         return {true, roots};
-    } else {
+    }
+    double imagPart = std::sqrt(-discriminator) / (2 * a);
+    // Проверяем, являются ли корни комплексными
+    if (imagPart != 0.0) {
         double realPart = -b / (2 * a);
-        double imagPart = std::sqrt(-discriminator) / (2 * a);
         ComplexRoots roots(2, hasher);
         roots.insert({realPart, imagPart});
         roots.insert({realPart, -imagPart});
         return {true, roots};
     }
+    // Если мнимая часть равна нулю, значит, у нас есть два действительных корня
+    return {false, {}};
 }
