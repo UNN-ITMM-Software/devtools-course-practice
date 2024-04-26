@@ -2,8 +2,9 @@
 
 #pragma once
 
-#include <string>
 #include "quadratic_solution.h"
+
+#include <string>
 
 class QuadraticSolverApplication {
 private:
