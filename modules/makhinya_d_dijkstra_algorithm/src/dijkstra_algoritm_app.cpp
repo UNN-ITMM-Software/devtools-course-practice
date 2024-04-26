@@ -60,13 +60,10 @@ std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc,
       uint64_t result = obj.find_shortest_path(start_vertex, end_vertex);
 
       // Return result
-      std::string output;
-      if (result == 18446744073709551615) {
-      output = "Incorrect program arguments. Try again.";
-      } else {
       std::string output = "Shortest path length: " + std::to_string(result);
-      }
       return output;
+  } else {
+    return "Incorrect program arguments. Try again.";
   }
 
   return DijkstraAlgorithmMsg;
