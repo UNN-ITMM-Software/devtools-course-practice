@@ -117,3 +117,7 @@ Color BillinearInterpolation::Calculation(std::size_t x1, std::size_t y1,
                h1.getB() + (h2.getB() - h1.getB()) * (y2 - y1) / (2 * y2 - y1));
   return ans;
 }
+
+int BillinearInterpolation::getSize() {
+    return source.size();
+}
