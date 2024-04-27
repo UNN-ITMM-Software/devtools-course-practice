@@ -18,8 +18,7 @@ class HuffmanApp {
         }
         if (argc == 1) {
             return _help(argv[0]);
-        }
-        else if (argc == 2) {
+        } else if (argc == 2) {
             return encode(argc, argv);
         }
         return decode(argc, argv);
@@ -54,8 +53,7 @@ class HuffmanApp {
     std::unordered_map<std::string, char> _getCodes(int argc, char** argv) {
         std::unordered_map<std::string, char> codes;
 
-        for (int i = 2; i < argc - 1; i += 2)
-        {
+        for (int i = 2; i < argc - 1; i += 2) {
             codes[argv[i + 1]] = argv[i][0];
         }
 
@@ -81,8 +79,7 @@ class HuffmanApp {
     }
     bool _validateEncoded(const char* str) {
         for (int i = 0; i < strlen(str); i++) {
-            if (str[i] != '1' && str[i] != '0')
-            {
+            if (str[i] != '1' && str[i] != '0') {
                 return false;
             }
         }
@@ -90,13 +87,11 @@ class HuffmanApp {
     }
 
     bool _validateCodes(int argc, char** argv) {
-        for (int i = 2; i < argc - 1; i += 2)
-        {
+        for (int i = 2; i < argc - 1; i += 2) {
             if (strlen(argv[i]) > 1) {
                 return false;
             }
-            if (!_validateEncoded(argv[i+1]))
-            {
+            if (!_validateEncoded(argv[i+1])) {
                 return false;
             }
         }

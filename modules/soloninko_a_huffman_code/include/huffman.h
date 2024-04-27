@@ -75,8 +75,7 @@ public:
     std::unordered_map<std::string, char> getHaffmanCodesStrChar() {
         std::unordered_map<std::string, char> huffmanCode;
 
-        for (const auto& i : _huffmanCode)
-        {
+        for (const auto& i : _huffmanCode) {
             huffmanCode[i.second] = i.first;
         }
 
