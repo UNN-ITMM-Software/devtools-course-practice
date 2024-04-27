@@ -107,9 +107,6 @@ void Huffman::_collectCodes(Node* root, std::string str) {
 
 std::string Huffman::_decode(Node* root, int& index, std::string str
     , std::string& dec_str) {
-    if (root == nullptr)
-        return dec_str;
-
     if (!root->left && !root->right) {
         dec_str += root->ch;
         return dec_str;

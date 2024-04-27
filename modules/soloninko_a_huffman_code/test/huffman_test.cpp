@@ -72,6 +72,20 @@ TEST(Soloninko_Huffman, Test_8) {
   EXPECT_EQ(codes.size(), static_cast<size_t>(3));
 }
 
+TEST(Soloninko_Huffman, Test_9) {
+  Huffman huffman;
+  huffman.buildHuffmanTree("vddsdasrff");
+  huffman.buildHuffmanTree("abc");
+  auto codes = huffman.getHaffmanCodesStrChar();
+  std::unordered_set<std::string> expectedCodes = { "0", "10", "11" };
+  std::unordered_set<std::string> actualCodes;
+  for (const auto& i : codes) {
+    actualCodes.insert(i.first);
+  }
+  EXPECT_EQ(actualCodes, expectedCodes);
+  EXPECT_EQ(codes.size(), static_cast<size_t>(3));
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
