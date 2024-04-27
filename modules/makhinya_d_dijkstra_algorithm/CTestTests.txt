@@ -50,6 +50,15 @@ set_tests_properties (${prefix}_test_shortest_path_three PROPERTIES
 )
 
 add_test(
+    NAME ${prefix}_test_shortest_path_four
+    COMMAND ${APPLICATION} 0 2 0 1 1 0 3 1 1 2 7 3 4 4 4 2 2
+)
+set_tests_properties (${prefix}_test_shortest_path_four PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Shortest"
+    LABELS "${MODULE}"
+)
+
+add_test(
     NAME ${prefix}_test_no_path
     COMMAND ${APPLICATION} 1 5 0 1 4
 )
