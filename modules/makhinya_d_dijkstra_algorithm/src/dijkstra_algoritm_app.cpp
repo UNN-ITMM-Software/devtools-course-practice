@@ -5,7 +5,8 @@
 #include <cstring>
 
 bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
-    if (argc == 1 || std::strcmp(argv[1], "--help") == 0 || std::strcmp(argv[1], "-h") == 0) {
+    if (argc == 1 || std::strcmp(argv[1], "--help") == 0 || 
+        std::strcmp(argv[1], "-h") == 0) {
         help(argv[0], 0);
         return false;
     }
@@ -31,18 +32,20 @@ void DijkstraAlgorithmApp::help(const char* application, int check_code) {
   std::ostringstream help_msg;
 
   if (check_code != 0) {
-    help_msg << "Incorrect program arguments. Try again or refer to "
-    << "the help for this program by entering the argument \"--help\" or \"-h\"";
+    help_msg << "Incorrect program arguments. Try again or refer to ";
+    help_msg << "the help for this program by entering the argument ";
+    help_msg << "\"--help\" or \"-h\"";
   } else {
-    help_msg << "Usage " << application
-             << " to work with Dijkstra's algorithm to find"
-             << "the shortest path from the starting vertex to the required one. ";
+    help_msg << "Usage " << application;
+    help_msg << " to work with Dijkstra's algorithm to find";
+    help_msg << "the shortest path from the starting ";
+    help_msg << "to the required one. ";
 
     help_msg << "Example: " << application
-             << " 0 1 0 3 5 0 1 8, where the first argument is the "
-             << "initial vertex and the second argument is the final one. Each "
-             << "of the following 3 arguments defines the edges "
-             << "of a weighted digraph" << std::endl;
+    help_msg << " 0 1 0 3 5 0 1 8, where the first argument is the "
+    help_msg << "initial vertex and the second argument is the final "
+    help_msg << "one. Each of the following 3 arguments defines the "
+    help_msg << "edges of a weighted digraph" << std::endl;
   }
 
   dijkstra_algorithm_msg = help_msg.str();
