@@ -7,6 +7,9 @@
 #include <queue>
 #include <iostream>
 #include <sstream>
+#include <string>
+#include <unordered_map>
+#include <cstring>
 
 
 class HuffmanApp {
