@@ -14,12 +14,12 @@
 #include <vector>
 
 template <int N> class Heap {
-private:
+ private:
   std::array<double, N + 2> t;
   int real_size = 0;
   void heapify(int n);
 
-public:
+ public:
   Heap() = default;
   explicit Heap(const std::vector<double> &arr) {
     for (const auto &el : arr)
@@ -77,4 +77,4 @@ template <int N> double Heap<N>::top() {
 
 template <int N> int Heap<N>::size() { return real_size; }
 
-#endif // MODULES_TROITSKIY_A_LAB2_INCLUDE_LAB2_H_
+#endif  // MODULES_TROITSKIY_A_LAB2_INCLUDE_LAB2_H_
