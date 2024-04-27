@@ -2,9 +2,10 @@
 
 #include <iostream>
 
-#include "include/huffman_app"
+#include "include/huffman_app.h"
 
 int main(int argc, char *argv[]) {
 	HuffmanApp app;
-    return app(argc, argv);
+    std::cout << app(argc, argv);
+    return 0;
 }

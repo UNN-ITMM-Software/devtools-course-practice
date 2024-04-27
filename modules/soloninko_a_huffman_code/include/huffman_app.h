@@ -71,7 +71,7 @@ class HuffmanApp {
 		 if (argc > 2 && !_validateEncoded(argv[1])) {
 			 return "Invalid string for decoding!";
 		 }
-		 if (_validateCodes(argc, argv))
+		 if (!_validateCodes(argc, argv))
 		 {
 			 return "Invalid codes!";
 		 }
