@@ -16,7 +16,7 @@ struct Node {
 };
 
 class Huffman {
-public:
+ public:
     void buildHuffmanTree(const std::string& text) {
         _clear();
 
@@ -57,13 +57,11 @@ public:
 
         std::string decoded;
 
-        for (int i = 0; i < str.size(); i++) 
-        {
+        for (int i = 0; i < str.size(); i++) {
             std::string cur = str.substr(prev, i - prev + 1);
 
             auto it = codes.find(cur);
-            if (it != codes.end())
-            {
+            if (it != codes.end()) {
                 decoded += (*it).second;
                 prev = i + 1;
             }
@@ -86,7 +84,7 @@ public:
         return _huffmanCode;
     }
 
-private:
+ private:
     void _clearTree(std::priority_queue<Node*,
         std::vector<Node*>, bool (*)(Node*, Node*)>& pq) {
         while (!pq.empty()) {
@@ -121,7 +119,7 @@ private:
 
     std::string _decode(Node* root, int& index, std::string str
         , std::string& dec_str) {
-        if (root == nullptr) 
+        if (root == nullptr)
             return dec_str;
 
         if (!root->left && !root->right) {
@@ -139,8 +137,7 @@ private:
         return dec_str;
     }
 
-    std::unordered_map<char, int> _collectFrequency(const std::string& text)
-    {
+    std::unordered_map<char, int> _collectFrequency(const std::string& text) {
         std::unordered_map<char, int> freq;
 
         for (const char& ch : text)
@@ -150,7 +147,7 @@ private:
     }
 
     void _buildHuffmanTree(const std::unordered_map<char, int>& freq) {
-        for (const auto& pair : freq) 
+        for (const auto& pair : freq)
             _pq.push(_getNode(pair.first, pair.second,
                 nullptr, nullptr));
 
@@ -169,7 +166,7 @@ private:
         _huffmanCode.clear();
     }
 
-    std::priority_queue<Node*, std::vector<Node*>, 
+    std::priority_queue<Node*, std::vector<Node*>,
         bool (*)(Node*, Node*)> _pq;
     std::unordered_map<char, std::string> _huffmanCode;
 };
