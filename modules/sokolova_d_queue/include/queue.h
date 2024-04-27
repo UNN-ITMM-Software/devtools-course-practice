@@ -22,6 +22,9 @@ class  Queue {
     ~Queue();
     Queue(const Queue& other);
     Queue& operator=(const Queue& other);
+    Queue(Queue&& other) noexcept;
+    Queue& operator=(Queue&& other) noexcept;
+
 
     bool isEmpty() const;
     bool isFull() const;
@@ -126,6 +129,46 @@ const ValueType& Queue<ValueType>::back() const {
 template <class ValueType>
 size_t Queue<ValueType>::size() const {
     return count;
+}
+
+template <class ValueType>
+Queue<ValueType>::Queue(Queue&& other) noexcept
+    : buffer(nullptr),
+    head(0),
+    tail(0),
+    count(0),
+    capacity(0) {
+    buffer = other.buffer;
+    head = other.head;
+    tail = other.tail;
+    count = other.count;
+    capacity = other.capacity;
+
+    other.buffer = nullptr;
+    other.head = 0;
+    other.tail = 0;
+    other.count = 0;
+    other.capacity = 0;
+}
+
+template <class ValueType>
+Queue<ValueType>& Queue<ValueType>
+::operator=(Queue&& other) noexcept {
+    if (this != &other) {
+        delete[] buffer;
+        buffer = other.buffer;
+        head = other.head;
+        tail = other.tail;
+        count = other.count;
+        capacity = other.capacity;
+
+        other.buffer = nullptr;
+        other.head = 0;
+        other.tail = 0;
+        other.count = 0;
+        other.capacity = 0;
+    }
+    return *this;
 }
 
 

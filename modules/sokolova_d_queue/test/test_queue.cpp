@@ -86,3 +86,32 @@ TEST(SokolovaDaria_QueueTest,
     Queue<double> q;
     EXPECT_THROW(q.dequeue(), std::out_of_range);
 }
+TEST(SokolovaDaria_QueueTest, MoveConstructor) {
+    Queue<int> q1;
+    q1.enqueue(10);
+    q1.enqueue(20);
+
+    Queue<int> q2(std::move(q1));
+    EXPECT_EQ(q1.size(), 0);
+    EXPECT_EQ(q2.size(), 2);
+    EXPECT_EQ(q2.front(), 10);
+    EXPECT_EQ(q2.back(), 20);
+}
+
+TEST(SokolovaDaria_QueueTest, MoveAssignmentOperator) {
+    Queue<int> q1;
+    q1.enqueue(10);
+    q1.enqueue(20);
+
+    Queue<int> q2;
+    q2.enqueue(30);
+    q2.enqueue(40);
+
+    q2 = std::move(q1);
+
+    EXPECT_EQ(q1.size(), 0);
+    EXPECT_EQ(q2.size(), 2);
+    EXPECT_EQ(q2.front(), 10);
+    EXPECT_EQ(q2.back(), 20);
+}
+
