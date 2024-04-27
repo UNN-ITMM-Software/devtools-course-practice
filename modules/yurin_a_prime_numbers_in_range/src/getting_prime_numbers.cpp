@@ -6,9 +6,8 @@
 
 
 std::vector<uint32_t> GettingPrimeNumbers::getPrimeNumbersInRange(
-        uint32_t lowerBound, uint32_t upperBound) {
-    _lowerBound = lowerBound;
-    _upperBound = upperBound;
+        uint32_t lowerBound, uint32_t upperBound) : 
+        _lowerBound(lowerBound), _upperBound(upperBound) {
     validateInputData();
 
     if (_isPrime.size() > upperBound) {
@@ -35,12 +34,11 @@ std::vector<uint32_t> GettingPrimeNumbers::getPrimeNumbersInRange(
 
 void GettingPrimeNumbers::validateInputData() {
     if (_lowerBound > _upperBound) {
-        throw std::string(
-                "The left bound should be larger than the right one!");
+        throw std::invalid_argument(LEFT_BORDER_BIGGER);
     }
 
     if (_upperBound == UINT32_MAX) {
-        throw std::string("The right border is too big!");
+        throw std::overflow_error(RIGHT_BORDER_OVERFLOW);
     }
 }
 
