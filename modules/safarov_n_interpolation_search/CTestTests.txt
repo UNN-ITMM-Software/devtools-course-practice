@@ -1,0 +1,50 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_run
+    COMMAND ${APPLICATION} "--help"
+)
+set_tests_properties (${prefix}_test_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application for searching a target number in a sequence using interpolation search.\n\nPlease provide arguments for searching."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_search
+    COMMAND ${APPLICATION} 1 2 3 4 5 3
+)
+set_tests_properties (${prefix}_test_search PROPERTIES
+    PASS_REGULAR_EXPRESSION "Target number 3 found at index 2"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_not_found
+    COMMAND ${APPLICATION} 1 2 3 4 5 6
+)
+set_tests_properties (${prefix}_test_not_found PROPERTIES
+    PASS_REGULAR_EXPRESSION "Target number 6 not found in the sequence."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_invalid_input
+    COMMAND ${APPLICATION} "a" "b" "c"
+)
+set_tests_properties (${prefix}_test_invalid_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "Please provide arguments for searching"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_test_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application for searching a target number in a sequence using interpolation search.\n\nPlease provide arguments for searching."
+    LABELS "${MODULE}"
+)

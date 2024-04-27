@@ -36,11 +36,14 @@
         pulls.forEach(pull => {
             let task_id
             let isPlagiarized = false;
+            let isDelayed = false;
             pull.labels.forEach(label => {
               if(label.name == "lab 1" || label.name == "lab 2" || label.name == "lab 3") {
                 task_id = label.name;
               } else if (label.name == "plagiarized") {
                 isPlagiarized = true;
+              } else if (label.name == "delayed") {
+                isDelayed = true;
               }
             });
             if (!task_id)
@@ -65,6 +68,10 @@
             if (isPlagiarized) {
               results[username][task_id].status ='plagiarized';
               results[username][task_id].html_url = pull.html_url;
+            }
+            if (isDelayed) {
+                results[username][task_id].status ='delayed';
+                results[username][task_id].html_url = pull.html_url;
             }
         });
 
@@ -91,6 +98,8 @@
               html += "-accepted-4BC51D";
             } else if (progress[i].status === "plagiarized") {
               html += "!-plagiarized-blueviolet";
+            } else if (progress[i].status === "delayed") {
+              html += "!-delayed-orange";
             } else {
               html += "-in progress-red";
             }
