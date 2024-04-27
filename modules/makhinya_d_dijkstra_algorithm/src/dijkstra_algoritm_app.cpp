@@ -1,5 +1,5 @@
 // Copyright 2024 Safarov Nurlan
-#include "include/dijkstra_algoritm_app.h";
+#include "include/dijkstra_algoritm_app.h"
 
 #include <sstream>
 #include <cstring>
