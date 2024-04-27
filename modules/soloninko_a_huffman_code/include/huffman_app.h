@@ -67,8 +67,7 @@ class HuffmanApp {
         if (argc > 2 && !_validateEncoded(argv[1])) {
             return "Invalid string for decoding!";
         }
-        if (!_validateCodes(argc, argv))
-        {
+        if (!_validateCodes(argc, argv)) {
             return "Invalid codes!";
         }
         return nullptr;
@@ -98,19 +97,18 @@ class HuffmanApp {
         return true;
     }
 
-    std::string _help(const char* appName)
-    {
+    std::string _help(const char* appName) {
         std::stringstream message;
-        message << "This is an application that allows you to \
-find the optimal Huffman code for a given sequence \
-of characters. This operation allows you to compress data.\n \
-For encoding, you must enter the data to be compressed in \
-text format.\n";
+        message << "This is an application that allows you to ";
+        message << "find the optimal Huffman code for a given sequence ";
+        message << "of characters.This operation allows you to compress data.\n ";
+        message << "For encoding, you must enter the data to be compressed in ";
+        message << "text format.\n";
         message << appName << " abc\n";
-        message << "The output will be a compressed string and \
-a list of new character codes.\n \
-To decode, you must enter a string and a list of \
-character codes in the format:\n";
+        message << "The output will be a compressed string and ";
+        message << "a list of new character codes.\n ";
+        message << "To decode, you must enter a string and a list of ";
+        message << "character codes in the format:\n";
         message << appName << " 10101001 a 10101 b 110 ....";
         return message.str();
     }
