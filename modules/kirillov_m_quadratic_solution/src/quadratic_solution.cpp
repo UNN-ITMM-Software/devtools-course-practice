@@ -49,22 +49,13 @@ RealResult QuadraticSolver::solveRealRoots() const {
 ComplexResult QuadraticSolver::solveComplexRoots() const {
     double discriminator = getDiscriminant();
     ComplexHash hasher;
-    if (discriminator >= 0) {
-        double sqrt_disc = sqrt(discriminator);
-        double root1 = (-b - sqrt_disc) / (2 * a);
-        double root2 = (-b + sqrt_disc) / (2 * a);
-        ComplexRoots roots(2, hasher);
-        roots.insert(root1);
-        roots.insert(root2);
-        return {true, roots};
-    }
     double imagPart = std::sqrt(-discriminator) / (2 * a);
-    if (imagPart != 0.0) {
-        double realPart = -b / (2 * a);
-        ComplexRoots roots(2, hasher);
-        roots.insert({realPart, imagPart});
-        roots.insert({realPart, -imagPart});
-        return {true, roots};
-    }
-    return {false, {}};
+
+    double realPart = -b / (2 * a);
+    ComplexRoots roots(2, hasher);
+
+    roots.insert({realPart, imagPart});
+    roots.insert({realPart, -imagPart});
+    return {true, roots};
+
 }
