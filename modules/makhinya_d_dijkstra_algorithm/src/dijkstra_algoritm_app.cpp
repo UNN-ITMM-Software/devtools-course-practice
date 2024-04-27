@@ -51,7 +51,7 @@ void DijkstraAlgorithmApp::help(const char* application, int check_code) {
   dijkstra_algorithm_msg = help_msg.str();
 }
 
-std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc, 
+std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc,
                                                           char* argv[]) {
   if (!validate(argc, argv)) {
     return dijkstra_algorithm_msg;
