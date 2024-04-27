@@ -6,7 +6,7 @@
 void Application::run(int argc, char** argv) {
     if (argc < 2) {
         std::cerr << "Usage: command key value" << std::endl
-        << "Commands: insert, find, remove," << " " <<
+        << "Commands: insert, find, remove," << " "
             << "clear(no need for key and value)"
             << std::endl;
         return;
@@ -15,7 +15,7 @@ void Application::run(int argc, char** argv) {
     std::string command(argv[1]);
     if (argc != 4 && command != "clear") {
         std::cerr << "Usage: command key value" << std::endl
-            << "Commands: insert, find, remove," << " " <<
+            << "Commands: insert, find, remove," << " "
             << "clear(no need for key and value)"
             << std::endl;
         return;
