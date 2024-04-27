@@ -2,12 +2,12 @@
 
 #pragma once
 
-#include <iostream>
 #include <memory>
 #include <queue>
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <cstring>
 
 struct Node {
   char ch;
@@ -57,7 +57,7 @@ class Huffman {
 
         std::string decoded;
 
-        for (int i = 0; i < str.size(); i++) {
+        for (int i = 0; i < static_cast<int>(str.size()); i++) {
             std::string cur = str.substr(prev, i - prev + 1);
 
             auto it = codes.find(cur);

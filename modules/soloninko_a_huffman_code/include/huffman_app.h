@@ -7,15 +7,13 @@
 #include <queue>
 #include <iostream>
 #include <sstream>
-#include <unordered_map>
-#include <string>
 
 
 class HuffmanApp {
  public:
     std::string operator()(int argc, char** argv) {
-        const char* validateStr = _validate(argc, argv);
-        if (validateStr) {
+        std::string validateStr = _validate(argc, argv);
+        if (validateStr.size() > 0) {
             return validateStr;
         }
         if (argc == 1) {
@@ -64,7 +62,7 @@ class HuffmanApp {
         return codes;
     }
 
-    char* _validate(int argc, char** argv) {
+    std::string _validate(int argc, char** argv) {
         if (!_validateNumArgs(argc)) {
             return "Incorrect number of arguments!";
         }
@@ -74,14 +72,14 @@ class HuffmanApp {
         if (!_validateCodes(argc, argv)) {
             return "Invalid codes!";
         }
-        return nullptr;
+        return "";
     }
 
     bool _validateNumArgs(int num) {
         return num == 1 || num % 2 == 0;
     }
     bool _validateEncoded(const char* str) {
-        for (int i = 0; i < strlen(str); i++) {
+        for (int i = 0; i < static_cast<int>(strlen(str)); i++) {
             if (str[i] != '1' && str[i] != '0') {
                 return false;
             }
