@@ -4,11 +4,9 @@
 #include "include/huffman.h"
 
 std::string encodeDecode(const std::string& text) {
-	Huffman huffman;
-
-	huffman.buildHuffmanTree(text);
-
-	return huffman.decode(huffman.encode(text));
+  Huffman huffman;
+  huffman.buildHuffmanTree(text);
+  return huffman.decode(huffman.encode(text));
 }
 
 TEST(Soloninko_Huffman, Test_1) {

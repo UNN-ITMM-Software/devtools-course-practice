@@ -4,8 +4,8 @@
 
 #include "include/huffman_app.h"
 
-int main(int argc, char *argv[]) {
-	HuffmanApp app;
+int main(int argc, char** argv) {
+    HuffmanApp app;
     std::cout << app(argc, argv);
     return 0;
 }
