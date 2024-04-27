@@ -9,8 +9,7 @@ std::string HuffmanApp::operator()(int argc, char** argv) {
     }
     if (argc == 1) {
         return _help(argv[0]);
-    }
-    else if (argc == 2) {
+    } else if (argc == 2) {
         return encode(argc, argv);
     }
     return decode(argc, argv);
