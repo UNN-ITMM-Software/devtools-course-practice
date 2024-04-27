@@ -18,31 +18,51 @@ TEST(Soloninko_Huffman, Test_1) {
 TEST(Soloninko_Huffman, Test_2) {
   std::string s1 = "Amogus amebus abobus";
   std::string dec_s1 = encodeDecode(s1);
-  ASSERT_TRUE(s1 == dec_s1);
+  ASSERT_EQ(s1, dec_s1);
 }
 
 TEST(Soloninko_Huffman, Test_3) {
   std::string s1 = "Aa";
   std::string dec_s1 = encodeDecode(s1);
-  ASSERT_TRUE(s1 == dec_s1);
+  ASSERT_EQ(s1, dec_s1);
 }
 
 TEST(Soloninko_Huffman, Test_4) {
   std::string s1 = "erthrtth rthyjyjth sadgdfghth rtjhtyjh rteghtjty";
   std::string dec_s1 = encodeDecode(s1);
-  ASSERT_TRUE(s1 == dec_s1);
+  ASSERT_EQ(s1, dec_s1);
 }
 
 TEST(Soloninko_Huffman, Test_5) {
   std::string s1 = "amebus";
   std::string dec_s1 = encodeDecode(s1);
-  ASSERT_TRUE(s1 == dec_s1);
+  ASSERT_EQ(s1, dec_s1);
 }
 
 TEST(Soloninko_Huffman, Test_6) {
   std::string s1 = "@@@Qwer11yuiop&%";
   std::string dec_s1 = encodeDecode(s1);
-  ASSERT_TRUE(s1 == dec_s1);
+  ASSERT_EQ(s1, dec_s1);
+}
+
+TEST(Soloninko_Huffman, Test_7) {
+  Huffman huffman;
+  huffman.buildHuffmanTree("abc");
+  auto codes = huffman.getHaffmanCodesCharStr();
+  EXPECT_EQ(codes['c'], "0");
+  EXPECT_EQ(codes['a'], "10");
+  EXPECT_EQ(codes['b'], "11");
+  EXPECT_EQ(codes.size(), 3);
+}
+
+TEST(Soloninko_Huffman, Test_8) {
+  Huffman huffman;
+  huffman.buildHuffmanTree("abc");
+  auto codes = huffman.getHaffmanCodesStrChar();
+  EXPECT_EQ(codes["0"], 'c');
+  EXPECT_EQ(codes["10"], 'a');
+  EXPECT_EQ(codes["11"], 'b');
+  EXPECT_EQ(codes.size(), 3);
 }
 
 int main(int argc, char **argv) {
