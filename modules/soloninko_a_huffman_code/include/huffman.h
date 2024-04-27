@@ -65,13 +65,14 @@ public:
             if (it != codes.end())
             {
                 decoded += (*it).second;
+                prev = i + 1;
             }
         }
 
         return decoded;
     }
 
-    std::unordered_map<std::string, char> getHaffmanCodes() {
+    std::unordered_map<std::string, char> getHaffmanCodesStrChar() {
         std::unordered_map<std::string, char> huffmanCode;
 
         for (const auto& i : _huffmanCode)
@@ -80,6 +81,10 @@ public:
         }
 
         return huffmanCode;
+    }
+
+    std::unordered_map<char, std::string> getHaffmanCodesCharStr() {
+        return _huffmanCode;
     }
 
 private:
