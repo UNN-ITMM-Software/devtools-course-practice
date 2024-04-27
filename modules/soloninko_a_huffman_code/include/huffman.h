@@ -22,7 +22,8 @@ public:
 
         std::unordered_map<char, int> freq = _collectFrequency(text);
 
-        _pq = std::priority_queue<Node*, std::vector<Node*>, bool (*)(Node*, Node*)>(
+        _pq = std::priority_queue<Node*, std::vector<Node*>,
+            bool (*)(Node*, Node*)>(
             [](Node* l, Node* r) { return l->freq > r->freq; });
 
         _buildHuffmanTree(freq);
@@ -30,8 +31,7 @@ public:
         _collectCodes(_pq.top(), "");
     }
 
-    std::string encode(const std::string& text)
-    {
+    std::string encode(const std::string& text) {
         std::string str = "";
         for (const char& ch : text) {
             str += _huffmanCode[ch];
@@ -40,8 +40,7 @@ public:
         return str;
     }
 
-    std::string decode(const std::string& str)
-    {
+    std::string decode(const std::string& str) {
         std::string dec_str;
 
         int index = -1;
@@ -52,12 +51,13 @@ public:
         return dec_str;
     }
 
-    std::string decode(const std::string& str, const std::unordered_map<std::string, char>& codes) {
+    std::string decode(const std::string& str, 
+        const std::unordered_map<std::string, char>& codes) {
         int prev = 0;
 
         std::string decoded;
 
-        for (int i = 0; i < str.size(); i++) // abcdef
+        for (int i = 0; i < str.size(); i++) 
         {
             std::string cur = str.substr(prev, i - prev + 1);
 
@@ -87,8 +87,8 @@ public:
     }
 
 private:
-    void _clearTree(std::priority_queue<Node*, std::vector<Node*>, bool (*)(Node*, Node*)>& pq)
-    {
+    void _clearTree(std::priority_queue<Node*,
+        std::vector<Node*>, bool (*)(Node*, Node*)>& pq) {
         while (!pq.empty()) {
             Node* cur = pq.top();
             pq.pop();
@@ -151,7 +151,8 @@ private:
 
     void _buildHuffmanTree(const std::unordered_map<char, int>& freq) {
         for (const auto& pair : freq) 
-            _pq.push(_getNode(pair.first, pair.second, nullptr, nullptr));
+            _pq.push(_getNode(pair.first, pair.second,
+                nullptr, nullptr));
 
         while (_pq.size() != 1) {
             Node* left = _pq.top();
@@ -168,6 +169,7 @@ private:
         _huffmanCode.clear();
     }
 
-    std::priority_queue<Node*, std::vector<Node*>, bool (*)(Node*, Node*)> _pq;
+    std::priority_queue<Node*, std::vector<Node*>, 
+        bool (*)(Node*, Node*)> _pq;
     std::unordered_map<char, std::string> _huffmanCode;
 };
