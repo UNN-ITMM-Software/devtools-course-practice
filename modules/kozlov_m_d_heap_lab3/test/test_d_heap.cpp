@@ -49,6 +49,7 @@ TEST(Kozlov_heap_test, Overflow) {
   EXPECT_THROW(heap.push(25), std::logic_error);
 }
 
+// Test case for checking heap push same number
 TEST(Kozlov_heap_test, SameNum) {
   Heap<3> heap;
   heap.push(10);
