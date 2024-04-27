@@ -96,12 +96,12 @@ std::vector<std::vector<Color>> BillinearInterpolation::threeCore() {
 
 Color BillinearInterpolation::Calculation(std::size_t x1, std::size_t y1,
                                           std::size_t x2, std::size_t y2) {
-  Color lu = source[x1][y1]; // Left Up
-  Color ru = source[x2][y1]; // Right Up
-  Color ld = source[x1][y2]; // Left Down
-  Color rd = source[x2][y2]; // Right Down
-  Color h1 = Color(0, 0, 0); // Helper 1
-  Color h2 = Color(0, 0, 0); // Helper 2
+  Color lu = source[x1][y1];
+  Color ru = source[x2][y1];
+  Color ld = source[x1][y2];
+  Color rd = source[x2][y2];
+  Color h1 = Color(0, 0, 0);
+  Color h2 = Color(0, 0, 0);
 
   h1.setColor(lu.getR() + (ru.getR() - lu.getR()) * (x2 - x1) / (2 * x2 - x1),
               lu.getG() + (ru.getG() - lu.getG()) * (x2 - x1) / (2 * x2 - x1),
