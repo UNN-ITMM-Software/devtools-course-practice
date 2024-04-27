@@ -1,6 +1,6 @@
 // Copyright 2024 Kriseev Mikhail
 
-#include "include/numerical_integrator.h"
+#include "include/numerical_integration_app.h"
 
 #include <cmath>
 #include <cstring>
@@ -10,15 +10,15 @@
 
 std::string NumericalIntegrator::Application::run(int argc, char **argv) {
   std::stringstream out;
-  if (argc < 4 || argc > 5) {
-    out << "Too few arguments!\n"
-           "Usage: " +
-               std::string(argv[0]) +
-               " [method: trapezoid | quad] <lower bound> <upper bound> "
-               "<number of intervals>\n\n"
-               "Integrates function y=tan(x) on specified interval. \n"
-               "Two methods available: quad and trapezoid. If not specified, "
-               "quad method is used.";
+  std::string usageString =
+      "Usage: " + std::string(argv[0]) +
+      " [method: trapezoid | quad] <lower bound> <upper bound> "
+      "<number of intervals>\n\n"
+      "Integrates function y=tan(x) on specified interval. \n"
+      "Two methods available: quad and trapezoid. If not specified, "
+      "quad method is used.";
+  if (argc < 4) {
+    out << "Too few arguments!\n" << usageString;
   } else if (argc == 4) {
     try {
       double lowerBound = std::stod(argv[1]);
@@ -48,6 +48,8 @@ std::string NumericalIntegrator::Application::run(int argc, char **argv) {
     } catch (std::exception &e) {
       out << "Error: some of the arguments are incorrect!";
     }
+  } else {
+    out << "Too many arguments!\n" << usageString;
   }
   return out.str();
 }

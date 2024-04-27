@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "include/numerical_integrator.h"
+#include "include/numerical_integration_app.h"
 
 int main(int argc, char* argv[]) {
   std::cout << NumericalIntegrator::Application::run(argc, argv) << std::endl;
