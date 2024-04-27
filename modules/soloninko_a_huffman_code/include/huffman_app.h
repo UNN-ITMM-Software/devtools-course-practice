@@ -2,11 +2,13 @@
 
 #pragma once
 
-#include "huffman.h"
+#include "include/huffman.h"
 
 #include <queue>
 #include <iostream>
 #include <sstream>
+#include <unordered_map>
+#include <string>
 
 
 class HuffmanApp {
@@ -32,7 +34,8 @@ class HuffmanApp {
 
         huffman.buildHuffmanTree(data);
         std::string encoded = huffman.encode(data);
-        std::unordered_map<char, std::string> codes = huffman.getHaffmanCodesCharStr();
+        std::unordered_map<char, std::string> codes = 
+            huffman.getHaffmanCodesCharStr();
 
         message << encoded << " ";
 
@@ -50,7 +53,8 @@ class HuffmanApp {
     }
 
  private:
-    std::unordered_map<std::string, char> _getCodes(int argc, char** argv) {
+    std::unordered_map<std::string, char> _getCodes(int argc, 
+        char** argv) {
         std::unordered_map<std::string, char> codes;
 
         for (int i = 2; i < argc - 1; i += 2) {
