@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-//#include "include/"
+#include "include/huffman_app"
 
 int main(int argc, char *argv[]) {
-
-    return 0;
+	HuffmanApp app;
+    return app(argc, argv);
 }
