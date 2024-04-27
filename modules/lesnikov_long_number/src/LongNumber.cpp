@@ -66,7 +66,6 @@ LongNumber& LongNumber::operator=(const LongNumber& n) {
 LongNumber& LongNumber::operator=(LongNumber&& n) noexcept {
     _data = std::move(n._data);
     _negative = n._negative;
-
     return *this;
 }
 
