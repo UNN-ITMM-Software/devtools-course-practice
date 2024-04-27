@@ -57,5 +57,4 @@ ComplexResult QuadraticSolver::solveComplexRoots() const {
     roots.insert({realPart, imagPart});
     roots.insert({realPart, -imagPart});
     return {true, roots};
-
 }
