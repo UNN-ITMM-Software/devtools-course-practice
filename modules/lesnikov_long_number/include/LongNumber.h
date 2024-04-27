@@ -31,13 +31,12 @@ class LongNumber {
     bool operator>(const LongNumber& n) const;
     bool operator<=(const LongNumber& n) const;
     bool operator>=(const LongNumber& n) const;
+    bool absIsLess(const LongNumber& n) const;
+    bool absIsGreater(const LongNumber& n) const;
 
     std::string getString() const;
 
  private:
-    bool _absIsLess(const LongNumber& n) const;
-    bool _absIsGreater(const LongNumber& n) const;
-    bool _absIsEqual(const LongNumber& n) const;
     static void _checkZero(LongNumber& n);
 
     std::vector<TYPE> _data;

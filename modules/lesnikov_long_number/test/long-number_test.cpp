@@ -201,3 +201,62 @@ TEST(Lesnikov_Nikita_LongNumber, MultSelf) {
     EXPECT_EQ((n *= n2).getString(), "-1");
     EXPECT_EQ((n *= n3).getString(), "-100");
 }
+
+TEST(Lesnikov_Nikita_LongNumber, EmptyString) {
+    LongNumber n("");
+    EXPECT_EQ(n.getString(), "0");
+}
+
+TEST(Lesnikov_Nikita_LongNumber, SumNegative) {
+    LongNumber n1("-1");
+    LongNumber n2("-1");
+    LongNumber n3 = n1 + n2;
+    EXPECT_EQ(n3.getString(), "-2");
+}
+
+TEST(Lesnikov_Nikita_LongNumber, SumFirstBigger) {
+    LongNumber n1("100");
+    LongNumber n2("1");
+    LongNumber n3 = n1 + n2;
+    EXPECT_EQ(n3.getString(), "101");
+}
+
+TEST(Lesnikov_Nikita_LongNumber, MultNegative) {
+    LongNumber n1("-2");
+    LongNumber n2("-3");
+    LongNumber n3 = n1 * n2;
+    EXPECT_EQ(n3.getString(), "6");
+}
+
+TEST(Lesnikov_Nikita_LongNumber, MultNegativeFirstAbsBigger) {
+    LongNumber n1("-3");
+    LongNumber n2("-2");
+    LongNumber n3 = n1 * n2;
+    EXPECT_EQ(n3.getString(), "6");
+}
+
+TEST(Lesnikov_Nikita_LongNumber, ComparingNegatives) {
+    LongNumber n1("-3");
+    LongNumber n2("-2");
+    EXPECT_LT(n1, n2);
+}
+
+TEST(Lesnikov_Nikita_LongNumber, ComparingZeros) {
+    LongNumber n1("");
+    LongNumber n2("");
+    EXPECT_FALSE(n1 < n2);
+}
+
+TEST(Lesnikov_Nikita_LongNumber, AbsIsGreater) {
+    LongNumber n1("-1000");
+    LongNumber n2("10");
+    EXPECT_TRUE(n1.absIsGreater(n2));
+    EXPECT_FALSE(n2.absIsGreater(n1));
+}
+
+TEST(Lesnikov_Nikita_LongNumber, AbsIsGreaterNumberDigitsEqual) {
+    LongNumber n1("101");
+    LongNumber n2("100");
+    EXPECT_TRUE(n1.absIsGreater(n2));
+    EXPECT_FALSE(n2.absIsGreater(n1));
+}

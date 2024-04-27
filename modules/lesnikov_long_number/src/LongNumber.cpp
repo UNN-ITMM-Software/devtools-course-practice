@@ -149,7 +149,7 @@ LongNumber LongNumber::operator-(const LongNumber& n) const {
     }
 
     if (_negative && n._negative) {
-        if (n._absIsGreater(*this)) {
+        if (n.absIsGreater(*this)) {
             result = n - *this;
             result._negative = false;
             return result;
@@ -261,9 +261,9 @@ bool LongNumber::operator!=(const LongNumber& n) const {
 
 bool LongNumber::operator<(const LongNumber& n) const {
     if (!_negative && !n._negative) {
-        return _absIsLess(n);
+        return absIsLess(n);
     } else if (_negative && n._negative) {
-        return _absIsGreater(n);
+        return absIsGreater(n);
     }
     if (_data.size() == 0 && n._data.size() == 0) {
         return false;
@@ -305,7 +305,7 @@ std::string LongNumber::getString() const {
     return s;
 }
 
-bool LongNumber::_absIsLess(const LongNumber& n) const {
+bool LongNumber::absIsLess(const LongNumber& n) const {
     if (_data.size() < n._data.size()) {
         return true;
     } else if (_data.size() > n._data.size()) {
@@ -323,7 +323,7 @@ bool LongNumber::_absIsLess(const LongNumber& n) const {
     return false;
 }
 
-bool LongNumber::_absIsGreater(const LongNumber& n) const {
+bool LongNumber::absIsGreater(const LongNumber& n) const {
     if (_data.size() > n._data.size()) {
         return true;
     } else if (_data.size() < n._data.size()) {
@@ -339,14 +339,6 @@ bool LongNumber::_absIsGreater(const LongNumber& n) const {
     }
 
     return false;
-}
-
-bool LongNumber::_absIsEqual(const LongNumber& n) const {
-    if (_data.size() != n._data.size()) {
-        return false;
-    }
-
-    return _data == n._data;
 }
 
 void LongNumber::_checkZero(LongNumber& n) {
