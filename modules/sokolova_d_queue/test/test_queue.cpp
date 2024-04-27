@@ -90,10 +90,12 @@ TEST(SokolovaDaria_QueueTest, MoveConstructor) {
     Queue<int> q1;
     q1.enqueue(10);
     q1.enqueue(20);
+    size_t q1ActualSize = 0;
+    size_t q2ActualSize = 2;
 
     Queue<int> q2(std::move(q1));
-    EXPECT_EQ(q1.size(), 0);
-    EXPECT_EQ(q2.size(), 2);
+    EXPECT_EQ(q1.size(), q1ActualSize);
+    EXPECT_EQ(q2.size(), q2ActualSize);
     EXPECT_EQ(q2.front(), 10);
     EXPECT_EQ(q2.back(), 20);
 }
@@ -107,10 +109,13 @@ TEST(SokolovaDaria_QueueTest, MoveAssignmentOperator) {
     q2.enqueue(30);
     q2.enqueue(40);
 
+    size_t q1ActualSize = 0;
+    size_t q2ActualSize = 2;
+
     q2 = std::move(q1);
 
-    EXPECT_EQ(q1.size(), 0);
-    EXPECT_EQ(q2.size(), 2);
+    EXPECT_EQ(q1.size(), q1ActualSize);
+    EXPECT_EQ(q2.size(), q2ActualSize);
     EXPECT_EQ(q2.front(), 10);
     EXPECT_EQ(q2.back(), 20);
 }
