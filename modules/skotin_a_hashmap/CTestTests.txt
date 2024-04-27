@@ -1,0 +1,60 @@
+#############################################
+##### Testing HashsMap Application
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_insert
+    COMMAND ${APPLICATION} "insert" "key" "value"
+)
+set_tests_properties (${prefix}_run_insert PROPERTIES
+    FAIL_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_error_find
+    COMMAND ${APPLICATION} "find" "key" "value"
+)
+set_tests_properties (${prefix}_error_find PROPERTIES
+    PASS_REGULAR_EXPRESSION "Key not found"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_error_remove
+    COMMAND ${APPLICATION} "find" "key" "value"
+)
+set_tests_properties (${prefix}_error_remove PROPERTIES
+    PASS_REGULAR_EXPRESSION "Key not found"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_clear
+    COMMAND ${APPLICATION} "clear"
+)
+set_tests_properties (${prefix}_run_clear PROPERTIES
+    FAIL_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_invalid_command
+    COMMAND ${APPLICATION} "some" "key" "value"
+)
+set_tests_properties (${prefix}_invalid_command PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid command"
+    LABELS "${MODULE}"
+)
+
