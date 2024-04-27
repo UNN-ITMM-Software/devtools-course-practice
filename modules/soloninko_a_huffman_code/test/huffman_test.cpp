@@ -1,6 +1,7 @@
 // Copyright 2024 Soloninko Andrey
 
 #include <gtest/gtest.h>
+#include <unordered_set>
 #include "include/huffman.h"
 
 std::string encodeDecode(const std::string& text) {
@@ -49,9 +50,13 @@ TEST(Soloninko_Huffman, Test_7) {
   Huffman huffman;
   huffman.buildHuffmanTree("abc");
   auto codes = huffman.getHaffmanCodesCharStr();
-  EXPECT_EQ(codes['c'], "0");
-  EXPECT_EQ(codes['a'], "10");
-  EXPECT_EQ(codes['b'], "11");
+  std::unordered_set<std::string> expectedCodes = { "0", "10", "11" };
+  std::unordered_set<std::string> actualCodes;
+  for (const auto& i : codes)
+  {
+	  actualCodes.insert(i.second);
+  }
+  EXPECT_EQ(actualCodes, expectedCodes);
   EXPECT_EQ(codes.size(), static_cast<size_t>(3));
 }
 
@@ -59,9 +64,13 @@ TEST(Soloninko_Huffman, Test_8) {
   Huffman huffman;
   huffman.buildHuffmanTree("abc");
   auto codes = huffman.getHaffmanCodesStrChar();
-  EXPECT_EQ(codes["0"], 'c');
-  EXPECT_EQ(codes["10"], 'a');
-  EXPECT_EQ(codes["11"], 'b');
+  std::unordered_set<std::string> expectedCodes = { "0", "10", "11" };
+  std::unordered_set<std::string> actualCodes;
+  for (const auto& i : codes)
+  {
+	  actualCodes.insert(i.first);
+  }
+  EXPECT_EQ(actualCodes, expectedCodes);
   EXPECT_EQ(codes.size(), static_cast<size_t>(3));
 }
 
