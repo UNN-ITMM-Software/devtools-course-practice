@@ -5,16 +5,17 @@
 #include <sstream>
 
 bool GronsfeldCipherApp::Validate(int argc, char **argv) {
-  if (argc != requiredArgc) {
-    Help(argv[0]);
-    return false;
-  }
   if (std::strcmp(argv[1], "-h") == 0) {
     Help(argv[0]);
     return false;
   }
 
   if (std::strcmp(argv[1], "--help") == 0) {
+    Help(argv[0]);
+    return false;
+  }
+
+  if (argc != requiredArgc) {
     Help(argv[0]);
     return false;
   }

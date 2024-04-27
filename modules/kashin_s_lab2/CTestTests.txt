@@ -29,6 +29,33 @@ set_tests_properties (${prefix}_run_h PROPERTIES
 )
 
 add_test(
+    NAME ${prefix}_run_unknown_сommand
+    COMMAND ${APPLICATION} hello f fdsf
+)
+set_tests_properties (${prefix}_run_unknown_сommand PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_wrong_key
+    COMMAND ${APPLICATION} hel32lo d 42fd5
+)
+set_tests_properties (${prefix}_run_wrong_key PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_wrong_size_of_key
+    COMMAND ${APPLICATION} hel32lo c 42fd5
+)
+set_tests_properties (${prefix}_run_wrong_size_of_key PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
     NAME ${prefix}_run_decoder
     COMMAND ${APPLICATION} hello d "Im sitting here and Im sick of useless lab work"
 )
