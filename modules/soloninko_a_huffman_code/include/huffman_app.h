@@ -34,7 +34,7 @@ class HuffmanApp {
 
         huffman.buildHuffmanTree(data);
         std::string encoded = huffman.encode(data);
-        std::unordered_map<char, std::string> codes = 
+        std::unordered_map<char, std::string> codes =
             huffman.getHaffmanCodesCharStr();
 
         message << encoded << " ";
@@ -53,7 +53,7 @@ class HuffmanApp {
     }
 
  private:
-    std::unordered_map<std::string, char> _getCodes(int argc, 
+    std::unordered_map<std::string, char> _getCodes(int argc,
         char** argv) {
         std::unordered_map<std::string, char> codes;
 
@@ -105,7 +105,8 @@ class HuffmanApp {
         std::stringstream message;
         message << "This is an application that allows you to ";
         message << "find the optimal Huffman code for a given sequence ";
-        message << "of characters.This operation allows you to compress data.\n ";
+        message << "of characters.This operation ";
+        message << "allows you to compress data.\n ";
         message << "For encoding, you must enter the data to be compressed in ";
         message << "text format.\n";
         message << appName << " abc\n";
