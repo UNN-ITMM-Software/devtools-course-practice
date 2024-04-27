@@ -34,7 +34,7 @@ void DijkstraAlgorithmApp::help(const char* application, int check_code) {
     help_msg << "Incorrect program arguments. Try again or refer to "
     << "the help for this program by entering the argument \"--help\" or \"-h\"";
   } else {
-    help_msg << "Usage  " << application
+    help_msg << "Usage " << application
              << " to work with Dijkstra's algorithm to find"
              << "the shortest path from the starting vertex to the required one. ";
 

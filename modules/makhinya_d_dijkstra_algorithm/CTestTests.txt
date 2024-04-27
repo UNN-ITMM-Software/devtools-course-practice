@@ -5,19 +5,19 @@
 set(prefix "${MODULE}")
 
 add_test(
-    NAME ${prefix}_test_run
+    NAME ${prefix}_test_run_one
     COMMAND ${APPLICATION} "--help"
 )
-set_tests_properties(${prefix}_test_run PROPERTIES
+set_tests_properties(${prefix}_test_run_one PROPERTIES
     PASS_REGULAR_EXPRESSION "^Usage"
     LABELS "${MODULE}"
 )
 
 add_test(
-    NAME ${prefix}_test_run
+    NAME ${prefix}_test_run_two
     COMMAND ${APPLICATION} "-h"
 )
-set_tests_properties(${prefix}_test_run PROPERTIES
+set_tests_properties(${prefix}_test_run_two PROPERTIES
     PASS_REGULAR_EXPRESSION "^Usage"
     LABELS "${MODULE}"
 )
