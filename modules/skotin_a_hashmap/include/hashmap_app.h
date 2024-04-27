@@ -8,12 +8,13 @@
 #include "include/hashmap.h"
 
 class Application {
-public:
+ public:
     void run(int argc, char** argv);
 
-private:
+ private:
     HashMap<std::string, std::string> hashMap;
-    std::string processCommand(const std::string& command, const std::string& key, const std::string& value = "");
+    std::string processCommand(const std::string& command,
+        const std::string& key, const std::string& value = "");
 };
 
-#endif  //MODULES_SKOTIN_A_HASHMAP_INCLUDE_HASHMAP_APP_H_
+#endif  // MODULES_SKOTIN_A_HASHMAP_INCLUDE_HASHMAP_APP_H_
