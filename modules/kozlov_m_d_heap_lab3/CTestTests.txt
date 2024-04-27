@@ -36,4 +36,8 @@ add_test(NAME TestInvalidformatdouble
          COMMAND ${APPLICATION} B 1 -1.-)
 set_tests_properties(TestInvalidformatdouble PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
 
+add_test(NAME TestInfo
+         COMMAND ${APPLICATION})
+set_tests_properties(TestInfo PROPERTIES PASS_REGULAR_EXPRESSION "This is a max-heap application.format - 1st arg is strig of uppercase characters first character is always B - build heap, T - max elem , P - pop, A - add elem")
+
 

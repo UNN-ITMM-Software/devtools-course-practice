@@ -49,6 +49,14 @@ TEST(Kozlov_heap_test, Overflow) {
   EXPECT_THROW(heap.push(25), std::logic_error);
 }
 
+TEST(Kozlov_heap_test, SameNum) {
+  Heap<3> heap;
+  heap.push(10);
+  heap.push(10);
+  heap.pop();
+  EXPECT_DOUBLE_EQ(heap.top(), 10);
+}
+
 // Test case for checking empty heap pop
 TEST(Kozlov_heap_test, EmptyPop) {
   Heap<3> heap;

@@ -11,7 +11,7 @@
 
 void Heap_app::help(const char *appname, const char *message) {
   message_ = std::string(message) +
-             "This is a max-heap application.\n\n format - 1st arg is strig of "
+             "This is a max-heap application.format - 1st arg is strig of "
              "uppercase characters first character is always B - build heap, T "
              "- max elem , P - pop, A - add elem";
 }
