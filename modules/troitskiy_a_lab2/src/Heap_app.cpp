@@ -135,7 +135,7 @@ std::string Heap_app::operator()(int argc, const char **argv) {
       break;
     }
   }
-  while (!H.empty()) {
+  while (H.size()) {
     stream << H.top() << " ";
     H.pop();
   }
