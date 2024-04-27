@@ -55,7 +55,8 @@ std::string Huffman::decode(const std::string& str,
     return decoded;
 }
 
-std::unordered_map<std::string, char> Huffman::getHaffmanCodesStrChar() {
+std::unordered_map<std::string, char> Huffman::
+getHaffmanCodesStrChar() {
     std::unordered_map<std::string, char> huffmanCode;
 
     for (const auto& i : _huffmanCode) {
@@ -65,7 +66,8 @@ std::unordered_map<std::string, char> Huffman::getHaffmanCodesStrChar() {
     return huffmanCode;
 }
 
-std::unordered_map<char, std::string> Huffman::getHaffmanCodesCharStr() {
+std::unordered_map<char, std::string> Huffman::
+getHaffmanCodesCharStr() {
     return _huffmanCode;
 }
 
@@ -79,7 +81,8 @@ void Huffman::_clearTree(std::priority_queue<Node*,
     }
 }
 
-Node* Huffman::_getNode(char ch, int freq, Node* left, Node* right) {
+Node* Huffman::_getNode(char ch, int freq, Node* left,
+    Node* right) {
     Node* node = new Node();
 
     node->ch = ch;
@@ -122,7 +125,8 @@ std::string Huffman::_decode(Node* root, int& index, std::string str
     return dec_str;
 }
 
-std::unordered_map<char, int> Huffman::_collectFrequency(const std::string& text) {
+std::unordered_map<char, int> Huffman::
+_collectFrequency(const std::string& text) {
     std::unordered_map<char, int> freq;
 
     for (const char& ch : text)
@@ -131,7 +135,8 @@ std::unordered_map<char, int> Huffman::_collectFrequency(const std::string& text
     return freq;
 }
 
-void Huffman::_buildHuffmanTree(const std::unordered_map<char, int>& freq) {
+void Huffman::_buildHuffmanTree(
+    const std::unordered_map<char, int>& freq) {
     for (const auto& pair : freq)
         _pq.push(_getNode(pair.first, pair.second,
             nullptr, nullptr));

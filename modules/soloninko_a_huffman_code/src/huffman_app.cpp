@@ -41,8 +41,8 @@ std::string HuffmanApp::decode(int argc, char** argv) {
     return huffman.decode(argv[1], _getCodes(argc, argv));
 }
 
-std::unordered_map<std::string, char> HuffmanApp::_getCodes(int argc,
-    char** argv) {
+std::unordered_map<std::string, char> HuffmanApp::_getCodes(
+    int argc, char** argv) {
     std::unordered_map<std::string, char> codes;
 
     for (int i = 2; i < argc - 1; i += 2) {
