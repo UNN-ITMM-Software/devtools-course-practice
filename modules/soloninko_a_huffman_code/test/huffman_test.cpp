@@ -52,7 +52,7 @@ TEST(Soloninko_Huffman, Test_7) {
   EXPECT_EQ(codes['c'], "0");
   EXPECT_EQ(codes['a'], "10");
   EXPECT_EQ(codes['b'], "11");
-  EXPECT_EQ(codes.size(), 3);
+  EXPECT_EQ(codes.size(), static_cast<size_t>(3));
 }
 
 TEST(Soloninko_Huffman, Test_8) {
