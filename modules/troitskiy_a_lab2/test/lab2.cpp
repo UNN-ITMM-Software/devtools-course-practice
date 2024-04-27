@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 #include <limits>
 
-TEST(Troitskiy_A_Lab2Test, PushPopTop) {
+TEST(Troitskiy_A_Lab2Test, Push_Pop_Top) {
   Heap<10> heap;
   heap.push(5);
   heap.push(10);
@@ -44,6 +44,7 @@ TEST(Troitskiy_A_Lab2Test, PushPopAlternating) {
     heap.push(5);
     heap.pop();
     heap.push(8);
+
     EXPECT_EQ(heap.top(), 8);
 }
 
