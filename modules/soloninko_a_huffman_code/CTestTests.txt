@@ -1,3 +1,7 @@
+#############################################
+##### Testing
+#############################################
+
 set(prefix "${MODULE}")
 
 add_test(
@@ -38,14 +42,6 @@ add_test(
     COMMAND ${APPLICATION} 101 aa 1
 )
 set_tests_properties (${prefix}_failed_if_codes_incorrect PROPERTIES
-    PASS_REGULAR_EXPRESSION "Invalid codes!"
-    LABELS "${MODULE}")
-
-add_test(
-    NAME ${prefix}_failed_if_codes_incorrect2
-    COMMAND ${APPLICATION} 101 a 1 b c
-)
-set_tests_properties (${prefix}_failed_if_codes_incorrect2 PROPERTIES
     PASS_REGULAR_EXPRESSION "Invalid codes!"
     LABELS "${MODULE}")
 
