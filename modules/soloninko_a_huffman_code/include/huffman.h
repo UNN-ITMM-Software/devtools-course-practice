@@ -51,7 +51,7 @@ class Huffman {
         return dec_str;
     }
 
-    std::string decode(const std::string& str, 
+    std::string decode(const std::string& str,
         const std::unordered_map<std::string, char>& codes) {
         int prev = 0;
 
