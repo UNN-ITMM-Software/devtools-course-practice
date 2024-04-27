@@ -14,11 +14,11 @@
 
 class DijkstraAlgorithmApp {
  public:
-    DijkstraAlgorithmApp() = default;
     std::string dijkstra_algorithm_application(int argc, char* argv[]);
  private:
+    Solver<20> obj;
+
     bool validate(int argc, char* argv[]);
-    void help(const char *appName, const char *msg = nullptr);
-    std::string DijkstraAlgorithmMsg;
-    Solver<15> obj;
+    void help(const char* application, int check_code);
+    std::string dijkstra_algorithm_msg;
 };

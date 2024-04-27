@@ -9,7 +9,16 @@ add_test(
     COMMAND ${APPLICATION} "--help"
 )
 set_tests_properties(${prefix}_test_run PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is an application for using Dijkstra's algorithm to find the shortest path in a graph.*"
+    PASS_REGULAR_EXPRESSION "^Usage"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_run
+    COMMAND ${APPLICATION} "-h"
+)
+set_tests_properties(${prefix}_test_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage"
     LABELS "${MODULE}"
 )
 
@@ -18,33 +27,60 @@ add_test(
     COMMAND ${APPLICATION} 0 3 0 1 5 1 2 3 2 3 2
 )
 set_tests_properties (${prefix}_test_shortest_path_one PROPERTIES
-    PASS_REGULAR_EXPRESSION "Shortest path length:"
+    PASS_REGULAR_EXPRESSION "^Shortest"
     LABELS "${MODULE}"
 )
 
 add_test(
     NAME ${prefix}_test_shortest_path_two
-    COMMAND ${APPLICATION} 0 2 0 1 1 0 2 3 0 3 5 0 1 1 3 1 4 3 2 2 4 3 3
+    COMMAND ${APPLICATION} 0 1 0 1 8
 )
 set_tests_properties (${prefix}_test_shortest_path_two PROPERTIES
-    PASS_REGULAR_EXPRESSION "Shortest path length:"
+    PASS_REGULAR_EXPRESSION "^Shortest"
     LABELS "${MODULE}"
 )
 
 add_test(
     NAME ${prefix}_test_shortest_path_three
-    COMMAND ${APPLICATION} 0 1 0 1 8
+    COMMAND ${APPLICATION} 0 2 0 1 1 0 2 3 0 3 5 0 1 1 3 1 4 3 2 2 4 3 3
 )
 set_tests_properties (${prefix}_test_shortest_path_three PROPERTIES
-    PASS_REGULAR_EXPRESSION "Shortest path length:"
+    PASS_REGULAR_EXPRESSION "^Shortest"
     LABELS "${MODULE}"
 )
 
 add_test(
-    NAME ${prefix}_test_help
-    COMMAND ${APPLICATION} --help
+    NAME ${prefix}_test_no_path
+    COMMAND ${APPLICATION} 1 5 0 1 4
 )
-set_tests_properties (${prefix}_test_help PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is an application for using Dijkstra's algorithm to find the shortest path in a graph.*"
+set_tests_properties (${prefix}_test_no_path PROPERTIES
+    PASS_REGULAR_EXPRESSION "^There"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_incorrect_arguments_one
+    COMMAND ${APPLICATION} 2 4 7
+)
+set_tests_properties (${prefix}_test_incorrect_arguments_one PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Incorrect"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_incorrect_arguments_two
+    COMMAND ${APPLICATION} 3 9 3 9 -1
+)
+set_tests_properties (${prefix}_test_incorrect_arguments_two PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Incorrect"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_incorrect_arguments_three
+    COMMAND ${APPLICATION} 2 8 -4 6 3
+)
+set_tests_properties (${prefix}_test_incorrect_arguments_three PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Incorrect"
     LABELS "${MODULE}"
 )
