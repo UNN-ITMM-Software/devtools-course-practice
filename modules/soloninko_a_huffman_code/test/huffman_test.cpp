@@ -52,9 +52,8 @@ TEST(Soloninko_Huffman, Test_7) {
   auto codes = huffman.getHaffmanCodesCharStr();
   std::unordered_set<std::string> expectedCodes = { "0", "10", "11" };
   std::unordered_set<std::string> actualCodes;
-  for (const auto& i : codes)
-  {
-	  actualCodes.insert(i.second);
+  for (const auto& i : codes) {
+    actualCodes.insert(i.second);
   }
   EXPECT_EQ(actualCodes, expectedCodes);
   EXPECT_EQ(codes.size(), static_cast<size_t>(3));
@@ -66,9 +65,8 @@ TEST(Soloninko_Huffman, Test_8) {
   auto codes = huffman.getHaffmanCodesStrChar();
   std::unordered_set<std::string> expectedCodes = { "0", "10", "11" };
   std::unordered_set<std::string> actualCodes;
-  for (const auto& i : codes)
-  {
-	  actualCodes.insert(i.first);
+  for (const auto& i : codes) {
+    actualCodes.insert(i.first);
   }
   EXPECT_EQ(actualCodes, expectedCodes);
   EXPECT_EQ(codes.size(), static_cast<size_t>(3));
