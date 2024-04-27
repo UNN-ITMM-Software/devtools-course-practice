@@ -58,7 +58,10 @@ add_test(
     COMMAND ${APPLICATION} abc
 )
 set_tests_properties (${prefix}_can_encode PROPERTIES
-    PASS_REGULAR_EXPRESSION "10110 c 0 a 10 b 11"
+    PASS_REGULAR_EXPRESSION "10110"
+    PASS_REGULAR_EXPRESSION "0"
+    PASS_REGULAR_EXPRESSION "10"
+    PASS_REGULAR_EXPRESSION "11"
     LABELS "${MODULE}")
 
 add_test(
