@@ -41,7 +41,7 @@ add_test(
     COMMAND ${APPLICATION} 2 4 12
 )
 set_tests_properties (${prefix}_run_quadratic_solver_complex_roots PROPERTIES
-    PASS_REGULAR_EXPRESSION "Complex Roots: -1+0i -2.23607+0i 2.23607+0i"
+    PASS_REGULAR_EXPRESSION "Complex Roots: -1+0i 2.23607+0i -2.23607+0i"
     LABELS "${MODULE}"
 )
 
