@@ -96,3 +96,10 @@ TEST(ComplexCalculatorTest, OperatorEqual) {
     EXPECT_DOUBLE_EQ(result.getReal(), 3.5);
     EXPECT_DOUBLE_EQ(result.getImaginary(), 2.25);
 }
+
+TEST(ComplexCalculatorTest, ToStringMethodTest) {
+    // Проверка работы метода ToString
+    ComplexCalculator complex1{3.0, 4.0};
+
+    EXPECT_EQ(complex1.toString(), "3.00 + 4.00i");
+}
