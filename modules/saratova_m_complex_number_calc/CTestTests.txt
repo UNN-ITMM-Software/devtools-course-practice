@@ -71,3 +71,12 @@ set_tests_properties (${prefix}_run_incorrect_number_of_arguments PROPERTIES
     PASS_REGULAR_EXPRESSION "Incorrect number of arguments."
     LABELS "${MODULE}"
 )
+
+add_test(
+    NAME ${prefix}_run_invalid_args
+    COMMAND ${APPLICATION} a b c d +
+)
+set_tests_properties (${prefix}_run_invalid_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid arguments."
+    LABELS "${MODULE}"
+)
