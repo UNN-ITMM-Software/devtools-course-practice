@@ -49,7 +49,8 @@ ComplexCalculator ComplexCalculator::operator/
     return ComplexCalculator(result_real, result_imaginary);
 }
 
-ComplexCalculator& ComplexCalculator::operator=(const ComplexCalculator& other) {
+ComplexCalculator& ComplexCalculator::operator=
+                            (const ComplexCalculator& other) {
     if (this != &other) {
         real = other.real;
         imaginary = other.imaginary;
