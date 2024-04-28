@@ -64,14 +64,14 @@ std::string Heap_app::operator()(int argc, const char **argv) {
   try {
     check_first(op[0], 1);
   } catch (std::logic_error &str) {
-    return str;
+    return str.what();
   }
   double el;
   uint64_t N;
   try {
     N = parseInt(argv[2]);
   } catch (std::logic_error &str) {
-    return str;
+    return str.what();
   }
   int ptr = 3;
   for (uint64_t i = 0; i < N; ++i) {
@@ -79,7 +79,7 @@ std::string Heap_app::operator()(int argc, const char **argv) {
       el = parseDouble(argv[ptr]);
       args.nums.push_back(el);
     } catch (std::logic_error &str) {
-      return str;
+      return str.what();
     }
     ptr++;
   }
@@ -91,13 +91,13 @@ std::string Heap_app::operator()(int argc, const char **argv) {
     try {
       check_first(op[i], 0);
     } catch (std::logic_error &str) {
-      return str;
+      return str.what();
     }
     if (s == 'A') {
       try {
         args.nums.push_back(parseDouble(argv[ptr]));
       } catch (std::logic_error &str) {
-        return str;
+        return str.what();
       }
       ptr++;
       args.operation = 'A';
@@ -123,14 +123,14 @@ std::string Heap_app::operator()(int argc, const char **argv) {
       try {
         stream << H.top() << " ";
       } catch (std::logic_error &str) {
-        return str;
+        return str.what();
       }
       break;
     case 'D':
       try {
         H.pop();
       } catch (std::logic_error &str) {
-        return str;
+        return str.what();
       }
       break;
     }
