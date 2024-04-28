@@ -49,15 +49,6 @@ ComplexCalculator ComplexCalculator::operator/
     return ComplexCalculator(result_real, result_imaginary);
 }
 
-ComplexCalculator& ComplexCalculator::operator=
-                            (const ComplexCalculator& other) {
-    if (this != &other) {
-        real = other.real;
-        imaginary = other.imaginary;
-    }
-    return *this;
-}
-
 std::string ComplexCalculator::toString() const {
     std::stringstream ss;
     ss << std::fixed << std::setprecision(2);

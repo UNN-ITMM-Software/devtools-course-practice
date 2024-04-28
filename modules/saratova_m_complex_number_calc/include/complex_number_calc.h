@@ -23,7 +23,6 @@ class ComplexCalculator {
     ComplexCalculator operator-(const ComplexCalculator& other) const;
     ComplexCalculator operator*(const ComplexCalculator& other) const;
     ComplexCalculator operator/(const ComplexCalculator& other) const;
-    ComplexCalculator& operator=(const ComplexCalculator& other);
     std::string toString() const;
 };
 

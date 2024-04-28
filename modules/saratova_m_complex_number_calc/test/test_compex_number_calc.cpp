@@ -87,15 +87,6 @@ TEST(ComplexCalculatorTest, DivisionWithFractions) {
     EXPECT_NEAR(result.getImaginary(), -0.09459, 0.01);
 }
 
-TEST(ComplexCalculatorTest, OperatorEqual) {
-    ComplexCalculator num1(3.5, 2.25);
-
-    ComplexCalculator result = num1;
-
-    EXPECT_DOUBLE_EQ(result.getReal(), 3.5);
-    EXPECT_DOUBLE_EQ(result.getImaginary(), 2.25);
-}
-
 TEST(ComplexCalculatorTest, ToStringMethodTest1) {
     ComplexCalculator complex1{3.0, 4.0};
 
@@ -106,4 +97,12 @@ TEST(ComplexCalculatorTest, ToStringMethodTest2) {
     ComplexCalculator complex1{3.0, -4.0};
 
     EXPECT_EQ(complex1.toString(), "3.00 - 4.00i");
+}
+
+TEST(ComplexCalculatorTest, Addition3) {
+    ComplexCalculator num1(2.25, 4.48);
+    ComplexCalculator num2(5.31, -2.21);
+    ComplexCalculator result = num1 + num2;
+    EXPECT_NEAR(result.getReal(), 7.56, 0.01);
+    EXPECT_NEAR(result.getImaginary(), 2.27, 0.01);
 }
