@@ -28,7 +28,7 @@ double parseDouble(const char *arg) {
   double value = strtod(arg, &end);
 
   if (end[0]) {
-    throw std::string("Wrong number format!");
+    throw std::logic_error("Wrong number format!");
   }
 
   return value;
@@ -39,7 +39,7 @@ uint64_t parseInt(const char *arg) {
   double value = strtol(arg, &end, 10);
 
   if (end[0]) {
-    throw std::string("Wrong number format!");
+    throw std::logic_error("Wrong number format!");
   }
 
   return value;
@@ -47,10 +47,10 @@ uint64_t parseInt(const char *arg) {
 
 void check_first(char c, bool first) {
   if (c != 'B' && first)
-    throw std::string("Wrong operation");
+    throw std::logic_error("Wrong operation");
 
   if (c == 'B' && !first)
-    throw std::string("Wrong operation");
+    throw std::logic_error("Wrong operation");
 }
 
 std::string Heap_app::operator()(int argc, const char **argv) {
@@ -63,14 +63,14 @@ std::string Heap_app::operator()(int argc, const char **argv) {
   args.operation = 'B';
   try {
     check_first(op[0], 1);
-  } catch (std::string &str) {
+  } catch (std::logic_error &str) {
     return str;
   }
   double el;
   uint64_t N;
   try {
     N = parseInt(argv[2]);
-  } catch (std::string &str) {
+  } catch (std::logic_error &str) {
     return str;
   }
   int ptr = 3;
@@ -78,7 +78,7 @@ std::string Heap_app::operator()(int argc, const char **argv) {
     try {
       el = parseDouble(argv[ptr]);
       args.nums.push_back(el);
-    } catch (std::string &str) {
+    } catch (std::logic_error &str) {
       return str;
     }
     ptr++;
@@ -90,13 +90,13 @@ std::string Heap_app::operator()(int argc, const char **argv) {
     char s = op[i];
     try {
       check_first(op[i], 0);
-    } catch (std::string &str) {
+    } catch (std::logic_error &str) {
       return str;
     }
     if (s == 'A') {
       try {
         args.nums.push_back(parseDouble(argv[ptr]));
-      } catch (std::string &str) {
+      } catch (std::logic_error &str) {
         return str;
       }
       ptr++;
@@ -122,14 +122,14 @@ std::string Heap_app::operator()(int argc, const char **argv) {
     case 'T':
       try {
         stream << H.top() << " ";
-      } catch (std::string &str) {
+      } catch (std::logic_error &str) {
         return str;
       }
       break;
     case 'D':
       try {
         H.pop();
-      } catch (std::string &str) {
+      } catch (std::logic_error &str) {
         return str;
       }
       break;
