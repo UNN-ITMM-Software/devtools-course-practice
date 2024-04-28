@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-#include "getting_prime_numbers.h"
+#include "../include/getting_prime_numbers.h"
 
 class ConsoleHandler {
  private:
