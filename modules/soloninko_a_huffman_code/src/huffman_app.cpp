@@ -10,12 +10,12 @@ std::string HuffmanApp::operator()(int argc, char** argv) {
     if (argc == 1) {
         return _help(argv[0]);
     } else if (argc == 2) {
-        return encode(argc, argv);
+        return _encode(argc, argv);
     }
-    return decode(argc, argv);
+    return _decode(argc, argv);
 }
 
-std::string HuffmanApp::encode(int argc, char** argv) {
+std::string HuffmanApp::_encode(int argc, char** argv) {
     std::string data = argv[1];
     std::stringstream message;
 
@@ -35,7 +35,7 @@ std::string HuffmanApp::encode(int argc, char** argv) {
     return message.str();
 }
 
-std::string HuffmanApp::decode(int argc, char** argv) {
+std::string HuffmanApp::_decode(int argc, char** argv) {
     Huffman huffman;
 
     return huffman.decode(argv[1], _getCodes(argc, argv));
