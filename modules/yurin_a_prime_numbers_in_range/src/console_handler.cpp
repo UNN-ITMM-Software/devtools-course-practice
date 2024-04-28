@@ -30,6 +30,5 @@ std::string ConsoleHandler::ConsoleInput(int argc, char **argv) {
   uint32_t right = argv[2];
 
   return ConsoleHandler::vectorToString(
-    primeNumbers.getPrimeNumbersInRange(left, right)
-    );
+    primeNumbers.getPrimeNumbersInRange(left, right));
 }
