@@ -88,7 +88,6 @@ TEST(ComplexCalculatorTest, DivisionWithFractions) {
 }
 
 TEST(ComplexCalculatorTest, OperatorEqual) {
-    // Проверка работы оператора присваивания
     ComplexCalculator num1(3.5, 2.25);
 
     ComplexCalculator result = num1;
@@ -98,14 +97,12 @@ TEST(ComplexCalculatorTest, OperatorEqual) {
 }
 
 TEST(ComplexCalculatorTest, ToStringMethodTest1) {
-    // Проверка работы метода ToString
     ComplexCalculator complex1{3.0, 4.0};
 
     EXPECT_EQ(complex1.toString(), "3.00 + 4.00i");
 }
 
 TEST(ComplexCalculatorTest, ToStringMethodTest2) {
-    // Проверка работы метода ToString
     ComplexCalculator complex1{3.0, -4.0};
 
     EXPECT_EQ(complex1.toString(), "3.00 - 4.00i");
