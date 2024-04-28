@@ -1,8 +1,9 @@
 // Copyright 2024 Sokolova Daria
 
 #pragma once
-#include "pol_not.h"
+
 #include <string>
+#include "pol_not.h"
 
 class PolNotApp {
  public:
