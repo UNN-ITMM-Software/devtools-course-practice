@@ -1,0 +1,147 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_romanToArabicCheck_one
+    COMMAND ${APPLICATION} "IX"
+)
+set_tests_properties (${prefix}_romanToArabicCheck_one PROPERTIES
+    PASS_REGULAR_EXPRESSION "9"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_test_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application for converting Roman numerals to Arabic.*"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_err
+    COMMAND ${APPLICATION} "IVX"
+)
+set_tests_properties (${prefix}_test_err PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect input"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_incorrect_input
+    COMMAND ${APPLICATION} "IVX" "I" "V"
+)
+set_tests_properties (${prefix}_incorrect_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:.*Incorrect input.*"
+    LABELS "${MODULE}"
+)
+
+add_test(
+NAME ${prefix}_test_roman_to_arabic_1
+COMMAND ${APPLICATION} "I"
+)
+set_tests_properties (${prefix}_test_roman_to_arabic_1 PROPERTIES
+PASS_REGULAR_EXPRESSION "1"
+LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_roman_to_arabic_2
+    COMMAND ${APPLICATION} "II"
+)
+set_tests_properties (${prefix}_test_roman_to_arabic_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "2"
+    LABELS "${MODULE}"
+)
+
+add_test(
+NAME ${prefix}_test_roman_to_arabic_3
+COMMAND ${APPLICATION} "XVI"
+)
+set_tests_properties (${prefix}_test_roman_to_arabic_3 PROPERTIES
+PASS_REGULAR_EXPRESSION "16"
+LABELS "${MODULE}"
+)
+
+add_test(
+NAME ${prefix}_test_roman_to_arabic_4
+COMMAND ${APPLICATION} "MDCLXVI"
+)
+set_tests_properties (${prefix}_test_roman_to_arabic_4 PROPERTIES
+PASS_REGULAR_EXPRESSION "1666"
+LABELS "${MODULE}"
+)
+add_test(
+    NAME ${prefix}_test_arabic_to_roman_1
+    COMMAND ${APPLICATION} "4"
+)
+set_tests_properties (${prefix}_test_arabic_to_roman_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "IV"
+    LABELS "${MODULE}"
+)
+
+add_test(
+NAME ${prefix}_test_arabic_to_roman_2
+COMMAND ${APPLICATION} "1000"
+)
+set_tests_properties (${prefix}_test_arabic_to_roman_2 PROPERTIES
+PASS_REGULAR_EXPRESSION "M"
+LABELS "${MODULE}"
+)
+
+add_test(
+NAME ${prefix}_test_arabic_to_roman_3
+COMMAND ${APPLICATION} "16"
+)
+set_tests_properties (${prefix}_test_arabic_to_roman_3 PROPERTIES
+PASS_REGULAR_EXPRESSION "XVI"
+LABELS "${MODULE}"
+)
+
+add_test(
+NAME ${prefix}_test_arabic_to_roman_4
+COMMAND ${APPLICATION} "1994"
+)
+set_tests_properties (${prefix}_test_arabic_to_roman_4 PROPERTIES
+PASS_REGULAR_EXPRESSION "MCMXCIV"
+LABELS "${MODULE}"
+)
+
+add_test(
+NAME ${prefix}_test_arabic_to_roman_5
+COMMAND ${APPLICATION} "1666"
+)
+set_tests_properties (${prefix}_test_arabic_to_roman_5 PROPERTIES
+PASS_REGULAR_EXPRESSION "MDCLXVI"
+LABELS "${MODULE}"
+)
+
+add_test(
+NAME ${prefix}_incorrect_input_2
+COMMAND ${APPLICATION} "0"
+)
+set_tests_properties (${prefix}_incorrect_input_2 PROPERTIES
+PASS_REGULAR_EXPRESSION "Error: Input must be greater than 0 and less than 15000"
+LABELS "${MODULE}"
+)
+
+add_test(
+NAME ${prefix}_incorrect_input_3
+COMMAND ${APPLICATION} "15001"
+)
+set_tests_properties (${prefix}_incorrect_input_3 PROPERTIES
+PASS_REGULAR_EXPRESSION "Error: Input must be greater than 0 and less than 15000"
+LABELS "${MODULE}"
+)

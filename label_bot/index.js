@@ -47,6 +47,15 @@ async function putLabNumber(pull_id) {
         issue_number: pull_id,
         labels: ["lab " + task_id],
     });
+    if (task_id == "2" && new Date(pullInfo.data.created_at) >= new Date("2024-04-15T08:00:00Z") ||
+        task_id == "3" && new Date(pullInfo.data.created_at) >= new Date("2024-05-02T08:00:00Z")) {
+        octokit.rest.issues.addLabels({
+            owner: owner,
+            repo: repo,
+            issue_number: pull_id,
+            labels: ["delayed"],
+        });
+    }
 }
 
 async function checkReadiness(pull_id) {
@@ -116,15 +125,10 @@ http.createServer(function (req, res) {
                     processed += 1;
                     commit_data.data.files.forEach(file => {
                         if (file.filename == "lab-guide/topics.md") {
-                            let match_del = file.patch.match(/\-\|.*\|(.*)\|.*\|/);
-                            if (!match_del || match_del[1] != "")
+                            let matched = file.patch.match(/\-\|.*\|\w*\|.*\|\n\+\|.*\|(.+)\|.*\|/);
+                            if (!matched || matched.length < 2)
                                 return;
-
-                            let match_add = file.patch.match(/\+\|.*\|(.*)\|.*\|/);
-                            if (!match_add || match_add.length < 2)
-                                return;
-
-                            real_names[commit_data.data.author.login] = match_add[1].trim();
+                            real_names[commit_data.data.author.login] = matched[1].trim();
                         }
                     });
                     if (processed == commits.length) {

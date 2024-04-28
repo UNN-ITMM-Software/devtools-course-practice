@@ -1,0 +1,67 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_one_convux_hull
+    COMMAND ${APPLICATION} "(0.0, 3.0)" "(1.0, 1.0)" "(2.0, 2.0)" "(4.0, 4.0)" "(0.0, 0.0)" "(1.0, 2.0)" "(3.0, 1.0)" "(3.0, 3.0)"
+)
+set_tests_properties (${prefix}_one_convux_hull PROPERTIES
+    PASS_REGULAR_EXPRESSION ""(0.0, 0.0)" "(0.0, 3.0)" "(4.0, 4.0)" "(3.0, 1.0)""
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_empty_convux_hull
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_empty_convux_hull PROPERTIES
+    PASS_REGULAR_EXPRESSION ""
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_test_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application for calculating the convex hull"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_err
+    COMMAND ${APPLICATION} "(0.0, 3.0)" "(1.0, 1.0)" "(2.0, 2.0)" "(4.0, 4.0)" "(0.0, 0.0)" "(1.0, 2.0)" "(3.0, 1.0)" "(3.0, 3.0)" "(3.0, 12.0)" "(3.5, 3.3)"
+)
+set_tests_properties (${prefix}_test_err PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: the maximum number of points is 7"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_incorrect_input
+    COMMAND ${APPLICATION} "sda"
+)
+set_tests_properties (${prefix}_incorrect_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Wrong number format, write --help to see how it is needed"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_incorrect_input_2
+    COMMAND ${APPLICATION} "(0.0, 0.5)" "(1, #)" "(2.0, 2.0)" "(4.0, 4.0)" "(0.0, 0.0)"
+)
+set_tests_properties (${prefix}_incorrect_input_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Wrong number format, write --help to see how it is needed"
+    LABELS "${MODULE}"
+)

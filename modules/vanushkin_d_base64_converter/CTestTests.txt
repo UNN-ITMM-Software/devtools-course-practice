@@ -1,0 +1,86 @@
+##############################################
+##### Testing
+##############################################
+
+set(prefix "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "This application does Base64 encoding and decoding."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_incorrected_help
+    COMMAND ${APPLICATION} --help DAA
+)
+set_tests_properties (${prefix}_incorrected_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect second argument"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_incorrected_number_of_arguments_1
+    COMMAND ${APPLICATION} --help sdf lkjjk klkjk
+)
+set_tests_properties (${prefix}_incorrected_number_of_arguments_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect number of arguments"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_incorrected_number_of_arguments_2
+    COMMAND ${APPLICATION} --help ENCODE asdf asdf
+)
+set_tests_properties (${prefix}_incorrected_number_of_arguments_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect number of arguments"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_incorrected_number_of_arguments_3
+    COMMAND ${APPLICATION} ENCODE
+)
+set_tests_properties (${prefix}_incorrected_number_of_arguments_3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect number of arguments"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_incorrected_number_of_arguments_4
+    COMMAND ${APPLICATION} DECODE
+)
+set_tests_properties (${prefix}_incorrected_number_of_arguments_4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect number of arguments"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_encoded_corrected_arguments
+    COMMAND ${APPLICATION} ENCODE ggggg
+)
+set_tests_properties (${prefix}_encoded_corrected_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Encoded value: Z2dnZ2c="
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_decoded_corrected_arguments
+    COMMAND ${APPLICATION} DECODE aGhoaGho
+)
+set_tests_properties (${prefix}_decoded_corrected_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Decoded value: hhhhhh"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_decoded_incorrected_arguments
+    COMMAND ${APPLICATION} DECODE asfdg%&
+)
+set_tests_properties (${prefix}_decoded_incorrected_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Undencoded string format!"
+    LABELS "${MODULE}")

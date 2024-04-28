@@ -1,0 +1,73 @@
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_hanoi_tower_1_ring
+    COMMAND ${APPLICATION} 1
+)
+set_tests_properties (${prefix}_run_hanoi_tower_1_ring PROPERTIES
+    PASS_REGULAR_EXPRESSION "Move from 1 to 3"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_hanoi_tower_2_rings
+    COMMAND ${APPLICATION} 2
+)
+set_tests_properties (${prefix}_run_hanoi_tower_2_rings PROPERTIES
+    PASS_REGULAR_EXPRESSION "Move from 1 to 2\nMove from 1 to 3\nMove from 2 to 3"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_hanoi_tower_3_rings
+    COMMAND ${APPLICATION} 3 
+)
+set_tests_properties (${prefix}_run_hanoi_tower_3_rings PROPERTIES
+    PASS_REGULAR_EXPRESSION "Move from 1 to 3\nMove from 1 to 2\nMove from 3 to 2\nMove from 1 to 3\nMove from 2 to 1\nMove from 2 to 3\nMove from 1 to 3"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_hanoi_tower_4_rings
+    COMMAND ${APPLICATION} 4
+)
+set_tests_properties (${prefix}_run_hanoi_tower_4_rings PROPERTIES
+    PASS_REGULAR_EXPRESSION "Move from 1 to 2\nMove from 1 to 3\nMove from 2 to 3\nMove from 1 to 2\nMove from 3 to 1\nMove from 3 to 2\nMove from 1 to 2\nMove from 1 to 3\nMove from 2 to 3\nMove from 2 to 1\nMove from 3 to 1\nMove from 2 to 3\nMove from 1 to 2\nMove from 1 to 3\nMove from 2 to 3"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_incorrect_number_args
+    COMMAND ${APPLICATION} 10 10 10
+)
+set_tests_properties (${prefix}_run_incorrect_number_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect number of arguments."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_hanoi_tower_0_rings
+    COMMAND ${APPLICATION} 0
+)
+set_tests_properties (${prefix}_run_hanoi_tower_0_rings PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Count of rings has to be more than zero"
+    LABELS "${MODULE}"
+)
