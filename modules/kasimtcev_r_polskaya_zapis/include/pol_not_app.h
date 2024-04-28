@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include "pol_not.h"
+#include "include/pol_not.h"
 
 class PolNotApp {
  public:
