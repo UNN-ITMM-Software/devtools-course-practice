@@ -5,6 +5,7 @@
 
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 #include "include/lab2.h"
 
