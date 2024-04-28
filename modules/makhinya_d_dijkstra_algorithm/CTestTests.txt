@@ -131,6 +131,15 @@ set_tests_properties (${prefix}_test_incorrect_arguments_seven PROPERTIES
 )
 
 add_test(
+    NAME ${prefix}_test_incorrect_arguments_eight
+    COMMAND ${APPLICATION} 0 1 0 25 3
+)
+set_tests_properties (${prefix}_test_incorrect_arguments_eight PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Incorrect"
+    LABELS "${MODULE}"
+)
+
+add_test(
     NAME ${prefix}_test_shortest_path_five
     COMMAND ${APPLICATION} 0 1 0 2 2 2 1 4 1 0 3
 )
