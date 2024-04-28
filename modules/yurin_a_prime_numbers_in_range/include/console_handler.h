@@ -3,7 +3,7 @@
 #ifndef MODULES_YURIN_A_PRIME_NUMBERS_IN_RANGE_INCLUDE_CONSOLE_HANDLER_H_
 #define MODULES_YURIN_A_PRIME_NUMBERS_IN_RANGE_INCLUDE_CONSOLE_HANDLER_H_
 
-#define NO_ARGUMENTS "There are no arguments.\nExample : <number1> <number2>"
+#define NO_ARGUMENTS "There are no arguments. Example : <number1> <number2>"
 
 #include <string>
 #include <vector>
