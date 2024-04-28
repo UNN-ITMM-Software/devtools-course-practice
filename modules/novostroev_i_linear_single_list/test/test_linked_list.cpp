@@ -118,3 +118,34 @@ TEST(LinkedListTest, MoveAssignmentOperator) {
     ASSERT_EQ(list2.size(), 3);
     ASSERT_TRUE(list1.isEmpty());
 }
+
+TEST(LinkedListTest, CopyAssignmentOperator_EmptyList) {
+    LinkedList<int> list1;
+    LinkedList<int> list2;
+    list2 = list1;
+
+    ASSERT_EQ(list1.size(), list2.size());
+    ASSERT_TRUE(list2.isEmpty());
+}
+
+TEST(LinkedListTest, MoveAssignmentOperator_EmptyList) {
+    LinkedList<int> list1;
+    LinkedList<int> list2;
+    list2 = std::move(list1);
+
+    ASSERT_EQ(list2.size(), 0);
+    ASSERT_TRUE(list1.isEmpty());
+    ASSERT_TRUE(list2.isEmpty());
+}
+
+TEST(LinkedListTest, RemoveFromEmptyList) {
+    LinkedList<int> list;
+    ASSERT_FALSE(list.remove(1));
+}
+
+TEST(LinkedListTest, RemoveNonExistentElement) {
+    LinkedList<int> list;
+    list.add(1);
+    list.add(2);
+    ASSERT_FALSE(list.remove(3));
+}
