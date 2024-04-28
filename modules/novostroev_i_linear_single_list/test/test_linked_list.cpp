@@ -3,6 +3,11 @@
 #include <gtest/gtest.h>
 #include "include/linked_list.h"
 
+TEST(LinkedListTest, TestConstructor) {
+    LinkedList<int> list;
+    ASSERT_TRUE(list.isEmpty());
+}
+
 TEST(LinkedListTest, Add) {
     LinkedList<int> list;
     ASSERT_EQ(list.size(), 0);
