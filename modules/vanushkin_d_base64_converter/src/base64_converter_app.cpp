@@ -1,16 +1,17 @@
 // Copyright 2024 Vinichuk Timofey
 #include "../include/base64_converter_app.h"
 #include <sstream>
+#include <cstring>
 
 bool Base64ConverterApplication::validate(int argc, char* argv[]) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    } else if (argc == 2 && strcmp(argv[1], "--help") == 0) {
+    } else if (argc == 2 && std::strcmp(argv[1], "--help") == 0) {
         help(argv[0]);
         return false;
-    } else if (argc == 3 && strcmp(argv[1], "ENCODE") != 0
-                         && strcmp(argv[1], "DECODE") != 0) {
+    } else if (argc == 3 && std::strcmp(argv[1], "ENCODE") != 0
+                         && std::strcmp(argv[1], "DECODE") != 0) {
         help(argv[0], "Incorrect second argument");
         return false;
     } else if (argc != 3) {
