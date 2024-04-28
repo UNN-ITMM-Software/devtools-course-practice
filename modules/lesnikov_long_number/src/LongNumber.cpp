@@ -260,18 +260,17 @@ bool LongNumber::operator!=(const LongNumber& n) const {
 }
 
 bool LongNumber::operator<(const LongNumber& n) const {
+    if (_data.size() == 0 && n._data.size() == 0) {
+        return false;
+    }
     if (!_negative && !n._negative) {
         return absIsLess(n);
     } else if (_negative && n._negative) {
         return absIsGreater(n);
     }
-    if (_data.size() == 0 && n._data.size() == 0) {
-        return false;
-    }
     if (!_negative && n._negative) {
         return false;
     }
-
     return true;
 }
 

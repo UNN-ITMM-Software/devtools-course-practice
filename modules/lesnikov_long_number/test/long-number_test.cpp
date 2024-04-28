@@ -260,3 +260,29 @@ TEST(Lesnikov_Nikita_LongNumber, AbsIsGreaterNumberDigitsEqual) {
     EXPECT_TRUE(n1.absIsGreater(n2));
     EXPECT_FALSE(n2.absIsGreater(n1));
 }
+
+TEST(Lesnikov_Nikita_LongNumber, SubNegative) {
+    LongNumber n1("-2");
+    LongNumber n2("-3");
+    LongNumber n3 = n1 - n2;
+    EXPECT_EQ(n3.getString(), "1");
+}
+
+TEST(Lesnikov_Nikita_LongNumber, SubNegativeFirstAbsBigger) {
+    LongNumber n1("-3");
+    LongNumber n2("-2");
+    LongNumber n3 = n1 - n2;
+    EXPECT_EQ(n3.getString(), "-1");
+}
+
+TEST(Lesnikov_Nikita_LongNumber, AbsIsGreaterEqual) {
+    LongNumber n1("333");
+    LongNumber n2("333");
+    EXPECT_FALSE(n1.absIsGreater(n2));
+}
+
+TEST(Lesnikov_Nikita_LongNumber, AbsIsLessEqual) {
+    LongNumber n1("333");
+    LongNumber n2("333");
+    EXPECT_FALSE(n2.absIsGreater(n1));
+}
