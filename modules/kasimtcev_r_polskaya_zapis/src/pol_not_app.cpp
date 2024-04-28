@@ -39,15 +39,7 @@ bool PolNotApp::validate(int argc, char* argv[]) {
         help(argv[0], "You have to enter two arguments");
         return false;
     }
-
-    try {
-        input = argv[1];
-    }
-    catch (const std::exception&) {
-        help(argv[0], "Invalid string");
-        return false;
-    }
-
+    input = argv[1]; 
     return true;
 }
 
