@@ -1,6 +1,8 @@
 // Copyright 2024 Pozdnyakov Vasya
 
 #include "include/tower_of_hanoi.h"
+#include <sstream>
+#include <iostream>
 
 #define SUM_OF_RODS_NUMBERS 6
 #define START_ROD 1
@@ -36,4 +38,13 @@ std::vector<std::vector<int>> TowerOfHanoi::CalculateSteps(int numberOfRings) {
     }
 
     return RecursiveCalculate(numberOfRings, START_ROD, END_ROD);
+}
+
+std::string TowerOfHanoi::GetStepsAsString
+(const std::vector<std::vector<int>>& steps) {
+    std::stringstream ss;
+    for (const auto& step : steps) {
+        ss << "Move from " << step[0] << " to " << step[1] << std::endl;
+    }
+    return ss.str();
 }
