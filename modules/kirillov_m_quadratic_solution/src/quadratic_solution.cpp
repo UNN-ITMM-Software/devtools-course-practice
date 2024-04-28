@@ -5,9 +5,17 @@
 #include <unordered_set>
 #include "../include/quadratic_solution.h"
 
+QuadraticSolver::QuadraticSolver(double _a, double _b, double _c) {
+    this->a = _a;
+    this->b = _b;
+    this->c = _c;
+}
+
 double QuadraticSolver::getA() const {
     return a;
 }
+
+
 
 double QuadraticSolver::getB() const {
     return b;
@@ -26,19 +34,19 @@ RealResult QuadraticSolver::solveRealRoots() const {
     if (a == 0) {
         if (b == 0) {
             return { c != 0, {} };
-        } else {
-            return {true, {-c / b}};
         }
+        return {true, {-c / b}};
+    }
     } else {
-        double discriminator = getDiscriminant();
-        if (discriminator < 0) {
-            throw std::runtime_error("No real roots");
-        } else {
-            double sqrt_disc = sqrt(discriminator);
-            double root1 = (-b - sqrt_disc) / (2 * a);
-            double root2 = (-b + sqrt_disc) / (2 * a);
-            return {true, {root1, root2}};
-        }
+    double discriminator = getDiscriminant();
+    if (discriminator < 0) {
+        throw std::runtime_error("No real roots");
+    }
+    double sqrt_disc = sqrt(discriminator);
+    double root1 = (-b - sqrt_disc) / (2 * a);
+    double root2 = (-b + sqrt_disc) / (2 * a);
+    return {true, {root1, root2}};
+}
     }
 }
 
