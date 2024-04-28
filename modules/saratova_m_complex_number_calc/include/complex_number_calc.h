@@ -6,6 +6,7 @@
 #include <vector>
 #include <stdexcept>
 #include <sstream>
+#include <string>
 
 class ComplexCalculator {
  private:
