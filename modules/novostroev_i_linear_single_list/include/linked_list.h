@@ -14,7 +14,7 @@ struct Node {
 template <typename T>
 class LinkedList {
  public:
-    LinkedList();
+    LinkedList(); // 123
     LinkedList(const LinkedList<T>& other);
     LinkedList(LinkedList<T>&& other);
     LinkedList<T>& operator=(const LinkedList<T>& other);
