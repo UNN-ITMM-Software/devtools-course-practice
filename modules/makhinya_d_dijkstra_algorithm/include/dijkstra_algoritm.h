@@ -63,16 +63,16 @@ Solver<N>::edge::edge(uint32_t _next_vertex, uint64_t _weight) {
 template<uint32_t N>
 void Solver<N>::add_directed_edge(uint32_t from_v, uint32_t to_v,
                                   uint64_t weight) {
-    if (from_v >= N || to_v >= N)
-        throw std::invalid_argument("vertex must be less N!");
+    // if (from_v >= N || to_v >= N)
+    //     throw std::invalid_argument("vertex must be less N!");
 
     adjacency_list[from_v].push_back(edge(to_v, weight));
 }
 
 template<uint32_t N>
 uint64_t Solver<N>::find_shortest_path(uint32_t start, uint32_t end) {
-    if (start >= N || end >= N)
-        throw std::invalid_argument("vertex must be less N!");
+    // if (start >= N || end >= N)
+    //     throw std::invalid_argument("vertex must be less N!");
 
     distances.fill(NO_WAY_HOME);
 
