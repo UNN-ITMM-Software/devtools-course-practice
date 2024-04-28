@@ -7,12 +7,9 @@
 #include <cmath>
 #include <cstring>
 #include <iostream>
-#include <cstring>
 #include <string>
-#include <cmath>
 #include <unordered_map>
 #include <vector>
-#include <algorithm>
 
 class TheStringDoesNotContainCharacters : public std::exception {};
 
