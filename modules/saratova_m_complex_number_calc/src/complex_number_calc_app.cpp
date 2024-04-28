@@ -14,14 +14,14 @@ bool ComplexCalculatorApplication::Validate(int argc, char *argv[]) {
     } else if (std::strcmp(argv[1], "--help") == 0) {
         Help(argv[0]);
         return false;
+    } else if (argc != required_argc) {
+        Help(argv[0], "Incorrect number of arguments.");
+        return false;
     } else if (std::strcmp(argv[5], "+") != 0
      && std::strcmp(argv[5], "-") != 0
      && std::strcmp(argv[5], "*") != 0
      && std::strcmp(argv[5], "/") != 0) {
         Help(argv[0], "Operation must be either '+' or '-' or '*' or '/'.");
-        return false;
-    } else if (argc != required_argc) {
-        Help(argv[0], "Incorrect number of arguments.");
         return false;
     } else {
         try {
