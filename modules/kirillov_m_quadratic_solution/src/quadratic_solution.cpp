@@ -57,8 +57,7 @@ ComplexResult QuadraticSolver::solveComplexRoots() const {
         roots.insert(root1);
         roots.insert(root2);
         return { true, roots };
-    }
-    else {
+    } else {
         double realPart = -b / (2 * a);
         double imagPart = std::sqrt(-discriminator) / (2 * a);
         ComplexRoots roots(2, hasher);
