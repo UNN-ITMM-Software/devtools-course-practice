@@ -109,6 +109,27 @@ TEST(LinkedListTest, CopyAssignmentOperator) {
     list2 = list1;
 
     ASSERT_EQ(list1.size(), list2.size());
+    ASSERT_FALSE(list2.isEmpty());
+}
+
+TEST(LinkedListTest, CopyAssignmentOperator_SelfAssignment) {
+    LinkedList<int> list1;
+    list1.add(1);
+    list1.add(2);
+    list1.add(3);
+
+    list1 = list1;
+
+    ASSERT_EQ(list1.size(), 3);
+}
+
+TEST(LinkedListTest, CopyAssignmentOperator_EmptyList) {
+    LinkedList<int> list1;
+    LinkedList<int> list2;
+    list2 = list1;
+
+    ASSERT_EQ(list1.size(), list2.size());
+    ASSERT_TRUE(list2.isEmpty());
 }
 
 TEST(LinkedListTest, MoveAssignmentOperator) {
@@ -124,13 +145,15 @@ TEST(LinkedListTest, MoveAssignmentOperator) {
     ASSERT_TRUE(list1.isEmpty());
 }
 
-TEST(LinkedListTest, CopyAssignmentOperator_EmptyList) {
+TEST(LinkedListTest, MoveAssignmentOperator_SelfAssignment) {
     LinkedList<int> list1;
-    LinkedList<int> list2;
-    list2 = list1;
+    list1.add(1);
+    list1.add(2);
+    list1.add(3);
 
-    ASSERT_EQ(list1.size(), list2.size());
-    ASSERT_TRUE(list2.isEmpty());
+    list1 = std::move(list1);
+
+    ASSERT_EQ(list1.size(), 3);
 }
 
 TEST(LinkedListTest, MoveAssignmentOperator_EmptyList) {
