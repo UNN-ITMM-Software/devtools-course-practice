@@ -32,7 +32,7 @@ add_test(NAME TestInvalidformatint
          COMMAND ${APPLICATION} B 1.-1)
 set_tests_properties(TestInvalidformatint PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
 
-add_test(NAME TestInvalidformatdouble
+add_test(NAME TestInvalidformatfloat
          COMMAND ${APPLICATION} B 1 -1.-)
 set_tests_properties(TestInvalidformatdouble PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
 
