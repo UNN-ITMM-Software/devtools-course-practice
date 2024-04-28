@@ -23,12 +23,6 @@ jobs:
       with:
         fetch-depth: 2
 
-    - name: Install requirements (Coverage)
-      if: matrix.ctest_model == 'Coverage'
-      run: |
-        wget https://codecov.io/bash -O $HOME/codecov;
-        chmod +x $HOME/codecov;
-
     - name: Install requirements (CodeCheck)
       if: matrix.ctest_model == 'CodeCheck'
       run: |
@@ -37,7 +31,9 @@ jobs:
 
     - name: Install requirements (MemCheck)
       if: matrix.ctest_model == 'MemCheck'
-      run: sudo apt-get install -y valgrind
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y valgrind
 
     - name: Run tests
       env:
@@ -47,11 +43,13 @@ jobs:
         ctest -VV -S devtools_test.cmake
 
     - name: Publish coverage
+      if: matrix.ctest_model == 'Coverage'
+      uses: codecov/codecov-action@v4
+      with:
+        fail_ci_if_error: true
+        directory: dashboard/build
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      if: matrix.ctest_model == 'Coverage'
-      run: $HOME/codecov -p dashboard/build
-
 
   run_win:
     runs-on: windows-2022

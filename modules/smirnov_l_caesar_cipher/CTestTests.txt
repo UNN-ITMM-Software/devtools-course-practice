@@ -1,0 +1,64 @@
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_caesar_cipher_encryption
+    COMMAND ${APPLICATION} 3 encryption hello
+)
+set_tests_properties (${prefix}_run_caesar_cipher_encryption PROPERTIES
+    PASS_REGULAR_EXPRESSION "khoor"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_caesar_cipher_decryption
+    COMMAND ${APPLICATION} 3 decryption khoor
+)
+set_tests_properties (${prefix}_run_caesar_cipher_decryption PROPERTIES
+    PASS_REGULAR_EXPRESSION "hello"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_caesar_cipher_with_numbers
+    COMMAND ${APPLICATION} 3 encryption 123 
+)
+set_tests_properties (${prefix}_run_caesar_cipher_with_numbers PROPERTIES
+    PASS_REGULAR_EXPRESSION "123"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_incorrect_number_args
+    COMMAND ${APPLICATION} 3 encryption
+)
+set_tests_properties (${prefix}_run_incorrect_number_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect number of arguments."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_operation
+    COMMAND ${APPLICATION} 3 copy hello
+)
+set_tests_properties (${prefix}_run_invalid_operation PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Operation must be either 'encryption' or 'decryption'."
+    LABELS "${MODULE}"
+)
