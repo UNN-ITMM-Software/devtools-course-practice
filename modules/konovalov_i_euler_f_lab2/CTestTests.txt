@@ -1,0 +1,69 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_thelp
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_thelp PROPERTIES
+    PASS_REGULAR_EXPRESSION "This program calculates the Euler function"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_one
+    COMMAND ${APPLICATION} -notnaive 2
+)
+set_tests_properties (${prefix}_test_one PROPERTIES
+    PASS_REGULAR_EXPRESSION "1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_two
+    COMMAND ${APPLICATION} -notnaive 1
+)
+set_tests_properties (${prefix}_test_two PROPERTIES
+    PASS_REGULAR_EXPRESSION "1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_three
+    COMMAND ${APPLICATION} -notnaive 36
+)
+set_tests_properties (${prefix}_test_three PROPERTIES
+    PASS_REGULAR_EXPRESSION "12"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_test_one_naive
+    COMMAND ${APPLICATION} -naive 1
+)
+set_tests_properties (${prefix}_test_one_naive PROPERTIES
+    PASS_REGULAR_EXPRESSION "1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_two_naive
+    COMMAND ${APPLICATION} -naive 2
+)
+set_tests_properties (${prefix}_test_two_naive PROPERTIES
+    PASS_REGULAR_EXPRESSION "1"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_three_naive
+    COMMAND ${APPLICATION} -naive 36
+)
+set_tests_properties (${prefix}_test_three_naive PROPERTIES
+    PASS_REGULAR_EXPRESSION "12"
+    LABELS "${MODULE}")
