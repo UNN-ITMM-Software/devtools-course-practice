@@ -6,7 +6,7 @@
 
 
 std::vector<uint32_t> GettingPrimeNumbers::getPrimeNumbersInRange(
-        uint32_t lowerBound, uint32_t upperBound) : 
+        uint32_t lowerBound, uint32_t upperBound) :
         _lowerBound(lowerBound), _upperBound(upperBound) {
     validateInputData();
 
