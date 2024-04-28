@@ -185,3 +185,51 @@ TEST(LinkedListTest, MoveEmptyList) {
     ASSERT_TRUE(list1.isEmpty());
     ASSERT_TRUE(list2.isEmpty());
 }
+
+TEST(LinkedListTest, CopyAssignment_EmptyToNonEmpty) {
+    LinkedList<int> list1;
+    list1.add(1);
+    list1.add(2);
+    list1.add(3);
+
+    LinkedList<int> list2;
+    list1 = list2;
+
+    ASSERT_TRUE(list1.isEmpty());
+}
+
+TEST(LinkedListTest, MoveAssignment_EmptyToNonEmpty) {
+    LinkedList<int> list1;
+    list1.add(1);
+    list1.add(2);
+    list1.add(3);
+
+    LinkedList<int> list2;
+    list1 = std::move(list2);
+
+    ASSERT_TRUE(list1.isEmpty());
+}
+
+TEST(LinkedListTest, CopyAssignment_EmptyToNonEmpty) {
+    LinkedList<int> list1;
+    list1.add(1);
+    list1.add(2);
+    list1.add(3);
+
+    LinkedList<int> list2;
+    list1 = list2;
+
+    ASSERT_TRUE(list1.isEmpty());
+}
+
+TEST(LinkedListTest, MoveAssignment_EmptyToNonEmpty) {
+    LinkedList<int> list1;
+    list1.add(1);
+    list1.add(2);
+    list1.add(3);
+
+    LinkedList<int> list2;
+    list1 = std::move(list2);
+
+    ASSERT_TRUE(list1.isEmpty());
+}
