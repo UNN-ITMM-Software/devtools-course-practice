@@ -47,26 +47,26 @@ LinkedList<T>::LinkedList(LinkedList<T>&& other) : head(other.head) {
     other.head = nullptr;
 }
 
-template <typename T>
-LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& other) {
-    if (this != &other) {
-        clear();
-        for (Node<T>* node = other.head; node != nullptr; node = node->next) {
-            add(node->data);
-        }
-    }
-    return *this;
-}
+// template <typename T>
+// LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& other) {
+//     if (this != &other) {
+//         clear();
+//         for (Node<T>* node = other.head; node != nullptr; node = node->next) {
+//             add(node->data);
+//         }
+//     }
+//     return *this;
+// }
 
-template <typename T>
-LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>&& other) {
-    if (this != &other) {
-        clear();
-        head = other.head;
-        other.head = nullptr;
-    }
-    return *this;
-}
+// template <typename T>
+// LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>&& other) {
+//     if (this != &other) {
+//         clear();
+//         head = other.head;
+//         other.head = nullptr;
+//     }
+//     return *this;
+// }
 
 template <typename T>
 LinkedList<T>::~LinkedList() {
