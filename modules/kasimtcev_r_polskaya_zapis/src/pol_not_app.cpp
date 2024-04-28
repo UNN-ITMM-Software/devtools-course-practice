@@ -39,7 +39,7 @@ bool PolNotApp::validate(int argc, char* argv[]) {
         help(argv[0], "You have to enter two arguments");
         return false;
     }
-    input = argv[1]; 
+    input = argv[1];
     return true;
 }
 
