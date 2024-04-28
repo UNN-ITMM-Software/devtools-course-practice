@@ -14,7 +14,7 @@ void PolNotApp::help(const char* appName, const char* errorMessage) {
     }
 
     message << "Reverse Polish Notation Calculator\n"
-            << "Usage: " << appName << " \"<mathematical_expression>\"\n\n"
+            << "Usage: " << appName << " \"<math_expression>\"\n\n"
             << "Enter an expression in postfix notation to evaluate it.\n"
             << "Make sure to enclose the expression in double quotes.\n\n"
             << "Examples:\n"
