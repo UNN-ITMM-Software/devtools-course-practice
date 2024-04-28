@@ -57,3 +57,12 @@ set_tests_properties (${prefix}_operator_valid_input2 PROPERTIES
     PASS_REGULAR_EXPRESSION "Result of revers polish notation: 222\\*\\+"
     LABELS "${MODULE}"
 )
+
+add_test(
+    NAME ${prefix}_operator_negative_input
+    COMMAND ${APPLICATION} "-5/(2+2)"
+)
+set_tests_properties (${prefix}_operator_negative_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result of revers polish notation: 522\\+\\/\\-"
+    LABELS "${MODULE}"
+)
