@@ -53,3 +53,12 @@ set_tests_properties (${prefix}_run_complex_calculator_division PROPERTIES
     PASS_REGULAR_EXPRESSION 4 + 0i
     LABELS "${MODULE}"
 )
+
+add_test(
+    NAME ${prefix}_run_invalid_operation
+    COMMAND ${APPLICATION} 1 2 1 2 ?
+)
+set_tests_properties (${prefix}_run_invalid_operation PROPERTIES
+    PASS_REGULAR_EXPRESSION Operation must be either '+' or '-' or '*' or '/'.
+    LABELS "${MODULE}"
+)
