@@ -86,3 +86,13 @@ TEST(ComplexCalculatorTest, DivisionWithFractions) {
     EXPECT_NEAR(result.getReal(), 1.93243, 0.01);
     EXPECT_NEAR(result.getImaginary(), -0.09459, 0.01);
 }
+
+TEST(ComplexCalculatorTest, OperatorEqual) {
+    // Проверка работы оператора присваивания
+    ComplexCalculator num1(3.5, 2.25);
+
+    ComplexCalculator result = num1;
+
+    EXPECT_DOUBLE_EQ(result.getReal(), 3.5);
+    EXPECT_DOUBLE_EQ(result.getImaginary(), 2.25);
+}
