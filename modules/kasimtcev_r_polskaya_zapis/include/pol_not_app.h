@@ -3,6 +3,7 @@
 #pragma once
 
 #include <string>
+
 #include "pol_not.h"
 
 class PolNotApp {
