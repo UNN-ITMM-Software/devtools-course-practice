@@ -14,4 +14,5 @@ class EulerFunction {
   static int euler_naive(int n);
 };
 
+
 #endif  // MODULES_KONOVALOV_I_EULER_F_LAB2_INCLUDE_KONOVALOV_I_EULER_F_H_
