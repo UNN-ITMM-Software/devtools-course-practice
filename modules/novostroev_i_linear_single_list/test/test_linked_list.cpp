@@ -93,3 +93,28 @@ TEST(LinkedListTest, MoveConstructor) {
     ASSERT_EQ(list2.size(), 3);
     ASSERT_TRUE(list1.isEmpty());
 }
+
+TEST(LinkedListTest, CopyAssignmentOperator) {
+    LinkedList<int> list1;
+    list1.add(1);
+    list1.add(2);
+    list1.add(3);
+
+    LinkedList<int> list2;
+    list2 = list1;
+
+    ASSERT_EQ(list1.size(), list2.size());
+}
+
+TEST(LinkedListTest, MoveAssignmentOperator) {
+    LinkedList<int> list1;
+    list1.add(1);
+    list1.add(2);
+    list1.add(3);
+
+    LinkedList<int> list2;
+    list2 = std::move(list1);
+
+    ASSERT_EQ(list2.size(), 3);
+    ASSERT_TRUE(list1.isEmpty());
+}
