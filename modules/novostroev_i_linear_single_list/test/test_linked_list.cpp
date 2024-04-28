@@ -177,3 +177,33 @@ TEST(LinkedListTest, RemoveNonExistentElement) {
     list.add(2);
     ASSERT_FALSE(list.remove(3));
 }
+
+TEST(LinkedListTest, AddToNonEmptyList) {
+    LinkedList<int> list;
+    list.add(1);
+    list.add(2);
+    list.add(3);
+    ASSERT_EQ(list.size(), 3);
+    list.add(4);
+    ASSERT_EQ(list.size(), 4);
+}
+
+TEST(LinkedListTest, RemoveOnlyElement) {
+    LinkedList<int> list;
+    list.add(1);
+    ASSERT_TRUE(list.remove(1));
+    ASSERT_TRUE(list.isEmpty());
+}
+
+TEST(LinkedListTest, CopyEmptyList) {
+    LinkedList<int> list1;
+    LinkedList<int> list2(list1);
+    ASSERT_TRUE(list2.isEmpty());
+}
+
+TEST(LinkedListTest, MoveEmptyList) {
+    LinkedList<int> list1;
+    LinkedList<int> list2(std::move(list1));
+    ASSERT_TRUE(list1.isEmpty());
+    ASSERT_TRUE(list2.isEmpty());
+}
