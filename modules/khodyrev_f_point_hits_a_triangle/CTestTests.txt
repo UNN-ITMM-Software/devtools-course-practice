@@ -1,0 +1,73 @@
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_point_inside_triangle
+    COMMAND ${APPLICATION} 1 1 -1 1 0 -1 0 0
+)
+set_tests_properties (${prefix}_run_point_inside_triangle PROPERTIES
+    PASS_REGULAR_EXPRESSION "Point is inside the triangle."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_point_inside_triangle_2
+    COMMAND ${APPLICATION} 2 2 -3 3 -1 -4 1 2
+)
+set_tests_properties (${prefix}_run_point_inside_triangle_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Point is inside the triangle."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_point_outside_triangle
+    COMMAND ${APPLICATION} 1 1 -1 1 0 -1 4 4
+)
+set_tests_properties (${prefix}_run_point_outside_triangle PROPERTIES
+    PASS_REGULAR_EXPRESSION "Point is outside the triangle."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_incorrect_number_args
+    COMMAND ${APPLICATION} 1 1 -1 1 0 -1 4
+)
+set_tests_properties (${prefix}_run_incorrect_number_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect number of arguments."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_args
+    COMMAND ${APPLICATION} 1 1 -1 1 0 -1 a 4
+)
+set_tests_properties (${prefix}_run_invalid_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid arguments."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_triangle
+    COMMAND ${APPLICATION} 0 0 0 0 0 0 4 4
+)
+set_tests_properties (${prefix}_run_invalid_triangle PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid input of triangle points."
+    LABELS "${MODULE}"
+)

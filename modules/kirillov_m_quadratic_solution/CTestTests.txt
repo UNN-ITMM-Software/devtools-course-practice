@@ -1,0 +1,55 @@
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_quadratic_solver_real_roots
+    COMMAND ${APPLICATION} 1 -3 2
+)
+set_tests_properties (${prefix}_run_quadratic_solver_real_roots PROPERTIES
+    PASS_REGULAR_EXPRESSION "Real Roots: (1 2|2 1)"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_quadratic_solver_real_one_roots
+    COMMAND ${APPLICATION} 1 2 1
+)
+set_tests_properties (${prefix}_run_quadratic_solver_real_one_roots PROPERTIES
+    PASS_REGULAR_EXPRESSION "Real Roots: -1"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_quadratic_solver_complex_roots
+    COMMAND ${APPLICATION} 2 4 12
+)
+set_tests_properties (${prefix}_run_quadratic_solver_complex_roots PROPERTIES
+    PASS_REGULAR_EXPRESSION "Complex Roots: (-1\\+0i 2.23607\\+0i -2.23607\\+0i |-1\\+0i -2.23607\\+0i 2.23607\\+0i )"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_quadratic_solver_invalid_input
+    COMMAND ${APPLICATION} a b c
+)
+set_tests_properties (${prefix}_run_quadratic_solver_invalid_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid arguments."
+    LABELS "${MODULE}"
+)
