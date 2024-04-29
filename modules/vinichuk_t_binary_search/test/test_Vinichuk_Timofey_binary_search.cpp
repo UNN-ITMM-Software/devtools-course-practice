@@ -66,9 +66,9 @@ TEST(BinarySearchTest, test_last_element) {
     ASSERT_EQ(binsearch::binary_search(v2, 'z'), 4);
 }
 
-int compare(const void* x1, const void* x2)
-{
-    return (*(int*)x1 - *(int*)x2);
+int compare(const void* x1, const void* x2) {
+    return (*(reinterpret_cast<int*>(const_cast<void*>(x1)))
+        - *(reinterpret_cast<int*>(const_cast<void*>(x2))));
 }
 
 TEST(BinarySearchTest, test_random_vector) {
@@ -86,13 +86,14 @@ TEST(BinarySearchTest, test_random_vector) {
     for (int i = 0; i < size; ++i) {
         vec[i] = distribution(gen);
     }
-    int target = vec[targetIndex];
+    int targ = vec[targetIndex];
 
     std::sort(vec.begin(), vec.end());
 
     int* arr = vec.data();
 
-    int* result = (int*)std::bsearch(&target, arr, vec.size(), sizeof(int), compare);
+    int* result = reinterpret_cast<int*>(std::bsearch(&targ, arr, vec.size(),
+                                         sizeof(int), compare));
 
-    EXPECT_EQ(result - arr, binsearch::binary_search(vec, target));
+    EXPECT_EQ(result - arr, binsearch::binary_search(vec, targ));
 }
