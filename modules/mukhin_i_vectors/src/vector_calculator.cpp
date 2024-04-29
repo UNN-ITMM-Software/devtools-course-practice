@@ -1,3 +1,4 @@
+// Copyright 2024 Mukhin Ivan
 #include "include/vector_calculator.h"
 #include "include/vectors.h"
 #include <vector>

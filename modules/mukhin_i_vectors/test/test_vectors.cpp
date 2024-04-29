@@ -1,3 +1,4 @@
+// Copyright 2024 Mukhin Ivan
 #include <gtest/gtest.h>
 #include <initializer_list>
 #include "include/vectors.h"
