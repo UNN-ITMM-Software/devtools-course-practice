@@ -36,10 +36,6 @@ std::string Application::processCommand(const std::string& command,
             ss << "Inserted [" << key << "] = " << value;
         } else if (command == "find") {
             ss << "Found [" << key << "] = " << hashMap.find(key);
-        } else if (command == "remove") {
-            hashMap.find(key);
-            hashMap.remove(key);
-            ss << "Removed key: " << key;
         } else if (command == "clear") {
             hashMap.clear();
             ss << "Array cleared";
