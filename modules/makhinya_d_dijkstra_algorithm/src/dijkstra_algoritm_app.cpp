@@ -19,7 +19,7 @@ bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
 
     for (int i = 1; i < argc; ++i) {
         int v = atoi(argv[i]);
-        if (v < 0 || v >= 20) {
+        if (v < 0) {
             help(argv[0], -1);
             return false;
         }
@@ -28,7 +28,7 @@ bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
     return true;
 }
 
-void DijkstraAlgorithmApp::help(const char* application, int check_code) {
+std::string DijkstraAlgorithmApp::help(const char* application, int check_code) {
   std::ostringstream help_msg;
 
   if (check_code != 0) {
@@ -49,13 +49,18 @@ void DijkstraAlgorithmApp::help(const char* application, int check_code) {
   }
 
   dijkstra_algorithm_msg = help_msg.str();
+  return dijkstra_algorithm_msg;
 }
 
 std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc,
                                                           char* argv[]) {
+  const uint32_t MAX_VALUE_VERTEX = 20;
   if (!validate(argc, argv)) {
     return dijkstra_algorithm_msg;
   }
+
+  std::string output;
+  uint64_t result;
 
   uint32_t start_vertex = atoi(argv[1]);
   uint32_t end_vertex = atoi(argv[2]);
@@ -64,16 +69,24 @@ std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc,
     uint32_t from_vertex = atoi(argv[i]);
     uint32_t to_vertex = atoi(argv[i + 1]);
     uint64_t weight = std::stoull(argv[i + 2]);
+    if (from_vertex >= MAX_VALUE_VERTEX || to_vertex >= MAX_VALUE_VERTEX) {
+      help(argv[0], -1);
+      output = help(argv[0], -1);
+      return output;
+    }
     obj.add_directed_edge(from_vertex, to_vertex, weight);
   }
 
-  uint64_t result = obj.find_shortest_path(start_vertex, end_vertex);
-
-  std::string output;
-
-  if (result == std::numeric_limits<uint64_t>::max()) {
-    output = "There is no path between the vertices you specified.";
+  if (start_vertex >= MAX_VALUE_VERTEX || end_vertex >= MAX_VALUE_VERTEX) {
+    help(argv[0], -1);
+    output = help(argv[0], -1);
     return output;
+  } else {
+    result = obj.find_shortest_path(start_vertex, end_vertex);
+    if (result == std::numeric_limits<uint64_t>::max()) {
+      output = "There is no path between the vertices you specified.";
+      return output;
+    }
   }
 
   output = "Shortest path length: " + std::to_string(result);

@@ -19,6 +19,6 @@ class DijkstraAlgorithmApp {
     Solver<20> obj;
 
     bool validate(int argc, char* argv[]);
-    void help(const char* application, int check_code);
+    std::string help(const char* application, int check_code);
     std::string dijkstra_algorithm_msg;
 };
