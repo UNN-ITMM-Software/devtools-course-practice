@@ -39,8 +39,8 @@ std::string mukhin_i::Vector3DApp::parse() {
         }
     }
     if (!st.empty()) {
-        throw std::invalid_argument("Wrong place of {} \
-                                     in command line arguments.");
+        throw std::invalid_argument("Wrong place of {}"
+                                    "in command line arguments.");
     }
     return res;
 }
