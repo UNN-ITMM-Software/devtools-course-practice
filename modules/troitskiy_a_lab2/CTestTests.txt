@@ -1,0 +1,43 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(NAME TestBuildHeap
+         COMMAND ${APPLICATION} B 5 4.0 7.0 2.0 8.3 5.0)
+set_tests_properties(TestBuildHeap PROPERTIES PASS_REGULAR_EXPRESSION "8.3 7 5 4 2")
+
+add_test(NAME TestAddElement
+         COMMAND ${APPLICATION} BA 5 4.0 7.0 2.0 8.3 5.0 9.0)
+set_tests_properties(TestAddElement PROPERTIES PASS_REGULAR_EXPRESSION "9 8.3 7 5 4 2")
+
+add_test(NAME TestGetMaxElement
+         COMMAND ${APPLICATION} BAT 5 4.0 7.0 2.0 8.3 5.0 9.0)
+set_tests_properties(TestGetMaxElement PROPERTIES PASS_REGULAR_EXPRESSION "9 9 8.3 7 5 4 2")
+
+add_test(NAME TestPopElement
+         COMMAND ${APPLICATION} BAD 5 4.0 7.0 2.0 8.3 5.0 9.0)
+set_tests_properties(TestPopElement PROPERTIES PASS_REGULAR_EXPRESSION "8.3 7 5 4 2")
+
+add_test(NAME TestInvalidInput
+         COMMAND ${APPLICATION} X)
+set_tests_properties(TestInvalidInput PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation")
+
+add_test(NAME Test2B
+         COMMAND ${APPLICATION} BB 1 1)
+set_tests_properties(Test2B PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation")
+
+add_test(NAME TestInvalidformatint
+         COMMAND ${APPLICATION} B 1.-1)
+set_tests_properties(TestInvalidformatint PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(NAME TestInvalidformatfloat
+         COMMAND ${APPLICATION} B 1 -1.-)
+set_tests_properties(TestInvalidformatdouble PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(NAME TestInfo
+         COMMAND ${APPLICATION})
+set_tests_properties(TestInfo PROPERTIES PASS_REGULAR_EXPRESSION "This is a max-heap application.format - 1st arg is strig of uppercase characters first character is always B - build heap, T - max elem , P - pop, A - add elem")
+
+
