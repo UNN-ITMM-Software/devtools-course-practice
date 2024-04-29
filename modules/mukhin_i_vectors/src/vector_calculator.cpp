@@ -36,8 +36,7 @@ std::string mukhin_i::Vector3DApp::parse() {
                  args[i] == 'n' ||
                  args[i] == '@') {
             oper = args[i];
-        }
-        else {
+        } else {
             res += args[i];
         }
     }
@@ -59,8 +58,7 @@ void mukhin_i::Vector3DApp::init_vectors(const std::string& res) {
             } catch(std::invalid_argument &e) {
                 throw std::invalid_argument("Can't convert to double.");
             }
-        }
-        else {
+        } else {
             tmp += res[i];
         }
     }
@@ -70,8 +68,7 @@ void mukhin_i::Vector3DApp::init_vectors(const std::string& res) {
     }
     else if(numbers.size() == 3) {
         v1 = Vector3D<double>({numbers[0], numbers[1], numbers[2]});
-    }
-    else {
+    } else {
         throw std::invalid_argument("Too many numbers.");
     }
 }
@@ -91,5 +88,7 @@ void mukhin_i::Vector3DApp::calculate() {
     }
     else if (oper == "@") {
         std::cout << "Result is: " << dot(v1, v2) << std::endl;
+    } else {
+        throw std::invalid_argument("Invalid operation.");
     }
 }

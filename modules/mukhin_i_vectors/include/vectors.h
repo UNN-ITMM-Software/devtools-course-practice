@@ -10,14 +10,14 @@
 namespace mukhin_i {
 
 template<typename T,
-         typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
+         typename =\
+         typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
 class Vector3D{
     T x;
     T y;
     T z;
 
  public:
-
     T operator[](int i) const {
         switch (i) {
             case 0:
@@ -30,7 +30,7 @@ class Vector3D{
                 break;
         }
         return 0.0;
-    };
+    }
 
     T& operator[](int i) {
         switch (i) {
@@ -44,7 +44,7 @@ class Vector3D{
                 break;
         }
         return 0.0;
-    };
+    }
 
     Vector3D() : x(0), y(0), z(0) {};
 
@@ -53,7 +53,7 @@ class Vector3D{
         x = *(iter++);
         y = *(iter++);
         z = *(iter++);
-    };
+    }
 
     Vector3D(const Vector3D& v) noexcept {
         x = v.x;
@@ -69,7 +69,7 @@ class Vector3D{
         return *this;
     }
 
-    T norm(){
+    T norm() {
         return std::sqrt(dot(*this, *this));
     }
 
@@ -92,8 +92,7 @@ class Vector3D{
     friend bool operator==(const Vector3D& v1, const Vector3D& v2) {
         if (v1.x == v2.x && v1.y == v2.y && v1.z == v2.z) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -103,10 +102,13 @@ class Vector3D{
     }
 
     friend std::ostream& operator<<(std::ostream& obj, const Vector3D& v) {
-        obj << "{" << v[0] << " , " << v[1] << " , " << v[2] << "}" << std::endl;
+        obj << "{" << v[0]
+            << " , " << v[1]
+            << " , " << v[2]
+            << "}" << std::endl;
         return obj;
     }
 };
 
-}
+}  // namespace mukhin_i
 #endif  // MODULES_MUKHIN_I_VECTORS_INCLUDE_VECTORS_H_
