@@ -46,7 +46,7 @@ class Vector3D{
         return 0.0;
     }
 
-    Vector3D() : x(0), y(0), z(0) {};
+    Vector3D() : x(0), y(0), z(0) {}
 
     Vector3D(const std::initializer_list<T>& values) {
         auto iter = values.begin();
