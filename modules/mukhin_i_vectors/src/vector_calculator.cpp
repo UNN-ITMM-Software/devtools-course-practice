@@ -39,7 +39,8 @@ std::string mukhin_i::Vector3DApp::parse() {
         }
     }
     if (!st.empty()) {
-        throw std::invalid_argument("Wrong place of {} in command line arguments.");
+        throw std::invalid_argument("Wrong place of {} \
+                                     in command line arguments.");
     }
     return res;
 }
@@ -63,7 +64,7 @@ void mukhin_i::Vector3DApp::init_vectors(const std::string& res) {
     if (numbers.size() == 6) {
         v1 = Vector3D<double>({numbers[0], numbers[1], numbers[2]});
         v2 = Vector3D<double>({numbers[3], numbers[4], numbers[5]});
-    } else if(numbers.size() == 3) {
+    } else if (numbers.size() == 3) {
         v1 = Vector3D<double>({numbers[0], numbers[1], numbers[2]});
     } else {
         throw std::invalid_argument("Too many numbers.");
