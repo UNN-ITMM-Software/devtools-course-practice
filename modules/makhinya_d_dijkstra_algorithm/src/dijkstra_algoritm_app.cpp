@@ -28,7 +28,8 @@ bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
     return true;
 }
 
-std::string DijkstraAlgorithmApp::help(const char* application, int check_code) {
+std::string DijkstraAlgorithmApp::help(const char* application,
+                                       int check_code) {
   std::ostringstream help_msg;
 
   if (check_code != 0) {
