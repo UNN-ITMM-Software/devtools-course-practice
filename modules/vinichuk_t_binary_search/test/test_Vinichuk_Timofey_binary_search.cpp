@@ -2,6 +2,9 @@
 
 #include <gtest/gtest.h>
 #include <numeric>
+#include <cstdlib>
+#include <algorithm>
+#include <random>
 #include "include/BinarySearch.h"
 
 
@@ -61,4 +64,35 @@ TEST(BinarySearchTest, test_last_element) {
 
     ASSERT_EQ(binsearch::binary_search(v1, 345), 4);
     ASSERT_EQ(binsearch::binary_search(v2, 'z'), 4);
+}
+
+int compare(const void* x1, const void* x2)
+{
+    return (*(int*)x1 - *(int*)x2);
+}
+
+TEST(BinarySearchTest, test_random_vector) {
+    int size = 10;
+    int minVal = 1;
+    int maxVal = 100;
+    int targetIndex = 5;
+
+    std::vector<int> vec(size);
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> distribution(minVal, maxVal);
+
+    for (int i = 0; i < size; ++i) {
+        vec[i] = distribution(gen);
+    }
+    int target = vec[targetIndex];
+
+    std::sort(vec.begin(), vec.end());
+
+    int* arr = vec.data();
+
+    int* result = (int*)std::bsearch(&target, arr, vec.size(), sizeof(int), compare);
+
+    EXPECT_EQ(result - arr, binsearch::binary_search(vec, target));
 }
