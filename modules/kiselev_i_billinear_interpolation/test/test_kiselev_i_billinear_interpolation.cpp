@@ -33,58 +33,58 @@ TEST(Kiselev_Igor_Billinear_interpolation_test, test_color_setters) {
   ASSERT_EQ(c2.getB(), 34);
 }
 
-// Тесты для конструкторов
+// Tests for constructors
 TEST(Kiselev_Igor_Billinear_interpolation_test,
      test_billinear_interpolation_constructors) {
   std::vector<std::vector<Color>> v(2, std::vector<Color>(2, Color(0, 0, 0)));
 
-  // Проверка конструктора от вектора
+  // Check constructor from vector
   ASSERT_NO_THROW(BillinearInterpolation bi1 = BillinearInterpolation(v));
 
-  // Проверка конструктора копирования
+  // Check copy constructor
   BillinearInterpolation bi1 = BillinearInterpolation(v);
   ASSERT_NO_THROW(BillinearInterpolation bi3 = BillinearInterpolation(bi1));
 
-  // Проверка конструктора перемещения
+  // Check move constructor
   BillinearInterpolation bi2 = BillinearInterpolation(v);
   ASSERT_NO_THROW(BillinearInterpolation bi4 = std::move(bi2));
 }
 
-// Тесты для операторов присваивания
+// Tests for assignment operators
 TEST(Kiselev_Igor_Billinear_interpolation_test,
      test_billinear_interpolation_assignment_operators) {
   std::vector<std::vector<Color>> v(2, std::vector<Color>(2, Color(0, 0, 0)));
   BillinearInterpolation bi1 = BillinearInterpolation(v);
   BillinearInterpolation bi2 = BillinearInterpolation(v);
 
-  // Проверка оператора присваивания копирования
+  // Check copy assignment operator
   ASSERT_NO_THROW(bi2 = bi1);
 
-  // Проверка оператора присваивания перемещения
+  // Check move assignment operator
   ASSERT_NO_THROW(bi2 = std::move(bi1));
 }
 
-// Тесты для перемещающего конструктора
+// Tests for move constructor
 TEST(Kiselev_Igor_Billinear_interpolation_test,
      test_billinear_interpolation_move_constructor) {
   std::vector<std::vector<Color>> v(2, std::vector<Color>(2, Color(0, 0, 0)));
   BillinearInterpolation bi1 = BillinearInterpolation(v);
 
-  // Проверка перемещающего конструктора
+  // Check move constructor
   ASSERT_NO_THROW(BillinearInterpolation bi2 = std::move(bi1));
-  ASSERT_EQ(bi1.getSize(), 0);  // Убедимся, что исходный объект пуст
+  ASSERT_EQ(bi1.getSize(), 0);  // Ensure the original object is empty
 }
 
-// Тесты для перемещающего оператора присваивания
+// Tests for move assignment operator
 TEST(Kiselev_Igor_Billinear_interpolation_test,
      test_billinear_interpolation_move_assignment_operator) {
   std::vector<std::vector<Color>> v(2, std::vector<Color>(2, Color(0, 0, 0)));
   BillinearInterpolation bi1 = BillinearInterpolation(v);
   BillinearInterpolation bi2 = BillinearInterpolation(v);
 
-  // Проверка перемещающего оператора присваивания
+  // Check move assignment operator
   ASSERT_NO_THROW(bi2 = std::move(bi1));
-  ASSERT_EQ(bi1.getSize(), 0);  // Убедимся, что исходный объект пуст
+  ASSERT_EQ(bi1.getSize(), 0);  // Ensure the original object is empty
 }
 
 TEST(Kiselev_Igor_Billinear_interpolation_test, test_twoCore_is_no_fall) {
