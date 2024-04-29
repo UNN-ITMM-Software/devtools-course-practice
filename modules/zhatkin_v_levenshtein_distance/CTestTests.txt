@@ -1,0 +1,60 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_test_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_identical_strings
+    COMMAND ${APPLICATION} "string" "string"
+)
+set_tests_properties (${prefix}_run_identical_strings PROPERTIES
+    PASS_REGULAR_EXPRESSION "'string' and 'string' is: 0"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_no_identical_strings
+    COMMAND ${APPLICATION} "abcdef" "string"
+)
+set_tests_properties (${prefix}_run_no_identical_strings PROPERTIES
+    PASS_REGULAR_EXPRESSION "'abcdef' and 'string' is: 6"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_with_two_args
+    COMMAND ${APPLICATION} "string"
+)
+set_tests_properties (${prefix}_run_with_two_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: You have to enter three arguments"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_with_four_args
+    COMMAND ${APPLICATION} "string"
+)
+set_tests_properties (${prefix}_run_with_four_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: You have to enter three arguments"
+    LABELS "${MODULE}"
+)

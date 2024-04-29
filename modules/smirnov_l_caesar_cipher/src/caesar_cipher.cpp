@@ -8,7 +8,7 @@ const int CaesarCipher::ALPHABET_SIZE = 26;
 
 CaesarCipher::CaesarCipher(const int _offset) {
     if (_offset < MIN_OFFSET || _offset > MAX_OFFSET) {
-        throw std::invalid_argument("invalid value");
+        throw std::invalid_argument("Invalid offset value.");
     }
     this->offset = _offset;
 }

@@ -1,0 +1,104 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+set(numberRegex "^[0-9]+\\.[0-9]+")
+set(errorRegex "^Error: ")
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_quad_accepted
+    COMMAND ${APPLICATION} quad -2 2 10
+)
+
+set_tests_properties (${prefix}_quad_accepted PROPERTIES
+    PASS_REGULAR_EXPRESSION ${numberRegex}
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_trapezoid_accepted
+    COMMAND ${APPLICATION} trapezoid -2 2 10
+)
+
+set_tests_properties (${prefix}_trapezoid_accepted PROPERTIES
+    PASS_REGULAR_EXPRESSION ${numberRegex}
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_no_method
+    COMMAND ${APPLICATION} -2 2 10
+)
+
+set_tests_properties (${prefix}_no_method PROPERTIES
+    PASS_REGULAR_EXPRESSION ${numberRegex}
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_unknown_module
+    COMMAND ${APPLICATION} ? -2 2 10
+)
+
+set_tests_properties (${prefix}_unknown_module PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Error: "
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_left_limit_incorrect
+    COMMAND ${APPLICATION} - 2 10
+)
+
+set_tests_properties (${prefix}_left_limit_incorrect PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Error: "
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_right_limit_incorrect
+    COMMAND ${APPLICATION} -2 - 10
+)
+
+set_tests_properties (${prefix}_right_limit_incorrect PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Error: "
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_interval_number_zero
+    COMMAND ${APPLICATION} -2 2 0
+)
+
+set_tests_properties (${prefix}_interval_number_zero PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Error: "
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_interval_count_negative
+    COMMAND ${APPLICATION} -2 2 -2
+)
+
+set_tests_properties (${prefix}_interval_count_negative PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Error: "
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_too_few_arguments
+    COMMAND ${APPLICATION} -2
+)
+
+set_tests_properties (${prefix}_too_few_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Too few arguments"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_too_many_arguments
+    COMMAND ${APPLICATION} -2 2 10 2 22
+)
+
+set_tests_properties (${prefix}_too_many_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Too many arguments"
+    LABELS "${MODULE}")

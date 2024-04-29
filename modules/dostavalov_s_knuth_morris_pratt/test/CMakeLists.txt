@@ -1,5 +1,4 @@
 set(target ${TESTS})
-cmake_minimum_required( VERSION 3.25 )
 
 file(GLOB srcs "*.cpp")
 set_source_files_properties(${srcs} PROPERTIES
@@ -26,3 +25,4 @@ add_test(
 )
 set_tests_properties (${MODULE}_gtest PROPERTIES
     LABELS "${MODULE}")
+    

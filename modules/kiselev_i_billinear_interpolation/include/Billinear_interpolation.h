@@ -17,6 +17,7 @@ class BillinearInterpolation {
     BillinearInterpolation& operator=(const BillinearInterpolation& bi);
     std::vector<std::vector<Color>> twoCore();
     std::vector<std::vector<Color>> threeCore();
+    int getSize();
 };
 
 #endif  // MODULES_KISELEV_I_BILLINEAR_INTERPOLATION_INCLUDE_BILLINEAR_INTERPOLATION_H_
