@@ -42,3 +42,17 @@ TEST(TwoSegmentsTest, Collinear) {
     Segment segment4(Point(2, 2), Point(2.5, 2.5));
     ASSERT_TRUE(TwoSegments::checkParallel(segment3, segment4));
 }
+
+TEST(OrientationTest, OrientationCheck) {
+    Point p1(1, 1);
+    Point q1(3, 3);
+    Point p2(2, 2);
+    Point q2(4, 4);
+
+    ASSERT_EQ(orientation(p1, q1, p2), 0);
+    ASSERT_EQ(orientation(p1, q1, q2), 0);
+    ASSERT_EQ(orientation(p2, q2, p1), 0);
+    ASSERT_EQ(orientation(p2, q2, q1), 0);
+    ASSERT_EQ(orientation(p1, q1, Point(4, 2)), 1);
+    ASSERT_EQ(orientation(p1, q1, Point(2, 4)), 2);
+}
