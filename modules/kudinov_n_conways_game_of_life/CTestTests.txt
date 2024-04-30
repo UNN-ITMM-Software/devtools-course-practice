@@ -52,6 +52,22 @@ set_tests_properties (${prefix}_Filter_incorrect_width PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
+    NAME ${prefix}_Filter_zero_height
+    COMMAND ${APPLICATION} 0 2 3
+)
+set_tests_properties (${prefix}_Filter_incorrect_height PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect height or width!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Filter_zero_width
+    COMMAND ${APPLICATION} 2 0 3
+)
+set_tests_properties (${prefix}_Filter_incorrect_width PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect height or width!"
+    LABELS "${MODULE}")
+
+add_test(
     NAME ${prefix}_Filter_incorrect_points
     COMMAND ${APPLICATION} 2 2 3 6 6
 )
@@ -62,6 +78,14 @@ set_tests_properties (${prefix}_Filter_incorrect_points PROPERTIES
 add_test(
     NAME ${prefix}_Pass
     COMMAND ${APPLICATION} 4 4 1 0 0 0 1
+)
+set_tests_properties (${prefix}_Pass PROPERTIES
+    PASS_REGULAR_EXPRESSION "...."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Pass_more_generations
+    COMMAND ${APPLICATION} 4 4 3 0 0 0 1 
 )
 set_tests_properties (${prefix}_Pass PROPERTIES
     PASS_REGULAR_EXPRESSION "...."

@@ -25,8 +25,6 @@ class ConwaysGameOfLifeApplication {
  public:
     ConwaysGameOfLifeApplication(int argc, const char** argv);
     std::string doWork();
-    void nextGeneration();
-    std::string getField();
     bool setNewField(int argc, const char** argv);
 };
 
