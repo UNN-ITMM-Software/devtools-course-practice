@@ -1,7 +1,7 @@
 // Copyright 2024 Kulikov Artem
 
-#ifndef MODULES_KULIKOV_A_LAB2_INCLUDE_LCS_H_
-#define MODULES_KULIKOV_A_LAB2_INCLUDE_LCS_H_
+#ifndef MODULES_IVANOV_NIKITA_LAB3_INCLUDE_LCS_H_
+#define MODULES_IVANOV_NIKITA_LAB3_INCLUDE_LCS_H_
 
 #include <string>
 #include <vector>
@@ -22,4 +22,4 @@ class LCS {
         const std::vector<std::vector<size_t>>& lengths);
 };
 
-#endif  // MODULES_KULIKOV_A_LAB2_INCLUDE_LCS_H_
+#endif  // MODULES_IVANOV_NIKITA_LAB3_INCLUDE_LCS_H_

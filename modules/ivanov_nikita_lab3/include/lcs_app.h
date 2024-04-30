@@ -3,12 +3,12 @@
 #include <string>
 
 class LCSApp {
-public:
+ public:
     LCSApp();
 
     std::string operator()(int argc, const char** argv);
 
-private:
+ private:
     void help(const char* appname, const char* message = "");
     bool validateNumberOfArguments(int argc, const char** argv);
     std::string message_;
