@@ -56,7 +56,7 @@ class CustomNSNumber {
     for (size_t i = _num.digits.size(); i > 0; i--) {
       ostr << _num.digits[i - 1] << ' ';
     }
-    ostr << "(Numeric system: " << _num.num_sys << ")";
+    ostr << "_" << _num.num_sys;
     return ostr;
   }
 };
