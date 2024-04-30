@@ -4,7 +4,13 @@
 #include <cmath>
 
 #include "include/savchuk_intersectio.h"
-#include "include/console_application.h"
+
+TEST(OrientationTest, CounterClockwise) {
+    Point p(1, 1);
+    Point q(3, 2);
+    Point r(2, 3);
+    ASSERT_EQ(orientation(p, q, r), 2);
+}
 
 TEST(TwoSegmentsTest, Intersection) {
     Segment segment1(Point(1, 1), Point(3, 3));
@@ -56,13 +62,6 @@ TEST(TwoSegmentsTest, HorizontalSegments) {
     Segment segment2(Point(2, 2), Point(4, 2));
 
     ASSERT_TRUE(TwoSegments::checkParallel(segment1, segment2));
-}
-
-TEST(OrientationTest, CounterClockwise) {
-    Point p(1, 1);
-    Point q(3, 2);
-    Point r(2, 3);
-    ASSERT_EQ(orientation(p, q, r), 2);
 }
 
 TEST(PointTest, GetX) {
