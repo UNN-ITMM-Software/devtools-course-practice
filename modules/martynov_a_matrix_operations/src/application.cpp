@@ -1,9 +1,9 @@
 // Copyright 2024 Martynov Aleksandr
 
+#include <sstream>
+
 #include "include/application.hpp"
 #include "include/tmatrix.h"
-
-#include <sstream>
 
 #define REQ_ARGC 5
 
