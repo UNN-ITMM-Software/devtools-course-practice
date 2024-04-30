@@ -126,7 +126,7 @@ TEST(TDynamicMatrix, can_find_determinant) {
     }
   }
   m[0][0] = 2.0;
-  EXPECT_DOUBLE_EQ(m.findDeterm(m), -1.0);
+  EXPECT_DOUBLE_EQ(m.findDeterm(), -1.0);
 }
 TEST(TDynamicMatrix, can_find_inverse) {
   size_t size = 3;
@@ -148,7 +148,7 @@ TEST(TDynamicMatrix, can_find_inverse) {
   mat[2][1] = 4.0;
   mat[2][2] = 7.0;
 
-  m = mat.findInverse(mat);
+  m = mat.findInverse();
   EXPECT_DOUBLE_EQ(m[0][0], -13.0/371.0);
 }
 TEST(TDynamicMatrix, inverse_matrix_with_null_determ) {
@@ -161,5 +161,5 @@ TEST(TDynamicMatrix, inverse_matrix_with_null_determ) {
       mat[q][w] = 1;
     }
   }
-  ASSERT_ANY_THROW(mat.findInverse(mat));
+  ASSERT_ANY_THROW(mat.findInverse());
 }
