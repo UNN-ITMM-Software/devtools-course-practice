@@ -98,12 +98,15 @@ std::string polynomial_calculator_Application::operator()(int argc,
     switch (args.operation) {
     case '+':
         result = X + Y;
+        std::cout << "Result=" << result;
         break;
     case '-':
         result = X - Y;
+        std::cout << "Result=" << result;
         break;
     case '*':
         result = X * Y;
+        std::cout << "Result=" << result;
         break;
     }
     return message_;
