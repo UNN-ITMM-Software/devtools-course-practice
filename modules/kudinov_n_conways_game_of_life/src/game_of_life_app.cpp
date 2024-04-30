@@ -1,50 +1,50 @@
 // Copyright 2024 Kiselev Igor
 
-#include "../include/game_of_life_app.h"
+#include "include/game_of_life_app.h"
 
 #include <exception>
 
 ConwaysGameOfLifeApplication::ConwaysGameOfLifeApplication(int argc,
     const char** argv) : game(1, 1) {
-    dataErrorNumber = 0;
+    dataErrorNumber = EC_OK;
     appName = argv[0];
     numberOfGenerations = 0;
     if (argc == 1) {
-        dataErrorNumber = -1;
+        dataErrorNumber = EC_HELP;
         return;
     }
     if (argc < 4 || argc % 2 == 1) {
-        dataErrorNumber = 1;
+        dataErrorNumber = EC_INCORRECT_ARGUMENT_NUMBER;
         return;
     }
     try {
         const char* numberString = argv[3];
         numberOfGenerations = charToInt(numberString);
-        if (numberOfGenerations < 0) dataErrorNumber = 2;
+        if (numberOfGenerations < 0) dataErrorNumber = EC_INCORRECT_GENERATIONS_NUMBER;
     }
     catch (...) {
-        dataErrorNumber = 2;
+        dataErrorNumber = EC_INCORRECT_GENERATIONS_NUMBER;
     }
     setNewField(argc, argv);
 }
 
 std::string ConwaysGameOfLifeApplication::doWork() {
     switch (dataErrorNumber) {
-    case -1:
+    case EC_HELP:
         return "This is application for Conway's game of life.\n" +
             std::string("Pleace, enter height and width of field, number of ") +
             "generations and living points";
         break;
-    case 1:
+    case EC_INCORRECT_ARGUMENT_NUMBER:
         return "Error: Incorrect count of arguments!";
         break;
-    case 2:
+    case EC_INCORRECT_GENERATIONS_NUMBER:
         return "Error: Incorrect number of generations!";
         break;
-    case 3:
+    case EC_INCORRECT_FIELD_SIZE:
         return "Error: Incorrect height or width!";
         break;
-    case 4:
+    case EC_INCORRECT_POINT:
         return "Error: Some of points are incorret!";
         break;
     }
@@ -65,29 +65,29 @@ std::string ConwaysGameOfLifeApplication::getField() {
 bool ConwaysGameOfLifeApplication::setNewField(int argc, const char** argv) {
     int height = 0;
     int width = 0;
-    dataErrorNumber = 0;
+    dataErrorNumber = EC_HELP;
     try {
         const char* numberHeight = argv[1];
         const char* numberWidth = argv[2];
         height = charToInt(numberHeight);
         width = charToInt(numberWidth);
-        if (numberOfGenerations < 0) dataErrorNumber = 2;
+        if (numberOfGenerations < 0) dataErrorNumber = EC_INCORRECT_GENERATIONS_NUMBER;
     }
     catch (...) {
-        dataErrorNumber = 1;
+        dataErrorNumber = EC_INCORRECT_ARGUMENT_NUMBER;
         return false;
     }
     ConwaysGameOfLife newGame = ConwaysGameOfLife(1, 1);
     if (dataErrorNumber == 0) {
         try {
             if (height < 0 || width < 0) {
-                dataErrorNumber = 3;
+                dataErrorNumber = EC_INCORRECT_FIELD_SIZE;
                 return false;
             }
             newGame = ConwaysGameOfLife(height, width);
         }
         catch (...) {
-            dataErrorNumber = 3;
+            dataErrorNumber = EC_INCORRECT_FIELD_SIZE;
             return false;
         }
         if (dataErrorNumber == 0) {
@@ -99,7 +99,7 @@ bool ConwaysGameOfLifeApplication::setNewField(int argc, const char** argv) {
                 }
             }
             catch (...) {
-                dataErrorNumber = 4;
+                dataErrorNumber = EC_INCORRECT_POINT;
                 return false;
             }
         }
