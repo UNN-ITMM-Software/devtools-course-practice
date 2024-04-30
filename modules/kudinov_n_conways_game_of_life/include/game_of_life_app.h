@@ -17,12 +17,12 @@ enum ErrorCode {
 
 class ConwaysGameOfLifeApplication {
  private:
-    int charToInt(const char* arg);
     int numberOfGenerations;
     ErrorCode dataErrorNumber;
     ConwaysGameOfLife game;
     const char* appName;
- public:
+    int charToInt(const char* arg);
+public:
     ConwaysGameOfLifeApplication(int argc, const char** argv);
     std::string doWork();
     void nextGeneration();
