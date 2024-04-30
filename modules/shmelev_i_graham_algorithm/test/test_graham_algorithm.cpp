@@ -81,7 +81,7 @@ TEST(GrahamScanTest, TenPointsTest) {
 
 TEST(GrahamScanTest, TestPointsOnLine) {
     std::vector<std::pair<double, double>> points{{0, 0}, {1, 1},
-     {2, 2}, {3, 3}, {4, 4}};
+    {2, 2}, {3, 3}, {4, 4}};
     std::vector<std::pair<double, double>> result =
                                  GrahamScan::convexHull(points);
     std::vector<std::pair<double, double>> expected = {{0, 0}, {4, 4}};
