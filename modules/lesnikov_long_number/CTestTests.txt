@@ -67,7 +67,7 @@ add_test(
     COMMAND ${APPLICATION} - cmp 523532
 )
 set_tests_properties (${prefix}_minus_prefix PROPERTIES
-    PASS_REGULAR_EXPRESSION "Invalid RIGHT_OPERAND, it is must be a number"
+    PASS_REGULAR_EXPRESSION "Invalid LEFT_OPERAND, it is must be a number"
     LABELS "${MODULE}")
 
 add_test(
