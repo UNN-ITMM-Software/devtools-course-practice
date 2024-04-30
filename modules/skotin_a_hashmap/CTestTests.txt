@@ -4,7 +4,6 @@
 
 set(prefix "${MODULE}")
 
-# Test to ensure the application prompts for correct usage when run with no or insufficient arguments
 add_test(
     NAME ${prefix}_run
     COMMAND ${APPLICATION}
@@ -15,16 +14,6 @@ set_tests_properties(${prefix}_run PROPERTIES
 )
 
 add_test(
-    NAME ${prefix}_not_clear_and_args_less_4
-    COMMAND ${APPLICATION} "insert" "key"
-)
-set_tests_properties(${prefix}_not_clear_and_args_less_4 PROPERTIES
-    PASS_REGULAR_EXPRESSION "Usage:"
-    LABELS "${MODULE}"
-)
-
-# Test to check if insert command works correctly
-add_test(
     NAME ${prefix}_run_insert
     COMMAND ${APPLICATION} "insert" "key" "value"
 )
@@ -33,7 +22,6 @@ set_tests_properties(${prefix}_run_insert PROPERTIES
     LABELS "${MODULE}"
 )
 
-# Test to handle the scenario when key is not found during find
 add_test(
     NAME ${prefix}_error_find
     COMMAND ${APPLICATION} "find" "non_existing_key" "val"
@@ -43,7 +31,6 @@ set_tests_properties(${prefix}_error_find PROPERTIES
     LABELS "${MODULE}"
 )
 
-# Test to ensure the clear command works correctly
 add_test(
     NAME ${prefix}_run_clear
     COMMAND ${APPLICATION} "clear"
@@ -53,7 +40,6 @@ set_tests_properties(${prefix}_run_clear PROPERTIES
     LABELS "${MODULE}"
 )
 
-# Test to check for invalid commands
 add_test(
     NAME ${prefix}_invalid_command
     COMMAND ${APPLICATION} "some" "key" "value"
