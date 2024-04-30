@@ -1,0 +1,64 @@
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_fraction_calculator_sum
+    COMMAND ${APPLICATION} 1 2 1 4 +
+)
+set_tests_properties (${prefix}_run_fraction_calculator_sum PROPERTIES
+    PASS_REGULAR_EXPRESSION "3/4"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_fraction_calculator_difference
+    COMMAND ${APPLICATION} 3 4 1 2 -
+)
+set_tests_properties (${prefix}_run_fraction_calculator_difference PROPERTIES
+    PASS_REGULAR_EXPRESSION "1/4"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_fraction_calculator_multiplication
+    COMMAND ${APPLICATION} 1 2 3 4 *
+)
+set_tests_properties (${prefix}_run_fraction_calculator_multiplication PROPERTIES
+    PASS_REGULAR_EXPRESSION "3/8"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_fraction_calculator_division
+    COMMAND ${APPLICATION} 1 2 3 4 /
+)
+set_tests_properties (${prefix}_run_fraction_calculator_division PROPERTIES
+    PASS_REGULAR_EXPRESSION "2/3"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_operation
+    COMMAND ${APPLICATION} 1 2 3 4 &
+)
+set_tests_properties (${prefix}_run_invalid_operation PROPERTIES
+    PASS_REGULAR_EXPRESSION Operation must be either '+' or '-' or '*' or '/'
+    LABELS "${MODULE}"
+)

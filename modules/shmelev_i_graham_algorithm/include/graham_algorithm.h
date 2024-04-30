@@ -10,9 +10,7 @@
 #include <algorithm>
 #include <string>
 
-constexpr int LEFT_TURN = 0;
-constexpr int RIGHT_TURN = 2;
-constexpr int COLLINEAR = 1;
+enum Direction: int {LEFT_TURN = 0, RIGHT_TURN = 2, COLLINEAR = 1};
 
 using Point = std::pair<double, double>;
 using Points = std::vector<Point>;

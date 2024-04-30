@@ -82,4 +82,3 @@ TEST(Makhinya_Danil_DijkstraTest, CompleteGraphWithLoop) {
 
     EXPECT_EQ(sol.find_shortest_path(3, 4), 10Ull);
 }
-
