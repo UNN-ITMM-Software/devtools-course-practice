@@ -1,7 +1,7 @@
-// Makhinya Danil 2024
+// Copyright Makhinya Danil 2024
 
-#include <iostream>
 #include <string.h>
+#include <iostream>
 
 #include "include/chess_board_app.h"
 
