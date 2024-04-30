@@ -63,6 +63,14 @@ set_tests_properties (${prefix}_invalid_right_op PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
+    NAME ${prefix}_minus_prefix
+    COMMAND ${APPLICATION} - cmp 523532
+)
+set_tests_properties (${prefix}_minus_prefix PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid RIGHT_OPERAND, it is must be a number"
+    LABELS "${MODULE}")
+
+add_test(
     NAME ${prefix}_invalid_action
     COMMAND ${APPLICATION} 2 x 3
 )
