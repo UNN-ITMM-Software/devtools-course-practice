@@ -20,7 +20,8 @@ ConwaysGameOfLifeApplication::ConwaysGameOfLifeApplication(int argc,
     try {
         const char* numberString = argv[3];
         numberOfGenerations = charToInt(numberString);
-        if (numberOfGenerations < 0) dataErrorNumber = EC_INCORRECT_GENERATIONS_NUMBER;
+        if (numberOfGenerations < 0) dataErrorNumber =
+            EC_INCORRECT_GENERATIONS_NUMBER;
     }
     catch (...) {
         dataErrorNumber = EC_INCORRECT_GENERATIONS_NUMBER;
@@ -71,7 +72,8 @@ bool ConwaysGameOfLifeApplication::setNewField(int argc, const char** argv) {
         const char* numberWidth = argv[2];
         height = charToInt(numberHeight);
         width = charToInt(numberWidth);
-        if (numberOfGenerations < 0) dataErrorNumber = EC_INCORRECT_GENERATIONS_NUMBER;
+        if (numberOfGenerations < 0) dataErrorNumber =
+            EC_INCORRECT_GENERATIONS_NUMBER;
     }
     catch (...) {
         dataErrorNumber = EC_INCORRECT_ARGUMENT_NUMBER;
