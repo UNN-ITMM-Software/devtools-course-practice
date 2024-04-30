@@ -39,13 +39,8 @@ std::string LCSApp::operator()(int argc, const char** argv) {
     if (!validateNumberOfArguments(argc, argv)) {
         return message_;
     }
-    try {
-        args.str1 = argv[1];
-        args.str2 = argv[2];
-    }
-    catch(std::string& str) {
-        return str;
-    }
+    args.str1 = argv[1];
+    args.str2 = argv[2];
 
     std::ostringstream stream;
 
