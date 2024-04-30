@@ -15,8 +15,8 @@ std::string NumSysApplication::Parse(int argc, char *argv[]) {
     std::string string4;
     std::string string5;
 
-    string1 = argv[1]; // num_1
-    string2 = argv[2]; // base_1
+    string1 = argv[1];  // num_1
+    string2 = argv[2];  // base_1
     CustomNSNumber num_1;
     CustomNSNumber num_2;
     try {
@@ -26,8 +26,8 @@ std::string NumSysApplication::Parse(int argc, char *argv[]) {
       return message_;
     }
 
-    string4 = argv[4]; // num_2
-    string5 = argv[5]; // base_2
+    string4 = argv[4];  // num_2
+    string5 = argv[5];  // base_2
     try {
       num_2 = CustomNSNumber(string4, std::stoul(string5));
     } catch (...) {
@@ -35,7 +35,7 @@ std::string NumSysApplication::Parse(int argc, char *argv[]) {
       return message_;
     }
 
-    string3 = argv[3]; // base_2
+    string3 = argv[3];  // base_2
     CustomNSNumber num_res;
     bool op_res;
     switch (string3[0]) {
