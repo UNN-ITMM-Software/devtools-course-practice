@@ -138,7 +138,7 @@ TEST(polynomial_calculator,
 }
 
 TEST(polynomial_calculator,
-    The_polynomials_are_defined_as_unequal_correct) {
+    The_polynomials_are_defined_as_unequal_corr) {
     std::vector<double> a;
     a.push_back(5.1);
     a.push_back(12.0);
