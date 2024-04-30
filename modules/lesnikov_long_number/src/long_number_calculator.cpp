@@ -1,9 +1,9 @@
 // Copyright 2024 Vanushkin Dmitry
 
+#include <stdexcept>
+
 #include "include/long_number_calculator.h"
-
 #include "include/LongNumber.h"
-
 
 std::string LongNumberCalculator::operator()(int argc, const char **argv) {
     try {
@@ -32,7 +32,7 @@ std::string LongNumberCalculator::operator()(int argc, const char **argv) {
                 return "=";
             }
         }
-    } catch (const std::exception &ex) {
+    } catch (const std::runtime_error &ex) {
         return ex.what();
     }
 }
@@ -46,15 +46,15 @@ LongNumberCalculator::Args::Args(int argc, const char **argv) {
                 " '-': minus big numbers\n"
                 " '*': multiply big numbers\n"
                 " 'cmp': compare big numbers";
-        throw std::exception(message.c_str());
+        throw std::runtime_error(message.c_str());
     }
 
     if (!IsNumber(argv[1])) {
-        throw std::exception("Invalid LEFT_OPERAND, it is must be a number");
+        throw std::runtime_error("Invalid LEFT_OPERAND, it is must be a number");
     }
 
     if (!IsNumber(argv[3])) {
-        throw std::exception("Invalid RIGHT_OPERAND, it is must be a number");
+        throw std::runtime_error("Invalid RIGHT_OPERAND, it is must be a number");
     }
 
     auto inputAction = std::string(argv[2]);
@@ -67,7 +67,7 @@ LongNumberCalculator::Args::Args(int argc, const char **argv) {
     } else if (inputAction == "cmp") {
         action = Action::COMPARE;
     } else {
-        throw std::exception("Invalid ACTION");
+        throw std::runtime_error("Invalid ACTION");
     }
 
     leftOperand = argv[1];
