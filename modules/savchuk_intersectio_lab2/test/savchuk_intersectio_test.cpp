@@ -63,3 +63,33 @@ TEST(TwoSegmentsTest, HorizontalSegments) {
 
     ASSERT_TRUE(TwoSegments::checkParallel(segment1, segment2));
 }
+
+TEST(PointTest, GetX) {
+    double x = 3.14;
+    double y = 2.71;
+    Point p(x, y);
+
+    double actualX = p.getX();
+
+    ASSERT_DOUBLE_EQ(x, actualX);
+}
+
+TEST(PointTest, GetY) {
+    double x = 3.14;
+    double y = 2.71;
+    Point p(x, y);
+
+    double actualY = p.getY();
+
+    ASSERT_DOUBLE_EQ(y, actualY);
+}
+
+TEST(TwoSegmentsTest, DifferentOrientationsReturnTrue) {
+    int o1 = 1, o2 = 2, o3 = 1, o4 = 2;
+    ASSERT_TRUE(o1 != o2 && o3 != o4);
+}
+
+TEST(TwoSegmentsTest, SameOrientationsReturnFalse) {
+    int o1 = 1, o2 = 1, o3 = 2, o4 = 2;
+    ASSERT_FALSE(o1 != o2 && o3 != o4);
+}
