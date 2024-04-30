@@ -48,6 +48,8 @@ std::string ConwaysGameOfLifeApplication::doWork() {
     case EC_INCORRECT_POINT:
         return "Error: Some of points are incorret!";
         break;
+    case EC_OK:
+        break;
     }
     for (int i = 0; i < numberOfGenerations; i++) {
         nextGeneration();
