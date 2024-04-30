@@ -184,3 +184,10 @@ TEST(TDynamicMatrix, inverse_matrix_with_null_determ) {
   }
   ASSERT_ANY_THROW(mat.findInverse());
 }
+
+TEST(TDynamicMatrix, can_cout_matrix) {
+    TDynamicMatrix<int> m(2);
+    m[0][0] = 1;
+    m[1][1] = 1;
+    ASSERT_NO_THROW(std::cout << m);
+}
