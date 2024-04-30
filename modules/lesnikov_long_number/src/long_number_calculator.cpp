@@ -50,11 +50,13 @@ LongNumberCalculator::Args::Args(int argc, const char **argv) {
     }
 
     if (!IsNumber(argv[1])) {
-        throw std::runtime_error("Invalid LEFT_OPERAND, it is must be a number");
+        throw std::runtime_error(
+            "Invalid LEFT_OPERAND, it is must be a number");
     }
 
     if (!IsNumber(argv[3])) {
-        throw std::runtime_error("Invalid RIGHT_OPERAND, it is must be a number");
+        throw std::runtime_error(
+            "Invalid RIGHT_OPERAND, it is must be a number");
     }
 
     auto inputAction = std::string(argv[2]);
