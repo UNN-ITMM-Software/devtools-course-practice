@@ -113,10 +113,29 @@ TEST(TDynamicMatrix, can_subtract_matrices_with_equal_size) {
     EXPECT_EQ((int)3, m2[0][1]);
 }
 
+TEST(TDynamicMatrix, can_mult_matrices_with_equal_size) {
+    TDynamicMatrix<int> m(2), m1(2), m2;
+    m[0][0] = 1;
+    m1[0][0] = 2;
+    m[1][1] = 1;
+    m1[1][1] = 2;
+    m2 = m * m1;
+    EXPECT_EQ((int)2, m2[0][0]);
+    EXPECT_EQ((int)2, m2[1][1]);
+    EXPECT_EQ((int)0, m2[0][1]);
+    EXPECT_EQ((int)0, m2[1][0]);
+}
+
 TEST(TDynamicMatrix, cant_subtract_matrixes_with_not_equal_size) {
     TDynamicMatrix<int> m(5), m1(2);
     ASSERT_ANY_THROW(m - m1);
 }
+
+TEST(TDynamicMatrix, cant_mult_matrixes_with_not_equal_size) {
+    TDynamicMatrix<int> m(5), m1(2);
+    ASSERT_ANY_THROW(m * m1);
+}
+
 TEST(TDynamicMatrix, can_find_determinant) {
   size_t size = 3;
   TDynamicMatrix<double> m(size);
@@ -128,6 +147,7 @@ TEST(TDynamicMatrix, can_find_determinant) {
   m[0][0] = 2.0;
   EXPECT_DOUBLE_EQ(m.findDeterm(), -1.0);
 }
+
 TEST(TDynamicMatrix, can_find_inverse) {
   size_t size = 3;
   TDynamicMatrix<double> m(size);
@@ -151,6 +171,7 @@ TEST(TDynamicMatrix, can_find_inverse) {
   m = mat.findInverse();
   EXPECT_DOUBLE_EQ(m[0][0], -13.0/371.0);
 }
+
 TEST(TDynamicMatrix, inverse_matrix_with_null_determ) {
   size_t size = 3;
   TDynamicMatrix<double> m(size);

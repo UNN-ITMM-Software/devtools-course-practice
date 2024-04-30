@@ -1,4 +1,4 @@
-// Copyright 2024 Martynov Aleksandr
+// Copyright 2024 Shubin Mikhail
 
 #include <sstream>
 
