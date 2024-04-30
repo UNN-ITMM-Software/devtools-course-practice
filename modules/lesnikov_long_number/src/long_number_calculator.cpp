@@ -26,12 +26,13 @@ std::string LongNumberCalculator::operator()(int argc, const char **argv) {
                 if (left > right) {
                     return  ">";
                 }
-                else if (left < right) {
+                if (left < right) {
                     return "<";
                 }
-                else return "=";
+                return "=";
             }
         }
+        return "";
     } catch (const std::runtime_error &ex) {
         return ex.what();
     }
