@@ -13,4 +13,6 @@ class TwoSegments {
     static bool checkParallel(const Segment& segment1, const Segment& segment2);
 };
 
+int orientation(const Point& p, const Point& q, const Point& r);
+
 #endif  // MODULES_BELAN_INTERSECTIO_LAB3_INCLUDE_SAVCHUK_INTERSECTIO_H_

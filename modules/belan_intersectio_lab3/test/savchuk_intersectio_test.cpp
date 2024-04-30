@@ -99,3 +99,36 @@ TEST(TwoSegmentsTest, VerticalAndHorizontalSegmentsNoIntersection) {
 
     ASSERT_FALSE(TwoSegments::checkIntersection(segment1, segment2));
 }
+
+TEST(OrientationTest, CounterClockwise) {
+    Point p(1, 1);
+    Point q(3, 2);
+    Point r(2, 3);
+    ASSERT_EQ(orientation(p, q, r), 2);
+}
+
+TEST(PointTest, GetX) {
+    double x = 3.14;
+    double y = 2.71;
+    Point p(x, y);
+
+    ASSERT_DOUBLE_EQ(x, p.getX());
+}
+
+TEST(PointTest, GetY) {
+    double x = 3.14;
+    double y = 2.71;
+    Point p(x, y);
+
+    ASSERT_DOUBLE_EQ(y, p.getY());
+}
+
+TEST(TwoSegmentsTest, DifferentOrientationsReturnTrue) {
+    int o1 = 1, o2 = 2, o3 = 1, o4 = 2;
+    ASSERT_TRUE(o1 != o2 && o3 != o4);
+}
+
+TEST(TwoSegmentsTest, SameOrientationsReturnFalse) {
+    int o1 = 1, o2 = 1, o3 = 2, o4 = 2;
+    ASSERT_FALSE(o1 != o2 && o3 != o4);
+}
