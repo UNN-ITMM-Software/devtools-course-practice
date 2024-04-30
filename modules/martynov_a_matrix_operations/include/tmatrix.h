@@ -295,13 +295,10 @@ TDynamicVector<TDynamicVector<T>>(V) {}
     return matE;
   }
 
-  friend std::ostream& operator<<(std::ostream& ostr, const TDynamicMatrix& v)
-  {
+  friend std::ostream& operator<<(std::ostream& ostr, const TDynamicMatrix& v) {
   ostr << "( ";
-  for (size_t i = 0; i < v.size(); i++)
-  {
-    for (size_t j = 0; j < v.size(); j++)
-    {
+  for (size_t i = 0; i < v.size(); i++) {
+    for (size_t j = 0; j < v.size(); j++) {
       ostr << v[i][j] << ' ';
     }
     if (i != v.size() - 1) ostr << '\n';

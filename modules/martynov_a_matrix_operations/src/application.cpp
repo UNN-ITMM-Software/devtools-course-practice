@@ -15,7 +15,7 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
     std::string string3;
     std::string string4;
     std::string string5;
-    string1 = argv[1]; // size
+    string1 = argv[1];  // size
     size = std::stoi(string1);
 
     double *matrix_array1 = new double[size * size];
@@ -23,7 +23,7 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
     TDynamicMatrix<double> matrix1(size);
     TDynamicMatrix<double> matrix2(size);
 
-    string3 = argv[2]; // mat1
+    string3 = argv[2];  // mat1
     std::istringstream iss(string3);
     std::string s;
 
@@ -48,7 +48,7 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
     }
 
     if (argc == REQ_ARGC) {
-      string5 = argv[4]; // mat2
+      string5 = argv[4];  // mat2
       matrix_array2 = new double[size * size];
       iss = std::istringstream(string5);
 
@@ -73,7 +73,7 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
       }
     }
 
-    string4 = argv[3]; // op
+    string4 = argv[3];  // op
     TDynamicMatrix<double> matrix_res;
     double double_res;
     switch (string4[0]) {
@@ -152,10 +152,12 @@ void MatOpsApplication::Help(const char *application, const char *message) {
     _message << "This is a matrix calculator.\n";
   }
   _message << "Usage:\n";
-  _message << '\t' << application << " <size> <first matrix> <operation> <second matrix>\n";
+  _message << '\t' << application << " <size> <first matrix>"
+    " <operation> <second matrix>\n";
   _message << "Where:\n";
   _message << '\t' << "<size> is the size of the matrix.\n";
   _message << '\t' << "<first matrix>, <second matrix> are input matrices.\n";
-  _message << '\t' << "<operation> is operation over matrix/ces (+ (sum), - (sub), * (mult), i (inversion), d (determiant)).\n";
+  _message << '\t' << "<operation> is operation over matrix/ces"
+    " (+ (sum), - (sub), * (mult), i (inversion), d (determiant)).\n";
   message_ = _message.str();
 }
