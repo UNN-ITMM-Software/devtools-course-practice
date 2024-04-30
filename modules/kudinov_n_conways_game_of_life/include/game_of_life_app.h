@@ -19,8 +19,8 @@ class ConwaysGameOfLifeApplication {
  private:
     int numberOfGenerations;
     ErrorCode dataErrorNumber;
-    ConwaysGameOfLife game;
     const char* appName;
+    ConwaysGameOfLife game;
     int charToInt(const char* arg);
  public:
     ConwaysGameOfLifeApplication(int argc, const char** argv);
