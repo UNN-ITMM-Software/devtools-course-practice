@@ -11,14 +11,14 @@
 MetricsApp::MetricsApp() : message_("") {}
 
 void MetricsApp::help(const char* appname, const char* message) {
-  message_ = std::string(message) +
-             "This is a metrics calculator application.\n\n" +
-             "Please provide arguments in the following format:\n\n" +
-
-             "  $ " + appname + " <v1> <v2> " + "<operation>\n\n " +
-
-             "Where vectors are in the format of 1,2,3 or 1.0,2.0,3.0 " +
-             "and <operation> is one of 'l1', 'l2', 'l3', 'l4' or 'linf'.\n";
+  std::stringstream ss;
+  ss << std::string(message) << "This is a metrics calculator application.\n\n";
+  ss << "Please provide arguments in the following format:\n\n";
+  ss << "  $ " << appname << " <v1> <v2> "
+     << "<operation>\n\n ";
+  ss << "Where vectors are in the format of 1,2,3 or 1.0,2.0,3.0 ";
+  ss << "and <operation> is one of 'l1', 'l2', 'l3', 'l4' or 'linf'.\n";
+  message_ = ss.str();
 }
 
 bool MetricsApp::validateNumberOfArguments(int argc, const char** argv) {
