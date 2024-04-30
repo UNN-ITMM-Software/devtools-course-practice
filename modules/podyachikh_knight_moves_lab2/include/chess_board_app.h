@@ -10,7 +10,7 @@
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 0
 
-//#define PRINT_DEBUG_INFO 
+// #define PRINT_DEBUG_INFO
 
 class ChessBoardApp {
   std::set<ChessBoard::Point> obstacles;
@@ -32,7 +32,7 @@ class ChessBoardApp {
 
 
  public:
-  explicit ChessBoardApp() : size(8), have_size(0), have_start(0), have_end(0){}
+  ChessBoardApp() : size(8), have_size(0), have_start(0), have_end(0) {}
   void initBoard();
   std::string run(int argc, const char *argv[]);
 };
