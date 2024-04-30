@@ -42,10 +42,10 @@ std::vector<float> parseVector(const char* input) {
       float number = std::stof(token);
       result.push_back(number);
     } catch (const std::invalid_argument& e) {
-      throw std::string("Wrong vector format!");
+      throw std::logic_error("Wrong vector format!");
       continue;
     } catch (const std::out_of_range& e) {
-      throw std::string("Wrong vector format!");
+      throw std::logic_error("Wrong vector format!");
       continue;
     }
   }
@@ -66,7 +66,7 @@ std::string parseOperation(const char* arg) {
   } else if (strcmp(arg, "linf") == 0) {
     op = "linf";
   } else {
-    throw std::string("Wrong operation format!");
+    throw std::logic_error("Wrong operation format!");
   }
   return op;
 }
@@ -81,8 +81,8 @@ std::string MetricsApp::operator()(int argc, const char** argv) {
     args.v1 = parseVector(argv[1]);
     args.v2 = parseVector(argv[2]);
     args.op = parseOperation(argv[3]);
-  } catch (std::string& str) {
-    return str;
+  } catch (const std::exception& e) {
+    return e.what();
   }
 
   std::ostringstream stream;
@@ -104,7 +104,7 @@ std::string MetricsApp::operator()(int argc, const char** argv) {
         stream << "Metric = " << metrics::l4(args.v1, args.v2);
         break;
     }
-  } catch (std::exception& e) {
+  } catch (const std::exception& e) {
     return e.what();
   }
 
