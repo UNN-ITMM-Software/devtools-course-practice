@@ -10,7 +10,7 @@
 
 int ChessBoardApp::knightDistance() {
   #ifdef PRINT_DEBUG_INFO
-  std::fprintf(stderr, "%s size{%lu}, start{%u, %u}; end{%u, %u}\n", 
+  std::fprintf(stderr, "%s size{%lu}, start{%u, %u}; end{%u, %u}\n",
                __func__, size,
                start.first, start.second,
                end.first, end.second);
@@ -56,9 +56,9 @@ std::string ChessBoardApp::parseArg(int argc,  const char *argv[]) {
     int16_t offset = -1;
 
     #ifdef PRINT_DEBUG_INFO
-    std::fprintf(stderr, "%s command{\"%s\"}; next_command{\"%s\"}\n", 
-                 __func__, 
-                 command, 
+    std::fprintf(stderr, "%s command{\"%s\"}; next_command{\"%s\"}\n",
+                 __func__,
+                 command,
                  *next_command_ptr);
     #endif
 
@@ -97,9 +97,9 @@ static int16_t parsePoint(int argc, const char *begin[], ChessBoard::Point& p) {
   int ptr = 0;
 
   #ifdef PRINT_DEBUG_INFO
-  std::fprintf(stderr, "%s argc{%d}; begin[0]{\"%s\"}; begin[1]{\"%s\"}\n", 
-               __func__, 
-               argc, 
+  std::fprintf(stderr, "%s argc{%d}; begin[0]{\"%s\"}; begin[1]{\"%s\"}\n",
+               __func__,
+               argc,
                begin[0], begin[1]);
   #endif
 
