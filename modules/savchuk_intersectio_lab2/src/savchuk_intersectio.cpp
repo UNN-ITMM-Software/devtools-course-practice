@@ -39,6 +39,7 @@ bool TwoSegments::checkIntersection
     return false;
 }
 
+
 bool TwoSegments::checkParallel
 (const Segment& segment1, const Segment& segment2) {
     double slope1 = (segment1.getEnd().getY() - segment1.getStart().getY()) /

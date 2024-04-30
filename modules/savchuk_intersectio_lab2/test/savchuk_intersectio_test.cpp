@@ -5,6 +5,39 @@
 
 #include "include/savchuk_intersectio.h"
 
+TEST(OrientationTest, Collinear) {
+    Point p(1, 1);
+    Point q(2, 2);
+    Point r(3, 3);
+    ASSERT_EQ(orientation(p, q, r), 0);
+}
+
+TEST(OrientationTest, Clockwise) {
+    Point p(1, 1);
+    Point q(2, 3);
+    Point r(3, 2);
+    ASSERT_EQ(orientation(p, q, r), 1);
+}
+
+TEST(OrientationTest, CounterClockwise) {
+    Point p(1, 1);
+    Point q(3, 2);
+    Point r(2, 3);
+    ASSERT_EQ(orientation(p, q, r), 2);
+}
+
+TEST(PointTest, ConstructorAndGetters) {
+    double x = 3.14;
+    double y = 2.71;
+    Point p(x, y);
+
+    double actualX = p.getX();
+    double actualY = p.getY();
+
+    ASSERT_DOUBLE_EQ(x, actualX);
+    ASSERT_DOUBLE_EQ(y, actualY);
+}
+
 TEST(TwoSegmentsTest, Intersection) {
     Segment segment1(Point(1, 1), Point(3, 3));
     Segment segment2(Point(2, 2), Point(4, 4));

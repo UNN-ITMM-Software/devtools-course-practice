@@ -1,7 +1,8 @@
 // Copyright 2024 Savchuk Anton
 
-#include "include/savchuk_segment.h"
 #include <algorithm>
+
+#include "include/savchuk_segment.h"
 
 bool Segment::onSegment(const Point& p, const Point& q, const Point& r) const {
     if (q.getX() <= std::max(p.getX(), r.getX())
