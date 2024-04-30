@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 using digit_t = size_t;
 using number_t = int64_t;
