@@ -22,7 +22,7 @@ class ConwaysGameOfLifeApplication {
     ConwaysGameOfLife game;
     const char* appName;
     int charToInt(const char* arg);
-public:
+ public:
     ConwaysGameOfLifeApplication(int argc, const char** argv);
     std::string doWork();
     void nextGeneration();
