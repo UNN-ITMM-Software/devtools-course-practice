@@ -42,3 +42,72 @@ TEST(TwoSegmentsTest, Collinear) {
     Segment segment4(Point(2, 2), Point(2.5, 2.5));
     ASSERT_TRUE(TwoSegments::checkParallel(segment3, segment4));
 }
+
+TEST(ApplicationTest, CorrectInput) {
+    std::vector<std::string> argv =
+    {"app", "1", "1", "3", "3", "2", "2", "4", "4"};
+    int argc = static_cast<int>(argv.size());
+
+    Application app;
+    int result = app.main(argc, argv);
+
+    ASSERT_EQ(result, 0);
+    ASSERT_EQ(app.run(Segment(Point(1, 1), Point(3, 3)),
+    Segment(Point(2, 2), Point(4, 4))), "Segments intersect");
+}
+
+TEST(TwoSegmentsTest, VerticalSegments) {
+    Segment segment1(Point(1, 1), Point(1, 3));
+    Segment segment2(Point(2, 2), Point(2, 4));
+
+    ASSERT_TRUE(TwoSegments::checkParallel(segment1, segment2));
+}
+
+TEST(TwoSegmentsTest, HorizontalSegments) {
+    Segment segment1(Point(1, 1), Point(3, 1));
+    Segment segment2(Point(2, 2), Point(4, 2));
+
+    ASSERT_TRUE(TwoSegments::checkParallel(segment1, segment2));
+}
+
+TEST(TwoSegmentsTest, IntersectionAtEndpoint) {
+    Segment segment1(Point(1, 1), Point(3, 3));
+    Segment segment2(Point(3, 3), Point(5, 5));
+
+    ASSERT_TRUE(TwoSegments::checkIntersection(segment1, segment2));
+}
+
+TEST(TwoSegmentsTest, IntersectionAtStartpoint) {
+    Segment segment1(Point(1, 1), Point(3, 3));
+    Segment segment2(Point(1, 1), Point(2, 2));
+
+    ASSERT_TRUE(TwoSegments::checkIntersection(segment1, segment2));
+}
+
+TEST(TwoSegmentsTest, IntersectionAtMiddle) {
+    Segment segment1(Point(1, 1), Point(5, 5));
+    Segment segment2(Point(3, 3), Point(7, 7));
+
+    ASSERT_TRUE(TwoSegments::checkIntersection(segment1, segment2));
+}
+
+TEST(TwoSegmentsTest, OverlappingSegments) {
+    Segment segment1(Point(1, 1), Point(5, 5));
+    Segment segment2(Point(3, 3), Point(7, 7));
+
+    ASSERT_TRUE(TwoSegments::checkIntersection(segment1, segment2));
+}
+
+TEST(TwoSegmentsTest, TouchingSegments) {
+    Segment segment1(Point(1, 1), Point(3, 3));
+    Segment segment2(Point(3, 3), Point(5, 5));
+
+    ASSERT_TRUE(TwoSegments::checkIntersection(segment1, segment2));
+}
+
+TEST(TwoSegmentsTest, VerticalAndHorizontalSegmentsNoIntersection) {
+    Segment segment1(Point(1, 1), Point(1, 3));
+    Segment segment2(Point(2, 4), Point(4, 4));
+
+    ASSERT_FALSE(TwoSegments::checkIntersection(segment1, segment2));
+}
