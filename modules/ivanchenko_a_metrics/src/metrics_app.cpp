@@ -41,10 +41,7 @@ std::vector<float> parseVector(const char* input) {
     try {
       float number = std::stof(token);
       result.push_back(number);
-    } catch (const std::invalid_argument& e) {
-      throw std::logic_error("Wrong vector format!");
-      continue;
-    } catch (const std::out_of_range& e) {
+    } catch (const std::exception& e) {
       throw std::logic_error("Wrong vector format!");
       continue;
     }
