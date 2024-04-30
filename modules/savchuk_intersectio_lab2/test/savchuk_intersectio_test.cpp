@@ -89,3 +89,22 @@ TEST(TwoSegmentsTest, HorizontalSegments) {
 
     ASSERT_TRUE(TwoSegments::checkParallel(segment1, segment2));
 }
+
+TEST(PointTest, Coordinates) {
+    double x = 3.14;
+    double y = 2.71;
+    Point p(x, y);
+
+    double actualX = p.getX();
+    double actualY = p.getY();
+
+    ASSERT_DOUBLE_EQ(x, actualX);
+    ASSERT_DOUBLE_EQ(y, actualY);
+}
+
+TEST(TwoSegmentsTest, OnSegmentTest) {
+    Segment segment1(Point(1, 1), Point(3, 3));
+    Segment segment2(Point(2, 2), Point(4, 4));
+
+    ASSERT_TRUE(TwoSegments::checkIntersection(segment1, segment2));
+}
