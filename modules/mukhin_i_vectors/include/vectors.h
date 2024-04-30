@@ -27,9 +27,8 @@ class Vector3D{
             case 2:
                 return z;
             default:
-                break;
-        }
-        return 0.0;
+                throw std::invalid_argument("Wrong index. ");
+       } 
     }
 
     T& operator[](int i) {
@@ -41,9 +40,8 @@ class Vector3D{
             case 2:
                 return z;
             default:
-                break;
+                throw std::invalid_argument("Wrong index. "); 
         }
-        return 0.0;
     }
 
     Vector3D() : x(0), y(0), z(0) {}
