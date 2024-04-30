@@ -1,0 +1,122 @@
+##############################################
+##### Testing
+##############################################
+
+set(prefix "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage: .*"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_no_args
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_no_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage: .*"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_not_enough_args
+    COMMAND ${APPLICATION} 1 +
+)
+set_tests_properties (${prefix}_not_enough_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage: .*"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_too_many_args
+    COMMAND ${APPLICATION} 1 + 2 = 3
+)
+set_tests_properties (${prefix}_too_many_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage: .*"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_invalid_left_op
+    COMMAND ${APPLICATION} 1a + 2
+)
+set_tests_properties (${prefix}_invalid_left_op PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid LEFT_OPERAND, it is must be a number"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_right_op
+    COMMAND ${APPLICATION} -5 + -x
+)
+set_tests_properties (${prefix}_invalid_right_op PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid RIGHT_OPERAND, it is must be a number"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_action
+    COMMAND ${APPLICATION} 2 x 3
+)
+set_tests_properties (${prefix}_invalid_action PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid ACTION"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_product_little_nums
+    COMMAND ${APPLICATION} -50 * 100
+)
+set_tests_properties (${prefix}_product_little_nums PROPERTIES
+    PASS_REGULAR_EXPRESSION "-5000"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_add_big_nums
+    COMMAND ${APPLICATION} 3497573154385479120985981753453543582345934534859731549 + 42095838573975635976357863757298573948573495873458
+)
+set_tests_properties (${prefix}_add_big_nums PROPERTIES
+    PASS_REGULAR_EXPRESSION "3497615250224053096621958111317300880919883108355605007"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_minus_big_nums
+    COMMAND ${APPLICATION} 585305935385935239845723598023745923849560970232549235673495723945345223 - 585305935385935239845723598023745923849560970232549235673495723945345224
+)
+set_tests_properties (${prefix}_minus_big_nums PROPERTIES
+    PASS_REGULAR_EXPRESSION "-1"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_compare_more
+    COMMAND ${APPLICATION} 100 cmp 3
+)
+set_tests_properties (${prefix}_compare_more PROPERTIES
+    PASS_REGULAR_EXPRESSION ">"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_compare_less
+    COMMAND ${APPLICATION} 5 cmp 13
+)
+set_tests_properties (${prefix}_compare_less PROPERTIES
+    PASS_REGULAR_EXPRESSION "<"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_compare_eq
+    COMMAND ${APPLICATION} 523532 cmp 523532
+)
+set_tests_properties (${prefix}_compare_eq PROPERTIES
+    PASS_REGULAR_EXPRESSION "="
+    LABELS "${MODULE}")
