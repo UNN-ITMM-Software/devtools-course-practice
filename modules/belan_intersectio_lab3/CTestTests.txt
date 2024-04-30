@@ -1,0 +1,105 @@
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${TESTS}.Intersection
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.Intersection
+)
+set_tests_properties(${TESTS}.Intersection PROPERTIES
+    LABELS "${MODULE};Test;Intersection"
+)
+
+add_test(
+    NAME ${TESTS}.NoIntersection
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.NoIntersection
+)
+set_tests_properties(${TESTS}.NoIntersection PROPERTIES
+    LABELS "${MODULE};Test;NoIntersection"
+)
+
+add_test(
+    NAME ${TESTS}.Parallel
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.Parallel
+)
+set_tests_properties(${TESTS}.Parallel PROPERTIES
+    LABELS "${MODULE};Test;Parallel"
+)
+
+add_test(
+    NAME ${TESTS}.NoParallel
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.NoParallel
+)
+set_tests_properties(${TESTS}.NoParallel PROPERTIES
+    LABELS "${MODULE};Test;NoParallel"
+)
+
+add_test(
+    NAME ${TESTS}.Collinear
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.Collinear
+)
+set_tests_properties(${TESTS}.Collinear PROPERTIES
+    LABELS "${MODULE};Test;Collinear"
+)
+
+add_test(
+    NAME ${TESTS}.VerticalSegments
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.VerticalSegments
+)
+set_tests_properties(${TESTS}.VerticalSegments PROPERTIES
+    LABELS "${MODULE};Test;VerticalSegments"
+)
+
+add_test(
+    NAME ${TESTS}.HorizontalSegments
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.HorizontalSegments
+)
+set_tests_properties(${TESTS}.HorizontalSegments PROPERTIES
+    LABELS "${MODULE};Test;HorizontalSegments"
+)
+
+add_test(
+    NAME ${TESTS}.IntersectionAtEndpoint
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.IntersectionAtEndpoint
+)
+set_tests_properties(${TESTS}.IntersectionAtEndpoint PROPERTIES
+    LABELS "${MODULE};Test;IntersectionAtEndpoint"
+)
+
+add_test(
+    NAME ${TESTS}.IntersectionAtStartpoint
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.IntersectionAtStartpoint
+)
+set_tests_properties(${TESTS}.IntersectionAtStartpoint PROPERTIES
+    LABELS "${MODULE};Test;IntersectionAtStartpoint"
+)
+
+add_test(
+    NAME ${TESTS}.IntersectionAtMiddle
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.IntersectionAtMiddle
+)
+set_tests_properties(${TESTS}.IntersectionAtMiddle PROPERTIES
+    LABELS "${MODULE};Test;IntersectionAtMiddle"
+)
+
+add_test(
+    NAME ${TESTS}.OverlappingSegments
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.OverlappingSegments
+)
+set_tests_properties(${TESTS}.OverlappingSegments PROPERTIES
+    LABELS "${MODULE};Test;OverlappingSegments"
+)
+
+add_test(
+    NAME ${TESTS}.TouchingSegments
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.TouchingSegments
+)
+set_tests_properties(${TESTS}.TouchingSegments PROPERTIES
+    LABELS "${MODULE};Test;TouchingSegments"
+)
+
+add_test(
+    NAME ${TESTS}.VerticalAndHorizontalSegmentsNoIntersection
+    COMMAND $<TARGET_FILE:${TESTS}> --gtest_filter=TwoSegmentsTest.VerticalAndHorizontalSegmentsNoIntersection
+)
+set_tests_properties(${TESTS}.VerticalAndHorizontalSegmentsNoIntersection PROPERTIES
+    LABELS "${MODULE};Test;VerticalAndHorizontalSegmentsNoIntersection"
+)
