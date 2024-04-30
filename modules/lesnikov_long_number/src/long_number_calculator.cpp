@@ -22,7 +22,7 @@ std::string LongNumberCalculator::operator()(int argc, const char **argv) {
             case Args::Action::MULTPLY: {
                 return (left * right).getString();
             }
-            case Args::Action::COMPARE: {
+            default: {
                 if (left > right) {
                     return  ">";
                 }
@@ -32,7 +32,6 @@ std::string LongNumberCalculator::operator()(int argc, const char **argv) {
                 return "=";
             }
         }
-        return "";
     } catch (const std::runtime_error &ex) {
         return ex.what();
     }
