@@ -69,9 +69,7 @@ TEST(PointTest, GetX) {
     double y = 2.71;
     Point p(x, y);
 
-    double actualX = p.getX();
-
-    ASSERT_DOUBLE_EQ(x, actualX);
+    ASSERT_DOUBLE_EQ(x, p.getX());
 }
 
 TEST(PointTest, GetY) {
@@ -79,9 +77,7 @@ TEST(PointTest, GetY) {
     double y = 2.71;
     Point p(x, y);
 
-    double actualY = p.getY();
-
-    ASSERT_DOUBLE_EQ(y, actualY);
+    ASSERT_DOUBLE_EQ(y, p.getY());
 }
 
 TEST(TwoSegmentsTest, DifferentOrientationsReturnTrue) {

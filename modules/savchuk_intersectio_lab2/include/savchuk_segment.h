@@ -3,7 +3,7 @@
 #ifndef MODULES_SAVCHUK_INTERSECTIO_LAB2_INCLUDE_SAVCHUK_SEGMENT_H_
 #define MODULES_SAVCHUK_INTERSECTIO_LAB2_INCLUDE_SAVCHUK_SEGMENT_H_
 
-#include "include/savchuk_point.h"
+#include "../include/savchuk_point.h"
 
 class Segment {
  public:
