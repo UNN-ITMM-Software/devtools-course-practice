@@ -1,0 +1,31 @@
+
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(NAME Test1
+         COMMAND ${APPLICATION} -A 2 0 1 1 0 -S 0 0 -E 2 5 )
+set_tests_properties(Test1 PROPERTIES PASS_REGULAR_EXPRESSION "The minimum number of moves required for the knight to reach from start to end = 3")
+
+add_test(NAME TestInvalidA
+         COMMAND ${APPLICATION} -A 2 0 1 0 -S 0 0 -E 2 5 )
+set_tests_properties(TestInvalidA PROPERTIES PASS_REGULAR_EXPRESSION "Invalide command: -A")
+
+add_test(NAME TestInvalids
+         COMMAND ${APPLICATION} -s -A 2 0 1 0 -S 0 0 -E 2 5 )
+set_tests_properties(TestInvalids PROPERTIES PASS_REGULAR_EXPRESSION "Invalide command: -s")
+
+add_test(NAME TestInvalidStart
+         COMMAND ${APPLICATION} -s 4 -A 2 0 1 0 0 -S 0 0 -E 2 5 )
+set_tests_properties(TestInvalidStart PROPERTIES PASS_REGULAR_EXPRESSION "Start point is not available")
+
+add_test(NAME TestInvalidEnd
+         COMMAND ${APPLICATION} -s 4 -A 2 0 1 1 0 -S 0 0 -E 200 5 )
+set_tests_properties(TestInvalidEnd PROPERTIES PASS_REGULAR_EXPRESSION "End point is not available")
+
+add_test(NAME TestVersion
+         COMMAND ${APPLICATION} --version )
+set_tests_properties(TestVersion PROPERTIES PASS_REGULAR_EXPRESSION "1.0")
+
