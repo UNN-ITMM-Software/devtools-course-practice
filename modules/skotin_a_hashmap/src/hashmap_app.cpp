@@ -4,31 +4,32 @@
 #include <sstream>
 
 void Application::run(int argc, char** argv) {
-    if (argc < 2) {
-        std::cerr << "Usage: command key value" << std::endl
-        << "Commands: insert, find, remove," << " "
-            << "clear(no need for key and value)"
-            << std::endl;
+    if (argc < 2 || (argc != 4 && std::string(argv[1]) != "clear")) {
+        logMessage(help());
         return;
     }
 
     std::string command(argv[1]);
-    if (argc != 4 && command != "clear") {
-        std::cerr << "Usage: command key value" << std::endl
-            << "Commands: insert, find, remove," << " "
-            << "clear(no need for key and value)"
-            << std::endl;
-        return;
-    }
     std::string key = (argc > 2) ? argv[2] : "";
     std::string value = (argc > 3) ? argv[3] : "";
-
     std::string res = processCommand(command, key, value);
     std::cout << res << std::endl;
 }
 
+std::string Application::help() const {
+    std::stringstream ss;
+    ss << "Usage: command key value\n"
+        << "Commands: insert, find, clear(no need for key and value)";
+    return ss.str();
+}
+
+void Application::logMessage(const std::string& message) {
+    std::cerr << message << std::endl;
+}
+
 std::string Application::processCommand(const std::string& command,
-    const std::string& key, const std::string& value) {
+    const std::string& key,
+    const std::string& value) {
     std::stringstream ss;
     try {
         if (command == "insert") {
@@ -47,3 +48,4 @@ std::string Application::processCommand(const std::string& command,
     }
     return ss.str();
 }
+
