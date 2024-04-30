@@ -21,20 +21,23 @@ class RadixSort {
     }
 
     T extreme_el = RadixSort<T>::getMaximumOrMinimum(array);
+    T shift = 0;
 
     if (extreme_el < 0) {
+        shift = extreme_el;
         for (i = 0; i < array_size; i++) {
-            array[i] += -(extreme_el);
+            array[i] += -(shift);
         }
+        extreme_el = RadixSort<T>::getMaximumOrMinimum(array);
     }
 
     for (int digit = 1; abs(extreme_el) / digit > 0; digit *= 10) {
         RadixSort<T>::countSort(array, digit, order);
     }
 
-    if (extreme_el < 0) {
+    if (shift != 0) {
         for (i = 0; i < array_size; i++) {
-            array[i] += extreme_el;
+            array[i] += shift;
         }
     }
   }

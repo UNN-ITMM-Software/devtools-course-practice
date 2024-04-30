@@ -3,20 +3,23 @@
 #ifndef MODULES_KISELEV_I_BILLINEAR_INTERPOLATION_INCLUDE_COLOR_H_
 #define MODULES_KISELEV_I_BILLINEAR_INTERPOLATION_INCLUDE_COLOR_H_
 
+#include <string>
+
 class Color {
  private:
-    char R;
-    char G;
-    char B;
+    int R;
+    int G;
+    int B;
     int max = 255;
     int min = 0;
  public:
+    Color();
     Color(int r, int g, int b);
     Color(const Color& c);
 
-    char getR() const;
-    char getG() const;
-    char getB() const;
+    int getR() const;
+    int getG() const;
+    int getB() const;
     void setR(int r);
     void setG(int g);
     void setB(int b);

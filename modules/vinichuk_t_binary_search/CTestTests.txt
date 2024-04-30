@@ -1,0 +1,73 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_test_binary_search
+    COMMAND ${APPLICATION} "1 2 3 4 5" 3
+)
+set_tests_properties (${prefix}_test_binary_search PROPERTIES
+    PASS_REGULAR_EXPRESSION "Target found at index: 2"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_error_more_args
+    COMMAND ${APPLICATION} 1 2 3 4 5
+)
+set_tests_properties (${prefix}_error_more_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect number of arguments"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_test_unknown_target
+    COMMAND ${APPLICATION} "1 2 3 4 5" 6
+)
+set_tests_properties (${prefix}_test_unknown_target PROPERTIES
+    PASS_REGULAR_EXPRESSION "Target not found"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_error_invalid_target
+    COMMAND ${APPLICATION} "1 2 3 4 5" abc
+)
+set_tests_properties (${prefix}_error_invalid_target PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid target value"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_error_out_of_range
+    COMMAND ${APPLICATION} "1 2 3 4 5" 10000000000
+)
+set_tests_properties (${prefix}_error_out_of_range PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Target value is out of range"
+    LABELS "${MODULE}"
+)

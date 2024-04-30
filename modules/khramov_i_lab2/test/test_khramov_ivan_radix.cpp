@@ -132,3 +132,14 @@ TEST(Khramov_Ivan_RadixTest, Check_Int64_Type_Array_Sort) {
     // Assert
     EXPECT_EQ(data, expected);
 }
+
+TEST(Khramov_Ivan_RadixTest, Check_Single_Negative_Sort) {
+    // Arrange
+    std::vector<int> data {100, -40, 5, 2567, 490, 67};
+    std::vector<int> expected = data;
+    // Act
+    std::sort(expected.begin(), expected.end());
+    RadixSort<int>::radixSort(data);
+    // Assert
+    EXPECT_EQ(data, expected);
+}
