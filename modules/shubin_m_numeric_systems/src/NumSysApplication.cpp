@@ -31,7 +31,7 @@ std::string NumSysApplication::Parse(int argc, char *argv[]) {
     try {
       num_2 = CustomNSNumber(string4, std::stoul(string5));
     } catch (...) {
-      Help(argv[0], "Incorrect string element in second numb1er.");
+      Help(argv[0], "Incorrect string element in second number.");
       return message_;
     }
 
@@ -46,10 +46,6 @@ std::string NumSysApplication::Parse(int argc, char *argv[]) {
     case '-':
       num_res = num_1 - num_2;
       std::cout << num_1 << " - " << num_2 << " = " << num_res << std::endl;
-      break;
-    case '*':
-      num_res = num_1 * num_2;
-      std::cout << num_1 << " * " << num_2 << " = " << num_res << std::endl;
       break;
     case '=':
       op_res = (num_1 == num_2);
