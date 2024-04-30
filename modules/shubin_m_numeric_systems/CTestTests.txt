@@ -1,0 +1,60 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a numeric system calculator."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} "1" 1
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid number of arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Unknown_Operation
+    COMMAND ${APPLICATION} "1" 2 "/" "1" 2
+)
+set_tests_properties (${prefix}_can_Detect_Unknown_Operation PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Unknown operation."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Incorrect_Number_With_Base
+    COMMAND ${APPLICATION} 1 "a" "+" "2"
+)
+set_tests_properties (${prefix}_can_Detect_Incorrect_Number_With_Base PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid number of arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Incorrect_Number
+    COMMAND ${APPLICATION} "a" 2 "+" "1" 2
+)
+set_tests_properties (${prefix}_can_Detect_Incorrect_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect string element in first number"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Double_Sub
+    COMMAND ${APPLICATION} "--3" 2 "+" "1" 2
+)
+set_tests_properties (${prefix}_can_Detect_Double_Sub PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Incorrect string element in first number"
+    LABELS "${MODULE}")

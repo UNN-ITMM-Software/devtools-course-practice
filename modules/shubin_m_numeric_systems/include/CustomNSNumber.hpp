@@ -20,6 +20,7 @@ class CustomNSNumber {
  public:
   explicit CustomNSNumber(size_t _num_sys = 10) : num_sys(_num_sys) {}
   explicit CustomNSNumber(number_t _number, size_t _num_sys = 10);
+  explicit CustomNSNumber(const std::string& _number, size_t _num_sys = 10);
   CustomNSNumber(const CustomNSNumber& _num);
   CustomNSNumber(CustomNSNumber&& _num);
   ~CustomNSNumber() = default;
