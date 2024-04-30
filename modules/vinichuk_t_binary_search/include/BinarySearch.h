@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 
+namespace binsearch {
 static const int NOT_LISTED = -1;
 
 // implementing a template function implies
@@ -26,5 +27,6 @@ int binary_search(const std::vector<T>& arr, const T& target) {
 
     return NOT_LISTED;
 }
+}  // namespace binsearch
 
 #endif  // MODULES_VINICHUK_T_BINARY_SEARCH_INCLUDE_BINARYSEARCH_H_
