@@ -3,8 +3,7 @@
 #include <gtest/gtest.h>
 #include "include/figure_surface.h"
 
-TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Parallelepiped)
-{
+TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Parallelepiped) {
     double a = 2.0, b = 3.0, c = 0.0;
     FigureSurface figureSurfaceCalc;
 
@@ -12,8 +11,7 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Parallelepiped)
                  std::invalid_argument);
 }
 
-TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cylinder_Side)
-{
+TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cylinder_Side) {
     double r = 0.0, h = 3.0;
     FigureSurface figureSurfaceCalc;
 
@@ -21,8 +19,7 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cylinder_Side)
                  std::invalid_argument);
 }
 
-TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cylinder_Full)
-{
+TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cylinder_Full) {
     double r = 2.0, h = -3.0;
     FigureSurface figureSurfaceCalc;
 
@@ -30,8 +27,7 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cylinder_Full)
                  std::invalid_argument);
 }
 
-TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cone_Side)
-{
+TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cone_Side) {
     double r = 0.0, l = 3.0;
     FigureSurface figureSurfaceCalc;
 
@@ -39,8 +35,7 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cone_Side)
                  std::invalid_argument);
 }
 
-TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cone_Full)
-{
+TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cone_Full) {
     double r = 2.0, l = -3.0;
     FigureSurface figureSurfaceCalc;
 
@@ -48,8 +43,7 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cone_Full)
                  std::invalid_argument);
 }
 
-TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Sphere)
-{
+TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Sphere) {
     double r = -2.0;
     FigureSurface figureSurfaceCalc;
 
@@ -57,8 +51,7 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Sphere)
                  std::invalid_argument);
 }
 
-TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Parallelepiped)
-{
+TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Parallelepiped) {
     double a = 2.0, b = 3.0, c = 2.5, resApproximate = 37.0;
     FigureSurface figureSurfaceCalc;
 
@@ -68,8 +61,7 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Parallelepiped)
         0.001);
 }
 
-TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cylinder_Side)
-{
+TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cylinder_Side) {
     double r = 6.0, h = 1.4, resApproximate = 52.992;
     FigureSurface figureSurfaceCalc;
 
@@ -79,8 +71,7 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cylinder_Side)
         0.001);
 }
 
-TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cylinder_Full)
-{
+TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cylinder_Full) {
     double r = 2.1, h = 10.3, resApproximate = 164.196;
     FigureSurface figureSurfaceCalc;
 
@@ -90,8 +81,7 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cylinder_Full)
         0.001);
 }
 
-TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Side)
-{
+TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Side) {
     double r = 1.4, l = 3.7, resApproximate = 16.436;
     FigureSurface figureSurfaceCalc;
 
@@ -101,8 +91,7 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Side)
         0.001);
 }
 
-TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Full)
-{
+TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Full) {
     double r = 2.3, l = 3.7, resApproximate = 43.353;
     FigureSurface figureSurfaceCalc;
 
@@ -112,8 +101,7 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Full)
         0.001);
 }
 
-TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Sphere)
-{
+TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Sphere) {
     double r = 2.0, resApproximate = 50.265;
     FigureSurface figureSurfaceCalc;
 
