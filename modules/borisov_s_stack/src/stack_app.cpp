@@ -9,13 +9,11 @@ bool StackApp::validate(int argc, char* argv[]) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc == 2 && std::strcmp(argv[1], "--help") == 0) {
+    } else if (argc == 2 && std::strcmp(argv[1], "--help") == 0) {
         help(argv[0]);
         return false;
-    }
-    else if (argc == 2
-        && std::strcmp(argv[1], "pop") != 0 
+    } else if (argc == 2
+        && std::strcmp(argv[1], "pop") != 0
         && std::strcmp(argv[1], "show_top") != 0
         && std::strcmp(argv[1], "isFull") != 0
         && std::strcmp(argv[1], "isEmpty") != 0
@@ -23,9 +21,8 @@ bool StackApp::validate(int argc, char* argv[]) {
         && std::strcmp(argv[1], "clear") != 0 ) {
         help(argv[0], "Incorrect second argument");
         return false;
-    }
-    else if (argc == 3
-        && std::strcmp(argv[1], "push") != 0 ){
+    } else if (argc == 3
+        && std::strcmp(argv[1], "push") != 0 ) {
         help(argv[0], "Incorrect second argument");
         return false;
     }
@@ -35,7 +32,6 @@ bool StackApp::validate(int argc, char* argv[]) {
     }
     return true;
 }
-
 
 void StackApp::help(const char* appname,
 const char* message) {
@@ -59,28 +55,22 @@ std::string StackApp::operator()(int argc, char* argv[]) {
         if (operation == "pop") {
             Mystack.pop();
             stream << "Pop completed\n";
-        }
-        else if (operation == "show_top") {
+        } else if (operation == "show_top") {
             T temp = Mystack.show_top();
             stream << "Top: " << temp << "\n";
-        }
-        else if (operation == "isFull") {
+        } else if (operation == "isFull") {
             bool temp = Mystack.isFull();
             stream << "isFull: " << temp << "\n";
-        }
-        else if (operation == "isEmpty") {
+        } else if (operation == "isEmpty") {
             bool temp = Mystack.isEmpty();
             stream << "isEmpty: " << temp << "\n";
-        }
-        else if (operation == "current_size") {
+        } else if (operation == "current_size") {
             bool temp = Mystack.current_size();
             stream << "current_size: " << temp << "\n";
-        }
-        else if (operation == "clear") {
+        } else if (operation == "clear") {
             Mystack.clear();
             stream << "clear completed \n";
-        }
-        else if (operation == "push") {
+        } else if (operation == "push") {
             Mystack.push(input_string);
             stream << "push completed \n";
         }
