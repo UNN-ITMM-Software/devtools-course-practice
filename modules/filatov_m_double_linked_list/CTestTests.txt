@@ -56,7 +56,7 @@ add_test(
     COMMAND ${APPLICATION} --push_back
 )
 set_tests_properties (${prefix}_cant_Push_Back_Without_Argument PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: --push_back option must have one argument. Run --help for all supported options"
+    PASS_REGULAR_EXPRESSION "Error:\n--push_back option must have one argument.\nRun --help for all supported options"
     LABELS "${MODULE}")
 
 
@@ -65,7 +65,7 @@ add_test(
     COMMAND ${APPLICATION} --push_front
 )
 set_tests_properties (${prefix}_cant_Push_Front_Without_Argument PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: --push_front option must have one argument. Run --help for all supported options"
+    PASS_REGULAR_EXPRESSION "Error:\n--push_front option must have one argument.\nRun --help for all supported options"
     LABELS "${MODULE}")
 
 add_test(
