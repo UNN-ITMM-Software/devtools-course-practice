@@ -51,24 +51,54 @@ std::string StackApp::operator()(int argc, char* argv[]) {
         std::string operation = std::string(argv[1]);
         int input_string = std::stoi(argv[2]);
         std::ostringstream stream;
+        //Mystack.push(6);
         if (operation == "pop") {
-            Mystack.pop();
-            stream << "Pop completed\n";
+            try {
+                Mystack.pop();
+                stream << "Pop completed\n";
+            }
+            catch (const std::exception& e) {
+                stream << "Stack is empty\n";
+            }
         } else if (operation == "show_top") {
-            T temp = Mystack.show_top();
-            stream << "Top: " << temp << "\n";
+            try {
+                T temp = Mystack.show_top();
+                stream << "Top: " << temp << "\n";
+            }
+            catch (const std::exception& e) {
+                stream << "Stack is empty\n";
+            }
         } else if (operation == "isFull") {
-            bool temp = Mystack.isFull();
-            stream << "isFull: " << temp << "\n";
+            try {
+                bool temp = Mystack.isFull();
+                stream << "isFull: " << temp << "\n"; }
+            catch (const std::exception& e){
+                stream << "Stack is empty\n";
+            }
         } else if (operation == "isEmpty") {
-            bool temp = Mystack.isEmpty();
-            stream << "isEmpty: " << temp << "\n";
+            try {
+                bool temp = Mystack.isEmpty();
+                stream << "isEmpty: " << temp << "\n";
+            }
+            catch (const std::exception& e) {
+                stream << "Stack is empty\n";
+            }
         } else if (operation == "current_size") {
-            bool temp = Mystack.current_size();
-            stream << "current_size: " << temp << "\n";
+            try {
+                bool temp = Mystack.current_size();
+                stream << "current_size: " << temp << "\n";
+            }
+            catch (const std::exception& e) {
+                stream << "Stack is empty\n";
+            }
         } else if (operation == "clear") {
-            Mystack.clear();
-            stream << "clear completed \n";
+            try {
+                Mystack.clear();
+                stream << "clear completed \n";
+            }
+            catch (const std::exception& e) {
+                stream << "Stack is empty\n";
+            }
         } else if (operation == "push") {
             Mystack.push(input_string);
             stream << "push completed \n";
