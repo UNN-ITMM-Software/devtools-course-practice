@@ -9,7 +9,7 @@
 
 class TowerOfHanoi {
  public:
-    TowerOfHanoi() {}
+    TowerOfHanoi() = default;
     std::string GetStepsAsString(const std::vector<std::vector<int>>& steps);
  protected:
     std::vector<std::vector<int>> RecursiveCalculate(int numberOfRings,
