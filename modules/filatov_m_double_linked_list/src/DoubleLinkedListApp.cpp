@@ -10,7 +10,7 @@
 std::vector<std::string> DoubleLinkedListApp::runApp(int argc, const char** argv) {
     std::vector<std::string> output;
     auto args = parse(argc, argv);
-    for(size_t i = 0; i < args.size(); i++) {
+    for (size_t i = 0; i < args.size(); i++) {
         if (args[i] == "--help") {
             help(output);
         } else if (args[i] == "--reverse") {
@@ -57,7 +57,7 @@ void DoubleLinkedListApp::reverse(std::vector<std::string>& output) {
     output.push_back("List was reversed");
 }
 void DoubleLinkedListApp::print(std::vector<std::string>& output) {
-    for(size_t i = 0; i < list.size(); i++) {
+    for (size_t i = 0; i < list.size(); i++) {
         output.push_back(list[i]->get_data());
     }
 }
