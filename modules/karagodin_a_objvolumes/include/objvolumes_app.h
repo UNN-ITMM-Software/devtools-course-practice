@@ -8,20 +8,19 @@
 
 class ObjVolumeApp {
  public:
-	 ObjVolumeApp();
+     ObjVolumeApp();
 
-	 std::string operator()(int argc, const char** argv);
+     std::string operator()(int argc, const char** argv);
 
  private:
-	 void help(const char* appname, const char* message = "");
-	 bool validateNumberOfArguments(int argc, const char** argv);
-	 std::string message_;
-	 typedef struct {
-		 std::string objType;
-		 std::vector<double> arg;
-	 } Arguments;
+     void help(const char* appname, const char* message = "");
+     bool validateNumberOfArguments(int argc, const char** argv);
+     std::string message_;
+     typedef struct {
+          std::string objType;
+          std::vector<double> arg;
+     } Arguments;
 
 };
-
 
 #endif // MODULES_KARAGODIN_A_OBJVOLUMES_INCLUDE_OBJVOLUMES_APP_H_
