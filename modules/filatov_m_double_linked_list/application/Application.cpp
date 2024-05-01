@@ -6,6 +6,9 @@
 
 int main(int argc, const char** argv) {
     DoubleLinkedListApp app;
-    std::cout << app.runApp(argc, argv) << std::endl;
+    auto output = app.runApp(argc, argv);
+    for(auto str: output) {
+        std::cout << str << std::endl;
+    }
     return 0;
 }

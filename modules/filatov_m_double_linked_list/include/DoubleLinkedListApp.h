@@ -6,12 +6,21 @@
 #include <string>
 #include <vector>
 
-#define UNRECOGNIZED_OPTIONS_ERROR "Error: unrecognized command-line option. Run --help for all supported options"
-
 class DoubleLinkedListApp {
     DoubleLinkedList<std::string> list;
     std::vector<std::string> parse(int argc, const char** argv);    
-    std::vector<std::string> parseString(const std::string& input);    
+    void help(std::vector<std::string>& output);
+    void reverse(std::vector<std::string>& output);
+    void print(std::vector<std::string>& output);
+    void push_back(std::vector<std::string>& output, std::string elem);
+    void push_front(std::vector<std::string>& output, std::string elem);
 public:
-    std::string runApp(int argc, const char** argv);
+    DoubleLinkedListApp() {
+        list.push_back("never");
+        list.push_back("gonna");
+        list.push_back("give");
+        list.push_back("you");
+        list.push_back("up");
+    }
+    std::vector<std::string> runApp(int argc, const char** argv);
 };
