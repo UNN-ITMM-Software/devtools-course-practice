@@ -1,0 +1,74 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_help_without_args
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_help_without_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application that allows you to"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_failed_with_odd_numer_args
+    COMMAND ${APPLICATION} 101 a 10 b
+)
+set_tests_properties (${prefix}_failed_with_odd_numer_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Incorrect number of arguments!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_failed_if_encoded_string_incorrect
+    COMMAND ${APPLICATION} abc a 1
+)
+set_tests_properties (${prefix}_failed_if_encoded_string_incorrect PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid string for decoding!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_failed_if_codes_incorrect
+    COMMAND ${APPLICATION} 101 aa 1
+)
+set_tests_properties (${prefix}_failed_if_codes_incorrect PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid codes!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_failed_if_codes_incorrect2
+    COMMAND ${APPLICATION} 101 a 1 b c
+)
+set_tests_properties (${prefix}_failed_if_codes_incorrect2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid codes!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_encode
+    COMMAND ${APPLICATION} abc
+)
+set_tests_properties (${prefix}_can_encode PROPERTIES
+    PASS_REGULAR_EXPRESSION "10110"
+    PASS_REGULAR_EXPRESSION "0"
+    PASS_REGULAR_EXPRESSION "10"
+    PASS_REGULAR_EXPRESSION "11"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_decode
+    COMMAND ${APPLICATION} 10110 c 0 a 10 b 11
+)
+set_tests_properties (${prefix}_can_decode PROPERTIES
+    PASS_REGULAR_EXPRESSION "abc"
+    LABELS "${MODULE}"
+)

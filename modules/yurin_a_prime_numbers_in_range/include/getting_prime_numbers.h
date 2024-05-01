@@ -3,8 +3,12 @@
 #ifndef MODULES_YURIN_A_PRIME_NUMBERS_IN_RANGE_INCLUDE_GETTING_PRIME_NUMBERS_H_
 #define MODULES_YURIN_A_PRIME_NUMBERS_IN_RANGE_INCLUDE_GETTING_PRIME_NUMBERS_H_
 
+#define LEFT_BORDER_BIGGER "The left bound should be larger than the right one!"
+#define RIGHT_BORDER_OVERFLOW "The right border is too big!"
+
 #include <vector>
 #include <string>
+#include <stdexcept>
 
 
 class GettingPrimeNumbers {

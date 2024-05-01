@@ -1,0 +1,83 @@
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_h
+    COMMAND ${APPLICATION} -h
+)
+set_tests_properties (${prefix}_run_h PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_unknown_сommand
+    COMMAND ${APPLICATION} hello f fdsf
+)
+set_tests_properties (${prefix}_run_unknown_сommand PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_wrong_key
+    COMMAND ${APPLICATION} hel32lo d 42fd5
+)
+set_tests_properties (${prefix}_run_wrong_key PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_wrong_size_of_key
+    COMMAND ${APPLICATION} hel32lo c 42fd5
+)
+set_tests_properties (${prefix}_run_wrong_size_of_key PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_decoder
+    COMMAND ${APPLICATION} hello d "Im sitting here and Im sick of useless lab work"
+)
+set_tests_properties (${prefix}_run_decoder PROPERTIES
+    PASS_REGULAR_EXPRESSION "pq dwaxtyu lpcs eyo pq dwjo zt ydpzlwd zhf hcyo"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_encoder
+    COMMAND ${APPLICATION} hello e "pq dwaxtyu lpcs eyo pq dwjo zt ydpzlwd zhf hcyo"
+)
+set_tests_properties (${prefix}_run_encoder PROPERTIES
+    PASS_REGULAR_EXPRESSION "im sitting here and im sick of useless lab work"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_crack
+    COMMAND ${APPLICATION} 5 c "pq dwaxtyu lpcs eyo pq dwjo zt ydpzlwd zhf hcyo"
+)
+set_tests_properties (${prefix}_run_crack PROPERTIES
+    PASS_REGULAR_EXPRESSION "hxlls"
+    LABELS "${MODULE}"
+)

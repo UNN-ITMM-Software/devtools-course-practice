@@ -1,0 +1,59 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_interpolation_twoCore
+    COMMAND ${APPLICATION} two 0 0 0 0 gradient
+)
+set_tests_properties (${prefix}_run_interpolation_twoCore PROPERTIES
+    PASS_REGULAR_EXPRESSION "0 0 0"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_interpolation_threeCore
+    COMMAND ${APPLICATION} three 0 0 1 1 gradient
+)
+set_tests_properties (${prefix}_run_interpolation_twoCore PROPERTIES
+    PASS_REGULAR_EXPRESSION "0 0 0"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_interpolation_twoCoreRandom
+    COMMAND ${APPLICATION} three 0 0 1 1 random
+)
+set_tests_properties (${prefix}_run_interpolation_twoCore PROPERTIES
+    PASS_REGULAR_EXPRESSION "0 0 0"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_interpolation_threeCoreRandom
+    COMMAND ${APPLICATION} three 0 0 1 1 random
+)
+set_tests_properties (${prefix}_run_interpolation_twoCore PROPERTIES
+    PASS_REGULAR_EXPRESSION "0 0 0"
+    LABELS "${MODULE}"
+)
