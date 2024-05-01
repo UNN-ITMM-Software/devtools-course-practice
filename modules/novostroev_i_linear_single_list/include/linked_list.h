@@ -140,4 +140,3 @@ bool LinkedList<T>::remove(T data) {
 }
 
 #endif  // MODULES_NOVOSTROEV_I_LINEAR_SINGLE_LIST_INCLUDE_LINKED_LIST_H_
-

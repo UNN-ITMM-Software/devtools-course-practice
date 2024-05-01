@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include "include/linked_list.h"
+#include "include/SingleLinkedList.h"
 
 TEST(LinkedListTest, TestConstructor) {
     LinkedList<int> list;
@@ -184,4 +185,18 @@ TEST(LinkedListTest, MoveEmptyList) {
     LinkedList<int> list2(std::move(list1));
     ASSERT_TRUE(list1.isEmpty());
     ASSERT_TRUE(list2.isEmpty());
+}
+
+TEST(SingleLinkedListTest, PushBackTest) {
+    SingleLinkedList app;
+    app.runApp(3, new const char* [3]{"app", "--push_back", "Rickroll"});
+    auto output = app.runApp(2, new const char* [2]{"app", "--print"});
+    ASSERT_EQ(output.back(), "Rickroll");
+}
+
+TEST(SingleLinkedListTest, PushFrontTest) {
+    SingleLinkedList app;
+    app.runApp(3, new const char* [3]{"app", "--push_front", "Rickroll"});
+    auto output = app.runApp(2, new const char* [2]{"app", "--print"});
+    ASSERT_EQ(output.front(), "Rickroll");
 }
