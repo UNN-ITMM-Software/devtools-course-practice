@@ -6,8 +6,7 @@
 #include <iostream>
 #include <string>
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
   FigureSurfaceApp app;
   std::cout << app(argc, argv);
   return 0;

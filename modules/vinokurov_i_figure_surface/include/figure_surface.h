@@ -9,7 +9,7 @@
 #include <vector>
 
 class FigureSurface {
-public:
+ public:
     double fnCalculateSurfaceParallelepiped(double _a, double _b, double _c);
 
     double fnCalculateSurfaceCylinderSide(double _r, double _h);
