@@ -20,7 +20,6 @@ class ObjVolumeApp {
           std::string objType;
           std::vector<double> arg;
      } Arguments;
-
 };
 
-#endif // MODULES_KARAGODIN_A_OBJVOLUMES_INCLUDE_OBJVOLUMES_APP_H_
+#endif  // MODULES_KARAGODIN_A_OBJVOLUMES_INCLUDE_OBJVOLUMES_APP_H_
