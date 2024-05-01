@@ -107,15 +107,15 @@ bool ConwaysGameOfLifeApplication::setNewField(int argc, const char** argv) {
 int ConwaysGameOfLifeApplication::charToInt(const char* arg) {
     int ans = 0;
     const char* ptr = arg;
-    bool isNegaive = false;
+    bool isNegative = false;
     if (*ptr == '-') {
         ptr++;
-        isNegaive = true;
+        isNegative = true;
     }
     while (*ptr != '\0') {
         ans = ans * 10 + (*ptr - '0');
         ++ptr;
     }
-    if (isNegaive) ans *= -1;
+    if (isNegative) ans *= -1;
     return ans;
 }
