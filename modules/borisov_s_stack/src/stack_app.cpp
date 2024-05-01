@@ -12,7 +12,7 @@ bool StackApp::validate(int argc, char* argv[]) {
     } else if (argc == 2 && std::strcmp(argv[1], "--help") == 0) {
         help(argv[0]);
         return false;
-    } else if (
+    } else if (argc == 2 &&
         std::strcmp(argv[1], "pop") != 0
         && std::strcmp(argv[1], "show_top") != 0
         && std::strcmp(argv[1], "isFull") != 0
