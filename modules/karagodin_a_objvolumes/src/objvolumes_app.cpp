@@ -65,8 +65,7 @@ std::string ObjVolumeApp::operator()(int argc, const char** argv) {
         catch (const std::invalid_argument& e) {
             throw std::logic_error("Wrong arguement format!");
         }
-    }
-    else if (input.objType == "Cylinder") {
+    } else if (input.objType == "Cylinder") {
         if (input.arg.size() != 2) {
             return message_;
         }
@@ -77,8 +76,7 @@ std::string ObjVolumeApp::operator()(int argc, const char** argv) {
         catch (const std::invalid_argument& e) {
             throw std::logic_error("Wrong arguement format!");
         }
-    }
-    else if (input.objType == "Cube") {
+    } else if (input.objType == "Cube") {
         if (input.arg.size() != 1) {
             return message_;
         }
