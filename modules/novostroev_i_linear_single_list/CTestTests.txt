@@ -36,10 +36,6 @@ set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
     PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments."
     LABELS "${MODULE}")
 
-set_tests_properties (${prefix}_can_Calc_Sphere PROPERTIES
-    PASS_REGULAR_EXPRESSION "Volume = 33.5103"
-    LABELS "${MODULE}")
-
 add_test(
     NAME ${prefix}_can_Calc_Cylinder
     COMMAND ${APPLICATION} Cylinder 2.0,2.0
