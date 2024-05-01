@@ -38,14 +38,14 @@ std::string NumSysApplication::Parse(int argc, char *argv[]) {
     string3 = argv[3];  // base_2
     CustomNSNumber num_res;
     bool op_res;
-    switch (string3[0]) {
+   switch (string3[0]) {
     case '+':
       num_res = num_1 + num_2;
-      std::cout << num_1 << " + " << num_2 << " = " << num_res << std::endl;
+      std::cout << num_res << std::endl;
       break;
     case '-':
       num_res = num_1 - num_2;
-      std::cout << num_res << std::endl;
+      std::cout << num_1 << " - " << num_2 << " = " << num_res << std::endl;
       break;
     case '=':
       op_res = (num_1 == num_2);
