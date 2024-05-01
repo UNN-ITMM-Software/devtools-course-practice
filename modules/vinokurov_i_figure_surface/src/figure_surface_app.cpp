@@ -5,15 +5,18 @@
 
 bool FigureSurfaceApp::validate(int argc, char* argv[])
 {
-    if (argc < 2) {
+    if (argc < 2)
+    {
         help(argv[0]);
         return false;
     }
-    if (std::strcmp(argv[1], "--help") == 0) {
+    if (std::strcmp(argv[1], "--help") == 0)
+    {
         help(argv[0]);
         return false;
     }
-    if (std::strcmp(argv[1], "--shapes") == 0) {
+    if (std::strcmp(argv[1], "--shapes") == 0)
+    {
         shapes(argv[0]);
         return false;
     }
@@ -34,7 +37,8 @@ void FigureSurfaceApp::shapes(const char* appName, const char** msg)
     message_ = ss.str();
 }
 
-void FigureSurfaceApp::help(const char* appName, const char* msg) {
+void FigureSurfaceApp::help(const char* appName, const char* msg)
+{
     std::stringstream ss;
 
     if (msg) ss << "Error: " << msg << '\n';
@@ -55,41 +59,62 @@ void FigureSurfaceApp::help(const char* appName, const char* msg) {
 std::string FigureSurfaceApp::getOperationType(const char* arg)
 {
     std::string op;
-    if (std::strcmp(arg, "1") == 0) {
+    if (std::strcmp(arg, "1") == 0)
+    {
         op = "1";
-    } else if (strcmp(arg, "2") == 0) {
+    }
+    else if (strcmp(arg, "2") == 0)
+    {
         op = "2";
-    } else if (strcmp(arg, "3") == 0) {
+    }
+    else if (strcmp(arg, "3") == 0)
+    {
         op = "3";
-    } else if (strcmp(arg, "4") == 0) {
+    }
+    else if (strcmp(arg, "4") == 0)
+    {
         op = "4";
-    } else if (strcmp(arg, "5") == 0) {
+    }
+    else if (strcmp(arg, "5") == 0)
+    {
         op = "5";
-    } else if (strcmp(arg, "6") == 0) {
+    }
+    else if (strcmp(arg, "6") == 0)
+    {
         op = "6";
-    } else {
+    }
+    else
+    {
         throw std::logic_error("Wrong operation format!");
     }
     return op;
 }
 
 
-std::string FigureSurfaceApp::operator()(int argc, char* argv[]){
+std::string FigureSurfaceApp::operator()(int argc, char* argv[])
+{
     std::string operation;
     std::ostringstream stream;
 
-    if (!validate(argc, argv)) {
+    if (!validate(argc, argv))
+    {
         return message_;
     }
-    try {
+    try
+    {
         operation = getOperationType(argv[1]);
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception& e)
+    {
         return e.what();
     }
 
-    try {
-        if (operation == "1") {
-            if (argc != 5) {
+    try
+    {
+        if (operation == "1")
+        {
+            if (argc != 5)
+            {
                 help(argv[0], "ERROR: Should be 4 arguments.\n\n");
                 return message_;
             }
@@ -97,47 +122,64 @@ std::string FigureSurfaceApp::operator()(int argc, char* argv[]){
             double b = std::stod(argv[3]);
             double c = std::stod(argv[4]);
             stream << figureSurface.fnCalculateSurfaceParallelepiped(a, b, c);
-        } else if (operation == "2") {
-            if (argc != 4) {
+        }
+        else if (operation == "2")
+        {
+            if (argc != 4)
+            {
                 help(argv[0], "ERROR: Should be 3 arguments.\n\n");
                 return message_;
             }
             double r = std::stod(argv[2]);
             double h = std::stod(argv[3]);
             stream << figureSurface.fnCalculateSurfaceCylinderSide(r, h);
-        } else if (operation == "3") {
-            if (argc != 4) {
+        }
+        else if (operation == "3")
+        {
+            if (argc != 4)
+            {
                 help(argv[0], "ERROR: Should be 3 arguments.\n\n");
                 return message_;
             }
             double r = std::stod(argv[2]);
             double h = std::stod(argv[3]);
             stream << figureSurface.fnCalculateSurfaceCylinderFull(r, h);
-        } else if (operation == "4") {
-            if (argc != 4) {
+        }
+        else if (operation == "4")
+        {
+            if (argc != 4)
+            {
                 help(argv[0], "ERROR: Should be 3 arguments.\n\n");
                 return message_;
             }
             double r = std::stod(argv[2]);
             double l = std::stod(argv[3]);
             stream << figureSurface.fnCalculateSurfaceConeSide(r, l);
-        } else if (operation == "5") {
-            if (argc != 4) {
+        }
+        else if (operation == "5")
+        {
+            if (argc != 4)
+            {
                 help(argv[0], "ERROR: Should be 3 arguments.\n\n");
                 return message_;
             }
             double r = std::stod(argv[2]);
             double l = std::stod(argv[3]);
             stream << figureSurface.fnCalculateSurfaceConeFull(r, l);
-        } else if (operation == "6") {
-            if (argc != 3) {
+        }
+        else if (operation == "6")
+        {
+            if (argc != 3)
+            {
                 help(argv[0], "ERROR: Should be 2 arguments.\n\n");
                 return message_;
             }
             double r = std::stod(argv[2]);
             stream << figureSurface.fnCalculateSurfaceSphere(r);
         }
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception& e)
+    {
         return e.what();
     }
     message_ = stream.str();

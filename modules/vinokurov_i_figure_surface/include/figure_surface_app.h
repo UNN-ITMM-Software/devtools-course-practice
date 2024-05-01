@@ -1,5 +1,8 @@
 // Copyright 2024 Karagodin Andrey
 
+#ifndef MODULES_VINOKUROV_I_FIGURE_SURFACE_INCLUDE_FIGURE_SURFACE_APP_H_
+#define MODULES_VINOKUROV_I_FIGURE_SURFACE_INCLUDE_FIGURE_SURFACE_APP_H_
+
 #include "include/figure_surface.h"
 
 #include <string>
@@ -11,6 +14,7 @@ class FigureSurfaceApp
 public:
     FigureSurfaceApp() = default;
     std::string operator()(int argc, char* argv[]);
+
 private:
     FigureSurface figureSurface;
     void help(const char* appName, const char* msg = nullptr);
@@ -19,3 +23,5 @@ private:
     std::string getOperationType(const char* arg);
     std::string message_;
 };
+
+#endif  // MODULES_VINOKUROV_I_FIGURE_SURFACE_INCLUDE_FIGURE_SURFACE_APP_H_
