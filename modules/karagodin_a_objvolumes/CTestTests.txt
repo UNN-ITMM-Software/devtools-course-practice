@@ -49,7 +49,7 @@ add_test(
     COMMAND ${APPLICATION} Sphere 1.0,2.0,3.0
 )
 set_tests_properties (${prefix}_cant_Take_Too_Much_Arguements_Sphere PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is an object volume calculator application."
+    PASS_REGULAR_EXPRESSION "ERROR: Sphere contains only 1 arguement."
     LABELS "${MODULE}")
 
 add_test(
@@ -57,7 +57,7 @@ add_test(
     COMMAND ${APPLICATION} Cube 1.0,2.0,3.0
 )
 set_tests_properties (${prefix}_cant_Take_Too_Much_Arguements_Cube PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is an object volume calculator application."
+    PASS_REGULAR_EXPRESSION "ERROR: Cube contains only 1 arguement."
     LABELS "${MODULE}")
 
 add_test(
@@ -65,7 +65,7 @@ add_test(
     COMMAND ${APPLICATION} Cylinder 1.0,2.0,3.0
 )
 set_tests_properties (${prefix}_cant_Take_Too_Much_Arguements_Cylinder PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is an object volume calculator application."
+    PASS_REGULAR_EXPRESSION "ERROR: Cylinder contains only 2 arguements."
     LABELS "${MODULE}")
 
 add_test(

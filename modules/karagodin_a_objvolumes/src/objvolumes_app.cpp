@@ -63,18 +63,21 @@ std::string ObjVolumeApp::operator()(int argc, const char** argv) {
     std::ostringstream stream;
     if (input.objType == "Sphere") {
         if (input.arg.size() != 1) {
+            help(argv[0], "ERROR: Sphere contains only 1 arguement.\n\n");
             return message_;
         }
         Sphere sphere(input.arg[0]);
         stream << "Volume = " << sphere.volume();
     } else if (input.objType == "Cylinder") {
         if (input.arg.size() != 2) {
+            help(argv[0], "ERROR: Cylinder contains only 2 arguements.\n\n");
             return message_;
         }
         Cylinder cylinder(input.arg[0], input.arg[1]);
         stream << "Volume = " << cylinder.volume();
     } else if (input.objType == "Cube") {
         if (input.arg.size() != 1) {
+            help(argv[0], "ERROR: Cube contains only 1 arguement.\n\n");
             return message_;
         }
         Cube cube(input.arg[0]);
