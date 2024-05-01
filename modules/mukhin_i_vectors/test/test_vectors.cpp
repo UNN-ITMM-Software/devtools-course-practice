@@ -34,6 +34,16 @@ TEST(mukhin_i_vectors_test_cases, copy_operator_works) {
     EXPECT_EQ(v[0], 1.0);
 }
 
+TEST(mukhin_i_vectors_test_cases, throw_if_wrong_index_1) {
+    mukhin_i::Vector3D<double> y({1.0, 2.0, 3.0});
+    ASSERT_ANY_THROW(y[4]);
+}
+
+TEST(mukhin_i_vectors_test_cases, throw_if_wrong_index_2) {
+    mukhin_i::Vector3D<double> y({1.0, 2.0, 3.0});
+    ASSERT_ANY_THROW(y[4] = 5);
+}
+
 TEST_P(mukhin_i_test_cases_vector, can_sum_vectors) {
     auto helper = GetParam();
     mukhin_i::Vector3D<double> res({helper.v1[0] + helper.v2[0],
