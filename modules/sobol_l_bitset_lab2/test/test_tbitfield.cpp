@@ -303,3 +303,29 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal) {
 
   EXPECT_NE(bf1, bf2);
 }
+
+TEST(TBitField, can_clear_all_bits) {
+  const int size = 5;
+  TBitField bf(size);
+  for (int i = 0; i < size; i++) {
+    bf.SetBit(i);
+  }
+
+  bf.ClearAll();
+
+  for (int i = 0; i < size; i++) {
+    EXPECT_EQ(0, bf.GetBit(i));
+  }
+}
+
+TEST(TBitField, can_set_all_bits) {
+  const int size = 5;
+  TBitField bf(size);
+
+  bf.SetAll();
+
+  for (int i = 0; i < size; i++) {
+    EXPECT_EQ(1, bf.GetBit(i));
+  }
+}
+
