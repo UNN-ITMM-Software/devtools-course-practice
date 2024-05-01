@@ -59,7 +59,7 @@ void DoubleLinkedListApp::help(std::vector<std::string>& output) {
     output.push_back("    --reverse");
     output.push_back("    --push_back");
     output.push_back("    --push_front");
-    output.push_back("    --help"); 
+    output.push_back("    --help");
     output.push_back("Notion: you can use the same option several times");
 }
 void DoubleLinkedListApp::reverse(std::vector<std::string>& output) {
