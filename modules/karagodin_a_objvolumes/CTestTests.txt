@@ -17,7 +17,7 @@ add_test(
 )
 
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is a object volume calculator"
+    PASS_REGULAR_EXPRESSION "This is an object volume calculator application."
     LABELS "${MODULE}")
 
 add_test(

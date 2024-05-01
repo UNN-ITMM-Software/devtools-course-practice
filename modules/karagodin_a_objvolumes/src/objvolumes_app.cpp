@@ -59,35 +59,29 @@ std::string ObjVolumeApp::operator()(int argc, const char** argv) {
         if (input.arg.size() != 1) {
             return message_;
         }
-        try {
-            Sphere sphere(input.arg[0]);
-            stream << "Volume = " << sphere.volume();
-        }
-        catch (const std::invalid_argument& e) {
+        if (input.arg[0] <= 0) {
             throw std::logic_error("Wrong arguement format!");
         }
+        Sphere sphere(input.arg[0]);
+        stream << "Volume = " << sphere.volume();
     } else if (input.objType == "Cylinder") {
         if (input.arg.size() != 2) {
             return message_;
         }
-        try {
-            Cylinder cylinder(input.arg[0], input.arg[1]);
-            stream << "Volume = " << cylinder.volume();
-        }
-        catch (const std::invalid_argument& e) {
+        if (input.arg[0] <= 0 && input.arg[1] <= 0) {
             throw std::logic_error("Wrong arguement format!");
         }
+        Cylinder cylinder(input.arg[0], input.arg[1]);
+        stream << "Volume = " << cylinder.volume();
     } else if (input.objType == "Cube") {
         if (input.arg.size() != 1) {
             return message_;
         }
-        try {
-            Cube cube(input.arg[0]);
-            stream << "Volume = " << cube.volume();
-        }
-        catch (const std::invalid_argument& e) {
+        if (input.arg[0] <= 0) {
             throw std::logic_error("Wrong arguement format!");
         }
+        Cube cube(input.arg[0]);
+        stream << "Volume = " << cube.volume();
     }
 
     message_ = stream.str();
