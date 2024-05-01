@@ -11,12 +11,13 @@ class Vector3DApp {
     std::string args;
     Vector3D<double> v1;
     Vector3D<double> v2;
+    std::string res;
     std::string oper;
 
     Vector3DApp(int argc, const char** argv);
 
     std::string parse();
-    void init_vectors(const std::string& res);
+    void init_vectors();
     void calculate();
 };
 }  // namespace mukhin_i

@@ -12,9 +12,7 @@ mukhin_i::Vector3DApp::Vector3DApp(int argc, const char** argv) {
     for (int i = 1; i < argc; i++) {
         args.append(argv[i]);
     }
-    std::string res = parse();
-    init_vectors(res);
-    calculate();
+    res = parse();
 }
 
 std::string mukhin_i::Vector3DApp::parse() {
@@ -45,7 +43,7 @@ std::string mukhin_i::Vector3DApp::parse() {
     return res;
 }
 
-void mukhin_i::Vector3DApp::init_vectors(const std::string& res) {
+void mukhin_i::Vector3DApp::init_vectors() {
     std::stack<char> st;
     std::vector<double> numbers;
     std::string tmp;
