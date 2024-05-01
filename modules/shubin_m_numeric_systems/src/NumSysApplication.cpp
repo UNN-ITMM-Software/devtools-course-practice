@@ -45,7 +45,7 @@ std::string NumSysApplication::Parse(int argc, char *argv[]) {
       break;
     case '-':
       num_res = num_1 - num_2;
-      std::cout << num_1 << " - " << num_2 << " = " << num_res << std::endl;
+      std::cout << num_res << std::endl;
       break;
     case '=':
       op_res = (num_1 == num_2);
