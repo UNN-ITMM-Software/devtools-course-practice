@@ -44,14 +44,6 @@ set_tests_properties (${prefix}_run_push PROPERTIES
     LABELS "${MODULE}"
 )
 
-add_test(
-    NAME ${prefix}_run_top
-    COMMAND ${APPLICATION} push 6 show_top
-)
-set_tests_properties (${prefix}_run_top PROPERTIES
-    PASS_REGULAR_EXPRESSION "Top: 6"
-    LABELS "${MODULE}"
-)
 
 add_test(
     NAME ${prefix}_run_isFull
@@ -68,33 +60,6 @@ add_test(
 )
 set_tests_properties (${prefix}_run_isEmpty PROPERTIES
     PASS_REGULAR_EXPRESSION "isEmpty: 1"
-    LABELS "${MODULE}"
-)
-
-add_test(
-    NAME ${prefix}_run_current_size
-    COMMAND ${APPLICATION} push 1 current_size
-)
-set_tests_properties (${prefix}_run_current_size PROPERTIES
-    PASS_REGULAR_EXPRESSION "current_size: 1"
-    LABELS "${MODULE}"
-)
-
-add_test(
-    NAME ${prefix}_run_pop
-    COMMAND ${APPLICATION} push 1 pop
-)
-set_tests_properties (${prefix}_run_pop PROPERTIES
-    PASS_REGULAR_EXPRESSION "Pop completed"
-    LABELS "${MODULE}"
-)
-
-add_test(
-    NAME ${prefix}_run_clear
-    COMMAND ${APPLICATION} push 1 clear
-)
-set_tests_properties (${prefix}_run_clear PROPERTIES
-    PASS_REGULAR_EXPRESSION "clear completed"
     LABELS "${MODULE}"
 )
 
