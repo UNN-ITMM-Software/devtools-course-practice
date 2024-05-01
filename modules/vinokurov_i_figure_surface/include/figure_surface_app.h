@@ -19,8 +19,8 @@ private:
     FigureSurface figureSurface;
     void help(const char* appName, const char* msg = nullptr);
     bool validate(int argc, char* argv[]);
-    void shapes(const char* appName, const char** msg = nullptr);
-    std::string getOperationType(const char* arg);
+    void shapes(const char** msg = nullptr);
+    static std::string getOperationType(const char* arg);
     std::string message_;
 };
 

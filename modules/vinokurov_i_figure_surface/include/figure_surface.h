@@ -8,8 +8,7 @@
 #include <stdexcept>
 #include <vector>
 
-class FigureSurface
-{
+class FigureSurface {
 public:
     double fnCalculateSurfaceParallelepiped(double _a, double _b, double _c);
 
