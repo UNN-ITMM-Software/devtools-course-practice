@@ -6,7 +6,7 @@
 #include "include/objvolumes_app.h"
 
 int main(int argc, const char** argv) {
-	ObjVolumeApp app;
-	std::cout << app(argc, argv);
-	return 0;
+    ObjVolumeApp app;
+    std::cout << app(argc, argv);
+    return 0;
 }
