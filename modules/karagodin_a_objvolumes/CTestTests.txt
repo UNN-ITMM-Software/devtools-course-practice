@@ -30,7 +30,7 @@ set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Vector_Format
-    COMMAND ${APPLICATION} Sphere 1.0/2.0
+    COMMAND ${APPLICATION} Sphere 1.0a2.0
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Vector_Format PROPERTIES
     PASS_REGULAR_EXPRESSION "Wrong vector format!"
