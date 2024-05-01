@@ -49,7 +49,7 @@ std::string StackApp::operator()(int argc, char* argv[]) {
             //  } else if (operation == "show_top") {
             //         T temp = Mystack.show_top();
             //         stream << "Top: " << temp << "\n";
-            //} else 
+            //} else
             if (operation == "isFull") {
                     bool temp = Mystack.isFull();
                     stream << "isFull: " << temp << "\n";
