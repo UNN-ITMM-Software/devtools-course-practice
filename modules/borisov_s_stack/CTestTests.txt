@@ -46,60 +46,60 @@ set_tests_properties (${prefix}_run_push PROPERTIES
 
 add_test(
     NAME ${prefix}_run_top
+    COMMAND ${APPLICATION} push 6
     COMMAND ${APPLICATION} show_top
 )
 set_tests_properties (${prefix}_run_top PROPERTIES
-    COMMAND ${APPLICATION} push 6
     PASS_REGULAR_EXPRESSION "Top: 6"
     LABELS "${MODULE}"
 )
 
 add_test(
     NAME ${prefix}_run_isFull
+    COMMAND ${APPLICATION} push 6
     COMMAND ${APPLICATION} isFull
 )
 set_tests_properties (${prefix}_run_isFull PROPERTIES
-    COMMAND ${APPLICATION} push 6
     PASS_REGULAR_EXPRESSION "isFull: True"
     LABELS "${MODULE}"
 )
 
 add_test(
     NAME ${prefix}_run_isEmpty
+    COMMAND ${APPLICATION} push 6
     COMMAND ${APPLICATION} isEmpty
 )
 set_tests_properties (${prefix}_run_isEmpty PROPERTIES
-    COMMAND ${APPLICATION} push 6
     PASS_REGULAR_EXPRESSION "isEmpty: False"
     LABELS "${MODULE}"
 )
 
 add_test(
     NAME ${prefix}_run_current_size
+    COMMAND ${APPLICATION} push 6
     COMMAND ${APPLICATION} current_size
 )
 set_tests_properties (${prefix}_run_current_size PROPERTIES
-    COMMAND ${APPLICATION} push 6
     PASS_REGULAR_EXPRESSION "current_size: 1"
     LABELS "${MODULE}"
 )
 
 add_test(
     NAME ${prefix}_run_pop
+    COMMAND ${APPLICATION} push 6
     COMMAND ${APPLICATION} pop
 )
 set_tests_properties (${prefix}_run_pop PROPERTIES
-    COMMAND ${APPLICATION} push 6
     PASS_REGULAR_EXPRESSION "Pop completed"
     LABELS "${MODULE}"
 )
 
 add_test(
     NAME ${prefix}_run_clear
+    COMMAND ${APPLICATION} push 6
     COMMAND ${APPLICATION} clear
 )
 set_tests_properties (${prefix}_run_clear PROPERTIES
-    COMMAND ${APPLICATION} push 6
     PASS_REGULAR_EXPRESSION "clear completed"
     LABELS "${MODULE}"
 )
