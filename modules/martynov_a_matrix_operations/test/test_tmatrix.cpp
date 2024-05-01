@@ -113,6 +113,11 @@ TEST(TDynamicMatrix, can_subtract_matrices_with_equal_size) {
     EXPECT_EQ((int)3, m2[0][1]);
 }
 
+TEST(TDynamicMatrix, cant_subtract_matrixes_with_not_equal_size) {
+    TDynamicMatrix<int> m(5), m1(2);
+    ASSERT_ANY_THROW(m - m1);
+}
+
 TEST(TDynamicMatrix, can_mult_matrices_with_equal_size) {
     TDynamicMatrix<int> m(2), m1(2), m2;
     m[0][0] = 1;
@@ -126,14 +131,18 @@ TEST(TDynamicMatrix, can_mult_matrices_with_equal_size) {
     EXPECT_EQ((int)0, m2[1][0]);
 }
 
-TEST(TDynamicMatrix, cant_subtract_matrixes_with_not_equal_size) {
-    TDynamicMatrix<int> m(5), m1(2);
-    ASSERT_ANY_THROW(m - m1);
-}
-
 TEST(TDynamicMatrix, cant_mult_matrixes_with_not_equal_size) {
     TDynamicMatrix<int> m(5), m1(2);
     ASSERT_ANY_THROW(m * m1);
+}
+
+TEST(TDynamicMatrix, determinant_exists) {
+  size_t size = 3;
+  TDynamicMatrix<double> m(size);
+  for (size_t i = 0; i < size; i++) {
+    m[i][i] = 1;
+  }
+  ASSERT_NO_THROW(m.findDeterm());
 }
 
 TEST(TDynamicMatrix, can_find_determinant) {
@@ -146,6 +155,15 @@ TEST(TDynamicMatrix, can_find_determinant) {
   }
   m[0][0] = 2.0;
   EXPECT_DOUBLE_EQ(m.findDeterm(), -1.0);
+}
+
+TEST(TDynamicMatrix, inverse_exists) {
+  size_t size = 3;
+  TDynamicMatrix<double> m(size);
+  for (size_t i = 0; i < size; i++) {
+    m[i][i] = 1;
+  }
+  ASSERT_NO_THROW(m.findInverse());
 }
 
 TEST(TDynamicMatrix, can_find_inverse) {
