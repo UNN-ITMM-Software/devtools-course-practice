@@ -55,9 +55,11 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Parallelepiped) {
     double a = 2.0, b = 3.0, c = 2.5, resApproximate = 37.0;
     FigureSurface figureSurfaceCalc;
 
-    ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceParallelepiped(a, b, c));
+    ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceParallelepiped(a,
+        b, c));
     ASSERT_LE(
-        figureSurfaceCalc.fnCalculateSurfaceParallelepiped(a, b, c) - resApproximate,
+        figureSurfaceCalc.fnCalculateSurfaceParallelepiped(a, b, c) -
+        resApproximate,
         0.001);
 }
 
