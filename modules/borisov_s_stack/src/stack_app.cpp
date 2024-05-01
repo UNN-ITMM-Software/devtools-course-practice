@@ -28,7 +28,7 @@ bool StackApp::validate(int argc, char* argv[]) {
     } else if (std::strcmp(argv[1] + count, "push") == 0 && count + 1 < argc) {
         count += 2;
     } else {
-        count ++;
+        count++;
     }
     return true;
 }
