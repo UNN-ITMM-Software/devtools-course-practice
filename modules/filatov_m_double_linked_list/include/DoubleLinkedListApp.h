@@ -9,13 +9,13 @@
 
 class DoubleLinkedListApp {
     DoubleLinkedList<std::string> list;
-    std::vector<std::string> parse(int argc, const char** argv);    
+    std::vector<std::string> parse(int argc, const char** argv);
     void help(std::vector<std::string>& output);
     void reverse(std::vector<std::string>& output);
     void print(std::vector<std::string>& output);
     void push_back(std::vector<std::string>& output, std::string elem);
     void push_front(std::vector<std::string>& output, std::string elem);
-public:
+ public:
     DoubleLinkedListApp() {
         list.push_back("never");
         list.push_back("gonna");
