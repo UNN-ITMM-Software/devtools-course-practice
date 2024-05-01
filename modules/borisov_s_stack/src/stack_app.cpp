@@ -52,52 +52,23 @@ std::string StackApp::operator()(int argc, char* argv[]) {
         int input_string = std::stoi(argv[2]);
         std::ostringstream stream;
         if (operation == "pop") {
-            try {
                 Mystack.pop();
                 stream << "Pop completed\n";
-            }
-            catch (const std::exception& e) {
-                stream << "Stack is empty\n";
-            }
         } else if (operation == "show_top") {
-            try {
                 T temp = Mystack.show_top();
                 stream << "Top: " << temp << "\n";
-            }
-            catch (const std::exception& e) {
-                stream << "Stack is empty\n";
-            }
         } else if (operation == "isFull") {
-            try {
                 bool temp = Mystack.isFull();
-                stream << "isFull: " << temp << "\n"; }
-            catch (const std::exception& e) {
-                stream << "Stack is empty\n";
-            }
+                stream << "isFull: " << temp << "\n";
         } else if (operation == "isEmpty") {
-            try {
-                bool temp = Mystack.isEmpty();
-                stream << "isEmpty: " << temp << "\n";
-            }
-            catch (const std::exception& e) {
-                stream << "Stack is empty\n";
-            }
+            bool temp = Mystack.isEmpty();
+            stream << "isEmpty: " << temp << "\n";
         } else if (operation == "current_size") {
-            try {
                 bool temp = Mystack.current_size();
                 stream << "current_size: " << temp << "\n";
-            }
-            catch (const std::exception& e) {
-                stream << "Stack is empty\n";
-            }
         } else if (operation == "clear") {
-            try {
                 Mystack.clear();
                 stream << "clear completed \n";
-            }
-            catch (const std::exception& e) {
-                stream << "Stack is empty\n";
-            }
         } else if (operation == "push") {
             Mystack.push(input_string);
             stream << "push completed \n";
