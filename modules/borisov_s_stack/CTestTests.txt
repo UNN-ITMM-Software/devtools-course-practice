@@ -25,93 +25,93 @@ set_tests_properties (${prefix}_test_help PROPERTIES
 )
 
 add_test(
-    NAME ${prefix}_test_help
+    NAME ${prefix}_test_Incorrect_arguments 
     COMMAND ${APPLICATION} push
 )
 
-set_tests_properties (${prefix}_test_help PROPERTIES
+set_tests_properties (${prefix}_test_Incorrect_arguments PROPERTIES
     PASS_REGULAR_EXPRESSION "Incorrect number of arguments"
     LABELS "${MODULE}"
 )
 
 
 add_test(
-    NAME ${prefix}_run_identical_strings
+    NAME ${prefix}_run_push
     COMMAND ${APPLICATION} push 6
 )
-set_tests_properties (${prefix}_run_identical_strings PROPERTIES
+set_tests_properties (${prefix}_run_push PROPERTIES
     PASS_REGULAR_EXPRESSION "push completed "
     LABELS "${MODULE}"
 )
 
 add_test(
-    NAME ${prefix}_run_identical_strings
+    NAME ${prefix}_run_top
     COMMAND ${APPLICATION} show_top
 )
-set_tests_properties (${prefix}_run_identical_strings PROPERTIES
+set_tests_properties (${prefix}_run_top PROPERTIES
     PASS_REGULAR_EXPRESSION "Top: 6"
     LABELS "${MODULE}"
 )
 
 add_test(
-    NAME ${prefix}_run_identical_strings
+    NAME ${prefix}_run_isFull
     COMMAND ${APPLICATION} isFull
 )
-set_tests_properties (${prefix}_run_identical_strings PROPERTIES
+set_tests_properties (${prefix}_run_isFull PROPERTIES
     PASS_REGULAR_EXPRESSION "isFull: True"
     LABELS "${MODULE}"
 )
 
 add_test(
-    NAME ${prefix}_run_identical_strings
+    NAME ${prefix}_run_isEmpty
     COMMAND ${APPLICATION} isEmpty
 )
-set_tests_properties (${prefix}_run_identical_strings PROPERTIES
+set_tests_properties (${prefix}_run_isEmpty PROPERTIES
     PASS_REGULAR_EXPRESSION "isEmpty: False"
     LABELS "${MODULE}"
 )
 
 add_test(
-    NAME ${prefix}_run_identical_strings
+    NAME ${prefix}_run_current_size
     COMMAND ${APPLICATION} current_size
 )
-set_tests_properties (${prefix}_run_identical_strings PROPERTIES
+set_tests_properties (${prefix}_run_current_size PROPERTIES
     PASS_REGULAR_EXPRESSION "current_size: 1"
     LABELS "${MODULE}"
 )
 
 add_test(
-    NAME ${prefix}_run_identical_strings
+    NAME ${prefix}_run_pop
     COMMAND ${APPLICATION} pop
 )
-set_tests_properties (${prefix}_run_identical_strings PROPERTIES
+set_tests_properties (${prefix}_run_pop PROPERTIES
     PASS_REGULAR_EXPRESSION "Pop completed"
     LABELS "${MODULE}"
 )
 
 add_test(
-    NAME ${prefix}_run_identical_strings
+    NAME ${prefix}_run_clear
     COMMAND ${APPLICATION} clear
 )
-set_tests_properties (${prefix}_run_identical_strings PROPERTIES
+set_tests_properties (${prefix}_run_clear PROPERTIES
     PASS_REGULAR_EXPRESSION "clear completed"
     LABELS "${MODULE}"
 )
 
 add_test(
-    NAME ${prefix}_run_identical_strings
+    NAME ${prefix}_run_Incorrect_second_argument
     COMMAND ${APPLICATION} blabla
 )
-set_tests_properties (${prefix}_run_identical_strings PROPERTIES
+set_tests_properties (${prefix}_run_Incorrect_second_argument PROPERTIES
     PASS_REGULAR_EXPRESSION "Incorrect second argument"
     LABELS "${MODULE}"
 )
 
 add_test(
-    NAME ${prefix}_run_identical_strings
+    NAME ${prefix}_run_Incorrect_third_argument
     COMMAND ${APPLICATION} pop pop
 )
-set_tests_properties (${prefix}_run_identical_strings PROPERTIES
+set_tests_properties (${prefix}_run_Incorrect_third_argument PROPERTIES
     PASS_REGULAR_EXPRESSION "Incorrect second argument"
     LABELS "${MODULE}"
 )
