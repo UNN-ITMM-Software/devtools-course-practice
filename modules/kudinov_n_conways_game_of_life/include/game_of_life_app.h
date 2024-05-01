@@ -17,8 +17,8 @@ enum ErrorCode {
 
 class ConwaysGameOfLifeApplication {
  private:
-    int numberOfGenerations;
     const char* appName;
+    int numberOfGenerations;
     ErrorCode dataErrorNumber;
     ConwaysGameOfLife game;
     int charToInt(const char* arg);
