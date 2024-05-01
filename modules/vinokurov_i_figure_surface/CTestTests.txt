@@ -36,7 +36,7 @@ add_test(
     COMMAND ${APPLICATION} 1 2 3 4
 )
 set_tests_properties (${prefix}_parallelepiped_surface PROPERTIES
-    PASS_REGULAR_EXPRESSION "24"
+    PASS_REGULAR_EXPRESSION "52"
     LABELS "${MODULE}"
 )
 
@@ -46,7 +46,7 @@ add_test(
     COMMAND ${APPLICATION} 2 2 3
 )
 set_tests_properties (${prefix}_cylinder_side_surface PROPERTIES
-    PASS_REGULAR_EXPRESSION "12.566370614359172"
+    PASS_REGULAR_EXPRESSION "37.6991"
     LABELS "${MODULE}"
 )
 
@@ -56,7 +56,7 @@ add_test(
     COMMAND ${APPLICATION} 3 2 3
 )
 set_tests_properties (${prefix}_cylinder_full_surface PROPERTIES
-    PASS_REGULAR_EXPRESSION "31.41592653589793"
+    PASS_REGULAR_EXPRESSION "62.8319"
     LABELS "${MODULE}"
 )
 
@@ -66,7 +66,7 @@ add_test(
     COMMAND ${APPLICATION} 4 2 3
 )
 set_tests_properties (${prefix}_cone_side_surface PROPERTIES
-    PASS_REGULAR_EXPRESSION "18.84955592153876"
+    PASS_REGULAR_EXPRESSION "18.8496"
     LABELS "${MODULE}"
 )
 
@@ -76,7 +76,7 @@ add_test(
     COMMAND ${APPLICATION} 5 2 3
 )
 set_tests_properties (${prefix}_cone_full_surface PROPERTIES
-    PASS_REGULAR_EXPRESSION "21.991148575128552"
+    PASS_REGULAR_EXPRESSION "31.4159"
     LABELS "${MODULE}"
 )
 
@@ -86,7 +86,7 @@ add_test(
     COMMAND ${APPLICATION} 6 2
 )
 set_tests_properties (${prefix}_sphere_surface PROPERTIES
-    PASS_REGULAR_EXPRESSION "50.26548245743669"
+    PASS_REGULAR_EXPRESSION "50.2655"
     LABELS "${MODULE}"
 )
 
