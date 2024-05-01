@@ -72,8 +72,8 @@ std::string StackApp::operator()(int argc, char* argv[]) {
                 Mystack.push(input_string);
                 stream << "push completed \n";
             }
-        }
         message_ = stream.str();
+    }   
     return message_;
 }
 
