@@ -23,7 +23,7 @@ std::vector<double> parseVector(const char* input) {
         }
     }
 
-    for (int i = 0; i < result.size(); i++) {
+    for (int i = 0; i < static_cast<int>(result.size()); i++) {
         if (result[i] <= 0) {
             throw std::logic_error("Wrong arguement format!");
         }
