@@ -49,14 +49,9 @@ void TowerOfHanoiApplication::Help(const char *application,
 std::string TowerOfHanoiApplication::TowerOfHanoiCount
 (int argc, char *argv[]) {
     if (Validate(argc, argv)) {
-        try {
-            std::vector<std::vector<int>> steps =
+        std::vector<std::vector<int>> steps =
                     tower.CalculateSteps(std::stoi(argv[1]));
-            return tower.GetStepsAsString(steps);
-        }
-        catch(const std::exception& e) {
-            return "Error: Invalid input.";
-        }
+        return tower.GetStepsAsString(steps);
     }
     return msg;
 }
