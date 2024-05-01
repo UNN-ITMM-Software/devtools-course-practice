@@ -1,0 +1,70 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a object volume calculator"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 1 
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number
+    COMMAND ${APPLICATION} Sphere -1.0
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong arguement format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Object_Format
+    COMMAND ${APPLICATION} Hat 4.2
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Object_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong object format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calc_Cube
+    COMMAND ${APPLICATION} Cube 3
+)
+set_tests_properties (${prefix}_can_Calc_Cube PROPERTIES
+    PASS_REGULAR_EXPRESSION "Volume = 27"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calc_Sphere
+    COMMAND ${APPLICATION} Sphere 2.0
+)
+set_tests_properties (${prefix}_can_Calc_Sphere PROPERTIES
+    PASS_REGULAR_EXPRESSION "Volume = 33.5103"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calc_Cylinder
+    COMMAND ${APPLICATION} Cylinder 2.0,2.0
+)
+set_tests_properties (${prefix}_can_Calc_Cylinder PROPERTIES
+    PASS_REGULAR_EXPRESSION "Volume = 25.1327"
+    LABELS "${MODULE}")
+
