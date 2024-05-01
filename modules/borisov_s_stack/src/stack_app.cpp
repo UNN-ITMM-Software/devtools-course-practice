@@ -13,12 +13,12 @@ bool StackApp::validate(int argc, char* argv[]) {
         help(argv[0]);
         return false;
     } else if (
-        std::strcmp(argv[1] + count, "pop") != 0
-        && std::strcmp(argv[1] + count, "show_top") != 0
-        && std::strcmp(argv[1] + count, "isFull") != 0
-        && std::strcmp(argv[1] + count, "isEmpty") != 0
-        && std::strcmp(argv[1] + count, "current_size") != 0
-        && std::strcmp(argv[1] + count, "clear") != 0) {
+        std::strcmp(argv[1], "pop") != 0
+        && std::strcmp(argv[1], "show_top") != 0
+        && std::strcmp(argv[1], "isFull") != 0
+        && std::strcmp(argv[1], "isEmpty") != 0
+        && std::strcmp(argv[1], "current_size") != 0
+        && std::strcmp(argv[1], "clear") != 0) {
         help(argv[0], "Incorrect second argument");
         return false;
     } else if (argc == 3 && std::strcmp(argv[1], "push") != 0) {
@@ -68,7 +68,7 @@ std::string StackApp::operator()(int argc, char* argv[]) {
                     Mystack.clear();
                     stream << "clear completed \n";
             } else if (operation == "push") {
-                int input_string = std::stoi(argv[2] + count);
+                int input_string = std::stoi(argv[2]);
                 Mystack.push(input_string);
                 stream << "push completed \n";
             }
