@@ -99,3 +99,63 @@ set_tests_properties (${prefix}_invalid_arguments PROPERTIES
     PASS_REGULAR_EXPRESSION "Invalid arguments"
     LABELS "${MODULE}"
 )
+
+# Test for invalid arguments for Parallelepiped surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_parallelepiped
+    COMMAND ${APPLICATION} 1 0 0 0
+)
+set_tests_properties (${prefix}_invalid_arguments_parallelepiped PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments for Cylinder Side surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_cylinder_side
+    COMMAND ${APPLICATION} 2 0 0
+)
+set_tests_properties (${prefix}_invalid_arguments_cylinder_side PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments for Cylinder Full surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_cylinder_full
+    COMMAND ${APPLICATION} 3 0 0
+)
+set_tests_properties (${prefix}_invalid_arguments_cylinder_full PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments for Cone Side surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_cone_side
+    COMMAND ${APPLICATION} 4 0 0
+)
+set_tests_properties (${prefix}_invalid_arguments_cone_side PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments for Cone Full surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_cone_full
+    COMMAND ${APPLICATION} 5 0 0
+)
+set_tests_properties (${prefix}_invalid_arguments_cone_full PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments for Sphere surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_sphere
+    COMMAND ${APPLICATION} 6 0
+)
+set_tests_properties (${prefix}_invalid_arguments_sphere PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
