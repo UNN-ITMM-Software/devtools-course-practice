@@ -5,6 +5,8 @@
 
 #include <vector>
 #include <stdexcept>
+#include <sstream>
+#include <string>
 
 class ComplexCalculator {
  private:
@@ -12,8 +14,8 @@ class ComplexCalculator {
     double imaginary;
 
  public:
+    ComplexCalculator() : real(0), imaginary(0) {}
     ComplexCalculator(double real, double imaginary);
-
     double getReal() const;
     double getImaginary() const;
 
@@ -21,6 +23,7 @@ class ComplexCalculator {
     ComplexCalculator operator-(const ComplexCalculator& other) const;
     ComplexCalculator operator*(const ComplexCalculator& other) const;
     ComplexCalculator operator/(const ComplexCalculator& other) const;
+    std::string toString() const;
 };
 
 #endif  // MODULES_SARATOVA_M_COMPLEX_NUMBER_CALC_INCLUDE_COMPLEX_NUMBER_CALC_H_

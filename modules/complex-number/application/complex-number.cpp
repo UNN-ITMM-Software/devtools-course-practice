@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string>
 
-#include "include/complex_calculator.h"
+#include "../include/complex_calculator.h"
 
 int main(int argc, const char** argv) {
     ComplexCalculator app;

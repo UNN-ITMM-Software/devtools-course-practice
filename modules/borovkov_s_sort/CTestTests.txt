@@ -1,0 +1,40 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_test_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application for sorting an array of numbers"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_empty
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_test_empty PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application for sorting an array of numbers"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_correct
+    COMMAND ${APPLICATION} "3" "9" "1" "2" "6" "5"
+)
+set_tests_properties (${prefix}_test_correct PROPERTIES
+    PASS_REGULAR_EXPRESSION "1,2,3,5,6,9"
+    LABELS "${MODULE}"
+)

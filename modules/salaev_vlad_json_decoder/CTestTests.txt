@@ -1,0 +1,45 @@
+#############################################
+##### Testing JSON Decoder Application
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Use: .* <json_string>"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} "json" "extra"
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Use: .* <json_string>"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_JSON_Format
+    COMMAND ${APPLICATION} "{key: 'value'}" # Missing quotes around key
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_JSON_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error decoded JSON: Invalid JSON input"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Process_Correct_JSON
+    COMMAND ${APPLICATION} "{\"key\": \"value\"}"
+)
+set_tests_properties (${prefix}_can_Process_Correct_JSON PROPERTIES
+    FAIL_REGULAR_EXPRESSION "Error decoded JSON:"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Handle_Booleans_and_Nulls
+    COMMAND ${APPLICATION} "{\"booleanTrue\": true, \"booleanFalse\": false, \"nullValue\": null}"
+)
+set_tests_properties (${prefix}_can_Handle_Booleans_and_Nulls PROPERTIES
+    FAIL_REGULAR_EXPRESSION "Error decoded JSON:"
+    LABELS "${MODULE}")
