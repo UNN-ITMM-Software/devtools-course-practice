@@ -18,8 +18,14 @@ std::vector<double> parseVector(const char* input) {
             result.push_back(number);
         }
         catch (const std::exception& e) {
-            throw std::string("Wrong vector format!");
+            throw std::logic_error("Wrong vector format!");
             continue;
+        }
+    }
+
+    for(int i = 0; i < result.size(); i++) {
+        if(result[i] <= 0) {
+            throw std::logic_error("Wrong arguement format!");
         }
     }
 
@@ -35,7 +41,7 @@ std::string parseObjType(const char* arg) {
     } else if (strcmp(arg, "Cube") == 0) {
         ot = "Cube";
     } else {
-        throw std::string("Wrong object format!");
+        throw std::logic_error("Wrong object format!");
     }
     return ot;
 }
@@ -46,17 +52,18 @@ std::string ObjVolumeApp::operator()(int argc, const char** argv) {
     if (!validateNumberOfArguments(argc, argv)) {
         return message_;
     }
-
-    input.objType = parseObjType(argv[1]);
-    input.arg = parseVector(argv[2]);
+    try {
+        input.objType = parseObjType(argv[1]);
+        input.arg = parseVector(argv[2]);
+    }
+    catch (const std::exception& e) {
+        return e.what();
+    }
 
     std::ostringstream stream;
     if (input.objType == "Sphere") {
         if (input.arg.size() != 1) {
             return message_;
-        }
-        if (input.arg[0] <= 0) {
-            throw std::string("Wrong arguement format!");
         }
         Sphere sphere(input.arg[0]);
         stream << "Volume = " << sphere.volume();
@@ -64,17 +71,11 @@ std::string ObjVolumeApp::operator()(int argc, const char** argv) {
         if (input.arg.size() != 2) {
             return message_;
         }
-        if (input.arg[0] <= 0 && input.arg[1] <= 0) {
-            throw std::string("Wrong arguement format!");
-        }
         Cylinder cylinder(input.arg[0], input.arg[1]);
         stream << "Volume = " << cylinder.volume();
     } else if (input.objType == "Cube") {
         if (input.arg.size() != 1) {
             return message_;
-        }
-        if (input.arg[0] <= 0) {
-            throw std::string("Wrong arguement format!");
         }
         Cube cube(input.arg[0]);
         stream << "Volume = " << cube.volume();
