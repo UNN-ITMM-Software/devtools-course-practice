@@ -10,7 +10,6 @@
 
 std::vector<std::vector<int>> TowerOfHanoi::RecursiveCalculate
     (int numberOfRings, int fromRod, int toRod) {
-
     if (numberOfRings == 1) {
         return std::vector<std::vector<int>>(1, {fromRod, toRod});
     }
