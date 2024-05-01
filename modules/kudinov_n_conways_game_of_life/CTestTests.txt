@@ -85,7 +85,7 @@ set_tests_properties (${prefix}_Pass PROPERTIES
 
 add_test(
     NAME ${prefix}_Pass_more_generations
-    COMMAND ${APPLICATION} 4 4 3 0 0 0 1 
+    COMMAND ${APPLICATION} 4 4 3 0 0 0 1 0 2
 )
 set_tests_properties (${prefix}_Pass PROPERTIES
     PASS_REGULAR_EXPRESSION "...."
