@@ -18,7 +18,7 @@ std::vector<double> parseVector(const char* input) {
             result.push_back(number);
         }
         catch (const std::exception& e) {
-            throw std::logic_error("Wrong vector format!");
+            throw std::string("Wrong vector format!");
             continue;
         }
     }
@@ -35,7 +35,7 @@ std::string parseObjType(const char* arg) {
     } else if (strcmp(arg, "Cube") == 0) {
         ot = "Cube";
     } else {
-        throw std::logic_error("Wrong object format!");
+        throw std::string("Wrong object format!");
     }
     return ot;
 }
@@ -56,7 +56,7 @@ std::string ObjVolumeApp::operator()(int argc, const char** argv) {
             return message_;
         }
         if (input.arg[0] <= 0) {
-            throw std::logic_error("Wrong arguement format!");
+            throw std::string("Wrong arguement format!");
         }
         Sphere sphere(input.arg[0]);
         stream << "Volume = " << sphere.volume();
@@ -65,7 +65,7 @@ std::string ObjVolumeApp::operator()(int argc, const char** argv) {
             return message_;
         }
         if (input.arg[0] <= 0 && input.arg[1] <= 0) {
-            throw std::logic_error("Wrong arguement format!");
+            throw std::string("Wrong arguement format!");
         }
         Cylinder cylinder(input.arg[0], input.arg[1]);
         stream << "Volume = " << cylinder.volume();
@@ -74,7 +74,7 @@ std::string ObjVolumeApp::operator()(int argc, const char** argv) {
             return message_;
         }
         if (input.arg[0] <= 0) {
-            throw std::logic_error("Wrong arguement format!");
+            throw std::string("Wrong arguement format!");
         }
         Cube cube(input.arg[0]);
         stream << "Volume = " << cube.volume();
