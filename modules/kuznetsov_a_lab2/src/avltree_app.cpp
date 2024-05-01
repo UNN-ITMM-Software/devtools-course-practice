@@ -33,6 +33,7 @@ std::string AvlTreeApplication::operator()(int argc, char *argv[]) {
     }
     hullMessage = ss.str();
   }
+  
   return hullMessage;
 }
 
