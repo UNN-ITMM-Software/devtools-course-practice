@@ -203,7 +203,7 @@ set_tests_properties (${prefix}_incorrect_arguments_cylinder_side PROPERTIES
 # Test for incorrect number of arguments for Cylinder Full surface calculation
 add_test(
     NAME ${prefix}_incorrect_arguments_cylinder_full
-    COMMAND ${APPLICATION} 3 2
+    COMMAND ${APPLICATION} 3
 )
 set_tests_properties (${prefix}_incorrect_arguments_cylinder_full PROPERTIES
     PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
@@ -213,7 +213,7 @@ set_tests_properties (${prefix}_incorrect_arguments_cylinder_full PROPERTIES
 # Test for incorrect number of arguments for Cone side surface calculation
 add_test(
     NAME ${prefix}_incorrect_arguments_cone_side
-    COMMAND ${APPLICATION} 4 2
+    COMMAND ${APPLICATION} 4
 )
 set_tests_properties (${prefix}_incorrect_arguments_cone_side PROPERTIES
     PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
@@ -223,7 +223,7 @@ set_tests_properties (${prefix}_incorrect_arguments_cone_side PROPERTIES
 # Test for incorrect number of arguments for Cone Full surface calculation
 add_test(
     NAME ${prefix}_incorrect_arguments_cone_full
-    COMMAND ${APPLICATION} 5 2
+    COMMAND ${APPLICATION} 5
 )
 set_tests_properties (${prefix}_incorrect_arguments_cone_full PROPERTIES
     PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
