@@ -3,6 +3,7 @@
 #include "include/objvolumes_app.h"
 #include "include/objvolumes.h"
 #include <sstream>
+#include <cstring>
 
 ObjVolumeApp::ObjVolumeApp() : message_("") {}
 
@@ -27,7 +28,7 @@ std::vector<double> parseVector(const char* input) {
 
 std::string parseObjType(const char* arg) {
     std::string ot;
-    if (std::strcmp(arg, "Sphere") == 0) {
+    if (strcmp(arg, "Sphere") == 0) {
         ot = "Sphere";
     } else if (strcmp(arg, "Cylinder") == 0) {
         ot = "Cylinder";
