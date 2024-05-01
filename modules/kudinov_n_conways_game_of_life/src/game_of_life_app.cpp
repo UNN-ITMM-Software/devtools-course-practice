@@ -48,13 +48,14 @@ std::string ConwaysGameOfLifeApplication::doWork() {
     case EC_INCORRECT_POINT:
         return "Error: Some of points are incorret!";
         break;
-    default:
+    case EC_OK:
         for (int i = 0; i < numberOfGenerations; i++) {
             game.simulateNextGeneration();
         }
         return appName + ' ' + game.toString();
         break;
     }
+    return "You should not get this message";
 }
 
 bool ConwaysGameOfLifeApplication::setNewField(int argc, const char** argv) {
