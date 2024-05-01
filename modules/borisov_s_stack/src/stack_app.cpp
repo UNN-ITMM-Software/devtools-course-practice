@@ -25,7 +25,7 @@ bool StackApp::validate(int argc, char* argv[]) {
         && std::strcmp(argv[1], "push") != 0 ) {
         help(argv[0], "Incorrect second argument");
         return false;
-    } else if (argc != 3) {
+    } else if (argc > 3) {
         help(argv[0], "Incorrect number of arguments");
         return false;
     }
