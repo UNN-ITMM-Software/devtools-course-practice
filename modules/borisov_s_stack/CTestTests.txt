@@ -10,7 +10,7 @@ add_test(
 )
 
 set_tests_properties (${prefix}_run PROPERTIES
-    PASS_REGULAR_EXPRESSION "This application works with stack.
+    PASS_REGULAR_EXPRESSION "This application works with stack."
     LABELS "${MODULE}"
 )
 
