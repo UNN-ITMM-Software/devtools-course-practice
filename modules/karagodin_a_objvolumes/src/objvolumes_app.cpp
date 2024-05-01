@@ -29,14 +29,11 @@ std::string parseObjType(const char* arg) {
     std::string ot;
     if (std::strcmp(arg, "Sphere") == 0) {
         ot = "Sphere";
-    }
-    else if (strcmp(arg, "Cylinder") == 0) {
+    } else if (strcmp(arg, "Cylinder") == 0) {
         ot = "Cylinder";
-    }
-    else if (strcmp(arg, "Cube") == 0) {
+    } else if (strcmp(arg, "Cube") == 0) {
         ot = "Cube";
-    }
-    else {
+    } else {
         throw std::logic_error("Wrong object format!");
     }
     return ot;
@@ -106,7 +103,7 @@ void ObjVolumeApp::help(const char* appname, const char* message) {
 
         "  $ " + appname + " <objType> <arg> \n\n" +
 
-        "Where objType is a string with type of object (Sphere, Cube, Cylinder), " +
+        "Where objType is a string with of object (Sphere, Cube, Cylinder), " +
         "and <arg> is a vector with double-precision numbers \n" +
         "In the format of 1,2,3 or 1.0,2.0,3.0 \n";
 }
@@ -115,8 +112,7 @@ bool ObjVolumeApp::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 3) {
+    } else if (argc != 3) {
         help(argv[0], "ERROR: Should be 2 arguments.\n\n");
         return false;
     }
