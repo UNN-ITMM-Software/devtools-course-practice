@@ -33,7 +33,7 @@ add_test(
     COMMAND ${APPLICATION} Sphere d1.0
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Vector_Format PROPERTIES
-    PASS_REGULAR_EXPRESSION "Wrong vector format!	"
+    PASS_REGULAR_EXPRESSION "Wrong vector format!"
     LABELS "${MODULE}")
 
 add_test(
@@ -48,7 +48,7 @@ add_test(
     NAME ${prefix}_cant_Take_Too_Much_Arguements_Sphere
     COMMAND ${APPLICATION} Sphere 1.0,2.0,3.0
 )
-set_tests_properties (${prefix}_can_Detect_Wrong_Number PROPERTIES
+set_tests_properties (${prefix}_cant_Take_Too_Much_Arguements_Sphere PROPERTIES
     PASS_REGULAR_EXPRESSION "This is an object volume calculator application."
     LABELS "${MODULE}")
 
@@ -56,7 +56,7 @@ add_test(
     NAME ${prefix}_cant_Take_Too_Much_Arguements_Cube
     COMMAND ${APPLICATION} Cube 1.0,2.0,3.0
 )
-set_tests_properties (${prefix}_can_Detect_Wrong_Number PROPERTIES
+set_tests_properties (${prefix}_cant_Take_Too_Much_Arguements_Cube PROPERTIES
     PASS_REGULAR_EXPRESSION "This is an object volume calculator application."
     LABELS "${MODULE}")
 
@@ -64,7 +64,7 @@ add_test(
     NAME ${prefix}_cant_Take_Too_Much_Arguements_Cylinder
     COMMAND ${APPLICATION} Cylinder 1.0,2.0,3.0
 )
-set_tests_properties (${prefix}_can_Detect_Wrong_Number PROPERTIES
+set_tests_properties (${prefix}_cant_Take_Too_Much_Arguements_Cylinder PROPERTIES
     PASS_REGULAR_EXPRESSION "This is an object volume calculator application."
     LABELS "${MODULE}")
 
