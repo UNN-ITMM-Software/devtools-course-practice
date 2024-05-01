@@ -26,7 +26,7 @@ std::string NumSysApplication::Parse(int argc, char *argv[]) {
       return message_;
     }
 
-    string4 = argv[4];  // num_2
+    string4 = argv[4];  // num_2_
     string5 = argv[5];  // base_2
     try {
       num_2 = CustomNSNumber(string4, std::stoul(string5));
