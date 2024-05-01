@@ -57,3 +57,12 @@ set_tests_properties(${prefix}_test_search_invalid_target PROPERTIES
     PASS_REGULAR_EXPRESSION "Invalid input: target must be an integer."
     LABELS "${MODULE}"
 )
+
+add_test(
+    NAME ${prefix}_test_empty_sequence
+    COMMAND ${APPLICATION}
+)
+set_tests_properties(${prefix}_test_empty_sequence PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application for searching a target number in a sequence using interpolation search\\.\n\nPlease provide arguments for searching\\."
+    LABELS "${MODULE}"
+)
