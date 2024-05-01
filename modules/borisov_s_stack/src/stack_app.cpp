@@ -51,7 +51,6 @@ std::string StackApp::operator()(int argc, char* argv[]) {
         std::string operation = std::string(argv[1]);
         int input_string = std::stoi(argv[2]);
         std::ostringstream stream;
-        //Mystack.push(6);
         if (operation == "pop") {
             try {
                 Mystack.pop();
@@ -72,7 +71,7 @@ std::string StackApp::operator()(int argc, char* argv[]) {
             try {
                 bool temp = Mystack.isFull();
                 stream << "isFull: " << temp << "\n"; }
-            catch (const std::exception& e){
+            catch (const std::exception& e) {
                 stream << "Stack is empty\n";
             }
         } else if (operation == "isEmpty") {
