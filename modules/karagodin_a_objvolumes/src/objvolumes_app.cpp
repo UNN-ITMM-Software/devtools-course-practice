@@ -46,13 +46,9 @@ std::string ObjVolumeApp::operator()(int argc, const char** argv) {
     if (!validateNumberOfArguments(argc, argv)) {
         return message_;
     }
-    try {
-        input.objType = parseObjType(argv[1]);
-        input.arg = parseVector(argv[2]);
-    }
-    catch (const std::exception& e) {
-        return e.what();
-    }
+
+    input.objType = parseObjType(argv[1]);
+    input.arg = parseVector(argv[2]);
 
     std::ostringstream stream;
     if (input.objType == "Sphere") {
