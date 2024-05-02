@@ -37,12 +37,12 @@ TEST(mukhin_i_vectors_test_cases, copy_operator_works) {
 
 TEST(mukhin_i_vectors_test_cases, throw_if_wrong_index_1) {
     mukhin_i::Vector3D<double> y({1.0, 2.0, 3.0});
-    EXPECT_THROW(y[4], std::invalid_argument);
+    EXPECT_THROW(y.operator[](4), std::invalid_argument);
 }
 
 TEST(mukhin_i_vectors_test_cases, throw_if_wrong_index_2) {
     mukhin_i::Vector3D<double> y({1.0, 2.0, 3.0});
-    EXPECT_THROW(y[4] = 5, std::invalid_argument);
+    EXPECT_THROW(y.operator[](4) = 5, std::invalid_argument);
 }
 
 TEST_P(mukhin_i_test_cases_vector, can_sum_vectors) {

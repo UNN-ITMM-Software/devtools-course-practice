@@ -1,5 +1,6 @@
 // Copyright 2024 Mukhin Ivan
 #include "include/vector_calculator.h"
+#include <exception>
 #include <vector>
 #include <cstdint>
 #include <iostream>
@@ -52,8 +53,8 @@ void mukhin_i::Vector3DApp::init_vectors() {
             try {
                 numbers.push_back(std::stod(tmp));
                 tmp.clear();
-            } catch(std::invalid_argument &e) {
-                throw std::invalid_argument("Can't convert to double.");
+            } catch(const std::exception &e) {
+                throw e;
             }
         } else {
             tmp += res[i];
