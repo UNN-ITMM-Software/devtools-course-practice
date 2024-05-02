@@ -39,7 +39,8 @@ TEST(mukhin_i_test_cases, cant_parse_wrong_sentence_3) {
     const char* c[] = {"filename",
                        "{1,2,3}}",
                        "p"};
-    ASSERT_ANY_THROW(mukhin_i::Vector3DApp app(3, c););
+    mukhin_i::Vector3DApp app(3, c);
+    ASSERT_ANY_THROW(app.parse());
 }
 
 TEST(mukhin_i_test_cases, cant_parse_wrong_sentence_4) {

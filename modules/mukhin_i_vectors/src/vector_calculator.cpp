@@ -13,20 +13,23 @@ mukhin_i::Vector3DApp::Vector3DApp(int argc, const char** argv) {
     for (int i = 1; i < argc; i++) {
         args.append(argv[i]);
     }
-    res = parse();
 }
 
 std::string mukhin_i::Vector3DApp::parse() {
     std::stack<char> st;
     std::vector<double> numbers;
-    std::string res;
     std::string tmp;
     for (uint64_t i = 0; i < args.size(); i++) {
         if (args[i] == '{') {
             st.push('}');
         } else if (args[i] == '}') {
-            st.pop();
-            res += ' ';
+            if (st.empty()) {
+                st.push('}');
+                res += ' ';
+            } else {
+                st.pop();
+                res += ' ';
+            }
         } else if (args[i] == '+' ||
                    args[i] == '-' ||
                    args[i] == 'm' ||
