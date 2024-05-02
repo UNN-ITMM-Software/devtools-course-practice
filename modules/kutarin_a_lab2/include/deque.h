@@ -116,12 +116,12 @@ void Deque<T>::reverse() {
 
 template <typename T>
 T& Deque<T>::operator[] (int index) {
-    if (index >= size_) {
+    if (index >= static_cast<int>(size_)) {
         throw std::out_of_range("Index out of range");
     }
 
     Node<T>* current = front_;
-    for (size_t i = 0; i < index; i++) {
+    for (size_t i = 0; static_cast<int>(i) < index; i++) {
         current = current->next;
     }
 
