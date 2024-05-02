@@ -21,11 +21,11 @@ void SortStationApp::help(const char* appName, const char* msg) {
 
 bool SortStationApp::validate(const int argc, char* argv[]) {
     if (argc != 2) {
-        help(argv[0]);
+        help(argv[0], nullptr);
         return false;
     }
     if (std::strcmp(argv[1], "--help") == 0) {
-        help(argv[0]);
+        help(argv[0], nullptr);
         return false;
     }
     return true;
