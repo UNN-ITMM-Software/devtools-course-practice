@@ -76,47 +76,48 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
     string4 = argv[3];  // op
     TDynamicMatrix<double> matrix_res;
     double double_res;
+    std::ostringstream stream;
     switch (string4[0]) {
     case '+':
       matrix_res = matrix1 + matrix2;
-      /*std::cout << "matrix1:\n"
-                << matrix1 << std::endl
-                << "matrix2:\n"
-                << matrix2 << std::endl
-                << "result (sum):\n"
-                << matrix_res << std::endl;*/
+      stream << "matrix1:\n"
+             << matrix1 << std::endl
+             << "matrix2:\n"
+             << matrix2 << std::endl
+             << "result (sum):\n"
+             << matrix_res << std::endl;
       break;
     case '-':
       matrix_res = matrix1 - matrix2;
-      /*std::cout << "matrix1:\n"
-                << matrix1 << std::endl
-                << "matrix2:\n"
-                << matrix2 << std::endl
-                << "result (sub):\n"
-                << matrix_res << std::endl;*/
+      stream << "matrix1:\n"
+             << matrix1 << std::endl
+             << "matrix2:\n"
+             << matrix2 << std::endl
+             << "result (sub):\n"
+             << matrix_res << std::endl;
       break;
     case '*':
       matrix_res = matrix1 * matrix2;
-      /*std::cout << "matrix1:\n"
-                << matrix1 << std::endl
-                << "matrix2:\n"
-                << matrix2 << std::endl
-                << "result (mult):\n"
-                << matrix_res << std::endl;*/
+      stream << "matrix1:\n"
+             << matrix1 << std::endl
+             << "matrix2:\n"
+             << matrix2 << std::endl
+             << "result (mult):\n"
+             << matrix_res << std::endl;
       break;
     case 'i':
       matrix_res = matrix1.findInverse();
-      /*std::cout << "matrix:\n"
-                << matrix1 << std::endl
-                << "result (inverse):\n"
-                << matrix_res << std::endl;*/
+      stream << "matrix:\n"
+             << matrix1 << std::endl
+             << "result (inverse):\n"
+             << matrix_res << std::endl;
       break;
     case 'd':
       double_res = matrix1.findDeterm();
-      /*std::cout << "matrix:\n"
-                << matrix1 << std::endl
-                << "result (det):\n"
-                << double_res << std::endl;*/
+      stream << "matrix:\n"
+             << matrix1 << std::endl
+             << "result (det):\n"
+             << double_res << std::endl;
       break;
     default:
       Help(argv[0], "Unknown operation.");
@@ -124,6 +125,8 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
       break;
     }
   }
+
+  message_ = stream.str();
 
   return message_;
 }
