@@ -1,0 +1,122 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an application"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_use_option_f
+    COMMAND ${APPLICATION} -f 4 1 2 3 4 5
+)
+set_tests_properties (${prefix}_run_use_option_f PROPERTIES
+    PASS_REGULAR_EXPRESSION "true"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_use_option_i
+    COMMAND ${APPLICATION} -i 6 1 2 3 4 5
+)
+set_tests_properties (${prefix}_run_use_option_i PROPERTIES
+    PASS_REGULAR_EXPRESSION "1 2 3 4 5 6 "
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_use_option_r
+    COMMAND ${APPLICATION} -r 3 1 2 3 4 5
+)
+set_tests_properties (${prefix}_run_use_option_r PROPERTIES
+    PASS_REGULAR_EXPRESSION "1 2 4 5 "
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_use_option_f_fail
+    COMMAND ${APPLICATION} -f 7 1 2 3 4 5
+)
+set_tests_properties (${prefix}_run_use_option_f_fail PROPERTIES
+    PASS_REGULAR_EXPRESSION "false"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_use_option_i_fail
+    COMMAND ${APPLICATION} -i 3 1 2 3 4 5
+)
+set_tests_properties (${prefix}_run_use_option_i_fail PROPERTIES
+    PASS_REGULAR_EXPRESSION "1 2 3 4 5 "
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_use_option_r_fail
+    COMMAND ${APPLICATION} -r 6 1 2 3 4 5
+)
+set_tests_properties (${prefix}_run_use_option_r_fail PROPERTIES
+    PASS_REGULAR_EXPRESSION "1 2 3 4 5 "
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_use_option_f_error
+    COMMAND ${APPLICATION} -f 7 1 2 3 f 5
+)
+set_tests_properties (${prefix}_run_use_option_f_error PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: invalid argument, arguments must be numbers"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_use_option_i_error
+    COMMAND ${APPLICATION} -i 3 1 99999999999999999 3 4 5
+)
+set_tests_properties (${prefix}_run_use_option_i_error PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: argument out of range"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_use_option_r_error
+    COMMAND ${APPLICATION} -a 6 1 2 3 4 5
+)
+set_tests_properties (${prefix}_run_use_option_r_error PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: unknown argument"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_empty
+    COMMAND ${APPLICATION} -f
+)
+set_tests_properties (${prefix}_run_empty PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: tree is empty"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_empty_again
+    COMMAND ${APPLICATION} -f 6
+)
+set_tests_properties (${prefix}_run_empty_again PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: tree is empty"
+    LABELS "${MODULE}"
+)
