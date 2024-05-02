@@ -38,7 +38,7 @@ std::vector<std::string> DoubleLinkedListApp::runApp(int argc,
                     index = static_cast<size_t>(std::stoi(args[i + 2]));
                 } catch (const std::exception& e) {
                     output.push_back(e.what());
-                    break;
+                    return output;
                 }
                 insert(output, args[i + 1], index);
                 i += 2;
@@ -54,7 +54,7 @@ std::vector<std::string> DoubleLinkedListApp::runApp(int argc,
                     index = static_cast<size_t>(std::stoi(args[i + 1]));
                 } catch (const std::exception& e) {
                     output.push_back(e.what());
-                    break;
+                    return output;
                 }
                 erase(output, index);
                 i++;

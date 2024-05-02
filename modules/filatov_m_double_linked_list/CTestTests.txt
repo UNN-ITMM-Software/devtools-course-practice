@@ -105,7 +105,9 @@ add_test(
     COMMAND ${APPLICATION} --give_me_coffee
 )
 set_tests_properties (${prefix}_unrecognized_Option PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error:\nunrecognized command-line option.\nRun*"
+    PASS_REGULAR_EXPRESSION "Error:
+unrecognized command-line option.
+Run --help for all supported options"
     LABELS "${MODULE}")
 
 add_test(
@@ -122,4 +124,40 @@ add_test(
 )
 set_tests_properties (${prefix}_can_Erase PROPERTIES
     PASS_REGULAR_EXPRESSION "gonna\ngive\nyou\nup\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_insert_No_Arguments
+    COMMAND ${APPLICATION} --insert
+)
+set_tests_properties (${prefix}_insert_No_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:
+--insert option must have two arguments.
+Run --help for all supported options"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_erase_No_Arguments
+    COMMAND ${APPLICATION} --erase
+)
+set_tests_properties (${prefix}_erase_No_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:
+--erase option must have one arguments.
+Run --help for all supported options\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_insert_Invalid_index
+    COMMAND ${APPLICATION} --insert elem two --print
+)
+set_tests_properties (${prefix}_insert_Invalid_index PROPERTIES
+    PASS_REGULAR_EXPRESSION "stoi"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_erase_Invalid_index
+    COMMAND ${APPLICATION} --erase two --print
+)
+set_tests_properties (${prefix}_erase_Invalid_index PROPERTIES
+    PASS_REGULAR_EXPRESSION "stoi"
     LABELS "${MODULE}")
