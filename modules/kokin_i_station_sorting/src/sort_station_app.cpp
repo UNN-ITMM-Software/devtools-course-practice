@@ -21,7 +21,7 @@ void SortStationApp::help(const char* appName, const char* msg) {
 
 bool SortStationApp::validate(const int argc, char* argv[]) {
     if (argc != 2) {
-        help(argv[0], nullptr);
+        help(argv[0], "Error: You have to enter one argument");
         return false;
     }
     if (std::strcmp(argv[1], "--help") == 0) {
