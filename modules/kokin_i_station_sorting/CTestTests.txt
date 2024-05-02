@@ -5,56 +5,50 @@
 set(prefix "${MODULE}")
 
 add_test(
-    NAME ${prefix}_run
-    COMMAND ${APPLICATION}
-)
-
-set_tests_properties (${prefix}_run PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is an application"
-    LABELS "${MODULE}"
-)
-
-add_test(
     NAME ${prefix}_test_help
     COMMAND ${APPLICATION} --help
 )
-set_tests_properties (${prefix}_test_help PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is an application"
+set_tests_properties(${prefix}_test_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Calculator for evaluating mathematical expressions"
     LABELS "${MODULE}"
 )
 
+# Добавляем тест для проверки валидации аргументов при выполнении без аргументов
 add_test(
-    NAME ${prefix}_run_identical_strings
-    COMMAND ${APPLICATION} "string" "string"
+    NAME ${prefix}_test_no_args
+    COMMAND ${APPLICATION}
 )
-set_tests_properties (${prefix}_run_identical_strings PROPERTIES
-    PASS_REGULAR_EXPRESSION "'string' and 'string' is: 0"
+set_tests_properties(${prefix}_test_no_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Provide an argument for the expression to evaluate"
     LABELS "${MODULE}"
 )
 
+# Добавляем тест для проверки валидации аргументов при выполнении с некорректным количеством аргументов
 add_test(
-    NAME ${prefix}_run_no_identical_strings
-    COMMAND ${APPLICATION} "abcdef" "string"
+    NAME ${prefix}_test_too_many_args
+    COMMAND ${APPLICATION} "2+2*2" "3*(4+2)"
 )
-set_tests_properties (${prefix}_run_no_identical_strings PROPERTIES
-    PASS_REGULAR_EXPRESSION "'abcdef' and 'string' is: 6"
+set_tests_properties(${prefix}_test_too_many_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: You have to enter one argument"
     LABELS "${MODULE}"
 )
 
+# Добавляем тест для проверки корректного вычисления математического выражения
 add_test(
-    NAME ${prefix}_run_with_two_args
-    COMMAND ${APPLICATION} "string"
+    NAME ${prefix}_test_valid_expression
+    COMMAND ${APPLICATION} "2+2*2"
 )
-set_tests_properties (${prefix}_run_with_two_args PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: You have to enter three arguments"
+set_tests_properties(${prefix}_test_valid_expression PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: 6"
     LABELS "${MODULE}"
 )
 
+# Добавляем тест для проверки обработки исключения при некорректном математическом выражении
 add_test(
-    NAME ${prefix}_run_with_four_args
-    COMMAND ${APPLICATION} "string"
+    NAME ${prefix}_test_invalid_expression
+    COMMAND ${APPLICATION} "2++2*2"
 )
-set_tests_properties (${prefix}_run_with_four_args PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: You have to enter three arguments"
+set_tests_properties(${prefix}_test_invalid_expression PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid mathematical expression"
     LABELS "${MODULE}"
 )
