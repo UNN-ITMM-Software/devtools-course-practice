@@ -29,7 +29,7 @@ class Deque {
     T pop_back();
     bool empty() const;
     size_t size() const;
-    T& operator [] (int index);
+    T& operator[] (int index);
  private:
     Node<T>* front_;
     Node<T>* back_;

@@ -2,10 +2,9 @@
 
 #pragma once
 
-#include "deque.h"
-
 #include <string>
 #include <vector>
+#include "include/deque.h"
 
 class DequeApp {
     Deque<std::string> deque;
