@@ -1,4 +1,4 @@
-// Copyright 2024 Zhatkin Vyacheslav 
+// Copyright 2024 Zhatkin Vyacheslav
 
 #include <iostream>
 

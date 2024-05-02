@@ -1,4 +1,4 @@
-// Copyright 2024 Zhatkin Vyacheslav 
+// Copyright 2024 Zhatkin Vyacheslav
 
 #pragma once
 
@@ -7,12 +7,12 @@
 #include "include/sort_station.h"
 
 class SortStationApp {
-public:
+ public:
     SortStationApp() = default;
 
     std::string operator()(int argc, char* argv[]);
 
-private:
+ private:
     std::string message_;
     SortStationDerived sortStation;
 
