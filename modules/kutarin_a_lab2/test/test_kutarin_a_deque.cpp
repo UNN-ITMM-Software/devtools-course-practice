@@ -205,3 +205,67 @@ TEST(DequeTest, MoveAssignment) {
     EXPECT_EQ(dq2.pop_front(), 2);
     EXPECT_TRUE(dq2.empty());
 }
+
+TEST(DequeTest, PushFront) {
+    Deque<int> deque;
+    for (int i = 0; i < 5; ++i) {
+        deque.push_front(i);
+    }
+
+    for (int i = 0; i < 5; ++i) {
+        ASSERT_EQ(deque.pop_back(), i);
+    }
+}
+
+TEST(DequeTest, PushBack) {
+    Deque<int> deque;
+    for (int i = 0; i < 5; ++i) {
+        deque.push_back(i);
+    }
+
+    for (int i = 0; i < 5; ++i) {
+        ASSERT_EQ(deque.pop_front(), i);
+    }
+}
+
+TEST(DequeTest, Reverse) {
+    Deque<int> deque;
+    for (int i = 0; i < 5; ++i) {
+        deque.push_back(i);
+    }
+
+    deque.reverse();
+
+    for (int i = 0; i < 5; ++i) {
+        ASSERT_EQ(deque.pop_front(), 4 - i);
+    }
+}
+
+TEST(DequeTest, OperatorSquareBrackets) {
+    Deque<int> deque;
+    for (int i = 0; i < 5; ++i) {
+        deque.push_back(i);
+    }
+
+    for (int i = 0; i < 5; ++i) {
+        ASSERT_EQ(deque[i], i);
+    }
+}
+
+TEST(DequeTest, OperatorSquareBracketsOutOfRange) {
+    Deque<int> deque;
+    for (int i = 0; i < 5; ++i) {
+        deque.push_back(i);
+    }
+
+    try {
+        deque[5];
+        FAIL() << "Expected std::out_of_range";
+    }
+    catch(const std::out_of_range& e) {
+        EXPECT_EQ(e.what(), std::string("Index out of range"));
+    }
+    catch(...) {
+        FAIL() << "Expected std::out_of_range";
+    }
+}
