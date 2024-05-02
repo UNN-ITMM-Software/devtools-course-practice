@@ -76,11 +76,11 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
     string4 = argv[3];  // op
     TDynamicMatrix<double> matrix_res;
     double double_res;
-    std::ostringstream stream;
+    std::ostringstream msg_stream;
     switch (string4[0]) {
     case '+':
       matrix_res = matrix1 + matrix2;
-      stream << "matrix1:\n"
+      msg_stream << "matrix1:\n"
              << matrix1 << std::endl
              << "matrix2:\n"
              << matrix2 << std::endl
@@ -89,7 +89,7 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
       break;
     case '-':
       matrix_res = matrix1 - matrix2;
-      stream << "matrix1:\n"
+      msg_stream << "matrix1:\n"
              << matrix1 << std::endl
              << "matrix2:\n"
              << matrix2 << std::endl
@@ -98,7 +98,7 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
       break;
     case '*':
       matrix_res = matrix1 * matrix2;
-      stream << "matrix1:\n"
+      msg_stream << "matrix1:\n"
              << matrix1 << std::endl
              << "matrix2:\n"
              << matrix2 << std::endl
@@ -107,14 +107,14 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
       break;
     case 'i':
       matrix_res = matrix1.findInverse();
-      stream << "matrix:\n"
+      msg_stream << "matrix:\n"
              << matrix1 << std::endl
              << "result (inverse):\n"
              << matrix_res << std::endl;
       break;
     case 'd':
       double_res = matrix1.findDeterm();
-      stream << "matrix:\n"
+      msg_stream << "matrix:\n"
              << matrix1 << std::endl
              << "result (det):\n"
              << double_res << std::endl;
@@ -124,9 +124,9 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
       return message_;
       break;
     }
-  }
 
-  message_ = stream.str();
+    message_ = msg_stream.str();
+  }
 
   return message_;
 }
