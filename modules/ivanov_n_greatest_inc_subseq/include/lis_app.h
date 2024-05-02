@@ -5,7 +5,7 @@
 
 class LISApp {
  public:
-    LISApp();
+    LISApp() = default;
 
     std::string operator()(int argc, const char** argv);
 

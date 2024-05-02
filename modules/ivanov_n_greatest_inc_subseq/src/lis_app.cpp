@@ -15,9 +15,11 @@
 LISApp::LISApp() : message_("") {}
 
 void LISApp::help(const char* appname, const char* message) {
-    message_ = std::string(message) + "This is LISApp application.\n\n" +
-               "Please provide arguments in the following format:\n\n" + "  " +
-               appname + " <int_1> <int_2> ...\n";
+    std::ostringstream stream;
+    stream << message << "This is LISApp application.\n\n"
+                   << "Please provide arguments in the following format:\n\n"
+                   << "  " << appname << " <int_1> <int_2> ...\n";
+    message_ = stream.str();
 }
 
 bool LISApp::validateNumberOfArguments(int argc, const char** argv) {
