@@ -3,7 +3,7 @@
 #include "include/figure_surface.h"
 
 double FigureSurface::fnCalculateSurfaceParallelepiped(double _a,
-       double _b, double _c) {
+                                                       double _b, double _c) {
     double result = 0.0;
 
     if (_a <= 0 || _b <= 0 || _c <= 0) {
@@ -40,7 +40,7 @@ double FigureSurface::fnCalculateSurfaceConeSide(double _r, double _l) {
         throw std::invalid_argument("Invalid arguments");
     }
 
-    return result = PI * _r  * _l;
+    return result = PI * _r * _l;
 }
 
 double FigureSurface::fnCalculateSurfaceConeFull(double _r, double _l) {
