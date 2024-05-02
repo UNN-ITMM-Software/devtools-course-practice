@@ -99,3 +99,11 @@ add_test(
 set_tests_properties (${prefix}_can_Push_Back_and_Push_Front_and_Print PROPERTIES
     PASS_REGULAR_EXPRESSION "a\nnever\ngonna\ngive\nyou\nup\nb\n"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_unrecognized_Option
+    COMMAND ${APPLICATION} --give_me_coffee
+)
+set_tests_properties (${prefix}_unrecognized_Option PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:\nunrecognized command-line option.\nRun*"
+    LABELS "${MODULE}")
