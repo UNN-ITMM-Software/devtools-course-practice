@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include "include/sort_station_app.h"
 
-void SortStationApp::help(const char* appName, const char* msg = nullptr) {
+void SortStationApp::help(const char* appName, const char* msg) {
     std::stringstream ss;
 
     if (msg) ss << "Error: " << msg << '\n';
