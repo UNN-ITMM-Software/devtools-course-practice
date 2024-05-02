@@ -292,5 +292,5 @@ TEST(DequeTest, SimplePushBack) {
     ASSERT_NO_THROW(deque.push_back(1));
     ASSERT_NO_THROW(deque.push_back(2));
     ASSERT_NO_THROW(deque.push_back(3));
-    ASSERT_EQ(deque.size(), 3);
+    ASSERT_EQ(static_cast<int>(deque.size()), 3);
 }
