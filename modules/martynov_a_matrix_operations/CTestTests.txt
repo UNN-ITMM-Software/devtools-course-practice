@@ -66,3 +66,43 @@ add_test(
 set_tests_properties (${prefix}_can_Detect_Incorrect_Matrix_2_Size PROPERTIES
     PASS_REGULAR_EXPRESSION "Error: Invalid matrix2 size."
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Sum_Matrix_Size_2
+    COMMAND ${APPLICATION} 2 "1 0 0 1" "+" "2 0 0 2"
+)
+set_tests_properties (${prefix}_can_Sum_Matrix_Size_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "( 3 0 0 3 )"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Sub_Matrix_Size_2
+    COMMAND ${APPLICATION} 2 "1 0 0 1" "-" "2 0 0 2"
+)
+set_tests_properties (${prefix}_can_Sub_Matrix_Size_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "( -1 0 0 -1 )"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Mult_Matrix_Size_2
+    COMMAND ${APPLICATION} 2 "2 0 0 2" "*" "2 0 0 2"
+)
+set_tests_properties (${prefix}_can_Mult_Matrix_Size_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "( 4 0 0 4 )"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Find_Inverse_Matrix_Size_2
+    COMMAND ${APPLICATION} 2 "2 0 0 2" "i"
+)
+set_tests_properties (${prefix}_can_Find_Inverse_Matrix_Size_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "( 0.5 0 0 0.5 )"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Find_Determ_Size_2
+    COMMAND ${APPLICATION} 2 "2 0 0 2" "d"
+)
+set_tests_properties (${prefix}_can_Find_Determ_Size_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "4"
+    LABELS "${MODULE}")

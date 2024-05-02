@@ -80,43 +80,35 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
     switch (string4[0]) {
     case '+':
       matrix_res = matrix1 + matrix2;
-      msg_stream << "matrix1:\n"
-             << matrix1 << std::endl
-             << "matrix2:\n"
-             << matrix2 << std::endl
-             << "result (sum):\n"
+      msg_stream << "matrix1: "
+             << matrix1 << " matrix2: "
+             << matrix2 << " result (sum): "
              << matrix_res << std::endl;
       break;
     case '-':
       matrix_res = matrix1 - matrix2;
-      msg_stream << "matrix1:\n"
-             << matrix1 << std::endl
-             << "matrix2:\n"
-             << matrix2 << std::endl
-             << "result (sub):\n"
+      msg_stream << "matrix1: "
+             << matrix1 << " matrix2: "
+             << matrix2 << " result (sub): "
              << matrix_res << std::endl;
       break;
     case '*':
       matrix_res = matrix1 * matrix2;
-      msg_stream << "matrix1:\n"
-             << matrix1 << std::endl
-             << "matrix2:\n"
-             << matrix2 << std::endl
-             << "result (mult):\n"
+      msg_stream << "matrix1: "
+             << matrix1 << " matrix2: "
+             << matrix2 << " result (mult): "
              << matrix_res << std::endl;
       break;
     case 'i':
       matrix_res = matrix1.findInverse();
-      msg_stream << "matrix:\n"
-             << matrix1 << std::endl
-             << "result (inverse):\n"
+      msg_stream << "matrix: "
+             << matrix1 << " result (inverse): "
              << matrix_res << std::endl;
       break;
     case 'd':
       double_res = matrix1.findDeterm();
-      msg_stream << "matrix:\n"
-             << matrix1 << std::endl
-             << "result (det):\n"
+      msg_stream << "matrix: "
+             << matrix1 << " result (det): "
              << double_res << std::endl;
       break;
     default:

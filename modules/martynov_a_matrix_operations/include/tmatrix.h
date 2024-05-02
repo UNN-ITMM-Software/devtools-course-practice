@@ -301,7 +301,6 @@ TDynamicVector<TDynamicVector<T>>(V) {}
     for (size_t j = 0; j < v.size(); j++) {
       ostr << v[i][j] << ' ';
     }
-    if (i != v.size() - 1) ostr << '\n';
   }
   ostr << ')';
 
