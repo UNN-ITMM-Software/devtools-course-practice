@@ -269,3 +269,28 @@ TEST(DequeTest, OperatorSquareBracketsOutOfRange) {
         FAIL() << "Expected std::out_of_range";
     }
 }
+
+TEST(DequeTest, PushFrontToEmptyDeque) {
+    Deque<int> deque;
+    deque.push_front(1);
+    ASSERT_EQ(deque[0], 1);
+}
+
+TEST(DequeTest, PushBackToEmptyDeque) {
+    Deque<int> deque;
+    deque.push_back(1);
+    ASSERT_EQ(deque[0], 1);
+}
+
+TEST(DequeTest, SimpleOperatorSquareBracketsOutOfRange) {
+    Deque<int> deque;
+    ASSERT_THROW(deque[5], std::out_of_range);
+}
+
+TEST(DequeTest, SimplePushBack) {
+    Deque<int> deque;
+    ASSERT_NO_THROW(deque.push_back(1));
+    ASSERT_NO_THROW(deque.push_back(2));
+    ASSERT_NO_THROW(deque.push_back(3));
+    ASSERT_EQ(deque.size(), 3);
+}

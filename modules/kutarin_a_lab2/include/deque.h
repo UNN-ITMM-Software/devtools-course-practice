@@ -71,9 +71,6 @@ Deque<T>::~Deque() {
 template <typename T>
 void Deque<T>::push_front(T value) {
     Node<T>* new_node = new Node<T>{value, front_, nullptr};
-    if (new_node == nullptr) {
-        throw std::bad_alloc();
-    }
     if (front_) {
         front_->prev = new_node;
     } else {
@@ -86,9 +83,6 @@ void Deque<T>::push_front(T value) {
 template <typename T>
 void Deque<T>::push_back(T value) {
     Node<T>* new_node = new Node<T>{value, nullptr, back_};
-    if (new_node == nullptr) {
-        throw std::bad_alloc();
-    }
     if (back_) {
         back_->next = new_node;
     } else {
@@ -119,12 +113,10 @@ T& Deque<T>::operator[] (int index) {
     if (index >= static_cast<int>(size_)) {
         throw std::out_of_range("Index out of range");
     }
-
     Node<T>* current = front_;
     for (size_t i = 0; static_cast<int>(i) < index; i++) {
         current = current->next;
     }
-
     return current->value;
 }
 
