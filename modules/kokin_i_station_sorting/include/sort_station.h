@@ -6,6 +6,7 @@
 #include <string>
 #include <stack>
 #include <unordered_map>
+#include <stdexcept>
 
 class SortStation {
  public:
@@ -27,3 +28,4 @@ class SortStationDerived : public SortStation {
 };
 
 #endif  // MODULES_KOKIN_I_STATION_SORTING_INCLUDE_SORT_STATION_H_
+
