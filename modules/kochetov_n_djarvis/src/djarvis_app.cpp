@@ -33,14 +33,6 @@ std::string Application::run(std::vector<std::string>& args) {
         return ss.str();
     }
 
-    ConvexHull convexHull(points);
-    std::vector<Point> hull = convexHull.findConvexHull();
-
-    ss << "Convex Hull Points: ";
-    for (const auto& point : hull) {
-        ss << "(" << point.x << "," << point.y << ") ";
-    }
-
-    return ss.str();
+    return "";
 }
 
