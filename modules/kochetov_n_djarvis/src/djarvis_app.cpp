@@ -8,7 +8,7 @@ std::string Application::run(std::vector<std::string>& args) {
     std::vector<Point> points;
 
     if (args.empty()) {
-        ss << "Usage: <executable> <point1_x> <point1_y>"
+        ss << "Usage: <executable> <point1_x> <point1_y> "
             "<point2_x> <point2_y> ...";
         return ss.str();
     }
