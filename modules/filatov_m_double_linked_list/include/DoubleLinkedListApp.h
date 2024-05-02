@@ -15,6 +15,8 @@ class DoubleLinkedListApp {
     void print(std::vector<std::string>& output);
     void push_back(std::vector<std::string>& output, std::string elem);
     void push_front(std::vector<std::string>& output, std::string elem);
+    void insert(std::vector<std::string>& output, std::string elem, size_t index);
+    void erase(std::vector<std::string>& output, size_t index);
  public:
     DoubleLinkedListApp() {
         list.push_back("never");
