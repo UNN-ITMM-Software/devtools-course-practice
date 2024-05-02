@@ -1,6 +1,7 @@
 // Copyright 2024 Saratova Marina
 
 #include "include/complex_number_calc.h"
+#include <iomanip>
 
 ComplexCalculator::ComplexCalculator(double real, double imaginary)
     : real(real), imaginary(imaginary) {}
@@ -46,4 +47,21 @@ ComplexCalculator ComplexCalculator::operator/
     double result_imaginary = (imaginary * other.real - real *
                                  other.imaginary) / denominator;
     return ComplexCalculator(result_real, result_imaginary);
+}
+
+std::string ComplexCalculator::toString() const {
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(2);
+
+    ss << getReal();
+
+    if (getImaginary() >= 0) {
+        ss << " + ";
+    } else {
+        ss << " - ";
+    }
+
+    ss << std::abs(getImaginary()) << "i";
+
+    return ss.str();
 }
