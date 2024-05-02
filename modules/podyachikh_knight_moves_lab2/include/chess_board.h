@@ -6,7 +6,10 @@
 #include <utility>
 
 class ChessBoard {
+ public:
   using Point = std::pair<int, int>;
+
+ protected:
   int _size;
   std::set<Point> obstacles;
 

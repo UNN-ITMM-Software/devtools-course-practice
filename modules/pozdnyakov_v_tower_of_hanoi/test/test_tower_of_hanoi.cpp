@@ -4,6 +4,10 @@
 #include <vector>
 #include "include/tower_of_hanoi.h"
 
+TEST(Pozdnyakov_Vasya_HanoiTests, constructor_no_throw) {
+    ASSERT_NO_THROW(TowerOfHanoi());
+}
+
 TEST(Pozdnyakov_Vasya_HanoiTests, number_of_rings_is_negative) {
     int rings = -10;
     TowerOfHanoi tower;
