@@ -1,7 +1,7 @@
 // Copyright 2024 Ivanov Nikita
 #include <string>
 
-#include "../include/lcs_app.h"
+#include "include/lcs_app.h"
 
 int main(int argc, const char** argv) {
     LCSApp app;

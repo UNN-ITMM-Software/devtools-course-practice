@@ -15,8 +15,5 @@ class LCSApp {
     typedef struct {
         std::string str1;
         std::string str2;
-        double z2_real;
-        double z2_imaginary;
-        char operation;
     } Arguments;
 };

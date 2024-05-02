@@ -2,10 +2,6 @@
 #include "include/lcs.h"
 #include "include/lcs_app.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <string.h>
 #include <string>
 #include <iostream>
 #include <sstream>

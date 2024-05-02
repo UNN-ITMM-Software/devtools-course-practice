@@ -1,7 +1,5 @@
 // Copyright 2017 Korniakov Kirill
 
-#include <stdlib.h>
-#include <stdio.h>
 #include <string>
 
 #include "../include/complex_calculator.h"
