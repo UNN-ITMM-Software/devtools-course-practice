@@ -1,0 +1,60 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_print_help_without_arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_print_help_without_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: invalid number of arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_recognizes_error_when_value_entered_incorrectly
+    COMMAND ${APPLICATION} 1 + 3 1 2 3 +
+)
+set_tests_properties (${prefix}_recognizes_error_when_value_entered_incorrectly PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong value format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_recognizes_error_when_entering_operator
+    COMMAND ${APPLICATION} 1 2 3 1 2 3 /
+)
+set_tests_properties (${prefix}_recognizes_error_when_entering_operator PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Wrong operation format!"
+    LABELS "${MODULE}") 
+
+add_test(
+    NAME ${prefix}_can_addition
+    COMMAND ${APPLICATION} 1 2 3 1 2 3 +
+)
+set_tests_properties (${prefix}_can_addition PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result=2x\\^2\\+4x\\+6"
+    LABELS "${MODULE}")     
+
+add_test(
+    NAME ${prefix}_can_subtraction
+    COMMAND ${APPLICATION} 3 2 1 1 2 3 -
+)
+set_tests_properties (${prefix}_can_subtraction PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result=2x\\^2-2"
+    LABELS "${MODULE}")     
+
+add_test(
+    NAME ${prefix}_can_multiplication
+    COMMAND ${APPLICATION} 1 2 3 1 2 3 *
+)
+set_tests_properties (${prefix}_can_multiplication PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result=x\\^4\\+4x\\^3\\+10x\\^2\\+12x\\+9"
+    LABELS "${MODULE}")
