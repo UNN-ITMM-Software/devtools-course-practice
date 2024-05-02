@@ -1,6 +1,7 @@
 // Copyright 2024 Kokin Ivan
 
 #include <gtest/gtest.h>
+
 #include "../include/sort_station.h"
 #include "../include/Console_app.h"
 

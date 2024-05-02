@@ -1,6 +1,8 @@
 // Copyright 2024 Vasilev Ivan
-#include "../include/Console_app.h"
+
 #include <iostream>
+
+#include "../include/Console_app.h"
 
 int main(int argc, char** argv) {
   ConsoleApp app;
