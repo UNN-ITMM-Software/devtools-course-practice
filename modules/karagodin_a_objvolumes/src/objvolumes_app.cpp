@@ -93,7 +93,7 @@ void ObjVolumeApp::help(const char* appname, const char* message) {
     ss << std::string(message);
     ss << "This is an object volume calculator application.\n\n";
     ss << "Please provide arguments in the following format:\n\n";
-    ss << "  $ " << appname << " <objType> <arg> \n\n" +
+    ss << "  $ " << appname << " <objType> <arg> \n\n";
     ss << "Where objType is a string with of object (Sphere, Cube, Cylinder), ";
     ss << "and <arg> is a vector with double-precision numbers \n";
     ss << "In the format of 1,2,3 or 1.0,2.0,3.0 \n";
