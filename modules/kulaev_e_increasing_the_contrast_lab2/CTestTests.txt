@@ -1,0 +1,92 @@
+##############################################
+##### Testing
+##############################################
+
+set(prefix "IncreasingContrastApp")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is an image contrast increasing application"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 1 2 3 4
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Incorrect number of arguments"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Invalid_Image_Size
+    COMMAND ${APPLICATION} 1 2 3 4 5 1 1 1 2 100 200
+)
+set_tests_properties (${prefix}_can_Detect_Invalid_Image_Size PROPERTIES
+    PASS_REGULAR_EXPRESSION "Incorrect image size"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Empty_Image
+    COMMAND ${APPLICATION} 1 0 0 100 200
+)
+set_tests_properties (${prefix}_can_Detect_Empty_Image PROPERTIES
+    PASS_REGULAR_EXPRESSION "Image cannot be empty"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Increase_Contrast
+    COMMAND ${APPLICATION} 100 200 150 120 2 2 0 255
+)
+set_tests_properties (${prefix}_can_Increase_Contrast PROPERTIES
+    PASS_REGULAR_EXPRESSION "Image after contrast increase:\n0 255 127 51"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Increase_Contrast_Example1
+    COMMAND ${APPLICATION} 100 100 100 100 100 1 1 100 100 100 200 100 4 3 0 100
+)
+set_tests_properties (${prefix}_can_Increase_Contrast_Example1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Image after contrast increase:\n49 49 49 49 49 0 0 49 49 49 100 49"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Increase_Contrast_Example2
+    COMMAND ${APPLICATION} 50 50 50 50 50 1 1 50 50 50 200 50 4 3 0 50
+)
+set_tests_properties (${prefix}_can_Increase_Contrast_Example2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Image after contrast increase:\n12 12 12 12 12 0 0 12 12 12 50 12"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Increase_Contrast_Example3
+    COMMAND ${APPLICATION} 0 0 0 0 0 1 1 0 0 0 200 0 4 3 0 100
+)
+set_tests_properties (${prefix}_can_Increase_Contrast_Example3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Image after contrast increase:\n0 0 0 0 0 0 0 0 0 0 100 0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Increase_Contrast_Example4
+    COMMAND ${APPLICATION} 128 128 128 128 128 1 1 128 128 128 200 128 4 3 0 100
+)
+set_tests_properties (${prefix}_can_Increase_Contrast_Example4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Image after contrast increase:\n63 63 63 63 63 0 0 63 63 63 100 63"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Increase_Contrast_Example5
+    COMMAND ${APPLICATION} 255 255 255 255 255 1 1 255 255 255 200 255 4 3 10 50
+)
+set_tests_properties (${prefix}_can_Increase_Contrast_Example5 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Image after contrast increase:\n50 50 50 50 50 10 10 50 50 50 41 50"
+    LABELS "${MODULE}")

@@ -111,3 +111,22 @@ TEST(FractionCalculatorTest, Divide_Fractions) {
     EXPECT_EQ(x.GetNum(), res.GetNum());
     EXPECT_EQ(x.GetDen(), res.GetDen());
 }
+
+TEST(FractionCalculatorTest, SetNum) {
+    FractionCalculator fr;
+    fr.SetNum(5);
+    EXPECT_EQ(fr.GetNum(), 5);
+}
+
+TEST(FractionCalculatorTest, SetDen) {
+    FractionCalculator fr;
+    EXPECT_NO_THROW(fr.SetDen(5));
+    EXPECT_EQ(fr.GetDen(), 5);
+    EXPECT_THROW(fr.SetDen(0), std::invalid_argument);
+}
+
+TEST(FractionCalculatorTest, DivisionByZero) {
+    FractionCalculator fr1(1, 2);
+    FractionCalculator fr2(0, 1);
+    EXPECT_THROW(fr1 / fr2, std::invalid_argument);
+}
