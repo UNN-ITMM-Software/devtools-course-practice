@@ -73,6 +73,10 @@ std::string CombinationsApp::operator()(int argc, char* argv[]) {
         }
 
         str.erase(index_k + 1);
+        if (str == "/") {
+            helpMssg = "Error: Enter the array";
+            return helpMssg;
+        }
 
         int i = 0;
 

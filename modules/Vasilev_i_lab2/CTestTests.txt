@@ -93,3 +93,21 @@ set_tests_properties (${prefix}_operator_valid_input3 PROPERTIES
     LABELS "${MODULE}"
 )
 
+add_test(
+    NAME ${prefix}_operator_valid_input4
+    COMMAND ${APPLICATION} "-1,-2,-3,-4/4"
+)
+set_tests_properties (${prefix}_operator_valid_input4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: { { -1, -2, -3, -4 } }"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_operator_empty_array
+    COMMAND ${APPLICATION} "/2"
+)
+set_tests_properties (${prefix}_operator_empty_array PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Enter the array"
+    LABELS "${MODULE}"
+)
+
