@@ -26,7 +26,7 @@ TEST(SortStationDerivedTest, valid2) {
     EXPECT_EQ(calculator.evaluateFunction("4^2+36/12-1"), 5.5);
 }
 
-//Vasilev Ivan
+// Vasilev Ivan
 
 TEST(ConsoleAppTest, EvaluateValidExpression) {
     ConsoleApp app;
