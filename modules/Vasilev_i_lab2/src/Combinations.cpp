@@ -10,7 +10,7 @@ void combinationsUtil(const std::vector<int>& arr, size_t n, int k, int index,
         result.push_back(data);
         return;
     }
-    if (i >= n) {
+    if (i >= static_cast<int>(n)) {
         return;
     }
     data[index] = arr[i];
