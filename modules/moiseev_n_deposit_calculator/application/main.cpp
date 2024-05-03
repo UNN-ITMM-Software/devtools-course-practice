@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string>
 
-#include "../include/deposit_calculator_app.h"
+#include "include/deposit_calculator_app.h"
 
 int main(int argc, const char **argv) {
   Deposit::Application app{};
