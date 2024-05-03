@@ -33,6 +33,5 @@ std::string Application::run(std::vector<std::string>& args) {
         return ss.str();
     }
 
-    return "";
 }
 
