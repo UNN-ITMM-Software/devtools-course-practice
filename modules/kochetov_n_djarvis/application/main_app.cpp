@@ -1,4 +1,4 @@
-// Copyright 2024 Dostavalov Semyon
+// Copyright 2024 Dostavalov Sem
 
 #include "include/djarvis_app.h"
 #include "include/djarvis.h"
