@@ -5,7 +5,8 @@
 
 int main(int argc, char* argv[]) {
     std::vector<std::string> args;
-
+    args.reserve(argc - 1);
+    
     for (int i = 1; i < argc; ++i) {
         args.push_back(argv[i]);
     }
