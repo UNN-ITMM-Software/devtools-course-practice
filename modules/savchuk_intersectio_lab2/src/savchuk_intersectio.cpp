@@ -1,7 +1,7 @@
 // Copyright 2024 Savchuk Anton
 
-#include <cmath>
 #include <algorithm>
+#include <cmath>
 
 #include "include/savchuk_intersectio.h"
 
@@ -29,16 +29,12 @@ bool TwoSegments::checkIntersection
         return true;
 
     if (o1 == 0 && segment1.onSegment(p1, p2, q1)) return true;
-
     if (o2 == 0 && segment1.onSegment(p1, q2, q1)) return true;
-
     if (o3 == 0 && segment2.onSegment(p2, p1, q2)) return true;
-
     if (o4 == 0 && segment2.onSegment(p2, q1, q2)) return true;
 
     return false;
 }
-
 
 bool TwoSegments::checkParallel
 (const Segment& segment1, const Segment& segment2) {
