@@ -24,10 +24,6 @@ bool SortStationApp::validate(const int argc, char* argv[]) {
         help(argv[0], "You have to enter one argument");
         return false;
     }
-    if (argc <= 1) {
-        help(argv[0], "Provide an argument for the expression to evaluate");
-        return false;
-    }
     if (std::strcmp(argv[1], "--help") == 0) {
         help(argv[0], nullptr);
         return false;

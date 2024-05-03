@@ -19,7 +19,7 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties(${prefix}_test_no_args PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: Provide an argument for the expression to evaluate"
+    PASS_REGULAR_EXPRESSION "Error: You have to enter one argument"
     LABELS "${MODULE}"
 )
 
