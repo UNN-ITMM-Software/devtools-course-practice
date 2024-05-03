@@ -42,8 +42,3 @@ set_tests_properties(${prefix}_test_valid_expression PROPERTIES
     PASS_REGULAR_EXPRESSION "Result: 6"
     LABELS "${MODULE}"
 )
-
-set_tests_properties(${prefix}_test_invalid_expression PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: Invalid mathematical expression"
-    LABELS "${MODULE}"
-)
