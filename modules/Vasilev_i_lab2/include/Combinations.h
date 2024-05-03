@@ -1,4 +1,5 @@
 // Copyright 2024 Vasilev Ivan
+// Copyright 2024 Tushentsova Karina
 
 #pragma once
 #include <vector>
