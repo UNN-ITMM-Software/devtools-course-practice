@@ -15,7 +15,7 @@ void SortStationApp::help(const char* appName, const char* msg) {
     ss << "Provide an argument for the expression to evaluate\n";
     ss << "Example usage:\n";
     ss << " $ " << appName << " \"2+2*2\"\n";
-    ss << " $ " << appName << " \"3*(4+2)\"\n";
+    ss << " $ " << appName << " \"3*(4-2)\"\n";
 
     message_ = ss.str();
 }
