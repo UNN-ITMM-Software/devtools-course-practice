@@ -116,7 +116,7 @@ TEST(DequeTest, LargeAmount) {
     EXPECT_TRUE(dq.empty());
 }
 
-TEST(DequeTest, Double) {
+TEST(DequeTest, DoubleFront) {
     // Arrange
     Deque<double> dq;
     double value = 1.5;
@@ -130,7 +130,35 @@ TEST(DequeTest, Double) {
     EXPECT_TRUE(dq.empty());
 }
 
-TEST(DequeTest, String) {
+TEST(DequeTest, DoubleBack) {
+    // Arrange
+    Deque<double> dq;
+    double value = 1.5;
+
+    // Act
+    dq.push_back(value);
+    double pop_result = dq.pop_back();
+
+    // Assert
+    EXPECT_DOUBLE_EQ(pop_result, value);
+    EXPECT_TRUE(dq.empty());
+}
+
+TEST(DequeTest, StringFront) {
+    // Arrange
+    Deque<std::string> dq;
+    std::string value = "test";
+
+    // Act
+    dq.push_front(value);
+    std::string pop_result = dq.pop_front();
+
+    // Assert
+    EXPECT_EQ(pop_result, value);
+    EXPECT_TRUE(dq.empty());
+}
+
+TEST(DequeTest, StringBack) {
     // Arrange
     Deque<std::string> dq;
     std::string value = "test";
@@ -280,6 +308,17 @@ TEST(DequeTest, PushBackToEmptyDeque) {
     Deque<int> deque;
     deque.push_back(1);
     ASSERT_EQ(deque[0], 1);
+}
+
+
+TEST(DequeTest, PushFrontToEmptyDequeNoThrow) {
+    Deque<int> deque;
+    ASSERT_NO_THROW(deque.push_front(1));
+}
+
+TEST(DequeTest, PushBackToEmptyDequeNoThrow) {
+    Deque<int> deque;
+    ASSERT_NO_THROW(deque.push_back(1));
 }
 
 TEST(DequeTest, SimpleOperatorSquareBracketsOutOfRange) {

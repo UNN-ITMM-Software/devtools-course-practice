@@ -123,3 +123,19 @@ add_test(
 set_tests_properties (${prefix}_can_Pop_Front PROPERTIES
     PASS_REGULAR_EXPRESSION "Deque is empty, can't pop_front."
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Push_Back_to_Empty_Deque
+    COMMAND ${APPLICATION} --pop_front --pop_front --pop_front --pop_front --pop_front --push_back test --print
+)
+set_tests_properties (${prefix}_can_Push_Back_to_Empty_Deque PROPERTIES
+    PASS_REGULAR_EXPRESSION "test\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Push_Front_to_Empty_Deque
+    COMMAND ${APPLICATION} --pop_front --pop_front --pop_front --pop_front --pop_front --push_front test --print
+)
+set_tests_properties (${prefix}_can_Push_Front_to_Empty_Deque PROPERTIES
+    PASS_REGULAR_EXPRESSION "test\n"
+    LABELS "${MODULE}")
