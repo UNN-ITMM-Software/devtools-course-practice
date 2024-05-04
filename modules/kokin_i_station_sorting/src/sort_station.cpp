@@ -1,10 +1,9 @@
 // Copyright 2024 Kokin Ivan
 
+#include "../include/sort_station.h"
 #include <math.h>
 #include <cctype>
 #include <stack>
-
-#include "../include/sort_station.h"
 
 double SortStationDerived::evaluateFunction(const std::string& expression) {
     std::string postfix = convertToPostfix(expression);
@@ -68,4 +67,3 @@ std::string SortStationDerived::convertToPostfix(
     }
     return postfix;
 }
-
