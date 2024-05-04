@@ -32,5 +32,7 @@ std::string Application::run(std::vector<std::string>& args) {
         ss << "Error: Not enough points to form a convex hull!";
         return ss.str();
     }
+
+    return "";
 }
 
