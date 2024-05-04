@@ -12,6 +12,8 @@ class DequeApp {
     void help(std::vector<std::string>& output);
     void reverse(std::vector<std::string>& output);
     void print(std::vector<std::string>& output);
+    void pop_back(std::vector<std::string>& output);
+    void pop_front(std::vector<std::string>& output);
     void push_back(std::vector<std::string>& output, std::string elem);
     void push_front(std::vector<std::string>& output, std::string elem);
  public:

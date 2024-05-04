@@ -107,3 +107,19 @@ add_test(
 set_tests_properties (${prefix}_invalid_command PROPERTIES
     PASS_REGULAR_EXPRESSION "Error:\nunrecognized command-line option.\nRun --help for all supported options"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Pop_Back
+    COMMAND ${APPLICATION} --pop_back --pop_back --pop_back --pop_back --pop_back --pop_back
+)
+set_tests_properties (${prefix}_can_Pop_Back PROPERTIES
+    PASS_REGULAR_EXPRESSION "Deque is empty, can't pop_back."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Pop_Front
+    COMMAND ${APPLICATION} --pop_front --pop_front --pop_front --pop_front --pop_front --pop_front
+)
+set_tests_properties (${prefix}_can_Pop_Front PROPERTIES
+    PASS_REGULAR_EXPRESSION "Deque is empty, can't pop_front."
+    LABELS "${MODULE}")

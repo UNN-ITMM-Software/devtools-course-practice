@@ -14,6 +14,10 @@ std::vector<std::string> DequeApp::runApp(int argc,
             reverse(output);
         } else if (arg == "--print") {
             print(output);
+        } else if (arg == "--pop_back") {
+            pop_back(output);
+        } else if (arg == "--pop_front") {
+            pop_front(output);
         } else if (arg == "--push_back") {
             if (i + 1 < args.size()) {
                 push_back(output, args[i + 1]);
@@ -58,6 +62,8 @@ void DequeApp::help(std::vector<std::string>& output) {
     output.push_back("Optinos:");
     output.push_back("    --print");
     output.push_back("    --reverse");
+    output.push_back("    --pop_back");
+    output.push_back("    --pop_front");
     output.push_back("    --push_back");
     output.push_back("    --push_front");
     output.push_back("    --help");
@@ -79,4 +85,18 @@ void DequeApp::push_back(std::vector<std::string>& output,
 void DequeApp::push_front(std::vector<std::string>& output,
  std::string elem) {
     deque.push_front(elem);
+}
+void DequeApp::pop_back(std::vector<std::string>& output) {
+    if (deque.empty()) {
+        output.push_back("Deque is empty, can't pop_back.");
+    } else {
+        deque.pop_back();
+    }
+}
+void DequeApp::pop_front(std::vector<std::string>& output) {
+    if (deque.empty()) {
+        output.push_back("Deque is empty, can't pop_front.");
+    } else {
+        deque.pop_back();
+    }
 }
