@@ -177,9 +177,7 @@ Deque<T>& Deque<T>::operator=(const Deque<T>& other) {
 template <typename T>
 Deque<T>& Deque<T>::operator=(Deque<T>&& other) noexcept {
     if (this != &other) {
-        while (!empty()) {
-            pop_front();
-        }
+        clear();
         front_ = other.front_;
         back_ = other.back_;
         size_ = other.size_;
