@@ -1,4 +1,4 @@
-// Copyright 2017 Savchuk Anton
+// Copyright 2024 Savchuk Anton
 
 #include <gtest/gtest.h>
 
