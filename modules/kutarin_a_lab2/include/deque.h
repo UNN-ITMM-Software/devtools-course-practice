@@ -23,6 +23,7 @@ class Deque {
     void push_front(T value);
     void push_back(T value);
     void reverse();
+    void clear();
     Deque& operator=(const Deque& other);
     Deque& operator=(Deque&& other) noexcept;
     T pop_front();
@@ -59,13 +60,7 @@ Deque<T>::Deque(Deque<T>&& other) noexcept : front_(other.front_),
 
 template <typename T>
 Deque<T>::~Deque() {
-    while (!empty()) {
-        Node<T>* node_to_delete = front_;
-        front_ = front_->next;
-        delete node_to_delete;
-        node_to_delete = nullptr;
-    }
-    back_ = nullptr;
+    clear();
 }
 
 template <typename T>
@@ -169,12 +164,7 @@ size_t Deque<T>::size() const {
 template <typename T>
 Deque<T>& Deque<T>::operator=(const Deque<T>& other) {
     if (this != &other) {
-        while (!empty()) {
-            Node<T>* node_to_delete = front_;
-            front_ = front_->next;
-            delete node_to_delete;
-            node_to_delete = nullptr;
-        }
+        clear();
         Node<T>* current = other.front_;
         while (current) {
             push_back(current->value);
@@ -198,6 +188,17 @@ Deque<T>& Deque<T>::operator=(Deque<T>&& other) noexcept {
         other.size_ = 0;
     }
     return *this;
+}
+
+template <typename T>
+void Deque<T>::clear() {
+    while (!empty()) {
+        Node<T>* node_to_delete = front_;
+        front_ = front_->next;
+        delete node_to_delete;
+        node_to_delete = nullptr;
+    }
+    back_ = nullptr;
 }
 
 #endif  // MODULES_KUTARIN_A_LAB2_INCLUDE_DEQUE_H_
