@@ -5,40 +5,46 @@
 set(prefix "${MODULE}")
 
 add_test(
-    NAME ${prefix}_test_help
-    COMMAND ${APPLICATION} --help
-)
-set_tests_properties(${prefix}_test_help PROPERTIES
-    PASS_REGULAR_EXPRESSION "Calculator for evaluating mathematical expressions"
-    LABELS "${MODULE}"
-)
-
-# Добавляем тест для проверки валидации аргументов при выполнении без аргументов
-add_test(
-    NAME ${prefix}_test_no_args
+    NAME ${prefix}_run
     COMMAND ${APPLICATION}
 )
-set_tests_properties(${prefix}_test_no_args PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: You have to enter one argument"
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
     LABELS "${MODULE}"
 )
 
-# Добавляем тест для проверки валидации аргументов при выполнении с некорректным количеством аргументов
 add_test(
-    NAME ${prefix}_test_too_many_args
-    COMMAND ${APPLICATION} "2+2*2" "3*(4+2)"
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
 )
-set_tests_properties(${prefix}_test_too_many_args PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: You have to enter one argument"
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
     LABELS "${MODULE}"
 )
 
-# Добавляем тест для проверки корректного вычисления математического выражения
 add_test(
-    NAME ${prefix}_test_valid_expression
-    COMMAND ${APPLICATION} "2+2*2"
+    NAME ${prefix}_run_expression
+    COMMAND ${APPLICATION} "2+2"
 )
-set_tests_properties(${prefix}_test_valid_expression PROPERTIES
-    PASS_REGULAR_EXPRESSION "Result: 6"
+set_tests_properties (${prefix}_run_expression PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: 4"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_complex_expression
+    COMMAND ${APPLICATION} "2+3*4"
+)
+set_tests_properties (${prefix}_run_complex_expression PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: 14"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_expression_with_parentheses
+    COMMAND ${APPLICATION} "(2+3)*4"
+)
+set_tests_properties (${prefix}_run_expression_with_parentheses PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: 20"
     LABELS "${MODULE}"
 )
