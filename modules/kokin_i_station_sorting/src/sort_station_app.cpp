@@ -41,5 +41,5 @@ std::string SortStationApp::operator()(const int argc, char* argv[]) {
         double result = sortStation.evaluateFunction(expression);
         message_ = "Result: " + std::to_string(result);
         return message_;
-    };
+    }
 }
