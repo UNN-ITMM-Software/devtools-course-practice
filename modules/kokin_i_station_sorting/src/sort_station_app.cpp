@@ -36,14 +36,10 @@ std::string SortStationApp::operator()(const int argc, char* argv[]) {
     if (!validate(argc, argv)) {
         return message_;
     }
-
-    try {
+    else {
         std::string expression = argv[1];
         double result = sortStation.evaluateFunction(expression);
         message_ = "Result: " + std::to_string(result);
-    }
-    catch (const std::exception& e) {
-        message_ = "Error: " + std::string(e.what());
-    }
-    return message_;
+        return message_;
+    };
 }
