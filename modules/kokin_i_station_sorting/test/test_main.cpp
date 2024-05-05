@@ -1,4 +1,4 @@
-// Copyright 2024 Kokin Ivan
+// Copyright 2024 Vasilev Ivan
 
 #include <gtest/gtest.h>
 
