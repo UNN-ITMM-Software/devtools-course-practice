@@ -1,0 +1,91 @@
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_h
+    COMMAND ${APPLICATION} -h
+)
+set_tests_properties (${prefix}_run_h PROPERTIES
+    PASS_REGULAR_EXPRESSION "^Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_big_find
+    COMMAND ${APPLICATION} ABABABACABAABABACCABABCABAACABAABBBACABA ABACABA
+)
+set_tests_properties (${prefix}_big_find PROPERTIES
+    PASS_REGULAR_EXPRESSION "^ABABABACABAABABACCABABCABAACABAABBBACABA\n    \\^\\^\\^\\^\\^\\^\\^\n$"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_single_find
+    COMMAND ${APPLICATION} AAAA A
+)
+set_tests_properties (${prefix}_single_find PROPERTIES
+    PASS_REGULAR_EXPRESSION "^AAAA\n\\^\nAAAA\n \\^\nAAAA\n  \\^\nAAAA\n   \\^\n$"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_not_found
+    COMMAND ${APPLICATION} ABCDEFG XYZ
+)
+set_tests_properties (${prefix}_not_found PROPERTIES
+    PASS_REGULAR_EXPRESSION "^$"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_multiple_find
+    COMMAND ${APPLICATION} ABABABA ABA
+)
+set_tests_properties (${prefix}_multiple_find PROPERTIES
+    PASS_REGULAR_EXPRESSION "^ABABABA\n\\^\\^\\^\nABABABA\n  \\^\\^\\^\nABABABA\n    \\^\\^\\^\n$"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_find_end
+    COMMAND ${APPLICATION} GFADEFABC ABC
+)
+set_tests_properties (${prefix}_find_end PROPERTIES
+    PASS_REGULAR_EXPRESSION "^GFADEFABC\n      \\^\\^\\^\n$"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_find_start
+    COMMAND ${APPLICATION} DEFABCABC DEF
+)
+set_tests_properties (${prefix}_find_start PROPERTIES
+    PASS_REGULAR_EXPRESSION "^DEFABCABC\n\\^\\^\\^\n$"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_long
+    COMMAND ${APPLICATION} ABC ABCDEF
+)
+set_tests_properties (${prefix}_long PROPERTIES
+    PASS_REGULAR_EXPRESSION "^$"
+    LABELS "${MODULE}"
+)

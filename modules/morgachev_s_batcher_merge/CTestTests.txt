@@ -1,0 +1,100 @@
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help_2
+    COMMAND ${APPLICATION} -init 0 1 143 190 --help
+)
+set_tests_properties (${prefix}_run_help_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_empty
+    COMMAND ${APPLICATION} -init
+)
+set_tests_properties (${prefix}_run_empty PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: array is empty"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_key
+    COMMAND ${APPLICATION} -boooba
+)
+set_tests_properties (${prefix}_run_invalid_key PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: invalid input"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_array_input
+    COMMAND ${APPLICATION} 1 2 -init 11 10 3
+)
+set_tests_properties (${prefix}_run_invalid_array_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: invalid input"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_array_input_2
+    COMMAND ${APPLICATION} -init 134 102 93 ggg 814 159
+)
+set_tests_properties (${prefix}_run_invalid_array_input_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: array contains not a number element"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_sort
+    COMMAND ${APPLICATION} -init 144 917 329 11 129 1137
+)
+set_tests_properties (${prefix}_run_sort PROPERTIES
+    PASS_REGULAR_EXPRESSION "11 129 144 329 917 1137"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_negative_sort
+    COMMAND ${APPLICATION} -init -1 3 -1 19 -71 144
+)
+set_tests_properties (${prefix}_run_negative_sort PROPERTIES
+    PASS_REGULAR_EXPRESSION "-71 -1 -1 3 19 144"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_all_negative_sort
+    COMMAND ${APPLICATION} -init -1 -3 -1 -19 -71 -144
+)
+set_tests_properties (${prefix}_run_all_negative_sort PROPERTIES
+    PASS_REGULAR_EXPRESSION "-144 -71 -19 -3 -1 -1"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_zeroes_sort
+    COMMAND ${APPLICATION} -init 0 121 0 789 15 0
+)
+set_tests_properties (${prefix}_run_zeroes_sort PROPERTIES
+    PASS_REGULAR_EXPRESSION "0 0 0 15 121 789"
+    LABELS "${MODULE}"
+)

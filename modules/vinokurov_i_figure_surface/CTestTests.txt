@@ -1,0 +1,241 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+# Can Run the application
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+# Test for help message
+add_test(
+    NAME ${prefix}_help_message
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_help_message PROPERTIES
+    PASS_REGULAR_EXPRESSION "Calculator for calculating the surface area of geometric figures.*"
+    LABELS "${MODULE}"
+)
+
+# Test for shapes list
+add_test(
+    NAME ${prefix}_shapes_list
+    COMMAND ${APPLICATION} --shapes
+)
+set_tests_properties (${prefix}_shapes_list PROPERTIES
+    PASS_REGULAR_EXPRESSION "List of shapes:.*"
+    LABELS "${MODULE}"
+)
+
+# Test for Parallelepiped surface calculation
+add_test(
+    NAME ${prefix}_parallelepiped_surface
+    COMMAND ${APPLICATION} 1 2 3 4
+)
+set_tests_properties (${prefix}_parallelepiped_surface PROPERTIES
+    PASS_REGULAR_EXPRESSION "52"
+    LABELS "${MODULE}"
+)
+
+# Test for Cylinder Side surface calculation
+add_test(
+    NAME ${prefix}_cylinder_side_surface
+    COMMAND ${APPLICATION} 2 2 3
+)
+set_tests_properties (${prefix}_cylinder_side_surface PROPERTIES
+    PASS_REGULAR_EXPRESSION "37.6991"
+    LABELS "${MODULE}"
+)
+
+# Test for Cylinder Full surface calculation
+add_test(
+    NAME ${prefix}_cylinder_full_surface
+    COMMAND ${APPLICATION} 3 2 3
+)
+set_tests_properties (${prefix}_cylinder_full_surface PROPERTIES
+    PASS_REGULAR_EXPRESSION "62.8319"
+    LABELS "${MODULE}"
+)
+
+# Test for Cone Side surface calculation
+add_test(
+    NAME ${prefix}_cone_side_surface
+    COMMAND ${APPLICATION} 4 2 3
+)
+set_tests_properties (${prefix}_cone_side_surface PROPERTIES
+    PASS_REGULAR_EXPRESSION "18.8496"
+    LABELS "${MODULE}"
+)
+
+# Test for Cone Full surface calculation
+add_test(
+    NAME ${prefix}_cone_full_surface
+    COMMAND ${APPLICATION} 5 2 3
+)
+set_tests_properties (${prefix}_cone_full_surface PROPERTIES
+    PASS_REGULAR_EXPRESSION "31.4159"
+    LABELS "${MODULE}"
+)
+
+# Test for Sphere surface calculation
+add_test(
+    NAME ${prefix}_sphere_surface
+    COMMAND ${APPLICATION} 6 2
+)
+set_tests_properties (${prefix}_sphere_surface PROPERTIES
+    PASS_REGULAR_EXPRESSION "50.2655"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments
+add_test(
+    NAME ${prefix}_invalid_arguments
+    COMMAND ${APPLICATION} 1 0 0 0
+)
+set_tests_properties (${prefix}_invalid_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments for Parallelepiped surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_parallelepiped
+    COMMAND ${APPLICATION} 1 0 0 0
+)
+set_tests_properties (${prefix}_invalid_arguments_parallelepiped PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments for Cylinder Side surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_cylinder_side
+    COMMAND ${APPLICATION} 2 0 0
+)
+set_tests_properties (${prefix}_invalid_arguments_cylinder_side PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments for Cylinder Full surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_cylinder_full
+    COMMAND ${APPLICATION} 3 0 0
+)
+set_tests_properties (${prefix}_invalid_arguments_cylinder_full PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments for Cone Side surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_cone_side
+    COMMAND ${APPLICATION} 4 0 0
+)
+set_tests_properties (${prefix}_invalid_arguments_cone_side PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments for Cone Full surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_cone_full
+    COMMAND ${APPLICATION} 5 0 0
+)
+set_tests_properties (${prefix}_invalid_arguments_cone_full PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for invalid arguments for Sphere surface calculation
+add_test(
+    NAME ${prefix}_invalid_arguments_sphere
+    COMMAND ${APPLICATION} 6 0
+)
+set_tests_properties (${prefix}_invalid_arguments_sphere PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}"
+)
+
+# Test for wrong operation format
+add_test(
+    NAME ${prefix}_wrong_operation_format
+    COMMAND ${APPLICATION} 7
+)
+set_tests_properties (${prefix}_wrong_operation_format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong operation format!"
+    LABELS "${MODULE}"
+)
+
+# Test for exception handling in operator() function
+add_test(
+    NAME ${prefix}_exception_handling
+    COMMAND ${APPLICATION} 1 a b c
+)
+set_tests_properties (${prefix}_exception_handling PROPERTIES
+    PASS_REGULAR_EXPRESSION "stod"
+    LABELS "${MODULE}"
+)
+
+# Test for incorrect number of arguments for Parallelepiped surface calculation
+add_test(
+    NAME ${prefix}_incorrect_arguments_parallelepiped
+    COMMAND ${APPLICATION} 1 2 3
+)
+set_tests_properties (${prefix}_incorrect_arguments_parallelepiped PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 4 arguments."
+    LABELS "${MODULE}"
+)
+
+# Test for incorrect number of arguments for Cylinder Side surface calculation
+add_test(
+    NAME ${prefix}_incorrect_arguments_cylinder_side
+    COMMAND ${APPLICATION} 2 2
+)
+set_tests_properties (${prefix}_incorrect_arguments_cylinder_side PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
+    LABELS "${MODULE}"
+)
+
+# Test for incorrect number of arguments for Cylinder Full surface calculation
+add_test(
+    NAME ${prefix}_incorrect_arguments_cylinder_full
+    COMMAND ${APPLICATION} 3
+)
+set_tests_properties (${prefix}_incorrect_arguments_cylinder_full PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
+    LABELS "${MODULE}"
+)
+
+# Test for incorrect number of arguments for Cone side surface calculation
+add_test(
+    NAME ${prefix}_incorrect_arguments_cone_side
+    COMMAND ${APPLICATION} 4
+)
+set_tests_properties (${prefix}_incorrect_arguments_cone_side PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
+    LABELS "${MODULE}"
+)
+
+# Test for incorrect number of arguments for Cone Full surface calculation
+add_test(
+    NAME ${prefix}_incorrect_arguments_cone_full
+    COMMAND ${APPLICATION} 5
+)
+set_tests_properties (${prefix}_incorrect_arguments_cone_full PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
+    LABELS "${MODULE}"
+)
+
+# Test for incorrect number of arguments for Sphere surface calculation
+add_test(
+    NAME ${prefix}_incorrect_arguments_sphere
+    COMMAND ${APPLICATION} 6
+)
+set_tests_properties (${prefix}_incorrect_arguments_sphere PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments."
+    LABELS "${MODULE}"
+)

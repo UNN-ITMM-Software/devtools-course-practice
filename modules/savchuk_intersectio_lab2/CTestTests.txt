@@ -1,0 +1,64 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_test_intersection
+    COMMAND ${APPLICATION} 1 1 3 3 2 2 4 4
+)
+set_tests_properties (${prefix}_test_intersection PROPERTIES
+    PASS_REGULAR_EXPRESSION "Segments intersect"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_test_parallel
+    COMMAND ${APPLICATION} 1 1 2 2 1 2 2 3
+)
+set_tests_properties (${prefix}_test_parallel PROPERTIES
+    PASS_REGULAR_EXPRESSION "Segments are parallel"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_test_no_intersection
+    COMMAND ${APPLICATION} 1 1 1 2 4 4 5 5
+)
+set_tests_properties (${prefix}_test_no_intersection PROPERTIES
+    PASS_REGULAR_EXPRESSION "Segments do not intersect"
+    LABELS "${MODULE}"
+)
+
+
+add_test(
+    NAME ${prefix}_test_invalid_args
+    COMMAND ${APPLICATION} 1 2 3 4 5
+)
+set_tests_properties (${prefix}_test_invalid_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
