@@ -1,0 +1,53 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_sum_vectors
+    COMMAND ${APPLICATION} {1,2,3} {1,2,3} +
+)
+set_tests_properties (${prefix}_can_sum_vectors PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result is: {2 , 4 , 6}"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_sub_vectors
+    COMMAND ${APPLICATION} {1,2,3} {1,2,3} -
+)
+set_tests_properties (${prefix}_can_sub_vectors PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result is: {0 , 0 , 0}"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_mul_vectors
+    COMMAND ${APPLICATION} {1,2,3} {1,2,3} m
+)
+set_tests_properties (${prefix}_can_mul_vectors PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result is: {1 , 4 , 9}"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_norm_vector
+    COMMAND ${APPLICATION} {1,2,3} n
+)
+set_tests_properties (${prefix}_can_norm_vector PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result is: 3.74166"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_dot_vectors
+    COMMAND ${APPLICATION} {1,2,3} {1,2,3} @
+)
+set_tests_properties (${prefix}_can_dot_vectors PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result is: 14"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_sum_vectors_double
+    COMMAND ${APPLICATION} {1.05,2.25,3.35} {0.95,2.75,3.65} +
+)
+set_tests_properties (${prefix}_can_sum_vectors_double PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result is: {2 , 5 , 7}"
+    LABELS "${MODULE}")
