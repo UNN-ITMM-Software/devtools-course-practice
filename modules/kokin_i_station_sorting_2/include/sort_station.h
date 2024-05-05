@@ -1,7 +1,7 @@
 // Copyright 2024 Kokin Ivan
 
-#ifndef MODULES_KOKIN_I_STATION_SORTING_INCLUDE_SORT_STATION_H_
-#define MODULES_KOKIN_I_STATION_SORTING_INCLUDE_SORT_STATION_H_
+#ifndef MODULES_KOKIN_I_STATION_SORTING_2_INCLUDE_SORT_STATION_H_
+#define MODULES_KOKIN_I_STATION_SORTING_2_INCLUDE_SORT_STATION_H_
 
 #include <string>
 #include <stack>
@@ -26,4 +26,4 @@ class SortStationDerived : public SortStation {
      std::string convertToPostfix(const std::string& expression);
 };
 
-#endif  // MODULES_KOKIN_I_STATION_SORTING_INCLUDE_SORT_STATION_H_
+#endif  // MODULES_KOKIN_I_STATION_SORTING_2_INCLUDE_SORT_STATION_H_
