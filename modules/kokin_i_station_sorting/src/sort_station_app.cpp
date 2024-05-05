@@ -35,8 +35,7 @@ bool SortStationApp::validate(const int argc, char* argv[]) {
 std::string SortStationApp::operator()(const int argc, char* argv[]) {
     if (!validate(argc, argv)) {
         return message_;
-    }
-    else {
+    } else {
         std::string expression = argv[1];
         double result = sortStation.evaluateFunction(expression);
         message_ = "Result: " + std::to_string(result);
