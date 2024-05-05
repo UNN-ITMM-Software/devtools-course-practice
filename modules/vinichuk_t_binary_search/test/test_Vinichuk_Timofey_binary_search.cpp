@@ -47,6 +47,12 @@ TEST(BinarySearchTest, test_large_array) {
     ASSERT_EQ(binary_search(v, 784), 784);
 }
 
+TEST(BinarySearchTest, test_element_left_and_right) {
+    std::vector<int> v1{ 1, 4, 6, 59, 100, 344, 345 };
+    ASSERT_EQ(binary_search(v1, 4), 1);
+    ASSERT_EQ(binary_search(v1, 344), 5);
+}
+
 TEST(BinarySearchTest, test_first_element) {
     std::vector<int> v1 { 1, 4, 6, 59, 345 };
     std::vector<char> v2 { 'a', 'd', 'u', 'z'};
