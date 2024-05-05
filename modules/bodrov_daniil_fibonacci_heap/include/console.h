@@ -1,13 +1,15 @@
+// Copyright 2024 Savchuk Anton
+
 #ifndef MODULES_BODROV_DANIIL_FIBONACCI_HEAP_INCLUDE_CONSOLE_H_
 #define MODULES_BODROV_DANIIL_FIBONACCI_HEAP_INCLUDE_CONSOLE_H_
 
 #include "include/fibonacci_heap.h"
 
 class Console {
-public:
+ public:
     void run();
 
-private:
+ private:
     FibonacciHeap<int> heap;
 
     void printMenu();

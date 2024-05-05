@@ -1,3 +1,5 @@
+// Copyright 2024 Savchuk Anton
+
 #include <iostream>
 #include "include/console.h"
 
