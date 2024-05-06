@@ -61,6 +61,16 @@ LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& other) {
 }
 
 template <typename T>
+LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>&& other) {
+    if (this != &other) {
+        clear();
+        head = other.head;
+        other.head = nullptr;
+    }
+    return *this;
+}
+
+template <typename T>
 T& LinkedList<T>::operator[](int index) {
     Node<T>* current = head;
     int i = 0;
@@ -74,15 +84,6 @@ T& LinkedList<T>::operator[](int index) {
     return current->data;
 }
 
-template <typename T>
-LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>&& other) {
-    if (this != &other) {
-        clear();
-        head = other.head;
-        other.head = nullptr;
-    }
-    return *this;
-}
 
 template <typename T>
 LinkedList<T>::~LinkedList() {
