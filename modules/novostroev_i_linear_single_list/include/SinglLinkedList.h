@@ -9,7 +9,7 @@
 #include "include/linked_list.h"
 
 class SinglLinkedList {
-    SinglLinkedList<std::string> list;
+    LinkedList<std::string> list;
     std::vector<std::string> parse(int argc, const char** argv);
     void help(std::vector<std::string>& output);
     void print(std::vector<std::string>& output);
