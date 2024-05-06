@@ -187,15 +187,15 @@ TEST(LinkedListTest, MoveEmptyList) {
     ASSERT_TRUE(list2.isEmpty());
 }
 
-TEST(SingleLinkedListTest, PushBackTest) {
-    SingleLinkedList app;
+TEST(SinglLinkedListTest, PushBackTest) {
+    SinglLinkedList app;
     app.runApp(3, new const char* [3]{"app", "--push_back", "Rickroll"});
     auto output = app.runApp(2, new const char* [2]{"app", "--print"});
     ASSERT_EQ(output.back(), "Rickroll");
 }
 
-TEST(SingleLinkedListTest, PushFrontTest) {
-    SingleLinkedList app;
+TEST(SinglLinkedListTest, PushFrontTest) {
+    SinglLinkedList app;
     app.runApp(3, new const char* [3]{"app", "--push_front", "Rickroll"});
     auto output = app.runApp(2, new const char* [2]{"app", "--print"});
     ASSERT_EQ(output.front(), "Rickroll");
