@@ -68,6 +68,7 @@ void SinglLinkedList::print(std::vector<std::string>& output) {
 void SinglLinkedList::push_back(std::vector<std::string>& output,
  std::string elem) {
     list.add_back(elem);
+    output.push_back(elem);
 }
 
 void SinglLinkedList::push_front(std::vector<std::string>& output,
