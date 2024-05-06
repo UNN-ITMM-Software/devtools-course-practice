@@ -21,7 +21,7 @@
 // };
 
 class TBitFieldApp {
-    TBitField tbitfield;
+    //TBitField tbitfield;
     std::vector<std::string> parse(int argc, const char** argv);
     void help(std::vector<std::string>& output);
  public:
