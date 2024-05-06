@@ -7,6 +7,8 @@
 #include <stdexcept>
 #include <utility>
 
+#define DEFAULT_SIZE 8
+
 typedef unsigned char TELEM;
 class TBitField {
  private:
