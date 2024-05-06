@@ -21,7 +21,7 @@ class TBitField {
   TELEM GetMemMask(const int n) const;  // битовая маска для бита n
 
  public:
-  explicit TBitField();
+  TBitField();
   explicit TBitField(int len);
   TBitField(const TBitField &bf);
   TBitField(TBitField&& bf) noexcept;
