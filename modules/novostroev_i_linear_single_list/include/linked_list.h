@@ -107,12 +107,10 @@ void LinkedList<T>::add_back(T data) {
         head = newNode;
     } else {
         Node<T>* current = head;
-        Node<T>* prev = nullptr;
-        while (current != nullptr) {
-            prev = current;
+        while (current->next != nullptr) {
             current = current->next;
         }
-        prev->next = newNode;
+        current->next = newNode;
     }
 }
 
