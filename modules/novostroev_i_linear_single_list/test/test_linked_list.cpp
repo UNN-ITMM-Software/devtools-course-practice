@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 #include "include/linked_list.h"
-#include "include/SingleLinkedList.h"
+#include "include/SinglLinkedList.h"
 
 TEST(LinkedListTest, TestConstructor) {
     LinkedList<int> list;
