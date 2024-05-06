@@ -10,8 +10,6 @@ std::vector<std::string> SinglLinkedList::runApp(int argc,
             help(output);
         } else if (args[i] == "--print") {
             print(output);
-        } else if (args[i] == "--test_operator") {
-            test_operator(output);
         } else if (args[i] == "--push_back") {
             if (i + 1 < args.size()) {
                 push_back(output, args[i + 1]);
