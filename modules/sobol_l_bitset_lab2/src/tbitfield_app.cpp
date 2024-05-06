@@ -24,7 +24,7 @@ void TBitFieldApp::ProcessArguments() {
 
 void TBitFieldApp::PerformBitFieldOperations() {
     bitField = ~bitField;
-    TBitField otherBitField = TBitField::CreateBitField(10);
+    TBitField otherBitField = bitField.CreateBitField(10);
     bitField = bitField & otherBitField;
 }
 
