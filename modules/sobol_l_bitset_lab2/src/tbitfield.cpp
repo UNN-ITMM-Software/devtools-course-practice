@@ -6,10 +6,6 @@
 static const int FAKE_INT = -1;
 static TBitField FAKE_BITFIELD(1);
 
-TBitField::TBitField() {
-    *this = TBitField(DEFAULT_SIZE);
-}
-
 TBitField::TBitField(int len) {
     if (len < 0)
         throw std::invalid_argument("Invalid BitField size");
