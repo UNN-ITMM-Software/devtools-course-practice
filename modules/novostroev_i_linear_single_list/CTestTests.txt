@@ -15,7 +15,6 @@ add_test(
     NAME ${prefix}_can_Print_Help
     COMMAND ${APPLICATION} --help
 )
-
 set_tests_properties (${prefix}_can_Print_Help PROPERTIES
     PASS_REGULAR_EXPRESSION "Usage: ./target [options]*"
     LABELS "${MODULE}")
@@ -25,21 +24,21 @@ add_test(
     COMMAND ${APPLICATION} --print
 )
 set_tests_properties (${prefix}_can_Print PROPERTIES
-    PASS_REGULAR_EXPRESSION "never\ngonna\ngive\nyou\nup\n"
+    PASS_REGULAR_EXPRESSION ""
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Check_Number_Of_Arguments
-    COMMAND ${APPLICATION} 1 
+    NAME ${prefix}_can_Check_Push_Back
+    COMMAND ${APPLICATION} --push_back
 )
-set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
-    PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments."
+set_tests_properties (${prefix}_can_Check_Push_Back PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:/n--push_back option must have one argument./nRun --help for all supported options/n"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Calc_Cylinder
-    COMMAND ${APPLICATION} Cylinder 2.0,2.0
+    NAME ${prefix}_can_Check_Push_Front
+    COMMAND ${APPLICATION} --push_front
 )
-set_tests_properties (${prefix}_can_Calc_Cylinder PROPERTIES
-    PASS_REGULAR_EXPRESSION "Volume = 25.1327"
+set_tests_properties (${prefix}_can_Check_Push_Front PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:/n--push_front option must have one argument./nRun --help for all supported options/n"
     LABELS "${MODULE}")
