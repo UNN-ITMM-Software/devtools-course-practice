@@ -210,3 +210,37 @@ TEST(LinkedListTest, AddBack) {
     list.add_back(2);
     ASSERT_EQ(list.size(), 2);
 }
+
+TEST(LinkedListTest, CopyAssignment) {
+    LinkedList<int> list1;
+    list1.add_back(1);
+    list1.add_back(2);
+    list1.add_back(3);
+
+    LinkedList<int> list2;
+    list2 = list1;
+
+    ASSERT_EQ(list2.size(), list1.size());
+
+    for (int i = 0; i < list1.size(); i++) {
+        ASSERT_EQ(list2[i], list1[i]);
+    }
+}
+
+TEST(LinkedListTest, MoveAssignment) {
+    LinkedList<int> list1;
+    list1.add_back(1);
+    list1.add_back(2);
+    list1.add_back(3);
+
+    LinkedList<int> list2;
+    list2 = std::move(list1);
+
+    ASSERT_EQ(list2.size(), 3);
+
+    ASSERT_EQ(list2[0], 1);
+    ASSERT_EQ(list2[1], 2);
+    ASSERT_EQ(list2[2], 3);
+
+    ASSERT_EQ(list1.size(), 0);
+}
