@@ -9,5 +9,6 @@ int main(int argc, const char** argv) {
     for (auto str : output) {
         std::cout << str << std::endl;
     }
+
     return 0;
 }
