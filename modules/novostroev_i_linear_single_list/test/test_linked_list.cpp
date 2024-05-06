@@ -200,3 +200,13 @@ TEST(SinglLinkedListTest, PushFrontTest) {
     auto output = app.runApp(2, new const char* [2]{"app", "--print"});
     ASSERT_EQ(output.front(), "Rickroll");
 }
+
+TEST(LinkedListTest, AddBack) {
+    LinkedList<int> list;
+
+    list.add_back(1);
+    ASSERT_EQ(list.size(), 1);
+
+    list.add_back(2);
+    ASSERT_EQ(list.size(), 2);
+}
