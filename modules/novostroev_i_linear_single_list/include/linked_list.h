@@ -24,7 +24,7 @@ class LinkedList {
     ~LinkedList();
 
     void add(T data);
-    void LinkedList<T>::add_back(T data)
+    void LinkedList<T>::add_back(T data);
     void display();
     bool isEmpty();
     int size();
