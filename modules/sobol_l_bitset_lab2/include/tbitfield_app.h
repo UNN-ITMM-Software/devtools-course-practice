@@ -21,11 +21,11 @@
 // };
 
 class TBitFieldApp {
-    TBitField myBitField(8);
+    TBitField myBitField;
     std::vector<std::string> parse(int argc, const char** argv);
     void help(std::vector<std::string>& output);
  public:
-    TBitFieldApp() {}
+    TBitFieldApp() : myBitField(8) {}
     std::vector<std::string> runApp(int argc, const char** argv);
 };
 
