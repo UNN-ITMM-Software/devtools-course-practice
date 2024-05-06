@@ -8,11 +8,11 @@
 #include "include/tbitfield.h"
 
 class TBitFieldApp {
-public:
+ public:
     TBitFieldApp(int argc, char** argv);
     std::string Run();
 
-private:
+ private:
     std::vector<std::string> args;
     TBitField bitField;
 
