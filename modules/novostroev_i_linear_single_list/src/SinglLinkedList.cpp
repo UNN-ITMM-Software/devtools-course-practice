@@ -10,6 +10,8 @@ std::vector<std::string> SinglLinkedList::runApp(int argc,
             help(output);
         } else if (args[i] == "--print") {
             print(output);
+        } else if (args[i] == "--test_operator") {
+            test_operator(output);
         } else if (args[i] == "--push_back") {
             if (i + 1 < args.size()) {
                 push_back(output, args[i + 1]);
@@ -47,6 +49,27 @@ std::vector<std::string> SinglLinkedList::parse(int argc,
         input.push_back(str);
     }
     return input;
+}
+
+void SinglLinkedList::test_operator(std::vector<std::string>& output) {
+    LinkedList<int> list;
+    list.add_back(1);
+    list.add_back(2);
+    list.add_back(3);
+
+    bool success = true;
+    for (int i = 0; i < list.size(); i++) {
+        if (list[i] != i + 1) {
+            success = false;
+            break;
+        }
+    }
+
+    if (success) {
+        output.push_back("Success: Operator[] returned the correct values.");
+    } else {
+        output.push_back("Error: Operator[] returned incorrect values.");
+    }
 }
 
 void SinglLinkedList::help(std::vector<std::string>& output) {

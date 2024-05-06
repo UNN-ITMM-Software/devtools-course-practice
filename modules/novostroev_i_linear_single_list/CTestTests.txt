@@ -42,3 +42,19 @@ add_test(
 set_tests_properties (${prefix}_can_Check_Push_Front PROPERTIES
     PASS_REGULAR_EXPRESSION "Error:\n--push_front option must have one argument.\nRun --help for all supported options\n"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Unrecognized
+    COMMAND ${APPLICATION} --error
+)
+set_tests_properties (${prefix}_can_Check_Unrecognized PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:\nunrecognized command-line option.\nRun --help for all supported options\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Access_Elements_With_Operator
+    COMMAND ${APPLICATION} --test_operator
+)
+set_tests_properties (${prefix}_can_Access_Elements_With_Operator PROPERTIES
+    PASS_REGULAR_EXPRESSION "Success: Operator[] returned the correct values.\n"
+    LABELS "${MODULE}")
