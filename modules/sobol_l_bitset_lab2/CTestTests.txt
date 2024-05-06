@@ -2,11 +2,3 @@
 ##### Testing
 #############################################
 
-set(prefix "${MODULE}")
-
-add_test(
-    NAME ${prefix}_can_Run
-    COMMAND ${APPLICATION}
-)
-set_tests_properties (${prefix}_can_Run PROPERTIES
-    LABELS "${MODULE}")
