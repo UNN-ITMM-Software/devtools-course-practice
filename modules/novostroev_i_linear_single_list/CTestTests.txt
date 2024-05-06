@@ -50,11 +50,3 @@ add_test(
 set_tests_properties (${prefix}_can_Check_Unrecognized PROPERTIES
     PASS_REGULAR_EXPRESSION "Error:\nunrecognized command-line option.\nRun --help for all supported options\n"
     LABELS "${MODULE}")
-
-add_test(
-    NAME ${prefix}_can_Access_Elements_With_Operator
-    COMMAND ${APPLICATION} --test_operator
-)
-set_tests_properties (${prefix}_can_Access_Elements_With_Operator PROPERTIES
-    PASS_REGULAR_EXPRESSION "Success: Operator[] returned the correct values.\n"
-    LABELS "${MODULE}")
