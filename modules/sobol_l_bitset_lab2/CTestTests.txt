@@ -2,3 +2,19 @@
 ##### Testing
 #############################################
 
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_can_Print_Help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage: ./target [options]*"
+    LABELS "${MODULE}")
