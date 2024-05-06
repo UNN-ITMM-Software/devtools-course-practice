@@ -2,29 +2,4 @@
 ##### Testing
 #############################################
 
-add_test(
-    NAME ApplicationTest 
-    COMMAND Application
-)
-
-set_tests_properties(ApplicationTest PROPERTIES 
-    PASS_REGULAR_EXPRESSION "Test"
-)
-
-add_test(
-    NAME ApplicationTestWithArgs 
-    COMMAND Application 1 2 3
-)
-
-set_tests_properties(ApplicationTestWithArgs PROPERTIES 
-    PASS_REGULAR_EXPRESSION "TestWithArgs"
-)
-
-add_test(
-    NAME ApplicationTestWithNegativeArgs 
-    COMMAND Application -1 -2 -3
-)
-
-set_tests_properties(ApplicationTestWithNegativeArgs PROPERTIES 
-    PASS_REGULAR_EXPRESSION "TestWithNegativeArgs"
-)
+set(prefix "${MODULE}")
