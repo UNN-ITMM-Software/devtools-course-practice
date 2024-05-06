@@ -97,6 +97,7 @@ void LinkedList<T>::add(T data) {
     head = newNode;
 }
 
+template <typename T>
 void LinkedList<T>::add_back(T data) {
     Node<T>* newNode = new Node<T>;
     newNode->data = data;

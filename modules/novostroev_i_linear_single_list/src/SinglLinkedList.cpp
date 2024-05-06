@@ -61,7 +61,7 @@ void SinglLinkedList::help(std::vector<std::string>& output) {
 
 void SinglLinkedList::print(std::vector<std::string>& output) {
     for (int i = 0; i < list.size(); i++) {
-        output.push_back(list[i]->get_data());
+        output.push_back(list[i]);
     }
 }
 
