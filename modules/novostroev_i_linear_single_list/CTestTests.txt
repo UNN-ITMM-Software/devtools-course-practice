@@ -37,10 +37,10 @@ set_tests_properties (${prefix}_can_Check_Push_Back PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Check_Push_B
-    COMMAND ${APPLICATION} --push_back 1 --push_back 2
+    COMMAND ${APPLICATION} --push_back 1 --push_back 2 --push_back 3
 )
 set_tests_properties (${prefix}_can_Check_Push_B PROPERTIES
-    PASS_REGULAR_EXPRESSION "1\n2"
+    PASS_REGULAR_EXPRESSION "1\n2\n3"
     LABELS "${MODULE}")
 
 add_test(
