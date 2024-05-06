@@ -18,13 +18,12 @@ class LinkedList {
     LinkedList(const LinkedList<T>& other);
     LinkedList(LinkedList<T>&& other);
     LinkedList<T>& operator=(const LinkedList<T>& other);
-    T& LinkedList<T>::operator[](int index);
-    const T& LinkedList<T>::operator[](int index) const;
+    T& operator[](int index);
     LinkedList<T>& operator=(LinkedList<T>&& other);
     ~LinkedList();
 
     void add(T data);
-    void LinkedList<T>::add_back(T data);
+    void add_back(T data);
     void display();
     bool isEmpty();
     int size();
@@ -61,24 +60,8 @@ LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& other) {
     return *this;
 }
 
-
-
 template <typename T>
 T& LinkedList<T>::operator[](int index) {
-    Node<T>* current = head;
-    int i = 0;
-    while (current != nullptr && i < index) {
-        current = current->next;
-        i++;
-    }
-    if (current == nullptr) {
-        throw std::out_of_range("Index out of range");
-    }
-    return current->data;
-}
-
-template <typename T>
-const T& LinkedList<T>::operator[](int index) const {
     Node<T>* current = head;
     int i = 0;
     while (current != nullptr && i < index) {
@@ -100,7 +83,6 @@ LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>&& other) {
     }
     return *this;
 }
-
 
 template <typename T>
 LinkedList<T>::~LinkedList() {
