@@ -51,27 +51,6 @@ std::vector<std::string> SinglLinkedList::parse(int argc,
     return input;
 }
 
-void SinglLinkedList::test_operator(std::vector<std::string>& output) {
-    LinkedList<int> list;
-    list.add_back(1);
-    list.add_back(2);
-    list.add_back(3);
-
-    bool success = true;
-    for (int i = 0; i < list.size(); i++) {
-        if (list[i] != i + 1) {
-            success = false;
-            break;
-        }
-    }
-
-    if (success) {
-        output.push_back("Success: Operator[] returned the correct values.");
-    } else {
-        output.push_back("Error: Operator[] returned incorrect values.");
-    }
-}
-
 void SinglLinkedList::help(std::vector<std::string>& output) {
     output.push_back("Usage: ./target [options]");
     output.push_back("Optinos:");
