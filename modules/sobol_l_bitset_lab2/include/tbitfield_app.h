@@ -1,7 +1,7 @@
 // Copyright 2024 Kistrimova Ekaterina
 
-#ifndef TBITFIELD_APP_H
-#define TBITFIELD_APP_H
+#ifndef MODULES_SOBOL_L_BITSET_LAB2_INCLUDE_TBITFIELD_APP_H_
+#define MODULES_SOBOL_L_BITSET_LAB2_INCLUDE_TBITFIELD_APP_H_
 
 #include <string>
 #include <vector>
@@ -20,4 +20,4 @@ private:
     void PerformBitFieldOperations();
 };
 
-#endif  // TBITFIELD_APP_H
+#endif  // MODULES_SOBOL_L_BITSET_LAB2_INCLUDE_TBITFIELD_APP_H_
