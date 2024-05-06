@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "tbitfield_app.h"
+#include "include/tbitfield_app.h"
 
 int main(int argc, char** argv) {
     TBitFieldApp app(argc, argv);

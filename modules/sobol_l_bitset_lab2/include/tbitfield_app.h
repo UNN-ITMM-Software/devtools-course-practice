@@ -1,6 +1,7 @@
 // Copyright 2024 Kistrimova Ekaterina
 
-#pragma once
+#ifndef TBITFIELD_APP_H
+#define TBITFIELD_APP_H
 
 #include <string>
 #include <vector>
@@ -18,3 +19,5 @@ private:
     void ProcessArguments();
     void PerformBitFieldOperations();
 };
+
+#endif  // TBITFIELD_APP_H
