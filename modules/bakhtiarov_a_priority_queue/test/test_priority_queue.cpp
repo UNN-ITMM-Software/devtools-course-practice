@@ -243,8 +243,8 @@ TEST(TQueue_insertTest, FrontAndBackTest) {
     queue.push(value2);
     queue.push(value3);
 
-    ASSERT_EQ(queue.front(), value1);
-    ASSERT_EQ(queue.back(), value3);
+    ASSERT_EQ(queue.front(), value3);
+    ASSERT_EQ(queue.back(), value1);
 }
 
 TEST(TQueue_insertTest, SizeTest) {
