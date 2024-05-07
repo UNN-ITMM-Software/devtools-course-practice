@@ -149,17 +149,17 @@ set_tests_properties (${prefix}_can_Push_Front_to_Empty_Deque PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Pop_Back
+    NAME ${prefix}_can_Pop_Back_with_initialize
     COMMAND ${APPLICATION} --initialize --pop_back --print
 )
-set_tests_properties (${prefix}_can_Pop_Back PROPERTIES
+set_tests_properties (${prefix}_can_Pop_Back_with_initialize PROPERTIES
     PASS_REGULAR_EXPRESSION "never\ngonna\ngive\nyou\n"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Pop_Front
+    NAME ${prefix}_can_Pop_Front_with_initialize
     COMMAND ${APPLICATION} --initialize --pop_front --print
 )
-set_tests_properties (${prefix}_can_Pop_Front PROPERTIES
+set_tests_properties (${prefix}_can_Pop_Front_with_initialize PROPERTIES
     PASS_REGULAR_EXPRESSION "gonna\ngive\nyou\nup\n"
     LABELS "${MODULE}")
