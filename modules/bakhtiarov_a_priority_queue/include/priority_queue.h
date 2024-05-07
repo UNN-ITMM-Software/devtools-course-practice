@@ -1,6 +1,6 @@
 // Copyright 2024 Bakhtiarov Alexander
-#ifndef MODULES_BAKHTIAROV_A_PRIORITY_QUEUE_H_
-#define MODULES_BAKHTIAROV_A_PRIORITY_QUEUE_H_
+#ifndef MODULES_BAKHTIAROV_A_PRIORITY_QUEUE_INCLUDE_PRIORITY_QUEUE_H_
+#define MODULES_BAKHTIAROV_A_PRIORITY_QUEUE_INCLUDE_PRIORITY_QUEUE_H_
 
 #include <iostream>
 #include <ostream>
@@ -17,6 +17,7 @@ class CList {
  private:
     CNode<T>* head;
     CNode<T>* tail;
+
  public:
     CList() : head(nullptr), tail(nullptr) {}
 
@@ -38,8 +39,7 @@ class CList {
         if (!isEmpty()) {
             tail->next = new_node;
             tail = new_node;
-        }
-        else {
+        } else {
             head = new_node;
             tail = new_node;
         }
@@ -51,8 +51,7 @@ class CList {
         if (!isEmpty()) {
             head = new_node;
             head->next = tmp;
-        }
-        else {
+        } else {
             head = new_node;
             tail = new_node;
         }
@@ -60,7 +59,7 @@ class CList {
 
     void pop_back() {
         if (head == tail) { throw std::logic_error("Head = tail"); }
-        else if (isEmpty()) { throw std::logic_error("List is empty"); }
+        if (isEmpty()) { throw std::logic_error("List is empty"); }
         CNode<T>* tmp = (*this)[size() - 2];
         tmp->del_next();
         tail = tmp;
@@ -85,8 +84,7 @@ class CList {
             head = head->next;
             delete tmp;
             tmp = nullptr;
-        }
-        else {
+        } else {
             clearHeadAndTail();
         }
     }
@@ -171,8 +169,9 @@ class CNode {
  private:
     T data;
     CNode<T>* next;
+
  public:
-    CNode(T value) {
+    explicit CNode(T value) {
         data = value;
         next = nullptr;
     }
@@ -208,7 +207,6 @@ class CNode {
         data = node->get_data();
         next = node->get_next_node();
     }
-
 };
 
 template <class T> class Stack;
@@ -220,7 +218,7 @@ class TQueue_on_list {
     CList<T> data;
  public:
     TQueue_on_list() { data = CList<T>(); }
-    TQueue_on_list(int _size) {
+    explicit TQueue_on_list(int _size) {
         data = CList<T>();
         _size < 1 ? throw std::string("Negative value") : NULL;
         size = _size;
@@ -246,9 +244,10 @@ class TQueue_insert : public TQueue_on_list<std::pair<T, int>> {
  private:
     int size;
     CList<std::pair<T, int>> data;
+
  public:
     TQueue_insert() { data = CList<std::pair<T, int>>(); }
-    TQueue_insert(int _size) {
+    explicit TQueue_insert(int _size) {
         data = CList<std::pair<T, int>>();
         _size < 1 ? throw std::string("Negative value") : NULL;
         size = _size;
@@ -281,4 +280,4 @@ class TQueue_insert : public TQueue_on_list<std::pair<T, int>> {
     bool isEmpty() { return data.size() == 0; }
 };
 
-#endif  // MODULES_BAKHTIAROV_A_PRIORITY_QUEUE_H_
+#endif  // MODULES_BAKHTIAROV_A_PRIORITY_QUEUE_INCLUDE_PRIORITY_QUEUE_H_
