@@ -3,48 +3,6 @@
 #include <gtest/gtest.h>
 #include "include/priority_queue.h"
 
-// TEST(TQueueOnListTest, Constructor) {
-//     TQueue_on_list<int> queue;
-//     EXPECT_EQ(queue.get_size(), 0);
-//     EXPECT_TRUE(queue.isEmpty());
-// }
-
-// TEST(TQueueInsertTest, Constructor) {
-//     TQueue_insert<int> queue;
-//     EXPECT_EQ(queue.get_size(), 0);
-//     EXPECT_TRUE(queue.isEmpty());
-// }
-
-// TEST(TQueueOnListTest, PushAndPop) {
-//     TQueue_on_list<int> queue(5);
-//     queue.push(1);
-//     queue.push(2);
-//     queue.push(3);
-//     EXPECT_EQ(queue.get_real_size(), 3);
-//     queue.pop();
-//     EXPECT_EQ(queue.get_real_size(), 2);
-//     queue.pop();
-//     queue.pop();
-//     EXPECT_TRUE(queue.isEmpty());
-// }
-
-// TEST(TQueueInsertTest, PushAndPop) {
-//     TQueue_insert<int> queue(5);
-//     queue.push({1, 3});
-//     queue.push({2, 2});
-//     queue.push({3, 1});
-//     EXPECT_EQ(queue.get_real_size(), 3);
-//     queue.pop();
-//     EXPECT_EQ(queue.get_real_size(), 2);
-//     queue.pop();
-//     queue.pop();
-//     EXPECT_TRUE(queue.isEmpty());
-// }
-
-// TEST(TQueueInsertTest, CanCreate) {
-//     ASSERT_NO_THROW(TQueue_insert<int>(5));
-// }
-
 TEST(CListTest, TestSize) {
     CList<int> list;
     ASSERT_EQ(static_cast<int>(list.size()), 0);
@@ -83,22 +41,6 @@ TEST(CListTest, TestPopFront) {
     list.pop_front();
     ASSERT_EQ(list.front()->get_data(), 1);
 }
-
-// TEST(CListTest, TestInsert) {
-//     CList<int> list;
-//     list.insert(1, 0);
-//     ASSERT_EQ(list.front()->get_data(), 1);
-//     list.insert(2, 1);
-//     ASSERT_EQ(list.back()->get_data(), 2);
-// }
-
-// TEST(CListTest, TestErase) {
-//     CList<int> list;
-//     list.push_back(1);
-//     list.push_back(2);
-//     list.erase(0);
-//     ASSERT_EQ(list.front()->get_data(), 2);
-// }
 
 TEST(CListTest, TestReverse) {
     CList<int> list;
@@ -142,14 +84,6 @@ TEST(CNodeTest, TestPrint) {
     std::string output = testing::internal::GetCapturedStdout();
     ASSERT_EQ(output, "1");
 }
-
-// TEST(CNodeTest, TestDelNext) {
-//     CNode<int> node1(1);
-//     CNode<int> node2(2);
-//     node1.set_next(&node2);
-//     node1.del_next();
-//     ASSERT_EQ(node1.get_next_node(), nullptr);
-// }
 
 TEST(CNodeTest, TestOperatorEqual) {
     CNode<int> node1(1);
