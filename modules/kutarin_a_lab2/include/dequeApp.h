@@ -16,13 +16,8 @@ class DequeApp {
     void pop_front(std::vector<std::string>& output);
     void push_back(std::vector<std::string>& output, std::string elem);
     void push_front(std::vector<std::string>& output, std::string elem);
+    void set_up_default();
  public:
-    DequeApp() {
-        deque.push_back("never");
-        deque.push_back("gonna");
-        deque.push_back("give");
-        deque.push_back("you");
-        deque.push_back("up");
-    }
+    DequeApp() {}
     std::vector<std::string> runApp(int argc, const char** argv);
 };

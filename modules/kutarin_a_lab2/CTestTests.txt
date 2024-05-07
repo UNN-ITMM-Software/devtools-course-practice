@@ -12,6 +12,14 @@ set_tests_properties (${prefix}_can_Run PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
+    NAME ${prefix}_can_initialize
+    COMMAND ${APPLICATION} --initialize
+)
+set_tests_properties (${prefix}_can_initialize PROPERTIES
+    PASS_REGULAR_EXPRESSION ""
+    LABELS "${MODULE}")
+
+add_test(
     NAME ${prefix}_can_Print_Help
     COMMAND ${APPLICATION} --help
 )
@@ -21,7 +29,7 @@ set_tests_properties (${prefix}_can_Print_Help PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Print
-    COMMAND ${APPLICATION} --print
+    COMMAND ${APPLICATION} --initialize --print
 )
 set_tests_properties (${prefix}_can_Print PROPERTIES
     PASS_REGULAR_EXPRESSION "never\ngonna\ngive\nyou\nup\n"
@@ -29,7 +37,7 @@ set_tests_properties (${prefix}_can_Print PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Reverse
-    COMMAND ${APPLICATION} --reverse
+    COMMAND ${APPLICATION} --initialize --reverse
 )
 set_tests_properties (${prefix}_can_Reverse PROPERTIES
     PASS_REGULAR_EXPRESSION "deque was reversed\n"
@@ -70,7 +78,7 @@ set_tests_properties (${prefix}_cant_Push_Front_Without_Argument PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Run_Several_Options
-    COMMAND ${APPLICATION} --print --print
+    COMMAND ${APPLICATION} --initialize --print --print
 )
 set_tests_properties (${prefix}_can_Run_Several_Options PROPERTIES
     PASS_REGULAR_EXPRESSION "never\ngonna\ngive\nyou\nup\nnever\ngonna\ngive\nyou\nup\n"
@@ -78,7 +86,7 @@ set_tests_properties (${prefix}_can_Run_Several_Options PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Push_Back_and_print
-    COMMAND ${APPLICATION} --push_back never-gonna-let-you-down --print
+    COMMAND ${APPLICATION} --initialize --push_back never-gonna-let-you-down --print
 )
 set_tests_properties (${prefix}_can_Push_Back_and_print PROPERTIES
     PASS_REGULAR_EXPRESSION "never\ngonna\ngive\nyou\nup\nnever-gonna-let-you-down\n"
@@ -86,7 +94,7 @@ set_tests_properties (${prefix}_can_Push_Back_and_print PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Push_Front_and_print
-    COMMAND ${APPLICATION} --push_front you've-been-rickrolled --print
+    COMMAND ${APPLICATION} --initialize --push_front you've-been-rickrolled --print
 )
 set_tests_properties (${prefix}_can_Push_Front_and_print PROPERTIES
     PASS_REGULAR_EXPRESSION "you've-been-rickrolled\nnever\ngonna\ngive\nyou\nup\n"
@@ -94,7 +102,7 @@ set_tests_properties (${prefix}_can_Push_Front_and_print PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Push_Back_and_Push_Front_and_Print
-    COMMAND ${APPLICATION} --push_front a --push_back b --print
+    COMMAND ${APPLICATION} --initialize --push_front a --push_back b --print
 )
 set_tests_properties (${prefix}_can_Push_Back_and_Push_Front_and_Print PROPERTIES
     PASS_REGULAR_EXPRESSION "a\nnever\ngonna\ngive\nyou\nup\nb\n"
@@ -110,7 +118,7 @@ set_tests_properties (${prefix}_invalid_command PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Pop_Back
-    COMMAND ${APPLICATION} --pop_back --pop_back --pop_back --pop_back --pop_back --pop_back
+    COMMAND ${APPLICATION} --pop_back
 )
 set_tests_properties (${prefix}_can_Pop_Back PROPERTIES
     PASS_REGULAR_EXPRESSION "Deque is empty, can't pop_back."
@@ -118,7 +126,7 @@ set_tests_properties (${prefix}_can_Pop_Back PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Pop_Front
-    COMMAND ${APPLICATION} --pop_front --pop_front --pop_front --pop_front --pop_front --pop_front
+    COMMAND ${APPLICATION} --pop_front
 )
 set_tests_properties (${prefix}_can_Pop_Front PROPERTIES
     PASS_REGULAR_EXPRESSION "Deque is empty, can't pop_front."
@@ -126,7 +134,7 @@ set_tests_properties (${prefix}_can_Pop_Front PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Push_Back_to_Empty_Deque
-    COMMAND ${APPLICATION} --pop_front --pop_front --pop_front --pop_front --pop_front --push_back test --print
+    COMMAND ${APPLICATION} --push_back test --print
 )
 set_tests_properties (${prefix}_can_Push_Back_to_Empty_Deque PROPERTIES
     PASS_REGULAR_EXPRESSION "test\n"
@@ -134,8 +142,24 @@ set_tests_properties (${prefix}_can_Push_Back_to_Empty_Deque PROPERTIES
 
 add_test(
     NAME ${prefix}_can_Push_Front_to_Empty_Deque
-    COMMAND ${APPLICATION} --pop_front --pop_front --pop_front --pop_front --pop_front --push_front test --print
+    COMMAND ${APPLICATION} --push_front test --print
 )
 set_tests_properties (${prefix}_can_Push_Front_to_Empty_Deque PROPERTIES
     PASS_REGULAR_EXPRESSION "test\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Pop_Back
+    COMMAND ${APPLICATION} --initialize --pop_back --print
+)
+set_tests_properties (${prefix}_can_Pop_Back PROPERTIES
+    PASS_REGULAR_EXPRESSION "never\ngonna\ngive\nyou\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Pop_Front
+    COMMAND ${APPLICATION} --initialize --pop_front --print
+)
+set_tests_properties (${prefix}_can_Pop_Front PROPERTIES
+    PASS_REGULAR_EXPRESSION "gonna\ngive\nyou\nup\n"
     LABELS "${MODULE}")

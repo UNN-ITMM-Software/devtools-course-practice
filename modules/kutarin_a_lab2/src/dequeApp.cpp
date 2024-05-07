@@ -10,6 +10,8 @@ std::vector<std::string> DequeApp::runApp(int argc,
         auto arg = args[i];
         if (arg == "--help") {
             help(output);
+        } else if (arg == "--initialize") {
+            set_up_default();
         } else if (arg == "--reverse") {
             reverse(output);
         } else if (arg == "--print") {
@@ -99,4 +101,12 @@ void DequeApp::pop_front(std::vector<std::string>& output) {
     } else {
         deque.pop_back();
     }
+}
+
+void DequeApp::set_up_default() {
+    deque.push_back("never");
+    deque.push_back("gonna");
+    deque.push_back("give");
+    deque.push_back("you");
+    deque.push_back("up");
 }
