@@ -105,11 +105,11 @@ class CList {
             push_front(_data);
             return;
         }
-        if (index == size() - 1) {
+        if (index == static_cast<int>(size()) - 1) {
             push_back(_data);
             return;
         }
-        if (index >= size() - 1) {
+        if (index >= static_cast<int>(size()) - 1) {
             throw std::out_of_range("out of range");
         }
         CNode<T>* tmp = new CNode<T>(_data);
@@ -233,7 +233,7 @@ class TQueue_on_list {
     CNode<T> operator[](int index) { return *data[index]; }
     T front() { return data.front()->get_data(); }
     T back() { return data.back()->get_data(); }
-    bool isFull() { return data.size() >= size; }
+    bool isFull() { return static_cast<int>(data.size()) >= size; }
     bool isEmpty() { return data.size() == 0; }
 };
 
@@ -276,7 +276,7 @@ class TQueue_insert : public TQueue_on_list<std::pair<T, int>> {
     CNode<std::pair<T, int>> operator[](int index) { return *data[index]; }
     std::pair<T, int> front() { return data.front()->get_data(); }
     std::pair<T, int> back() { return data.back()->get_data(); }
-    bool isFull() { return data.size() >= size; }
+    bool isFull() { return static_cast<int>(data.size()) >= size; }
     bool isEmpty() { return data.size() == 0; }
 };
 
