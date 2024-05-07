@@ -18,10 +18,12 @@ class LinkedList {
     LinkedList(const LinkedList<T>& other);
     LinkedList(LinkedList<T>&& other);
     LinkedList<T>& operator=(const LinkedList<T>& other);
+    T& operator[](int index);
     LinkedList<T>& operator=(LinkedList<T>&& other);
     ~LinkedList();
 
     void add(T data);
+    void add_back(T data);
     void display();
     bool isEmpty();
     int size();
@@ -69,6 +71,21 @@ LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>&& other) {
 }
 
 template <typename T>
+T& LinkedList<T>::operator[](int index) {
+    Node<T>* current = head;
+    int i = 0;
+    while (current != nullptr && i < index) {
+        current = current->next;
+        i++;
+    }
+    if (current == nullptr) {
+        throw std::out_of_range("Index out of range");
+    }
+    return current->data;
+}
+
+
+template <typename T>
 LinkedList<T>::~LinkedList() {
     clear();
 }
@@ -79,6 +96,23 @@ void LinkedList<T>::add(T data) {
     newNode->data = data;
     newNode->next = head;
     head = newNode;
+}
+
+template <typename T>
+void LinkedList<T>::add_back(T data) {
+    Node<T>* newNode = new Node<T>;
+    newNode->data = data;
+    newNode->next = nullptr;
+
+    if (head == nullptr) {
+        head = newNode;
+    } else {
+        Node<T>* current = head;
+        while (current->next != nullptr) {
+            current = current->next;
+        }
+        current->next = newNode;
+    }
 }
 
 template <typename T>
@@ -140,4 +174,3 @@ bool LinkedList<T>::remove(T data) {
 }
 
 #endif  // MODULES_NOVOSTROEV_I_LINEAR_SINGLE_LIST_INCLUDE_LINKED_LIST_H_
-
