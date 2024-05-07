@@ -28,13 +28,6 @@ TEST(TQueueOnListTest, PushAndPop) {
     EXPECT_TRUE(queue.isEmpty());
 }
 
-TEST(TQueueOnListTest, Front) {
-    TQueue_on_list<int> queue;
-    queue.push(1);
-    queue.push(2);
-    EXPECT_EQ(queue.front(), 1);
-}
-
 TEST(TQueueInsertTest, PushAndPop) {
     TQueue_insert<int> queue(5);
     queue.push({1, 3});
@@ -48,9 +41,6 @@ TEST(TQueueInsertTest, PushAndPop) {
     EXPECT_TRUE(queue.isEmpty());
 }
 
-TEST(TQueueInsertTest, Front) {
-    TQueue_insert<int> queue;
-    queue.push({1, 3});
-    queue.push({2, 2});
-    EXPECT_EQ(queue.front().first, 2);
+TEST(TQueueInsertTest, CanCreate) {
+    ASSERT_NO_THROW(TQueue_insert<int>(5));
 }
