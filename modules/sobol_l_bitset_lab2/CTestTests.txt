@@ -18,3 +18,35 @@ add_test(
 set_tests_properties (${prefix}_can_Print_Help PROPERTIES
     PASS_REGULAR_EXPRESSION "Usage: ./target [options]*"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print
+    COMMAND ${APPLICATION} --print
+)
+set_tests_properties (${prefix}_can_Print PROPERTIES
+    PASS_REGULAR_EXPRESSION "0\n0\n0\n0\n0\n0\n0\n0\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_set_bit
+    COMMAND ${APPLICATION} --setbit 3 --print
+)
+set_tests_properties (${prefix}_can_set_bit PROPERTIES
+    PASS_REGULAR_EXPRESSION "0\n0\n0\n1\n0\n0\n0\n0\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_clear_bit
+    COMMAND ${APPLICATION} --setbit 3 --clearbit 3 --print
+)
+set_tests_properties (${prefix}_can_clear_bit PROPERTIES
+    PASS_REGULAR_EXPRESSION "0\n0\n0\n\n0\n0\n0\n0\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_get_bit
+    COMMAND ${APPLICATION} --setbit 3 --getbit 3 --clearbit 3 --getbit 3 --print
+)
+set_tests_properties (${prefix}_can_get_bit PROPERTIES
+    PASS_REGULAR_EXPRESSION "1\n0\n0\n0\n0\n\n0\n0\n0\n0\n"
+    LABELS "${MODULE}")
