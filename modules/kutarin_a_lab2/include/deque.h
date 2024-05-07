@@ -1,4 +1,4 @@
-// Copyright 2024 kutarin Alexandr feat. Filatov Maxim
+// Copyright 2024 kutarin Alexandr
 
 #ifndef MODULES_KUTARIN_A_LAB2_INCLUDE_DEQUE_H_
 #define MODULES_KUTARIN_A_LAB2_INCLUDE_DEQUE_H_
@@ -22,15 +22,12 @@ class Deque {
     ~Deque();
     void push_front(T value);
     void push_back(T value);
-    void reverse();
-    void clear();
     Deque& operator=(const Deque& other);
     Deque& operator=(Deque&& other) noexcept;
     T pop_front();
     T pop_back();
     bool empty() const;
     size_t size() const;
-    T& operator[] (int index);
  private:
     Node<T>* front_;
     Node<T>* back_;
@@ -48,7 +45,7 @@ Deque<T>::Deque(const Deque<T>& other) : front_(nullptr),
 }
 
 template <typename T>
-Deque<T>::Deque() : front_(nullptr), back_(nullptr), size_(0) {}
+Deque<T>::Deque() : front_(nullptr), back_(nullptr) {}
 
 template <typename T>
 Deque<T>::Deque(Deque<T>&& other) noexcept : front_(other.front_),
@@ -60,7 +57,9 @@ Deque<T>::Deque(Deque<T>&& other) noexcept : front_(other.front_),
 
 template <typename T>
 Deque<T>::~Deque() {
-    clear();
+    while (!empty()) {
+        pop_front();
+    }
 }
 
 template <typename T>
@@ -72,7 +71,6 @@ void Deque<T>::push_front(T value) {
         back_ = new_node;
     }
     front_ = new_node;
-    size_++;
 }
 
 template <typename T>
@@ -84,35 +82,6 @@ void Deque<T>::push_back(T value) {
         front_ = new_node;
     }
     back_ = new_node;
-    size_++;
-}
-
-template <typename T>
-void Deque<T>::reverse() {
-    Node<T>* temp = nullptr;
-    Node<T>* current = front_;
-    while (current != nullptr) {
-        temp = current->prev;
-        current->prev = current->next;
-        current->next = temp;
-        current = current->prev;
-    }
-    if (temp != nullptr) {
-        front_ = back_;
-        back_ = temp->prev;
-    }
-}
-
-template <typename T>
-T& Deque<T>::operator[] (int index) {
-    if (index >= static_cast<int>(size_)) {
-        throw std::out_of_range("Index out of range");
-    }
-    Node<T>* current = front_;
-    for (size_t i = 0; static_cast<int>(i) < index; i++) {
-        current = current->next;
-    }
-    return current->value;
 }
 
 template <typename T>
@@ -129,7 +98,6 @@ T Deque<T>::pop_front() {
         back_ = nullptr;
     }
     delete old_front;
-    size_--;
     return value;
 }
 
@@ -147,7 +115,6 @@ T Deque<T>::pop_back() {
         front_ = nullptr;
     }
     delete old_back;
-    size_--;
     return value;
 }
 
@@ -164,7 +131,9 @@ size_t Deque<T>::size() const {
 template <typename T>
 Deque<T>& Deque<T>::operator=(const Deque<T>& other) {
     if (this != &other) {
-        clear();
+        while (!empty()) {
+            pop_front();
+        }
         Node<T>* current = other.front_;
         while (current) {
             push_back(current->value);
@@ -177,7 +146,9 @@ Deque<T>& Deque<T>::operator=(const Deque<T>& other) {
 template <typename T>
 Deque<T>& Deque<T>::operator=(Deque<T>&& other) noexcept {
     if (this != &other) {
-        clear();
+        while (!empty()) {
+            pop_front();
+        }
         front_ = other.front_;
         back_ = other.back_;
         size_ = other.size_;
@@ -186,17 +157,6 @@ Deque<T>& Deque<T>::operator=(Deque<T>&& other) noexcept {
         other.size_ = 0;
     }
     return *this;
-}
-
-template <typename T>
-void Deque<T>::clear() {
-    while (!empty()) {
-        Node<T>* node_to_delete = front_;
-        front_ = front_->next;
-        delete node_to_delete;
-        node_to_delete = nullptr;
-    }
-    back_ = nullptr;
 }
 
 #endif  // MODULES_KUTARIN_A_LAB2_INCLUDE_DEQUE_H_
