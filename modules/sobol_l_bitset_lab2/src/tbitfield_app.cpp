@@ -72,8 +72,8 @@ void TBitFieldApp::help(std::vector<std::string>& output) {
 }
 
 void TBitFieldApp::print(std::vector<std::string>& output) {
-    for (size_t i = 0; i < myBitField.GetLength(); i++) {
-        output.push_back(myBitField.getbit(i));
+    for (int i = 0; i < myBitField.GetLength(); i++) {
+        output.push_back(myBitField.GetBit(i));
     }
 }
 
