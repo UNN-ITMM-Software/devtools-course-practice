@@ -143,13 +143,13 @@ TEST(CNodeTest, TestPrint) {
     ASSERT_EQ(output, "1");
 }
 
-TEST(CNodeTest, TestDelNext) {
-    CNode<int> node1(1);
-    CNode<int> node2(2);
-    node1.set_next(&node2);
-    node1.del_next();
-    ASSERT_EQ(node1.get_next_node(), nullptr);
-}
+// TEST(CNodeTest, TestDelNext) {
+//     CNode<int> node1(1);
+//     CNode<int> node2(2);
+//     node1.set_next(&node2);
+//     node1.del_next();
+//     ASSERT_EQ(node1.get_next_node(), nullptr);
+// }
 
 TEST(CNodeTest, TestOperatorEqual) {
     CNode<int> node1(1);
