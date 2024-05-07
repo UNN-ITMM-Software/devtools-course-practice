@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 using digit_t = size_t;
 using number_t = int64_t;
@@ -20,6 +21,7 @@ class CustomNSNumber {
  public:
   explicit CustomNSNumber(size_t _num_sys = 10) : num_sys(_num_sys) {}
   explicit CustomNSNumber(number_t _number, size_t _num_sys = 10);
+  explicit CustomNSNumber(const std::string& _number, size_t _num_sys = 10);
   CustomNSNumber(const CustomNSNumber& _num);
   CustomNSNumber(CustomNSNumber&& _num);
   ~CustomNSNumber() = default;
@@ -54,7 +56,7 @@ class CustomNSNumber {
     for (size_t i = _num.digits.size(); i > 0; i--) {
       ostr << _num.digits[i - 1] << ' ';
     }
-    ostr << "(Numeric system: " << _num.num_sys << ")";
+    ostr << "_" << _num.num_sys;
     return ostr;
   }
 };

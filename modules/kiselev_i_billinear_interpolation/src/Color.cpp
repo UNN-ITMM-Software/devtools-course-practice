@@ -2,17 +2,19 @@
 
 #include "include/Color.h"
 
+Color::Color() : R(0), G(0), B(0) {}
+
 Color::Color(int r, int g, int b) {
-    if (r > static_cast<int>(max)) R = max;
-    else if (r < static_cast<int>(min)) R = min;
+    if (r > max) R = max;
+    else if (r < min) R = min;
     else
             R = r;
-    if (g > static_cast<int>(max)) G = max;
-    else if (g < static_cast<int>(min)) G = min;
+    if (g > max) G = max;
+    else if (g < min) G = min;
     else
             G = g;
-    if (b > static_cast<int>(max)) B = max;
-    else if (b < static_cast<int>(min)) B = min;
+    if (b > max) B = max;
+    else if (b < min) B = min;
     else
             B = b;
 }
@@ -23,50 +25,50 @@ Color::Color(const Color& c) {
     B = c.getB();
 }
 
-char Color::getR() const {
+int Color::getR() const {
     return R;
 }
 
-char Color::getG() const {
+int Color::getG() const {
     return G;
 }
 
-char Color::getB() const {
+int Color::getB() const {
     return B;
 }
 
 void Color::setR(int r) {
-    if (r > static_cast<int>(max)) R = max;
-    else if (r < static_cast<int>(min)) R = min;
+    if (r > max) R = max;
+    else if (r < min) R = min;
     else
             R = r;
 }
 
 void Color::setG(int g) {
-    if (g > static_cast<int>(max)) G = max;
-    else if (g < static_cast<int>(min)) G = min;
+    if (g > max) G = max;
+    else if (g < min) G = min;
     else
             G = g;
 }
 
 void Color::setB(int b) {
-    if (b > static_cast<int>(max)) B = max;
-    else if (b < static_cast<int>(min)) B = min;
+    if (b > max) B = max;
+    else if (b < min) B = min;
     else
             B = b;
 }
 
 void Color::setColor(int r, int g, int b) {
-    if (r > static_cast<int>(max)) R = max;
-    else if (r < static_cast<int>(min)) R = min;
+    if (r > max) R = max;
+    else if (r < min) R = min;
     else
         R = r;
-    if (g > static_cast<int>(max)) G = max;
-    else if (g < static_cast<int>(min)) G = min;
+    if (g > max) G = max;
+    else if (g < min) G = min;
     else
         G = g;
-    if (b > static_cast<int>(max)) B = max;
-    else if (b < static_cast<int>(min)) B = min;
+    if (b > max) B = max;
+    else if (b < min) B = min;
     else
         B = b;
 }

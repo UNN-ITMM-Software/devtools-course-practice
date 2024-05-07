@@ -1,0 +1,63 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_check_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_test_check_run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_check_empty
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_test_check_empty PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage: <executable> <point1_x> <point1_y> <point2_x> <point2_y> ..."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_check_arguments
+    COMMAND ${APPLICATION} 1 2
+)
+set_tests_properties (${prefix}_test_check_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Not enough points to form a convex hull!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_check_dont_have_number
+    COMMAND ${APPLICATION} 1 2 3 4 5 6 7 8 9
+)
+
+set_tests_properties (${prefix}_test_check_dont_have_number PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid number of arguments!"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_test_check_wrong_format
+    COMMAND ${APPLICATION} a1.0 1.0 l1 52 da zdravstvyet sankt peterbyrg
+)
+set_tests_properties (${prefix}_test_check_wrong_format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Wrong point format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_check_wrong_number
+    COMMAND ${APPLICATION} 1.0 1.0 2.0 l5
+)
+set_tests_properties (${prefix}_test_check_wrong_number PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Wrong point format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_check_wrong_input
+    COMMAND ${APPLICATION} 0.1,0.2,0.3 x,y
+)
+set_tests_properties (${prefix}_test_check_wrong_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Wrong point format!"
+    LABELS "${MODULE}")
