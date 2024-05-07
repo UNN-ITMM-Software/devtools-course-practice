@@ -6,6 +6,7 @@
 #include <iostream>
 #include <utility>
 #include <algorithm>
+#include <cmath>
 
 const int MAX_VECTOR_SIZE = 100000000;
 const int MAX_MATRIX_SIZE = 10000;
@@ -221,19 +222,21 @@ TDynamicVector<TDynamicVector<T>>(V) {}
       }
       TDynamicMatrix tdm(sz);
       for (size_t i = 0; i < sz; i++) {
+        for (size_t j = 0; j < sz; j++) {
           for (size_t k = 0; k < sz; k++) {
-              tdm[i][k] += pMem[i][k] * m.pMem[k][i];
+              tdm[i][j] += pMem[i][k] * m.pMem[k][j];
           }
+        }
       }
       return tdm;
   }
-  T findDeterm(const TDynamicMatrix& m) {
+  T findDeterm() {
     T det = 1.0;
-    TDynamicMatrix<T>tdm(m);
+    TDynamicMatrix<T>tdm(*this);
     for (size_t i = 0; i < tdm.size(); i++) {
       size_t pivot = i;
       for (size_t j = i + 1; j < tdm.size(); j++) {
-        if (abs(tdm[j][i]) > abs(tdm[pivot][i])) {
+        if (std::abs(tdm[j][i]) > std::abs(tdm[pivot][i])) {
           pivot = j;
         }
       }
@@ -254,12 +257,12 @@ TDynamicVector<TDynamicVector<T>>(V) {}
     }
     return det;
   }
-  TDynamicMatrix<T> findInverse(const TDynamicMatrix& m) {
-    size_t size = m.size();
+  TDynamicMatrix<T> findInverse() {
+    size_t size = this->size();
     TDynamicMatrix<T> matE(size);
-    TDynamicMatrix<T> A(m);
-    T determ = A.findDeterm(A);
-    if (determ == 0.0)
+    TDynamicMatrix<T> A(*this);
+    T determ = A.findDeterm();
+    if (std::abs(determ) < 0.00000001)
       throw "determinant = 0!";
     for (size_t q = 0; q < size; q++) {
       for (size_t w = 0; w < size; w++) {
@@ -291,5 +294,17 @@ TDynamicVector<TDynamicVector<T>>(V) {}
     }
     return matE;
   }
+
+  friend std::ostream& operator<<(std::ostream& ostr, const TDynamicMatrix& v) {
+  ostr << "( ";
+  for (size_t i = 0; i < v.size(); i++) {
+    for (size_t j = 0; j < v.size(); j++) {
+      ostr << v[i][j] << ' ';
+    }
+  }
+  ostr << ')';
+
+  return ostr;
+}
 };
 #endif  // MODULES_MARTYNOV_A_MATRIX_OPERATIONS_INCLUDE_TMATRIX_H_

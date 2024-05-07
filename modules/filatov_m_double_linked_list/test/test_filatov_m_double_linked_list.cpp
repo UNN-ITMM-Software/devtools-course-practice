@@ -230,3 +230,33 @@ TEST(List_iterator_tests, correctly_iterator) {
     EXPECT_EQ(f2, true);
     EXPECT_EQ(f3, true);
 }
+
+TEST(Filatov_Maxim_List_tests, can_pop_front) {
+    DoubleLinkedList<int> l;
+    l.push_back(1);
+    l.push_back(3);
+    ASSERT_NO_THROW(l.pop_front());
+}
+
+TEST(Filatov_Maxim_List_tests, correctly_pop_front) {
+    DoubleLinkedList<int> l;
+    l.push_back(1);
+    l.push_back(3);
+    l.pop_front();
+    EXPECT_EQ(l[0]->get_data(), 3);
+}
+
+TEST(Filatov_Maxim_List_tests, can_pop_back) {
+    DoubleLinkedList<int> l;
+    l.push_back(1);
+    l.push_back(3);
+    ASSERT_NO_THROW(l.pop_back());
+}
+
+TEST(Filatov_Maxim_List_tests, correctly_pop_back) {
+    DoubleLinkedList<int> l;
+    l.push_back(1);
+    l.push_back(3);
+    l.pop_back();
+    EXPECT_EQ(l[0]->get_data(), 1);
+}

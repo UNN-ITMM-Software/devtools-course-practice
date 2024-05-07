@@ -1,0 +1,79 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a deposit calculator application"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 1 2
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} 1 aba 2
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong arguments format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Negative_Numbers
+    COMMAND ${APPLICATION} 100 1 -2
+)
+set_tests_properties (${prefix}_can_Detect_Negative_Numbers PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_Profit
+    COMMAND ${APPLICATION} 1000 10 12
+)
+set_tests_properties (${prefix}_test_Profit PROPERTIES
+    PASS_REGULAR_EXPRESSION "Profit = 100"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_Capitalization
+    COMMAND ${APPLICATION} 1000 10 12
+)
+set_tests_properties (${prefix}_test_Capitalization PROPERTIES
+    PASS_REGULAR_EXPRESSION ".*\n"
+    PASS_REGULAR_EXPRESSION "Profit capitalisation = 1104.71"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_ZeroInterestRate
+    COMMAND ${APPLICATION} 1000 0 12
+)
+set_tests_properties (${prefix}_test_ZeroInterestRate PROPERTIES
+    PASS_REGULAR_EXPRESSION "Profit = 0"
+    PASS_REGULAR_EXPRESSION "Profit capitalisation = 1000"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_test_OneMonth
+    COMMAND ${APPLICATION} 1000 10 1
+)
+set_tests_properties (${prefix}_test_OneMonth PROPERTIES
+    PASS_REGULAR_EXPRESSION "Profit = 8.3"
+    PASS_REGULAR_EXPRESSION "Profit capitalisation = 1008.3"
+    LABELS "${MODULE}")
