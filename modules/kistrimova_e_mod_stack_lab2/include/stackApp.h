@@ -5,6 +5,7 @@
 #include <string>
 
 #include "include/stack.h"
+
 typedef int T;
 class StackApp {
  public:

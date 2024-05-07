@@ -4,7 +4,8 @@
 #include <exception>
 #include <sstream>
 
-#include "include/stack_app.h"
+#include "include/stackApp.h"
+
 bool StackApp::validate(int argc, char* argv[]) {
     if (argc == 1) {
         help(argv[0]);
