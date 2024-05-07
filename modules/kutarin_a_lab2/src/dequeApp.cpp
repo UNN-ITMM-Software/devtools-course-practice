@@ -99,7 +99,7 @@ void DequeApp::pop_front(std::vector<std::string>& output) {
     if (deque.empty()) {
         output.push_back("Deque is empty, can't pop_front.");
     } else {
-        deque.pop_back();
+        deque.pop_front();
     }
 }
 
