@@ -127,11 +127,11 @@ class CList {
             pop_back();
             return;
         }
-        if (index == size() - 1) {
+        if (index == static_cast<int>(size()) - 1) {
             pop_back();
             return;
         }
-        if (index >= size() - 1) {
+        if (index >= static_cast<int>(size()) - 1) {
             throw std::out_of_range("out of range");
         }
         CNode<T>* del_elem = (*this)[index];

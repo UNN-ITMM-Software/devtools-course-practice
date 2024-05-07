@@ -47,9 +47,9 @@
 
 TEST(CListTest, TestSize) {
     CList<int> list;
-    ASSERT_EQ(list.size(), 0);
+    ASSERT_EQ(static_cast<int>(list.size()), 0);
     list.push_back(1);
-    ASSERT_EQ(list.size(), 1);
+    ASSERT_EQ(static_cast<int>(list.size()), 1);
 }
 
 TEST(CListTest, TestPushBack) {
