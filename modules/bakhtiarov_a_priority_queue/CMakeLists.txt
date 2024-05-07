@@ -1,27 +1,12 @@
-set(target ${TESTS})
+# Declare variables for binaries' names
+get_filename_component(DIR_NAME ${CMAKE_CURRENT_LIST_DIR} NAME)
+set(MODULE      "${DIR_NAME}")
+set(LIBRARY     "lib_${MODULE}")
+set(TESTS       "test_${MODULE}")
 
-file(GLOB srcs "*.cpp")
-set_source_files_properties(${srcs} PROPERTIES
-    LABELS "${MODULE};Test")
+# Include directory with public headers
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-add_executable(${target} ${srcs} ${hdrs})
-set_target_properties(${target} PROPERTIES
-    LABELS "${MODULE};Test")
-
-if (UNIX)
-  target_link_libraries(${target} gtest ${CMAKE_THREAD_LIBS_INIT} pthread)
-endif (UNIX)
-target_link_libraries(${target} gtest ${LIBRARY})
-
-# VS2012 doesn't support correctly the tuples yet,
-# see http://code.google.com/p/googletest/issues/detail?id=412
-if(MSVC)
-    target_compile_definitions(${target} PUBLIC _VARIADIC_MAX=10)
-endif()
-
-add_test(
-    NAME ${MODULE}_gtest
-    COMMAND ${target}
-)
-set_tests_properties (${MODULE}_gtest PROPERTIES
-    LABELS "${MODULE}")
+# Add all submodules
+add_subdirectory(src)
+add_subdirectory(test)
