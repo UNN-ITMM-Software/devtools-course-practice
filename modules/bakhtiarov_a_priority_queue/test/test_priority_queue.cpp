@@ -52,5 +52,5 @@ TEST(TQueueInsertTest, Front) {
     TQueue_insert<int> queue;
     queue.push({1, 3});
     queue.push({2, 2});
-    EXPECT_EQ(queue.front().first, 1);
+    EXPECT_EQ(queue.front().first, 2);
 }

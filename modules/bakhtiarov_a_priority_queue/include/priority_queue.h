@@ -216,8 +216,12 @@ class TQueue_on_list {
  private:
     int size;
     CList<T> data;
+
  public:
-    TQueue_on_list() { data = CList<T>(); }
+    TQueue_on_list() {
+        data = CList<T>();
+        size = 0;
+    }
     explicit TQueue_on_list(int _size) {
         data = CList<T>();
         _size < 1 ? throw std::string("Negative value") : NULL;
