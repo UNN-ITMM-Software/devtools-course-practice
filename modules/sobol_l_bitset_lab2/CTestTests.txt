@@ -50,3 +50,35 @@ add_test(
 set_tests_properties (${prefix}_can_get_bit PROPERTIES
     PASS_REGULAR_EXPRESSION "1\n0\n0\n0\n0\n0\n0\n0\n0\n"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_set_bit_error
+    COMMAND ${APPLICATION} --setbit
+)
+set_tests_properties (${prefix}_can_set_bit_error PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:\n--setbit option must have one argument\nRun --help for all supported options"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_clear_bit_error
+    COMMAND ${APPLICATION} --clearbit
+)
+set_tests_properties (${prefix}_can_clear_bit_error PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:\n--clearbit option must have one argument\nRun --help for all supported options"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_get_bit_error
+    COMMAND ${APPLICATION} --getbit
+)
+set_tests_properties (${prefix}_can_get_bit_error PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:\n--getbit option must have one argument\nRun --help for all supported options"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_invalid_method
+    COMMAND ${APPLICATION} --invalid
+)
+set_tests_properties (${prefix}_invalid_method PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:\nunrecognized command-line option.\nRun --help for all supported options"
+    LABELS "${MODULE}")
