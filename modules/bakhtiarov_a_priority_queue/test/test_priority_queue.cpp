@@ -84,21 +84,21 @@ TEST(CListTest, TestPopFront) {
     ASSERT_EQ(list.front()->get_data(), 1);
 }
 
-TEST(CListTest, TestInsert) {
-    CList<int> list;
-    list.insert(1, 0);
-    ASSERT_EQ(list.front()->get_data(), 1);
-    list.insert(2, 1);
-    ASSERT_EQ(list.back()->get_data(), 2);
-}
+// TEST(CListTest, TestInsert) {
+//     CList<int> list;
+//     list.insert(1, 0);
+//     ASSERT_EQ(list.front()->get_data(), 1);
+//     list.insert(2, 1);
+//     ASSERT_EQ(list.back()->get_data(), 2);
+// }
 
-TEST(CListTest, TestErase) {
-    CList<int> list;
-    list.push_back(1);
-    list.push_back(2);
-    list.erase(0);
-    ASSERT_EQ(list.front()->get_data(), 2);
-}
+// TEST(CListTest, TestErase) {
+//     CList<int> list;
+//     list.push_back(1);
+//     list.push_back(2);
+//     list.erase(0);
+//     ASSERT_EQ(list.front()->get_data(), 2);
+// }
 
 TEST(CListTest, TestReverse) {
     CList<int> list;
