@@ -17,7 +17,6 @@ bool StackApp::validate(int argc, char* argv[]) {
         && std::strcmp(argv[1], "show_top") != 0
         && std::strcmp(argv[1], "isFull") != 0
         && std::strcmp(argv[1], "isEmpty") != 0
-        && std::strcmp(argv[1], "push") != 0
         && std::strcmp(argv[1], "current_size") != 0
         && std::strcmp(argv[1], "clear") != 0) {
         help(argv[0], "Incorrect second argument");
@@ -42,40 +41,19 @@ const char* message) {
 
 std::string StackApp::operator()(int argc, char* argv[]) {
     if (validate(argc, argv)) {
-        int count = 0;
         std::ostringstream stream;
-        while (count<argc - 1) {
-        std::string operation = std::string(argv[1] + count);
-            if (operation == "pop") {
-                    Mystack.pop();
-                    stream << "Pop completed\n";
-                    count++;
-            } else if (operation == "show_top") {
-                    T temp = Mystack.show_top();
-                    stream << "Top: " << temp << "\n";
-                    count++;
-            } else if (operation == "isFull") {
+            std::string operation = std::string(argv[1]);
+            if (operation == "isFull") {
                     bool temp = Mystack.isFull();
                     stream << "isFull: " << temp << "\n";
-                    count++;
             } else if (operation == "isEmpty") {
-                    bool temp = Mystack.isEmpty();
-                    stream << "isEmpty: " << temp << "\n";
-                    count++;
-            } else if (operation == "current_size") {
-                    bool temp = Mystack.current_size();
-                    stream << "current_size: " << temp << "\n";
-                    count++;
-            } else if (operation == "clear") {
-                    Mystack.clear();
-                    stream << "clear completed \n";
-                    count++;
+                bool temp = Mystack.isEmpty();
+                stream << "isEmpty: " << temp << "\n";
             } else if (operation == "push") {
-                int input_string = std::stoi(argv[2] + count);
+                int input_string = std::stoi(argv[2]);
                 Mystack.push(input_string);
                 stream << "push completed \n";
             }
-        }
         message_ = stream.str();
     }
     return message_;
