@@ -23,4 +23,3 @@ class QueueApp {
     std::string get_next(size_t& next, int argc, const char** argv);
     std::string Start(int argc, const char** argv);
 };
-

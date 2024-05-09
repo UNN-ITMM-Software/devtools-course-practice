@@ -1,4 +1,4 @@
-// Copyright 2024 Sokolova Daria
+// Copyright 2024 Sokolova Daria & Kochetov Nikolay
 
 #ifndef MODULES_SOKOLOVA_D_QUEUE_INCLUDE_QUEUE_H_
 #define MODULES_SOKOLOVA_D_QUEUE_INCLUDE_QUEUE_H_

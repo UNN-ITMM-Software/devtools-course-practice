@@ -1,7 +1,6 @@
-// Copyright 2024 Sokolova Daria & Kochetov Nikolay
+// Copyright 2024 Sokolova Daria
 
 #include <gtest/gtest.h>
-#include <iostream>
 #include "include/queue.h"
 
 TEST(SokolovaDaria_QueueTest, CanEnqueueElement) {
