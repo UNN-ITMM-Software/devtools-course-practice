@@ -26,3 +26,11 @@ add_test(
 set_tests_properties (${prefix}_push_back PROPERTIES
     PASS_REGULAR_EXPRESSION "new element = 12"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_push_back
+    COMMAND ${APPLICATION} -push_back 12 -get_front
+)
+set_tests_properties (${prefix}_push_back PROPERTIES
+    PASS_REGULAR_EXPRESSION "12"
+    LABELS "${MODULE}")
