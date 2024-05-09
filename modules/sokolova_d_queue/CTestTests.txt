@@ -109,7 +109,7 @@ add_test(
     -push_back 12 -push_back 12 -push_back 12 -push_back 12 -push_back 12
     -push_back 12
 )
-set_tests_properties (${prefix}_isFull_false PROPERTIES
+set_tests_properties (${prefix}_push_back_full_error PROPERTIES
     PASS_REGULAR_EXPRESSION "ERROR: queue is full!"
     LABELS "${MODULE}")
 
