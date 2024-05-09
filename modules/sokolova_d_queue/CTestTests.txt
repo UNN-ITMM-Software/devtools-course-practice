@@ -12,17 +12,17 @@ set_tests_properties (${prefix}_can_Run PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Print_Help
+    NAME ${prefix}_display
     COMMAND ${APPLICATION} -display
 )
-set_tests_properties (${prefix}_can_Print_Help PROPERTIES
-    PASS_REGULAR_EXPRESSION "queue is empty*"
+set_tests_properties (${prefix}_display PROPERTIES
+    PASS_REGULAR_EXPRESSION "queue is empty"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Print_Help
-    COMMAND ${APPLICATION} -display
+    NAME ${prefix}_push_back
+    COMMAND ${APPLICATION} -push_back 12
 )
-set_tests_properties (${prefix}_can_Print_Help PROPERTIES
-    PASS_REGULAR_EXPRESSION "queue is empty*"
+set_tests_properties (${prefix}_push_back PROPERTIES
+    PASS_REGULAR_EXPRESSION "new element = 12"
     LABELS "${MODULE}")
