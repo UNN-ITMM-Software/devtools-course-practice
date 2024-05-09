@@ -85,14 +85,21 @@ std::string QueueApp::Start(int argc, const char** argv) {
     }
     for (int i = 0; i < commands.size(); i++) {
         auto arg = std::string(argv[i]);
-        if (arg == "-size") { size(output); }
-        else if (arg == "-display") { display(output); }
-        else if (arg == "-get_back") { get_back(output); }
-        else if (arg == "-get_front") { get_front(output); }
-        else if (arg == "-isEmpty") { isEmpty(output); }
-        else if (arg == "-isFull") { isFull(output); }
-        else if (arg == "-pop_front") { pop_front(output); }
-        else if (arg == "-push_back") {
+        if (arg == "-size") {
+            size(output);
+        } else if (arg == "-display") {
+            display(output);
+        } else if (arg == "-get_back") {
+            get_back(output);
+        } else if (arg == "-get_front") {
+            get_front(output);
+        } else if (arg == "-isEmpty") {
+            isEmpty(output);
+        } else if (arg == "-isFull") {
+            isFull(output);
+        } else if (arg == "-pop_front") {
+            pop_front(output);
+        } else if (arg == "-push_back") {
             std::string answer = get_next(i, argc, argv);
             if (!(answer.substr(0, 6) == "ERROR:")) {
                 push_back(answer, output);
