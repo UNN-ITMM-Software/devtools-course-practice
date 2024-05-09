@@ -20,7 +20,7 @@ class QueueApp {
     std::string push_back(std::string elem, std::string& out);
     std::string pop_front(std::string& out);
  public:
-    std::string get_next(int& next, int argc, const char** argv);
+    std::string get_next(size_t& next, int argc, const char** argv);
     std::string Start(int argc, const char** argv);
 };
 

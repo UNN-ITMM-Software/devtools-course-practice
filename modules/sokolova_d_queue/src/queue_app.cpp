@@ -64,8 +64,8 @@ std::string QueueApp::pop_front(std::string& out) {
     return temp;
 }
 
-std::string QueueApp::get_next(int& next, int argc, const char** argv) {
-    if (next < argc - 1) {
+std::string QueueApp::get_next(size_t& next, int argc, const char** argv) {
+    if (static_cast<int>(next) < argc - 1) {
         next++;
         if (!queue.isFull()) {
             return argv[next];
