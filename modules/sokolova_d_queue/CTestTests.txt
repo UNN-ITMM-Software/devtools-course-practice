@@ -83,5 +83,5 @@ add_test(
     COMMAND ${APPLICATION} -push_back 12 -pop_front
 )
 set_tests_properties (${prefix}_pop_front PROPERTIES
-    PASS_REGULAR_EXPRESSION "new element = 12\nthe item 12 is out of the queue"
+    PASS_REGULAR_EXPRESSION "nthe item \"12\" is out of the queue"
     LABELS "${MODULE}")
