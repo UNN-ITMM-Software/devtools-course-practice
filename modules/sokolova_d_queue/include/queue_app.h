@@ -11,6 +11,8 @@
 class QueueApp {
  private:
     Queue<std::string> queue;
+    std::string get_next(size_t& next, int argc, const char** argv);
+ public:
     size_t size(std::string& out);
     void display(std::string& out);
     std::string get_back(std::string& out);
@@ -19,7 +21,5 @@ class QueueApp {
     bool isFull(std::string& out);
     std::string push_back(std::string elem, std::string& out);
     std::string pop_front(std::string& out);
- public:
-    std::string get_next(size_t& next, int argc, const char** argv);
     std::string Start(int argc, const char** argv);
 };
