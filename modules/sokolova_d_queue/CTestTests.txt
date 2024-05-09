@@ -34,3 +34,54 @@ add_test(
 set_tests_properties (${prefix}_get_front PROPERTIES
     PASS_REGULAR_EXPRESSION "12"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_get_back
+    COMMAND ${APPLICATION} -push_back 12 -get_back
+)
+set_tests_properties (${prefix}_get_back PROPERTIES
+    PASS_REGULAR_EXPRESSION "12"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_isEmpty
+    COMMAND ${APPLICATION} -isEmpty
+)
+set_tests_properties (${prefix}_isEmpty PROPERTIES
+    PASS_REGULAR_EXPRESSION "queue is empty"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_isEmpty_false
+    COMMAND ${APPLICATION} -push_back 12 -isEmpty
+)
+set_tests_properties (${prefix}_isEmpty_false PROPERTIES
+    PASS_REGULAR_EXPRESSION "queue is not empty"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_isFull
+    COMMAND ${APPLICATION} -isFull
+)
+set_tests_properties (${prefix}_isFull PROPERTIES
+    PASS_REGULAR_EXPRESSION "queue is not full"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_isFull_false
+    COMMAND ${APPLICATION}
+    -push_back 12 -push_back 12 -push_back 12 -push_back 12 -push_back 12
+    -push_back 12 -push_back 12 -push_back 12 -push_back 12 -push_back 12
+    -isFull
+)
+set_tests_properties (${prefix}_isFull_false PROPERTIES
+    PASS_REGULAR_EXPRESSION "queue is full"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_pop_front
+    COMMAND ${APPLICATION} -push_back 12 -pop_front
+)
+set_tests_properties (${prefix}_pop_front PROPERTIES
+    PASS_REGULAR_EXPRESSION "the item 12 is out of the queue"
+    LABELS "${MODULE}")
