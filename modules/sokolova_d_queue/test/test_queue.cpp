@@ -1,4 +1,4 @@
-// Copyright 2024 Sokolova Daria
+// Copyright 2024 Sokolova Daria & Kochetov Nikolay
 
 #include <gtest/gtest.h>
 #include "include/queue.h"
