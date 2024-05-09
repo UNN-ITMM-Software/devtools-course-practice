@@ -1,6 +1,7 @@
 // Copyright 2024 Sokolova Daria & Kochetov Nikolay
 
 #include <gtest/gtest.h>
+#include <iostream>
 #include "include/queue.h"
 
 TEST(SokolovaDaria_QueueTest, CanEnqueueElement) {
