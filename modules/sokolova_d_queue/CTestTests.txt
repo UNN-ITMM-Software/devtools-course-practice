@@ -12,10 +12,10 @@ set_tests_properties (${prefix}_can_Run PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_display
+    NAME ${prefix}_display_empty
     COMMAND ${APPLICATION} -display
 )
-set_tests_properties (${prefix}_display PROPERTIES
+set_tests_properties (${prefix}_display_empty PROPERTIES
     PASS_REGULAR_EXPRESSION "queue is empty"
     LABELS "${MODULE}")
 
@@ -25,6 +25,30 @@ add_test(
 )
 set_tests_properties (${prefix}_push_back PROPERTIES
     PASS_REGULAR_EXPRESSION "new element = 12"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_push_back
+    COMMAND ${APPLICATION} -push_back
+)
+set_tests_properties (${prefix}_push_back PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: no args to execute push_back!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_display
+    COMMAND ${APPLICATION} -push_back 12 -display
+)
+set_tests_properties (${prefix}_display PROPERTIES
+    PASS_REGULAR_EXPRESSION "[ 0 | 12 ]"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_size
+    COMMAND ${APPLICATION} -push_back 12 -size
+)
+set_tests_properties (${prefix}_size PROPERTIES
+    PASS_REGULAR_EXPRESSION "1"
     LABELS "${MODULE}")
 
 add_test(
@@ -76,6 +100,14 @@ add_test(
 )
 set_tests_properties (${prefix}_isFull_false PROPERTIES
     PASS_REGULAR_EXPRESSION "queue is full"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_pop_front
+    COMMAND ${APPLICATION} -push_back 12 -pop_front
+)
+set_tests_properties (${prefix}_pop_front PROPERTIES
+    PASS_REGULAR_EXPRESSION "the item \"12\" is out of the queue"
     LABELS "${MODULE}")
 
 add_test(
