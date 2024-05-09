@@ -107,7 +107,7 @@ std::string QueueApp::Start(int argc, const char** argv) {
                 output += answer;
             }
         } else {
-            output += "ERROR: the command was not recognized!";
+            output += "ERROR: the command(" + arg + ") was not recognized!";
         }
         output += '\n';
     }
