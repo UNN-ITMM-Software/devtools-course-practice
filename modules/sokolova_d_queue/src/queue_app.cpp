@@ -1,6 +1,6 @@
 // Copyright 2024 Kochetov Nikolay
 
-#include "include/queue.h"
+#include "include/queue_app.h"
 
 
 void QueueApp::display(std::string& out) {
