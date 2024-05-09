@@ -9,7 +9,7 @@
 
 
 class QueueApp {
-private:
+ private:
     Queue<std::string> queue;
     size_t size(std::string& out);
     void display(std::string& out);
@@ -19,7 +19,7 @@ private:
     bool isFull(std::string& out);
     std::string push_back(std::string elem, std::string& out);
     std::string pop_front(std::string& out);
-public:
+ public:
     std::string get_next(int& next, int argc, const char** argv);
     std::string Start(int argc, const char** argv);
 };
