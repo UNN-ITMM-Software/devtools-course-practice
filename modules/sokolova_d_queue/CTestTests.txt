@@ -28,9 +28,9 @@ set_tests_properties (${prefix}_push_back PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_push_back
+    NAME ${prefix}_get_front
     COMMAND ${APPLICATION} -push_back 12 -get_front
 )
-set_tests_properties (${prefix}_push_back PROPERTIES
+set_tests_properties (${prefix}_get_front PROPERTIES
     PASS_REGULAR_EXPRESSION "12"
     LABELS "${MODULE}")
