@@ -28,10 +28,10 @@ set_tests_properties (${prefix}_push_back PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_push_back
+    NAME ${prefix}_push_back_no_args
     COMMAND ${APPLICATION} -push_back
 )
-set_tests_properties (${prefix}_push_back PROPERTIES
+set_tests_properties (${prefix}_push_back_no_args PROPERTIES
     PASS_REGULAR_EXPRESSION "ERROR: no args to execute push_back!"
     LABELS "${MODULE}")
 
