@@ -83,7 +83,7 @@ std::string QueueApp::Start(int argc, const char** argv) {
     for (int i = 0; i < argc; i++) {
         commands.push_back(std::string(argv[i]));
     }
-    for (int i = 0; i < commands.size(); i++) {
+    for (size_t i = 0; i < commands.size(); i++) {
         auto arg = std::string(argv[i]);
         if (arg == "-size") {
             size(output);
