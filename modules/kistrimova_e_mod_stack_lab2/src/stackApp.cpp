@@ -6,6 +6,17 @@
 
 #include "include/stackApp.h"
 
+bool StackApp::isFlagValid(char* arg) {
+    const char* validFlags[] = {"pop", "show_top",
+    "isFull", "isEmpty", "current_size", "clear"};
+    for (const auto& flag : validFlags) {
+        if (std::strcmp(arg, flag) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
 bool StackApp::validate(int argc, char* argv[]) {
     if (argc == 1) {
         help(argv[0]);
@@ -13,16 +24,10 @@ bool StackApp::validate(int argc, char* argv[]) {
     } else if (argc == 2 && std::strcmp(argv[1], "--help") == 0) {
         help(argv[0]);
         return false;
-    } else if (argc == 2 &&
-        std::strcmp(argv[1], "pop") != 0
-        && std::strcmp(argv[1], "show_top") != 0
-        && std::strcmp(argv[1], "isFull") != 0
-        && std::strcmp(argv[1], "isEmpty") != 0
-        && std::strcmp(argv[1], "current_size") != 0
-        && std::strcmp(argv[1], "clear") != 0) {
+    } else if (argc == 2 && !isFlagValid(argv[1])) {
         help(argv[0], "Incorrect second argument");
         return false;
-        }
+    }
     return true;
 }
 
