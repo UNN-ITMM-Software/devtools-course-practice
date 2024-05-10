@@ -16,6 +16,8 @@ class StackApp {
  private:
     std::string message_{};
 
+    bool isFlagValid(char* arg);
+
     bool validate(int argc, char *argv[]);
 
     void help(const char *appName, const char *errorMessage = nullptr);
