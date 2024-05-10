@@ -79,6 +79,7 @@ std::string QueueApp::get_next(size_t& next, int argc, const char** argv) {
 
 std::string QueueApp::Start(int argc, const char** argv) {
     std::vector<std::string> commands;
+    commands.reserve(argc);
     std::string output = "";
     for (int i = 0; i < argc; i++) {
         commands.push_back(std::string(argv[i]));
