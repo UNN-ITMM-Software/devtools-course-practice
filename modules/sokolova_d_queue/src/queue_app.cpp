@@ -1,16 +1,18 @@
 // Copyright 2024 Kochetov Nikolay
-
+#include <sstream>
 #include "include/queue_app.h"
 
 
 void QueueApp::display(std::string& out) {
     Queue<std::string> temp = queue;
+    std::stringstream stream;
     if (!queue.isEmpty()) {
         for (size_t i = 0; i < queue.size(); i++) {
-            out += "[ " + std::to_string(i) + " | "
-                + temp.front() + " ]\n";
+            stream << "[ " << std::to_string(i) << " | ";
+            stream << temp.front() + " ]\n";
             temp.dequeue();
         }
+        out += stream.str();
     } else {
         out += "queue is empty";
     }
