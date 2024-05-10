@@ -50,6 +50,12 @@ std::string StackApp::operator()(int argc, char* argv[]) {
             } else if (operation == "isEmpty") {
                 bool temp = Mystack.isEmpty();
                 stream << "isEmpty: " << temp << "\n";
+            } else if (operation == "push") {
+                int input_string = std::stoi(argv[2]);
+                Mystack.push(input_string);
+                stream << "push completed \n";
             }
+        message_ = stream.str();
     }
+    return message_;
 }
