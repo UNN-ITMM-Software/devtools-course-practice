@@ -50,3 +50,6 @@ std::string StackApp::operator()(int argc, char* argv[]) {
             } else if (operation == "isEmpty") {
                 bool temp = Mystack.isEmpty();
                 stream << "isEmpty: " << temp << "\n";
+            }
+    }
+}
