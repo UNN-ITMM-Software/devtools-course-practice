@@ -1,4 +1,4 @@
-// Copyright 2024 Sokolova Daria
+// Copyright 2024 Sokolova Daria & Kochetov Nikolay
 
 #ifndef MODULES_SOKOLOVA_D_QUEUE_INCLUDE_QUEUE_H_
 #define MODULES_SOKOLOVA_D_QUEUE_INCLUDE_QUEUE_H_
@@ -52,9 +52,8 @@ Queue<ValueType>::Queue(const Queue& other)
     tail(other.tail),
     count(other.count),
     capacity(other.capacity) {
-    for (size_t i = 0; i < count; ++i) {
-        buffer[i] = other.buffer
-            [(other.head + i) % other.capacity];
+    for (size_t i = 0; i < capacity; ++i) {
+        buffer[i] = other.buffer[i];
     }
 }
 
@@ -170,6 +169,5 @@ Queue<ValueType>& Queue<ValueType>
     }
     return *this;
 }
-
 
 #endif  // MODULES_SOKOLOVA_D_QUEUE_INCLUDE_QUEUE_H_
