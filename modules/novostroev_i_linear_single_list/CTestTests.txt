@@ -1,0 +1,60 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_can_Print_Help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage: ./target [options]*"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print
+    COMMAND ${APPLICATION} --print
+)
+set_tests_properties (${prefix}_can_Print PROPERTIES
+    PASS_REGULAR_EXPRESSION ""
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Push_Back
+    COMMAND ${APPLICATION} --push_back
+)
+set_tests_properties (${prefix}_can_Check_Push_Back PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:\n--push_back option must have one argument.\nRun --help for all supported options\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Push_B
+    COMMAND ${APPLICATION} --push_back 1 --push_back 2 --push_back 3
+)
+set_tests_properties (${prefix}_can_Check_Push_B PROPERTIES
+    PASS_REGULAR_EXPRESSION "1\n2\n3"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Push_Front
+    COMMAND ${APPLICATION} --push_front
+)
+set_tests_properties (${prefix}_can_Check_Push_Front PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:\n--push_front option must have one argument.\nRun --help for all supported options\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Unrecognized
+    COMMAND ${APPLICATION} --error
+)
+set_tests_properties (${prefix}_can_Check_Unrecognized PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:\nunrecognized command-line option.\nRun --help for all supported options\n"
+    LABELS "${MODULE}")
