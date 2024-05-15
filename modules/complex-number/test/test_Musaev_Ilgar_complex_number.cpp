@@ -43,3 +43,9 @@ TEST(Musaev_Ilgar_ComplexNumberDivisionTest, Division) {
     ASSERT_NEAR(z3.getRe(), 0.6, 0.1);
     ASSERT_NEAR(z3.getIm(), -0.7, 0.1);
 }
+
+TEST(Musaev_Ilgar_ComplexNumberDivisionZeroTest, DivisionZero) {
+    ComplexNumber z1(2.25, 5.25);
+    ComplexNumber z2(0, 0);
+    ASSERT_THROW(z1 / z2, std::string);
+}
