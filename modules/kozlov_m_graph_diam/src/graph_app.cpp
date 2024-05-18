@@ -47,14 +47,14 @@ std::string Graph_app::operator()(int argc, const char **argv) {
         return "Wrong operation.";
     }
 
-    int num_vertices = 0;
+    uint32_t num_vertices = 0;
     try {
         num_vertices = parseUint64(argv[2]);
     } catch (std::logic_error &str) {
         return str.what();
     }
 
-    if (argc != (num_vertices * (num_vertices + 3) / 2 + 2)) {
+    if (static_cast<uint32_t>(argc) != (num_vertices * (num_vertices + 3) / 2 + 2)) {
         return "Wrong number of arguments.";
     }
 
