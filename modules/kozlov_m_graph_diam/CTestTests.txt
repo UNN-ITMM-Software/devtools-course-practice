@@ -5,8 +5,8 @@
 set(prefix "${MODULE}")
 
 add_test(NAME TestBuildGraph
-         COMMAND ${APPLICATION} B 5 4 7 2 8 5)
-set_tests_properties(TestBuildGraph PROPERTIES PASS_REGULAR_EXPRESSION "Diameter of the graph: ")
+         COMMAND ${APPLICATION} B 3 1 1 1)
+set_tests_properties(TestBuildGraph PROPERTIES PASS_REGULAR_EXPRESSION "Diameter of the graph: 1")
 
 add_test(NAME TestInsufficientArguments
          COMMAND ${APPLICATION} B)

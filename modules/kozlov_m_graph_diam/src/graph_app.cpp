@@ -47,7 +47,7 @@ std::string Graph_app::operator()(int argc, const char **argv) {
         return "Wrong operation.";
     }
 
-    uint32_t num_vertices = 0;
+    int num_vertices = 0;
     try {
         num_vertices = parseUint64(argv[2]);
     } catch (std::logic_error &str) {
