@@ -8,15 +8,15 @@
 #include "include/graph.h"
 
 class Graph_app {
-public:
+ public:
     Graph_app() = default;
 
     std::string operator()(int argc, const char **argv);
 
-private:
+ private:
     void help(const char *appname, const char *message = "");
     bool validateNumberOfArguments(int argc, const char **argv);
     std::string message_;
 };
 
-#endif // MODULES_KOZLOV_M_GRAPH_DIAM_INCLUDE_GRAPH_APP_H_
+#endif  // MODULES_KOZLOV_M_GRAPH_DIAM_INCLUDE_GRAPH_APP_H_
