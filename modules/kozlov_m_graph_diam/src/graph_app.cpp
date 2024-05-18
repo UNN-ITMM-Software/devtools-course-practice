@@ -53,7 +53,7 @@ std::string Graph_app::operator()(int argc, const char **argv) {
     } catch (std::logic_error &str) {
         return str.what();
     }
-    int V = num_vertices * (num_vertices - 1) / 2;
+    int V = num_vertices * (num_vertices - 1) / 2 + 2;
     if (argc != V) {
         return "Wrong number of arguments.";
     }
