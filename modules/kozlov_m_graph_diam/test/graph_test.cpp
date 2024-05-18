@@ -81,3 +81,20 @@ TEST_F(GraphTest, FindDiameterEmptyGraph) {
     Graph<3> emptyGraph;
     ASSERT_EQ(emptyGraph.find_diam(), uint64_t(0));
 }
+
+TEST_F(GraphTest, AddEdgeWithOneOutOfRangeVertex) {
+    ASSERT_THROW(graph.add_edge(50, 2, 8), std::invalid_argument);
+}
+
+TEST_F(GraphTest, AddEdgeWithVerticesAtBoundary) {
+    ASSERT_NO_THROW(graph.add_edge(0, 49, 8));
+}
+
+TEST_F(GraphTest, FindDiameterMultipleComponentsGraph) {
+    Graph<6> disconnectedGraph;
+    disconnectedGraph.add_edge(0, 1, 5);
+    disconnectedGraph.add_edge(2, 3, 8);
+    disconnectedGraph.add_edge(4, 5, 3);
+
+    ASSERT_EQ(disconnectedGraph.find_diam(), INF);
+}
