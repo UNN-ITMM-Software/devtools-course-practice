@@ -1,0 +1,29 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(NAME TestBuildGraph
+         COMMAND ${APPLICATION} B 3 1 1 1)
+set_tests_properties(TestBuildGraph PROPERTIES PASS_REGULAR_EXPRESSION "Diameter of the graph: 1")
+
+add_test(NAME TestInsufficientArguments
+         COMMAND ${APPLICATION} B)
+set_tests_properties(TestInsufficientArguments PROPERTIES PASS_REGULAR_EXPRESSION "Insufficient arguments.")
+
+add_test(NAME TestWrongOperation
+         COMMAND ${APPLICATION} X 5 4 7 2 8 5)
+set_tests_properties(TestWrongOperation PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation.")
+
+add_test(NAME TestWrongNumberFormat
+         COMMAND ${APPLICATION} B 3 a 7 2)
+set_tests_properties(TestWrongNumberFormat PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(NAME TestWrongNumberOfArguments
+         COMMAND ${APPLICATION} B 5 4 7 2 8)
+set_tests_properties(TestWrongNumberOfArguments PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number of arguments.")
+
+add_test(NAME TestInfo
+         COMMAND ${APPLICATION})
+set_tests_properties(TestInfo PROPERTIES PASS_REGULAR_EXPRESSION "This is a graph application. The format is as follows:")
