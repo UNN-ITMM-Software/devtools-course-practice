@@ -82,3 +82,46 @@ TEST(SetTest, Print) {
 
     EXPECT_EQ(output, "{ 1 2 3 }\n");
 }
+
+TEST(SetTest, AddDuplicateElements) {
+    Set set;
+    set.add(1);
+    set.add(1);
+    set.add(2);
+    set.add(2);
+
+    EXPECT_TRUE(set.contains(1));
+    EXPECT_TRUE(set.contains(2));
+
+    testing::internal::CaptureStdout();
+    set.print();
+    std::string output = testing::internal::GetCapturedStdout();
+
+    EXPECT_EQ(output, "{ 1 2 }\n");
+}
+
+TEST(SetTest, RemoveFromEmptySet) {
+    Set set;
+    set.remove(1);
+
+    EXPECT_FALSE(set.contains(1));
+}
+
+TEST(SetTest, EmptySet) {
+    Set set;
+    EXPECT_FALSE(set.contains(1));
+}
+
+TEST(SetTest, UnionWithEmptySet) {
+    Set set1;
+    set1.add(1);
+    set1.add(2);
+
+    Set set2;
+
+    Set unionSet = set1.unionWith(set2);
+
+    EXPECT_TRUE(unionSet.contains(1));
+    EXPECT_TRUE(unionSet.contains(2));
+    EXPECT_FALSE(unionSet.contains(3));
+}
