@@ -1,4 +1,4 @@
-// Copyright 2024 Novostroev Ivan
+// Copyright 2024 Novostroev Ivan!
 
 #include <iostream>
 #include <string>
