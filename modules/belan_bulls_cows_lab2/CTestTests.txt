@@ -48,3 +48,39 @@ add_test(
 set_tests_properties(${prefix}_Auto_Play PROPERTIES
     PASS_REGULAR_EXPRESSION "Congratulations! You've guessed the number correctly."
     LABELS "${prefix}")
+
+# Test: Invalid guess (not enough digits)
+add_test(
+    NAME ${prefix}_Invalid_Guess_Not_Enough_Digits
+    COMMAND ${APPLICATION} 4
+)
+set_tests_properties(${prefix}_Invalid_Guess_Not_Enough_Digits PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid guess. Make sure it has 4 digits and contains only numbers."
+    LABELS "${prefix}")
+
+# Test: Invalid guess (contains non-numeric characters)
+add_test(
+    NAME ${prefix}_Invalid_Guess_Non_Numeric
+    COMMAND ${APPLICATION} 4
+)
+set_tests_properties(${prefix}_Invalid_Guess_Non_Numeric PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid guess. Make sure it has 4 digits and contains only numbers."
+    LABELS "${prefix}")
+
+# Test: Valid guess (output Bulls and Cows)
+add_test(
+    NAME ${prefix}_Valid_Guess
+    COMMAND ${APPLICATION} 4
+)
+set_tests_properties(${prefix}_Valid_Guess PROPERTIES
+    PASS_REGULAR_EXPRESSION "Bulls: [0-4], Cows: [0-4]"
+    LABELS "${prefix}")
+
+# Test: Run out of attempts
+add_test(
+    NAME ${prefix}_Run_Out_Of_Attempts
+    COMMAND ${APPLICATION} 4
+)
+set_tests_properties(${prefix}_Run_Out_Of_Attempts PROPERTIES
+    PASS_REGULAR_EXPRESSION "Sorry, you've run out of attempts. The secret number was:"
+    LABELS "${prefix}")
