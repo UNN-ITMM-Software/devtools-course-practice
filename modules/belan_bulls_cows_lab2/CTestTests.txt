@@ -2,7 +2,7 @@
 ##### Testing
 #############################################
 
-set(prefix "BullsCows")
+set(prefix "${MODULE}")
 
 # Test: Application can run without arguments and show help message
 add_test(
