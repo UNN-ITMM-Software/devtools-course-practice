@@ -24,7 +24,7 @@ add_test(
     COMMAND ${APPLICATION} 1
 )
 set_tests_properties(${prefix}_Filter_not_enough_arguments PROPERTIES
-    PASS_REGULAR_EXPRESSION "ERROR: Incorrect number of arguments."
+    PASS_REGULAR_EXPRESSION "Enter your guess: Invalid guess. Make sure it has 1 digits and contains only numbers."
     LABELS "${prefix}")
 
 add_test(
