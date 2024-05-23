@@ -3,7 +3,6 @@
 #############################################
 
 set(prefix "BullsCows")
-set(APPLICATION $<TARGET_FILE:bulls_cows_app>)
 
 add_test(
     NAME ${prefix}_can_Run
