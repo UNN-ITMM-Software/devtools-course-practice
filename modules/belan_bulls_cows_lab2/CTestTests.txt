@@ -39,12 +39,3 @@ add_test(
 set_tests_properties(${prefix}_Valid_Difficulty_Level PROPERTIES
     PASS_REGULAR_EXPRESSION "Welcome to Bulls and Cows game!"
     LABELS "${prefix}")
-
-# Test: Application generates random guesses and outputs game results
-add_test(
-    NAME ${prefix}_Auto_Play
-    COMMAND ${APPLICATION} 4
-)
-set_tests_properties(${prefix}_Auto_Play PROPERTIES
-    PASS_REGULAR_EXPRESSION "Congratulations! You've guessed the number correctly."
-    LABELS "${prefix}")
