@@ -30,7 +30,7 @@ int BullsCowsApplication::charToInt(const char* arg) {
 std::string BullsCowsApplication::generateRandomGuess(int length) {
     std::string guess;
     std::unordered_set<char> used_digits;
-    while ((int)guess.length() < length) {
+    while (static_cast<int>(guess.length()) < length) {
         char digit = '0' + std::rand() % 10;
         if (used_digits.find(digit) == used_digits.end()) {
             guess += digit;
