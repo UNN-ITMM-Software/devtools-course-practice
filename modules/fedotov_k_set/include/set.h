@@ -10,10 +10,10 @@
 #include <algorithm>
 
 class Set {
-private:
+ private:
   std::vector<int> elements;
 
-public:
+ public:
   Set();
 
   void add(int element);
