@@ -4,7 +4,7 @@
 #define MODULES_BELAN_BULLS_COWS_LAB2_INCLUDE_BULLS_COWS_APP_H_
 
 #include <string>
-#include "bulls_cows.h"
+#include "include/bulls_cows.h"
 
 enum ErrorCode {
     EC_HELP,
