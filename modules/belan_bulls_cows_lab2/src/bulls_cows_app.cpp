@@ -61,7 +61,7 @@ std::string BullsCowsApplication::doWork(int argc, const char** argv) {
 
     std::ostringstream message;
     message << "Welcome to Bulls and Cows game!\n"
-            << "I have generated a secret number with " << difficulty 
+            << "I have generated a secret number with " << difficulty
             << " unique digits.\n"
             << "You have 3 attempts to guess the number.\n";
 
