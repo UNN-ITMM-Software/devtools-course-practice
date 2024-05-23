@@ -1,6 +1,7 @@
 // Copyright 2024 Novostroev Ivan
 
 #include "../include/bulls_cows_app.h"
+#include <cstdlib>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -13,8 +14,8 @@ std::string BullsCowsApplication::getHelpMessage(const char* appname) {
     message << "This is a Bulls and Cows application.\n"
             << "Please provide arguments in the following format:\n\n"
             << "  $ " << appname << " <difficulty level>\n\n"
-            << "Where <difficulty level> is an integer value that determines
-            the number of digits in the secret number.\n";
+            << "Where <difficulty level> is an integer value that determines "
+            << "the number of digits in the secret number.\n";
     return message.str();
 }
 
@@ -27,15 +28,14 @@ std::string BullsCowsApplication::doWork(int argc, const char** argv) {
         return getHelpMessage(argv[0]);
     } else if (argc != 2) {
         errorCode = EC_INCORRECT_ARGUMENT_NUMBER;
-        return "ERROR: Incorrect number of arguments.\n"
-        + getHelpMessage(argv[0]);
+        return "ERROR: Incorrect number of arg.\n" + getHelpMessage(argv[0]);
     }
 
     int difficulty = charToInt(argv[1]);
     if (difficulty <= 0) {
         errorCode = EC_INCORRECT_DIFFICULTY;
-        return "ERROR: Difficulty level must be a positive integer.\n"
-        + getHelpMessage(argv[0]);
+        return "ERROR: Difficulty level must be a positive integer.\n" +
+               getHelpMessage(argv[0]);
     }
 
     game.setDifficulty(difficulty);
@@ -43,8 +43,8 @@ std::string BullsCowsApplication::doWork(int argc, const char** argv) {
 
     std::ostringstream message;
     message << "Welcome to Bulls and Cows game!\n"
-            << "I have generated a secret number with "
-            << difficulty << " unique digits.\n"
+            << "I have generated a secret number with " << difficulty 
+            << " unique digits.\n"
             << "You have 3 attempts to guess the number.\n";
 
     while (game.getAttemptsLeft() > 0) {
@@ -55,14 +55,13 @@ std::string BullsCowsApplication::doWork(int argc, const char** argv) {
 
         if (!game.validateGuess(guess)) {
             message << "Invalid guess. Make sure it has " << difficulty
-            << " digits and contains only numbers.\n";
+                    << " digits and contains only numbers.\n";
             continue;
         }
 
         auto result = game.guessNumber(guess);
         if (result.first == difficulty) {
-            message << "Congratulations! You've guessed
-            the number correctly.\n";
+            message << "Congratulations! You've guessed the number correct.\n";
             break;
         } else {
             message << "Bulls: " << result.first << ", Cows: "
@@ -70,9 +69,8 @@ std::string BullsCowsApplication::doWork(int argc, const char** argv) {
             if (game.getAttemptsLeft() > 0) {
                 message << "Attempts left: " << game.getAttemptsLeft() << "\n";
             } else {
-                message << "Sorry, you've run out of attempts.
-                The secret number was: "
-                << game.generateSecretNumber() << "\n";
+                message << "You've run out of attempts.The secret number was: "
+                        << game.generateSecretNumber() << "\n";
             }
         }
     }
