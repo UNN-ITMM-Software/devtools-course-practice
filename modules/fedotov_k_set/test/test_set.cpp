@@ -28,7 +28,6 @@ TEST(SetTest, RemoveElements) {
     EXPECT_TRUE(set.contains(3));
 }
 
-// Объединение множеств
 TEST(SetTest, UnionWith) {
     Set set1;
     set1.add(1);
@@ -49,7 +48,6 @@ TEST(SetTest, UnionWith) {
     EXPECT_TRUE(unionSet.contains(5));
 }
 
-// Разность множеств
 TEST(SetTest, IntersectWith) {
     Set set1;
     set1.add(1);
@@ -124,4 +122,18 @@ TEST(SetTest, UnionWithEmptySet) {
     EXPECT_TRUE(unionSet.contains(1));
     EXPECT_TRUE(unionSet.contains(2));
     EXPECT_FALSE(unionSet.contains(3));
+}
+
+TEST(SetTest, AddElements2) {
+    Set set;
+    set.add(1);
+    set.add(2);
+    set.add(3);
+    set.add(5);
+
+    EXPECT_TRUE(set.contains(1));
+    EXPECT_TRUE(set.contains(2));
+    EXPECT_TRUE(set.contains(3));
+    EXPECT_FALSE(set.contains(4));
+    EXPECT_TRUE(set.contains(5));
 }
