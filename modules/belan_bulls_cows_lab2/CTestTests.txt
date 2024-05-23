@@ -1,0 +1,45 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "BullsCows")
+set(APPLICATION $<TARGET_FILE:bulls_cows_app>)
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties(${prefix}_can_Run PROPERTIES
+    LABELS "${prefix}")
+
+add_test(
+    NAME ${prefix}_Calls_help
+    COMMAND ${APPLICATION}
+)
+set_tests_properties(${prefix}_Calls_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a Bulls and Cows application."
+    LABELS "${prefix}")
+
+add_test(
+    NAME ${prefix}_Filter_not_enough_arguments
+    COMMAND ${APPLICATION} 1
+)
+set_tests_properties(${prefix}_Filter_not_enough_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Incorrect number of arguments."
+    LABELS "${prefix}")
+
+add_test(
+    NAME ${prefix}_Filter_incorrect_difficulty
+    COMMAND ${APPLICATION} -1
+)
+set_tests_properties(${prefix}_Filter_incorrect_difficulty PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Difficulty level must be a positive integer."
+    LABELS "${prefix}")
+
+add_test(
+    NAME ${prefix}_Game_Starts_Correctly
+    COMMAND ${APPLICATION} 4
+)
+set_tests_properties(${prefix}_Game_Starts_Correctly PROPERTIES
+    PASS_REGULAR_EXPRESSION "Welcome to Bulls and Cows game!"
+    LABELS "${prefix}")
