@@ -4,7 +4,7 @@
 #define MODULES_BELAN_BULLS_COWS_LAB2_INCLUDE_BULLS_COWS_APP_H_
 
 #include <string>
-#include "include/bulls_cows.h"
+#include "bulls_cows.h"
 
 enum ErrorCode {
     EC_HELP,
@@ -20,6 +20,7 @@ class BullsCowsApplication {
     BullsCows game;
     std::string getHelpMessage(const char* appname);
     int charToInt(const char* arg);
+    std::string generateRandomGuess(int length);
  public:
     BullsCowsApplication();
     std::string doWork(int argc, const char** argv);

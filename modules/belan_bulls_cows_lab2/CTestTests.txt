@@ -4,41 +4,47 @@
 
 set(prefix "BullsCows")
 
+# Test: Application can run without arguments and show help message
 add_test(
-    NAME ${prefix}_can_Run
+    NAME ${prefix}_Can_Run
     COMMAND ${APPLICATION}
 )
-set_tests_properties(${prefix}_can_Run PROPERTIES
-    LABELS "${prefix}")
-
-add_test(
-    NAME ${prefix}_Calls_help
-    COMMAND ${APPLICATION}
-)
-set_tests_properties(${prefix}_Calls_help PROPERTIES
+set_tests_properties(${prefix}_Can_Run PROPERTIES
     PASS_REGULAR_EXPRESSION "This is a Bulls and Cows application."
     LABELS "${prefix}")
 
+# Test: Application shows error message for incorrect number of arguments
 add_test(
-    NAME ${prefix}_Filter_not_enough_arguments
-    COMMAND ${APPLICATION} 1
+    NAME ${prefix}_Incorrect_Argument_Number
+    COMMAND ${APPLICATION} 1 2
 )
-set_tests_properties(${prefix}_Filter_not_enough_arguments PROPERTIES
-    PASS_REGULAR_EXPRESSION "Enter your guess: Invalid guess. Make sure it has 1 digits and contains only numbers."
+set_tests_properties(${prefix}_Incorrect_Argument_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Incorrect number of arguments."
     LABELS "${prefix}")
 
+# Test: Application shows error message for negative difficulty level
 add_test(
-    NAME ${prefix}_Filter_incorrect_difficulty
+    NAME ${prefix}_Incorrect_Difficulty_Level
     COMMAND ${APPLICATION} -1
 )
-set_tests_properties(${prefix}_Filter_incorrect_difficulty PROPERTIES
+set_tests_properties(${prefix}_Incorrect_Difficulty_Level PROPERTIES
     PASS_REGULAR_EXPRESSION "ERROR: Difficulty level must be a positive integer."
     LABELS "${prefix}")
 
+# Test: Application runs correctly with valid difficulty level
 add_test(
-    NAME ${prefix}_Game_Starts_Correctly
+    NAME ${prefix}_Valid_Difficulty_Level
     COMMAND ${APPLICATION} 4
 )
-set_tests_properties(${prefix}_Game_Starts_Correctly PROPERTIES
+set_tests_properties(${prefix}_Valid_Difficulty_Level PROPERTIES
     PASS_REGULAR_EXPRESSION "Welcome to Bulls and Cows game!"
+    LABELS "${prefix}")
+
+# Test: Application generates random guesses and outputs game results
+add_test(
+    NAME ${prefix}_Auto_Play
+    COMMAND ${APPLICATION} 4
+)
+set_tests_properties(${prefix}_Auto_Play PROPERTIES
+    PASS_REGULAR_EXPRESSION "Congratulations! You've guessed the number correctly."
     LABELS "${prefix}")
