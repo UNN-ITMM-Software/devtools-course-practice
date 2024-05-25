@@ -26,7 +26,8 @@ bool PriorityQueueApplication::Validate(int argc, char *argv[]) {
         try {
             int size = std::stoi(argv[1]);
             if (size < 1) {
-                throw std::invalid_argument("Queue size must be greater than 0.");
+                throw std::invalid_argument
+                ("Queue size must be greater than 0.");
             }
             queue = TQueue_insert<int>(size);
         } catch(const std::exception& e) {
@@ -37,7 +38,8 @@ bool PriorityQueueApplication::Validate(int argc, char *argv[]) {
     return true;
 }
 
-void PriorityQueueApplication::Help(const char *application, const char *errMsg) {
+void PriorityQueueApplication::Help
+(const char *application, const char *errMsg) {
     std::stringstream message;
 
     if (errMsg) {
@@ -45,15 +47,19 @@ void PriorityQueueApplication::Help(const char *application, const char *errMsg)
     }
 
     message << "Usage:\n";
-    message << '\t' << application << " <size> <operation> [<value> <priority>]\n";
+    message << '\t' << application << " <size> <operation>
+     [<value> <priority>]\n";
     message << "Where:\n";
     message << '\t' << "<size> is the maximum size of the queue\n";
-    message << '\t' << "<operation> is the queue operation ('push', 'pop', 'front', 'back')\n";
-    message << '\t' << "[<value> <priority>] are required for 'push' operation\n";
+    message << '\t' << "<operation> is the queue operation ('push',
+     'pop', 'front', 'back')\n";
+    message << '\t' << "[<value> <priority>] are required for 'push'
+     operation\n";
     msg = message.str();
 }
 
-std::string PriorityQueueApplication::ProcessQueueOperations(int argc, char *argv[]) {
+std::string PriorityQueueApplication::ProcessQueueOperations
+(int argc, char *argv[]) {
     if (Validate(argc, argv)) {
         try {
             std::stringstream result;
@@ -61,7 +67,8 @@ std::string PriorityQueueApplication::ProcessQueueOperations(int argc, char *arg
                 int value = std::stoi(argv[3]);
                 int priority = std::stoi(argv[4]);
                 queue.push(std::make_pair(value, priority));
-                result << "Pushed (" << value << ", " << priority << ") into the queue.\n";
+                result << "Pushed (" << value << ", " << priority
+                 << ") into the queue.\n";
             } else if (std::strcmp(argv[2], "pop") == 0) {
                 if (queue.isEmpty()) {
                     result << "Queue is empty, cannot pop.\n";
@@ -74,14 +81,16 @@ std::string PriorityQueueApplication::ProcessQueueOperations(int argc, char *arg
                     result << "Queue is empty.\n";
                 } else {
                     auto front_elem = queue.front();
-                    result << "Front element is: (" << front_elem.first << ", " << front_elem.second << ").\n";
+                    result << "Front element is: (" << front_elem.first << ", "
+                     << front_elem.second << ").\n";
                 }
             } else if (std::strcmp(argv[2], "back") == 0) {
                 if (queue.isEmpty()) {
                     result << "Queue is empty.\n";
                 } else {
                     auto back_elem = queue.back();
-                    result << "Back element is: (" << back_elem.first << ", " << back_elem.second << ").\n";
+                    result << "Back element is: (" << back_elem.first << ", "
+                     << back_elem.second << ").\n";
                 }
             }
             return result.str();
