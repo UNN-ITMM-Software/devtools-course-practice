@@ -37,29 +37,11 @@ set_tests_properties (${prefix}_run_pop PROPERTIES
 )
 
 add_test(
-    NAME ${prefix}_run_front
-    COMMAND ${APPLICATION} 5 front
-)
-set_tests_properties (${prefix}_run_front PROPERTIES
-    PASS_REGULAR_EXPRESSION "Queue is empty."
-    LABELS "${MODULE}"
-)
-
-add_test(
-    NAME ${prefix}_run_back
-    COMMAND ${APPLICATION} 5 back
-)
-set_tests_properties (${prefix}_run_back PROPERTIES
-    PASS_REGULAR_EXPRESSION "Queue is empty."
-    LABELS "${MODULE}"
-)
-
-add_test(
     NAME ${prefix}_run_invalid_operation
     COMMAND ${APPLICATION} 5 invalid_operation
 )
 set_tests_properties (${prefix}_run_invalid_operation PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: Operation must be 'push', 'pop', 'front' or 'back'."
+    PASS_REGULAR_EXPRESSION "Error: Operation must be 'push' or 'pop'."
     LABELS "${MODULE}"
 )
 

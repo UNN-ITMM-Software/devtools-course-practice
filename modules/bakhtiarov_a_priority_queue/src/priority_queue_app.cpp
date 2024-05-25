@@ -14,10 +14,8 @@ bool PriorityQueueApplication::Validate(int argc, char *argv[]) {
         Help(argv[0]);
         return false;
     } else if (std::strcmp(argv[2], "push") != 0
-               && std::strcmp(argv[2], "pop") != 0
-               && std::strcmp(argv[2], "front") != 0
-               && std::strcmp(argv[2], "back") != 0) {
-        Help(argv[0], "Operation must be 'push', 'pop', 'front' or 'back'.");
+               && std::strcmp(argv[2], "pop") != 0) {
+        Help(argv[0], "Operation must be 'push' or 'pop'.");
         return false;
     } else if (argc < required_argc && std::strcmp(argv[2], "push") == 0) {
         Help(argv[0], "Incorrect number of arguments for push.");
@@ -52,7 +50,7 @@ void PriorityQueueApplication::Help
     message << "Where:\n";
     message << '\t' << "<size> is the maximum size of the queue\n";
     message << '\t' <<
-    "<operation> is the queue operation ('push', 'pop', 'front', 'back')\n";
+    "<operation> is the queue operation ('push', 'pop')\n";
     message << '\t' <<
     "[<value> <priority>] are required for 'push' operation\n";
     msg = message.str();
@@ -73,23 +71,24 @@ std::string PriorityQueueApplication::ProcessQueueOperations
                 if (queue.isEmpty()) {
                     result << "Queue is empty, cannot pop.\n";
                 }
-            } else if (std::strcmp(argv[2], "front") == 0) {
-                if (queue.isEmpty()) {
-                    result << "Queue is empty.\n";
-                } else {
-                    auto front_elem = queue.front();
-                    result << "Front element is: (" << front_elem.first << ", "
-                     << front_elem.second << ").\n";
-                }
-            } else if (std::strcmp(argv[2], "back") == 0) {
-                if (queue.isEmpty()) {
-                    result << "Queue is empty.\n";
-                } else {
-                    auto back_elem = queue.back();
-                    result << "Back element is: (" << back_elem.first << ", "
-                     << back_elem.second << ").\n";
-                }
-            }
+            } 
+            // else if (std::strcmp(argv[2], "front") == 0) {
+            //     if (queue.isEmpty()) {
+            //         result << "Queue is empty.\n";
+            //     } else {
+            //         auto front_elem = queue.front();
+            //         result << "Front element is: (" << front_elem.first << ", "
+            //          << front_elem.second << ").\n";
+            //     }
+            // } else if (std::strcmp(argv[2], "back") == 0) {
+            //     if (queue.isEmpty()) {
+            //         result << "Queue is empty.\n";
+            //     } else {
+            //         auto back_elem = queue.back();
+            //         result << "Back element is: (" << back_elem.first << ", "
+            //          << back_elem.second << ").\n";
+            //     }
+            // }
             return result.str();
         } catch(const std::exception& e) {
             return "Error: Invalid input.";
