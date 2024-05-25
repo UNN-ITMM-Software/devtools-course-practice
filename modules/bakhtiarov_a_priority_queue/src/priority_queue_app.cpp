@@ -71,24 +71,7 @@ std::string PriorityQueueApplication::ProcessQueueOperations
                 if (queue.isEmpty()) {
                     result << "Queue is empty, cannot pop.\n";
                 }
-            } 
-            // else if (std::strcmp(argv[2], "front") == 0) {
-            //     if (queue.isEmpty()) {
-            //         result << "Queue is empty.\n";
-            //     } else {
-            //         auto front_elem = queue.front();
-            //         result << "Front element is: (" << front_elem.first << ", "
-            //          << front_elem.second << ").\n";
-            //     }
-            // } else if (std::strcmp(argv[2], "back") == 0) {
-            //     if (queue.isEmpty()) {
-            //         result << "Queue is empty.\n";
-            //     } else {
-            //         auto back_elem = queue.back();
-            //         result << "Back element is: (" << back_elem.first << ", "
-            //          << back_elem.second << ").\n";
-            //     }
-            // }
+            }
             return result.str();
         } catch(const std::exception& e) {
             return "Error: Invalid input.";
