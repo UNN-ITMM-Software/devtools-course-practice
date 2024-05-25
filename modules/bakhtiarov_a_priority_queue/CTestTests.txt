@@ -89,3 +89,21 @@ set_tests_properties (${prefix}_run_non_integer PROPERTIES
     PASS_REGULAR_EXPRESSION "Invalid arguments."
     LABELS "${MODULE}"
 )
+
+add_test(
+    NAME ${prefix}_run_invalid_input
+    COMMAND ${APPLICATION} 5 push push
+)
+set_tests_properties (${prefix}_run_invalid_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid input."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_insufficient_args_for_push
+    COMMAND ${APPLICATION} 5 push
+)
+set_tests_properties (${prefix}_run_insufficient_args_for_push PROPERTIES
+    PASS_REGULAR_EXPRESSION "Incorrect number of arguments for push."
+    LABELS "${MODULE}"
+)

@@ -20,7 +20,7 @@ bool PriorityQueueApplication::Validate(int argc, char *argv[]) {
         Help(argv[0], "Operation must be 'push', 'pop', 'front' or 'back'.");
         return false;
     } else if (argc < required_argc && std::strcmp(argv[2], "push") == 0) {
-        Help(argv[0], "Incorrect number of arguments for 'push'.");
+        Help(argv[0], "Incorrect number of arguments for push.");
         return false;
     } else {
         try {
@@ -72,10 +72,7 @@ std::string PriorityQueueApplication::ProcessQueueOperations
             } else if (std::strcmp(argv[2], "pop") == 0) {
                 if (queue.isEmpty()) {
                     result << "Queue is empty, cannot pop.\n";
-                } else {
-                    queue.pop();
-                    result << "Popped front element from the queue.\n";
-                }
+                } 
             } else if (std::strcmp(argv[2], "front") == 0) {
                 if (queue.isEmpty()) {
                     result << "Queue is empty.\n";
