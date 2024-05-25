@@ -98,3 +98,21 @@ set_tests_properties (${prefix}_run_back PROPERTIES
     PASS_REGULAR_EXPRESSION "Back element is: \\(10, 1\\)."
     LABELS "${MODULE}"
 )
+
+add_test(
+    NAME ${prefix}_invalid_input
+    COMMAND ${APPLICATION} 5 push abc 1
+)
+set_tests_properties (${prefix}_invalid_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid input for push operation\\..*Error: Unknown operation 'abc'\\..*Error: Unknown operation '1'\\."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_test_front_operation
+    COMMAND ${APPLICATION} 5 push 1 1 front
+)
+set_tests_properties (${prefix}_test_front_operation PROPERTIES
+    PASS_REGULAR_EXPRESSION "Pushed \\(1, 1\\) into the queue\\.\nFront element is: \\(1, 1\\)\\."
+    LABELS "${MODULE}"
+)
