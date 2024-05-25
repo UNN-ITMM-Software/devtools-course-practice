@@ -47,8 +47,8 @@ void PriorityQueueApplication::Help
     }
 
     message << "Usage:\n";
-    message << '\t' << application << " <size> <operation>
-     [<value> <priority>]\n";
+    message << '\t' <<
+     application << " <size> <operation> [<value> <priority>]\n";
     message << "Where:\n";
     message << '\t' << "<size> is the maximum size of the queue\n";
     message << '\t' << "<operation> is the queue operation ('push',
