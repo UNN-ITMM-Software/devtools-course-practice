@@ -17,4 +17,5 @@ class PriorityQueueApplication {
  public:
     PriorityQueueApplication() = default;
     std::string ProcessQueueOperations(int argc, char* argv[]);
+    std::string ProcessMultipleOperations(int argc, char *argv[]);
 };

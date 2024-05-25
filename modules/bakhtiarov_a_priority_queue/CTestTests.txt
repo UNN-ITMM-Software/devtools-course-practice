@@ -41,7 +41,7 @@ add_test(
     COMMAND ${APPLICATION} 5 invalid_operation
 )
 set_tests_properties (${prefix}_run_invalid_operation PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: Operation must be 'push' or 'pop'."
+    PASS_REGULAR_EXPRESSION "Error: Operation must be 'push', 'pop', 'front' or 'back'."
     LABELS "${MODULE}"
 )
 
@@ -73,19 +73,28 @@ set_tests_properties (${prefix}_run_non_integer PROPERTIES
 )
 
 add_test(
-    NAME ${prefix}_run_invalid_input
-    COMMAND ${APPLICATION} 5 push push
-)
-set_tests_properties (${prefix}_run_invalid_input PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: Invalid input."
-    LABELS "${MODULE}"
-)
-
-add_test(
     NAME ${prefix}_run_insufficient_args_for_push
     COMMAND ${APPLICATION} 5 push
 )
 set_tests_properties (${prefix}_run_insufficient_args_for_push PROPERTIES
     PASS_REGULAR_EXPRESSION "Incorrect number of arguments for push."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_front
+    COMMAND ${APPLICATION} 5 push 10 1 front
+)
+set_tests_properties (${prefix}_run_front PROPERTIES
+    PASS_REGULAR_EXPRESSION "Front element is: \\(10, 1\\)."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_back
+    COMMAND ${APPLICATION} 5 push 10 1 back
+)
+set_tests_properties (${prefix}_run_back PROPERTIES
+    PASS_REGULAR_EXPRESSION "Back element is: \\(10, 1\\)."
     LABELS "${MODULE}"
 )
