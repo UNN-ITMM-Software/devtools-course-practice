@@ -61,11 +61,8 @@ void PriorityQueueApplication::Help
 std::string PriorityQueueApplication::ProcessQueueOperations
 (int argc, char *argv[]) {
     if (Validate(argc, argv)) {
-        try {
-            return ProcessMultipleOperations(argc, argv);
-        } catch(const std::exception& e) {
-            return "Error: Invalid input.";
-        }
+        return ProcessMultipleOperations(argc, argv);
+        
     }
     return msg;
 }
