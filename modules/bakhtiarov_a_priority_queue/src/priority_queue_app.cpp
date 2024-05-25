@@ -68,7 +68,7 @@ std::string PriorityQueueApplication::ProcessQueueOperations
                 int priority = std::stoi(argv[4]);
                 queue.push(std::make_pair(value, priority));
                 result << "Pushed (" << value << ", " << priority
-                 << ") into the queue.\n";
+                 << ") into the queue.\n";    
             } else if (std::strcmp(argv[2], "pop") == 0) {
                 if (queue.isEmpty()) {
                     result << "Queue is empty, cannot pop.\n";

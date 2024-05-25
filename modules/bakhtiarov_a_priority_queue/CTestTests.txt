@@ -71,3 +71,21 @@ set_tests_properties (${prefix}_run_negative_size PROPERTIES
     PASS_REGULAR_EXPRESSION "Invalid arguments."
     LABELS "${MODULE}"
 )
+
+add_test(
+    NAME ${prefix}_run_push_multiple
+    COMMAND ${APPLICATION} 5 push 10 1 push 20 2 push 30 1
+)
+set_tests_properties (${prefix}_run_push_multiple PROPERTIES
+    PASS_REGULAR_EXPRESSION "Pushed"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_non_integer
+    COMMAND ${APPLICATION} a push 10 1
+)
+set_tests_properties (${prefix}_run_non_integer PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid arguments."
+    LABELS "${MODULE}"
+)
