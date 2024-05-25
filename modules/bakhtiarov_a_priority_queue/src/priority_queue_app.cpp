@@ -51,10 +51,10 @@ void PriorityQueueApplication::Help
      application << " <size> <operation> [<value> <priority>]\n";
     message << "Where:\n";
     message << '\t' << "<size> is the maximum size of the queue\n";
-    message << '\t' << "<operation> is the queue operation ('push',
-     'pop', 'front', 'back')\n";
-    message << '\t' << "[<value> <priority>] are required for 'push'
-     operation\n";
+    message << '\t' << 
+    "<operation> is the queue operation ('push', 'pop', 'front', 'back')\n";
+    message << '\t' <<
+    "[<value> <priority>] are required for 'push' operation\n";
     msg = message.str();
 }
 
