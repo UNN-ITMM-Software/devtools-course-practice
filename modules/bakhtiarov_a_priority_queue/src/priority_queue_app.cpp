@@ -26,7 +26,8 @@ bool PriorityQueueApplication::Validate(int argc, char *argv[]) {
         try {
             int size = std::stoi(argv[1]);
             if (size < 1) {
-                throw std::invalid_argument("Queue size must be greater than 0.");
+                throw std::invalid_argument
+                ("Queue size must be greater than 0.");
             }
             queue = TQueue_insert<int>(size);
         } catch(const std::exception& e) {
@@ -37,7 +38,8 @@ bool PriorityQueueApplication::Validate(int argc, char *argv[]) {
     return true;
 }
 
-void PriorityQueueApplication::Help(const char *application, const char *errMsg) {
+void PriorityQueueApplication::Help
+(const char *application, const char *errMsg) {
     std::stringstream message;
 
     if (errMsg) {
@@ -45,15 +47,19 @@ void PriorityQueueApplication::Help(const char *application, const char *errMsg)
     }
 
     message << "Usage:\n";
-    message << '\t' << application << " <size> <operation> [<value> <priority>]\n";
+    message << '\t' << application <<
+     " <size> <operation> [<value> <priority>]\n";
     message << "Where:\n";
     message << '\t' << "<size> is the maximum size of the queue\n";
-    message << '\t' << "<operation> is the queue operation ('push', 'pop', 'front', 'back')\n";
-    message << '\t' << "[<value> <priority>] are required for 'push' operation\n";
+    message << '\t' <<
+     "<operation> is the queue operation ('push', 'pop', 'front', 'back')\n";
+    message << '\t' <<
+     "[<value> <priority>] are required for 'push' operation\n";
     msg = message.str();
 }
 
-std::string PriorityQueueApplication::ProcessQueueOperations(int argc, char *argv[]) {
+std::string PriorityQueueApplication::ProcessQueueOperations
+(int argc, char *argv[]) {
     if (Validate(argc, argv)) {
         try {
             return ProcessMultipleOperations(argc, argv);
@@ -64,7 +70,8 @@ std::string PriorityQueueApplication::ProcessQueueOperations(int argc, char *arg
     return msg;
 }
 
-std::string PriorityQueueApplication::ProcessMultipleOperations(int argc, char *argv[]) {
+std::string PriorityQueueApplication::ProcessMultipleOperations
+(int argc, char *argv[]) {
     std::stringstream result;
     for (int i = 2; i < argc; ++i) {
         if (std::strcmp(argv[i], "push") == 0) {
@@ -73,7 +80,8 @@ std::string PriorityQueueApplication::ProcessMultipleOperations(int argc, char *
                     int value = std::stoi(argv[i + 1]);
                     int priority = std::stoi(argv[i + 2]);
                     queue.push(std::make_pair(value, priority));
-                    result << "Pushed (" << value << ", " << priority << ") into the queue.\n";
+                    result << "Pushed (" << value << ", " << priority
+                     << ") into the queue.\n";
                     i += 2;
                 } catch(const std::exception& e) {
                     result << "Error: Invalid input for push operation.\n";
