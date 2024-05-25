@@ -116,3 +116,39 @@ set_tests_properties (${prefix}_test_front_operation PROPERTIES
     PASS_REGULAR_EXPRESSION "Pushed \\(1, 1\\) into the queue\\.\nFront element is: \\(1, 1\\)\\."
     LABELS "${MODULE}"
 )
+
+add_test(
+    NAME ${prefix}_run_insufficient_args_push
+    COMMAND ${APPLICATION} 5 push 10
+)
+set_tests_properties (${prefix}_run_insufficient_args_push PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Insufficient arguments for push operation\\."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_popping
+    COMMAND ${APPLICATION} 5 push 10 1 pop
+)
+set_tests_properties (${prefix}_run_popping PROPERTIES
+    PASS_REGULAR_EXPRESSION "Popped front element from the queue\\."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_front_empty_queue
+    COMMAND ${APPLICATION} 1 front
+)
+set_tests_properties (${prefix}_run_front_empty_queue PROPERTIES
+    PASS_REGULAR_EXPRESSION "Queue is empty\\."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_back_empty_queue
+    COMMAND ${APPLICATION} 1 back
+)
+set_tests_properties (${prefix}_run_back_empty_queue PROPERTIES
+    PASS_REGULAR_EXPRESSION "Queue is empty\\."
+    LABELS "${MODULE}"
+)
