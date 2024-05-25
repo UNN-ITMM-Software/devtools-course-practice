@@ -62,7 +62,6 @@ std::string PriorityQueueApplication::ProcessQueueOperations
 (int argc, char *argv[]) {
     if (Validate(argc, argv)) {
         return ProcessMultipleOperations(argc, argv);
-        
     }
     return msg;
 }
