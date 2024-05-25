@@ -72,7 +72,7 @@ std::string PriorityQueueApplication::ProcessQueueOperations
             } else if (std::strcmp(argv[2], "pop") == 0) {
                 if (queue.isEmpty()) {
                     result << "Queue is empty, cannot pop.\n";
-                } 
+                }
             } else if (std::strcmp(argv[2], "front") == 0) {
                 if (queue.isEmpty()) {
                     result << "Queue is empty.\n";
