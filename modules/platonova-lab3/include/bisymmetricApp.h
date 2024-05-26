@@ -13,7 +13,8 @@ class BisymmetricApp {
     void print(std::vector<std::string>& output);
     void initialize(std::vector<std::string>&output);
     void convertSize(std::vector<std::string>& output, int elem);
-    void isInside(std::vector<std::string>&output, int elem1, int elem2, int elem3);
-    public:
-    std::vector<std::string> runApp(int argc, const char** argv);
+    void isInside(std::vector<std::string>&output,
+                  int elem1, int elem2, int elem3);
+     public:
+      std::vector<std::string> runApp(int argc, const char** argv);
 };
