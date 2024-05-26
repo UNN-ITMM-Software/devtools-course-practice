@@ -7,7 +7,7 @@ std::vector<std::string> BisymmetricApp::runApp(int argc,
     std::vector<std::string> output;
     auto args = parse(argc, argv);
     int argsSize = args.size();
-    for (size_t i = 0; i < argsSize; i++) {
+    for (int i = 0; i < argsSize; i++) {
         auto arg = args[i];
         if (arg == "--help") {
             help(output);
