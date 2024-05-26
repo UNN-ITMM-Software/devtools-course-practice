@@ -42,3 +42,4 @@ add_test(
 set_tests_properties (${prefix}_convert_size PROPERTIES
     PASS_REGULAR_EXPRESSION "1\n"
     LABELS "${MODULE}")
+    
