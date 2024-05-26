@@ -1,0 +1,91 @@
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_complex_calculator_sum
+    COMMAND ${APPLICATION} 1 2 2 5 +
+)
+set_tests_properties (${prefix}_run_complex_calculator_sum PROPERTIES
+    PASS_REGULAR_EXPRESSION 3 + 7i
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_complex_calculator_subtraction
+    COMMAND ${APPLICATION} 2 3 1 2 -
+)
+set_tests_properties (${prefix}_run_complex_calculator_subtraction PROPERTIES
+    PASS_REGULAR_EXPRESSION 1 + 1i
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_complex_calculator_multiplication
+    COMMAND ${APPLICATION} 1 2 3 4 *
+)
+set_tests_properties (${prefix}_run_complex_calculator_multiplication PROPERTIES
+    PASS_REGULAR_EXPRESSION -5 + 10i
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_complex_calculator_division
+    COMMAND ${APPLICATION} 4 0 1 0 /
+)
+set_tests_properties (${prefix}_run_complex_calculator_division PROPERTIES
+    PASS_REGULAR_EXPRESSION 4 + 0i
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_operation
+    COMMAND ${APPLICATION} 1 2 1 2 ?
+)
+set_tests_properties (${prefix}_run_invalid_operation PROPERTIES
+    PASS_REGULAR_EXPRESSION Operation must be either '+' or '-' or '*' or '/'.
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_incorrect_number_of_arguments
+    COMMAND ${APPLICATION} 1 2 1 2 1 2 +
+)
+set_tests_properties (${prefix}_run_incorrect_number_of_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Incorrect number of arguments."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_args
+    COMMAND ${APPLICATION} a b c d +
+)
+set_tests_properties (${prefix}_run_invalid_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid arguments."
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_complex_calculator_sum2
+    COMMAND ${APPLICATION} 3 4 3 6 +
+)
+set_tests_properties (${prefix}_run_complex_calculator_sum2 PROPERTIES
+    PASS_REGULAR_EXPRESSION 6 + 10i
+    LABELS "${MODULE}"
+)

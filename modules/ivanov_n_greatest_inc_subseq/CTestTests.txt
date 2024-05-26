@@ -1,0 +1,45 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is LISApp application."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Invalid_Argument
+    COMMAND ${APPLICATION} 42 pizza
+)
+set_tests_properties (${prefix}_can_Detect_Invalid_Argument PROPERTIES
+    PASS_REGULAR_EXPRESSION "invalid_argument on pizza"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Out_Of_Range
+    COMMAND ${APPLICATION} 42 2147483648
+)
+set_tests_properties (${prefix}_can_Detect_Out_Of_Range PROPERTIES
+    PASS_REGULAR_EXPRESSION "out_of_range on 2147483648"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Produce_Correct_Answer
+    COMMAND ${APPLICATION} 10 22 9 33 21 50 41 60
+)
+set_tests_properties (${prefix}_can_Produce_Correct_Answer PROPERTIES
+    PASS_REGULAR_EXPRESSION "LIS = 10 22 33 50 60"
+    LABELS "${MODULE}")

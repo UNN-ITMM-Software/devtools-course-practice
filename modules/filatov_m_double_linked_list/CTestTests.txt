@@ -1,0 +1,163 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_can_Print_Help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage: ./target [options]*"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print
+    COMMAND ${APPLICATION} --print
+)
+set_tests_properties (${prefix}_can_Print PROPERTIES
+    PASS_REGULAR_EXPRESSION "never\ngonna\ngive\nyou\nup\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Reverse
+    COMMAND ${APPLICATION} --reverse
+)
+set_tests_properties (${prefix}_can_Reverse PROPERTIES
+    PASS_REGULAR_EXPRESSION "List was reversed\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Push_Back
+    COMMAND ${APPLICATION} --push_back never
+)
+set_tests_properties (${prefix}_can_Push_Back PROPERTIES
+    PASS_REGULAR_EXPRESSION ""
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Push_Front
+    COMMAND ${APPLICATION} --push_front never
+)
+set_tests_properties (${prefix}_can_Push_Front PROPERTIES
+    PASS_REGULAR_EXPRESSION ""
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cant_Push_Back_Without_Argument
+    COMMAND ${APPLICATION} --push_back
+)
+set_tests_properties (${prefix}_cant_Push_Back_Without_Argument PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:\n--push_back option must have one argument.\nRun --help for all supported options"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_cant_Push_Front_Without_Argument
+    COMMAND ${APPLICATION} --push_front
+)
+set_tests_properties (${prefix}_cant_Push_Front_Without_Argument PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:\n--push_front option must have one argument.\nRun --help for all supported options"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run_Several_Options
+    COMMAND ${APPLICATION} --print --print
+)
+set_tests_properties (${prefix}_can_Run_Several_Options PROPERTIES
+    PASS_REGULAR_EXPRESSION "never\ngonna\ngive\nyou\nup\nnever\ngonna\ngive\nyou\nup\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Push_Back_and_print
+    COMMAND ${APPLICATION} --push_back never-gonna-let-you-down --print
+)
+set_tests_properties (${prefix}_can_Push_Back_and_print PROPERTIES
+    PASS_REGULAR_EXPRESSION "never\ngonna\ngive\nyou\nup\nnever-gonna-let-you-down\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Push_Front_and_print
+    COMMAND ${APPLICATION} --push_front you've-been-rickrolled --print
+)
+set_tests_properties (${prefix}_can_Push_Front_and_print PROPERTIES
+    PASS_REGULAR_EXPRESSION "you've-been-rickrolled\nnever\ngonna\ngive\nyou\nup\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Push_Back_and_Push_Front_and_Print
+    COMMAND ${APPLICATION} --push_front a --push_back b --print
+)
+set_tests_properties (${prefix}_can_Push_Back_and_Push_Front_and_Print PROPERTIES
+    PASS_REGULAR_EXPRESSION "a\nnever\ngonna\ngive\nyou\nup\nb\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_unrecognized_Option
+    COMMAND ${APPLICATION} --give_me_coffee
+)
+set_tests_properties (${prefix}_unrecognized_Option PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:
+unrecognized command-line option.
+Run --help for all supported options"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Insert
+    COMMAND ${APPLICATION} --insert let 2 --print
+)
+set_tests_properties (${prefix}_can_Insert PROPERTIES
+    PASS_REGULAR_EXPRESSION "never\ngonna\nlet\ngive\nyou\nup\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Erase
+    COMMAND ${APPLICATION} --erase 0 --print
+)
+set_tests_properties (${prefix}_can_Erase PROPERTIES
+    PASS_REGULAR_EXPRESSION "gonna\ngive\nyou\nup\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_insert_No_Arguments
+    COMMAND ${APPLICATION} --insert
+)
+set_tests_properties (${prefix}_insert_No_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:
+--insert option must have two arguments.
+Run --help for all supported options"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_erase_No_Arguments
+    COMMAND ${APPLICATION} --erase
+)
+set_tests_properties (${prefix}_erase_No_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error:
+--erase option must have one arguments.
+Run --help for all supported options\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_insert_Invalid_index
+    COMMAND ${APPLICATION} --insert elem two --print
+)
+set_tests_properties (${prefix}_insert_Invalid_index PROPERTIES
+    PASS_REGULAR_EXPRESSION "stoi"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_erase_Invalid_index
+    COMMAND ${APPLICATION} --erase two --print
+)
+set_tests_properties (${prefix}_erase_Invalid_index PROPERTIES
+    PASS_REGULAR_EXPRESSION "stoi"
+    LABELS "${MODULE}")

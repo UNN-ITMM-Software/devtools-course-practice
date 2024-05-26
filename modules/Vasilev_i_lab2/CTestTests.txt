@@ -1,0 +1,113 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_run PROPERTIES
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_can_print_help_without_arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_print_help_without_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Generator of all possible combinations of k array elements"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_help_flag
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_run_help_flag PROPERTIES
+    PASS_REGULAR_EXPRESSION "Generator of all possible combinations of k array elements"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_args
+    COMMAND ${APPLICATION} "1,2/2" "extra_argument"
+)
+set_tests_properties (${prefix}_run_invalid_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: You have to enter two arguments\n"
+    LABELS "${MODULE}"
+)  
+
+add_test(
+    NAME ${prefix}_operator_invalid_args_no_k1
+    COMMAND ${APPLICATION} "1,2,3"
+)
+set_tests_properties (${prefix}_operator_invalid_args_no_k1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Add '/' to the request"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_operator_invalid_args_no_k2
+    COMMAND ${APPLICATION} "1,2,3/"
+)
+set_tests_properties (${prefix}_operator_invalid_args_no_k2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Add <k> to the request"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_operator_invalid_args_k_is_zero
+    COMMAND ${APPLICATION} "1,2,3/0"
+)
+set_tests_properties (${prefix}_operator_invalid_args_k_is_zero PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: <k> cannot be equal to 0"
+    LABELS "${MODULE}"
+)
+ 
+ add_test(
+    NAME ${prefix}_operator_valid_input1
+    COMMAND ${APPLICATION} "1/1"
+)
+set_tests_properties (${prefix}_operator_valid_input1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: { { 1 } }"
+    LABELS "${MODULE}"
+)  
+
+add_test(
+    NAME ${prefix}_operator_valid_input2
+    COMMAND ${APPLICATION} "1,2,3,4/4"
+)
+set_tests_properties (${prefix}_operator_valid_input2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: { { 1, 2, 3, 4 } }"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_operator_valid_input3
+    COMMAND ${APPLICATION} "10,20,30,40/4"
+)
+set_tests_properties (${prefix}_operator_valid_input3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: { { 10, 20, 30, 40 } }"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_operator_valid_input4
+    COMMAND ${APPLICATION} "-1,-2,-3,-4/4"
+)
+set_tests_properties (${prefix}_operator_valid_input4 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: { { -1, -2, -3, -4 } }"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_operator_empty_array
+    COMMAND ${APPLICATION} "/2"
+)
+set_tests_properties (${prefix}_operator_empty_array PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Enter the array"
+    LABELS "${MODULE}"
+)
+
