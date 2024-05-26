@@ -20,7 +20,8 @@ std::vector<std::string> BisymmetricApp::runApp(int argc,
             if (i + 3 > argsSize) {
                 output.push_back("Error: insufficient arguments");
             } else {
-                isInside(output, std::stoi(args[i+1]), std::stoi(args[i+2]), std::stoi(args[i+3]));
+                isInside(output, std::stoi(args[i+1]),
+                         std::stoi(args[i+2]), std::stoi(args[i+3]));
                 i+=3;
             }
         } else {
