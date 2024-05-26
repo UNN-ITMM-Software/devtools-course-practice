@@ -1,7 +1,7 @@
 // Copyright 2024 Derun Andrey
 
-#ifndef MODULES_DERUN_A_BISYMMETRIC_INCLUDE_BISYMMETRIC_H_
-#define MODULES_DERUN_A_BISYMMETRIC_INCLUDE_BISYMMETRIC_H_
+#ifndef MODULES_PLATONOVA_LAB3_INCLUDE_BISYMMETRIC_H_
+#define MODULES_PLATONOVA_LAB3_INCLUDE_BISYMMETRIC_H_
 
 #include <iostream>
 #include <vector>
@@ -36,11 +36,11 @@ class BisymmetricMatrix {
   void display() const;
 };
 
-#endif  // MODULES_DERUN_A_BISYMMETRIC_INCLUDE_BISYMMETRIC_H_
+#endif  // MODULES_PLATONOVA_LAB3_INCLUDE_BISYMMETRIC_H_
 
 template <typename T>
 inline int BisymmetricMatrix<T>::convertSize(int n) {
-  return ((n + 1) / 2) * ((n + 1) / 2); 
+  return ((n + 1) / 2) * ((n + 1) / 2);
 }
 
 template <typename T>
@@ -121,7 +121,8 @@ inline bool BisymmetricMatrix<T>::checkBisymmetric(
   return true;
 }
 template <typename T>
-inline BisymmetricMatrix<T>::BisymmetricMatrix(const std::initializer_list<std::initializer_list<T>>& list) {
+inline BisymmetricMatrix<T>::BisymmetricMatrix(
+       const std::initializer_list<std::initializer_list<T>>& list) {
   if (!checkBisymmetric(list)) {
     throw std::logic_error("List is not bisymmetric");
   }
