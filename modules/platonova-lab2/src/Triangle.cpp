@@ -1,5 +1,6 @@
 // Copyright 2024 Platonova Maria
 #include "include/Triangle.h"
+#include <iostream>
 
 Triangle::Triangle(double x1, double y1,
                    double x2, double y2,

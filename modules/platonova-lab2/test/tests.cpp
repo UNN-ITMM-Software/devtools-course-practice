@@ -10,7 +10,7 @@ TEST(TriangleTest, SideLengthCalculation) {
 
 TEST(TriangleTest, PerimeterCalculation) {
     Triangle triangle(0, 0, 3, 4, 6, 0);
-    EXPECT_NEAR(triangle.perimeter(), 16.4953, 0.0001);
+    EXPECT_NEAR(triangle.perimeter(), 16.0, 0.0001);
 }
 
 TEST(TriangleTest, AreaCalculation) {
