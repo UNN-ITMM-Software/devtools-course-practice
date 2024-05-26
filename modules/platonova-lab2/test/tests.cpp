@@ -1,6 +1,6 @@
 // Copyright 2024 Platonova Maria
-#include "Triangle.h"
 #include <gtest/gtest.h>
+#include "include/Triangle.h"
 
 TEST(TriangleTest, SideLengthCalculation) {
     Triangle triangle(0, 0, 3, 4, 0, 0);
