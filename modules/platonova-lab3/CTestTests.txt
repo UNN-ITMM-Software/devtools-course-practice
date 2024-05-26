@@ -1,0 +1,44 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help
+    COMMAND ${APPLICATION} --help
+)
+set_tests_properties (${prefix}_can_Print_Help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage: ./target [options]*"
+    LABELS "${MODULE}")
+    
+add_test(
+    NAME ${prefix}_can_initialize
+    COMMAND ${APPLICATION} --initialize 
+)
+set_tests_properties (${prefix}_can_initialize PROPERTIES
+    PASS_REGULAR_EXPRESSION "initialized\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_is_inside
+    COMMAND ${APPLICATION} --is_inside 1 1 3
+)
+set_tests_properties (${prefix}_in_inside PROPERTIES
+    PASS_REGULAR_EXPRESSION "true\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_convert_size
+    COMMAND ${APPLICATION} --convert_size 1
+)
+set_tests_properties (${prefix}_convert_size PROPERTIES
+    PASS_REGULAR_EXPRESSION "1\n"
+    LABELS "${MODULE}")
