@@ -1,6 +1,5 @@
-// Copyright 2024 Savchuk Anton
-
 #include <iostream>
+#include <string>
 #include "include/console.h"
 
 void Console::run() {
@@ -12,37 +11,30 @@ void Console::run() {
 
 void Console::printMenu() {
     std::cout << "Fibonacci Heap Operations:" << std::endl;
-    std::cout << "1. Insert Element" << std::endl;
-    std::cout << "2. Extract Minimum" << std::endl;
-    std::cout << "3. Decrease Key" << std::endl;
-    std::cout << "4. Delete Node" << std::endl;
-    std::cout << "5. Merge Heaps" << std::endl;
+    std::cout << "--insert : Insert Element" << std::endl;
+    std::cout << "--extract : Extract Minimum" << std::endl;
+    std::cout << "--decrease : Decrease Key" << std::endl;
+    std::cout << "--delete : Delete Node" << std::endl;
+    std::cout << "--merge : Merge Heaps" << std::endl;
     std::cout << "Enter your choice: ";
 }
 
 void Console::handleUserInput() {
-    int choice;
+    std::string choice;
     std::cin >> choice;
 
-    switch (choice) {
-        case 1:
-            insertElement();
-            break;
-        case 2:
-            extractMinimum();
-            break;
-        case 3:
-            decreaseKey();
-            break;
-        case 4:
-            deleteNode();
-            break;
-        case 5:
-            mergeHeaps();
-            break;
-        default:
-            std::cout << "Invalid choice. Please try again." << std::endl;
-            break;
+    if (choice == "--insert") {
+        insertElement();
+    } else if (choice == "--extract") {
+        extractMinimum();
+    } else if (choice == "--decrease") {
+        decreaseKey();
+    } else if (choice == "--delete") {
+        deleteNode();
+    } else if (choice == "--merge") {
+        mergeHeaps();
+    } else {
+        std::cout << "Invalid choice. Please try again." << std::endl;
     }
 }
 
