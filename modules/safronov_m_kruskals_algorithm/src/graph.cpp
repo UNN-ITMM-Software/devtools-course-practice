@@ -9,24 +9,24 @@ void Graph::addEdge(int src, int dest, int weight) {
     edges.push_back(Edge(src, dest, weight));
 }
 
-int Graph::find(std::vector<int>& parent, int i) {
+int Graph::find(const std::vector<int>& parent, int i) const {
     if (parent[i] != i)
-        parent[i] = find(parent, parent[i]);
+        return find(parent, parent[i]);
     return parent[i];
 }
 
-void Graph::unionSets(std::vector<int>& parent,
-    std::vector<int>& rank, int x, int y) {
+void Graph::unionSets(const std::vector<int>& parent,
+                      const std::vector<int>& rank, int x, int y) const {
     int xroot = find(parent, x);
     int yroot = find(parent, y);
 
     if (rank[xroot] < rank[yroot]) {
-        parent[xroot] = yroot;
+        const_cast<std::vector<int>&>(parent)[xroot] = yroot;
     } else if (rank[xroot] > rank[yroot]) {
-        parent[yroot] = xroot;
+        const_cast<std::vector<int>&>(parent)[yroot] = xroot;
     } else {
-        parent[yroot] = xroot;
-        rank[xroot]++;
+        const_cast<std::vector<int>&>(parent)[yroot] = xroot;
+        const_cast<std::vector<int>&>(rank)[xroot]++;
     }
 }
 
