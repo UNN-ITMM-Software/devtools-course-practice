@@ -1,0 +1,72 @@
+# Set the prefix for your tests
+set(prefix "fibonacci_heap")
+
+# Test the run() function
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties(${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Fibonacci Heap Operations:"
+    LABELS "${prefix}"
+)
+
+# Test the insert operation
+add_test(
+    NAME ${prefix}_insert
+    COMMAND ${APPLICATION} 1
+)
+set_tests_properties(${prefix}_insert PROPERTIES
+    PASS_REGULAR_EXPRESSION "Element inserted successfully."
+    LABELS "${prefix}"
+)
+
+# Test the extract minimum operation
+add_test(
+    NAME ${prefix}_extract_min
+    COMMAND ${APPLICATION} 2
+)
+set_tests_properties(${prefix}_extract_min PROPERTIES
+    PASS_REGULAR_EXPRESSION "Minimum element extracted:"
+    LABELS "${prefix}"
+)
+
+# Test the decrease key operation
+add_test(
+    NAME ${prefix}_decrease_key
+    COMMAND ${APPLICATION} 3 0 10
+)
+set_tests_properties(${prefix}_decrease_key PROPERTIES
+    PASS_REGULAR_EXPRESSION "Key decreased successfully."
+    LABELS "${prefix}"
+)
+
+# Test the delete node operation
+add_test(
+    NAME ${prefix}_delete_node
+    COMMAND ${APPLICATION} 4 0
+)
+set_tests_properties(${prefix}_delete_node PROPERTIES
+    PASS_REGULAR_EXPRESSION "Node deleted successfully."
+    LABELS "${prefix}"
+)
+
+# Test the merge heaps operation
+add_test(
+    NAME ${prefix}_merge_heaps
+    COMMAND ${APPLICATION} 5 2 10 20
+)
+set_tests_properties(${prefix}_merge_heaps PROPERTIES
+    PASS_REGULAR_EXPRESSION "Heaps merged successfully."
+    LABELS "${prefix}"
+)
+
+# Test the invalid input
+add_test(
+    NAME ${prefix}_invalid_input
+    COMMAND ${APPLICATION} 6
+)
+set_tests_properties(${prefix}_invalid_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid choice. Please try again."
+    LABELS "${prefix}"
+)
