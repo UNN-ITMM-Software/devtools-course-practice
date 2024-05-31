@@ -15,15 +15,16 @@ int Graph::find(std::vector<int>& parent, int i) {
     return parent[i];
 }
 
-void Graph::unionSets(std::vector<int>& parent, std::vector<int>& rank, int x, int y) {
+void Graph::unionSets(std::vector<int>& parent,
+    std::vector<int>& rank, int x, int y) {
     int xroot = find(parent, x);
     int yroot = find(parent, y);
 
-    if (rank[xroot] < rank[yroot])
+    if (rank[xroot] < rank[yroot]) {
         parent[xroot] = yroot;
-    else if (rank[xroot] > rank[yroot])
+    } else if (rank[xroot] > rank[yroot]) {
         parent[yroot] = xroot;
-    else {
+    } else {
         parent[yroot] = xroot;
         rank[xroot]++;
     }

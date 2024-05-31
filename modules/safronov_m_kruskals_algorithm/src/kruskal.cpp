@@ -1,12 +1,13 @@
 // Copyright 2024 Safronov Mikhail
 
-#include "include/graph.h"
-#include "include/kruskalapp.h"
-
 #include <sstream>
 #include <iostream>
 
-std::string KruskalApp::Help(const std::string& app_name, const std::string& message) {
+#include "include/graph.h"
+#include "include/kruskalapp.h"
+
+std::string KruskalApp::Help(const std::string& app_name,
+    const std::string& message) {
     std::ostringstream stream;
     if (!message.empty()) {
         stream << message << "\n\n";
@@ -53,7 +54,8 @@ std::string KruskalApp::Parse(int argc, char *argv[]) {
     std::ostringstream stream;
     stream << "Edges in the minimum spanning tree:\n";
     for (const auto& edge : mst) {
-        stream << edge.src << " - " << edge.dest << " : " << edge.weight << "\n";
+        stream << edge.src << " - " << edge.dest
+        << " : " << edge.weight << "\n";
     }
     return stream.str();
 }
