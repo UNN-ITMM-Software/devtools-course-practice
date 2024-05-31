@@ -14,7 +14,8 @@ struct EdgeComparator {
 
 void checkMST(const std::vector<Edge>& mst, const std::vector<Edge>& expected) {
     std::set<Edge, EdgeComparator> mst_set(mst.begin(), mst.end());
-    std::set<Edge, EdgeComparator> expected_set(expected.begin(), expected.end());
+    std::set<Edge, EdgeComparator> expected_set(expected.begin(),
+    expected.end());
 
     ASSERT_EQ(mst_set.size(), expected_set.size());
 
@@ -66,7 +67,8 @@ TEST(KruskalAlgorithmTest, SafronovKruskalAlgorithmTest3) {
     g.addEdge(3, 5, 2);
 
     std::vector<Edge> mst = g.kruskalMST();
-    std::vector<Edge> expected = {{0, 2, 1}, {1, 3, 1}, {2, 3, 1}, {3, 5, 2}, {4, 5, 2}};
+    std::vector<Edge> expected = {{0, 2, 1}, {1, 3, 1},
+    {2, 3, 1}, {3, 5, 2}, {4, 5, 2}};
     checkMST(mst, expected);
 }
 

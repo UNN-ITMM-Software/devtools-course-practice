@@ -8,11 +8,12 @@
 #include <string>
 
 class KruskalApp {
-public:
     std::string Parse(int argc, char *argv[]);
-private:
-    std::string Help(const std::string& app_name, const std::string& message = "");
+
+ private:
+    std::string Help(const std::string& app_name,
+    const std::string& message = "");
     bool Validate(int argc, char* argv[]);
 };
 
-#endif // KRUSKAL_APP_H
+#endif  // KRUSKAL_APP_H
