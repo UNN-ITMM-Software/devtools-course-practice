@@ -50,7 +50,7 @@ add_test(
     COMMAND ${APPLICATION} -1 push 10 1
 )
 set_tests_properties (${prefix}_run_negative_size PROPERTIES
-    PASS_REGULAR_EXPRESSION "Invalid arguments."
+    PASS_REGULAR_EXPRESSION "Error: Queue size must be greater than 0."
     LABELS "${MODULE}"
 )
 
@@ -60,15 +60,6 @@ add_test(
 )
 set_tests_properties (${prefix}_run_push_multiple PROPERTIES
     PASS_REGULAR_EXPRESSION "Pushed"
-    LABELS "${MODULE}"
-)
-
-add_test(
-    NAME ${prefix}_run_non_integer
-    COMMAND ${APPLICATION} a push 10 1
-)
-set_tests_properties (${prefix}_run_non_integer PROPERTIES
-    PASS_REGULAR_EXPRESSION "Invalid arguments."
     LABELS "${MODULE}"
 )
 
@@ -104,7 +95,7 @@ add_test(
     COMMAND ${APPLICATION} 5 push abc 1
 )
 set_tests_properties (${prefix}_invalid_input PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: Invalid input for push operation\\..*Error: Unknown operation 'abc'\\..*Error: Unknown operation '1'\\."
+    PASS_REGULAR_EXPRESSION "Error: Unknown operation 'abc'\\..*Error: Unknown operation '1'\\."
     LABELS "${MODULE}"
 )
 

@@ -31,7 +31,7 @@ bool PriorityQueueApplication::Validate(int argc, char *argv[]) {
             }
             queue = TQueue_insert<int>(size);
         } catch(const std::exception& e) {
-            Help(argv[0], "Invalid arguments.");
+            Help(argv[0], e.what());
             return false;
         }
     }
@@ -80,7 +80,7 @@ std::string PriorityQueueApplication::ProcessMultipleOperations
                      << ") into the queue.\n";
                     i += 2;
                 } catch(const std::exception& e) {
-                    result << "Error: Invalid input for push operation.\n";
+                    result << e.what() << "\n";
                 }
             } else {
                 result << "Error: Insufficient arguments for push operation.\n";
