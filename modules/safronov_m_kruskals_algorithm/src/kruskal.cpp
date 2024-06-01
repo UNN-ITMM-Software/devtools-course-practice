@@ -9,11 +9,9 @@
 #include "include/kruskalapp.h"
 
 std::string KruskalApp::Help(const std::string& app_name,
-                             const std::string& message)
-{
+                             const std::string& message) {
     std::ostringstream stream;
-    if (!message.empty())
-    {
+    if (!message.empty()) {
         stream << message << "\n\n";
     }
     stream << "Usage: " << app_name << " <number_of_vertices> <edges>\n";
@@ -21,68 +19,56 @@ std::string KruskalApp::Help(const std::string& app_name,
     return stream.str();
 }
 
-bool KruskalApp::Validate(int argc, char* argv[])
-{
-    if (argc < 3)
-    {
+bool KruskalApp::Validate(int argc, char* argv[]) {
+    if (argc < 3) {
         std::cerr << "Error: Not enough arguments."
                   << " Expected at least 3 arguments." << std::endl;
         return false;
     }
-    if ((argc - 2) % 3 != 0)
-    {
+    if ((argc - 2) % 3 != 0) {
         std::cerr << "Error: Invalid number of edge arguments."
                   << "Each edge should have 3 arguments (src, dest, weight)."
                   << std::endl;
         return false;
     }
-    try
-    {
+    try {
         int vertices = std::stoi(argv[1]);
-        if (vertices <= 0)
-        {
+        if (vertices <= 0) {
             std::cerr << "Error: Number of vertices" << "must be positive."
                       << std::endl;
             return false;
         }
-        for (int i = 2; i < argc; i += 3)
-        {
+        for (int i = 2; i < argc; i += 3) {
             int src = std::stoi(argv[i]);
             int dest = std::stoi(argv[i + 1]);
             int weight = std::stoi(argv[i + 2]);
-            if (src < 0 || dest < 0 || weight < 0)
-            {
+            if (src < 0 || dest < 0 || weight < 0) {
                 std::cerr << "Error: Edge values must" << "be non-negative."
                           << std::endl;
                 return false;
             }
         }
     }
-    catch (const std::invalid_argument&)
-    {
+    catch (const std::invalid_argument&) {
         std::cerr << "Error: Invalid argument. Expected integers." << std::endl;
         return false;
     }
-    catch (const std::out_of_range&)
-    {
+    catch (const std::out_of_range&) {
         std::cerr << "Error: Argument out of range." << std::endl;
         return false;
     }
     return true;
 }
 
-std::string KruskalApp::Parse(int argc, char* argv[])
-{
-    if (!Validate(argc, argv))
-    {
+std::string KruskalApp::Parse(int argc, char* argv[]) {
+    if (!Validate(argc, argv)) {
         return Help(argv[0], "Invalid arguments");
     }
 
     int V = std::stoi(argv[1]);
     Graph g(V);
 
-    for (int i = 2; i < argc; i += 3)
-    {
+    for (int i = 2; i < argc; i += 3) {
         int src = std::stoi(argv[i]);
         int dest = std::stoi(argv[i + 1]);
         int weight = std::stoi(argv[i + 2]);
@@ -90,20 +76,17 @@ std::string KruskalApp::Parse(int argc, char* argv[])
     }
 
     std::vector<Edge> mst;
-    try
-    {
+    try {
         mst = g.kruskalMST();
     }
-    catch (const std::exception& e)
-    {
+    catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return "Error: Unable to compute MST";
     }
 
     std::ostringstream stream;
     stream << "Edges in the minimum spanning tree:\n";
-    for (const auto& edge : mst)
-    {
+    for (const auto& edge : mst) {
         stream << edge.src << " - " << edge.dest << " : " << edge.weight
                << "\n";
     }
