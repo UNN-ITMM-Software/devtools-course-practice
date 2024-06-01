@@ -5,21 +5,24 @@
 
 #include <vector>
 
-struct Edge {
+struct Edge
+{
     int src, dest, weight;
     Edge(int s, int d, int w) : src(s), dest(d), weight(w) {}
-    bool operator<(const Edge& other) const {
+    bool operator<(const Edge& other) const
+    {
         return weight < other.weight;
     }
 };
 
-class Graph {
- public:
+class Graph
+{
+   public:
     explicit Graph(int V);
     void addEdge(int src, int dest, int weight);
     std::vector<Edge> kruskalMST();
 
- private:
+   private:
     int V;
     std::vector<Edge> edges;
     int find(const std::vector<int>& parent, int i) const;

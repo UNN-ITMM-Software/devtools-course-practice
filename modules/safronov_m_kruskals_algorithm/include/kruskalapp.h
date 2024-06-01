@@ -7,13 +7,14 @@
 
 #include <string>
 
-class KruskalApp {
- public:
-    std::string Parse(int argc, char *argv[]);
+class KruskalApp
+{
+   public:
+    std::string Parse(int argc, char* argv[]);
 
- private:
+   private:
     std::string Help(const std::string& app_name,
-    const std::string& message = "");
+                     const std::string& message = "");
     bool Validate(int argc, char* argv[]);
 };
 
