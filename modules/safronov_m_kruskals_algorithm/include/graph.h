@@ -23,7 +23,8 @@ class Graph {
     std::vector<Edge> edges;
 
     int find(std::vector<int>& parent, int i) const;
-    void unionSets(std::vector<int>& parent, std::vector<int>& rank, int x, int y) const;
+    void unionSets(std::vector<int>& parent,
+    std::vector<int>& rank, int x, int y) const;
 };
 
 #endif  // MODULES_SAFRONOV_M_KRUSKALS_ALGORITHM_INCLUDE_GRAPH_H_
