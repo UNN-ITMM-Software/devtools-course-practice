@@ -14,7 +14,8 @@ struct EdgeComparator {
 
 void checkMST(const std::vector<Edge>& mst, const std::vector<Edge>& expected) {
     std::set<Edge, EdgeComparator> mst_set(mst.begin(), mst.end());
-    std::set<Edge, EdgeComparator> expected_set(expected.begin(), expected.end());
+    std::set<Edge, EdgeComparator> expected_set(expected.begin(),
+    expected.end());
 
     ASSERT_EQ(mst_set.size(), expected_set.size());
 
@@ -42,9 +43,6 @@ TEST(KruskalAlgorithmTest, DisconnectedGraph) {
     g.addEdge(2, 3, 5);
 
     std::vector<Edge> mst = g.kruskalMST();
-    // MST will not include all vertices, but it will include the minimum edges
-    // as per the given input. Here, it might not be possible to create an MST 
-    // because the graph is disconnected.
     std::vector<Edge> expected = {{2, 3, 5}, {0, 1, 10}};
     checkMST(mst, expected);
 }

@@ -15,7 +15,8 @@ int Graph::find(std::vector<int>& parent, int i) const {
     return parent[i];
 }
 
-void Graph::unionSets(std::vector<int>& parent, std::vector<int>& rank, int x, int y) const {
+void Graph::unionSets(std::vector<int>& parent,
+    std::vector<int>& rank, int x, int y) const {
     int xroot = find(parent, x);
     int yroot = find(parent, y);
 
