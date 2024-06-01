@@ -8,6 +8,7 @@
 #include <string>
 
 class KruskalApp {
+ public:
     std::string Parse(int argc, char *argv[]);
 
  private:
