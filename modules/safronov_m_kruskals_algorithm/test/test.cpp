@@ -14,8 +14,7 @@ struct EdgeComparator {
 
 void checkMST(const std::vector<Edge>& mst, const std::vector<Edge>& expected) {
     std::set<Edge, EdgeComparator> mst_set(mst.begin(), mst.end());
-    std::set<Edge, EdgeComparator> expected_set(expected.begin(),
-    expected.end());
+    std::set<Edge, EdgeComparator> expected_set(expected.begin(), expected.end());
 
     ASSERT_EQ(mst_set.size(), expected_set.size());
 
@@ -28,79 +27,60 @@ void checkMST(const std::vector<Edge>& mst, const std::vector<Edge>& expected) {
     }
 }
 
-TEST(KruskalAlgorithmTest, SafronovKruskalAlgorithmTest1) {
+TEST(KruskalAlgorithmTest, SingleEdgeGraph) {
+    Graph g(2);
+    g.addEdge(0, 1, 10);
+
+    std::vector<Edge> mst = g.kruskalMST();
+    std::vector<Edge> expected = {{0, 1, 10}};
+    checkMST(mst, expected);
+}
+
+TEST(KruskalAlgorithmTest, DisconnectedGraph) {
+    Graph g(4);
+    g.addEdge(0, 1, 10);
+    g.addEdge(2, 3, 5);
+
+    std::vector<Edge> mst = g.kruskalMST();
+    // MST will not include all vertices, but it will include the minimum edges
+    // as per the given input. Here, it might not be possible to create an MST 
+    // because the graph is disconnected.
+    std::vector<Edge> expected = {{2, 3, 5}, {0, 1, 10}};
+    checkMST(mst, expected);
+}
+
+TEST(KruskalAlgorithmTest, GraphWithCycles) {
     Graph g(4);
     g.addEdge(0, 1, 10);
     g.addEdge(0, 2, 6);
     g.addEdge(0, 3, 5);
     g.addEdge(1, 3, 15);
     g.addEdge(2, 3, 4);
+    g.addEdge(1, 2, 1);  // This edge creates a cycle
 
     std::vector<Edge> mst = g.kruskalMST();
-    std::vector<Edge> expected = {{2, 3, 4}, {0, 3, 5}, {0, 1, 10}};
+    std::vector<Edge> expected = {{1, 2, 1}, {2, 3, 4}, {0, 3, 5}};
     checkMST(mst, expected);
 }
 
-TEST(KruskalAlgorithmTest, SafronovKruskalAlgorithmTest2) {
-    Graph g(5);
-    g.addEdge(0, 1, 2);
-    g.addEdge(0, 3, 6);
-    g.addEdge(1, 3, 8);
-    g.addEdge(1, 2, 3);
-    g.addEdge(1, 4, 5);
-    g.addEdge(2, 4, 7);
+TEST(KruskalAlgorithmTest, EmptyGraph) {
+    Graph g(0);
 
     std::vector<Edge> mst = g.kruskalMST();
-    std::vector<Edge> expected = {{0, 1, 2}, {1, 2, 3}, {1, 4, 5}, {0, 3, 6}};
+    std::vector<Edge> expected = {};
     checkMST(mst, expected);
 }
 
-TEST(KruskalAlgorithmTest, SafronovKruskalAlgorithmTest3) {
-    Graph g(6);
-    g.addEdge(0, 1, 3);
-    g.addEdge(0, 2, 1);
-    g.addEdge(1, 2, 3);
-    g.addEdge(1, 3, 1);
-    g.addEdge(2, 3, 1);
-    g.addEdge(3, 4, 6);
-    g.addEdge(4, 5, 2);
-    g.addEdge(3, 5, 2);
+TEST(KruskalAlgorithmTest, NegativeWeightsGraph) {
+    Graph g(4);
+    g.addEdge(0, 1, -10);
+    g.addEdge(0, 2, -6);
+    g.addEdge(0, 3, -5);
+    g.addEdge(1, 3, -15);
+    g.addEdge(2, 3, -4);
 
     std::vector<Edge> mst = g.kruskalMST();
-    std::vector<Edge> expected = {{0, 2, 1}, {1, 3, 1},
-    {2, 3, 1}, {3, 5, 2}, {4, 5, 2}};
-    checkMST(mst, expected);
-}
-
-TEST(KruskalAlgorithmTest, SafronovKruskalAlgorithmTest4) {
-    Graph g(3);
-    g.addEdge(0, 1, 10);
-    g.addEdge(1, 2, 15);
-    g.addEdge(0, 2, 5);
-
-    std::vector<Edge> mst = g.kruskalMST();
-    std::vector<Edge> expected = {{0, 2, 5}, {0, 1, 10}};
-    checkMST(mst, expected);
-}
-
-TEST(KruskalAlgorithmTest, SafronovKruskalAlgorithmTest5) {
-    Graph g(7);
-    g.addEdge(0, 1, 7);
-    g.addEdge(0, 3, 5);
-    g.addEdge(1, 2, 8);
-    g.addEdge(1, 3, 9);
-    g.addEdge(1, 4, 7);
-    g.addEdge(2, 4, 5);
-    g.addEdge(3, 4, 15);
-    g.addEdge(3, 5, 6);
-    g.addEdge(4, 5, 8);
-    g.addEdge(4, 6, 9);
-    g.addEdge(5, 6, 11);
-
-    std::vector<Edge> mst = g.kruskalMST();
-    std::vector<Edge> expected = {
-        {0, 3, 5}, {2, 4, 5}, {3, 5, 6}, {0, 1, 7}, {1, 4, 7}, {4, 6, 9}
-    };
+    std::vector<Edge> expected = {{1, 3, -15}, {0, 1, -10}, {0, 2, -6}};
     checkMST(mst, expected);
 }
 

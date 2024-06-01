@@ -7,26 +7,25 @@
 Graph::Graph(int V) : V(V) {}
 
 void Graph::addEdge(int src, int dest, int weight) {
-    edges.push_back(Edge(src, dest, weight));
+    edges.emplace_back(src, dest, weight);
 }
 
-int Graph::find(const std::vector<int>& parent, int i) const {
+int Graph::find(std::vector<int>& parent, int i) const {
     if (parent[i] != i) return find(parent, parent[i]);
     return parent[i];
 }
 
-void Graph::unionSets(const std::vector<int>& parent,
-                      const std::vector<int>& rank, int x, int y) const {
+void Graph::unionSets(std::vector<int>& parent, std::vector<int>& rank, int x, int y) const {
     int xroot = find(parent, x);
     int yroot = find(parent, y);
 
     if (rank[xroot] < rank[yroot]) {
-        const_cast<std::vector<int>&>(parent)[xroot] = yroot;
+        parent[xroot] = yroot;
     } else if (rank[xroot] > rank[yroot]) {
-        const_cast<std::vector<int>&>(parent)[yroot] = xroot;
+        parent[yroot] = xroot;
     } else {
-        const_cast<std::vector<int>&>(parent)[yroot] = xroot;
-        const_cast<std::vector<int>&>(rank)[xroot]++;
+        parent[yroot] = xroot;
+        rank[xroot]++;
     }
 }
 
@@ -38,7 +37,9 @@ std::vector<Edge> Graph::kruskalMST() {
 
     for (int v = 0; v < V; ++v) parent[v] = v;
 
-    std::sort(edges.begin(), edges.end());
+    std::sort(edges.begin(), edges.end(), [](const Edge& a, const Edge& b) {
+        return a.weight < b.weight;
+    });
 
     std::vector<Edge>::size_type i = 0;
 
