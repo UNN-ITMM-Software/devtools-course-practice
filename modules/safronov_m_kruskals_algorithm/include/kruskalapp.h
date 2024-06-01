@@ -2,20 +2,19 @@
 
 #pragma once
 
-#ifndef KRUSKAL_APP_H
-#define KRUSKAL_APP_H
+#ifndef MODULES_SAFRONOV_M_KRUSKALS_ALGORITHM_INCLUDE_KRUSKAL_APP_H_
+#define MODULES_SAFRONOV_M_KRUSKALS_ALGORITHM_INCLUDE_KRUSKAL_APP_H_
 
 #include <string>
 
-class KruskalApp
-{
-   public:
+class KruskalApp {
+ public:
     std::string Parse(int argc, char* argv[]);
 
-   private:
+ private:
     std::string Help(const std::string& app_name,
                      const std::string& message = "");
     bool Validate(int argc, char* argv[]);
 };
 
-#endif  // KRUSKAL_APP_H
+#endif  // MODULES_SAFRONOV_M_KRUSKALS_ALGORITHM_INCLUDE_KRUSKAL_APP_H_
