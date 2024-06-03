@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include "include/linked_list.h"
+#include "include/SinglLinkedList.h"
 
 TEST(LinkedListTest, TestConstructor) {
     LinkedList<int> list;
@@ -184,4 +185,46 @@ TEST(LinkedListTest, MoveEmptyList) {
     LinkedList<int> list2(std::move(list1));
     ASSERT_TRUE(list1.isEmpty());
     ASSERT_TRUE(list2.isEmpty());
+}
+
+TEST(SinglLinkedListTest, PushBackTest) {
+    SinglLinkedList app;
+    app.runApp(3, new const char* [3]{"app", "--push_back", "Rickroll"});
+    auto output = app.runApp(2, new const char* [2]{"app", "--print"});
+    ASSERT_EQ(output.back(), "Rickroll");
+}
+
+TEST(SinglLinkedListTest, PushFrontTest) {
+    SinglLinkedList app;
+    app.runApp(3, new const char* [3]{"app", "--push_front", "Rickroll"});
+    auto output = app.runApp(2, new const char* [2]{"app", "--print"});
+    ASSERT_EQ(output.front(), "Rickroll");
+}
+
+TEST(LinkedListTest, AddBack) {
+    LinkedList<int> list;
+
+    list.add_back(1);
+    ASSERT_EQ(list.size(), 1);
+
+    list.add_back(2);
+    ASSERT_EQ(list.size(), 2);
+}
+
+TEST(LinkedListTest, MoveAssignment) {
+    LinkedList<int> list1;
+    list1.add_back(1);
+    list1.add_back(2);
+    list1.add_back(3);
+
+    LinkedList<int> list2;
+    list2 = std::move(list1);
+
+    ASSERT_EQ(list2.size(), 3);
+
+    ASSERT_EQ(list2[0], 1);
+    ASSERT_EQ(list2[1], 2);
+    ASSERT_EQ(list2[2], 3);
+
+    ASSERT_EQ(list1.size(), 0);
 }

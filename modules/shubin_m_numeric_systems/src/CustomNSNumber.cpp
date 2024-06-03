@@ -1,6 +1,7 @@
 // Copyright 2024 Shubin Mikhail
 
 #include <stdexcept>
+#include <sstream>
 #include "include/CustomNSNumber.hpp"
 
 CustomNSNumber::CustomNSNumber(number_t _number, size_t _num_sys) {
@@ -41,6 +42,43 @@ CustomNSNumber::CustomNSNumber(CustomNSNumber&& _num) {
 
   _num.num_sys = 0;
   _num.negative = false;
+}
+
+CustomNSNumber::CustomNSNumber(const std::string &_number, size_t _num_sys) {
+  std::string tmp_string = _number;
+  if (_num_sys < 2) {
+    throw std::invalid_argument("Incorrect numeric system");
+  }
+  if (_number.empty()) {
+    throw std::invalid_argument("Input string is empty");
+  }
+  num_sys = _num_sys;
+  if (_number[0] == '-') {
+    negative = true;
+    tmp_string.erase(0, 2);
+  } else {
+      negative = false;
+  }
+
+  std::vector<digit_t> tmp_vector;
+  std::istringstream iss(tmp_string);
+  std::string s;
+
+  while (getline(iss, s, ' ')) {
+    try {
+      tmp_vector.push_back(std::stoul(s));
+    } catch (...) {
+      throw std::invalid_argument("Incorrect string element");
+    }
+  }
+
+  for (size_t i = tmp_vector.size(); i > 0; i--) {
+    if (_num_sys > tmp_vector[i - 1]) {
+      digits.push_back(tmp_vector[i - 1]);
+    } else {
+      throw std::invalid_argument("Incorrect digit");
+    }
+  }
 }
 
 void CustomNSNumber::SetNumSys(size_t _num_sys) {

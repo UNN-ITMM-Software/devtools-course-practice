@@ -8,7 +8,7 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Parallelepiped) {
     FigureSurface figureSurfaceCalc;
 
     ASSERT_THROW(figureSurfaceCalc.fnCalculateSurfaceParallelepiped(a, b, c),
-    std::invalid_argument);
+                 std::invalid_argument);
 }
 
 TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cylinder_Side) {
@@ -16,7 +16,7 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cylinder_Side) {
     FigureSurface figureSurfaceCalc;
 
     ASSERT_THROW(figureSurfaceCalc.fnCalculateSurfaceCylinderSide(r, h),
-    std::invalid_argument);
+                 std::invalid_argument);
 }
 
 TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cylinder_Full) {
@@ -24,7 +24,7 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cylinder_Full) {
     FigureSurface figureSurfaceCalc;
 
     ASSERT_THROW(figureSurfaceCalc.fnCalculateSurfaceCylinderFull(r, h),
-    std::invalid_argument);
+                 std::invalid_argument);
 }
 
 TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cone_Side) {
@@ -32,7 +32,7 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cone_Side) {
     FigureSurface figureSurfaceCalc;
 
     ASSERT_THROW(figureSurfaceCalc.fnCalculateSurfaceConeSide(r, l),
-    std::invalid_argument);
+                 std::invalid_argument);
 }
 
 TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cone_Full) {
@@ -40,7 +40,7 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Cone_Full) {
     FigureSurface figureSurfaceCalc;
 
     ASSERT_THROW(figureSurfaceCalc.fnCalculateSurfaceConeFull(r, l),
-    std::invalid_argument);
+                 std::invalid_argument);
 }
 
 TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Sphere) {
@@ -48,17 +48,19 @@ TEST(Vinokurov_I_Figure_Surface, Non_Valid_Arguements_Sphere) {
     FigureSurface figureSurfaceCalc;
 
     ASSERT_THROW(figureSurfaceCalc.fnCalculateSurfaceSphere(r),
-    std::invalid_argument);
+                 std::invalid_argument);
 }
 
 TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Parallelepiped) {
-  double a = 2.0, b = 3.0, c = 2.5, resApproximate = 37.0;
-  FigureSurface figureSurfaceCalc;
+    double a = 2.0, b = 3.0, c = 2.5, resApproximate = 37.0;
+    FigureSurface figureSurfaceCalc;
 
-  ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceParallelepiped(a, b, c));
-  ASSERT_LE(
-  figureSurfaceCalc.fnCalculateSurfaceParallelepiped(a, b, c) - resApproximate,
-      0.001);
+    ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceParallelepiped(a,
+        b, c));
+    ASSERT_LE(
+        figureSurfaceCalc.fnCalculateSurfaceParallelepiped(a, b, c) -
+        resApproximate,
+        0.001);
 }
 
 TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cylinder_Side) {
@@ -67,8 +69,8 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cylinder_Side) {
 
     ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceCylinderSide(r, h));
     ASSERT_LE(
-    figureSurfaceCalc.fnCalculateSurfaceCylinderSide(r, h) - resApproximate,
-    0.001);
+        figureSurfaceCalc.fnCalculateSurfaceCylinderSide(r, h) - resApproximate,
+        0.001);
 }
 
 TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cylinder_Full) {
@@ -77,8 +79,8 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cylinder_Full) {
 
     ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceCylinderFull(r, h));
     ASSERT_LE(
-    figureSurfaceCalc.fnCalculateSurfaceCylinderFull(r, h) - resApproximate,
-    0.001);
+        figureSurfaceCalc.fnCalculateSurfaceCylinderFull(r, h) - resApproximate,
+        0.001);
 }
 
 TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Side) {
@@ -87,8 +89,8 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Side) {
 
     ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceConeSide(r, l));
     ASSERT_LE(
-    figureSurfaceCalc.fnCalculateSurfaceConeSide(r, l) - resApproximate,
-    0.001);
+        figureSurfaceCalc.fnCalculateSurfaceConeSide(r, l) - resApproximate,
+        0.001);
 }
 
 TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Full) {
@@ -97,8 +99,8 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Cone_Full) {
 
     ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceConeFull(r, l));
     ASSERT_LE(
-    figureSurfaceCalc.fnCalculateSurfaceConeFull(r, l) - resApproximate,
-    0.001);
+        figureSurfaceCalc.fnCalculateSurfaceConeFull(r, l) - resApproximate,
+        0.001);
 }
 
 TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Sphere) {
@@ -107,6 +109,6 @@ TEST(Vinokurov_I_Figure_Surface, Valid_Arguements_Sphere) {
 
     ASSERT_NO_THROW(figureSurfaceCalc.fnCalculateSurfaceSphere(r));
     ASSERT_LE(
-    figureSurfaceCalc.fnCalculateSurfaceSphere(r) - resApproximate,
-    0.001);
+        figureSurfaceCalc.fnCalculateSurfaceSphere(r) - resApproximate,
+        0.001);
 }
