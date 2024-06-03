@@ -1,11 +1,10 @@
 // Copyright 2024 Shemiakina Alesia
 
-#include "include/graph_components.h"
-
 #include <gtest/gtest.h>
 
 #include <tuple>
 #include <vector>
+#include "include/graph_components.h"
 
 TEST(Shemiakina_Alesia_GraphNumbersTest, returns_1_when_given_2_super) {
     int was[2];
