@@ -1,9 +1,10 @@
 // Copyright 2024 Shemiakina Alesia
 
+#include "include/graph_components.h"
+
 #include <gtest/gtest.h>
 
 #include <tuple>
-#include "include/graph_components.h"
 #include <vector>
 
 TEST(Shemiakina_Alesia_GraphNumbersTest, returns_1_when_given_2_super) {
@@ -11,7 +12,6 @@ TEST(Shemiakina_Alesia_GraphNumbersTest, returns_1_when_given_2_super) {
     std::vector<std::vector<int>> v{{1}, {0}};
     int count = graph_components_numbers(2, v);
     EXPECT_EQ(1, count);
-    
 }
 
 TEST(Shemiakina_Alesia_GraphNumbersTest, returns_2_when_given_5) {
@@ -32,7 +32,8 @@ TEST(Shemiakina_Alesia_GraphNumbersTest, returns_1_when_given_1) {
 
 TEST(Shemiakina_Alesia_GraphNumbersTest, returns_3_when_given_8) {
     int was[8];
-    std::vector<std::vector<int>> v{{1, 7}, {0, 6}, {3}, {2, 4}, {3},{ }, {1, 7}, {0, 6}};
+    std::vector<std::vector<int>> v{{1, 7}, {0, 6}, {3}, {2, 4},
+     {3}, { }, {1, 7}, {0, 6}};
     int count = graph_components_numbers(8, v);
 
     EXPECT_EQ(count, 3);

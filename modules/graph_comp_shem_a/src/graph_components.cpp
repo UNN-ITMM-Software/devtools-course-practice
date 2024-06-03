@@ -2,12 +2,6 @@
 
 #include "include/graph_components.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <string.h>
-#include <string>
-#include <sstream>
 #include <vector>
 
 void DFS(int x, std::vector<std::vector<int>>& v, std::vector<int>& was) {
