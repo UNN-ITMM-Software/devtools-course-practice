@@ -46,3 +46,11 @@ TEST(Shemiakina_Alesia_GraphNumbersTest, returns_1_when_given_10) {
 
     EXPECT_EQ(count, 1);
 }
+
+TEST(Shemiakina_Alesia_GraphNumbersTest, returns_0_when_given_0) {
+    int was[1];
+    std::vector<std::vector<int>> v{ };
+    int count = graph_components_numbers(0, v);
+
+    EXPECT_EQ(count, 0);
+}
