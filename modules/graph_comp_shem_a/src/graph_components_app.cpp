@@ -30,18 +30,17 @@ void GraphComponentsApplication::help(const char* appName, const char* msg) {
 std::string GraphComponentsApplication::operator()(int argc, char* argv[]) {
     bool b = validate(argc, argv);
     std::vector<std::vector<int>> v(n);
-    for (int i = 2; i < argc; i++){
+    for (int i = 2; i < argc; i++) {
       std::istringstream ss;
       ss.str(argv[i]);
       for (std::string s; std::getline(ss, s, ','); ) {
         v[i - 2].push_back(std::stoi(s));
       }
     }
-    if (b){
+    if (b) {
       std::stringstream str;
       str << std::to_string(graph_components_numbers(n, v));
       message_ = str.str();
     }
     return message_;
-    
 }
