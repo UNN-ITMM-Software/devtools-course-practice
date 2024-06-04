@@ -43,5 +43,4 @@ std::string GraphComponentsApplication::operator()(int argc, char* argv[]) {
       message_ = str.str();
     }
     return message_;
-
 }
