@@ -147,10 +147,10 @@ TEST(KruskalAppTest, ValidateNegativeEdges) {
 }
 TEST(KruskalAppTest, ParseValidInput) {
     KruskalApp app;
-    const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15", 
+    const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15",
                           "2", "3", "5", "0", "3", "6"};
     std::string result = app.Parse(14, const_cast<char**>(argv));
-    EXPECT_NE(result.find("Edges in the minimum spanning tree:"), 
+    EXPECT_NE(result.find("Edges in the minimum spanning tree:"),
               std::string::npos);
 }
 
