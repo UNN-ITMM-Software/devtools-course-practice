@@ -3,6 +3,7 @@
 #include <gtest/gtest.h>
 #include <set>
 #include "include/graph.h"
+#include "include/kruskalapp.h"
 
 struct EdgeComparator {
     bool operator()(const Edge& a, const Edge& b) const {
@@ -102,6 +103,61 @@ TEST(KruskalAlgorithmTest, DetectDisconnectedComponents) {
     std::vector<Edge> mst = g.kruskalMST();
     std::vector<Edge> expected = {{0, 1, 1}, {2, 3, 2}};
     checkMST(mst, expected);
+}
+
+TEST(KruskalAppTest, HelpMessage) {
+    KruskalApp app;
+    std::string help = app.Help("kruskal_app");
+    EXPECT_NE(help.find("Usage: kruskal_app"), std::string::npos);
+}
+
+TEST(KruskalAppTest, ValidateNotEnoughArguments) {
+    KruskalApp app;
+    const char* argv[] = {"kruskal_app"};
+    bool result = app.Validate(1, const_cast<char**>(argv));
+    EXPECT_FALSE(result);
+}
+
+TEST(KruskalAppTest, ValidateInvalidNumberOfEdges) {
+    KruskalApp app;
+    const char* argv[] = {"kruskal_app", "4", "0", "1"};
+    bool result = app.Validate(4, const_cast<char**>(argv));
+    EXPECT_FALSE(result);
+}
+
+TEST(KruskalAppTest, ValidateInvalidArgumentFormat) {
+    KruskalApp app;
+    const char* argv[] = {"kruskal_app", "4", "a", "b", "c"};
+    bool result = app.Validate(5, const_cast<char**>(argv));
+    EXPECT_FALSE(result);
+}
+
+TEST(KruskalAppTest, ValidateNegativeVertices) {
+    KruskalApp app;
+    const char* argv[] = {"kruskal_app", "-4", "0", "1", "10"};
+    bool result = app.Validate(5, const_cast<char**>(argv));
+    EXPECT_FALSE(result);
+}
+
+TEST(KruskalAppTest, ValidateNegativeEdges) {
+    KruskalApp app;
+    const char* argv[] = {"kruskal_app", "4", "0", "1", "-10"};
+    bool result = app.Validate(5, const_cast<char**>(argv));
+    EXPECT_FALSE(result);
+}
+
+TEST(KruskalAppTest, ParseValidInput) {
+    KruskalApp app;
+    const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15", "2", "3", "5", "0", "3", "6"};
+    std::string result = app.Parse(14, const_cast<char**>(argv));
+    EXPECT_NE(result.find("Edges in the minimum spanning tree:"), std::string::npos);
+}
+
+TEST(KruskalAppTest, ParseInvalidInput) {
+    KruskalApp app;
+    const char* argv[] = {"kruskal_app", "4", "0", "1", "invalid"};
+    std::string result = app.Parse(5, const_cast<char**>(argv));
+    EXPECT_EQ(result, "Invalid arguments\n\nUsage: kruskal_app <number_of_vertices> <edges>\nExample: kruskal_app 4 0 1 10 0 2 6 0 3 5 1 3 15 2 3 4\n");
 }
 
 int main(int argc, char **argv) {
