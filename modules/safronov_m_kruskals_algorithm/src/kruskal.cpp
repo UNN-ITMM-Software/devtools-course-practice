@@ -4,6 +4,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <vector>
+#include <limits>
 
 #include "include/graph.h"
 #include "include/kruskalapp.h"
@@ -19,30 +20,47 @@ std::string KruskalApp::Help(const std::string& app_name,
     return stream.str();
 }
 
+
 bool KruskalApp::Validate(int argc, char* argv[]) {
     if (argc < 3) {
-        std::cerr << "Not enough arguments."
-                  << " Expected at least 3 arguments." << std::endl;
+        std::cerr << "Not enough arguments." << std::endl;
         return false;
     }
+    
     if ((argc - 2) % 3 != 0) {
-        std::cerr << "Invalid number of edge arguments."
-                  << "Each edge should have 3 arguments (src, dest, weight)."
-                  << std::endl;
+        std::cerr << "Must have 3 arguments (src, dest, weight)." << std::endl;
         return false;
     }
+    
     try {
         int vertices = std::stoi(argv[1]);
+        
         if (vertices <= 0) {
-            std::cerr << "Num of vertices" << "must be positive." << std::endl;
+            std::cerr << "Num of vertices must be positive." << std::endl;
             return false;
         }
+        
         for (int i = 2; i < argc; i += 3) {
-            int src = std::stoi(argv[i]);
-            int dest = std::stoi(argv[i + 1]);
-            int weight = std::stoi(argv[i + 2]);
+            long srcLong = std::stol(argv[i]);
+            long destLong = std::stol(argv[i + 1]);
+            long weightLong = std::stol(argv[i + 2]);
+            
+            if (srcLong < std::numeric_limits<int>::min() ||
+            srcLong > std::numeric_limits<int>::max() || 
+                destLong < std::numeric_limits<int>::min() ||
+                destLong > std::numeric_limits<int>::max() || 
+                weightLong < std::numeric_limits<int>::min() ||
+                weightLong > std::numeric_limits<int>::max()) {
+                std::cerr << "Argument out of range." << std::endl;
+                return false;
+            }
+            
+            int src = static_cast<int>(srcLong);
+            int dest = static_cast<int>(destLong);
+            int weight = static_cast<int>(weightLong);
+            
             if (src < 0 || dest < 0 || weight < 0) {
-                std::cerr << "Values must" << "be non-negative." << std::endl;
+                std::cerr << "Values must be non-negative." << std::endl;
                 return false;
             }
         }
@@ -51,10 +69,7 @@ bool KruskalApp::Validate(int argc, char* argv[]) {
         std::cerr << "Invalid argument. Expected integers." << std::endl;
         return false;
     }
-    catch (const std::out_of_range&) {
-        std::cerr << "Argument out of range." << std::endl;
-        return false;
-    }
+    
     return true;
 }
 
