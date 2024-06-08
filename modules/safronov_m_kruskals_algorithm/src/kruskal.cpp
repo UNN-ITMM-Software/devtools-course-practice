@@ -40,24 +40,24 @@ bool KruskalApp::Validate(int argc, char* argv[]) {
         }
 
         for (int i = 2; i < argc; i += 3) {
-            long srcLong = std::stol(argv[i]);
-            long destLong = std::stol(argv[i + 1]);
-            long weightLong = std::stol(argv[i + 2]);
+            int64_t srcLong = std::stol(argv[i]);
+            int64_t destLong = std::stol(argv[i + 1]);
+            int64_t weightLong = std::stol(argv[i + 2]);
 
             constexpr int INT_MIN = std::numeric_limits<int>::min();
             constexpr int INT_MAX = std::numeric_limits<int>::max();
 
-            if (srcLong < INT_MIN || srcLong > INT_MAX || 
-                destLong < INT_MIN || destLong > INT_MAX || 
+            if (srcLong < INT_MIN || srcLong > INT_MAX ||
+                destLong < INT_MIN || destLong > INT_MAX ||
                 weightLong < INT_MIN || weightLong > INT_MAX) {
                 std::cerr << "Argument out of range." << std::endl;
                 return false;
             }
-            
+
             int src = static_cast<int>(srcLong);
             int dest = static_cast<int>(destLong);
             int weight = static_cast<int>(weightLong);
-            
+
             if (src < 0 || dest < 0 || weight < 0) {
                 std::cerr << "Values must be non-negative." << std::endl;
                 return false;
