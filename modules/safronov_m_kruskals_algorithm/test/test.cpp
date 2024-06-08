@@ -85,10 +85,10 @@ TEST(KruskalAlgorithmTest, NegativeWeightsGraph) {
 
 TEST(KruskalAppTest, ParseValidInput) {
     KruskalApp app;
-    const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15", 
+    const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15",
                           "2", "3", "5", "0", "3", "6"};
     std::string result = app.Parse(14, const_cast<char**>(argv));
-    EXPECT_NE(result.find("Edges in the minimum spanning tree:"), 
+    EXPECT_NE(result.find("Edges in the minimum spanning tree:"),
               std::string::npos);
 }
 
@@ -114,7 +114,7 @@ TEST(KruskalAppTest, ParseNegativeVertices) {
 
 TEST(KruskalAppTest, ParseNegativeEdges) {
     KruskalApp app;
-    const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15", 
+    const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15",
                           "2", "3", "5", "-1", "3", "6"};
     std::string result = app.Parse(14, const_cast<char**>(argv));
     std::string expected = "Invalid arguments\n\nUsage: kruskal_app "
@@ -127,12 +127,12 @@ TEST(KruskalAppTest, KruskalMSTThrowsException) {
     // This test ensures that when kruskalMST throws an exception,
     // it is properly handled and the appropriate message is returned.
     KruskalApp app;
-    const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15", 
+    const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15",
                           "2", "3", "5", "0", "3", "6"};
 
     // Mocking Graph class to throw an exception
     class GraphMock : public Graph {
-    public:
+ public:
         using Graph::Graph;
         std::vector<Edge> kruskalMST() override {
             throw std::runtime_error("MST computation failed");
