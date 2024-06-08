@@ -132,7 +132,7 @@ TEST(KruskalAppTest, KruskalMSTThrowsException) {
 
     // Mocking Graph class to throw an exception
     class GraphMock : public Graph {
- public:
+     public:
         using Graph::Graph;
         std::vector<Edge> kruskalMST() override {
             throw std::runtime_error("MST computation failed");
