@@ -1,59 +1,71 @@
 // Copyright 2024 Safronov Mikhail
-
 #include "include/graph.h"
-
 #include <algorithm>
+#include <stdexcept>
+#include <set>
 
+// DisjointSets implementation
+DisjointSets::DisjointSets(int n) {
+    parent.resize(n);
+    rank.resize(n, 0);
+    for (int i = 0; i < n; ++i) {
+        parent[i] = i;
+    }
+}
+
+int DisjointSets::find(int u) {
+    if (u != parent[u]) {
+        parent[u] = find(parent[u]);
+    }
+    return parent[u];
+}
+
+void DisjointSets::unionSets(int u, int v) {
+    int uRoot = find(u);
+    int vRoot = find(v);
+
+    if (uRoot != vRoot) {
+        if (rank[uRoot] < rank[vRoot]) {
+            parent[uRoot] = vRoot;
+        } else if (rank[uRoot] > rank[vRoot]) {
+            parent[vRoot] = uRoot;
+        } else {
+            parent[vRoot] = uRoot;
+            rank[uRoot]++;
+        }
+    }
+}
+
+// Graph implementation
 Graph::Graph(int V) : V(V) {}
 
-void Graph::addEdge(int src, int dest, int weight) {
-    edges.emplace_back(src, dest, weight);
-}
-
-int Graph::find(std::vector<int>& parent, int i) const {
-    if (parent[i] != i) return find(parent, parent[i]);
-    return parent[i];
-}
-
-void Graph::unionSets(std::vector<int>& parent,
-    std::vector<int>& rank, int x, int y) const {
-    int xroot = find(parent, x);
-    int yroot = find(parent, y);
-
-    if (rank[xroot] < rank[yroot]) {
-        parent[xroot] = yroot;
-    } else if (rank[xroot] > rank[yroot]) {
-        parent[yroot] = xroot;
-    } else {
-        parent[yroot] = xroot;
-        rank[xroot]++;
-    }
+void Graph::addEdge(int u, int v, int w) {
+    edges.push_back({u, v, w});
 }
 
 std::vector<Edge> Graph::kruskalMST() {
     std::vector<Edge> result;
-    int e = 0;
-    std::vector<int> parent(V);
-    std::vector<int> rank(V, 0);
 
-    for (int v = 0; v < V; ++v) parent[v] = v;
+    std::sort(edges.begin(), edges.end());
 
-    std::sort(edges.begin(), edges.end(), [](const Edge& a, const Edge& b) {
-        return a.weight < b.weight;
-    });
+    DisjointSets ds(V);
 
-    std::vector<Edge>::size_type i = 0;
+    for (const Edge &edge : edges) {
+        int u = ds.find(edge.src);
+        int v = ds.find(edge.dest);
 
-    while (e < V - 1 && i < edges.size()) {
-        Edge next_edge = edges[i++];
-        int x = find(parent, next_edge.src);
-        int y = find(parent, next_edge.dest);
-
-        if (x != y) {
-            result.push_back(next_edge);
-            unionSets(parent, rank, x, y);
-            e++;
+        if (u != v) {
+            result.push_back(edge);
+            ds.unionSets(u, v);
         }
+    }
+
+    std::set<int> unique_sets;
+    for (int i = 0; i < V; ++i) {
+        unique_sets.insert(ds.find(i));
+    }
+    if (unique_sets.size() > 1) {
+        throw std::runtime_error("MST computation failed: graph is disconnected");
     }
 
     return result;
