@@ -125,7 +125,7 @@ TEST(KruskalAppTest, KruskalMSTThrowsException) {
     KruskalApp app;
     const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15",
                           "2", "3", "5", "0", "3", "6"};
-    
+
     Graph g(4);
     g.addEdge(0, 1, 10);
     g.addEdge(1, 2, 15);
