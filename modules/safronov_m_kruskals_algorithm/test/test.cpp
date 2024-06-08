@@ -145,19 +145,23 @@ TEST(KruskalAppTest, ValidateNegativeEdges) {
     bool result = app.Validate(5, const_cast<char**>(argv));
     EXPECT_FALSE(result);
 }
-
 TEST(KruskalAppTest, ParseValidInput) {
     KruskalApp app;
-    const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15", "2", "3", "5", "0", "3", "6"};
+    const char* argv[] = {"kruskal_app", "4", "0", "1", "10", "1", "2", "15", 
+                          "2", "3", "5", "0", "3", "6"};
     std::string result = app.Parse(14, const_cast<char**>(argv));
-    EXPECT_NE(result.find("Edges in the minimum spanning tree:"), std::string::npos);
+    EXPECT_NE(result.find("Edges in the minimum spanning tree:"), 
+              std::string::npos);
 }
 
 TEST(KruskalAppTest, ParseInvalidInput) {
     KruskalApp app;
     const char* argv[] = {"kruskal_app", "4", "0", "1", "invalid"};
     std::string result = app.Parse(5, const_cast<char**>(argv));
-    EXPECT_EQ(result, "Invalid arguments\n\nUsage: kruskal_app <number_of_vertices> <edges>\nExample: kruskal_app 4 0 1 10 0 2 6 0 3 5 1 3 15 2 3 4\n");
+    std::string expected = "Invalid arguments\n\nUsage: kruskal_app "
+                           "<number_of_vertices> <edges>\nExample: "
+                           "kruskal_app 4 0 1 10 0 2 6 0 3 5 1 3 15 2 3 4\n";
+    EXPECT_EQ(result, expected);
 }
 
 int main(int argc, char **argv) {
