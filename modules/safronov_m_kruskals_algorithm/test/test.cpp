@@ -82,6 +82,28 @@ TEST(KruskalAlgorithmTest, NegativeWeightsGraph) {
     checkMST(mst, expected);
 }
 
+TEST(KruskalAlgorithmTest, HandleDuplicateEdges) {
+    Graph g(4);
+    g.addEdge(0, 1, 10);
+    g.addEdge(0, 1, 10);  // Duplicate edge
+    g.addEdge(1, 2, 15);
+    g.addEdge(2, 3, 4);
+
+    std::vector<Edge> mst = g.kruskalMST();
+    std::vector<Edge> expected = {{2, 3, 4}, {0, 1, 10}, {1, 2, 15}};
+    checkMST(mst, expected);
+}
+
+TEST(KruskalAlgorithmTest, DetectDisconnectedComponents) {
+    Graph g(5);
+    g.addEdge(0, 1, 1);
+    g.addEdge(2, 3, 2);
+
+    std::vector<Edge> mst = g.kruskalMST();
+    std::vector<Edge> expected = {{0, 1, 1}, {2, 3, 2}};
+    checkMST(mst, expected);
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

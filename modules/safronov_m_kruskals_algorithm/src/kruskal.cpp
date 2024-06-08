@@ -21,12 +21,12 @@ std::string KruskalApp::Help(const std::string& app_name,
 
 bool KruskalApp::Validate(int argc, char* argv[]) {
     if (argc < 3) {
-        std::cerr << "Error: Not enough arguments."
+        std::cerr << "Not enough arguments."
                   << " Expected at least 3 arguments." << std::endl;
         return false;
     }
     if ((argc - 2) % 3 != 0) {
-        std::cerr << "Error: Invalid number of edge arguments."
+        std::cerr << "Invalid number of edge arguments."
                   << "Each edge should have 3 arguments (src, dest, weight)."
                   << std::endl;
         return false;
@@ -34,8 +34,7 @@ bool KruskalApp::Validate(int argc, char* argv[]) {
     try {
         int vertices = std::stoi(argv[1]);
         if (vertices <= 0) {
-            std::cerr << "Error: Number of vertices" << "must be positive."
-                      << std::endl;
+            std::cerr << "Num of vertices" << "must be positive." << std::endl;
             return false;
         }
         for (int i = 2; i < argc; i += 3) {
@@ -43,18 +42,17 @@ bool KruskalApp::Validate(int argc, char* argv[]) {
             int dest = std::stoi(argv[i + 1]);
             int weight = std::stoi(argv[i + 2]);
             if (src < 0 || dest < 0 || weight < 0) {
-                std::cerr << "Error: Edge values must" << "be non-negative."
-                          << std::endl;
+                std::cerr << "Values must" << "be non-negative." << std::endl;
                 return false;
             }
         }
     }
     catch (const std::invalid_argument&) {
-        std::cerr << "Error: Invalid argument. Expected integers." << std::endl;
+        std::cerr << "Invalid argument. Expected integers." << std::endl;
         return false;
     }
     catch (const std::out_of_range&) {
-        std::cerr << "Error: Argument out of range." << std::endl;
+        std::cerr << "Argument out of range." << std::endl;
         return false;
     }
     return true;
