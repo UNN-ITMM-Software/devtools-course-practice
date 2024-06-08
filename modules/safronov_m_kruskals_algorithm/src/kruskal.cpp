@@ -74,13 +74,7 @@ std::string KruskalApp::Parse(int argc, char* argv[]) {
     }
 
     std::vector<Edge> mst;
-    try {
-        mst = g.kruskalMST();
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-        return "Error: Unable to compute MST";
-    }
+    mst = g.kruskalMST();
 
     std::ostringstream stream;
     stream << "Edges in the minimum spanning tree:\n";
