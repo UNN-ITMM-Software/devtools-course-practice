@@ -20,37 +20,36 @@ std::string KruskalApp::Help(const std::string& app_name,
     return stream.str();
 }
 
-
 bool KruskalApp::Validate(int argc, char* argv[]) {
     if (argc < 3) {
         std::cerr << "Not enough arguments." << std::endl;
         return false;
     }
-    
+
     if ((argc - 2) % 3 != 0) {
         std::cerr << "Must have 3 arguments (src, dest, weight)." << std::endl;
         return false;
     }
-    
+
     try {
         int vertices = std::stoi(argv[1]);
-        
+
         if (vertices <= 0) {
             std::cerr << "Num of vertices must be positive." << std::endl;
             return false;
         }
-        
+
         for (int i = 2; i < argc; i += 3) {
             long srcLong = std::stol(argv[i]);
             long destLong = std::stol(argv[i + 1]);
             long weightLong = std::stol(argv[i + 2]);
-            
-            if (srcLong < std::numeric_limits<int>::min() ||
-            srcLong > std::numeric_limits<int>::max() || 
-                destLong < std::numeric_limits<int>::min() ||
-                destLong > std::numeric_limits<int>::max() || 
-                weightLong < std::numeric_limits<int>::min() ||
-                weightLong > std::numeric_limits<int>::max()) {
+
+            constexpr int INT_MIN = std::numeric_limits<int>::min();
+            constexpr int INT_MAX = std::numeric_limits<int>::max();
+
+            if (srcLong < INT_MIN || srcLong > INT_MAX || 
+                destLong < INT_MIN || destLong > INT_MAX || 
+                weightLong < INT_MIN || weightLong > INT_MAX) {
                 std::cerr << "Argument out of range." << std::endl;
                 return false;
             }
