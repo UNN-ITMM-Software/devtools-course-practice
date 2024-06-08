@@ -65,7 +65,7 @@ std::vector<Edge> Graph::kruskalMST() {
         unique_sets.insert(ds.find(i));
     }
     if (unique_sets.size() > 1) {
-        throw std::runtime_error("MST computation failed: graph is disconnected");
+        throw std::runtime_error("MST computation fail: graph is disconnected");
     }
 
     return result;
