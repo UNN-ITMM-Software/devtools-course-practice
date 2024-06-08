@@ -3,6 +3,7 @@
 #include "include/graph_components.h"
 
 #include <vector>
+#include <iostream>
 
 void DFS(int x, std::vector<std::vector<int>>& v, std::vector<int>& was) {
     was[x] = 1;
