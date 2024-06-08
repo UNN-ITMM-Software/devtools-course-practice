@@ -68,7 +68,6 @@ bool KruskalApp::Validate(int argc, char* argv[]) {
         std::cerr << "Invalid argument. Expected integers." << std::endl;
         return false;
     }
-    
     return true;
 }
 
