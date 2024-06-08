@@ -2,11 +2,6 @@
 
 #pragma once
 
-#include <cmath>
-#include <stdexcept>
-#include <vector>
-#include <utility>
-#include <algorithm>
 #include <string>
 
 #include "include/graph_components.h"
