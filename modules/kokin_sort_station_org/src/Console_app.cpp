@@ -24,6 +24,7 @@ void ConsoleApp::printHelp() {
 }
 
 void ConsoleApp::evaluateExpression(const std::string& expression) {
-    std::string result = std::to_string(sortStation.evaluateCalculate(expression));
+    std::string result = std::to_string(sortStation
+            .evaluateCalculate(expression));
     std::cout << "Result: " << result << std::endl;
 }
