@@ -6,23 +6,23 @@
 
 TEST(SortingStationTest, ParseValidExpression) {
     SortStationDerived station;
-    double result = station.evaluateCalculate("1-(2/(4^2))");
+    double result = station.calculateFunction("1-(2/(4^2))");
     EXPECT_EQ(result, 0.875);
 }
 
 TEST(SortStationDerivedTest, EvaluateFunction) {
     SortStationDerived calculator;
-    EXPECT_EQ(calculator.evaluateCalculate("3+4*2"), 11.0);
+    EXPECT_EQ(calculator.calculateFunction("3+4*2"), 11.0);
 }
 
 TEST(SortStationDerivedTest, valid) {
     SortStationDerived calculator;
-    EXPECT_EQ(calculator.evaluateCalculate("5+3*6-8"), 15.0);
+    EXPECT_EQ(calculator.calculateFunction("5+3*6-8"), 15.0);
 }
 
 TEST(SortStationDerivedTest, valid2) {
     SortStationDerived calculator;
-    EXPECT_EQ(calculator.evaluateCalculate("4^2+36/12-1"), 5.5);
+    EXPECT_EQ(calculator.calculateFunction("4^2+36/12-1"), 5.5);
 }
 
 // Kokin Ivan

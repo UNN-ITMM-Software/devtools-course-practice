@@ -7,7 +7,7 @@
 
 #include "../include/sort_station.h"
 
-double SortStationDerived::evaluateCalculate(const std::string& expression) {
+double SortStationDerived::calculateFunction(const std::string& expression) {
     std::string postfix = convertToPostfix(expression);
     return evaluatePostfixExpression(postfix);
 }

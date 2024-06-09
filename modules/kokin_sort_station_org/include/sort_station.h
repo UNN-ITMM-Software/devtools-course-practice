@@ -6,21 +6,18 @@
 #include <unordered_map>
 #include <string>
 
-class SortStation {
+class SortStationDerived {
  public:
-    virtual double evaluateCalculate(const std::string& expression) = 0;
- protected:
-    std::unordered_map<char, int> precedence = {
-            {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2}, {'^', 3}
-    };
-};
-class SortStationDerived : public SortStation {
- public:
-     double evaluateCalculate(const std::string& expression) override;
+     double calculateFunction(const std::string& expression);
      double evaluatePostfixExpression(const std::string& postfix);
  private:
      double applyOperator(double a, double b, char op);
      std::string convertToPostfix(const std::string& expression);
+
+ protected:
+    std::unordered_map<char, int> precedence = {
+            {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2}, {'^', 3}
+    };
 };
 
 #endif  // MODULES_KOKIN_SORT_STATION_ORG_INCLUDE_SORT_STATION_H_

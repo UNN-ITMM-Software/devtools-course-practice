@@ -9,7 +9,7 @@ void ConsoleApp::run(int argc, const char** argv) {
     printHelp();
   } else if (argc == 2) {
     std::string expression = argv[1];
-    evaluateExpression(expression);
+      calculateExpression(expression);
   } else {
     std::cerr << "Invalid number of arguments." << std::endl;
     printHelp();
@@ -23,8 +23,9 @@ void ConsoleApp::printHelp() {
   std::cout << "  SortStation 2+2" << std::endl;
 }
 
-void ConsoleApp::evaluateExpression(const std::string& expression) {
-    std::string result = std::to_string(sortStation
-            .evaluateCalculate(expression));
-    std::cout << "Result: " << result << std::endl;
+std::string ConsoleApp::calculateExpression(const std::string& expression) {
+    std::string s = "Result: " + std::to_string(
+            sortStation.calculateFunction(expression));
+    std::cout << s << std::endl;
+    return s;
 }
