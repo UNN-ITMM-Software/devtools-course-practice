@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../include/Console_app.h"
+#include "Console_app.h"
 
 int main(int argc, char** argv) {
   ConsoleApp app;

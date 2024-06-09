@@ -2,8 +2,7 @@
 #include <iostream>
 #include <string>
 
-#include "../include/Console_app.h"
-#include "../include/sort_station.h"
+#include "Console_app.h"
 
 void ConsoleApp::run(int argc, const char** argv) {
   if (argc == 1) {
@@ -25,6 +24,6 @@ void ConsoleApp::printHelp() {
 }
 
 void ConsoleApp::evaluateExpression(const std::string& expression) {
-    double result = sortStation.evaluateFunction(expression);
+    std::string result = std::to_string(sortStation.evaluateCalculate(expression));
     std::cout << "Result: " << result << std::endl;
 }
