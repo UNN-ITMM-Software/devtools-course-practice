@@ -40,16 +40,13 @@ bool KruskalApp::Validate(int argc, char* argv[]) {
         }
 
         for (int i = 2; i < argc; i += 3) {
-            int64_t srcLong = std::stol(argv[i]);
-            int64_t destLong = std::stol(argv[i + 1]);
-            int64_t weightLong = std::stol(argv[i + 2]);
+            int64_t srcLong = std::stoll(argv[i]);
+            int64_t destLong = std::stoll(argv[i + 1]);
+            int64_t weightLong = std::stoll(argv[i + 2]);
 
-            constexpr int INT_MIN = std::numeric_limits<int>::min();
-            constexpr int INT_MAX = std::numeric_limits<int>::max();
-
-            if (srcLong < INT_MIN || srcLong > INT_MAX ||
-                destLong < INT_MIN || destLong > INT_MAX ||
-                weightLong < INT_MIN || weightLong > INT_MAX) {
+            if (srcLong < std::numeric_limits<int>::min() || srcLong > std::numeric_limits<int>::max() || 
+                destLong < std::numeric_limits<int>::min() || destLong > std::numeric_limits<int>::max() || 
+                weightLong < std::numeric_limits<int>::min() || weightLong > std::numeric_limits<int>::max()) {
                 std::cerr << "Argument out of range." << std::endl;
                 return false;
             }
