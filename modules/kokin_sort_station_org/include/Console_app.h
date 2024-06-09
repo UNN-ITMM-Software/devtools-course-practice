@@ -13,7 +13,7 @@ class ConsoleApp {
 
  private:
   void printHelp();
-  void evaluateExpression(const std::string& expression);
+  std::string calculateExpression(const std::string& expression);
   SortStationDerived sortStation;
 };
 
