@@ -4,6 +4,7 @@
 #define MODULES_KOKIN_SORT_STATION_ORG_INCLUDE_SORT_STATION_H_
 
 #include <unordered_map>
+#include <string>
 
 class SortStation {
  public:
