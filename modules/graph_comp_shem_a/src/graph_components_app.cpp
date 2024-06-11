@@ -39,7 +39,7 @@ std::string GraphComponentsApplication::operator()(int argc, char* argv[]) {
     }
     if (b) {
       std::stringstream str;
-      str << std::to_string(graph_components_numbers(n, v));
+      str << graph_components_numbers(n, v);
       message_ = str.str();
     }
     return message_;
