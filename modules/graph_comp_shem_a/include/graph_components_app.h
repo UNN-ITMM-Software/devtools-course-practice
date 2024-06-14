@@ -1,7 +1,12 @@
-// Copyright 2024 Konovalov Igor
+// Copyright 2024 Shemiakina Alesia
 
 #pragma once
 
+#include <cmath>
+#include <stdexcept>
+#include <vector>
+#include <utility>
+#include <algorithm>
 #include <string>
 
 #include "include/graph_components.h"
