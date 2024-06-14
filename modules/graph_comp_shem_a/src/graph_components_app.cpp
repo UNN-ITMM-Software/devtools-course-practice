@@ -20,7 +20,6 @@ bool GraphComponentsApplication::validate(int argc, char* argv[]) {
 
 void GraphComponentsApplication::help(const char* appName, const char* msg) {
   std::stringstream message;
-
   if (msg) message << "Error: " << msg << '\n';
 
   message << "This program calculates number of graph components";
