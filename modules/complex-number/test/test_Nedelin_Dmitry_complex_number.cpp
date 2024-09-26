@@ -1,6 +1,7 @@
 // Copyright 2024 Nedelin Dmitry
 
 #include <gtest/gtest.h>
+
 #include "include/complex_number.h"
 
 TEST(Nedelin_Dmitry_ComplexNumberTest, contructor_test) {
