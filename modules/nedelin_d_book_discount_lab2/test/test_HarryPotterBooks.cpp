@@ -12,7 +12,7 @@ TEST(Nedelin_HarryPotterBooksTest, SingleBook) {
 TEST(Nedelin_HarryPotterBooksTest, TwoDifferentBooks) {
     HarryPotterBooks hpBooks;
     std::vector<int> books = { 1, 1, 0, 0, 0 };
-    EXPECT_DOUBLE_EQ(hpBooks.calculateTotalPrice(books), 8.0 * 2 * 0.95);
+    EXPECT_DOUBLE_EQ(hpBooks.calculateTotalPrice(books), 2 * 8.0 * 0.95);
 }
 
 TEST(Nedelin_HarryPotterBooksTest, ThreeDifferentBooks) {

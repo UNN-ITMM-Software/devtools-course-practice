@@ -1,4 +1,5 @@
 // Copyright 2024 Nedelin Dmitry
+
 #include "include/HarryPotterBooks.h"
 
 double HarryPotterBooks::calculateTotalPrice(std::vector<int> books) {
