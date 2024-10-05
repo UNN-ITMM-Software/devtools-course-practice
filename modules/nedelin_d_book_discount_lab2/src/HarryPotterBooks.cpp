@@ -15,7 +15,7 @@ double HarryPotterBooks::calculateTotalPrice(std::vector<int> books) {
 
         total += uniqueBooks * bookPrice * (1 - discounts[uniqueBooks]);
 
-        for (int i = 0; i < books.size(); ++i) {
+        for (size_t i = 0; i < books.size(); ++i) {
             if (books[i] > 0) {
                 books[i]--;
             }
