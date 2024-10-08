@@ -1,8 +1,10 @@
 // Copyright 2024 Vasilev Ivan
 // Copyright 2024 Tushentsova Karina
 
-#include "gtest/gtest.h"
 #include <vector>
+
+#include "gtest/gtest.h"
+
 #include "include/Combinations.h"
 
 TEST(CombinationGeneratorTest, BasicTest) {
