@@ -2,6 +2,7 @@
 // Copyright 2024 Tushentsova Karina
 
 #include "gtest/gtest.h"
+#include <vector>
 #include "include/Combinations.h"
 
 TEST(CombinationGeneratorTest, BasicTest) {
