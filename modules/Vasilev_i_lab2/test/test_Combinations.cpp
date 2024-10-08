@@ -1,9 +1,9 @@
 // Copyright 2024 Vasilev Ivan
 // Copyright 2024 Tushentsova Karina
 
-#include "include/Combinations.h"
-#include <vector>
 #include "gtest/gtest.h"
+#include <vector>
+#include "include/Combinations.h"
 
 TEST(CombinationGeneratorTest, BasicTest) {
     std::vector<int> arr = {1, 2, 3, 4};
