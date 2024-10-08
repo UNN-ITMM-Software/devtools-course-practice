@@ -2,8 +2,8 @@
 // Copyright 2024 Tushentsova Karina
 
 #include "gtest/gtest.h"
-#include <vector>
 #include "include/Combinations.h"
+#include <vector>
 
 TEST(CombinationGeneratorTest, BasicTest) {
     std::vector<int> arr = {1, 2, 3, 4};
