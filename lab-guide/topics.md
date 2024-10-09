@@ -101,7 +101,7 @@
 | [Игра "Жизнь" Конвея](https://github.com/garora/TDD-Katas/blob/master/KatasReadme.md#game-of-life-) |Кудинов Никита 3821Б1ПР1|Киселёв Игорь 3821Б1ПР1|
 | [Правило 30](https://en.wikipedia.org/wiki/Rule_30) |||
 | [Вычисление скидок на книги](https://github.com/garora/TDD-Katas/blob/master/KatasReadme.md#harry-potter-) |||
-| [Перевод чисел в их словесное написание на английском](http://codingdojo.org/kata/NumbersInWords/) |||
+| [Перевод чисел в их словесное написание на английском](http://codingdojo.org/kata/NumbersInWords/) |Смирнов Павел 3821Б1ПР3||
 | [Работа с числовыми промежутками](http://codingdojo.org/kata/Range/) |||
 | [Реализовать печать цифр в псевдографике](https://github.com/garora/TDD-Katas/blob/master/KatasReadme.md#lcd-digits-) |||
 | Поиск в тексте регулярных выражений (упрощенные) |||
