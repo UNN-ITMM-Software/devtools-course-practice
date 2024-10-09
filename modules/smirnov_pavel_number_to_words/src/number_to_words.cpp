@@ -1,4 +1,4 @@
-//Copyright 2024 Smirnov Pavel
+// Copyright 2024 Smirnov Pavel
 
 #include "include/number_to_words.h"
 
