@@ -100,11 +100,11 @@
 |---|---|---|
 | [Игра "Жизнь" Конвея](https://github.com/garora/TDD-Katas/blob/master/KatasReadme.md#game-of-life-) |Кудинов Никита 3821Б1ПР1|Киселёв Игорь 3821Б1ПР1|
 | [Правило 30](https://en.wikipedia.org/wiki/Rule_30) |||
-| [Вычисление скидок на книги](https://github.com/garora/TDD-Katas/blob/master/KatasReadme.md#harry-potter-) |||
-| [Перевод чисел в их словесное написание на английском](http://codingdojo.org/kata/NumbersInWords/) |||
+| [Вычисление скидок на книги](https://github.com/garora/TDD-Katas/blob/master/KatasReadme.md#harry-potter-) ||Смирнов Павел 3821Б1ПР3|
+| [Перевод чисел в их словесное написание на английском](http://codingdojo.org/kata/NumbersInWords/) |Смирнов Павел 3821Б1ПР3||
 | [Работа с числовыми промежутками](http://codingdojo.org/kata/Range/) |||
 | [Реализовать печать цифр в псевдографике](https://github.com/garora/TDD-Katas/blob/master/KatasReadme.md#lcd-digits-) |||
 | Поиск в тексте регулярных выражений (упрощенные) |||
-| [Ипотечный калькулятор](http://calculator-ipoteka.ru/calculator.php) |Мусаев Ильгар 3821Б1ПР3|Смирнов Павел 3821Б1ПР3|
+| [Ипотечный калькулятор](http://calculator-ipoteka.ru/calculator.php) |Мусаев Ильгар 3821Б1ПР3||
 | [Калькулятор доходности вкладов](http://www.banki.ru/services/calculators/deposits/) |Моисеев Никита 3821Б1ПР1|Подъячих Михаил 3821Б1ПР1|
 | Игра "Быки и коровы" |Белан Вадим 3821Б1ПР2|Новостроев Иван 3821Б1ПР2|
