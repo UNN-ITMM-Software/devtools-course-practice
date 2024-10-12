@@ -5,6 +5,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "include/Combinations.h"
 #include "include/Combinations_app.h"

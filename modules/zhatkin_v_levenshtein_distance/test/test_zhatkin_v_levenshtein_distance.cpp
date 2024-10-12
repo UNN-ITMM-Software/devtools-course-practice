@@ -1,6 +1,7 @@
 // Copyright 2024 Zhatkin Vyacheslav
 
 #include <gtest/gtest.h>
+#include <string>
 #include "include/levenshtein_distance.h"
 TEST(zhatkin_v_levenshtein_distance, constructors) {
     LevenshteinDistance ld1;
