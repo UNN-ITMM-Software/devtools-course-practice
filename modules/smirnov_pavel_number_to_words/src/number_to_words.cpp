@@ -2,73 +2,74 @@
 
 #include "include/number_to_words.h"
 
+#include <sstream>
 #include <string>
 
 std::string NumberToWords::convert(int number) {
+  std::stringstream ss;
+
   if (number == 0) {
     return "zero";
   }
 
-  std::string result;
-
   if (number < 0) {
-    result += "negative ";
+    ss << "negative ";
     number = -number;
   }
 
   if (number >= 1000000000) {
-    result += convert(number / 1000000000) + " billion ";
+    ss << convert(number / 1000000000) << " billion ";
     number %= 1000000000;
   }
 
   if (number >= 1000000) {
-    result += convert(number / 1000000) + " million ";
+    ss << convert(number / 1000000) << " million ";
     number %= 1000000;
   }
 
   if (number >= 1000) {
-    result += convert(number / 1000) + " thousand ";
+    ss << convert(number / 1000) << " thousand ";
     number %= 1000;
   }
 
-  result += convertLessThanOneThousand(number);
+  ss << convertLessThanOneThousand(number);
 
-  return result;
+  return ss.str();
 }
 
 std::string NumberToWords::convertLessThanOneThousand(int number) {
-  std::string result;
+  std::stringstream ss;
 
   if (number >= 100) {
-    result += convertLessThanOneThousand(number / 100) + " hundred ";
+    ss << convertLessThanOneThousand(number / 100) << " hundred ";
     number %= 100;
   }
 
   if (number >= 20) {
     switch (number / 10) {
       case 2:
-        result += "twenty ";
+        ss << "twenty ";
         break;
       case 3:
-        result += "thirty ";
+        ss << "thirty ";
         break;
       case 4:
-        result += "forty ";
+        ss << "forty ";
         break;
       case 5:
-        result += "fifty ";
+        ss << "fifty ";
         break;
       case 6:
-        result += "sixty ";
+        ss << "sixty ";
         break;
       case 7:
-        result += "seventy ";
+        ss << "seventy ";
         break;
       case 8:
-        result += "eighty ";
+        ss << "eighty ";
         break;
       case 9:
-        result += "ninety ";
+        ss << "ninety ";
         break;
     }
     number %= 10;
@@ -76,63 +77,64 @@ std::string NumberToWords::convertLessThanOneThousand(int number) {
 
   switch (number) {
     case 1:
-      result += "one";
+      ss << "one";
       break;
     case 2:
-      result += "two";
+      ss << "two";
       break;
     case 3:
-      result += "three";
+      ss << "three";
       break;
     case 4:
-      result += "four";
+      ss << "four";
       break;
     case 5:
-      result += "five";
+      ss << "five";
       break;
     case 6:
-      result += "six";
+      ss << "six";
       break;
     case 7:
-      result += "seven";
+      ss << "seven";
       break;
     case 8:
-      result += "eight";
+      ss << "eight";
       break;
     case 9:
-      result += "nine";
+      ss << "nine";
       break;
     case 10:
-      result += "ten";
+      ss << "ten";
       break;
     case 11:
-      result += "eleven";
+      ss << "eleven";
       break;
     case 12:
-      result += "twelve";
+      ss << "twelve";
       break;
     case 13:
-      result += "thirteen";
+      ss << "thirteen";
       break;
     case 14:
-      result += "fourteen";
+      ss << "fourteen";
       break;
     case 15:
-      result += "fifteen";
+      ss << "fifteen";
       break;
     case 16:
-      result += "sixteen";
+      ss << "sixteen";
       break;
     case 17:
-      result += "seventeen";
+      ss << "seventeen";
       break;
     case 18:
-      result += "eighteen";
+      ss << "eighteen";
       break;
     case 19:
-      result += "nineteen";
+      ss << "nineteen";
       break;
   }
 
-  return result;
+  return ss.str();
 }
+
