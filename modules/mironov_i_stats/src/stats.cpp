@@ -7,7 +7,7 @@
 
 namespace stats {
 
-float moment(const std::vector<float>& data, std::size_t k, float mu) {
+float moment(const std::vector<float>& data, size_t k, float mu) {
     float result = 0.0f;
     for (auto& x : data) {
         result += std::pow(x - mu, k);
