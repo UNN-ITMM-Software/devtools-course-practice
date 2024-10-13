@@ -4,6 +4,7 @@
 #include <cstdlib>
 
 #include "../include/console_handler.h"
+#include <cstdint>
 
 std::string ConsoleHandler::vectorToString(const std::vector<uint32_t> &vec) {
     std::stringstream ss;
