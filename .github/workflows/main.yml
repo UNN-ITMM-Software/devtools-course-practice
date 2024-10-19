@@ -42,14 +42,14 @@ jobs:
       run: |
         ctest -VV -S devtools_test.cmake
 
-    - name: Publish coverage
-      if: matrix.ctest_model == 'Coverage'
-      uses: codecov/codecov-action@v4
-      with:
-        fail_ci_if_error: true
-        directory: dashboard/build
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    # - name: Publish coverage
+    #   if: matrix.ctest_model == 'Coverage'
+    #   uses: codecov/codecov-action@v4
+    #   with:
+    #     fail_ci_if_error: true
+    #     directory: dashboard/build
+    #   env:
+    #     CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   run_win:
     runs-on: windows-2022
