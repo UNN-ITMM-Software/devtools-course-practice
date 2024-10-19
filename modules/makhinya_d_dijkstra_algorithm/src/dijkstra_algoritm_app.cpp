@@ -1,31 +1,31 @@
 // Copyright 2024 Safarov Nurlan
 #include "include/dijkstra_algoritm_app.h"
 
-#include <sstream>
 #include <cstring>
+#include <sstream>
 
 bool DijkstraAlgorithmApp::validate(int argc, char* argv[]) {
-    if (argc == 1 || std::strcmp(argv[1], "--help") == 0 ||
-        std::strcmp(argv[1], "-h") == 0) {
-        help(argv[0], 0);
-        return false;
-    }
+  if (argc == 1 || std::strcmp(argv[1], "--help") == 0 ||
+      std::strcmp(argv[1], "-h") == 0) {
+    help(argv[0], 0);
+    return false;
+  }
 
-    int check = argc - 3;
-    if (check % 3 != 0) {
-        help(argv[0], -1);
-        return false;
-    }
+  int check = argc - 3;
+  if (check % 3 != 0) {
+    help(argv[0], -1);
+    return false;
+  }
 
-    for (int i = 1; i < argc; ++i) {
-        int v = atoi(argv[i]);
-        if (v < 0) {
-            help(argv[0], -1);
-            return false;
-        }
+  for (int i = 1; i < argc; ++i) {
+    int v = atoi(argv[i]);
+    if (v < 0) {
+      help(argv[0], -1);
+      return false;
     }
+  }
 
-    return true;
+  return true;
 }
 
 std::string DijkstraAlgorithmApp::help(const char* application,
@@ -54,7 +54,7 @@ std::string DijkstraAlgorithmApp::help(const char* application,
 }
 
 std::string DijkstraAlgorithmApp::dijkstra_algorithm_application(int argc,
-                                                          char* argv[]) {
+                                                                 char* argv[]) {
   const uint32_t MAX_VALUE_VERTEX = 20;
   if (!validate(argc, argv)) {
     return dijkstra_algorithm_msg;

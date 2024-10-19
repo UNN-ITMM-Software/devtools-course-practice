@@ -5,9 +5,9 @@
 #include "include/sort_station_app.h"
 
 int main(int argc, char* argv[]) {
-    auto output = SortStationApp()(argc, argv);
+  auto output = SortStationApp()(argc, argv);
 
-    std::cout << output << '\n';
+  std::cout << output << '\n';
 
-    return 0;
+  return 0;
 }

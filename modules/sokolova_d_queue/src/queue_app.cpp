@@ -1,118 +1,118 @@
 // Copyright 2024 Kochetov Nikolay
-#include <sstream>
 #include "include/queue_app.h"
 
+#include <sstream>
 
 void QueueApp::display(std::string& out) {
-    Queue<std::string> temp = queue;
-    std::stringstream stream;
-    if (!queue.isEmpty()) {
-        for (size_t i = 0; i < queue.size(); i++) {
-            stream << "[ " << std::to_string(i) << " | ";
-            stream << temp.front() + " ]\n";
-            temp.dequeue();
-        }
-        out += stream.str();
-    } else {
-        out += "queue is empty";
+  Queue<std::string> temp = queue;
+  std::stringstream stream;
+  if (!queue.isEmpty()) {
+    for (size_t i = 0; i < queue.size(); i++) {
+      stream << "[ " << std::to_string(i) << " | ";
+      stream << temp.front() + " ]\n";
+      temp.dequeue();
     }
+    out += stream.str();
+  } else {
+    out += "queue is empty";
+  }
 }
 
 size_t QueueApp::size(std::string& out) {
-    out += std::to_string(queue.size());
-    return queue.size();
+  out += std::to_string(queue.size());
+  return queue.size();
 }
 
 std::string QueueApp::get_back(std::string& out) {
-    out += queue.back();
-    return out;
+  out += queue.back();
+  return out;
 }
 
 std::string QueueApp::get_front(std::string& out) {
-    out += queue.front();
-    return queue.front();
+  out += queue.front();
+  return queue.front();
 }
 
 bool QueueApp::isEmpty(std::string& out) {
-    if (queue.isEmpty()) {
-        out += "queue is empty";
-        return queue.isFull();
-    } else {
-        out += "queue is not empty";
-        return queue.isEmpty();
-    }
+  if (queue.isEmpty()) {
+    out += "queue is empty";
+    return queue.isFull();
+  } else {
+    out += "queue is not empty";
+    return queue.isEmpty();
+  }
 }
 
 bool QueueApp::isFull(std::string& out) {
-    if (queue.isFull()) {
-        out += "queue is full";
-        return queue.isFull();
-    } else {
-        out += "queue is not full";
-        return queue.isFull();
-    }
+  if (queue.isFull()) {
+    out += "queue is full";
+    return queue.isFull();
+  } else {
+    out += "queue is not full";
+    return queue.isFull();
+  }
 }
 
 std::string QueueApp::push_back(std::string elem, std::string& out) {
-    queue.enqueue(elem);
-    out += "new element = " + elem;
-    return elem;
+  queue.enqueue(elem);
+  out += "new element = " + elem;
+  return elem;
 }
 
 std::string QueueApp::pop_front(std::string& out) {
-    std::string temp = queue.front();
-    queue.dequeue();
-    out += "the item \"" + temp + "\" is out of the queue";
-    return temp;
+  std::string temp = queue.front();
+  queue.dequeue();
+  out += "the item \"" + temp + "\" is out of the queue";
+  return temp;
 }
 
 std::string QueueApp::get_next(size_t& next, int argc, const char** argv) {
-    if (static_cast<int>(next) < argc - 1) {
-        next++;
-        if (!queue.isFull()) {
-            return argv[next];
-        } else {
-            return "ERROR: queue is full!";
-        }
+  if (static_cast<int>(next) < argc - 1) {
+    next++;
+    if (!queue.isFull()) {
+      return argv[next];
     } else {
-        return "ERROR: no args to execute push_back!";
+      return "ERROR: queue is full!";
     }
+  } else {
+    return "ERROR: no args to execute push_back!";
+  }
 }
 
 std::string QueueApp::Start(int argc, const char** argv) {
-    std::vector<std::string> commands;
-    commands.reserve(argc);
-    std::string output = "";
-    for (int i = 0; i < argc; i++) {
-        commands.push_back(std::string(argv[i]));
+  std::vector<std::string> commands;
+  commands.reserve(argc);
+  std::string output = "";
+  for (int i = 0; i < argc; i++) {
+    commands.push_back(std::string(argv[i]));
+  }
+  for (size_t i = 0; i < commands.size(); i++) {
+    auto arg = std::string(argv[i]);
+    if (arg == "-size") {
+      size(output);
+    } else if (arg == "-display") {
+      display(output);
+    } else if (arg == "-get_back") {
+      get_back(output);
+    } else if (arg == "-get_front") {
+      get_front(output);
+    } else if (arg == "-isEmpty") {
+      isEmpty(output);
+    } else if (arg == "-isFull") {
+      isFull(output);
+    } else if (arg == "-pop_front") {
+      pop_front(output);
+    } else if (arg == "-push_back") {
+      std::string answer = get_next(i, argc, argv);
+      if (!(answer.substr(0, 6) == "ERROR:")) {
+        push_back(answer, output);
+      } else {
+        output += answer;
+      }
+    } else {
+      output += "ERROR: the command(" + arg + ") was not recognized!";
     }
-    for (size_t i = 0; i < commands.size(); i++) {
-        auto arg = std::string(argv[i]);
-        if (arg == "-size") {
-            size(output);
-        } else if (arg == "-display") {
-            display(output);
-        } else if (arg == "-get_back") {
-            get_back(output);
-        } else if (arg == "-get_front") {
-            get_front(output);
-        } else if (arg == "-isEmpty") {
-            isEmpty(output);
-        } else if (arg == "-isFull") {
-            isFull(output);
-        } else if (arg == "-pop_front") {
-            pop_front(output);
-        } else if (arg == "-push_back") {
-            std::string answer = get_next(i, argc, argv);
-            if (!(answer.substr(0, 6) == "ERROR:")) {
-                push_back(answer, output);
-            } else {
-                output += answer;
-            }
-        } else {
-            output += "ERROR: the command(" + arg + ") was not recognized!";
-        }
-        output += '\n';
-    }
-    return output;
+    output += '\n';
+  }
+  return output;
 }

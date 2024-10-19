@@ -122,7 +122,7 @@ inline bool BisymmetricMatrix<T>::checkBisymmetric(
 }
 template <typename T>
 inline BisymmetricMatrix<T>::BisymmetricMatrix(
-       const std::initializer_list<std::initializer_list<T>>& list) {
+    const std::initializer_list<std::initializer_list<T>>& list) {
   if (!checkBisymmetric(list)) {
     throw std::logic_error("List is not bisymmetric");
   }

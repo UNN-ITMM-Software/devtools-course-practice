@@ -8,15 +8,15 @@
 
 class SortStationApp {
  public:
-    SortStationApp() = default;
+  SortStationApp() = default;
 
-    std::string operator()(int argc, char* argv[]);
+  std::string operator()(int argc, char* argv[]);
 
  private:
-    std::string message_;
-    SortStationDerived sortStation;
+  std::string message_;
+  SortStationDerived sortStation;
 
-    bool validate(int argc, char* argv[]);
+  bool validate(int argc, char* argv[]);
 
-    void help(const char* appName, const char* msg = nullptr);
+  void help(const char* appName, const char* msg = nullptr);
 };

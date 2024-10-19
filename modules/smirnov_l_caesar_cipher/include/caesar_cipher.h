@@ -2,22 +2,22 @@
 
 #pragma once
 
-#include <string>
 #include <iostream>
 #include <stdexcept>
+#include <string>
 
 class CaesarCipher {
  private:
-    int offset;
-    static const int MIN_OFFSET;
-    static const int MAX_OFFSET;
-    static const int ALPHABET_SIZE;
+  int offset;
+  static const int MIN_OFFSET;
+  static const int MAX_OFFSET;
+  static const int ALPHABET_SIZE;
 
  public:
-    CaesarCipher() : offset(0) {}
-    explicit CaesarCipher(int _offset);
+  CaesarCipher() : offset(0) {}
+  explicit CaesarCipher(int _offset);
 
-    char ShiftChar(char c, int offset) const;
-    std::string CaesarCipherEncoder(const std::string& plaintext) const;
-    std::string CaesarCipherDecoder(const std::string& ciphertext) const;
+  char ShiftChar(char c, int offset) const;
+  std::string CaesarCipherEncoder(const std::string& plaintext) const;
+  std::string CaesarCipherDecoder(const std::string& ciphertext) const;
 };

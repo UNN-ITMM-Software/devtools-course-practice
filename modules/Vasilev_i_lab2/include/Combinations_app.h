@@ -8,15 +8,15 @@
 
 class CombinationsApp {
  public:
-    CombinationsApp() = default;
+  CombinationsApp() = default;
 
-    std::string operator()(int argc, char* argv[]);
+  std::string operator()(int argc, char* argv[]);
 
  private:
-    std::string helpMssg{};
-    std::string input{};
+  std::string helpMssg{};
+  std::string input{};
 
-    bool validate(int argc, char* argv[]);
+  bool validate(int argc, char* argv[]);
 
-    void help(const char* appName, const char* errorMessage = nullptr);
+  void help(const char* appName, const char* errorMessage = nullptr);
 };

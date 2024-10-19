@@ -2,9 +2,11 @@
 
 // double depositAmount, double interestRate, int months
 
-#include <stdexcept>
-#include <sstream>
 #include "include/deposit_calculator_app.h"
+
+#include <sstream>
+#include <stdexcept>
+
 #include "include/deposit_calculator.h"
 
 std::string Deposit::Application::help(const char *appname,
@@ -13,12 +15,13 @@ std::string Deposit::Application::help(const char *appname,
   ss << message
      << "This is a deposit calculator application.\n\n"
         "Please provide arguments in the following format:\n\n"
-        "  $ " << appname <<
-     " <deposit_amount> <interest_rate> <n_months> \n\n"
+        "  $ "
+     << appname
+     << " <deposit_amount> <interest_rate> <n_months> \n\n"
 
-     "Where <deposit_amount> & <interest_rate> arguments "
-     "are double-precision numbers, "
-     "and <n_months> is integer number.\n";
+        "Where <deposit_amount> & <interest_rate> arguments "
+        "are double-precision numbers, "
+        "and <n_months> is integer number.\n";
   return ss.str();
 }
 
@@ -27,8 +30,8 @@ void Deposit::Application::parse(int argc, const char **argv) {
     throw std::invalid_argument(help(argv[0], ""));
   }
   if (argc != 4) {
-    throw std::invalid_argument(help(argv[0],
-                                     "ERROR: Should be 3 arguments.\n\n"));
+    throw std::invalid_argument(
+        help(argv[0], "ERROR: Should be 3 arguments.\n\n"));
   }
 
   char *end1, *end2, *end3;
@@ -47,9 +50,8 @@ std::string Deposit::Application::operator()(int argc, const char **argv) {
     parse(argc, argv);
 
     DepositCalculator calculator;
-    double profit = calculator.calculateProfit(arguments.depositAmount,
-                                               arguments.interestRate,
-                                               arguments.months);
+    double profit = calculator.calculateProfit(
+        arguments.depositAmount, arguments.interestRate, arguments.months);
     double profitCap = calculator.calculateProfitCapitalization(
         arguments.depositAmount, arguments.interestRate, arguments.months);
 

@@ -5,20 +5,18 @@
 
 class LongNumberCalculator {
  public:
-    std::string operator()(int argc, const char** argv);
+  std::string operator()(int argc, const char** argv);
 
  private:
-    struct Args {
-        enum class Action {
-            ADD, MINUS, MULTPLY, COMPARE
-        } action;
+  struct Args {
+    enum class Action { ADD, MINUS, MULTPLY, COMPARE } action;
 
-        std::string leftOperand;
-        std::string rightOperand;
+    std::string leftOperand;
+    std::string rightOperand;
 
-        Args(int argc, const char** argv);
+    Args(int argc, const char** argv);
 
-     private:
-        static bool IsNumber(const std::string& numberAsString);
-    };
+   private:
+    static bool IsNumber(const std::string& numberAsString);
+  };
 };

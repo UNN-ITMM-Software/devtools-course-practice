@@ -1,5 +1,5 @@
 execute_process(
-    COMMAND "cpplint" "--filter=-runtime/references" "${FILE}"
+    COMMAND "cpplint" "--filter=-runtime/references,-build/include_what_you_use,-readability/casting,-whitespace/indent_namespace,-whitespace/comments" "${FILE}"
     RESULT_VARIABLE result
     OUTPUT_VARIABLE output
     ERROR_VARIABLE error

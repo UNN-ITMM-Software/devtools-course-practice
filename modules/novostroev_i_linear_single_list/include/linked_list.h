@@ -7,31 +7,31 @@
 
 template <typename T>
 struct Node {
-    T data;
-    Node* next;
+  T data;
+  Node* next;
 };
 
 template <typename T>
 class LinkedList {
  public:
-    LinkedList();
-    LinkedList(const LinkedList<T>& other);
-    LinkedList(LinkedList<T>&& other);
-    LinkedList<T>& operator=(const LinkedList<T>& other);
-    T& operator[](int index);
-    LinkedList<T>& operator=(LinkedList<T>&& other);
-    ~LinkedList();
+  LinkedList();
+  LinkedList(const LinkedList<T>& other);
+  LinkedList(LinkedList<T>&& other);
+  LinkedList<T>& operator=(const LinkedList<T>& other);
+  T& operator[](int index);
+  LinkedList<T>& operator=(LinkedList<T>&& other);
+  ~LinkedList();
 
-    void add(T data);
-    void add_back(T data);
-    void display();
-    bool isEmpty();
-    int size();
-    void clear();
-    bool remove(T data);
+  void add(T data);
+  void add_back(T data);
+  void display();
+  bool isEmpty();
+  int size();
+  void clear();
+  bool remove(T data);
 
  private:
-    Node<T>* head;
+  Node<T>* head;
 };
 
 template <typename T>
@@ -39,138 +39,137 @@ LinkedList<T>::LinkedList() : head(nullptr) {}
 
 template <typename T>
 LinkedList<T>::LinkedList(const LinkedList<T>& other) : head(nullptr) {
-    for (Node<T>* node = other.head; node != nullptr; node = node->next) {
-        add(node->data);
-    }
+  for (Node<T>* node = other.head; node != nullptr; node = node->next) {
+    add(node->data);
+  }
 }
 
 template <typename T>
 LinkedList<T>::LinkedList(LinkedList<T>&& other) : head(other.head) {
-    other.head = nullptr;
+  other.head = nullptr;
 }
 
 template <typename T>
 LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& other) {
-    if (this != &other) {
-        clear();
-        for (Node<T>* node = other.head; node != nullptr; node = node->next) {
-            add(node->data);
-        }
+  if (this != &other) {
+    clear();
+    for (Node<T>* node = other.head; node != nullptr; node = node->next) {
+      add(node->data);
     }
-    return *this;
+  }
+  return *this;
 }
 
 template <typename T>
 LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>&& other) {
-    if (this != &other) {
-        clear();
-        head = other.head;
-        other.head = nullptr;
-    }
-    return *this;
+  if (this != &other) {
+    clear();
+    head = other.head;
+    other.head = nullptr;
+  }
+  return *this;
 }
 
 template <typename T>
 T& LinkedList<T>::operator[](int index) {
-    Node<T>* current = head;
-    int i = 0;
-    while (current != nullptr && i < index) {
-        current = current->next;
-        i++;
-    }
-    if (current == nullptr) {
-        throw std::out_of_range("Index out of range");
-    }
-    return current->data;
+  Node<T>* current = head;
+  int i = 0;
+  while (current != nullptr && i < index) {
+    current = current->next;
+    i++;
+  }
+  if (current == nullptr) {
+    throw std::out_of_range("Index out of range");
+  }
+  return current->data;
 }
-
 
 template <typename T>
 LinkedList<T>::~LinkedList() {
-    clear();
+  clear();
 }
 
 template <typename T>
 void LinkedList<T>::add(T data) {
-    Node<T>* newNode = new Node<T>;
-    newNode->data = data;
-    newNode->next = head;
-    head = newNode;
+  Node<T>* newNode = new Node<T>;
+  newNode->data = data;
+  newNode->next = head;
+  head = newNode;
 }
 
 template <typename T>
 void LinkedList<T>::add_back(T data) {
-    Node<T>* newNode = new Node<T>;
-    newNode->data = data;
-    newNode->next = nullptr;
+  Node<T>* newNode = new Node<T>;
+  newNode->data = data;
+  newNode->next = nullptr;
 
-    if (head == nullptr) {
-        head = newNode;
-    } else {
-        Node<T>* current = head;
-        while (current->next != nullptr) {
-            current = current->next;
-        }
-        current->next = newNode;
+  if (head == nullptr) {
+    head = newNode;
+  } else {
+    Node<T>* current = head;
+    while (current->next != nullptr) {
+      current = current->next;
     }
+    current->next = newNode;
+  }
 }
 
 template <typename T>
 void LinkedList<T>::display() {
-    Node<T>* temp = head;
-    while (temp) {
-        std::cout << temp->data << " ";
-        temp = temp->next;
-    }
-    std::cout << std::endl;
+  Node<T>* temp = head;
+  while (temp) {
+    std::cout << temp->data << " ";
+    temp = temp->next;
+  }
+  std::cout << std::endl;
 }
 
 template <typename T>
 bool LinkedList<T>::isEmpty() {
-    return head == nullptr;
+  return head == nullptr;
 }
 
 template <typename T>
 int LinkedList<T>::size() {
-    int count = 0;
-    Node<T>* temp = head;
-    while (temp) {
-        count++;
-        temp = temp->next;
-    }
-    return count;
+  int count = 0;
+  Node<T>* temp = head;
+  while (temp) {
+    count++;
+    temp = temp->next;
+  }
+  return count;
 }
 
 template <typename T>
 void LinkedList<T>::clear() {
-    while (head) {
-        Node<T>* temp = head;
-        head = head->next;
-        delete temp;
-    }
+  while (head) {
+    Node<T>* temp = head;
+    head = head->next;
+    delete temp;
+  }
 }
 
 template <typename T>
 bool LinkedList<T>::remove(T data) {
-    Node<T>* temp = head;
-    Node<T>* prev = nullptr;
+  Node<T>* temp = head;
+  Node<T>* prev = nullptr;
 
-    while (temp != nullptr && temp->data != data) {
-        prev = temp;
-        temp = temp->next;
-    }
+  while (temp != nullptr && temp->data != data) {
+    prev = temp;
+    temp = temp->next;
+  }
 
-    if (temp == nullptr) {
-        return false;
+  if (temp == nullptr) {
+    return false;
+  } else {
+    if (prev == nullptr) {
+      head = temp->next;
     } else {
-        if (prev == nullptr) {
-            head = temp->next;
-        } else {
-            prev->next = temp->next;
-        }
-        delete temp;
-        return true;
+      prev->next = temp->next;
     }
+    delete temp;
+    return true;
+  }
 }
 
 #endif  // MODULES_NOVOSTROEV_I_LINEAR_SINGLE_LIST_INCLUDE_LINKED_LIST_H_

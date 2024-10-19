@@ -8,16 +8,16 @@
 
 class LevenshteinApp {
  public:
-    LevenshteinApp() = default;
+  LevenshteinApp() = default;
 
-    std::string operator()(int argc, char *argv[]);
+  std::string operator()(int argc, char *argv[]);
 
  private:
-    std::string helpMessage{};
-    std::string firstString{};
-    std::string secondString{};
+  std::string helpMessage{};
+  std::string firstString{};
+  std::string secondString{};
 
-    bool validate(int argc, char *argv[]);
+  bool validate(int argc, char *argv[]);
 
-    void help(const char *appName, const char *errorMessage = nullptr);
+  void help(const char *appName, const char *errorMessage = nullptr);
 };

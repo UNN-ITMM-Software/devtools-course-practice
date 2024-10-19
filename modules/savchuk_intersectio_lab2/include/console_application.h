@@ -11,8 +11,8 @@
 
 class Application {
  public:
-    int main(int argc, const std::vector<std::string>& argv);
-    std::string run(const Segment& segment1, const Segment& segment2);
+  int main(int argc, const std::vector<std::string>& argv);
+  std::string run(const Segment& segment1, const Segment& segment2);
 };
 
 #endif  // MODULES_SAVCHUK_INTERSECTIO_LAB2_INCLUDE_CONSOLE_APPLICATION_H_

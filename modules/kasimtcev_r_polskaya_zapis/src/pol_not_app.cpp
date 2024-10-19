@@ -1,56 +1,56 @@
 // Copyright 2024 Sokolova Daria
 
+#include "include/pol_not_app.h"
+
 #include <cstring>
 #include <exception>
 #include <sstream>
 
-#include "include/pol_not_app.h"
-
 void PolNotApp::help(const char* appName, const char* errorMessage) {
-    std::stringstream message;
+  std::stringstream message;
 
-    if (errorMessage) {
-        message << "Error: " << errorMessage << '\n';
-    }
+  if (errorMessage) {
+    message << "Error: " << errorMessage << '\n';
+  }
 
-    message << "Reverse Polish Notation Calculator\n"
-            << "Usage: " << appName << " \"<math_expression>\"\n\n"
-            << "Enter  the expression in postfix notation to evaluate it.\n"
-            << "Make sure to enclose the expression in double quotes.\n\n"
-            << "Examples:\n"
-            << appName << " \"5+6\" -> This will calculate 5 6 +\n"
-            << appName << " \"(3*4)/2\" -> This will calculate 3 4 * 2 /\n";
+  message << "Reverse Polish Notation Calculator\n"
+          << "Usage: " << appName << " \"<math_expression>\"\n\n"
+          << "Enter  the expression in postfix notation to evaluate it.\n"
+          << "Make sure to enclose the expression in double quotes.\n\n"
+          << "Examples:\n"
+          << appName << " \"5+6\" -> This will calculate 5 6 +\n"
+          << appName << " \"(3*4)/2\" -> This will calculate 3 4 * 2 /\n";
 
-    helpMessage = message.str();
+  helpMessage = message.str();
 }
 
 bool PolNotApp::validate(int argc, char* argv[]) {
-    if (argc == 1) {
-        help(argv[0]);
-        return false;
-    }
+  if (argc == 1) {
+    help(argv[0]);
+    return false;
+  }
 
-    if (std::strcmp(argv[1], "--help") == 0) {
-        help(argv[0]);
-        return false;
-    }
+  if (std::strcmp(argv[1], "--help") == 0) {
+    help(argv[0]);
+    return false;
+  }
 
-    if (argc != 2) {
-        help(argv[0], "You have to enter two arguments");
-        return false;
-    }
-    input = argv[1];
-    return true;
+  if (argc != 2) {
+    help(argv[0], "You have to enter two arguments");
+    return false;
+  }
+  input = argv[1];
+  return true;
 }
 
 std::string PolNotApp::operator()(int argc, char* argv[]) {
-    if (validate(argc, argv)) {
-        PolNot l1;
+  if (validate(argc, argv)) {
+    PolNot l1;
 
-        auto* lex = l1.sEOL(input);
+    auto* lex = l1.sEOL(input);
 
-        helpMessage += "Result of revers polish notation: ";
-        helpMessage += l1.revPolNot(lex);
-    }
-    return helpMessage;
+    helpMessage += "Result of revers polish notation: ";
+    helpMessage += l1.revPolNot(lex);
+  }
+  return helpMessage;
 }

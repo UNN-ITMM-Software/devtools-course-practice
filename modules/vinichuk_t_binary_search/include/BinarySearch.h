@@ -13,19 +13,19 @@ static const int NOT_LISTED = -1;
 // its definition in the place of declaration(header file)
 template <typename T>
 int binary_search(const std::vector<T>& arr, const T& target) {
-    int left = 0;
-    int right = arr.size() - 1;
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (arr[mid] == target)
-            return mid;
-        else if (arr[mid] < target)
-            left = mid + 1;
-        else
-            right = mid - 1;
-    }
+  int left = 0;
+  int right = arr.size() - 1;
+  while (left <= right) {
+    int mid = left + (right - left) / 2;
+    if (arr[mid] == target)
+      return mid;
+    else if (arr[mid] < target)
+      left = mid + 1;
+    else
+      right = mid - 1;
+  }
 
-    return NOT_LISTED;
+  return NOT_LISTED;
 }
 }  // namespace binsearch
 

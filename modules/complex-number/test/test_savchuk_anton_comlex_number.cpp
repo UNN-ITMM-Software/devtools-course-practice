@@ -1,16 +1,17 @@
 // Copyright 2024 Savchuk Anton
 
 #include <gtest/gtest.h>
+
 #include "include/complex_number.h"
 
 TEST(Savchuk_Anton_ComplexNumberTest, Can_Create_Zero) {
-    double re = 0.0;
-    double im = 0.0;
+  double re = 0.0;
+  double im = 0.0;
 
-    ComplexNumber z(re, im);
+  ComplexNumber z(re, im);
 
-    EXPECT_EQ(re, z.getRe());
-    EXPECT_EQ(im, z.getIm());
+  EXPECT_EQ(re, z.getRe());
+  EXPECT_EQ(im, z.getIm());
 }
 
 TEST(Savchuk_Anton_ComplexNumberTest, Can_Add_Two_Complex_Numbers) {

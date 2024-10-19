@@ -1,7 +1,9 @@
 // Copyright 2024 Troitskiy Alexander
 
 #include "include/lab2.h"
+
 #include <gtest/gtest.h>
+
 #include <limits>
 
 TEST(Troitskiy_A_Lab2Test, Push_Pop_Top) {
@@ -39,17 +41,16 @@ TEST(Troitskiy_A_Lab2Test, EmptyHeapTop) {
 }
 
 TEST(Troitskiy_A_Lab2Test, PushPopAlternating) {
-    Heap<5> heap;
-    heap.push(10);
-    heap.push(5);
-    heap.pop();
-    heap.push(8);
+  Heap<5> heap;
+  heap.push(10);
+  heap.push(5);
+  heap.pop();
+  heap.push(8);
 
-    EXPECT_EQ(heap.top(), 8);
+  EXPECT_EQ(heap.top(), 8);
 }
 
 TEST(Troitskiy_A_Lab2Test, PopFromEmptyHeap) {
-    Heap<10> heap;
-    EXPECT_THROW(heap.pop(), std::logic_error);
+  Heap<10> heap;
+  EXPECT_THROW(heap.pop(), std::logic_error);
 }
-
