@@ -11,15 +11,14 @@
  */
 class LCS {
  public:
-    static std::string findLCS(const std::string& str1,
-                               const std::string& str2);
+  static std::string findLCS(const std::string& str1, const std::string& str2);
 
  private:
-    static std::vector<std::vector<size_t>> getLCSLengths(
-        const std::string& str1, const std::string& str2);
-    static std::string constructLCS(
-        const std::string& str1, const std::string& str2,
-        const std::vector<std::vector<size_t>>& lengths);
+  static std::vector<std::vector<size_t>> getLCSLengths(
+      const std::string& str1, const std::string& str2);
+  static std::string constructLCS(
+      const std::string& str1, const std::string& str2,
+      const std::vector<std::vector<size_t>>& lengths);
 };
 
 #endif  // MODULES_KULIKOV_A_LAB2_INCLUDE_LCS_H_

@@ -1,20 +1,18 @@
 // Copyright 2024 Makhinya Danil
 
-#include <string.h>
-#include <stdlib.h>
-
-#include <iostream>
-#include <algorithm>
-
 #include "include/chess_board_app.h"
 
+#include <stdlib.h>
+#include <string.h>
+
+#include <algorithm>
+#include <iostream>
+
 int ChessBoardApp::knightDistance() {
-  #ifdef PRINT_DEBUG_INFO
-  std::fprintf(stderr, "%s size{%lu}, start{%u, %u}; end{%u, %u}\n",
-               __func__, size,
-               start.first, start.second,
-               end.first, end.second);
-  #endif
+#ifdef PRINT_DEBUG_INFO
+  std::fprintf(stderr, "%s size{%lu}, start{%u, %u}; end{%u, %u}\n", __func__,
+               size, start.first, start.second, end.first, end.second);
+#endif
   return board.knightDistance(start, end);
 }
 
@@ -39,7 +37,7 @@ std::string ChessBoardApp::getVersion() {
   return std::to_string(VERSION_MAJOR) + "." + std::to_string(VERSION_MINOR);
 }
 
-std::string ChessBoardApp::parseArg(int argc,  const char *argv[]) {
+std::string ChessBoardApp::parseArg(int argc, const char *argv[]) {
   const char *command = argv[1];
 
   if (argc == 2 && strcmp(command, "--help") == 0) {
@@ -52,15 +50,13 @@ std::string ChessBoardApp::parseArg(int argc,  const char *argv[]) {
 
   for (uint16_t i = 1; i + 1 < argc; i++) {
     command = argv[i];
-    const char** next_command_ptr = argv + i + 1;
+    const char **next_command_ptr = argv + i + 1;
     int16_t offset = -1;
 
-    #ifdef PRINT_DEBUG_INFO
-    std::fprintf(stderr, "%s command{\"%s\"}; next_command{\"%s\"}\n",
-                 __func__,
-                 command,
-                 *next_command_ptr);
-    #endif
+#ifdef PRINT_DEBUG_INFO
+    std::fprintf(stderr, "%s command{\"%s\"}; next_command{\"%s\"}\n", __func__,
+                 command, *next_command_ptr);
+#endif
 
     if (strcmp(command, "-A") == 0) {
       offset = parseObstacles(argc - 1 - i, next_command_ptr);
@@ -89,30 +85,28 @@ std::string ChessBoardApp::parseArg(int argc,  const char *argv[]) {
   return "";
 }
 
-static int16_t parsePoint(int argc, const char *begin[], ChessBoard::Point& p) {
+static int16_t parsePoint(int argc, const char *begin[], ChessBoard::Point &p) {
   if (argc < 2) {
     return -1;
   }
 
   int ptr = 0;
 
-  #ifdef PRINT_DEBUG_INFO
+#ifdef PRINT_DEBUG_INFO
   std::fprintf(stderr, "%s argc{%d}; begin[0]{\"%s\"}; begin[1]{\"%s\"}\n",
-               __func__,
-               argc,
-               begin[0], begin[1]);
-  #endif
+               __func__, argc, begin[0], begin[1]);
+#endif
 
-  char* end_x, * end_y;
+  char *end_x, *end_y;
   uint32_t X = std::strtol(begin[ptr++], &end_x, 10);
   uint32_t Y = std::strtol(begin[ptr++], &end_y, 10);
   if (end_x[0] || end_y[0]) {
     return -1;
   }
 
-  #ifdef PRINT_DEBUG_INFO
+#ifdef PRINT_DEBUG_INFO
   std::fprintf(stderr, "%s X{%u}; Y{%u}\n", __func__, X, Y);
-  #endif
+#endif
 
   p = {X, Y};
   return 2;
@@ -123,7 +117,7 @@ int16_t ChessBoardApp::parseObstacles(int argc, const char *begin[]) {
   uint16_t offset = 0;
   uint32_t i = 0;
 
-  char* end;
+  char *end;
   uint32_t count = std::strtol(begin[offset++], &end, 10);
   if (end[0] || count % 2 != 0) {
     return -1;
@@ -155,7 +149,7 @@ int16_t ChessBoardApp::parseEnd(int argc, const char *begin[]) {
 }
 
 int16_t ChessBoardApp::parseSize(int argc, const char *begin[]) {
-  char* end;
+  char *end;
   uint32_t S = std::strtol(begin[0], &end, 10);
   if (end[0]) {
     return -1;
@@ -164,9 +158,7 @@ int16_t ChessBoardApp::parseSize(int argc, const char *begin[]) {
   return 1;
 }
 
-void ChessBoardApp::initBoard() {
-  board = ChessBoard(size, obstacles);
-}
+void ChessBoardApp::initBoard() { board = ChessBoard(size, obstacles); }
 
 std::string ChessBoardApp::run(int argc, const char *argv[]) {
   std::string message;
@@ -182,12 +174,12 @@ std::string ChessBoardApp::run(int argc, const char *argv[]) {
   int ans = 0;
   try {
     ans = knightDistance();
-  }
-  catch(std::exception &str) {
+  } catch (std::exception &str) {
     return str.what();
   }
-  message = "The minimum number of moves "
-            "required for the knight to reach from start to end = ";
+  message =
+      "The minimum number of moves "
+      "required for the knight to reach from start to end = ";
   message += std::to_string(ans);
   return message;
 }

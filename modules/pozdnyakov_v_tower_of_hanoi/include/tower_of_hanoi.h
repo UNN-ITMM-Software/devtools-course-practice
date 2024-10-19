@@ -3,19 +3,21 @@
 #ifndef MODULES_POZDNYAKOV_V_TOWER_OF_HANOI_INCLUDE_TOWER_OF_HANOI_H_
 #define MODULES_POZDNYAKOV_V_TOWER_OF_HANOI_INCLUDE_TOWER_OF_HANOI_H_
 
-#include <vector>
-#include <string>
 #include <stdexcept>
+#include <string>
+#include <vector>
 
 class TowerOfHanoi {
  public:
-    TowerOfHanoi() = default;
-    std::string GetStepsAsString(const std::vector<std::vector<int>>& steps);
+  TowerOfHanoi() = default;
+  std::string GetStepsAsString(const std::vector<std::vector<int>>& steps);
+
  protected:
-    std::vector<std::vector<int>> RecursiveCalculate(int numberOfRings,
-     int fromRod, int toRod);
+  std::vector<std::vector<int>> RecursiveCalculate(int numberOfRings,
+                                                   int fromRod, int toRod);
+
  public:
-    std::vector<std::vector<int>> CalculateSteps(int numberOfRings);
+  std::vector<std::vector<int>> CalculateSteps(int numberOfRings);
 };
 
 #endif  // MODULES_POZDNYAKOV_V_TOWER_OF_HANOI_INCLUDE_TOWER_OF_HANOI_H_

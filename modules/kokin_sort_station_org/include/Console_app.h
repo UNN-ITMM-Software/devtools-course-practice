@@ -6,7 +6,6 @@
 
 #include "include/sort_station.h"
 
-
 class ConsoleApp {
  public:
   void run(int argc, const char** argv);

@@ -5,7 +5,7 @@
 #include "include/caesar_cipher_app.h"
 
 int main(int argc, char* argv[]) {
-    CaesarCipherApplication application;
-    std::cout << application.CaesarCipherCryptography(argc, argv) << std::endl;
-    return 0;
+  CaesarCipherApplication application;
+  std::cout << application.CaesarCipherCryptography(argc, argv) << std::endl;
+  return 0;
 }

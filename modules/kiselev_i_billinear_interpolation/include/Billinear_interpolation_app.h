@@ -6,14 +6,14 @@
 
 class BillinearInterpolationApp {
  public:
-    BillinearInterpolationApp();
+  BillinearInterpolationApp();
 
-    std::string operator()(int argc, char* argv[]);
+  std::string operator()(int argc, char* argv[]);
 
  private:
-    void help(const char* appname, const char* message = "");
-    bool validateNumberOfArguments(int argc, char* argv[]);
-    std::string message_;
+  void help(const char* appname, const char* message = "");
+  bool validateNumberOfArguments(int argc, char* argv[]);
+  std::string message_;
 };
 
 #endif  // MODULES_KISELEV_I_BILLINEAR_INTERPOLATION_INCLUDE_BILLINEAR_INTERPOLATION_APP_H_

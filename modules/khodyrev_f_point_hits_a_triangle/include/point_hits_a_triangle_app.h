@@ -8,12 +8,13 @@
 
 class PointTriangleApplication {
  private:
-    std::string msg;
-    Triangle triangle;
-    Point point;
-    bool Validate(int argc, char* argv[]);
-    void Help(const char* application, const char* errMsg = nullptr);
+  std::string msg;
+  Triangle triangle;
+  Point point;
+  bool Validate(int argc, char* argv[]);
+  void Help(const char* application, const char* errMsg = nullptr);
+
  public:
-    PointTriangleApplication() = default;
-    std::string CheckInside(int argc, char* argv[]);
+  PointTriangleApplication() = default;
+  std::string CheckInside(int argc, char* argv[]);
 };

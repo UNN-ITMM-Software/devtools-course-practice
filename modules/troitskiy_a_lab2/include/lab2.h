@@ -13,7 +13,8 @@
 #include <utility>
 #include <vector>
 
-template <int N> class Heap {
+template <int N>
+class Heap {
  private:
   std::array<double, N + 2> t;
   int real_size = 0;
@@ -22,8 +23,7 @@ template <int N> class Heap {
  public:
   Heap() = default;
   explicit Heap(const std::vector<double> &arr) {
-    for (const auto &el : arr)
-      push(el);
+    for (const auto &el : arr) push(el);
   }
   void push(const double &el);
   void pop();
@@ -31,7 +31,8 @@ template <int N> class Heap {
   int size();
 };
 
-template <int N> void Heap<N>::heapify(int n) {
+template <int N>
+void Heap<N>::heapify(int n) {
   int left = 2 * n + 1;
   int right = 2 * n + 2;
   if (left < real_size) {
@@ -48,7 +49,8 @@ template <int N> void Heap<N>::heapify(int n) {
   }
 }
 
-template <int N> void Heap<N>::push(const double &el) {
+template <int N>
+void Heap<N>::push(const double &el) {
   int i = real_size;
   t[i] = el;
   int parent = (i - 1) / 2;
@@ -62,19 +64,22 @@ template <int N> void Heap<N>::push(const double &el) {
   real_size++;
 }
 
-template <int N> void Heap<N>::pop() {
-  if (real_size == 0)
-    throw std::logic_error("Empty heap");
+template <int N>
+void Heap<N>::pop() {
+  if (real_size == 0) throw std::logic_error("Empty heap");
   t[0] = t[real_size--];
   heapify(0);
 }
 
-template <int N> double Heap<N>::top() {
-  if (real_size == 0)
-    throw std::logic_error("Empty heap");
+template <int N>
+double Heap<N>::top() {
+  if (real_size == 0) throw std::logic_error("Empty heap");
   return t[0];
 }
 
-template <int N> int Heap<N>::size() { return real_size; }
+template <int N>
+int Heap<N>::size() {
+  return real_size;
+}
 
 #endif  // MODULES_TROITSKIY_A_LAB2_INCLUDE_LAB2_H_

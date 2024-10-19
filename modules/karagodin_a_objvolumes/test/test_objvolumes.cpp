@@ -1,6 +1,7 @@
 // Copyright 2024 Karagodin Andrey
 
 #include <gtest/gtest.h>
+
 #include "include/objvolumes.h"
 
 class Shape3DTest : public ::testing::Test {

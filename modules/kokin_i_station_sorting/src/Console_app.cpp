@@ -1,8 +1,9 @@
 // Copyright 2024 Vasilev Ivan
+#include "../include/Console_app.h"
+
 #include <iostream>
 #include <string>
 
-#include "../include/Console_app.h"
 #include "../include/sort_station.h"
 
 void ConsoleApp::run(int argc, const char** argv) {
@@ -25,6 +26,6 @@ void ConsoleApp::printHelp() {
 }
 
 void ConsoleApp::evaluateExpression(const std::string& expression) {
-    double result = sortStation.evaluateFunction(expression);
-    std::cout << "Result: " << result << std::endl;
+  double result = sortStation.evaluateFunction(expression);
+  std::cout << "Result: " << result << std::endl;
 }

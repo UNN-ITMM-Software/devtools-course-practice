@@ -24,9 +24,8 @@ bool KMPApplication::validate(int argc, char* argv[]) {
 }
 
 void KMPApplication::help(const char* appName) {
-  this->outputMessage = "Usage: "
-    + std::string(appName)
-    + " <TEXT> <PATTERN>\n";
+  this->outputMessage =
+      "Usage: " + std::string(appName) + " <TEXT> <PATTERN>\n";
 }
 
 std::string KMPApplication::operator()(int argc, char* argv[]) {
@@ -35,14 +34,13 @@ std::string KMPApplication::operator()(int argc, char* argv[]) {
   if (validate(argc, argv)) {
     auto text = std::string(argv[1]);
     auto pattern = std::string(argv[2]);
-    std::vector<int> patternIndexes = KnuthMorrisPratt::findPattern(
-      text,
-      pattern);
+    std::vector<int> patternIndexes =
+        KnuthMorrisPratt::findPattern(text, pattern);
 
     for (const auto& patternIndex : patternIndexes) {
       this->outputMessage += text + "\n";
-      this->outputMessage += std::string(patternIndex, ' ')
-        + std::string(pattern.size(), '^') + "\n";
+      this->outputMessage += std::string(patternIndex, ' ') +
+                             std::string(pattern.size(), '^') + "\n";
     }
   }
 

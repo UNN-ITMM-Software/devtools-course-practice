@@ -9,8 +9,7 @@ class Point {
   double y;
 
  public:
-  Point(double x_coord = 0,
-   double y_coord = 0);
+  explicit Point(double x_coord = 0, double y_coord = 0);
   double getX() const;
   double getY() const;
   bool operator==(const Point& other) const;
@@ -24,8 +23,8 @@ class Triangle {
   static double distance(const Point& p1, const Point& p2);
 
  public:
-  Triangle(const Point& v1 = Point(1, 1),
-   const Point& v2 = Point(-1, 1), const Point& v3 = Point(0, -1));
+  Triangle(const Point& v1 = Point(1, 1), const Point& v2 = Point(-1, 1),
+           const Point& v3 = Point(0, -1));
   bool isValid() const;
   bool isInside(const Point& p) const;
 };

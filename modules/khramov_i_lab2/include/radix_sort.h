@@ -3,42 +3,42 @@
 #ifndef MODULES_KHRAMOV_I_LAB2_INCLUDE_RADIX_SORT_H_
 #define MODULES_KHRAMOV_I_LAB2_INCLUDE_RADIX_SORT_H_
 
-#include <vector>
 #include <memory>
-#include <type_traits>
-#include <stdexcept>
 #include <random>
+#include <stdexcept>
+#include <type_traits>
+#include <vector>
 
-template<typename T, typename =
- typename std::enable_if<std::is_integral<T>::value>::type>
+template <typename T,
+          typename = typename std::enable_if<std::is_integral<T>::value>::type>
 class RadixSort {
  public:
   static void radixSort(std::vector<T>& array, bool order = true) {
     int array_size = array.size();
     int i{};
     if (array_size == 0) {
-        throw std::invalid_argument("The array is empty. Nothing to sort.");
+      throw std::invalid_argument("The array is empty. Nothing to sort.");
     }
 
     T extreme_el = RadixSort<T>::getMaximumOrMinimum(array);
     T shift = 0;
 
     if (extreme_el < 0) {
-        shift = extreme_el;
-        for (i = 0; i < array_size; i++) {
-            array[i] += -(shift);
-        }
-        extreme_el = RadixSort<T>::getMaximumOrMinimum(array);
+      shift = extreme_el;
+      for (i = 0; i < array_size; i++) {
+        array[i] += -(shift);
+      }
+      extreme_el = RadixSort<T>::getMaximumOrMinimum(array);
     }
 
     for (int digit = 1; abs(extreme_el) / digit > 0; digit *= 10) {
-        RadixSort<T>::countSort(array, digit, order);
+      RadixSort<T>::countSort(array, digit, order);
     }
 
     if (shift != 0) {
-        for (i = 0; i < array_size; i++) {
-            array[i] += shift;
-        }
+      for (i = 0; i < array_size; i++) {
+        array[i] += shift;
+      }
     }
   }
 
@@ -46,7 +46,9 @@ class RadixSort {
     std::random_device dev;
     std::mt19937 gen(dev());
     std::vector<T> vec(sz);
-    for (int  i = 0; i < sz; i++) { vec[i] = gen() % 100; }
+    for (int i = 0; i < sz; i++) {
+      vec[i] = gen() % 100;
+    }
     return vec;
   }
 
@@ -59,28 +61,28 @@ class RadixSort {
     std::vector<int> count_numbers(base, 0);
 
     for (i = 0; i < array_size; i++) {
-        count_numbers[(array[i] / digit) % 10]++;
+      count_numbers[(array[i] / digit) % 10]++;
     }
 
     for (i = 1; i < base; i++) {
-        count_numbers[i] += count_numbers[i - 1];
+      count_numbers[i] += count_numbers[i - 1];
     }
 
     if (order) {
-        for (i = array_size - 1; i >= 0; i--) {
-            sorted_digit[count_numbers[(array[i] / digit) % 10] - 1] = array[i];
-            count_numbers[(array[i] / digit) % 10]--;
-        }
+      for (i = array_size - 1; i >= 0; i--) {
+        sorted_digit[count_numbers[(array[i] / digit) % 10] - 1] = array[i];
+        count_numbers[(array[i] / digit) % 10]--;
+      }
     } else {
-        for (i = 0; i < array_size; i++) {
-            sorted_digit[array_size - count_numbers[(array[i] / digit) % 10]] =
-             array[i];
-            count_numbers[(array[i] / digit) % 10]--;
-        }
+      for (i = 0; i < array_size; i++) {
+        sorted_digit[array_size - count_numbers[(array[i] / digit) % 10]] =
+            array[i];
+        count_numbers[(array[i] / digit) % 10]--;
+      }
     }
 
     for (i = 0; i < array_size; i++) {
-        array[i] = sorted_digit[i];
+      array[i] = sorted_digit[i];
     }
   }
 
@@ -90,15 +92,15 @@ class RadixSort {
     T tmp_min = array[0];
     bool is_negatives = array[0] < 0;
     for (int i = 1; i < array_size; i++) {
-        if (tmp_max < array[i]) {
-            tmp_max = array[i];
-        }
-        if (tmp_min > array[i]) {
-            tmp_min = array[i];
-        }
-        if (array[i] < 0) {
-            is_negatives = true;
-        }
+      if (tmp_max < array[i]) {
+        tmp_max = array[i];
+      }
+      if (tmp_min > array[i]) {
+        tmp_min = array[i];
+      }
+      if (array[i] < 0) {
+        is_negatives = true;
+      }
     }
     return is_negatives == true ? tmp_min : tmp_max;
   }

@@ -1,9 +1,10 @@
 // Copyright 2024 Bodrov Daniil
 
-#include <gtest/gtest.h>
-#include <algorithm>
-
 #include "include/fibonacci_heap.h"
+
+#include <gtest/gtest.h>
+
+#include <algorithm>
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, EmptyHeap) {
   FibonacciHeap<int> heap;
@@ -54,7 +55,6 @@ TEST(Bodrov_Daniil_FibonacciHeapTest, ManyElements) {
   ASSERT_EQ(heap.extractMin(), 42);
   ASSERT_TRUE(heap.empty());
 }
-
 
 TEST(Bodrov_Daniil_FibonacciHeapTest, BasicOperations) {
   FibonacciHeap<int> heap;

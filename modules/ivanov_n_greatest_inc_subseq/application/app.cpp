@@ -6,8 +6,8 @@
 #include "include/lis_app.h"
 
 int main(int argc, const char** argv) {
-    LISApp app;
-    std::string output = app(argc, argv);
-    printf("%s\n", output.c_str());
-    return 0;
+  LISApp app;
+  std::string output = app(argc, argv);
+  printf("%s\n", output.c_str());
+  return 0;
 }

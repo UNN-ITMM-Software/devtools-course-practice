@@ -5,10 +5,8 @@
 #include "include/graph_app.h"
 
 int main(int argc, const char **argv) {
-    Graph_app graphApp;
-    std::string result = graphApp(argc, argv);
-    std::cout << result << std::endl;
-    return 0;
+  Graph_app graphApp;
+  std::string result = graphApp(argc, argv);
+  std::cout << result << std::endl;
+  return 0;
 }
-
-

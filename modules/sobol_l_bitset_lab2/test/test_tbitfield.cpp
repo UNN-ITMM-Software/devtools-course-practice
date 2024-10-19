@@ -1,20 +1,21 @@
 // Copyright 2024 Sobol Lyubov
 
 #include <gtest/gtest.h>
+
 #include "include/tbitfield.h"
 
 TEST(TBitField, can_set_and_get_bit) {
-    const int size = 70;
-    TBitField bf(size);
-    const int bitNum = 33;
+  const int size = 70;
+  TBitField bf(size);
+  const int bitNum = 33;
 
-    bf.SetBit(bitNum);
+  bf.SetBit(bitNum);
 
-    for (int i = 0; i < size; i++)
-        if (i == bitNum)
-            ASSERT_EQ(1, bf.GetBit(i));
-        else
-            ASSERT_EQ(0, bf.GetBit(i));
+  for (int i = 0; i < size; i++)
+    if (i == bitNum)
+      ASSERT_EQ(1, bf.GetBit(i));
+    else
+      ASSERT_EQ(0, bf.GetBit(i));
 }
 
 TEST(TBitField, can_create_bitfield_with_positive_length) {
@@ -22,8 +23,8 @@ TEST(TBitField, can_create_bitfield_with_positive_length) {
 }
 
 TEST(TBitField, check_move_constructor) {
-    TBitField bf(3);
-    ASSERT_NO_THROW(TBitField a = std::move(bf););
+  TBitField bf(3);
+  ASSERT_NO_THROW(TBitField a = std::move(bf););
 }
 
 TEST(TBitField, can_get_length) {
@@ -239,8 +240,7 @@ TEST(TBitField, can_invert_large_bitfield) {
   bf.SetBit(35);
   negBf = ~bf;
 
-  for (int i = 0; i < size; i++)
-    expNegBf.SetBit(i);
+  for (int i = 0; i < size; i++) expNegBf.SetBit(i);
   expNegBf.ClrBit(35);
 
   EXPECT_EQ(expNegBf, negBf);
@@ -248,15 +248,15 @@ TEST(TBitField, can_invert_large_bitfield) {
 
 TEST(TBitField, invert_plus_and_operator_on_different_size_bitfield) {
   const int firstSze = 4, secondSize = 8;
-  TBitField firstBf(firstSze), negFirstBf(firstSze),
-  secondBf(secondSize), testBf(secondSize);
+  TBitField firstBf(firstSze), negFirstBf(firstSze), secondBf(secondSize),
+      testBf(secondSize);
   // firstBf = 0001
   firstBf.SetBit(0);
   negFirstBf = ~firstBf;
   // negFirstBf = 1110
 
   // secondBf = 00011000
-              //    1110
+  //    1110
   secondBf.SetBit(3);
   secondBf.SetBit(4);
 
@@ -278,15 +278,12 @@ TEST(TBitField, can_invert_many_random_bits_bitfield) {
   bits.push_back(33);
   bits.push_back(37);
 
-  for (unsigned int i = 0; i < bits.size(); i++)
-    bf.SetBit(bits[i]);
+  for (unsigned int i = 0; i < bits.size(); i++) bf.SetBit(bits[i]);
 
   negBf = ~bf;
 
-  for (int i = 0; i < size; i++)
-    expNegBf.SetBit(i);
-  for (unsigned int i = 0; i < bits.size(); i++)
-    expNegBf.ClrBit(bits[i]);
+  for (int i = 0; i < size; i++) expNegBf.SetBit(i);
+  for (unsigned int i = 0; i < bits.size(); i++) expNegBf.ClrBit(bits[i]);
 
   EXPECT_EQ(expNegBf, negBf);
 }

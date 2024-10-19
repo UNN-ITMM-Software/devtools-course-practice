@@ -1,8 +1,10 @@
 // Copyright 2024 Soloninko Andrey
 
-#include <gtest/gtest.h>
-#include <unordered_set>
 #include "include/huffman.h"
+
+#include <gtest/gtest.h>
+
+#include <unordered_set>
 
 std::string encodeDecode(const std::string& text) {
   Huffman huffman;
@@ -50,7 +52,7 @@ TEST(Soloninko_Huffman, Test_7) {
   Huffman huffman;
   huffman.buildHuffmanTree("abc");
   auto codes = huffman.getHaffmanCodesCharStr();
-  std::unordered_set<std::string> expectedCodes = { "0", "10", "11" };
+  std::unordered_set<std::string> expectedCodes = {"0", "10", "11"};
   std::unordered_set<std::string> actualCodes;
   for (const auto& i : codes) {
     actualCodes.insert(i.second);
@@ -63,7 +65,7 @@ TEST(Soloninko_Huffman, Test_8) {
   Huffman huffman;
   huffman.buildHuffmanTree("abc");
   auto codes = huffman.getHaffmanCodesStrChar();
-  std::unordered_set<std::string> expectedCodes = { "0", "10", "11" };
+  std::unordered_set<std::string> expectedCodes = {"0", "10", "11"};
   std::unordered_set<std::string> actualCodes;
   for (const auto& i : codes) {
     actualCodes.insert(i.first);
@@ -77,7 +79,7 @@ TEST(Soloninko_Huffman, Test_9) {
   huffman.buildHuffmanTree("vddsdasrff");
   huffman.buildHuffmanTree("abc");
   auto codes = huffman.getHaffmanCodesStrChar();
-  std::unordered_set<std::string> expectedCodes = { "0", "10", "11" };
+  std::unordered_set<std::string> expectedCodes = {"0", "10", "11"};
   std::unordered_set<std::string> actualCodes;
   for (const auto& i : codes) {
     actualCodes.insert(i.first);
@@ -86,7 +88,7 @@ TEST(Soloninko_Huffman, Test_9) {
   EXPECT_EQ(codes.size(), static_cast<size_t>(3));
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
