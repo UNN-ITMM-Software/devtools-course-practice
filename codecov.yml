@@ -1,6 +1,9 @@
 comment:
   layout: header, changes, diff, sunburst
 coverage:
+  precision: 2
+  round: down
+  range: "70...100"
   ignore:
   - 3rdparty/.*
   - .*/test/.*
