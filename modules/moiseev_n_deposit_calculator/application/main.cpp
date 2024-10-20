@@ -1,7 +1,8 @@
 // Copyright 2024 Podyachikh Mikhail
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+
 #include <string>
 
 #include "include/deposit_calculator_app.h"

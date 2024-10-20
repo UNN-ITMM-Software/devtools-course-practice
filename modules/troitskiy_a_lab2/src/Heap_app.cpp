@@ -2,12 +2,13 @@
 
 #include "include/Heap_app.h"
 
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
 #include <string.h>
-#include <string>
+
 #include <sstream>
+#include <string>
 
 void Heap_app::help(const char *appname, const char *message) {
   message_ = std::string(message) +
@@ -46,11 +47,9 @@ uint64_t parseInt(const char *arg) {
 }
 
 void check_first(char c, bool first) {
-  if (c != 'B' && first)
-    throw std::logic_error("Wrong operation");
+  if (c != 'B' && first) throw std::logic_error("Wrong operation");
 
-  if (c == 'B' && !first)
-    throw std::logic_error("Wrong operation");
+  if (c == 'B' && !first) throw std::logic_error("Wrong operation");
 }
 
 std::string Heap_app::operator()(int argc, const char **argv) {
@@ -116,23 +115,23 @@ std::string Heap_app::operator()(int argc, const char **argv) {
     // char c = elem.operation;
     // printf("%c\n",c);
     switch (elem.operation) {
-    case 'A':
-      H.push(elem.nums[0]);
-      break;
-    case 'T':
-      try {
-        stream << H.top() << " ";
-      } catch (std::logic_error &str) {
-        return str.what();
-      }
-      break;
-    case 'D':
-      try {
-        H.pop();
-      } catch (std::logic_error &str) {
-        return str.what();
-      }
-      break;
+      case 'A':
+        H.push(elem.nums[0]);
+        break;
+      case 'T':
+        try {
+          stream << H.top() << " ";
+        } catch (std::logic_error &str) {
+          return str.what();
+        }
+        break;
+      case 'D':
+        try {
+          H.pop();
+        } catch (std::logic_error &str) {
+          return str.what();
+        }
+        break;
     }
   }
   while (H.size()) {

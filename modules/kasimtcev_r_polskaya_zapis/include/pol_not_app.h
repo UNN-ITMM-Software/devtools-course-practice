@@ -8,15 +8,15 @@
 
 class PolNotApp {
  public:
-    PolNotApp() = default;
+  PolNotApp() = default;
 
-    std::string operator()(int argc, char* argv[]);
+  std::string operator()(int argc, char* argv[]);
 
  private:
-    std::string helpMessage{};
-    std::string input{};
+  std::string helpMessage{};
+  std::string input{};
 
-    bool validate(int argc, char* argv[]);
+  bool validate(int argc, char* argv[]);
 
-    void help(const char* appName, const char* errorMessage = nullptr);
+  void help(const char* appName, const char* errorMessage = nullptr);
 };

@@ -3,8 +3,8 @@
 #ifndef MODULES_IVANCHENKO_A_METRICS_INCLUDE_METRICS_APP_H_
 #define MODULES_IVANCHENKO_A_METRICS_INCLUDE_METRICS_APP_H_
 
-#include <vector>
 #include <string>
+#include <vector>
 
 class MetricsApp {
  public:

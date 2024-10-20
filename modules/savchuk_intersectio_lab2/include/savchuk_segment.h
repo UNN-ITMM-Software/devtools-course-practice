@@ -7,13 +7,14 @@
 
 class Segment {
  public:
-    Segment(const Point& start, const Point& end) : start(start), end(end) {}
-    const Point& getStart() const { return start; }
-    const Point& getEnd() const { return end; }
-    bool onSegment(const Point& p, const Point& q, const Point& r) const;
+  Segment(const Point& start, const Point& end) : start(start), end(end) {}
+  const Point& getStart() const { return start; }
+  const Point& getEnd() const { return end; }
+  bool onSegment(const Point& p, const Point& q, const Point& r) const;
+
  private:
-    Point start;
-    Point end;
+  Point start;
+  Point end;
 };
 
 #endif  // MODULES_SAVCHUK_INTERSECTIO_LAB2_INCLUDE_SAVCHUK_SEGMENT_H_

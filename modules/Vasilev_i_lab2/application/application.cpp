@@ -5,9 +5,9 @@
 #include "include/Combinations_app.h"
 
 int main(int argc, char* argv[]) {
-    auto output = CombinationsApp()(argc, argv);
+  auto output = CombinationsApp()(argc, argv);
 
-    std::cout << output << '\n';
+  std::cout << output << '\n';
 
-    return 0;
+  return 0;
 }

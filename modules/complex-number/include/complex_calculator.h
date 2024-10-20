@@ -21,27 +21,27 @@
  */
 class ComplexCalculator {
  public:
-    ComplexCalculator();
+  ComplexCalculator();
 
-    /**
-     * @brief Functor override
-     * @param[in] argc Nuber of comand line arguments
-     * @param[in] argv Command line arguments
-     * @return Output expression
-     */
-    std::string operator()(int argc, const char** argv);
+  /**
+   * @brief Functor override
+   * @param[in] argc Nuber of comand line arguments
+   * @param[in] argv Command line arguments
+   * @return Output expression
+   */
+  std::string operator()(int argc, const char** argv);
 
  private:
-    void help(const char* appname, const char* message = "");
-    bool validateNumberOfArguments(int argc, const char** argv);
-    std::string message_;
-    typedef struct {
-        double z1_real;
-        double z1_imaginary;
-        double z2_real;
-        double z2_imaginary;
-        char operation;
-    } Arguments;
+  void help(const char* appname, const char* message = "");
+  bool validateNumberOfArguments(int argc, const char** argv);
+  std::string message_;
+  typedef struct {
+    double z1_real;
+    double z1_imaginary;
+    double z2_real;
+    double z2_imaginary;
+    char operation;
+  } Arguments;
 };
 
 //! @}

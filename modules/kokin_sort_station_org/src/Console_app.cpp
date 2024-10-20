@@ -1,15 +1,15 @@
 // Copyright 2024 Kokin Ivan
+#include "Console_app.h"
+
 #include <iostream>
 #include <string>
-
-#include "Console_app.h"
 
 void ConsoleApp::run(int argc, const char** argv) {
   if (argc == 1) {
     printHelp();
   } else if (argc == 2) {
     std::string expression = argv[1];
-      calculateExpression(expression);
+    calculateExpression(expression);
   } else {
     std::cerr << "Invalid number of arguments." << std::endl;
     printHelp();
@@ -24,8 +24,8 @@ void ConsoleApp::printHelp() {
 }
 
 std::string ConsoleApp::calculateExpression(const std::string& expression) {
-    std::string s = "Result: " + std::to_string(
-            sortStation.calculateFunction(expression));
-    std::cout << s << std::endl;
-    return s;
+  std::string s =
+      "Result: " + std::to_string(sortStation.calculateFunction(expression));
+  std::cout << s << std::endl;
+  return s;
 }

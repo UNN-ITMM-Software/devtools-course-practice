@@ -6,32 +6,30 @@
 #include <vector>
 
 struct Edge {
-    int src, dest, weight;
+  int src, dest, weight;
 
-    bool operator<(const Edge& other) const {
-        return weight < other.weight;
-    }
+  bool operator<(const Edge& other) const { return weight < other.weight; }
 };
 
 class DisjointSets {
  public:
-    explicit DisjointSets(int n);
-    int find(int u);
-    void unionSets(int u, int v);
+  explicit DisjointSets(int n);
+  int find(int u);
+  void unionSets(int u, int v);
 
  private:
-    std::vector<int> parent, rank;
+  std::vector<int> parent, rank;
 };
 
 class Graph {
  public:
-    explicit Graph(int V);
-    void addEdge(int u, int v, int w);
-    std::vector<Edge> kruskalMST();
+  explicit Graph(int V);
+  void addEdge(int u, int v, int w);
+  std::vector<Edge> kruskalMST();
 
  private:
-    int V;
-    std::vector<Edge> edges;
+  int V;
+  std::vector<Edge> edges;
 };
 
 #endif  // MODULES_SAFRONOV_M_KRUSKALS_ALGORITHM_INCLUDE_GRAPH_H_

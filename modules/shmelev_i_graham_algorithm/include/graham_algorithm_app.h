@@ -1,16 +1,16 @@
 // Copyright 2024 Kulaev Zhenya
 #pragma once
 
+#include <algorithm>
 #include <cmath>
 #include <stdexcept>
-#include <vector>
-#include <utility>
-#include <algorithm>
 #include <string>
+#include <utility>
+#include <vector>
 
 #include "include/graham_algorithm.h"
 
-class GrahamScanApplication{
+class GrahamScanApplication {
  public:
   GrahamScanApplication() = default;
   std::string operator()(int argc, char* argv[]);

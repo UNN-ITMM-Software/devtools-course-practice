@@ -13,7 +13,7 @@
 class ConsoleHandler {
  private:
   GettingPrimeNumbers primeNumbers = GettingPrimeNumbers();
-  std::string vectorToString(const std::vector<uint32_t> &vec);
+  std::string vectorToString(const std::vector<uint32_t>& vec);
 
  public:
   std::string ConsoleInput(int argc, char* argv[]);

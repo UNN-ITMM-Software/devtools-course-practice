@@ -2,9 +2,8 @@
 
 #include <cstring>
 #include <iostream>
-#include <sstream>
 #include <numeric>
-
+#include <sstream>
 
 #include "include/ins_sort_app.h"
 #include "include/insertion_sort.h"

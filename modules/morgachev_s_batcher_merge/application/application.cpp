@@ -5,7 +5,7 @@
 #include "../include/batcher_merge_app.h"
 
 int main(int argc, char* argv[]) {
-    BatcherMergeApplication app;
-    std::cout << app.Sort(argc, argv) << '\n';
-    return 0;
+  BatcherMergeApplication app;
+  std::cout << app.Sort(argc, argv) << '\n';
+  return 0;
 }

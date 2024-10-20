@@ -5,15 +5,15 @@
 
 class LISApp {
  public:
-    LISApp();
+  LISApp();
 
-    std::string operator()(int argc, const char** argv);
+  std::string operator()(int argc, const char** argv);
 
  private:
-    void help(const char* appname, const char* message = "");
-    bool validateNumberOfArguments(int argc, const char** argv);
-    std::string message_;
-    typedef struct {
-        std::vector<int> seq;
-    } Arguments;
+  void help(const char* appname, const char* message = "");
+  bool validateNumberOfArguments(int argc, const char** argv);
+  std::string message_;
+  typedef struct {
+    std::vector<int> seq;
+  } Arguments;
 };

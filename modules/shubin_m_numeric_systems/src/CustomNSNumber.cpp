@@ -1,8 +1,9 @@
 // Copyright 2024 Shubin Mikhail
 
-#include <stdexcept>
-#include <sstream>
 #include "include/CustomNSNumber.hpp"
+
+#include <sstream>
+#include <stdexcept>
 
 CustomNSNumber::CustomNSNumber(number_t _number, size_t _num_sys) {
   if (_num_sys < 2) {
@@ -44,7 +45,7 @@ CustomNSNumber::CustomNSNumber(CustomNSNumber&& _num) {
   _num.negative = false;
 }
 
-CustomNSNumber::CustomNSNumber(const std::string &_number, size_t _num_sys) {
+CustomNSNumber::CustomNSNumber(const std::string& _number, size_t _num_sys) {
   std::string tmp_string = _number;
   if (_num_sys < 2) {
     throw std::invalid_argument("Incorrect numeric system");
@@ -57,7 +58,7 @@ CustomNSNumber::CustomNSNumber(const std::string &_number, size_t _num_sys) {
     negative = true;
     tmp_string.erase(0, 2);
   } else {
-      negative = false;
+    negative = false;
   }
 
   std::vector<digit_t> tmp_vector;
@@ -128,13 +129,9 @@ void CustomNSNumber::SetNumSys(size_t _num_sys) {
   }
 }
 
-size_t CustomNSNumber::GetNumSys() const noexcept {
-  return num_sys;
-}
+size_t CustomNSNumber::GetNumSys() const noexcept { return num_sys; }
 
-size_t CustomNSNumber::GetLength() const noexcept {
-  return digits.size();
-}
+size_t CustomNSNumber::GetLength() const noexcept { return digits.size(); }
 
 CustomNSNumber CustomNSNumber::ToNumSys(size_t _num_sys) const {
   if (_num_sys < 2) {
@@ -205,9 +202,7 @@ number_t CustomNSNumber::ToDec() const noexcept {
   return res;
 }
 
-bool CustomNSNumber::IsNegative() const noexcept {
-  return negative;
-}
+bool CustomNSNumber::IsNegative() const noexcept { return negative; }
 
 CustomNSNumber CustomNSNumber::operator+(const CustomNSNumber& _num) {
   if (num_sys != _num.num_sys) {
@@ -242,9 +237,11 @@ CustomNSNumber CustomNSNumber::operator+(const CustomNSNumber& _num) {
     for (size_t i = 0; i < std::max(digits.size(), temp.digits.size()); i++) {
       this_number = (i < digits.size()) ? (digits[i]) : (0);
       other_number = (i < temp.digits.size()) ? (temp.digits[i]) : (0);
-      temp_number = digit_t_num_sys + ((res.negative == negative) ?
-                    (this_number - other_number) :
-                    (other_number - this_number)) - move_digit;
+      temp_number =
+          digit_t_num_sys +
+          ((res.negative == negative) ? (this_number - other_number)
+                                      : (other_number - this_number)) -
+          move_digit;
       res.digits.push_back(temp_number % digit_t_num_sys);
       move_digit = (temp_number / digit_t_num_sys >= 1) ? (0) : (1);
     }
@@ -300,9 +297,11 @@ CustomNSNumber CustomNSNumber::operator-(const CustomNSNumber& _num) {
     for (size_t i = 0; i < std::max(digits.size(), temp.digits.size()); i++) {
       this_number = (i < digits.size()) ? (digits[i]) : (0);
       other_number = (i < temp.digits.size()) ? (temp.digits[i]) : (0);
-      temp_number = digit_t_num_sys + ((res.negative == negative) ?
-                    (this_number - other_number) :
-                    (other_number - this_number)) - move_digit;
+      temp_number =
+          digit_t_num_sys +
+          ((res.negative == negative) ? (this_number - other_number)
+                                      : (other_number - this_number)) -
+          move_digit;
       res.digits.push_back(temp_number % digit_t_num_sys);
       move_digit = (temp_number / digit_t_num_sys >= 1) ? (0) : (1);
     }
@@ -391,9 +390,7 @@ bool CustomNSNumber::operator>(const CustomNSNumber& _num) const noexcept {
   return (ToDec() > _num.ToDec());
 }
 
-digit_t& CustomNSNumber::operator[](size_t ind) {
-  return digits[ind];
-}
+digit_t& CustomNSNumber::operator[](size_t ind) { return digits[ind]; }
 
 const digit_t& CustomNSNumber::operator[](size_t ind) const {
   return digits[ind];

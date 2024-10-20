@@ -80,8 +80,7 @@ bool AvlTreeApplication::validate(int argc, char *argv[]) {
 void AvlTreeApplication::help(const char *appName, const char *msg) {
   std::stringstream message;
 
-  if (msg)
-    message << "Error: " << msg << '\n';
+  if (msg) message << "Error: " << msg << '\n';
 
   message
       << "This is an application for demonstrating AVL Tree operations.\n\n";

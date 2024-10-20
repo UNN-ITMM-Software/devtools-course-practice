@@ -1,6 +1,7 @@
 // Copyright 2024 Kiselev Igor
 
 #include <gtest/gtest.h>
+
 #include <vector>
 
 #include "include/Billinear_interpolation.h"

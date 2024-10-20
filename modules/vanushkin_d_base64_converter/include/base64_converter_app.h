@@ -1,9 +1,10 @@
 // Copyright 2024 Vinichuk Timofey
 #pragma once
 
-#include "include/base64_converter.h"
 #include <stdexcept>
 #include <string>
+
+#include "include/base64_converter.h"
 
 class Base64ConverterApplication {
  public:

@@ -1,12 +1,13 @@
 // Copyright 2024 Konovalov Igor
 
 #include <gtest/gtest.h>
+
 #include <random>
+
 #include "include/konovalov_i_euler_f.h"
 
-
 TEST(Konovalov_Igor_Euler_Funcion, throws_when_negative_number_is_given) {
-    EXPECT_ANY_THROW(EulerFunction::euler(-5));
+  EXPECT_ANY_THROW(EulerFunction::euler(-5));
 }
 
 TEST(Konovalov_Igor_Euler_Funcion, naive_throws_when_negative_number_is_given) {
@@ -42,4 +43,3 @@ TEST(Konovalov_Igor_Euler_Funcion, gives_same_result_as_naive_impl) {
     ASSERT_EQ(EulerFunction::euler_naive(in), EulerFunction::euler(in));
   }
 }
-

@@ -9,7 +9,8 @@
 #include <utility>
 #include <vector>
 
-template <typename T> struct FibonacciHeapNode {
+template <typename T>
+struct FibonacciHeapNode {
   T key;
   FibonacciHeapNode<T> *parent;
   FibonacciHeapNode<T> *child;
@@ -19,11 +20,17 @@ template <typename T> struct FibonacciHeapNode {
   bool marked;
 
   explicit FibonacciHeapNode(const T &key)
-      : key(key), parent(nullptr), child(nullptr), left(this), right(this),
-        degree(0), marked(false) {}
+      : key(key),
+        parent(nullptr),
+        child(nullptr),
+        left(this),
+        right(this),
+        degree(0),
+        marked(false) {}
 };
 
-template <typename T> class FibonacciHeap {
+template <typename T>
+class FibonacciHeap {
  public:
   FibonacciHeap();
   ~FibonacciHeap();
@@ -44,7 +51,7 @@ template <typename T> class FibonacciHeap {
   void link(FibonacciHeapNode<T> *child, FibonacciHeapNode<T> *parent);
   void cut(FibonacciHeapNode<T> *node, FibonacciHeapNode<T> *parent);
   void cascadingCut(FibonacciHeapNode<T> *node);
-  void clear(FibonacciHeapNode<T>* heapNode);
+  void clear(FibonacciHeapNode<T> *heapNode);
 };
 
 template <typename T>
@@ -55,11 +62,13 @@ FibonacciHeap<T>::~FibonacciHeap() {
   clear(minNode);
 }
 
-template <typename T> bool FibonacciHeap<T>::empty() const {
+template <typename T>
+bool FibonacciHeap<T>::empty() const {
   return minNode == nullptr;
 }
 
-template <typename T> const T &FibonacciHeap<T>::minimum() const {
+template <typename T>
+const T &FibonacciHeap<T>::minimum() const {
   return minNode->key;
 }
 
@@ -73,8 +82,7 @@ FibonacciHeapNode<T> *FibonacciHeap<T>::insert(const T &key) {
     newNode->left = minNode->left;
     minNode->left = newNode;
     newNode->right = minNode;
-    if (key < minNode->key)
-      minNode = newNode;
+    if (key < minNode->key) minNode = newNode;
   }
   size++;
   return newNode;
@@ -114,11 +122,10 @@ void FibonacciHeap<T>::merge(FibonacciHeap<T> *other) {
   }
 }
 
-
-template <typename T> T FibonacciHeap<T>::extractMin() {
+template <typename T>
+T FibonacciHeap<T>::extractMin() {
   FibonacciHeapNode<T> *oldMin = minNode;
-  if (oldMin == nullptr)
-    return T();
+  if (oldMin == nullptr) return T();
 
   if (oldMin->child != nullptr) {
     FibonacciHeapNode<T> *child = oldMin->child;
@@ -149,16 +156,14 @@ template <typename T> T FibonacciHeap<T>::extractMin() {
 template <typename T>
 void FibonacciHeap<T>::decreaseKey(FibonacciHeapNode<T> *node,
                                    const T &newKey) {
-  if (newKey > node->key)
-    return;
+  if (newKey > node->key) return;
   node->key = newKey;
   FibonacciHeapNode<T> *parent = node->parent;
   if (parent != nullptr && node->key < parent->key) {
     cut(node, parent);
     cascadingCut(parent);
   }
-  if (node->key < minNode->key)
-    minNode = node;
+  if (node->key < minNode->key) minNode = node;
 }
 
 template <typename T>
@@ -167,7 +172,8 @@ void FibonacciHeap<T>::deleteNode(FibonacciHeapNode<T> *node) {
   extractMin();
 }
 
-template <typename T> void FibonacciHeap<T>::consolidate() {
+template <typename T>
+void FibonacciHeap<T>::consolidate() {
   std::vector<FibonacciHeapNode<T> *> degreeTable(2 * size, nullptr);
 
   // Traverse the root list and merge trees with the same degree
@@ -177,8 +183,7 @@ template <typename T> void FibonacciHeap<T>::consolidate() {
     int degree = current->degree;
     while (degreeTable[degree] != nullptr) {
       FibonacciHeapNode<T> *other = degreeTable[degree];
-      if (current->key > other->key)
-        std::swap(current, other);
+      if (current->key > other->key) std::swap(current, other);
       link(other, current);
       degreeTable[degree] = nullptr;
       degree++;
@@ -200,8 +205,7 @@ template <typename T> void FibonacciHeap<T>::consolidate() {
         node->left = minNode->left;
         minNode->left = node;
         node->right = minNode;
-        if (node->key < minNode->key)
-          minNode = node;
+        if (node->key < minNode->key) minNode = node;
       }
     }
   }
@@ -239,8 +243,7 @@ void FibonacciHeap<T>::cut(FibonacciHeapNode<T> *node,
     node->left->right = node->right;
     node->right->left = node->left;
 
-    if (parent->child == node)
-      parent->child = node->right;
+    if (parent->child == node) parent->child = node->right;
   }
 
   parent->degree--;
@@ -267,19 +270,19 @@ void FibonacciHeap<T>::cascadingCut(FibonacciHeapNode<T> *node) {
 }
 
 template <typename T>
-void FibonacciHeap<T>::clear(FibonacciHeapNode<T>* heapNode) {
-    if (heapNode == nullptr) {
-        return;
-    }
+void FibonacciHeap<T>::clear(FibonacciHeapNode<T> *heapNode) {
+  if (heapNode == nullptr) {
+    return;
+  }
 
-    FibonacciHeapNode<T>* end = heapNode;
-    do {
-        clear(heapNode->child);
+  FibonacciHeapNode<T> *end = heapNode;
+  do {
+    clear(heapNode->child);
 
-        FibonacciHeapNode<T>* right = heapNode->right;
-        delete heapNode;
-        heapNode = right;
-    } while (heapNode != end);
+    FibonacciHeapNode<T> *right = heapNode->right;
+    delete heapNode;
+    heapNode = right;
+  } while (heapNode != end);
 }
 
 #endif  // MODULES_BODROV_DANIIL_FIBONACCI_HEAP_INCLUDE_FIBONACCI_HEAP_H_

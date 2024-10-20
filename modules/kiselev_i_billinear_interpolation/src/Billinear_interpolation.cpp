@@ -32,16 +32,16 @@ BillinearInterpolation::BillinearInterpolation(BillinearInterpolation &&bi) {
   source = std::move(bi.source);
 }
 
-BillinearInterpolation &
-BillinearInterpolation::operator=(BillinearInterpolation &&bi) {
+BillinearInterpolation &BillinearInterpolation::operator=(
+    BillinearInterpolation &&bi) {
   if (&bi != this) {
     source = std::move(bi.source);
   }
   return *this;
 }
 
-BillinearInterpolation &
-BillinearInterpolation::operator=(const BillinearInterpolation &bi) {
+BillinearInterpolation &BillinearInterpolation::operator=(
+    const BillinearInterpolation &bi) {
   if (&bi != this) {
     source = bi.source;
   }

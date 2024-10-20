@@ -2,10 +2,10 @@
 #ifndef MODULES_PODYACHIKH_KNIGHT_MOVES_LAB2_INCLUDE_CHESS_BOARD_APP_H_
 #define MODULES_PODYACHIKH_KNIGHT_MOVES_LAB2_INCLUDE_CHESS_BOARD_APP_H_
 
-#include "include/chess_board.h"
+#include <set>
+#include <string>
 
-#include<string>
-#include<set>
+#include "include/chess_board.h"
 
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 0
@@ -24,12 +24,11 @@ class ChessBoardApp {
   std::string getHelpMessage();
   std::string getVersion();
   std::string getErrInvalidArgv(const char *command);
-  int16_t parseObstacles(int argc,  const char *argv[]);
-  int16_t parseStart(int argc,  const char *argv[]);
-  int16_t parseEnd(int argc,  const char *argv[]);
-  int16_t parseSize(int argc,  const char *argv[]);
-  std::string parseArg(int argc,  const char *argv[]);
-
+  int16_t parseObstacles(int argc, const char *argv[]);
+  int16_t parseStart(int argc, const char *argv[]);
+  int16_t parseEnd(int argc, const char *argv[]);
+  int16_t parseSize(int argc, const char *argv[]);
+  std::string parseArg(int argc, const char *argv[]);
 
  public:
   ChessBoardApp() : size(8), have_size(0), have_start(0), have_end(0) {}
@@ -38,4 +37,3 @@ class ChessBoardApp {
 };
 
 #endif  // MODULES_PODYACHIKH_KNIGHT_MOVES_LAB2_INCLUDE_CHESS_BOARD_APP_H_
-
