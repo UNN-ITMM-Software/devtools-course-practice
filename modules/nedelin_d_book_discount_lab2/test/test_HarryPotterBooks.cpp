@@ -3,9 +3,36 @@
 #include <gtest/gtest.h>
 #include "include/HarryPotterBooks.h"
 
-TEST(Nedelin_HarryPotterBooksTest, EmptyInput) {
+TEST(Nedelin_HarryPotterBooksTest, ConstructEmptyVector) {
     std::vector<int> empty_books;
     EXPECT_THROW(HarryPotterBooks hpBooks(empty_books), std::invalid_argument);
+}
+
+TEST(Nedelin_HarryPotterBooksTest, ConstructValidVector) {
+    std::vector<int> books = { 1, 2, 3, 4, 5 };
+    HarryPotterBooks hpBooks(books);
+    EXPECT_NO_THROW(hpBooks.calculateTotalPrice());
+}
+
+TEST(Nedelin_HarryPotterBooksTest, SetBooksWithEmptyVector) {
+    std::vector<int> books = { 1, 2, 3, 4, 5 };
+    HarryPotterBooks hpBooks(books);
+    std::vector<int> empty_books;
+    EXPECT_THROW(hpBooks.setBooks(empty_books), std::invalid_argument);
+}
+
+TEST(Nedelin_HarryPotterBooksTest, SetBooksWithValidVector) {
+    std::vector<int> books = { 1, 2, 3, 4, 5 };
+    HarryPotterBooks hpBooks(books);
+    std::vector<int> books_2 = { 1, 1, 1, 1, 1 };
+    hpBooks.setBooks(books_2);
+    EXPECT_EQ(hpBooks.getBooks(), books_2);
+}
+
+TEST(Nedelin_HarryPotterBooksTest, GetBooksTest) {
+    std::vector<int> books = { 1, 2, 3, 4, 5 };
+    HarryPotterBooks hpBooks(books);
+    EXPECT_EQ(hpBooks.getBooks(), books);
 }
 
 TEST(Nedelin_HarryPotterBooksTest, SingleBook) {
