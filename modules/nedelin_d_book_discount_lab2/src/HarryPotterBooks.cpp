@@ -44,7 +44,7 @@ double HarryPotterBooks::calculateTotalPrice() {
 
         totalPrice += distinctBooks * bookPrice * discount;
 
-        for (int i = 0; i < remainingBooks.size(); ++i) {
+        for (size_t i = 0; i < remainingBooks.size(); ++i) {
             if (remainingBooks[i] > 0) {
                 remainingBooks[i]--;
             }
