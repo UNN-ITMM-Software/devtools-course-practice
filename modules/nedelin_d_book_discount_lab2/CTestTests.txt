@@ -1,0 +1,77 @@
+set(prefix "console_app")
+
+# Базовый тест: проверка запуска
+add_test(
+  NAME ${prefix}_can_Run
+  COMMAND console_app 1 1 1 1 1
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+  LABELS "console_app")
+
+# Тесты для неверного количества аргументов
+add_test(
+  NAME ${prefix}_insufficient_arguments
+  COMMAND console_app 1 1 1 1
+)
+set_tests_properties (${prefix}_insufficient_arguments PROPERTIES
+  PASS_REGULAR_EXPRESSION "Not enough arguments. Please provide 5 numbers for the book counts."
+  LABELS "console_app")
+
+# Тесты для корректных аргументов
+add_test(
+  NAME ${prefix}_valid_arguments_one_book
+  COMMAND console_app 1 0 0 0 0
+)
+set_tests_properties (${prefix}_valid_arguments_one_book PROPERTIES
+  PASS_REGULAR_EXPRESSION "Total price: 8"
+  LABELS "console_app")
+
+add_test(
+  NAME ${prefix}_valid_arguments_two_books
+  COMMAND console_app 1 1 0 0 0
+)
+set_tests_properties (${prefix}_valid_arguments_two_books PROPERTIES
+  PASS_REGULAR_EXPRESSION "Total price: 15.2"
+  LABELS "console_app")
+
+add_test(
+  NAME ${prefix}_valid_arguments_three_books
+  COMMAND console_app 1 1 1 0 0
+)
+set_tests_properties (${prefix}_valid_arguments_three_books PROPERTIES
+  PASS_REGULAR_EXPRESSION "Total price: 21.6"
+  LABELS "console_app")
+
+add_test(
+  NAME ${prefix}_valid_arguments_four_books
+  COMMAND console_app 1 1 1 1 0
+)
+set_tests_properties (${prefix}_valid_arguments_four_books PROPERTIES
+  PASS_REGULAR_EXPRESSION "Total price: 25.6"
+  LABELS "console_app")
+
+add_test(
+  NAME ${prefix}_valid_arguments_five_books
+  COMMAND console_app 1 1 1 1 1
+)
+set_tests_properties (${prefix}_valid_arguments_five_books PROPERTIES
+  PASS_REGULAR_EXPRESSION "Total price: 30"
+  LABELS "console_app")
+
+# Тест для случая, когда количество книг одного вида больше 5
+add_test(
+  NAME ${prefix}_more_than_five_books_one_type
+  COMMAND console_app 6 0 0 0 0
+)
+set_tests_properties (${prefix}_more_than_five_books_one_type PROPERTIES
+  PASS_REGULAR_EXPRESSION "Total price: 40"
+  LABELS "console_app")
+
+# Тесты для отрицательных аргументов
+add_test(
+  NAME ${prefix}_negative_argument
+  COMMAND console_app -1 1 1 1 1
+)
+set_tests_properties (${prefix}_negative_argument PROPERTIES
+  PASS_REGULAR_EXPRESSION "Total price: 28.8"
+  LABELS "console_app")
