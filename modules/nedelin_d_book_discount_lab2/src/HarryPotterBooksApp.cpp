@@ -1,3 +1,4 @@
+// Copyright 2024 Smirnov Pavel
 #include <sstream>
 #include <iostream>
 #include <string>
@@ -18,7 +19,7 @@ std::string HarryPotterBooksApp::calculatePrice(const std::vector<int>& books) {
 std::string HarryPotterBooksApp::run(int argc, char* argv[]) {
     std::vector<int> books;
     if (argc < 6) {
-        return "Not enough arguments. Please provide 5 numbers for the book counts.";
+return "Not enough arguments. Please provide 5 numbers for the book counts.";
     }
     for (int i = 1; i < 6; ++i) {
         books.push_back(std::stoi(argv[i]));
