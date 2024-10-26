@@ -13,5 +13,8 @@ add_subdirectory(src)
 add_subdirectory(test)
 add_subdirectory(application)
 
-include("CTestTests.txt")
+#############################################
+##### Testing
+#############################################
 
+include("CTestTests.txt")
