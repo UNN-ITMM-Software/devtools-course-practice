@@ -7,7 +7,7 @@ set(prefix "${MODULE}")
 # Базовый тест: проверка запуска
 add_test(
   NAME ${prefix}_can_Run
-  COMMAND console_app 1 1 1 1 1
+  COMMAND ${APPLICATION} 1 1 1 1 1
 )
 set_tests_properties (${prefix}_can_Run PROPERTIES
   LABELS "${MODULE}")
@@ -15,7 +15,7 @@ set_tests_properties (${prefix}_can_Run PROPERTIES
 # Тесты для неверного количества аргументов
 add_test(
   NAME ${prefix}_insufficient_arguments
-  COMMAND console_app 1 1 1 1
+  COMMAND ${APPLICATION} 1 1 1 1
 )
 
 set_tests_properties (${prefix}_insufficient_arguments PROPERTIES
@@ -25,7 +25,7 @@ set_tests_properties (${prefix}_insufficient_arguments PROPERTIES
 # Тесты для корректных аргументов
 add_test(
   NAME ${prefix}_valid_arguments_one_book
-  COMMAND console_app 1 0 0 0 0
+  COMMAND ${APPLICATION} 1 0 0 0 0
 )
 set_tests_properties (${prefix}_valid_arguments_one_book PROPERTIES
   PASS_REGULAR_EXPRESSION "Total price: 8"
@@ -33,7 +33,7 @@ set_tests_properties (${prefix}_valid_arguments_one_book PROPERTIES
 
 add_test(
   NAME ${prefix}_valid_arguments_two_books
-  COMMAND console_app 1 1 0 0 0
+  COMMAND ${APPLICATION} 1 1 0 0 0
 )
 set_tests_properties (${prefix}_valid_arguments_two_books PROPERTIES
   PASS_REGULAR_EXPRESSION "Total price: 15.2"
@@ -41,7 +41,7 @@ set_tests_properties (${prefix}_valid_arguments_two_books PROPERTIES
 
 add_test(
   NAME ${prefix}_valid_arguments_three_books
-  COMMAND console_app 1 1 1 0 0
+  COMMAND ${APPLICATION} 1 1 1 0 0
 )
 set_tests_properties (${prefix}_valid_arguments_three_books PROPERTIES
   PASS_REGULAR_EXPRESSION "Total price: 21.6"
@@ -49,7 +49,7 @@ set_tests_properties (${prefix}_valid_arguments_three_books PROPERTIES
 
 add_test(
   NAME ${prefix}_valid_arguments_four_books
-  COMMAND console_app 1 1 1 1 0
+  COMMAND ${APPLICATION} 1 1 1 1 0
 )
 set_tests_properties (${prefix}_valid_arguments_four_books PROPERTIES
   PASS_REGULAR_EXPRESSION "Total price: 25.6"
@@ -57,7 +57,7 @@ set_tests_properties (${prefix}_valid_arguments_four_books PROPERTIES
 
 add_test(
   NAME ${prefix}_valid_arguments_five_books
-  COMMAND console_app 1 1 1 1 1
+  COMMAND ${APPLICATION} 1 1 1 1 1
 )
 set_tests_properties (${prefix}_valid_arguments_five_books PROPERTIES
   PASS_REGULAR_EXPRESSION "Total price: 30"
@@ -66,7 +66,7 @@ set_tests_properties (${prefix}_valid_arguments_five_books PROPERTIES
 # Тест для случая, когда количество книг одного вида больше 5
 add_test(
   NAME ${prefix}_more_than_five_books_one_type
-  COMMAND console_app 6 0 0 0 0
+  COMMAND ${APPLICATION} 6 0 0 0 0
 )
 set_tests_properties (${prefix}_more_than_five_books_one_type PROPERTIES
   PASS_REGULAR_EXPRESSION "Total price: 48"
@@ -75,7 +75,7 @@ set_tests_properties (${prefix}_more_than_five_books_one_type PROPERTIES
 # Тесты для отрицательных аргументов
 add_test(
   NAME ${prefix}_negative_argument
-  COMMAND console_app -1 1 1 1 1
+  COMMAND ${APPLICATION} -1 1 1 1 1
 )
 set_tests_properties (${prefix}_negative_argument PROPERTIES
   PASS_REGULAR_EXPRESSION "Total price: 25.6"

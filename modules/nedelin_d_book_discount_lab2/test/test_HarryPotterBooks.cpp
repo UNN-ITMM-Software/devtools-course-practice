@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include "include/HarryPotterBooks.h"
-#include "include/HarryPotterBooksApp.h"
 
 TEST(Nedelin_HarryPotterBooksTest, ConstructEmptyVector) {
     std::vector<int> empty_books;
@@ -84,26 +83,4 @@ TEST(Nedelin_HarryPotterBooksTest, MultipleSameBooks) {
     std::vector<int> books = { 3, 0, 0, 0, 0 };
     HarryPotterBooks hpBooks(books);
     EXPECT_DOUBLE_EQ(hpBooks.calculateTotalPrice(), 8.0 * 3);
-}
-
-TEST(ConsoleAppTest, InsufficientArguments) {
-    HarryPotterBooksApp app;
-    std::string result = app.run(1, nullptr);
-    EXPECT_STREQ(
-        result.c_str(),
-        "Not enough arguments. Please provide 5 numbers for the book counts.");
-}
-
-TEST(ConsoleAppTest, ValidArguments) {
-    HarryPotterBooksApp app;
-    char* argv[] = {"console_app", "1", "1", "1", "1", "1"};
-    std::string result = app.run(6, argv);
-    EXPECT_STREQ(result.c_str(), "Total price: 30");
-}
-
-TEST(ConsoleAppTest, NegativeArgument) {
-    HarryPotterBooksApp app;
-    char* argv[] = {"console_app", "-1", "1", "1", "1", "1"};
-    std::string result = app.run(6, argv);
-    EXPECT_STREQ(result.c_str(), "Total price: 25.6");
 }
