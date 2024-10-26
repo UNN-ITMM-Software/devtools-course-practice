@@ -4,8 +4,7 @@
 
 #include "include/HarryPotterBooksApp.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
   HarryPotterBooksApp app;
   auto output = app.run(argc, argv);
 
