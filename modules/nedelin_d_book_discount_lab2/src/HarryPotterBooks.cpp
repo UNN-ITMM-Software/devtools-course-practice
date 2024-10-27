@@ -10,10 +10,6 @@ HarryPotterBooks::HarryPotterBooks(const std::vector<int>& book_counts)
 }
 
 double HarryPotterBooks::calculateTotalPrice() {
-    if (books.empty()) {
-        throw std::invalid_argument("Empty vector provided");
-    }
-
     std::vector<int> remainingBooks = books;
     double totalPrice = 0.0;
 

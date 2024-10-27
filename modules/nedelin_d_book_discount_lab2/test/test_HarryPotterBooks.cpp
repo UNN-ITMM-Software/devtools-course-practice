@@ -8,6 +8,13 @@ TEST(Nedelin_HarryPotterBooksTest, ConstructEmptyVector) {
     EXPECT_THROW(HarryPotterBooks hpBooks(empty_books), std::invalid_argument);
 }
 
+TEST(Nedelin_HarryPotterBooksTest, SetterEmptyVector) {
+    std::vector<int> start_books = { 0, 0, 0, 0, 0 };
+    HarryPotterBooks hpBooks(start_books);
+    std::vector<int> empty_books;
+    EXPECT_THROW(hpBooks.setBooks(empty_books), std::invalid_argument);
+}
+
 TEST(Nedelin_HarryPotterBooksTest, ConstructValidVector) {
     std::vector<int> books = { 1, 2, 3, 4, 5 };
     HarryPotterBooks hpBooks(books);
