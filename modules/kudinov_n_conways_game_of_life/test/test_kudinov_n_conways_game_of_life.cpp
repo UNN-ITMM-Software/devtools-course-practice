@@ -4,23 +4,22 @@
 
 #include "include/conways_game_of_life.h"
 
-#define ASSERT_EQ_2D_VECTORS(vector1, vector2)                                \
-    do {                                                                      \
-        ASSERT_EQ(vector1.size(), vector2.size());                            \
-        if (!vector1.empty()) {                                               \
-            ASSERT_EQ(vector1.front().size(), vector2.front().size());        \
-                                                                              \
-            for (std::size_t y = 0; y < vector1.size(); y += 1) {             \
-                for (std::size_t x = 0; x < vector1.front().size(); x += 1) { \
-                    ASSERT_EQ(vector1[y][x], vector2[y][x]);                  \
-                }                                                             \
-            }                                                                 \
-        }                                                                     \
-    } while (0)
+#define ASSERT_EQ_2D_VECTORS(vector1, vector2)                        \
+  do {                                                                \
+    ASSERT_EQ(vector1.size(), vector2.size());                        \
+    if (!vector1.empty()) {                                           \
+      ASSERT_EQ(vector1.front().size(), vector2.front().size());      \
+                                                                      \
+      for (std::size_t y = 0; y < vector1.size(); y += 1) {           \
+        for (std::size_t x = 0; x < vector1.front().size(); x += 1) { \
+          ASSERT_EQ(vector1[y][x], vector2[y][x]);                    \
+        }                                                             \
+      }                                                               \
+    }                                                                 \
+  } while (0)
 
-TEST(
-  Kudinov_Nikita_Conways_Game_Of_Life,
-  CanConstructFromNonZeroHeightAndWidth) {
+TEST(Kudinov_Nikita_Conways_Game_Of_Life,
+     CanConstructFromNonZeroHeightAndWidth) {
   ASSERT_NO_THROW((ConwaysGameOfLife{5, 10}));
 }
 
@@ -33,9 +32,8 @@ TEST(Kudinov_Nikita_Conways_Game_Of_Life, CannotConstructFromZeroWidth) {
 }
 
 TEST(Kudinov_Nikita_Conways_Game_Of_Life, CanConstructFromCells) {
-  std::vector<std::vector<bool>> cells = {
-    { true, false, true },
-    { false, false, true }};
+  std::vector<std::vector<bool>> cells = {{true, false, true},
+                                          {false, false, true}};
 
   ASSERT_NO_THROW(ConwaysGameOfLife{cells});
 }
@@ -46,18 +44,16 @@ TEST(Kudinov_Nikita_Conways_Game_Of_Life, CannotConstructFromCellsWhenEmpty) {
   ASSERT_THROW(ConwaysGameOfLife{cells}, std::invalid_argument);
 }
 
-TEST(
-  Kudinov_Nikita_Conways_Game_Of_Life,
-  CannotConstructFromCellsWhenRowEmpty) {
+TEST(Kudinov_Nikita_Conways_Game_Of_Life,
+     CannotConstructFromCellsWhenRowEmpty) {
   std::vector<std::vector<bool>> cells = {{}};
 
   ASSERT_THROW(ConwaysGameOfLife{cells}, std::invalid_argument);
 }
 
-TEST(
-  Kudinov_Nikita_Conways_Game_Of_Life,
-  CannotConstructFromCellsWhenCellRowsArentEqual) {
-  std::vector<std::vector<bool>> cells = {{ true, false, true }, { false }};
+TEST(Kudinov_Nikita_Conways_Game_Of_Life,
+     CannotConstructFromCellsWhenCellRowsArentEqual) {
+  std::vector<std::vector<bool>> cells = {{true, false, true}, {false}};
 
   ASSERT_THROW(ConwaysGameOfLife{cells}, std::invalid_argument);
 }
@@ -157,14 +153,14 @@ TEST(Kudinov_Nikita_Conways_Game_Of_Life, CannotSetCellStateWhenXOutOfBounds) {
 
 TEST(Kudinov_Nikita_Conways_Game_Of_Life, CanSimulateNextGeneration) {
   std::vector<std::vector<bool>> cells = {
-    { true, false, true },
-    { false, false, true },
-    { true, false, true },
+      {true, false, true},
+      {false, false, true},
+      {true, false, true},
   };
   std::vector<std::vector<bool>> next_gen_expected = {
-    { false, true, false },
-    { false, false, true },
-    { false, true, false },
+      {false, true, false},
+      {false, false, true},
+      {false, true, false},
   };
   auto cgol = ConwaysGameOfLife(cells);
 
@@ -175,9 +171,9 @@ TEST(Kudinov_Nikita_Conways_Game_Of_Life, CanSimulateNextGeneration) {
 
 TEST(Kudinov_Nikita_Conways_Game_Of_Life, CanResetBoard) {
   std::vector<std::vector<bool>> cells = {
-    { true, false, true },
-    { false, false, true },
-    { true, false, true },
+      {true, false, true},
+      {false, false, true},
+      {true, false, true},
   };
   auto cgol = ConwaysGameOfLife(cells);
 
@@ -188,12 +184,11 @@ TEST(Kudinov_Nikita_Conways_Game_Of_Life, CanResetBoard) {
   }
 }
 
-
 TEST(Kudinov_Nikita_Conways_Game_Of_Life, CanConvertBoardToString) {
   std::vector<std::vector<bool>> cells = {
-    { true, false, true },
-    { false, false, true },
-    { true, false, true },
+      {true, false, true},
+      {false, false, true},
+      {true, false, true},
   };
   std::string expected_cgol_board_as_string = "*.*\n..*\n*.*";
   auto cgol = ConwaysGameOfLife(cells);

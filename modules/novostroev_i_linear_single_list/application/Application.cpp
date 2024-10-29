@@ -4,11 +4,11 @@
 #include "include/SinglLinkedList.h"
 
 int main(int argc, const char** argv) {
-    SinglLinkedList app;
-    auto output = app.runApp(argc, argv);
-    for (auto str : output) {
-        std::cout << str << std::endl;
-    }
+  SinglLinkedList app;
+  auto output = app.runApp(argc, argv);
+  for (auto str : output) {
+    std::cout << str << std::endl;
+  }
 
-    return 0;
+  return 0;
 }

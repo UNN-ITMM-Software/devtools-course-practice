@@ -5,8 +5,8 @@
 #include "include/queue_app.h"
 
 int main(int argc, const char *argv[]) {
-    QueueApp application;
-    auto out = application.Start(argc, argv);
-    std::cout << out << '\n';
-    return 0;
+  QueueApp application;
+  auto out = application.Start(argc, argv);
+  std::cout << out << '\n';
+  return 0;
 }

@@ -1,5 +1,6 @@
 // Copyright 2024 Karagodin Andrey
 #include <gtest/gtest.h>
+
 #include "include/complex_number.h"
 
 TEST(Karagodin_Andrey_ComplexNumberTest, Subtraction_negative_Test) {

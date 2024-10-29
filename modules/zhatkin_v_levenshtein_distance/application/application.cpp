@@ -5,9 +5,9 @@
 #include "include/levenshtein_distance_app.h"
 
 int main(int argc, char *argv[]) {
-    auto output = LevenshteinApp()(argc, argv);
+  auto output = LevenshteinApp()(argc, argv);
 
-    std::cout << output << '\n';
+  std::cout << output << '\n';
 
-    return 0;
+  return 0;
 }

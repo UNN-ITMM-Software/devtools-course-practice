@@ -1,6 +1,7 @@
 // Copyright 2024 Martynov Aleksandr
 
 #include <iostream>
+
 #include "include/NumSysApplication.hpp"
 
 int main(int argc, char *argv[]) {

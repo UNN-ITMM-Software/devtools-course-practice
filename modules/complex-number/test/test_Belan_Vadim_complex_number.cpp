@@ -1,6 +1,7 @@
 // Copyright 2024 Belan Vadim
 
 #include <gtest/gtest.h>
+
 #include "include/complex_number.h"
 
 TEST(Belan_Vadim_ComplexNumberTest, Create_Zero) {

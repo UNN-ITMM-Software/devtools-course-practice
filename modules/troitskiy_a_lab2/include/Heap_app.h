@@ -3,9 +3,9 @@
 #ifndef MODULES_TROITSKIY_A_LAB2_INCLUDE_HEAP_APP_H_
 #define MODULES_TROITSKIY_A_LAB2_INCLUDE_HEAP_APP_H_
 
+#include <stdexcept>
 #include <string>
 #include <vector>
-#include <stdexcept>
 
 #include "include/lab2.h"
 
@@ -25,4 +25,4 @@ class Heap_app {
   } Arguments;
 };
 
-#endif   // MODULES_TROITSKIY_A_LAB2_INCLUDE_HEAP_APP_H_
+#endif  // MODULES_TROITSKIY_A_LAB2_INCLUDE_HEAP_APP_H_

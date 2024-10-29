@@ -5,9 +5,9 @@
 #include "include/stackApp.h"
 
 int main(int argc, char *argv[]) {
-    auto output = StackApp()(argc, argv);
+  auto output = StackApp()(argc, argv);
 
-    std::cout << output << '\n';
+  std::cout << output << '\n';
 
-    return 0;
+  return 0;
 }

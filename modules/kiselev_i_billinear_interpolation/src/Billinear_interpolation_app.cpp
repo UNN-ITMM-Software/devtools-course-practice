@@ -1,19 +1,19 @@
 // Copyright 2024 Bodrov Daniil
 #include "include/Billinear_interpolation_app.h"
-#include "include/Billinear_interpolation.h"
 
 #include <cstring>
 #include <iostream>
 #include <random>
 #include <sstream>
 
+#include "include/Billinear_interpolation.h"
+
 BillinearInterpolationApp::BillinearInterpolationApp() : message_("") {}
 
 void BillinearInterpolationApp::help(const char *appname, const char *msg) {
   std::stringstream message;
 
-  if (msg)
-    message << "Error: " << msg << '\n';
+  if (msg) message << "Error: " << msg << '\n';
 
   message << "Usage:\n";
   message << "This is a bilinear interpolation application.\n\n";

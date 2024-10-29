@@ -5,13 +5,14 @@
 #define _USE_MATH_DEFINES
 
 #include <math.h>
+
 #include <cmath>
 #include <stdexcept>
 
 class Shape3D {
  public:
-    virtual double volume() const = 0;
-    virtual ~Shape3D() {}
+  virtual double volume() const = 0;
+  virtual ~Shape3D() {}
 };
 
 class Sphere : public Shape3D {

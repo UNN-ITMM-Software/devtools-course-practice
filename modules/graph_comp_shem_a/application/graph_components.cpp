@@ -5,8 +5,8 @@
 #include "include/graph_components_app.h"
 
 int main(int argc, char* argv[]) {
-    auto output = GraphComponentsApplication()(argc, argv);
+  auto output = GraphComponentsApplication()(argc, argv);
 
-    std::cout << output << '\n';
-    return 0;
+  std::cout << output << '\n';
+  return 0;
 }

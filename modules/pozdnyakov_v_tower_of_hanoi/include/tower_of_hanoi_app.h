@@ -8,11 +8,12 @@
 
 class TowerOfHanoiApplication {
  private:
-    std::string msg;
-    TowerOfHanoi tower;
-    bool Validate(int argc, char* argv[]);
-    void Help(const char* application, const char* errMsg = nullptr);
+  std::string msg;
+  TowerOfHanoi tower;
+  bool Validate(int argc, char* argv[]);
+  void Help(const char* application, const char* errMsg = nullptr);
+
  public:
-    TowerOfHanoiApplication() = default;
-    std::string TowerOfHanoiCount(int argc, char* argv[]);
+  TowerOfHanoiApplication() = default;
+  std::string TowerOfHanoiCount(int argc, char* argv[]);
 };

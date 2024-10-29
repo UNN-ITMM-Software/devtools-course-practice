@@ -1,10 +1,10 @@
 // Copyright 2024 Podyachikh Mikhail
 
+#include "include/chess_board.h"
+
 #include <map>
 #include <queue>
 #include <stdexcept>
-
-#include "include/chess_board.h"
 
 #define X first
 #define Y second
@@ -23,27 +23,23 @@ void ChessBoard::addObstacle(const ChessBoard::Point &point) {
 }
 
 bool ChessBoard::inside(const ChessBoard::Point &point) const {
-  if (point.X < 0 || point.X >= _size)
-    return false;
-  if (point.Y < 0 || point.Y >= _size)
-    return false;
+  if (point.X < 0 || point.X >= _size) return false;
+  if (point.Y < 0 || point.Y >= _size) return false;
   return true;
 }
 
 bool ChessBoard::available(const ChessBoard::Point &point) {
-  if (!inside(point))
-    return false;
+  if (!inside(point)) return false;
   // If not obstacle
   return obstacles.find(point) == obstacles.end();
 }
 
-std::set<ChessBoard::Point>
-ChessBoard::getPossibleMoves(const ChessBoard::Point &point) {
+std::set<ChessBoard::Point> ChessBoard::getPossibleMoves(
+    const ChessBoard::Point &point) {
   std::set<Point> possibleMoves;
   for (const auto &move : knightMoves) {
     Point nextPoint = {point.X + move.X, point.Y + move.Y};
-    if (available(nextPoint))
-      possibleMoves.insert(nextPoint);
+    if (available(nextPoint)) possibleMoves.insert(nextPoint);
   }
   return possibleMoves;
 }
@@ -89,8 +85,7 @@ int ChessBoard::bfs(ChessBoard::Point start, ChessBoard::Point end) {
     q.pop();
     auto nextPoints = getPossibleMoves(current);
     for (auto next : nextPoints) {
-      if (dist.find(next) != dist.end())
-        continue;
+      if (dist.find(next) != dist.end()) continue;
       dist[next] = dist[current] + 1;
       q.push(next);
     }

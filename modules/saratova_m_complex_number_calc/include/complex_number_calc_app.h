@@ -8,13 +8,14 @@
 
 class ComplexCalculatorApplication {
  private:
-    std::string msg;
-    ComplexCalculator num1;
-    ComplexCalculator num2;
-    ComplexCalculator result;
-    bool Validate(int argc, char* argv[]);
-    void Help(const char* application, const char* errMsg = nullptr);
+  std::string msg;
+  ComplexCalculator num1;
+  ComplexCalculator num2;
+  ComplexCalculator result;
+  bool Validate(int argc, char* argv[]);
+  void Help(const char* application, const char* errMsg = nullptr);
+
  public:
-    ComplexCalculatorApplication() = default;
-    std::string ComplexCalculatorCalculation(int argc, char* argv[]);
+  ComplexCalculatorApplication() = default;
+  std::string ComplexCalculatorCalculation(int argc, char* argv[]);
 };

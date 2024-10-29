@@ -2,12 +2,12 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cmath>
 #include <stdexcept>
-#include <vector>
-#include <utility>
-#include <algorithm>
 #include <string>
+#include <utility>
+#include <vector>
 
 #include "include/konovalov_i_euler_f.h"
 

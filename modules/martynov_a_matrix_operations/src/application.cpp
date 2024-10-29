@@ -1,8 +1,9 @@
 // Copyright 2024 Shubin Mikhail
 
+#include "include/application.hpp"
+
 #include <sstream>
 
-#include "include/application.hpp"
 #include "include/tmatrix.h"
 
 #define REQ_ARGC 5
@@ -78,43 +79,35 @@ std::string MatOpsApplication::Parse(int argc, char *argv[]) {
     double double_res;
     std::ostringstream msg_stream;
     switch (string4[0]) {
-    case '+':
-      matrix_res = matrix1 + matrix2;
-      msg_stream << "matrix1: "
-             << matrix1 << " matrix2: "
-             << matrix2 << " result (sum): "
-             << matrix_res << std::endl;
-      break;
-    case '-':
-      matrix_res = matrix1 - matrix2;
-      msg_stream << "matrix1: "
-             << matrix1 << " matrix2: "
-             << matrix2 << " result (sub): "
-             << matrix_res << std::endl;
-      break;
-    case '*':
-      matrix_res = matrix1 * matrix2;
-      msg_stream << "matrix1: "
-             << matrix1 << " matrix2: "
-             << matrix2 << " result (mult): "
-             << matrix_res << std::endl;
-      break;
-    case 'i':
-      matrix_res = matrix1.findInverse();
-      msg_stream << "matrix: "
-             << matrix1 << " result (inverse): "
-             << matrix_res << std::endl;
-      break;
-    case 'd':
-      double_res = matrix1.findDeterm();
-      msg_stream << "matrix: "
-             << matrix1 << " result (det): "
-             << double_res << std::endl;
-      break;
-    default:
-      Help(argv[0], "Unknown operation.");
-      return message_;
-      break;
+      case '+':
+        matrix_res = matrix1 + matrix2;
+        msg_stream << "matrix1: " << matrix1 << " matrix2: " << matrix2
+                   << " result (sum): " << matrix_res << std::endl;
+        break;
+      case '-':
+        matrix_res = matrix1 - matrix2;
+        msg_stream << "matrix1: " << matrix1 << " matrix2: " << matrix2
+                   << " result (sub): " << matrix_res << std::endl;
+        break;
+      case '*':
+        matrix_res = matrix1 * matrix2;
+        msg_stream << "matrix1: " << matrix1 << " matrix2: " << matrix2
+                   << " result (mult): " << matrix_res << std::endl;
+        break;
+      case 'i':
+        matrix_res = matrix1.findInverse();
+        msg_stream << "matrix: " << matrix1
+                   << " result (inverse): " << matrix_res << std::endl;
+        break;
+      case 'd':
+        double_res = matrix1.findDeterm();
+        msg_stream << "matrix: " << matrix1 << " result (det): " << double_res
+                   << std::endl;
+        break;
+      default:
+        Help(argv[0], "Unknown operation.");
+        return message_;
+        break;
     }
 
     message_ = msg_stream.str();
@@ -147,12 +140,14 @@ void MatOpsApplication::Help(const char *application, const char *message) {
     _message << "This is a matrix calculator.\n";
   }
   _message << "Usage:\n";
-  _message << '\t' << application << " <size> <first matrix>"
-    " <operation> <second matrix>\n";
+  _message << '\t' << application
+           << " <size> <first matrix>"
+              " <operation> <second matrix>\n";
   _message << "Where:\n";
   _message << '\t' << "<size> is the size of the matrix.\n";
   _message << '\t' << "<first matrix>, <second matrix> are input matrices.\n";
-  _message << '\t' << "<operation> is operation over matrix/ces"
-    " (+ (sum), - (sub), * (mult), i (inversion), d (determiant)).\n";
+  _message << '\t'
+           << "<operation> is operation over matrix/ces"
+              " (+ (sum), - (sub), * (mult), i (inversion), d (determiant)).\n";
   message_ = _message.str();
 }

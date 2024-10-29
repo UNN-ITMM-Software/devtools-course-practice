@@ -36,9 +36,7 @@ Vector3d Vector3d::crossProduct(const Vector3d &vector) const {
   };
 }
 
-double Vector3d::squareNorm() const {
-  return x * x + y * y + z * z;
-}
+double Vector3d::squareNorm() const { return x * x + y * y + z * z; }
 
 Vector3d Vector3d::operator/(double factor) const {
   if (std::abs(factor) < EPSILON) {
@@ -60,10 +58,8 @@ Vector3d Vector3d::operator-(const Vector3d &v) const {
 }
 
 bool Vector3d::operator==(const Vector3d &v) const {
-  return std::abs(x - v.x) < EPSILON &&
-         std::abs(y - v.y) < EPSILON && std::abs(z - v.z) < EPSILON;
+  return std::abs(x - v.x) < EPSILON && std::abs(y - v.y) < EPSILON &&
+         std::abs(z - v.z) < EPSILON;
 }
 
-bool Vector3d::operator!=(const Vector3d &v) const {
-  return !operator==(v);
-}
+bool Vector3d::operator!=(const Vector3d &v) const { return !operator==(v); }

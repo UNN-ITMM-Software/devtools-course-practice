@@ -2,12 +2,12 @@
 #ifndef MODULES_FEDOTOV_K_SET_INCLUDE_SET_H_
 #define MODULES_FEDOTOV_K_SET_INCLUDE_SET_H_
 
+#include <algorithm>
 #include <iostream>
 #include <ostream>
 #include <string>
 #include <utility>
 #include <vector>
-#include <algorithm>
 
 class Set {
  private:

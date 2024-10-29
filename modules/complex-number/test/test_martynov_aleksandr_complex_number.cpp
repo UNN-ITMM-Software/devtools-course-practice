@@ -22,7 +22,6 @@ TEST(Martynov_Aleksandr_ComplexNumberTest, Can_Create_Zero) {
   EXPECT_EQ(imagine_1, z1.getIm());
 }
 
-
 TEST(Martynov_Aleksandr_ComplexNumberTest, Add_Numbers) {
   double real_1 = 1.0;
   double imagine_1 = 8.0;
@@ -36,7 +35,6 @@ TEST(Martynov_Aleksandr_ComplexNumberTest, Add_Numbers) {
   EXPECT_EQ(real_1 + real_2, z3.getRe());
   EXPECT_EQ(imagine_1 + imagine_2, z3.getIm());
 }
-
 
 TEST(Martynov_Aleksandr_ComplexNumberTest, Divide_Numbers) {
   double r1 = 4.2;
