@@ -62,7 +62,5 @@ TEST(Kachalov_Mikhail_ComplexNumberTest, Division_By_Zero_ComplexNumbers) {
     ComplexNumber z1(4.0, 2.0);
     ComplexNumber z2(0.0, 0.0);
 
-    EXPECT_THROW({
-        ComplexNumber result = z1 / z2;
-    }, std::runtime_error);
+    EXPECT_THROW(z1 / z2, std::runtime_error);
 }
