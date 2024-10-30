@@ -57,3 +57,12 @@ TEST(Kachalov_Mikhail_ComplexNumberTest, Can_Divide_ComplexNumbers) {
     EXPECT_NEAR(1.0, result.getRe(), 1e-9);
     EXPECT_NEAR(1.0, result.getIm(), 1e-9);
 }
+
+TEST(Kachalov_Mikhail_ComplexNumberTest, Division_By_Zero_ComplexNumbers) {
+    ComplexNumber z1(4.0, 2.0);
+    ComplexNumber z2(0.0, 0.0);
+
+    EXPECT_THROW({
+        ComplexNumber result = z1 / z2;
+    }, std::runtime_error);
+}
