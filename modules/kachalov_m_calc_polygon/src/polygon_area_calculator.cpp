@@ -10,7 +10,7 @@ void PolygonAreaCalculator::addVertex(double x, double y) {
 
 double PolygonAreaCalculator::calculateArea() const {
     if (vertices.size() < 3) {
-        throw std::logic_error("A polygon must have at least 3 vertices ");
+        throw std::logic_error("A polygon must have at least 3 vertices");
     }
 
     double area = 0.0;
