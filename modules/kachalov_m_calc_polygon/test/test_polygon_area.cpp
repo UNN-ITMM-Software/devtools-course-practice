@@ -123,5 +123,5 @@ TEST(Kachalov_PolygonAreaCalculator, ThrowsExceptionForInsufficientVertices) {
     areaCalculator.addVertex(0.0, 0.0);
     areaCalculator.addVertex(1.0, 1.0);
 
-    EXPECT_ANY_THROW(areaCalculator.calculateArea());
+    EXPECT_THROW(areaCalculator.calculateArea(), std::logic_error);
 }

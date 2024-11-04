@@ -18,9 +18,9 @@ double PolygonAreaCalculator::calculateArea() const {
 
     for (int i = 0; i < n; ++i) {
         int j = (i + 1) % n;
-        area += vertices[i].first * vertices[j].second;
-        area -= vertices[i].second * vertices[j].first;
+        area += (vertices[i].first * vertices[j].second
+         - vertices[i].second * vertices[j].first);
     }
 
-    return std::abs(area) / 2.0;
+    return std::abs(area) * 0.5;
 }
