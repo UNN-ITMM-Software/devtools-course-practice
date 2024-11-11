@@ -16,7 +16,7 @@ add_test(
  COMMAND ${APPLICATION} 8.0 1 1 1 1
 )
 set_tests_properties(${prefix}_insufficient_arguments PROPERTIES
- PASS_REGULAR_EXPRESSION "Not enough arguments. Please provide 6 numbers for the book price and counts."
+ PASS_REGULAR_EXPRESSION "Not enough values. Please provide 6 numbers for the book price, counts"
  LABELS "${MODULE}")
 
 add_test(
