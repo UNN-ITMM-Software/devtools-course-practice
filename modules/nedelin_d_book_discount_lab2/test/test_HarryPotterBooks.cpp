@@ -6,7 +6,8 @@
 TEST(Nedelin_HarryPotterBooksTest, ConstructEmptyVector) {
     std::vector<int> empty_books;
     double price_book = 8.0;
-    EXPECT_THROW(HarryPotterBooks hpBooks(price_book, empty_books), std::invalid_argument);
+    EXPECT_THROW(HarryPotterBooks hpBooks(price_book, empty_books),
+        std::invalid_argument);
 }
 
 TEST(Nedelin_HarryPotterBooksTest, SetterEmptyVector) {
