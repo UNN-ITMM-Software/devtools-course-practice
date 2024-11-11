@@ -2,8 +2,8 @@
 
 #include "include/HarryPotterBooks.h"
 
-HarryPotterBooks::HarryPotterBooks(const std::vector<int>& book_counts)
-    : books(book_counts) {
+HarryPotterBooks::HarryPotterBooks(double price, const std::vector<int>& book_counts)
+    : bookPrice(price), books(book_counts) {
     if (books.empty()) {
         throw std::invalid_argument("Empty vector provided in constructor");
     }
