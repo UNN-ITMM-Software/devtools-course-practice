@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 
+
 #include "include/levenshtein_distance.h"
 TEST(zhatkin_v_levenshtein_distance, constructors) {
   LevenshteinDistance ld1;
