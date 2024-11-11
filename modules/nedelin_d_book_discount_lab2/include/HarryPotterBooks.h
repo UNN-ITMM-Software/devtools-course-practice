@@ -7,8 +7,8 @@
 #include <stdexcept>
 
 class HarryPotterBooks {
-    std::vector<int> books;
     double bookPrice;
+    std::vector<int> books;
 
  public:
     explicit HarryPotterBooks(double price,
