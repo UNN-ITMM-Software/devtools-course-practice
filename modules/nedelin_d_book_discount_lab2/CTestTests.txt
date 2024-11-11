@@ -1,0 +1,69 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+# Базовый тест: проверка запуска
+add_test(
+ NAME ${prefix}_can_Run
+ COMMAND ${APPLICATION} 8.0 1 1 1 1 1
+)
+set_tests_properties(${prefix}_can_Run PROPERTIES LABELS "${MODULE}")
+
+add_test(
+ NAME ${prefix}_insufficient_arguments
+ COMMAND ${APPLICATION} 8.0 1 1 1 1
+)
+set_tests_properties(${prefix}_insufficient_arguments PROPERTIES
+ PASS_REGULAR_EXPRESSION "Not enough values. Please provide 6 numbers for the book price, counts"
+ LABELS "${MODULE}")
+
+add_test(
+ NAME ${prefix}_valid_arguments_one_book
+ COMMAND ${APPLICATION} 8.0 1 0 0 0 0
+)
+set_tests_properties(${prefix}_valid_arguments_one_book PROPERTIES
+ PASS_REGULAR_EXPRESSION "Total price: 8"
+ LABELS "${MODULE}")
+
+add_test(
+ NAME ${prefix}_valid_arguments_two_books
+ COMMAND ${APPLICATION} 8.0 1 1 0 0 0
+)
+set_tests_properties(${prefix}_valid_arguments_two_books PROPERTIES
+ PASS_REGULAR_EXPRESSION "Total price: 15.2"
+ LABELS "${MODULE}")
+
+add_test(
+ NAME ${prefix}_valid_arguments_three_books
+ COMMAND ${APPLICATION} 8.0 1 1 1 0 0
+)
+set_tests_properties(${prefix}_valid_arguments_three_books PROPERTIES
+ PASS_REGULAR_EXPRESSION "Total price: 21.6"
+ LABELS "${MODULE}")
+
+add_test(
+ NAME ${prefix}_valid_arguments_four_books
+ COMMAND ${APPLICATION} 8.0 1 1 1 1 0
+)
+set_tests_properties(${prefix}_valid_arguments_four_books PROPERTIES
+ PASS_REGULAR_EXPRESSION "Total price: 25.6"
+ LABELS "${MODULE}")
+
+add_test(
+ NAME ${prefix}_valid_arguments_five_books
+ COMMAND ${APPLICATION} 8.0 1 1 1 1 1
+)
+set_tests_properties(${prefix}_valid_arguments_five_books PROPERTIES
+ PASS_REGULAR_EXPRESSION "Total price: 30"
+ LABELS "${MODULE}")
+
+# Тест для случая, когда количество книг одного вида больше 5
+add_test(
+ NAME ${prefix}_more_than_five_books_one_type
+ COMMAND ${APPLICATION} 8.0 6 0 0 0 0
+)
+set_tests_properties(${prefix}_more_than_five_books_one_type PROPERTIES
+ PASS_REGULAR_EXPRESSION "Total price: 48"
+ LABELS "${MODULE}")
