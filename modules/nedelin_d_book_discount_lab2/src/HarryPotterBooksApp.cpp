@@ -8,8 +8,8 @@
 #include "include/HarryPotterBooks.h"
 
 
-std::string HarryPotterBooksApp::calculatePrice(const std::vector<int>& books) {
-    HarryPotterBooks hpBooks(books);
+std::string HarryPotterBooksApp::calculatePrice(double price, const std::vector<int>& books) {
+    HarryPotterBooks hpBooks(price, books);
     double totalPrice = hpBooks.calculateTotalPrice();
     std::stringstream ss;
     ss << "Total price: " << totalPrice;
@@ -18,11 +18,16 @@ std::string HarryPotterBooksApp::calculatePrice(const std::vector<int>& books) {
 
 std::string HarryPotterBooksApp::run(int argc, char* argv[]) {
     std::vector<int> books;
-    if (argc < 6) {
-return "Not enough arguments. Please provide 5 numbers for the book counts.";
+    double price;
+    if (argc < 7) {
+return "Not enough arguments. Please provide 6 numbers for the book price and counts.";
     }
-    for (int i = 1; i < 6; ++i) {
+    for (int i = 1; i < 7; ++i) {
+        if (i == 1) {
+            price = std::stoi(argv[i]);
+            continue;
+        }
         books.push_back(std::stoi(argv[i]));
     }
-    return calculatePrice(books);
+    return calculatePrice(price, books);
 }

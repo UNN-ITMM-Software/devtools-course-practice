@@ -10,7 +10,7 @@ class HarryPotterBooksApp {
     std::string run(int argc, char* argv[]);
 
  private:
-    std::string calculatePrice(const std::vector<int>& books);
+    std::string calculatePrice(double price, const std::vector<int>& books);
 };
 
 #endif  // MODULES_NEDELIN_D_BOOK_DISCOUNT_LAB2_INCLUDE_HARRYPOTTERBOOKSAPP_H_
