@@ -8,6 +8,10 @@ void PolygonAreaCalculator::addVertex(double x, double y) {
     vertices.emplace_back(x, y);
 }
 
+void PolygonAreaCalculator::clearVertices() {
+    vertices.clear();
+}
+
 double PolygonAreaCalculator::calculateArea() const {
     if (vertices.size() < 3) {
         throw std::logic_error("A polygon must have at least 3 vertices");

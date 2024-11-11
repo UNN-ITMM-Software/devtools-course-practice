@@ -11,6 +11,7 @@ class PolygonAreaCalculator {
   void addVertex(double x, double y);
 
   double calculateArea() const;
+  void clearVertices();
 
  private:
   std::vector<std::pair<double, double>> vertices;
