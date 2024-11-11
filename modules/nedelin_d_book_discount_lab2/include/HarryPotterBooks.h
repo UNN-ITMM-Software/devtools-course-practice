@@ -11,8 +11,8 @@ class HarryPotterBooks {
     double bookPrice;
 
  public:
-
-    explicit HarryPotterBooks(double price, const std::vector<int>& book_counts);
+    explicit HarryPotterBooks(double price,
+        const std::vector<int>& book_counts);
 
     std::vector<int> getBooks() const;
     void setBooks(const std::vector<int>& book_counts);
