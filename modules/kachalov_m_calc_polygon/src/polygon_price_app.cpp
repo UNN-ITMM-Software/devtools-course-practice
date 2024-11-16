@@ -23,18 +23,16 @@ std::string PolygonPriceApp::operator()(int argc, char** argv) {
     double area = areaCalculator.calculateArea();
     double cost = area * pricePerSquareMeter;
 
-    sMessage = "Area: " + std::to_string(area) + " square meters\n";
-    sMessage += "Cost: " + std::to_string(cost) + " currency units\n";
+    sMessage = "Area: " + std::to_string(area) + " square meters\n" +
+               "Cost: " + std::to_string(cost) + " currency units\n";
 
     return sMessage;
 }
 
 void PolygonPriceApp::help(const char* appname, const char* message) {
     sMessage = "Usage: " + std::string(appname) +
-               " <x1> <y1> <x2> <y2> <x3> <y3> ... <price_per_square_meter>\n";
-    if (message) {
-        sMessage += std::string(message) + "\n";
-    }
+               " <x1> <y1> <x2> <y2> <x3> <y3> ... <price_per_square_meter>\n" +
+               std::string(message) + "\n";
 }
 
 void PolygonPriceApp::parseArgs(int argc, char** argv) {
