@@ -1,0 +1,51 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_empty
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_run_empty PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage:"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_vertices
+    COMMAND ${APPLICATION} 0 0 1 0 1000
+)
+set_tests_properties(${prefix}_run_invalid_vertices PROPERTIES
+    PASS_REGULAR_EXPRESSION "invalid arguments number"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_invalid_arguments
+    COMMAND ${APPLICATION} 0 0 2 e 1 1 2 0 0 2 1000
+)
+set_tests_properties(${prefix}_run_invalid_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "invalid_argument"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_run_valid
+    COMMAND ${APPLICATION} 0 0 1 0 1 1 0 1 1000
+)
+set_tests_properties(${prefix}_run_valid PROPERTIES
+    PASS_REGULAR_EXPRESSION "Area: 1.000000 square meters"
+    PASS_REGULAR_EXPRESSION "Cost: 1000.000000 currency units"
+    LABELS "${MODULE}"
+)
