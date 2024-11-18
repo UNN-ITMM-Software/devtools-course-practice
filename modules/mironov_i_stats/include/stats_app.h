@@ -10,5 +10,5 @@ class StatisticsApp {
     StatisticsApp();
     std::string operator()(int argc, char* argv[]) const;
  private:
-    std::vector<float> ParseData(const std::vector<std::string>& args) const;
+    std::vector<float> ParseData(int argc, char* argv[], int startIndex) const;
 };

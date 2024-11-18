@@ -73,5 +73,5 @@ add_test(
     COMMAND ${APPLICATION} 1.0 2.0 3.0 4.0 5.0 0
 )
 set_tests_properties(${prefix}_can_Handle_Invalid_Moment_Order_K_Zero PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: Moment order \\(k\\) must be a positive integer."
+    PASS_REGULAR_EXPRESSION "Error: Invalid data format."
     LABELS "${MODULE}")

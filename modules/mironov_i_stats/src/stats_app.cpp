@@ -1,4 +1,5 @@
 // Copyright 2024 Kachalov Mikhail
+
 #include "include/stats_app.h"
 #include "include/stats.h"
 
@@ -13,7 +14,8 @@ StatisticsApp::StatisticsApp() {}
 
 std::string StatisticsApp::operator()(int argc, char* argv[]) const {
     if (argc < 3) {
-        return "Error: Insufficient arguments. Provide data as space-separated floats and a moment order (k).";
+        return "Error: Insufficient arguments. "
+               "Provide data as space-separated floats and a moment order (k).";
     }
 
     std::vector<std::string> args(argv + 1, argv + argc);
@@ -21,10 +23,11 @@ std::string StatisticsApp::operator()(int argc, char* argv[]) const {
     size_t k;
 
     try {
-        k = std::stoll(args.back());
-        args.pop_back();
-
-        data = ParseData(args);
+        k = std::stoll(argv[argc - 1]);
+        if (k == 0) {
+            throw std::invalid_argument("Moment order (k) must be a positive integer.");
+        }
+        data = ParseData(argc - 1, argv, 1);
 
         float mean = stats::mean(data);
         float variance = stats::var(data);
@@ -46,13 +49,12 @@ std::string StatisticsApp::operator()(int argc, char* argv[]) const {
     }
 }
 
-std::vector<float> StatisticsApp::ParseData(const std::vector<std::string>& args) const {
+std::vector<float> StatisticsApp::ParseData(int argc, char* argv[], int startIndex) const {
     std::vector<float> data;
 
-    for (const auto& token : args) {
+    for (int i = startIndex; i < argc; ++i) {
         try {
-            float num = std::stof(token);
-            data.push_back(num);
+            data.push_back(std::stof(argv[i]));
         } catch (const std::invalid_argument&) {
             throw std::invalid_argument("Error: Invalid data format.");
         } catch (const std::out_of_range&) {
@@ -60,4 +62,5 @@ std::vector<float> StatisticsApp::ParseData(const std::vector<std::string>& args
         }
     }
 
+    return data;
 }
