@@ -25,7 +25,8 @@ std::string StatisticsApp::operator()(int argc, char* argv[]) const {
     try {
         k = std::stoll(argv[argc - 1]);
         if (k == 0) {
-            throw std::invalid_argument("Moment order (k) must be a positive integer.");
+            throw std::invalid_argument(
+                "Moment order (k) must be a positive integer.");
         }
         data = ParseData(argc - 1, argv, 1);
 
@@ -49,7 +50,8 @@ std::string StatisticsApp::operator()(int argc, char* argv[]) const {
     }
 }
 
-std::vector<float> StatisticsApp::ParseData(int argc, char* argv[], int startIndex) const {
+std::vector<float> StatisticsApp::ParseData(
+    int argc, char* argv[], int startIndex) const {
     std::vector<float> data;
 
     for (int i = startIndex; i < argc; ++i) {
