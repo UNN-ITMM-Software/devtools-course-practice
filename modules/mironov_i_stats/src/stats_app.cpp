@@ -53,6 +53,7 @@ std::string StatisticsApp::operator()(int argc, char* argv[]) const {
 std::vector<float> StatisticsApp::ParseData(
     int argc, char* argv[], int startIndex) const {
     std::vector<float> data;
+    data.reserve(argc - startIndex);
 
     for (int i = startIndex; i < argc; ++i) {
         try {
