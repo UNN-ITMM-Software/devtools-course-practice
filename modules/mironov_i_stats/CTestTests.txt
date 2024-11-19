@@ -1,0 +1,77 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties(${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties(${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Insufficient arguments"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Invalid_Data_Format
+    COMMAND ${APPLICATION} 1.0 era 3.0 5
+)
+message(STATUS "Running test: ${prefix}_can_Detect_Invalid_Data_Format")
+set_tests_properties(${prefix}_can_Detect_Invalid_Data_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid data format."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Process_Valid_Data_With_K_3
+    COMMAND ${APPLICATION} 1.0 2.0 3.0 4.0 5.0 3
+)
+set_tests_properties(${prefix}_can_Process_Valid_Data_With_K_3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Mean: 3\nVariance \\(direct\\): 2\nVariance \\(via moment\\): 2\nMoment \\(k = 3\\): 0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Process_Valid_Data_With_K_2
+    COMMAND ${APPLICATION} 1.0 2.0 3.0 4.0 5.0 2
+)
+set_tests_properties(${prefix}_can_Process_Valid_Data_With_K_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Mean: 3\nVariance \\(direct\\): 2\nVariance \\(via moment\\): 2\nMoment \\(k = 2\\): 2"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Process_Negative_Data_With_K_2
+    COMMAND ${APPLICATION} -1.0 -2.0 -3.0 -4.0 -5.0 2
+)
+set_tests_properties(${prefix}_can_Process_Negative_Data_With_K_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Mean: -3\nVariance \\(direct\\): 2\nVariance \\(via moment\\): 2\nMoment \\(k = 2\\): 2"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Handle_Single_Value_With_K_1
+    COMMAND ${APPLICATION} 42.0 1
+)
+set_tests_properties(${prefix}_can_Handle_Single_Value_With_K_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Mean: 42\nVariance \\(direct\\): 0\nVariance \\(via moment\\): 0\nMoment \\(k = 1\\): 0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Handle_Out_Of_Range
+    COMMAND ${APPLICATION} 1e1000 3
+)
+set_tests_properties(${prefix}_can_Handle_Out_Of_Range PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Value out of range."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Handle_Invalid_Moment_Order_K_Zero
+    COMMAND ${APPLICATION} 1.0 2.0 3.0 4.0 5.0 0
+)
+set_tests_properties(${prefix}_can_Handle_Invalid_Moment_Order_K_Zero PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: Invalid data format."
+    LABELS "${MODULE}")
