@@ -1,6 +1,5 @@
-# Спецкурс "Инструменты разработки ПО"
+# Спецкурс "Инструменты разработки ПО" 2024
 
-[![Join the chat](https://img.shields.io/badge/chat-Telegram-green?logo=telegram)][chat]
 [![HTML][html-badge]][html]
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
@@ -12,7 +11,6 @@
 
 ## Ресурсы
 
- - Коммуникация: [Chat][chat]
  - [Таблица успеваемости][hall-of-fame]
  - Инструкции по выполнению [лабораторных работ][labs]
  - Теория
@@ -22,7 +20,6 @@
 
 <!-- LINKS -->
 
-[chat]:              https://t.me/+TBx0NsRiJ-IxNTMy
 [hall-of-fame]:      https://UNN-ITMM-Software.github.io/devtools-course-practice
 [labs]:              ./lab-guide
 [control-questions]: https://github.com/UNN-ITMM-Software/devtools-course-theory/blob/master/slides/control-questions.md
