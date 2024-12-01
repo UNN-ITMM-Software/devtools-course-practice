@@ -6,9 +6,6 @@
 #include <stdexcept>
 #include <sstream>
 
-#include <stdexcept>
-#include <sstream>
-
 std::vector<std::string> Application::runApp(int argc, const char** argv) {
     std::vector<std::string> output;
 

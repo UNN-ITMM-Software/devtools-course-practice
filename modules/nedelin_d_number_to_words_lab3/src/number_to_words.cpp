@@ -19,8 +19,8 @@ std::string NumberToWords::convert(int number) {
         return "zero";
     }
     if (number == INT_MIN) {
-        return "negative two billion one hundred forty seven million four hundred "
-            "eighty three thousand six hundred forty eight";
+        return "negative two billion one hundred forty seven million four "
+            "hundred eighty three thousand six hundred forty eight";
     }
 
     std::stringstream ss;
@@ -68,7 +68,7 @@ std::string NumberToWords::convert(int number) {
 std::string NumberToWords::convertLessThanOneThousand(int number) {
     static const std::array<std::string, 20> units{
         "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
-        "nine","ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+        "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
         "sixteen", "seventeen", "eighteen", "nineteen"
     };
     static const std::array<std::string, 10> tens{
