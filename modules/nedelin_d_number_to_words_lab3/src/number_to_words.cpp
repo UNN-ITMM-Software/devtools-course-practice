@@ -20,7 +20,7 @@ std::string NumberToWords::convert(int number) {
     }
     if (number == INT_MIN) {
         return "negative two billion one hundred forty seven million four "
-            "hundred eighty three thousand six hundred forty eight";
+               "hundred eighty three thousand six hundred forty eight";
     }
 
     std::stringstream ss;
@@ -30,9 +30,9 @@ std::string NumberToWords::convert(int number) {
         number = -number;
     }
 
-    static constexpr int BILLION = 1'000'000'000;
-    static constexpr int MILLION = 1'000'000;
-    static constexpr int THOUSAND = 1'000;
+    static constexpr int BILLION = 1000000000;
+    static constexpr int MILLION = 1000000;
+    static constexpr int THOUSAND = 1000;
 
     if (number >= BILLION) {
         ss << convertLessThanOneThousand(number / BILLION) << " billion";

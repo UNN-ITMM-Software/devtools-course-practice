@@ -31,16 +31,16 @@ TEST(NumberToWordsTest, ConvertNegativeNumbers) {
 
 TEST(NumberToWordsTest, ConvertLargeNumbers) {
     NumberToWords converter;
-    ASSERT_EQ(converter.convert(1'000'000'000), "one billion");
-    ASSERT_EQ(converter.convert(1'172'839'450),
+    ASSERT_EQ(converter.convert(1000000000), "one billion");
+    ASSERT_EQ(converter.convert(1172839450),
         "one billion one hundred seventy two million eight hundred "
         "thirty nine thousand four hundred fifty");
 }
 
 TEST(NumberToWordsTest, ConvertNegativeLargeNumbers) {
     NumberToWords converter;
-    ASSERT_EQ(converter.convert(-1'000'000'000), "negative one billion");
-    ASSERT_EQ(converter.convert(-1'172'839'450),
+    ASSERT_EQ(converter.convert(-1000000000), "negative one billion");
+    ASSERT_EQ(converter.convert(-1172839450),
         "negative one billion one hundred seventy two million "
         "eight hundred thirty nine thousand four hundred fifty");
 }
@@ -110,6 +110,7 @@ TEST(ApplicationTest, Boundary_MaxInt) {
     Application app;
     const char* argv[] = { "app", "2147483647" };
     auto output = app.runApp(2, argv);
+    ASSERT_EQ(output.size(), 1);
     EXPECT_EQ(output[0],
         "two billion one hundred forty seven million four hundred "
         "eighty three thousand six hundred forty seven");
