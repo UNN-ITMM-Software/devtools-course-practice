@@ -15,9 +15,11 @@ TEST(NumberToWordsTest, ConvertPositiveNumbers) {
     ASSERT_EQ(converter.convert(1), "one");
     ASSERT_EQ(converter.convert(12), "twelve");
     ASSERT_EQ(converter.convert(123), "one hundred twenty three");
-    ASSERT_EQ(converter.convert(1234), "one thousand two hundred thirty four");
+    ASSERT_EQ(converter.convert(1234),
+        "one thousand two hundred thirty four");
     ASSERT_EQ(converter.convert(1234567),
-    "one million two hundred thirty four thousand five hundred sixty seven");
+        "one million two hundred thirty four thousand "
+        "five hundred sixty seven");
 }
 
 TEST(NumberToWordsTest, ConvertNegativeNumbers) {
@@ -31,21 +33,27 @@ TEST(NumberToWordsTest, ConvertLargeNumbers) {
     NumberToWords converter;
     ASSERT_EQ(converter.convert(1'000'000'000), "one billion");
     ASSERT_EQ(converter.convert(1'172'839'450),
-        "one billion one hundred seventy two million eight hundred thirty nine thousand four hundred fifty");
+        "one billion one hundred seventy two million eight hundred "
+        "thirty nine thousand four hundred fifty");
 }
 
 TEST(NumberToWordsTest, ConvertNegativeLargeNumbers) {
     NumberToWords converter;
     ASSERT_EQ(converter.convert(-1'000'000'000), "negative one billion");
     ASSERT_EQ(converter.convert(-1'172'839'450),
-        "negative one billion one hundred seventy two million eight hundred thirty nine thousand four hundred fifty");
+        "negative one billion one hundred seventy two million "
+        "eight hundred thirty nine thousand four hundred fifty");
 }
 
 TEST(NumberToWordsTest, ConvertEdgeCases) {
     NumberToWords converter;
     ASSERT_EQ(converter.convert(0), "zero");
-    ASSERT_EQ(converter.convert(INT_MAX), "two billion one hundred forty seven million four hundred eighty three thousand six hundred forty seven");
-    ASSERT_EQ(converter.convert(INT_MIN), "negative two billion one hundred forty seven million four hundred eighty three thousand six hundred forty eight");
+    ASSERT_EQ(converter.convert(INT_MAX),
+        "two billion one hundred forty seven million four hundred "
+        "eighty three thousand six hundred forty seven");
+    ASSERT_EQ(converter.convert(INT_MIN),
+        "negative two billion one hundred forty seven million four "
+        "hundred eighty three thousand six hundred forty eight");
 }
 
 TEST(NumberToWordsTest, ConvertTensAndUnits) {
@@ -93,13 +101,16 @@ TEST(ApplicationTest, Boundary_MinInt) {
     const char* argv[] = { "app", "-2147483648" };
     auto output = app.runApp(2, argv);
     ASSERT_EQ(output.size(), 1);
-    EXPECT_EQ(output[0], "negative two billion one hundred forty seven million four hundred eighty three thousand six hundred forty eight");
+    EXPECT_EQ(output[0],
+        "negative two billion one hundred forty seven million four "
+        "hundred eighty three thousand six hundred forty eight");
 }
 
 TEST(ApplicationTest, Boundary_MaxInt) {
     Application app;
     const char* argv[] = { "app", "2147483647" };
     auto output = app.runApp(2, argv);
-    ASSERT_EQ(output.size(), 1);
-    EXPECT_EQ(output[0], "two billion one hundred forty seven million four hundred eighty three thousand six hundred forty seven");
+    EXPECT_EQ(output[0],
+        "two billion one hundred forty seven million four hundred "
+        "eighty three thousand six hundred forty seven");
 }
