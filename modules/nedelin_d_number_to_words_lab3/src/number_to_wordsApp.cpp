@@ -4,9 +4,7 @@
 #include "include/number_to_wordsApp.h"
 
 #include <stdexcept>
-#include <string>
 #include <sstream>
-#include <vector>
 
 #include <stdexcept>
 #include <sstream>
