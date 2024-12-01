@@ -2,6 +2,7 @@
 
 #include "include/number_to_words.h"
 
+#include <climits>
 #include <sstream>
 #include <array>
 
