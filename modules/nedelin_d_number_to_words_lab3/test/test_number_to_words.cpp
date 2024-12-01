@@ -69,7 +69,7 @@ TEST(ApplicationTest, ValidInput_PositiveNumber) {
     Application app;
     const char* argv[] = { "app", "123" };
     auto output = app.runApp(2, argv);
-    ASSERT_EQ(output.size(), 1);
+    ASSERT_EQ(output.size(), static_cast<size_t>(1));
     EXPECT_EQ(output[0], "one hundred twenty three");
 }
 
@@ -77,7 +77,7 @@ TEST(ApplicationTest, ValidInput_NegativeNumber) {
     Application app;
     const char* argv[] = { "app", "-456" };
     auto output = app.runApp(2, argv);
-    ASSERT_EQ(output.size(), 1);
+    ASSERT_EQ(output.size(), static_cast<size_t>(1));
     EXPECT_EQ(output[0], "negative four hundred fifty six");
 }
 
@@ -85,7 +85,7 @@ TEST(ApplicationTest, InvalidInput_NonNumeric) {
     Application app;
     const char* argv[] = { "app", "abc" };
     auto output = app.runApp(2, argv);
-    ASSERT_EQ(output.size(), 1);
+    ASSERT_EQ(output.size(), static_cast<size_t>(1));
     EXPECT_EQ(output[0], "Invalid number format!");
 }
 
@@ -93,7 +93,7 @@ TEST(ApplicationTest, MissingArgument) {
     Application app;
     const char* argv[] = { "app" };
     auto output = app.runApp(1, argv);
-    ASSERT_EQ(output.size(), 1);
+    ASSERT_EQ(output.size(), static_cast<size_t>(1));
     EXPECT_EQ(output[0], "Usage: number_to_words <number>");
 }
 
@@ -101,7 +101,7 @@ TEST(ApplicationTest, Boundary_MinInt) {
     Application app;
     const char* argv[] = { "app", "-2147483648" };
     auto output = app.runApp(2, argv);
-    ASSERT_EQ(output.size(), 1);
+    ASSERT_EQ(output.size(), static_cast<size_t>(1));
     EXPECT_EQ(output[0],
         "negative two billion one hundred forty seven million four "
         "hundred eighty three thousand six hundred forty eight");
@@ -111,7 +111,7 @@ TEST(ApplicationTest, Boundary_MaxInt) {
     Application app;
     const char* argv[] = { "app", "2147483647" };
     auto output = app.runApp(2, argv);
-    ASSERT_EQ(output.size(), 1);
+    ASSERT_EQ(output.size(), static_cast<size_t>(1));
     EXPECT_EQ(output[0],
         "two billion one hundred forty seven million four hundred "
         "eighty three thousand six hundred forty seven");
