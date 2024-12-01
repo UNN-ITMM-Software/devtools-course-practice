@@ -1,10 +1,10 @@
 // Copyright 2024 Nedelin Dmitry
 
 #include <gtest/gtest.h>
+#include <climits>
 
 #include "include/number_to_words.h"
 #include "include/number_to_wordsApp.h"
-#include <climits>
 
 TEST(NumberToWordsTest, ConvertZero) {
     NumberToWords converter;
