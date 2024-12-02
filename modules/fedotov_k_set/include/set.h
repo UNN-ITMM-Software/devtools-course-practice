@@ -5,11 +5,11 @@
 #include <algorithm>
 #include <iostream>
 #include <ostream>
+#include <sstream>
+#include <stdexcept>
 #include <string>
 #include <utility>
 #include <vector>
-#include <sstream>
-#include <stdexcept>
 
 class Set {
  private:

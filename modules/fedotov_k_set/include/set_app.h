@@ -1,7 +1,7 @@
 // Copyright 2024 Fedorets Ilya
 
-#ifndef MODULES_FEDOTOV_K_METRICS_INCLUDE_METRICS_APP_H_
-#define MODULES_FEDOTOV_K_METRICS_INCLUDE_METRICS_APP_H_
+#ifndef MODULES_FEDOTOV_K_SET_INCLUDE_SET_APP_H_
+#define MODULES_FEDOTOV_K_SET_INCLUDE_SET_APP_H_
 
 #include <algorithm>
 #include <iostream>
@@ -22,4 +22,4 @@ class SetApp {
   std::string operator()(int argc, const char** argv);
 };
 
-#endif  // MODULES_FEDOTOV_K_METRICS_INCLUDE_METRICS_APP_H_
+#endif  // MODULES_FEDOTOV_K_SET_INCLUDE_SET_APP_H_
