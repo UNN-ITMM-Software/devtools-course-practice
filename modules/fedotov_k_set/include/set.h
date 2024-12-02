@@ -17,7 +17,7 @@ class Set {
 
  public:
   Set();
-  Set(const std::string& str);
+  explicit Set(const std::string& str);
 
   void add(int element);
   void remove(int element);
