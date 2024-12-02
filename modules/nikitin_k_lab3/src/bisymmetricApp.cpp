@@ -1,4 +1,5 @@
 // Copyright 2024 Nikitin Kirill
+
 #include "include/bisymmetricApp.h"
 
 std::vector<std::string> BisymmetricApp::runApp(int argc, const char** argv) {
