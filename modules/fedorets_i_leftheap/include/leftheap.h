@@ -55,4 +55,4 @@ class LeftistHeap {
   int countNodes(Node* node) const;
 };
 
-#endif
+#endif  // MODULES_FEDORETS_I_LEFTHEAP_INCLUDE_LEFTHEAP_H_
