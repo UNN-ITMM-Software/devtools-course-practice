@@ -117,7 +117,7 @@ TEST_F(LeftistHeapTest, LargeNumberOfElements) {
 
   std::vector<int> elements;
   for (int i = 0; i < NUM_ELEMENTS; ++i) {
-    int val = rand() % 100000;
+    int val = rand() % 100000;  // NOLINT
     elements.push_back(val);
     heap.insert(val);
   }
