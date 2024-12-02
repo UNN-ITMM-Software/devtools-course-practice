@@ -22,8 +22,6 @@ void SetApp::help(const char* appname, const char* message) {
   ss << "  remove <element>     - Remove an element from the set\n";
   ss << "  union <set>          - Combine two sets\n";
   ss << "  intersect <set>      - Find common elements\n";
-  ss << "  difference <set>     - Elements in first set not in second\n";
-  ss << "  symmetric <set>      - Elements in either set but not both\n";
   ss << "  subset <set>         - Check if first set is subset of second\n";
   ss << "  size                 - Get number of elements in set\n\n";
   ss << "Set format: {1,2,3}\n\n";
