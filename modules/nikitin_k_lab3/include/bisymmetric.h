@@ -1,7 +1,7 @@
 // Copyright 2024 Nikitin Kirill
 
-#ifndef MODULES_NIKITIN_LAB3_INCLUDE_BISYMMETRIC_H_
-#define MODULES_NIKITIN_LAB3_INCLUDE_BISYMMETRIC_H_
+#ifndef MODULES_NIKITIN_K_LAB3_INCLUDE_BISYMMETRIC_H_
+#define MODULES_NIKITIN_K_LAB3_INCLUDE_BISYMMETRIC_H_
 
 #include <iostream>
 #include <vector>
@@ -36,7 +36,7 @@ class BisymmetricMatrix {
   void display() const;
 };
 
-#endif  // MODULES_NIKITIN_LAB3_INCLUDE_BISYMMETRIC_H_
+#endif  // MODULES_NIKITIN_K_LAB3_INCLUDE_BISYMMETRIC_H_
 
 template <typename T>
 inline int BisymmetricMatrix<T>::convertSize(int n) {
