@@ -3,6 +3,7 @@
 #include <gtest/gtest.h>
 
 #include <algorithm>
+#include <chrono>
 #include <vector>
 
 #include "include/leftheap.h"
@@ -112,7 +113,7 @@ TEST_F(LeftistHeapTest, RepeatedInsertDelete) {
   }
 
   // Delete half the elements
-  for (int i = 0; i < elements.size() / 2; ++i) {
+  for (size_t i = 0; i < elements.size() / 2; ++i) {
     heap.deleteMin();
   }
 
@@ -196,7 +197,7 @@ TEST_F(LeftistHeapTest, MoveSemantics) {
 TEST_F(LeftistHeapTest, AlternatingInsertDelete) {
   std::vector<int> sequence = {5, 3, 7, 1, 9};
 
-  for (int i = 0; i < sequence.size(); ++i) {
+  for (size_t i = 0; i < sequence.size(); ++i) {
     heap.insert(sequence[i]);
 
     if (i % 2 == 1) {
@@ -225,7 +226,7 @@ TEST_F(LeftistHeapTest, PerformanceInsertions) {
 
   auto end = std::chrono::high_resolution_clock::now();
   auto duration =
-      std::chrono::duration _cast<std::chrono::milliseconds>(end - start)
+      std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
           .count();
 
   // Ensure insertions completed within reasonable time
@@ -245,7 +246,7 @@ TEST_F(LeftistHeapTest, CopyConstructor) {
 
   // Create a copy
   LeftistHeap heapCopy = heap;
-
+  EXPECT_EQ(heap.findMin(), 1);
   // Verify copy maintains same elements
   EXPECT_EQ(heapCopy.findMin(), 1);
 
@@ -320,4 +321,143 @@ TEST_F(LeftistHeapTest, MergeBenchmark) {
 
   // Ensure merge was relatively quick
   EXPECT_LT(duration, 100);  // Less than 100 ms
+}
+
+// Test copy constructor maintains heap property
+TEST_F(LeftistHeapTest, CopyConstructorMaintainsHeapProperty) {
+  // Insert elements
+  std::vector<int> elements = {5, 3, 7, 1, 9};
+  for (int elem : elements) {
+    heap.insert(elem);
+  }
+
+  // Create a copy
+  LeftistHeap heapCopy(heap);
+
+  // Verify copy has same elements in same order
+  EXPECT_EQ(heapCopy.findMin(), 1);
+
+  // Delete from copy should not affect original
+  heapCopy.deleteMin();
+  EXPECT_EQ(heap.findMin(), 1);
+}
+
+// Test move constructor transfers ownership
+TEST_F(LeftistHeapTest, MoveConstructorTransfersOwnership) {
+  // Insert elements
+  std::vector<int> elements = {5, 3, 7, 1, 9};
+  for (int elem : elements) {
+    heap.insert(elem);
+  }
+
+  // Store original minimum
+  int originalMin = heap.findMin();
+
+  // Move construct
+  LeftistHeap movedHeap(std::move(heap));
+
+  // Original heap should be empty
+  EXPECT_TRUE(heap.isEmpty());
+
+  // Moved heap should have original elements
+  EXPECT_EQ(movedHeap.findMin(), originalMin);
+}
+
+// Test move assignment operator
+TEST_F(LeftistHeapTest, MoveAssignmentOperator) {
+  LeftistHeap sourceHeap;
+  sourceHeap.insert(5);
+  sourceHeap.insert(3);
+  sourceHeap.insert(7);
+
+  LeftistHeap destinationHeap;
+
+  // Store original minimum from source
+  int originalMin = sourceHeap.findMin();
+
+  // Move assign
+  destinationHeap = std::move(sourceHeap);
+
+  // Source heap should now be empty
+  EXPECT_TRUE(sourceHeap.isEmpty());
+
+  // Destination heap should have original elements
+  EXPECT_EQ(destinationHeap.findMin(), originalMin);
+}
+
+// Test copy assignment with different sized heaps
+TEST_F(LeftistHeapTest, CopyAssignmentDifferentSizes) {
+  // Create first heap
+  LeftistHeap heap1;
+  heap1.insert(5);
+  heap1.insert(3);
+  heap1.insert(7);
+
+  // Create second heap with different elements
+  LeftistHeap heap2;
+  heap2.insert(1);
+  heap2.insert(9);
+
+  // Copy assign
+  heap2 = heap1;
+
+  // Verify heap2 now has same elements as heap1
+  EXPECT_EQ(heap2.findMin(), 3);
+
+  // Original heap1 remains unchanged
+  EXPECT_EQ(heap1.findMin(), 3);
+
+  // Verify sizes match
+  EXPECT_EQ(heap1.size(), heap2.size());
+}
+
+// Test self-assignment handling
+TEST_F(LeftistHeapTest, SelfAssignmentHandling) {
+  // Insert some elements
+  std::vector<int> elements = {5, 3, 7, 1, 9};
+  for (int elem : elements) {
+    heap.insert(elem);
+  }
+
+  // Store original minimum
+  int originalMin = heap.findMin();
+
+  // Self-assignment (should not modify heap)
+  heap = heap;
+
+  // Verify heap remains unchanged
+  EXPECT_EQ(heap.findMin(), originalMin);
+}
+
+// Complex scenario: Multiple copy and move operations
+TEST_F(LeftistHeapTest, ComplexCopyMoveScenario) {
+  // Create initial heap
+  LeftistHeap heap1;
+  heap1.insert(10);
+  heap1.insert(5);
+  heap1.insert(15);
+
+  // Copy construct
+  LeftistHeap heap2(heap1);
+
+  // Move construct
+  LeftistHeap heap3(std::move(heap1));
+
+  // Copy assign
+  LeftistHeap heap4;
+  heap4.insert(100);
+  heap4 = heap2;
+
+  // Move assign
+  LeftistHeap heap5;
+  heap5 = std::move(heap2);
+
+  // Verify heap properties
+  EXPECT_EQ(heap3.findMin(), 5);
+  EXPECT_EQ(heap4.findMin(), 5);
+  EXPECT_EQ(heap5.findMin(), 5);
+
+  // Original heaps should be in expected states
+  EXPECT_TRUE(heap1.isEmpty());
+  EXPECT_TRUE(heap2.isEmpty());
 }
