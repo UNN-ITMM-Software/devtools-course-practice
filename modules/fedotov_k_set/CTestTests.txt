@@ -30,6 +30,15 @@ set_tests_properties (${prefix}_can_insert PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
+    NAME ${prefix}_can_remove
+    COMMAND ${APPLICATION} "{1,2,3}" remove 3
+)
+
+set_tests_properties (${prefix}_can_remove PROPERTIES
+    PASS_REGULAR_EXPRESSION "{1,2}"
+    LABELS "${MODULE}")
+
+add_test(
     NAME ${prefix}_can_union
     COMMAND ${APPLICATION} "{1,2,3}" union "{4,5}"
 )
@@ -40,10 +49,10 @@ set_tests_properties (${prefix}_can_union PROPERTIES
 
 
 add_test(
-    NAME ${prefix}_can_difference
-    COMMAND ${APPLICATION} "{1,2,3}" difference "{2,3}"
+    NAME ${prefix}_can_intersect
+    COMMAND ${APPLICATION} "{1,2,3}" intersect "{2,3}"
 )
 
-set_tests_properties (${prefix}_can_difference PROPERTIES
-    PASS_REGULAR_EXPRESSION "{1}"
+set_tests_properties (${prefix}_can_intersect PROPERTIES
+    PASS_REGULAR_EXPRESSION "{2,3}"
     LABELS "${MODULE}")
