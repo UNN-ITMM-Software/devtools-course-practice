@@ -8,6 +8,8 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <sstream>
+#include <stdexcept>
 
 class Set {
  private:
@@ -15,6 +17,7 @@ class Set {
 
  public:
   Set();
+  Set(const std::string& str);
 
   void add(int element);
   void remove(int element);
@@ -22,6 +25,7 @@ class Set {
   Set unionWith(const Set& other) const;
   Set intersectWith(const Set& other) const;
   void print() const;
+  std::string toString() const;
 };
 
 #endif  // MODULES_FEDOTOV_K_SET_INCLUDE_SET_H_

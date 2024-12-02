@@ -1,0 +1,49 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_print_help
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_print_help PROPERTIES
+    PASS_REGULAR_EXPRESSION "Set Operations Calculator\n\n"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_insert
+    COMMAND ${APPLICATION} "{1,2,3}" insert 4
+)
+
+set_tests_properties (${prefix}_can_insert PROPERTIES
+    PASS_REGULAR_EXPRESSION "{1,2,3,4}"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_union
+    COMMAND ${APPLICATION} "{1,2,3}" union "{4,5}"
+)
+
+set_tests_properties (${prefix}_can_union PROPERTIES
+    PASS_REGULAR_EXPRESSION "{1,2,3,4,5}"
+    LABELS "${MODULE}")
+
+
+add_test(
+    NAME ${prefix}_can_difference
+    COMMAND ${APPLICATION} "{1,2,3}" difference "{2,3}"
+)
+
+set_tests_properties (${prefix}_can_difference PROPERTIES
+    PASS_REGULAR_EXPRESSION "{1}"
+    LABELS "${MODULE}")

@@ -4,6 +4,21 @@
 
 Set::Set() {}
 
+// Constructor from string representation
+Set::Set(const std::string& str) {
+  // Remove { and }
+  std::string cleaned = str.substr(1, str.length() - 2);
+  std::stringstream ss(cleaned);
+  std::string token;
+
+  while (std::getline(ss, token, ',')) {
+    if (!token.empty()) {
+      int num = std::stoi(token);
+      add(num);
+    }
+  }
+}
+
 void Set::add(int element) {
   if (!contains(element)) {
     elements.push_back(element);
@@ -45,4 +60,17 @@ void Set::print() const {
     std::cout << elem << " ";
   }
   std::cout << "}" << std::endl;
+}
+
+std::string Set::toString() const {
+  std::stringstream ss;
+  ss << "{";
+  for (size_t i = 0; i < elements.size(); ++i) {
+    ss << elements[i];
+    if (i < elements.size() - 1) {
+      ss << ",";
+    }
+  }
+  ss << "}";
+  return ss.str();
 }
