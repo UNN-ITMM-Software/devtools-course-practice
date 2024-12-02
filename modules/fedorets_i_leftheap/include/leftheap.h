@@ -14,10 +14,10 @@ class LeftistHeap {
     Node* left;
     Node* right;
 
-    Node(int val) : data(val), rank(1), left(nullptr), right(nullptr) {}
+    explicit Node(int val) : data(val), rank(1), left(nullptr), right(nullptr) {}
 
     // Copy constructor for Node
-    Node(const Node* other)
+    explicit Node(const Node* other)
         : data(other->data), rank(other->rank), left(nullptr), right(nullptr) {
       if (other->left) left = new Node(other->left);
       if (other->right) right = new Node(other->right);
