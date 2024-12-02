@@ -1,0 +1,97 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_convert_zero
+    COMMAND ${APPLICATION} "0"
+)
+set_tests_properties(${prefix}_convert_zero PROPERTIES
+    PASS_REGULAR_EXPRESSION "zero"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_convert_one
+    COMMAND ${APPLICATION} "1"
+)
+set_tests_properties(${prefix}_convert_one PROPERTIES
+    PASS_REGULAR_EXPRESSION "one"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_convert_negative
+    COMMAND ${APPLICATION} "-123"
+)
+set_tests_properties(${prefix}_convert_negative PROPERTIES
+    PASS_REGULAR_EXPRESSION "negative one hundred twenty three"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_convert_large_number
+    COMMAND ${APPLICATION} "1000000"
+)
+set_tests_properties(${prefix}_convert_large_number PROPERTIES
+    PASS_REGULAR_EXPRESSION "one million"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_convert_edge_case_twenty
+    COMMAND ${APPLICATION} "20"
+)
+set_tests_properties(${prefix}_convert_edge_case_twenty PROPERTIES
+    PASS_REGULAR_EXPRESSION "twenty"
+    LABELS "${MODULE}"
+)
+
+# Тесты для ошибок и невалидных вводов
+add_test(
+    NAME ${prefix}_invalid_input
+    COMMAND ${APPLICATION} "abc"
+)
+set_tests_properties(${prefix}_invalid_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid number format!"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_missing_argument
+    COMMAND ${APPLICATION}
+)
+set_tests_properties(${prefix}_missing_argument PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage: number_to_words <number>"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_extra_argument
+    COMMAND ${APPLICATION} "123" "456"
+)
+set_tests_properties(${prefix}_extra_argument PROPERTIES
+    PASS_REGULAR_EXPRESSION "Usage: number_to_words <number>"
+    LABELS "${MODULE}"
+)
+
+# Граничные значения
+add_test(
+    NAME ${prefix}_convert_min_int
+    COMMAND ${APPLICATION} "-2147483648"
+)
+set_tests_properties(${prefix}_convert_min_int PROPERTIES
+    PASS_REGULAR_EXPRESSION "negative two billion one hundred forty seven million four hundred eighty three thousand six hundred forty eight"
+    LABELS "${MODULE}"
+)
+
+add_test(
+    NAME ${prefix}_convert_max_int
+    COMMAND ${APPLICATION} "2147483647"
+)
+set_tests_properties(${prefix}_convert_max_int PROPERTIES
+    PASS_REGULAR_EXPRESSION "two billion one hundred forty seven million four hundred eighty three thousand six hundred forty seven"
+    LABELS "${MODULE}"
+)
